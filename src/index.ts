@@ -8,6 +8,7 @@ export {
     Count,
     Coordinate,
     CoordinateElement,
+    apply,
     from,
     to,
     Frequency,
