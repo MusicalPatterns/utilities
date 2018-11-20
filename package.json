@@ -1,6 +1,6 @@
 {
   "name": "@musical-patterns/utilities",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "dist/index.js",
   "bin": {
     "musical-patterns": "./cli/index.sh"
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "https://github.com/MusicalPatterns/utilities.git"
   },
-  "devDependencies": {
+  "dependencies": {
     "tsc": "^1.20150623.0",
     "tslint": "^5.11.0",
     "tslint-defocus": "^2.0.6",
