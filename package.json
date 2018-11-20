@@ -1,7 +1,10 @@
 {
   "name": "@musical-patterns/utilities",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "dist/index.js",
+  "bin": {
+    "musical-patterns": "./cli/index.sh"
+  },
   "typings": "dist/index.d.ts",
   "repository": {
     "type": "git",
