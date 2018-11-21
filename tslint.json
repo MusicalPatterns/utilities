@@ -4,7 +4,6 @@
     "tslint-eslint-rules"
   ],
   "rulesDirectory": [
-    "node_modules/tslint-defocus/dist",
     "lint"
   ],
   "rules": {
@@ -51,7 +50,6 @@
     "no-unbound-method": false,
     "no-use-before-declare": false,
     "strict-boolean-expressions": false,
-    "defocus": true,
     "no-namespace": false,
     "no-dynamic-delete": false,
     "no-implicit-dependencies": [true, "dev"],
