@@ -1,6 +1,6 @@
 {
   "extends": [
-    "../tslint.json"
+    "../lint/tslint.json"
   ],
   "rules": {
     "no-magic-numbers": false,
