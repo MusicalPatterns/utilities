@@ -2,10 +2,16 @@
 
 set -e
 
-CMD="$1"
-export UTILITIES_DIRECTORY="./node_modules/@musical-patterns/utilities/"
-export PATH=${PATH}:./node_modules/.bin/:${UTILITIES_DIRECTORY}/node_modules/.bin/
+OPT="$2"
+if [[ ${OPT} == "self" ]] ; then
+    export UTILITIES_DIRECTORY="./"
+else
+    export UTILITIES_DIRECTORY="./node_modules/@musical-patterns/utilities/"
+fi
 
+export PATH=${PATH}:./node_modules/.bin/:${UTILITIES_DIRECTORY}node_modules/.bin/
+
+CMD="$1"
 if [[ ${CMD} == "lint" ]] ; then
-    sh ${UTILITIES_DIRECTORY}/cli/lint.sh
+    sh ${UTILITIES_DIRECTORY}cli/lint.sh
 fi

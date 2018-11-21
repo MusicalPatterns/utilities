@@ -7,4 +7,4 @@ build:
 	./bin/build.sh
 
 lint:
-	./bin/lint.sh
+	./cli/index.sh lint self

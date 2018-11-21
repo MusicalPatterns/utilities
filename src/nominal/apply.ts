@@ -1,5 +1,7 @@
-import { Base, Count, Index, Offset, Power, Scalar } from './types'
+// tslint:disable:variable-name no-any
+
 import * as from from './from'
+import { Base, Count, Index, Offset, Power, Scalar } from './types'
 
 const Count: <T>(value: T, count: Count) => T =
     <T>(value: T, count: Count): T =>
@@ -28,7 +30,7 @@ const Scalar: <T>(value: T, scalar: Scalar) => T =
 
 const Index: <T>(array: T[], index: Index) => T =
     <T>(array: T[], index: Index): T =>
-        array[ from.Index(index) ] as T
+        array[ from.Index(index) ]
 
 export {
     Count,
@@ -38,4 +40,3 @@ export {
     Scalar,
     Index,
 }
-
