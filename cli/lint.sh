@@ -11,7 +11,7 @@ mv test/tslint.json test/tslint-user.json > /dev/null 2>&1 || true
 mv test/tslint-tmp.json test/tslint.json
 
 cp -r ${UTILITIES_DIRECTORY}lint ./lint-tmp
-mv lint lint-user
+mv lint lint-user > /dev/null 2>&1 || true
 mv lint-tmp lint
 
 # lint
@@ -29,4 +29,4 @@ rm test/tslint.json
 mv test/tslint-user.json test/tslint.json > /dev/null 2>&1 || true
 
 rm -r lint
-mv lint-user lint
+mv lint-user lint > /dev/null 2>&1 || true
