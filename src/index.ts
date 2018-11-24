@@ -15,3 +15,8 @@ export {
     SumOfScalars,
     SumOfIndices,
 } from './nominal'
+export { deepEqual } from './deepEqual'
+export {
+    Maybe,
+    DictionaryOf,
+} from './types'

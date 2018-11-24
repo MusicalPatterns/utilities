@@ -3,9 +3,6 @@
     "tslint:all",
     "tslint-eslint-rules"
   ],
-  "rulesDirectory": [
-    "node_modules/@musical-patterns/utilities/lint"
-  ],
   "rules": {
     "no-unused-variable": false,
     "completed-docs": false,

@@ -1,0 +1,11 @@
+{
+  "spec_files": [
+    "test/src/**/*.test.ts",
+    "test/src/**/*.test.js",
+    "test/src/**/*.test.tsx"
+  ],
+  "helpers": [
+    "test/support/mockDom.ts"
+  ],
+  "oneFailurePerSpec": false
+}

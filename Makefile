@@ -1,4 +1,5 @@
 .PHONY: lint
+.PHONY: test
 
 deploy:
 	./bin/deploy.sh
@@ -8,3 +9,6 @@ build:
 
 lint:
 	./cli/index.sh lint self
+
+test:
+	./bin/test.sh
