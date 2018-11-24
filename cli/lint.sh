@@ -1,20 +1,25 @@
 #!/usr/bin/env sh
 
-cp ${UTILITIES_DIRECTORY}tslint.json ./tslint-self.json
+# position config files
 
-mv ./tslint.json ./tslint-user.json
+cp ${UTILITIES_DIRECTORY}tslint.json ./tslint-tmp.json
+mv tslint.json tslint-user.json > /dev/null 2>&1 || true
+mv tslint-tmp.json tslint.json
 
-cp ${UTILITIES_DIRECTORY}lint/tslint-main.json .
-mv tslint-main.json tslint.json
+cp ${UTILITIES_DIRECTORY}test/tslint.json ./test/tslint-tmp.json
+mv test/tslint.json test/tslint-user.json > /dev/null 2>&1 || true
+mv test/tslint-tmp.json test/tslint.json
+
+# lint
+
 tslint '**/*.ts{,x}' -e **/node_modules/** --fix -p tsconfig.json
-mv tslint.json tslint-main.json
 
-cp ${UTILITIES_DIRECTORY}lint/tslint-test.json .
-mv tslint-test.json tslint.json
 tslint 'test/**/*.ts{,x}' --fix -p test/tsconfig.json
 
-rm tslint.json
-rm tslint-main.json
-rm tslint-self.json
+# cleanup
 
-mv ./tslint-user.json ./tslint.json
+rm tslint.json
+mv tslint-user.json tslint.json > /dev/null 2>&1 || true
+
+rm test/tslint.json
+mv test/tslint-user.json test/tslint.json > /dev/null 2>&1 || true

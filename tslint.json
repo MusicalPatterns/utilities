@@ -3,6 +3,9 @@
     "tslint:all",
     "tslint-eslint-rules"
   ],
+  "rulesDirectory": [
+    "lint"
+  ],
   "rules": {
     "no-unused-variable": false,
     "completed-docs": false,
