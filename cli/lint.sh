@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-mv tslint.json tslint-self.json
+mv ${UTILITIES_DIRECTORY}tslint.json ${UTILITIES_DIRECTORY}tslint-self.json
 
 cp ${UTILITIES_DIRECTORY}lint/tslint-main.json .
 mv tslint-main.json tslint.json
@@ -13,4 +13,4 @@ tslint 'test/**/*.ts{,x}' --fix -p test/tsconfig.json
 rm tslint.json
 rm tslint-main.json
 
-mv tslint-self.json tslint.json
+mv ${UTILITIES_DIRECTORY}tslint-self.json ${UTILITIES_DIRECTORY}tslint.json
