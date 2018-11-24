@@ -10,6 +10,10 @@ cp ${UTILITIES_DIRECTORY}test/tslint.json ./test/tslint-tmp.json
 mv test/tslint.json test/tslint-user.json > /dev/null 2>&1 || true
 mv test/tslint-tmp.json test/tslint.json
 
+cp -r ${UTILITIES_DIRECTORY}lint ./lint-tmp
+mv lint lint-user
+mv lint-tmp lint
+
 # lint
 
 tslint '**/*.ts{,x}' -e **/node_modules/** --fix -p tsconfig.json
@@ -23,3 +27,6 @@ mv tslint-user.json tslint.json > /dev/null 2>&1 || true
 
 rm test/tslint.json
 mv test/tslint-user.json test/tslint.json > /dev/null 2>&1 || true
+
+rm -r lint
+mv lint-user lint
