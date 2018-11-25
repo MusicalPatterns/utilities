@@ -20,3 +20,7 @@ export {
     Maybe,
     DictionaryOf,
 } from './types'
+export {
+    typedMap,
+    TypedMap,
+} from './typedMap'

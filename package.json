@@ -1,6 +1,6 @@
 {
   "name": "@musical-patterns/utilities",
-  "version": "1.0.29",
+  "version": "1.0.30",
   "main": "dist/index.js",
   "bin": {
     "musical-patterns": "cli/index.sh"
@@ -11,6 +11,7 @@
     "url": "https://github.com/MusicalPatterns/utilities.git"
   },
   "dependencies": {
+    "immutable": "^4.0.0-rc.12",
     "tsc": "^1.20150623.0",
     "tslint": "^5.11.0",
     "tslint-eslint-rules": "^5.4.0",
