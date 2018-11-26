@@ -10,11 +10,11 @@ cp ${UTILITIES_DIRECTORY}tsconfig-common.json ./tsconfig-common-tmp.json
 mv tsconfig-common.json tsconfig-common-user.json > /dev/null 2>&1 || true
 mv tsconfig-common-tmp.json tsconfig-common.json
 
-./node_modules/.bin/tsc -p ./test/tsconfig.json
+tsc -p ./test/tsconfig.json
 if [[ -f ${UTILITIES_DIRECTORY}/node_modules/jasmine/bin/jasmine.js ]]; then
-	./node_modules/.bin/ts-node -P ./test/tsconfig.json ${UTILITIES_DIRECTORY}/node_modules/jasmine/bin/jasmine.js
+	ts-node -P ./test/tsconfig.json ${UTILITIES_DIRECTORY}/node_modules/jasmine/bin/jasmine.js
 else
-	./node_modules/.bin/ts-node -P ./test/tsconfig.json ./node_modules/jasmine/bin/jasmine.js
+	ts-node -P ./test/tsconfig.json ./node_modules/jasmine/bin/jasmine.js
 fi
 
 rm test/tsconfig.json
