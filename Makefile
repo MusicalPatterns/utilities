@@ -11,4 +11,4 @@ lint:
 	./cli/index.sh lint self
 
 test:
-	./bin/test.sh
+	./cli/index.sh test self
