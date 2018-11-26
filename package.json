@@ -1,6 +1,6 @@
 {
-  "name": "@musical-patterns/utilities",
-  "version": "1.0.56",
+  "name": "@musical-patterns/shared",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "bin": {
     "musical-patterns": "cli/index.sh"
@@ -8,7 +8,7 @@
   "typings": "dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MusicalPatterns/utilities.git"
+    "url": "https://github.com/MusicalPatterns/shared.git"
   },
   "peerDependencies": {
     "typescript": "^3.1.6"
