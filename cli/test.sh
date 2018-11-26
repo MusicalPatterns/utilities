@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-export JASMINE_CONFIG_PATH=${UTILITIES_DIRECTORY}test/support/jasmine.json
+export JASMINE_CONFIG_PATH=${UTILITIES_DIRECTORY}test/jasmine.json
 
 cp ${UTILITIES_DIRECTORY}test/tsconfig.json ./test/tsconfig-tmp.json
 mv test/tsconfig.json test/tsconfig-user.json > /dev/null 2>&1 || true
