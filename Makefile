@@ -5,7 +5,7 @@ publish:
 	./cli/index.sh publish self
 
 build:
-	./cli/index.sh build self ./node_modules/.bin/tsc
+	./cli/index.sh build self tsc
 
 lint:
 	./cli/index.sh lint self
