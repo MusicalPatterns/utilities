@@ -5,7 +5,7 @@ publish:
 	./cli/index.sh publish self
 
 build:
-	./cli/index.sh build self tsc
+	./cli/index.sh build self "tsc -m commonjs"
 
 lint:
 	./cli/index.sh lint self
