@@ -50,6 +50,7 @@ export {
     EVERY_OTHER,
 } from './math'
 export {
+    centsToPitch,
     TRITAVE,
     OCTAVE,
     CENTS_PER_OCTAVE,
