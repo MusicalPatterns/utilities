@@ -1,6 +1,6 @@
 {
   "name": "@musical-patterns/utilities",
-  "version": "1.0.51",
+  "version": "1.0.52",
   "main": "dist/index.js",
   "bin": {
     "musical-patterns": "cli/index.sh"
@@ -9,6 +9,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/MusicalPatterns/utilities.git"
+  },
+  "peerDependencies": {
+    "typescript": "^3.1.6"
   },
   "dependencies": {
     "@types/jasmine": "^3.3.0",
