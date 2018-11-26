@@ -12,6 +12,4 @@ fi
 export PATH=${PATH}:./node_modules/.bin/:${UTILITIES_DIRECTORY}node_modules/.bin/
 
 CMD="$1"
-if [[ ${CMD} == "lint" ]] ; then
-    sh ${UTILITIES_DIRECTORY}cli/lint.sh
-fi
+sh ${UTILITIES_DIRECTORY}cli/${CMD}.sh

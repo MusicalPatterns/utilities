@@ -2,7 +2,7 @@
 .PHONY: test
 
 publish:
-	./bin/publish.sh
+	./cli/index.sh publish self
 
 build:
 	./bin/build.sh
