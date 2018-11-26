@@ -2,6 +2,8 @@
 
 // @ts-ignore
 require('browser-env')()
+// @ts-ignore
+declare const global: any
 
 global.requestAnimationFrame = (callback: any) => {
     setTimeout(callback, 0)
@@ -10,8 +12,6 @@ global.requestAnimationFrame = (callback: any) => {
 global.cancelAnimationFrame = (id: number) => {
     clearTimeout(id)
 }
-
-declare const global: any
 
 const mockOscillator: any = {
     connect: () => {
