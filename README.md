@@ -13,4 +13,4 @@ musical-patterns publish
 
 ## src
 
-A ton of utilities for code, math, testing, and nominal types.
+A ton of utilities for code, math, music, testing, and nominal typing.
