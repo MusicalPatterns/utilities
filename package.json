@@ -1,6 +1,6 @@
 {
   "name": "@musical-patterns/utilities",
-  "version": "1.0.30",
+  "version": "1.0.31",
   "main": "dist/index.js",
   "bin": {
     "musical-patterns": "cli/index.sh"

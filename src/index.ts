@@ -15,12 +15,29 @@ export {
     SumOfScalars,
     SumOfIndices,
 } from './nominal'
-export { deepEqual } from './deepEqual'
+export {
+    deepEqual,
+    doAsync,
+    logMessageToScreen,
+    offsetFromOneIndexedToZeroIndexed,
+    typedMap,
+    TypedMap,
+    unCamelCase,
+} from './code'
+export {
+    absoluteRatio,
+    isCloseTo,
+    numbers,
+    wrapWithin,
+} from './math'
+export {
+    cycle,
+    repeat,
+    repeatCall,
+    sequence,
+} from './array'
+
 export {
     Maybe,
     DictionaryOf,
 } from './types'
-export {
-    typedMap,
-    TypedMap,
-} from './typedMap'

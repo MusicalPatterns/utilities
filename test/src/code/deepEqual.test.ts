@@ -1,4 +1,4 @@
-import { deepEqual } from '../../src/indexForTest'
+import { deepEqual } from '../../../src/indexForTest'
 
 describe('deep equal', () => {
     it('works', () => {
