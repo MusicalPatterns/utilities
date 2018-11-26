@@ -12,4 +12,4 @@ export PATH=${PATH}:./node_modules/.bin/:${UTILITIES_DIRECTORY}node_modules/.bin
 BUILD_CMD="$3"
 
 CMD="$1"
-sh ${UTILITIES_DIRECTORY}cli/${CMD}.sh ${BUILD_CMD}
+sh ${UTILITIES_DIRECTORY}cli/${CMD}.sh "$BUILD_CMD"
