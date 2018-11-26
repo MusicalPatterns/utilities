@@ -2,6 +2,7 @@
 
 import {
     Base,
+    Cents,
     CoordinateElement,
     Count,
     Frequency,
@@ -11,6 +12,7 @@ import {
     Power,
     Radian,
     Scalar,
+    Semitones,
     SumOfIndices,
     SumOfScalars,
     Time,
@@ -42,6 +44,10 @@ const Length: (length: Length) => number =
     (length: Length): number => length as any
 const Radian: (radian: Radian) => number =
     (radian: Radian): number => radian as any
+const Cents: (cents: Cents) => number =
+    (cents: Cents): number => cents as any
+const Semitones: (semitones: Semitones) => number =
+    (semitones: Semitones): number => semitones as any
 
 export {
     Base,
@@ -57,4 +63,6 @@ export {
     Frequency,
     Length,
     Radian,
+    Cents,
+    Semitones,
 }

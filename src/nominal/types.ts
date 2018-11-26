@@ -52,6 +52,14 @@ interface Radian extends Number {
     _RadianBrand: string,
 }
 
+interface Cents extends Number {
+    _CentsBrand: string,
+}
+
+interface Semitones extends Number {
+    _SemitonesBrand: string,
+}
+
 export {
     Base,
     Count,
@@ -67,4 +75,6 @@ export {
     Frequency,
     Length,
     Radian,
+    Cents,
+    Semitones,
 }

@@ -2,14 +2,18 @@
 
 import {
     Base,
+    Cents,
     Coordinate,
     CoordinateElement,
     Count,
     Frequency,
-    Index, Length,
+    Index,
+    Length,
     Offset,
-    Power, Radian,
+    Power,
+    Radian,
     Scalar,
+    Semitones,
     SumOfIndices,
     SumOfScalars,
     Time,
@@ -41,6 +45,10 @@ const Length: (length: number) => Length =
     (length: number): Length => length as any
 const Radian: (radian: number) => Radian =
     (radian: number): Radian => radian as any
+const Cents: (cents: number) => Cents =
+    (cents: number): Cents => cents as any
+const Semitones: (semitones: number) => Semitones =
+    (semitones: number): Semitones => semitones as any
 
 const Coordinate: (coordinate: Array<number | CoordinateElement>) => Coordinate =
     (coordinate: Array<number | CoordinateElement>): Coordinate =>
@@ -62,4 +70,6 @@ export {
     Frequency,
     Length,
     Radian,
+    Cents,
+    Semitones,
 }

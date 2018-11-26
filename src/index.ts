@@ -16,6 +16,8 @@ export {
     SumOfIndices,
     Length,
     Radian,
+    Cents,
+    Semitones,
 } from './nominal'
 export {
     deepEqual,
@@ -28,6 +30,8 @@ export {
     repeat,
     repeatCall,
     sequence,
+    INITIAL,
+    INCLUSIVE,
 } from './code'
 export {
     absoluteRatio,
@@ -40,7 +44,17 @@ export {
     Z_AXIS,
     distanceBetween,
     rotate,
+    EVEN,
+    ONCE,
+    TWICE,
+    EVERY_OTHER,
 } from './math'
+export {
+    TRITAVE,
+    OCTAVE,
+    CENTS_PER_OCTAVE,
+    CENTS_PER_SEMITONE,
+} from './music'
 export {
     testIsCloseTo,
     testArraysAreClose,

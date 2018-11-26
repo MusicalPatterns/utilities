@@ -15,6 +15,13 @@ const Z_AXIS: Index = to.Index(2)
 const SQUARED: Power = to.Power(2)
 const SQUARE_ROOT: Power = to.Power(1 / 2)
 
+const EVEN: number = 2
+
+const ONCE: Count = to.Count(1)
+const TWICE: Count = to.Count(2)
+
+const EVERY_OTHER: Scalar = to.Scalar(2)
+
 export {
     DECIMAL,
     HALF,
@@ -26,4 +33,8 @@ export {
     Z_AXIS,
     SQUARE_ROOT,
     SQUARED,
+    EVEN,
+    ONCE,
+    TWICE,
+    EVERY_OTHER,
 }

@@ -23,4 +23,6 @@ export {
     SumOfIndices,
     Radian,
     Length,
+    Cents,
+    Semitones,
 } from './types'
