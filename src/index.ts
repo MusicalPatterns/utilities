@@ -14,6 +14,8 @@ export {
     Frequency,
     SumOfScalars,
     SumOfIndices,
+    Length,
+    Radian,
 } from './nominal'
 export {
     deepEqual,
