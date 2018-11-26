@@ -1,5 +1,4 @@
-.PHONY: lint
-.PHONY: test
+.PHONY: test, lint
 
 publish:
 	./cli/index.sh publish self
