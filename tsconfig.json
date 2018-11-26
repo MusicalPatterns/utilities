@@ -8,7 +8,7 @@
   "exclude": [
     "dist",
     "lint",
-    "pattern/**/test",
+    "src/patterns/**/test",
     "test",
     "node_modules"
   ]

@@ -5,5 +5,12 @@
 ```
 
 musical-patterns lint
+musical-patterns test
+musical-patterns build
+musical-patterns publish
 
 ```
+
+## src
+
+A ton of utilities for code, math, testing, and nominal types.
