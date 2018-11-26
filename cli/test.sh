@@ -12,9 +12,9 @@ mv tsconfig-common-tmp.json tsconfig-common.json
 
 ./node_modules/.bin/tsc -p ./test/tsconfig.json
 if [[ -f ${UTILITIES_DIRECTORY}/node_modules/jasmine/bin/jasmine.js ]]; then
-	./node_modules/.bin/ts-node -P ${UTILITIES_DIRECTORY}/test/tsconfig.json ${UTILITIES_DIRECTORY}/node_modules/jasmine/bin/jasmine.js
+	./node_modules/.bin/ts-node -P ./test/tsconfig.json ${UTILITIES_DIRECTORY}/node_modules/jasmine/bin/jasmine.js
 else
-	./node_modules/.bin/ts-node -P ${UTILITIES_DIRECTORY}/test/tsconfig.json ./node_modules/jasmine/bin/jasmine.js
+	./node_modules/.bin/ts-node -P ./test/tsconfig.json ./node_modules/jasmine/bin/jasmine.js
 fi
 
 rm test/tsconfig.json
