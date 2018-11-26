@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 
-set -e
-
 OPT="$2"
 if [[ ${OPT} == "self" ]] ; then
     export UTILITIES_DIRECTORY="./"

@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 
-set -e
-
 export JASMINE_CONFIG_PATH=${UTILITIES_DIRECTORY}test/support/jasmine.json
 
 cp ${UTILITIES_DIRECTORY}test/tsconfig.json ./test/tsconfig-tmp.json

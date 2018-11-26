@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 
-set -e
-
 CMD="$1"
 
 rm -rf dist/
