@@ -6,7 +6,7 @@
     "test/src/**/*.test.jsx"
   ],
   "helpers": [
-    "test/support/mockDom.ts"
+    "test/mockDom.ts"
   ],
   "oneFailurePerSpec": false
 }
