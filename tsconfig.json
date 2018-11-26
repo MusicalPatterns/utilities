@@ -9,6 +9,7 @@
     "dist",
     "lint",
     "pattern/**/test",
-    "test"
+    "test",
+    "node_modules"
   ]
 }
