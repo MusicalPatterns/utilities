@@ -10,6 +10,10 @@ cp ${UTILITIES_DIRECTORY}tsconfig-common.json ./tsconfig-common-tmp.json
 mv tsconfig-common.json tsconfig-common-user.json > /dev/null 2>&1 || true
 mv tsconfig-common-tmp.json tsconfig-common.json
 
+cp ${UTILITIES_DIRECTORY}test/mockDom.ts ./test/mockDom-tmp.ts
+mv test/mockDom.ts ./mockDom-user.ts > /dev/null 2>&1 || true
+mv test/mockDom-tmp.ts test/mockDom.ts
+
 tsc -p ./test/tsconfig.json
 if [[ -f ${UTILITIES_DIRECTORY}/node_modules/jasmine/bin/jasmine.js ]]; then
 	ts-node -P ./test/tsconfig.json ${UTILITIES_DIRECTORY}/node_modules/jasmine/bin/jasmine.js
@@ -22,3 +26,6 @@ mv test/tsconfig-user.json test/tsconfig.json > /dev/null 2>&1 || true
 
 rm tsconfig-common.json
 mv tsconfig-common-user.json tsconfig-common.json > /dev/null 2>&1 || true
+
+rm test/mockDom.ts
+mv ./mockDom-user.ts test/mockDom.ts > /dev/null 2>&1 || true
