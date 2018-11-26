@@ -23,19 +23,26 @@ export {
     typedMap,
     TypedMap,
     unCamelCase,
-} from './code'
-export {
-    absoluteRatio,
-    isCloseTo,
-    numbers,
-    wrapWithin,
-} from './math'
-export {
-    cycle,
     repeat,
     repeatCall,
     sequence,
-} from './array'
+} from './code'
+export {
+    absoluteRatio,
+    cycle,
+    isCloseTo,
+    numbers,
+    wrapWithin,
+    X_AXIS,
+    Y_AXIS,
+    Z_AXIS,
+    distanceBetween,
+    rotate,
+} from './math'
+export {
+    testIsCloseTo,
+    testArraysAreClose,
+} from './test'
 
 export {
     Maybe,

@@ -6,8 +6,10 @@ import {
     Count,
     Frequency,
     Index,
+    Length,
     Offset,
     Power,
+    Radian,
     Scalar,
     SumOfIndices,
     SumOfScalars,
@@ -36,6 +38,10 @@ const CoordinateElement: (coordinateElement: CoordinateElement) => number =
     (coordinateElement: CoordinateElement): number => coordinateElement as any
 const Frequency: (frequency: Frequency) => number =
     (frequency: Frequency): number => frequency as any
+const Length: (length: Length) => number =
+    (length: Length): number => length as any
+const Radian: (radian: Radian) => number =
+    (radian: Radian): number => radian as any
 
 export {
     Base,
@@ -49,4 +55,6 @@ export {
     SumOfScalars,
     CoordinateElement,
     Frequency,
+    Length,
+    Radian,
 }

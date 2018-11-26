@@ -44,6 +44,14 @@ interface Frequency extends Number {
     _FrequencyBrand: string,
 }
 
+interface Length extends Number {
+    _LengthBrand: string,
+}
+
+interface Radian extends Number {
+    _RadianBrand: string,
+}
+
 export {
     Base,
     Count,
@@ -57,4 +65,6 @@ export {
     CoordinateElement,
     Coordinate,
     Frequency,
+    Length,
+    Radian,
 }

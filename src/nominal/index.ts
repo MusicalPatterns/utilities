@@ -21,4 +21,6 @@ export {
     Frequency,
     SumOfScalars,
     SumOfIndices,
+    Radian,
+    Length,
 } from './types'

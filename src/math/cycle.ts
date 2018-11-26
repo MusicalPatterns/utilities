@@ -1,5 +1,5 @@
-import { wrapWithin } from '../math'
 import { apply, Count, from, Index, Offset, to } from '../nominal'
+import { wrapWithin } from './wrapWithin'
 
 const cycle: <T>(array: T[], rotationOffset: Offset) => T[] =
     <T>(array: T[], rotationOffset: Offset): T[] => {
