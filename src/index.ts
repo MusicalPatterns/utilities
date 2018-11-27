@@ -48,6 +48,7 @@ export {
     ONCE,
     TWICE,
     EVERY_OTHER,
+    HALF,
 } from './math'
 export {
     centsToPitch,
