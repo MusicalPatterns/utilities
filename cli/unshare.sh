@@ -2,10 +2,12 @@
 
 FILE="$1"
 
-if [[ -d ${FILE} ]]; then
-	rm -r ${FILE}
-else
+COUNT_OF_FILES_INSIDE_DIRECTORY=$(ls -1q ${UTILITIES_DIRECTORY}${FILE}* | wc -l)
+
+if [[ ${COUNT_OF_FILES_INSIDE_DIRECTORY} == 1 ]]; then
 	rm ${FILE}
+else
+	rm -r ${FILE}
 fi
 
 mv ${FILE}.user ${FILE} > /dev/null 2>&1 || true
