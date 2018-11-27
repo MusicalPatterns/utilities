@@ -2,30 +2,17 @@
 
 export JASMINE_CONFIG_PATH=${UTILITIES_DIRECTORY}test/jasmine.json
 
-cp ${UTILITIES_DIRECTORY}test/tsconfig.json ./test/tsconfig-tmp.json
-mv test/tsconfig.json test/tsconfig-user.json > /dev/null 2>&1 || true
-mv test/tsconfig-tmp.json test/tsconfig.json
+${UTILITIES_DIRECTORY}cli/share.sh test/tsconfig.json
+${UTILITIES_DIRECTORY}cli/share.sh tsconfig-common.json
+${UTILITIES_DIRECTORY}cli/share.sh test/mockDom.ts
 
-cp ${UTILITIES_DIRECTORY}tsconfig-common.json ./tsconfig-common-tmp.json
-mv tsconfig-common.json tsconfig-common-user.json > /dev/null 2>&1 || true
-mv tsconfig-common-tmp.json tsconfig-common.json
-
-cp ${UTILITIES_DIRECTORY}test/mockDom.ts ./test/mockDom-tmp.ts
-mv test/mockDom.ts ./mockDom-user.ts > /dev/null 2>&1 || true
-mv test/mockDom-tmp.ts test/mockDom.ts
+JASMINE_PATH="node_modules/jasmine/bin/jasmine.js"
+test -f "$JASMINE_PATH"
+JASMINE_BINARY=$([[ $? == 0 ]] && echo "${JASMINE_PATH}" || echo "${UTILITIES_DIRECTORY}${JASMINE_PATH}")
 
 tsc -p ./test/tsconfig.json
-if [[ -f ${UTILITIES_DIRECTORY}/node_modules/jasmine/bin/jasmine.js ]]; then
-	ts-node -P ./test/tsconfig.json ${UTILITIES_DIRECTORY}/node_modules/jasmine/bin/jasmine.js
-else
-	ts-node -P ./test/tsconfig.json ./node_modules/jasmine/bin/jasmine.js
-fi
+ts-node -P ./test/tsconfig.json ${JASMINE_BINARY}
 
-rm test/tsconfig.json
-mv test/tsconfig-user.json test/tsconfig.json > /dev/null 2>&1 || true
-
-rm tsconfig-common.json
-mv tsconfig-common-user.json tsconfig-common.json > /dev/null 2>&1 || true
-
-rm test/mockDom.ts
-mv ./mockDom-user.ts test/mockDom.ts > /dev/null 2>&1 || true
+${UTILITIES_DIRECTORY}cli/unshare.sh test/tsconfig.json
+${UTILITIES_DIRECTORY}cli/unshare.sh tsconfig-common.json
+${UTILITIES_DIRECTORY}cli/unshare.sh test/mockDom.ts

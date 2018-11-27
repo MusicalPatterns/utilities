@@ -4,22 +4,14 @@ CMD="$1"
 
 rm -rf dist/
 
-cp ${UTILITIES_DIRECTORY}tsconfig.json ./tsconfig-tmp.json
-mv tsconfig.json tsconfig-user.json > /dev/null 2>&1 || true
-mv tsconfig-tmp.json tsconfig.json
-
-cp ${UTILITIES_DIRECTORY}tsconfig-common.json ./tsconfig-common-tmp.json
-mv tsconfig-common.json tsconfig-common-user.json > /dev/null 2>&1 || true
-mv tsconfig-common-tmp.json tsconfig-common.json
+${UTILITIES_DIRECTORY}cli/share.sh tsconfig.json
+${UTILITIES_DIRECTORY}cli/share.sh tsconfig-common.json
 
 eval "${CMD}"
 export BUILD_FAILED=$?
 
-rm tsconfig.json
-mv tsconfig-user.json tsconfig.json > /dev/null 2>&1 || true
-
-rm tsconfig-common.json
-mv tsconfig-common-user.json tsconfig-common.json > /dev/null 2>&1 || true
+${UTILITIES_DIRECTORY}cli/unshare.sh tsconfig.json
+${UTILITIES_DIRECTORY}cli/unshare.sh tsconfig-common.json
 
 if [[ ${BUILD_FAILED} != 0 ]] ; then
 	exit 1
