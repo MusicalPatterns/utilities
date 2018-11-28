@@ -1,6 +1,6 @@
 {
   "name": "@musical-patterns/shared",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "dist/index.js",
   "bin": {
     "musical-patterns": "cli/index.sh"
