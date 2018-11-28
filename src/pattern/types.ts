@@ -39,7 +39,9 @@ interface Pattern {
     spec: PatternSpec,
 }
 
-type Patterns = { [index in PatternId]: Pattern }
+type AllPatterns = { [index in PatternId]: Pattern }
+
+type Patterns = { [key in Partial<PatternId>]: Pattern }
 
 // tslint:disable-next-line:no-any
 type BuildEntitiesFunction = (patternSpec?: any) => Entity[]
@@ -134,6 +136,7 @@ export {
     PatternSpec,
     PatternMaterial,
     Pattern,
+    AllPatterns,
     Patterns,
     BuildEntitiesFunction,
     BuildScalesFunction,

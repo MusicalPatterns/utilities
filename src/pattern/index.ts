@@ -4,6 +4,7 @@ export {
     PatternSpec,
     PatternMaterial,
     Pattern,
+    AllPatterns,
     Patterns,
     BuildEntitiesFunction,
     BuildScalesFunction,
