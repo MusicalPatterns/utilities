@@ -18,4 +18,7 @@ export {
     SpatializationType,
     SampleName,
     OscillatorName,
+    Note,
+    Part,
+    ThreadSpec,
 } from './types'

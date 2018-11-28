@@ -1,6 +1,6 @@
 // tslint:disable:max-file-line-count comment-format
 
-import { Index, Offset, Scalar } from '../nominal'
+import { Coordinate, Frequency, Index, Offset, Scalar, Time } from '../nominal'
 
 enum PatternId {
     BEATEN_PATH = 'BEATEN_PATH',
@@ -112,6 +112,21 @@ enum OscillatorName {
     CUSTOM = 'CUSTOM',
 }
 
+interface Note {
+    duration: Time,
+    frequency: Frequency,
+    gain: Scalar,
+    position: Coordinate,
+    sustain: Time,
+}
+
+type Part = Note[]
+
+interface ThreadSpec {
+    part: Part,
+    voiceSpec: VoiceSpec,
+}
+
 export {
     // patterns
     PatternId,
@@ -137,4 +152,7 @@ export {
     SpatializationType,
     SampleName,
     OscillatorName,
+    Note,
+    Part,
+    ThreadSpec,
 }
