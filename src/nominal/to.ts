@@ -15,7 +15,6 @@ import {
     Scalar,
     Semitones,
     SumOfIndices,
-    SumOfScalars,
     Time,
 } from './types'
 
@@ -33,8 +32,6 @@ const Base: (offset: number) => Base =
     (base: number): Base => base as any
 const Count: (count: number) => Count =
     (count: number): Count => count as any
-const SumOfScalars: (sumOfScalars: number) => SumOfScalars =
-    (sumOfScalars: number): SumOfScalars => sumOfScalars as any
 const SumOfIndices: (sumOfIndices: number) => SumOfIndices =
     (sumOfIndices: number): SumOfIndices => sumOfIndices as any
 const CoordinateElement: (coordinateElement: number) => CoordinateElement =
@@ -63,7 +60,6 @@ export {
     Power,
     Time,
     Index,
-    SumOfScalars,
     SumOfIndices,
     Coordinate,
     CoordinateElement,

@@ -19,7 +19,6 @@ export {
     Coordinate,
     CoordinateElement,
     Frequency,
-    SumOfScalars,
     SumOfIndices,
     Radian,
     Length,

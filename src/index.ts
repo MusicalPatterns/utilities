@@ -12,7 +12,6 @@ export {
     from,
     to,
     Frequency,
-    SumOfScalars,
     SumOfIndices,
     Length,
     Radian,

@@ -2,10 +2,6 @@ interface Scalar extends Number {
     _ScalarBrand: string,
 }
 
-interface SumOfScalars extends Number {
-    _SumOfScalarsBrand: string,
-}
-
 interface Offset extends Number {
     _OffsetBrand: string,
 }
@@ -69,7 +65,6 @@ export {
     Index,
     Power,
     SumOfIndices,
-    SumOfScalars,
     CoordinateElement,
     Coordinate,
     Frequency,
