@@ -1,11 +1,11 @@
 {
-  "name": "@musical-patterns/shared",
-  "version": "1.0.13",
+  "name": "@musical-patterns/utilities",
+  "version": "1.0.69",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MusicalPatterns/shared.git"
+    "url": "https://github.com/MusicalPatterns/utilities.git"
   },
   "devDependencies": {
     "@musical-patterns/cli": "^1.0.0",
