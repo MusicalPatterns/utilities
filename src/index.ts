@@ -60,30 +60,6 @@ export {
     testIsCloseTo,
     testArraysAreClose,
 } from './test'
-export {
-    PatternMetadata,
-    PatternSpec,
-    PatternMaterial,
-    Pattern,
-    AllPatterns,
-    Patterns,
-    BuildEntitiesFunction,
-    BuildScalesFunction,
-    Entity,
-    Scale,
-    NoteSpec,
-    PartSpec,
-    Adjustable,
-    NotePropertySpec,
-    VoiceSpec,
-    VoiceType,
-    SpatializationType,
-    SampleName,
-    OscillatorName,
-    Note,
-    Part,
-    ThreadSpec,
-} from './pattern'
 
 export {
     Maybe,
