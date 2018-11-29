@@ -1,17 +1,7 @@
 // tslint:disable:max-file-line-count comment-format
 
+import { PatternId } from '@musical-patterns/registry'
 import { Coordinate, Frequency, Index, Offset, Scalar, Time } from '../nominal'
-
-enum PatternId {
-    BEATEN_PATH = 'BEATEN_PATH',
-    HAFUHAFU = 'HAFUHAFU',
-    HAFUHAFU_WITH_PITCH_CIRCULARITY = 'HAFUHAFU_WITH_PITCH_CIRCULARITY',
-    XELT = 'XELT',
-    ZDAUBYAOS = 'ZDAUBYAOS',
-    STEPWISE = 'STEPWISE',
-    TEMPLATE = 'TEMPLATE',
-    HOUNDSTOOTHTOPIA_THEME = 'HOUNDSTOOTHTOPIA_THEME',
-}
 
 interface PatternMetadata {
     description: string,
@@ -131,7 +121,6 @@ interface ThreadSpec {
 
 export {
     // patterns
-    PatternId,
     PatternMetadata,
     PatternSpec,
     PatternMaterial,

@@ -2,13 +2,13 @@
 .PHONY: test
 
 publish:
-	./cli/index.sh publish self
+	musical-patterns publish
 
 build:
-	./cli/index.sh build self "tsc -m commonjs"
+	musical-patterns build "tsc -m commonjs"
 
 lint:
-	./cli/index.sh lint self
+	musical-patterns lint
 
 test:
-	./cli/index.sh test self
+	musical-patterns test

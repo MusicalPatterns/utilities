@@ -61,7 +61,6 @@ export {
     testArraysAreClose,
 } from './test'
 export {
-    PatternId,
     PatternMetadata,
     PatternSpec,
     PatternMaterial,

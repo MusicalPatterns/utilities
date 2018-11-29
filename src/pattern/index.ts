@@ -1,5 +1,4 @@
 export {
-    PatternId,
     PatternMetadata,
     PatternSpec,
     PatternMaterial,
