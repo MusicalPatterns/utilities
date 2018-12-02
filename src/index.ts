@@ -64,4 +64,5 @@ export {
 export {
     Maybe,
     DictionaryOf,
+    AnyOtherProperties,
 } from './types'
