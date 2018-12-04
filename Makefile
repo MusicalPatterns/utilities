@@ -5,7 +5,7 @@ publish:
 	musical-patterns publish
 
 build:
-	musical-patterns build "tsc -m commonjs"
+	musical-patterns build tsc
 
 lint:
 	musical-patterns lint
