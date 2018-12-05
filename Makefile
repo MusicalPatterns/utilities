@@ -1,14 +1,23 @@
 .PHONY: lint
 .PHONY: test
 
-publish:
-	musical-patterns publish
-
 build:
 	musical-patterns build tsc
 
 lint:
 	musical-patterns lint
+
+publish:
+	musical-patterns publish
+
+pull:
+	musical-patterns pull
+
+push:
+	musical-patterns push
+
+ship:
+	musical-patterns ship
 
 test:
 	musical-patterns test
