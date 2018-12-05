@@ -8,7 +8,7 @@
     "url": "https://github.com/MusicalPatterns/utilities.git"
   },
   "devDependencies": {
-    "@musical-patterns/cli": "^1.0.18",
+    "@musical-patterns/cli": "^1.0.19",
     "typescript": "^3.2.1"
   },
   "dependencies": {
