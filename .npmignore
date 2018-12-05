@@ -1,3 +1,5 @@
 .idea/
+samples/
 src/
-test/
+styles/
+test/src/
