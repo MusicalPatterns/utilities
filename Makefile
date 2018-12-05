@@ -2,7 +2,7 @@
 .PHONY: test
 
 build:
-	musical-patterns build tsc
+	musical-patterns build "tsc -p tsconfig-library.json"
 
 lint:
 	musical-patterns lint
