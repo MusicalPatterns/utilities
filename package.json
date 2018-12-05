@@ -1,6 +1,6 @@
 {
   "name": "@musical-patterns/utilities",
-  "version": "1.0.83",
+  "version": "1.0.84",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "repository": {
@@ -11,7 +11,7 @@
     "build": "tsc -p tsconfig-library.json"
   },
   "devDependencies": {
-    "@musical-patterns/cli": "^1.0.30",
+    "@musical-patterns/cli": "^1.0.35",
     "typescript": "^3.2.1"
   },
   "dependencies": {
