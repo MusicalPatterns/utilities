@@ -31,6 +31,7 @@ export {
     sequence,
     INITIAL,
     INCLUSIVE,
+    noop,
 } from './code'
 export {
     absoluteRatio,
