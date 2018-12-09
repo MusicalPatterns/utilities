@@ -1,6 +1,6 @@
 {
   "name": "@musical-patterns/utilities",
-  "version": "1.0.90",
+  "version": "1.0.91",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
@@ -8,11 +8,8 @@
     "type": "git",
     "url": "https://github.com/MusicalPatterns/utilities.git"
   },
-  "scripts": {
-    "build": "tsc -p tsconfig-library.json"
-  },
   "devDependencies": {
-    "@musical-patterns/cli": "^1.0.41",
+    "@musical-patterns/cli": "^1.0.45",
     "typescript": "^3.2.2"
   },
   "dependencies": {
