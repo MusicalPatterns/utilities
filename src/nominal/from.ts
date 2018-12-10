@@ -46,6 +46,9 @@ const Cents: (cents: Cents) => number =
 const Semitones: (semitones: Semitones) => number =
     (semitones: Semitones): number => semitones as any
 
+const Coordinate: (_: Array<CoordinateElement | number>) => number[] =
+    (coordinate: Array<CoordinateElement | number>): number[] => coordinate as any
+
 export {
     Base,
     Count,
@@ -61,4 +64,5 @@ export {
     Radian,
     Cents,
     Semitones,
+    Coordinate,
 }

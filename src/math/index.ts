@@ -16,4 +16,5 @@ export {
     ONCE,
     TWICE,
     EVERY_OTHER,
+    THREE_DIMENSIONAL,
 } from './constants'

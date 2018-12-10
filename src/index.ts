@@ -49,6 +49,7 @@ export {
     TWICE,
     EVERY_OTHER,
     HALF,
+    THREE_DIMENSIONAL,
 } from './math'
 export {
     centsToPitch,
