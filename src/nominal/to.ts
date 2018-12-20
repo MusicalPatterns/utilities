@@ -86,4 +86,7 @@ export {
     Radian,
     Cents,
     Semitones,
+    Block,
+    ContourPiece,
+    ContourWhole,
 }
