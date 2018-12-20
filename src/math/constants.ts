@@ -12,6 +12,7 @@ const X_AXIS: Index = to.Index(0)
 const Y_AXIS: Index = to.Index(1)
 const Z_AXIS: Index = to.Index(2)
 
+const TWO_DIMENSIONAL: Count = to.Count(2)
 const THREE_DIMENSIONAL: Count = to.Count(3)
 
 const SQUARED: Power = to.Power(2)
@@ -39,5 +40,6 @@ export {
     ONCE,
     TWICE,
     EVERY_OTHER,
+    TWO_DIMENSIONAL,
     THREE_DIMENSIONAL,
 }

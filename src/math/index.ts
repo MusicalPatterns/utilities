@@ -18,3 +18,7 @@ export {
     EVERY_OTHER,
     THREE_DIMENSIONAL,
 } from './constants'
+export {
+    Coordinate2d,
+    Coordinate3d,
+} from './types'

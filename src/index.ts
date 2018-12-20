@@ -50,6 +50,8 @@ export {
     EVERY_OTHER,
     HALF,
     THREE_DIMENSIONAL,
+    Coordinate2d,
+    Coordinate3d,
 } from './math'
 export {
     centsToPitch,

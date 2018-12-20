@@ -1,13 +1,14 @@
-import { Coordinate, rotate, testArraysAreClose, to, X_AXIS, Y_AXIS } from '../../../src/indexForTest'
+import { Coordinate2d, Coordinate3d, rotate, testArraysAreClose, to, X_AXIS, Y_AXIS } from '../../../src/indexForTest'
 
 describe('rotate', () => {
     describe('in two dimensions', () => {
         it('works', () => {
-            const actualCoordinate: Coordinate = rotate({
-                coordinate: to.Coordinate([ 3, 0 ]),
+            const coordinate: Coordinate2d = [ 3, 0 ]
+            const actualCoordinate: Coordinate2d = rotate({
+                coordinate,
                 rotation: to.Radian(Math.PI * -1 / 2),
-            })
-            const expectedCoordinate: Coordinate = to.Coordinate([ 0, -3 ])
+            }) as Coordinate2d
+            const expectedCoordinate: Coordinate2d = [ 0, -3 ]
 
             testArraysAreClose(actualCoordinate, expectedCoordinate)
         })
@@ -15,33 +16,36 @@ describe('rotate', () => {
 
     describe('in three dimensions', () => {
         it('works for rotating around the z-axis (the default axis)', () => {
-            const actualCoordinate: Coordinate = rotate({
-                coordinate: to.Coordinate([ 3, 0, 0 ]),
+            const coordinate: Coordinate3d = [ 3, 0, 0 ]
+            const actualCoordinate: Coordinate3d = rotate({
+                coordinate,
                 rotation: to.Radian(Math.PI * -1 / 2),
-            })
-            const expectedCoordinate: Coordinate = to.Coordinate([ 0, -3, 0 ])
+            }) as Coordinate3d
+            const expectedCoordinate: Coordinate3d = [ 0, -3, 0 ]
 
             testArraysAreClose(actualCoordinate, expectedCoordinate)
         })
 
         it('works for rotating around the y-axis', () => {
-            const actualCoordinate: Coordinate = rotate({
+            const coordinate: Coordinate3d = [ 3, 0, 0 ]
+            const actualCoordinate: Coordinate3d = rotate({
                 axis: Y_AXIS,
-                coordinate: to.Coordinate([ 3, 0, 0 ]),
+                coordinate,
                 rotation: to.Radian(Math.PI * -1 / 2),
-            })
-            const expectedCoordinate: Coordinate = to.Coordinate([ 0, 0, 3 ])
+            }) as Coordinate3d
+            const expectedCoordinate: Coordinate3d = [ 0, 0, 3 ]
 
             testArraysAreClose(actualCoordinate, expectedCoordinate)
         })
 
         it('works for rotating around the x-axis', () => {
-            const actualCoordinate: Coordinate = rotate({
+            const coordinate: Coordinate3d = [ 0, 3, 0 ]
+            const actualCoordinate: Coordinate3d = rotate({
                 axis: X_AXIS,
-                coordinate: to.Coordinate([ 0, 3, 0 ]),
+                coordinate,
                 rotation: to.Radian(Math.PI * -1 / 2),
-            })
-            const expectedCoordinate: Coordinate = to.Coordinate([ 0, 0, -3 ])
+            }) as Coordinate3d
+            const expectedCoordinate: Coordinate3d = [ 0, 0, -3 ]
 
             testArraysAreClose(actualCoordinate, expectedCoordinate)
         })
