@@ -4,6 +4,7 @@ export {
     repeat,
     repeatCall,
     deepEqual,
+    camelCaseToConstantCase,
 } from './code/indexForTest'
 export {
     apply,
