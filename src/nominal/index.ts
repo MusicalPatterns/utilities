@@ -24,4 +24,8 @@ export {
     Length,
     Cents,
     Semitones,
+    Block,
+    ContourWhole,
+    ContourPiece,
+    ContourElement,
 } from './types'

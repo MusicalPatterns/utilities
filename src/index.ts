@@ -17,6 +17,10 @@ export {
     Radian,
     Cents,
     Semitones,
+    Block,
+    ContourWhole,
+    ContourPiece,
+    ContourElement,
 } from './nominal'
 export {
     deepEqual,

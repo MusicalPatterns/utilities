@@ -2,7 +2,11 @@
 
 import {
     Base,
+    Block,
     Cents,
+    ContourElement,
+    ContourPiece,
+    ContourWhole,
     CoordinateElement,
     Count,
     Frequency,
@@ -49,6 +53,9 @@ const Semitones: (semitones: Semitones) => number =
 const Coordinate: (_: Array<CoordinateElement | number>) => number[] =
     (coordinate: Array<CoordinateElement | number>): number[] => coordinate as any
 
+const Block: (block: Array<Index | number> | Index[]) => number[] =
+    (block: Array<Index | number> | Index[]): number[] => block as any
+
 export {
     Base,
     Count,
@@ -65,4 +72,5 @@ export {
     Cents,
     Semitones,
     Coordinate,
+    Block,
 }

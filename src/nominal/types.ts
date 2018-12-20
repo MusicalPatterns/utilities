@@ -56,6 +56,20 @@ interface Semitones extends Number {
     _SemitonesBrand: string,
 }
 
+enum _BlockBrand {}
+
+type Block = _BlockBrand & number[]
+
+type ContourElement<N> = [ number, ...number[] ] & { length: N }
+
+enum _ContourPieceBrand {}
+
+type ContourPiece<N> = _ContourPieceBrand & Array<ContourElement<N>>
+
+enum _ContourWholeBrand {}
+
+type ContourWhole<N> = _ContourWholeBrand & Array<ContourElement<N>>
+
 export {
     Base,
     Count,
@@ -72,4 +86,8 @@ export {
     Radian,
     Cents,
     Semitones,
+    Block,
+    ContourElement,
+    ContourPiece,
+    ContourWhole,
 }

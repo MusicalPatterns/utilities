@@ -2,7 +2,11 @@
 
 import {
     Base,
+    Block,
     Cents,
+    ContourElement,
+    ContourPiece,
+    ContourWhole,
     Coordinate,
     CoordinateElement,
     Count,
@@ -51,6 +55,20 @@ const Coordinate: (coordinate: Array<number | CoordinateElement>) => Coordinate 
     (coordinate: Array<number | CoordinateElement>): Coordinate =>
         coordinate.map((coordinateElement: number | CoordinateElement): CoordinateElement =>
             coordinateElement as any) as any
+
+const Block: (block: Array<number | Index>) => Block =
+    (block: Array<number | Index>): Block =>
+        block.map((blockElement: Index | number): Index => blockElement as any) as any
+
+const ContourPiece: <N>(contourPiece: Array<number[] | ContourElement<N>>) => ContourPiece<N> =
+    <N>(contourPiece: Array<number[] | ContourElement<N>>): ContourPiece<N> =>
+        contourPiece.map((contourElement: number[] | ContourElement<N>): ContourElement<N> =>
+            contourElement as any) as any
+
+const ContourWhole: <N>(contourWhole: Array<number[] | ContourElement<N>>) => ContourWhole<N> =
+    <N>(contourWhole: Array<number[] | ContourElement<N>>): ContourWhole<N> =>
+        contourWhole.map((contourElement: number[] | ContourElement<N>): ContourElement<N> =>
+            contourElement as any) as any
 
 export {
     Base,
