@@ -1,4 +1,4 @@
-// tslint:disable:variable-name no-any
+// tslint:disable:variable-name no-any max-file-line-count
 
 import {
     Base,
@@ -10,12 +10,15 @@ import {
     Coordinate,
     CoordinateElement,
     Count,
+    Denominator,
     Frequency,
     Index,
     Length,
+    Numerator,
     Offset,
     Power,
     Radian,
+    Ratio,
     Scalar,
     Semitones,
     SumOfIndices,
@@ -50,6 +53,10 @@ const Cents: (cents: number) => Cents =
     (cents: number): Cents => cents as any
 const Semitones: (semitones: number) => Semitones =
     (semitones: number): Semitones => semitones as any
+const Numerator: (numerator: number) => Numerator =
+    (numerator: number): Numerator => numerator as any
+const Denominator: (denominator: number) => Denominator =
+    (denominator: number): Denominator => denominator as any
 
 const Coordinate: (coordinate: Array<number | CoordinateElement>) => Coordinate =
     (coordinate: Array<number | CoordinateElement>): Coordinate =>
@@ -70,6 +77,10 @@ const ContourWhole: <N>(contourWhole: Array<number[] | ContourElement<N>>) => Co
         contourWhole.map((contourElement: number[] | ContourElement<N>): ContourElement<N> =>
             contourElement as any) as any
 
+const Ratio: (ratio: [ number | Numerator, number | Denominator ]) => Ratio =
+    (ratio: [ number | Numerator, number | Denominator ]): Ratio =>
+        ratio as any
+
 export {
     Base,
     Count,
@@ -89,4 +100,7 @@ export {
     Block,
     ContourPiece,
     ContourWhole,
+    Ratio,
+    Numerator,
+    Denominator,
 }

@@ -1,3 +1,5 @@
+// tslint:disable:max-file-line-count
+
 interface Scalar extends Number {
     _ScalarBrand: string,
 }
@@ -70,6 +72,17 @@ enum _ContourWholeBrand {}
 
 type ContourWhole<N> = _ContourWholeBrand & Array<ContourElement<N>>
 
+interface Numerator extends Number {
+    _NumeratorBrand: string,
+}
+
+interface Denominator extends Number {
+    _DenominatorBrand: string,
+}
+
+type FractionalPart = Numerator | Denominator
+type Ratio = [ Numerator, Denominator ]
+
 export {
     Base,
     Count,
@@ -90,4 +103,8 @@ export {
     ContourElement,
     ContourPiece,
     ContourWhole,
+    FractionalPart,
+    Ratio,
+    Numerator,
+    Denominator,
 }

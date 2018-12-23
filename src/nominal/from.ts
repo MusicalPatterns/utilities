@@ -4,11 +4,9 @@ import {
     Base,
     Block,
     Cents,
-    ContourElement,
-    ContourPiece,
-    ContourWhole,
     CoordinateElement,
     Count,
+    FractionalPart,
     Frequency,
     Index,
     Length,
@@ -49,6 +47,8 @@ const Cents: (cents: Cents) => number =
     (cents: Cents): number => cents as any
 const Semitones: (semitones: Semitones) => number =
     (semitones: Semitones): number => semitones as any
+const FractionalPart: (fractionalPart: FractionalPart) => number =
+    (fractionalPart: FractionalPart): number => fractionalPart as any
 
 const Coordinate: (_: Array<CoordinateElement | number>) => number[] =
     (coordinate: Array<CoordinateElement | number>): number[] => coordinate as any
@@ -73,4 +73,5 @@ export {
     Semitones,
     Coordinate,
     Block,
+    FractionalPart,
 }

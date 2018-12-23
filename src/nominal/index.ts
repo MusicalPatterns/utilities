@@ -28,4 +28,8 @@ export {
     ContourWhole,
     ContourPiece,
     ContourElement,
+    Numerator,
+    Denominator,
+    FractionalPart,
+    Ratio,
 } from './types'

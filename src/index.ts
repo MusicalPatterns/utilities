@@ -21,6 +21,10 @@ export {
     ContourWhole,
     ContourPiece,
     ContourElement,
+    Numerator,
+    Denominator,
+    FractionalPart,
+    Ratio,
 } from './nominal'
 export {
     deepEqual,
