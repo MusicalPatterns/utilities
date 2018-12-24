@@ -40,6 +40,7 @@ export {
     sequence,
     INITIAL,
     INCLUSIVE,
+    EXCLUSIVE,
     noop,
 } from './code'
 export {

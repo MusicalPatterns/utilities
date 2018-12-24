@@ -11,5 +11,6 @@ export { noop } from './noop'
 
 export {
     INCLUSIVE,
+    EXCLUSIVE,
     INITIAL,
 } from './constants'
