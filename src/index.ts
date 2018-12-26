@@ -30,6 +30,7 @@ export {
     deepEqual,
     doAsync,
     logMessageToScreen,
+    logMessageToConsole,
     offsetFromOneIndexedToZeroIndexed,
     typedMap,
     TypedMap,

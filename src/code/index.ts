@@ -1,6 +1,6 @@
 export { deepEqual } from './deepEqual'
 export { typedMap, TypedMap } from './typedMap'
-export { logMessageToScreen } from './logMessageToScreen'
+export { logMessageToScreen, logMessageToConsole } from './log'
 export { doAsync } from './doAsync'
 export { offsetFromOneIndexedToZeroIndexed } from './offsetFromOneIndexedToZeroIndexed'
 export { camelCaseToLowerCase, camelCaseToConstantCase } from './case'
