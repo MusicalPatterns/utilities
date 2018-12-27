@@ -5,10 +5,12 @@ const logMessageToScreen: (message: string) => void =
         messageDiv.innerText = message
     }
 
-const logMessageToConsole: (message: string) => void =
-    (message: string): void => {
+// tslint:disable-next-line:no-any
+const logMessageToConsole: (...message: any[]) => void =
+// tslint:disable-next-line:no-any
+    (...message: any[]): void => {
         // tslint:disable-next-line:no-console
-        console.log(message)
+        console.log(...message)
     }
 
 export {
