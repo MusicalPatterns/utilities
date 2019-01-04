@@ -74,7 +74,7 @@ export {
 export {
     testIsCloseTo,
     testArraysAreClose,
-} from './test'
+} from './testing'
 
 export {
     Maybe,

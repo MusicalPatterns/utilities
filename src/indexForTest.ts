@@ -24,7 +24,7 @@ export {
 export {
     testArraysAreClose,
     testIsCloseTo,
-} from './test/indexForTest'
+} from './testing/indexForTest'
 export {
     centsToPitch,
 } from './music/indexForTest'
