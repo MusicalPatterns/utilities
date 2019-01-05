@@ -73,11 +73,11 @@ const rotate: (rotateParameters: RotateParameters) => SpatialCoordinate =
         )
 
         return rotationMatrix.map((rotationRow: Scalar[]): number =>
-            rotationRow.reduce(
-                (row: number, rotationElement: Scalar, index: number): number =>
-                    row + apply.Scalar(rawRelative[ index ], rotationElement),
-                0,
-            ),
+                                      rotationRow.reduce(
+                                          (row: number, rotationElement: Scalar, index: number): number =>
+                                              row + apply.Scalar(rawRelative[ index ], rotationElement),
+                                          0,
+                                      ),
         ) as SpatialCoordinate
     }
 

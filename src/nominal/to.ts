@@ -61,7 +61,7 @@ const Denominator: (denominator: number) => Denominator =
 const Coordinate: (coordinate: Array<number | CoordinateElement>) => Coordinate =
     (coordinate: Array<number | CoordinateElement>): Coordinate =>
         coordinate.map((coordinateElement: number | CoordinateElement): CoordinateElement =>
-            coordinateElement as any) as any
+                           coordinateElement as any) as any
 
 const Block: (block: Array<number | Index>) => Block =
     (block: Array<number | Index>): Block =>
@@ -70,12 +70,12 @@ const Block: (block: Array<number | Index>) => Block =
 const ContourPiece: <N>(contourPiece: Array<number[] | ContourElement<N>>) => ContourPiece<N> =
     <N>(contourPiece: Array<number[] | ContourElement<N>>): ContourPiece<N> =>
         contourPiece.map((contourElement: number[] | ContourElement<N>): ContourElement<N> =>
-            contourElement as any) as any
+                             contourElement as any) as any
 
 const ContourWhole: <N>(contourWhole: Array<number[] | ContourElement<N>>) => ContourWhole<N> =
     <N>(contourWhole: Array<number[] | ContourElement<N>>): ContourWhole<N> =>
         contourWhole.map((contourElement: number[] | ContourElement<N>): ContourElement<N> =>
-            contourElement as any) as any
+                             contourElement as any) as any
 
 const Ratio: (ratio: [ number | Numerator, number | Denominator ]) => Ratio =
     (ratio: [ number | Numerator, number | Denominator ]): Ratio =>
