@@ -1,5 +1,5 @@
-const doAsync: (fn: () => void) => void =
-    (fn: () => void): void => {
+const doAsync: (fn: VoidFunction) => void =
+    (fn: VoidFunction): void => {
         setTimeout(fn, 0)
     }
 
