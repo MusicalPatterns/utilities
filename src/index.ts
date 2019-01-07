@@ -70,6 +70,7 @@ export {
     OCTAVE,
     CENTS_PER_OCTAVE,
     CENTS_PER_SEMITONE,
+    BEGINNING,
 } from './music'
 export {
     testIsCloseTo,
