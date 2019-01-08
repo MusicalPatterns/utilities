@@ -63,6 +63,8 @@ export {
     THREE_DIMENSIONAL,
     Coordinate2d,
     Coordinate3d,
+    greatestCommonDivisor,
+    lowestCommonMultiple,
 } from './math'
 export {
     centsToPitch,

@@ -5,6 +5,7 @@ export { wrapWithin } from './wrapWithin'
 export { distanceBetween } from './distanceBetween'
 export { rotate } from './rotate'
 export { cycle } from './cycle'
+export { greatestCommonDivisor, lowestCommonMultiple } from './common'
 
 export {
     DECIMAL,
