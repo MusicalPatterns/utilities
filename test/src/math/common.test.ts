@@ -21,6 +21,16 @@ describe('common', () => {
             expect(greatestCommonDivisor(12, 16, 20))
                 .toBe(4)
         })
+
+        it('works for one number', () => {
+            expect(greatestCommonDivisor(7))
+                .toBe(7)
+        })
+
+        it('works for zero numbers', () => {
+            expect(greatestCommonDivisor())
+                .toBe(1)
+        })
     })
 
     describe('lowest multiple', () => {
@@ -43,6 +53,16 @@ describe('common', () => {
         it('works for more than two numbers', () => {
             expect(lowestCommonMultiple(12, 16, 20))
                 .toBe(240)
+        })
+
+        it('works for one number', () => {
+            expect(lowestCommonMultiple(7))
+                .toBe(7)
+        })
+
+        it('works for zero numbers', () => {
+            expect(lowestCommonMultiple())
+                .toBe(1)
         })
     })
 })
