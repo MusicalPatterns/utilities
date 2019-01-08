@@ -19,6 +19,7 @@ const SQUARED: Power = to.Power(2)
 const SQUARE_ROOT: Power = to.Power(1 / 2)
 
 const EVEN: number = 2
+const TWO: number = 2
 
 const ONCE: Count = to.Count(1)
 const TWICE: Count = to.Count(2)
@@ -42,4 +43,5 @@ export {
     EVERY_OTHER,
     TWO_DIMENSIONAL,
     THREE_DIMENSIONAL,
+    TWO,
 }

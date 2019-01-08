@@ -20,6 +20,8 @@ export {
     Y_AXIS,
     Coordinate2d,
     Coordinate3d,
+    greatestCommonDivisor,
+    lowestCommonMultiple,
 } from './math/indexForTest'
 export {
     testArraysAreClose,

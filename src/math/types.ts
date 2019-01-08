@@ -26,6 +26,8 @@ type Coordinate3d = [ number, number, number ]
 
 type SpatialCoordinate = Coordinate2d | Coordinate3d
 
+type CommonFunction = (a: number, b: number) => number
+
 export {
     ArrayMap,
     RotateParameters,
@@ -33,4 +35,5 @@ export {
     Coordinate2d,
     Coordinate3d,
     SpatialCoordinate,
+    CommonFunction,
 }

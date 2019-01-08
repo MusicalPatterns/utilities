@@ -3,6 +3,7 @@
 export { distanceBetween } from './distanceBetween'
 export { rotate } from './rotate'
 export { cycle } from './cycle'
+export { greatestCommonDivisor, lowestCommonMultiple } from './common'
 export {
     X_AXIS,
     Y_AXIS,
