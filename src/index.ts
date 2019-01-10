@@ -65,6 +65,7 @@ export {
     Coordinate3d,
     greatestCommonDivisor,
     lowestCommonMultiple,
+    DECIMAL,
 } from './math'
 export {
     centsToPitch,
