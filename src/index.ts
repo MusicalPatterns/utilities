@@ -81,6 +81,7 @@ export {
 } from './testing'
 export {
     MILLISECONDS_PER_SECOND,
+    SECONDS_PER_MINUTE,
 } from './time'
 
 export {
