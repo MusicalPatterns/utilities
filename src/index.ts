@@ -79,6 +79,9 @@ export {
     testIsCloseTo,
     testArraysAreClose,
 } from './testing'
+export {
+    MILLISECONDS_PER_SECOND,
+} from './time'
 
 export {
     Maybe,
