@@ -22,4 +22,5 @@ export {
 export {
     Coordinate2d,
     Coordinate3d,
+    NumericOperation,
 } from './types'

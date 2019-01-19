@@ -1,11 +1,11 @@
 import { TWO } from './constants'
-import { CommonFunction } from './types'
+import { NumericOperation } from './types'
 
-const lowestCommonMultipleOfTwoNumbers: CommonFunction =
+const lowestCommonMultipleOfTwoNumbers: NumericOperation =
     (a: number, b: number): number =>
         Math.abs((a * b) / greatestCommonDivisor(a, b))
 
-const greatestCommonDivisorOfTwoNumbers: CommonFunction =
+const greatestCommonDivisorOfTwoNumbers: NumericOperation =
     (a: number, b: number): number => {
         let output: number = a
         let modulus: number = b
@@ -18,8 +18,8 @@ const greatestCommonDivisorOfTwoNumbers: CommonFunction =
         return output
     }
 
-const recurseCommon: (commonFunction: CommonFunction, ...numbers: number[]) => number =
-    (commonFunction: CommonFunction, ...numbers: number[]): number => {
+const recurseCommon: (commonFunction: NumericOperation, ...numbers: number[]) => number =
+    (commonFunction: NumericOperation, ...numbers: number[]): number => {
         if (numbers.length === 1) {
             return numbers[ 0 ]
         }

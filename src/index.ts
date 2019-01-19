@@ -66,6 +66,7 @@ export {
     greatestCommonDivisor,
     lowestCommonMultiple,
     DECIMAL,
+    NumericOperation,
 } from './math'
 export {
     centsToPitch,
