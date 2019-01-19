@@ -6,6 +6,7 @@ export { distanceBetween } from './distanceBetween'
 export { rotate } from './rotate'
 export { cycle } from './cycle'
 export { greatestCommonDivisor, lowestCommonMultiple } from './common'
+export { add, multiply } from './arithmetic'
 
 export {
     DECIMAL,

@@ -67,6 +67,8 @@ export {
     lowestCommonMultiple,
     DECIMAL,
     NumericOperation,
+    add,
+    multiply,
 } from './math'
 export {
     centsToPitch,
