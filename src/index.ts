@@ -69,6 +69,8 @@ export {
     NumericOperation,
     add,
     multiply,
+    ADDITIVE_IDENTITY,
+    MULTIPLICATIVE_IDENTITY,
 } from './math'
 export {
     centsToPitch,

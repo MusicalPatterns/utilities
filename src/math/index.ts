@@ -19,6 +19,8 @@ export {
     TWICE,
     EVERY_OTHER,
     THREE_DIMENSIONAL,
+    ADDITIVE_IDENTITY,
+    MULTIPLICATIVE_IDENTITY,
 } from './constants'
 export {
     Coordinate2d,

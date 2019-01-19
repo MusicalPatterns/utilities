@@ -26,6 +26,9 @@ const TWICE: Count = to.Count(2)
 
 const EVERY_OTHER: Scalar = to.Scalar(2)
 
+const ADDITIVE_IDENTITY: number = 0
+const MULTIPLICATIVE_IDENTITY: number = 1
+
 export {
     DECIMAL,
     HALF,
@@ -44,4 +47,6 @@ export {
     TWO_DIMENSIONAL,
     THREE_DIMENSIONAL,
     TWO,
+    ADDITIVE_IDENTITY,
+    MULTIPLICATIVE_IDENTITY,
 }
