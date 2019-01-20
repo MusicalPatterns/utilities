@@ -3,7 +3,7 @@ import { CENTS_PER_OCTAVE, OCTAVE } from './constants'
 
 const centsToPitch: (centsToPitch: Cents) => Scalar =
     (cents: Cents): Scalar =>
-        apply.Power(OCTAVE, to.Power(from.Cents(cents) / from.Cents(CENTS_PER_OCTAVE)))
+        to.Scalar(from.Base(apply.Power(OCTAVE, to.Power(from.Cents(cents) / from.Cents(CENTS_PER_OCTAVE)))))
 
 export {
     centsToPitch,
