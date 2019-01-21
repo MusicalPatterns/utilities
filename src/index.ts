@@ -1,3 +1,5 @@
+// tslint:disable:max-file-line-count
+
 export {
     Base,
     Offset,
@@ -88,7 +90,11 @@ export {
     MILLISECONDS_PER_SECOND,
     SECONDS_PER_MINUTE,
 } from './time'
-
+export {
+    PLAYROOM_PORT,
+    PERFORMER_PORT,
+    PLAYROOM_TEST_PORT,
+} from './dev'
 export {
     Maybe,
     DictionaryOf,
