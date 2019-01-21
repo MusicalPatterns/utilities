@@ -14,6 +14,7 @@ import {
     Frequency,
     Index,
     Length,
+    Millisecond,
     Numerator,
     Offset,
     Power,
@@ -47,6 +48,8 @@ const Frequency: (frequency: number) => Frequency =
     (frequency: number): Frequency => frequency as any
 const Length: (length: number) => Length =
     (length: number): Length => length as any
+const Millisecond: (millisecond: number) => Millisecond =
+    (millisecond: number): Millisecond => millisecond as any
 const Radian: (radian: number) => Radian =
     (radian: number): Radian => radian as any
 const Cents: (cents: number) => Cents =
@@ -94,6 +97,7 @@ export {
     CoordinateElement,
     Frequency,
     Length,
+    Millisecond,
     Radian,
     Cents,
     Semitones,

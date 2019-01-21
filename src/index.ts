@@ -16,6 +16,7 @@ export {
     Frequency,
     SumOfIndices,
     Length,
+    Millisecond,
     Radian,
     Cents,
     Semitones,
