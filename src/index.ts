@@ -31,6 +31,7 @@ export {
 } from './nominal'
 export {
     deepEqual,
+    deepClone,
     doAsync,
     logMessageToScreen,
     logMessageToConsole,

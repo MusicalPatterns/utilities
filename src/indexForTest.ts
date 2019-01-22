@@ -5,6 +5,8 @@ export {
     repeatCall,
     deepEqual,
     camelCaseToConstantCase,
+    deepClone,
+    deepCloneMaybeNotObject,
 } from './code/indexForTest'
 export {
     apply,
