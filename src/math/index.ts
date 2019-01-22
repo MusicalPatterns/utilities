@@ -7,6 +7,7 @@ export { rotate } from './rotate'
 export { cycle } from './cycle'
 export { greatestCommonDivisor, lowestCommonMultiple } from './common'
 export { add, multiply } from './arithmetic'
+export { isOdd, isEven } from './evenOrOdd'
 
 export {
     DECIMAL,
