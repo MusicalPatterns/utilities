@@ -1,31 +1,31 @@
 // tslint:disable:no-any no-unsafe-any
 
-import { deepClone, deepCloneMaybeNotObject } from '../../../src/indexForTest'
+import { deepClone, deepCloneObject } from '../../../src/indexForTest'
 
-describe('deep clone maybe object', () => {
+describe('deep clone', () => {
     it('deep clones objects', () => {
-        const actualClone: any = deepCloneMaybeNotObject({ a: { b: { c: 'cba' } } })
+        const actualClone: any = deepClone({ a: { b: { c: 'cba' } } })
         const expectedClone: any = { a: { b: { c: 'cba' } } }
         expect(actualClone)
             .toEqual(expectedClone)
     })
 
     it('deep clones arrays', () => {
-        const actualClone: string[] = deepCloneMaybeNotObject([ 'a', 'b', 'c' ])
+        const actualClone: string[] = deepClone([ 'a', 'b', 'c' ])
         const expectedClone: string[] = [ 'a', 'b', 'c' ]
         expect(actualClone)
             .toEqual(expectedClone)
     })
 
     it('deep clones immutable objects', () => {
-        const actualClone: string = deepCloneMaybeNotObject('abcba')
+        const actualClone: string = deepClone('abcba')
         const expectedClone: string = 'abcba'
         expect(actualClone)
             .toBe(expectedClone)
     })
 })
 
-describe('deep clone', () => {
+describe('deep clone object', () => {
     let actualObject: any
     let originalObject: any
     beforeEach(() => {
@@ -45,7 +45,7 @@ describe('deep clone', () => {
             shallowObject: originalShallowObject,
         }
 
-        actualObject = deepClone(originalObject)
+        actualObject = deepCloneObject(originalObject)
     })
 
     it('deep clones setting, including strings', () => {

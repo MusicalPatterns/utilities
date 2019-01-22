@@ -2,7 +2,7 @@
 
 import { DictionaryOf } from '../types'
 
-const deepClone: <T>(objectToDeepClone: T) => T =
+const deepCloneObject: <T>(objectToDeepClone: T) => T =
     <T>(objectToDeepClone: T): T => {
         const clonedObject: any = {} as any
         setAllPropertiesOfObjectOnAnother({ objectToChange: clonedObject, objectWithProperties: objectToDeepClone })
@@ -16,18 +16,18 @@ const setAllPropertiesOfObjectOnAnother: <T>(_: { objectToChange: T, objectWithP
     <T extends DictionaryOf<any>>({ objectToChange, objectWithProperties }: { objectToChange: T, objectWithProperties: T }): void => {
         Object.entries(objectWithProperties)
             .forEach(([ key, value ]: [ string, any ]) => {
-                objectToChange[ key ] = deepCloneMaybeNotObject(value)
+                objectToChange[ key ] = deepClone(value)
             })
     }
 
-const deepCloneMaybeNotObject: <T>(maybeObjectToDeepClone: T) => T =
+const deepClone: <T>(maybeObjectToDeepClone: T) => T =
     <T>(maybeObjectToDeepClone: T): T => {
         let clonedMaybeObject: T
         if (maybeObjectToDeepClone instanceof Array) {
             clonedMaybeObject = maybeObjectToDeepClone.slice() as any
         }
         else if (maybeObjectToDeepClone && typeof maybeObjectToDeepClone === 'object') {
-            clonedMaybeObject = deepClone(maybeObjectToDeepClone)
+            clonedMaybeObject = deepCloneObject(maybeObjectToDeepClone)
         }
         else {
             clonedMaybeObject = maybeObjectToDeepClone
@@ -37,6 +37,6 @@ const deepCloneMaybeNotObject: <T>(maybeObjectToDeepClone: T) => T =
     }
 
 export {
+    deepCloneObject,
     deepClone,
-    deepCloneMaybeNotObject,
 }
