@@ -7,6 +7,7 @@ export {
     camelCaseToConstantCase,
     deepCloneObject,
     deepClone,
+    isDefined,
 } from './code/indexForTest'
 export {
     apply,

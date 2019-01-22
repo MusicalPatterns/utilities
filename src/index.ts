@@ -32,6 +32,7 @@ export {
 export {
     deepEqual,
     deepClone,
+    isDefined,
     doAsync,
     logMessageToScreen,
     logMessageToConsole,
