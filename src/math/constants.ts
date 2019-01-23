@@ -1,6 +1,6 @@
 // tslint:disable no-magic-numbers
 
-import { Count, Index, Power, Scalar, to } from '../nominal'
+import { Count, Index, Offset, Power, Scalar, to } from '../nominal'
 
 const DECIMAL: number = 10
 const HALF: Scalar = to.Scalar(1 / 2)
@@ -26,8 +26,8 @@ const TWICE: Count = to.Count(2)
 
 const EVERY_OTHER: Scalar = to.Scalar(2)
 
-const ADDITIVE_IDENTITY: number = 0
-const MULTIPLICATIVE_IDENTITY: number = 1
+const ADDITIVE_IDENTITY: Offset = to.Offset(0)
+const MULTIPLICATIVE_IDENTITY: Scalar = to.Scalar(1)
 
 const ARBITRARILY_LARGE_NUMBER: number = 999999999999
 
