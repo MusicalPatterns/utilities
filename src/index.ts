@@ -41,6 +41,7 @@ export {
     TypedMap,
     camelCaseToLowerCase,
     camelCaseToConstantCase,
+    constantCaseToUpperCase,
     repeat,
     repeatCall,
     sequence,

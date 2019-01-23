@@ -5,6 +5,8 @@ export {
     repeatCall,
     deepEqual,
     camelCaseToConstantCase,
+    constantCaseToUpperCase,
+    camelCaseToLowerCase,
     deepCloneObject,
     deepClone,
     isDefined,
