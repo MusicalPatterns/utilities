@@ -29,6 +29,8 @@ const EVERY_OTHER: Scalar = to.Scalar(2)
 const ADDITIVE_IDENTITY: number = 0
 const MULTIPLICATIVE_IDENTITY: number = 1
 
+const ARBITRARILY_LARGE_NUMBER: number = 999999999999
+
 export {
     DECIMAL,
     HALF,
@@ -49,4 +51,5 @@ export {
     TWO,
     ADDITIVE_IDENTITY,
     MULTIPLICATIVE_IDENTITY,
+    ARBITRARILY_LARGE_NUMBER,
 }

@@ -22,6 +22,7 @@ export {
     THREE_DIMENSIONAL,
     ADDITIVE_IDENTITY,
     MULTIPLICATIVE_IDENTITY,
+    ARBITRARILY_LARGE_NUMBER,
 } from './constants'
 export {
     Coordinate2d,

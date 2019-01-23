@@ -78,6 +78,7 @@ export {
     MULTIPLICATIVE_IDENTITY,
     isOdd,
     isEven,
+    ARBITRARILY_LARGE_NUMBER,
 } from './math'
 export {
     centsToPitch,
