@@ -104,4 +104,5 @@ export {
     Maybe,
     DictionaryOf,
     AnyOtherProperties,
+    Units,
 } from './types'

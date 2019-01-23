@@ -9,8 +9,18 @@ interface AnyOtherProperties {
     [ index: string ]: any
 }
 
+enum Units {
+    HERTZ = 'Hz',
+    MILLISECONDS = 'ms',
+    BARS = 'bars',
+    EQUAL_DIVISION = 'ed',
+    METERS = 'm',
+    REPETITIONS = 'x',
+}
+
 export {
     DictionaryOf,
     Maybe,
     AnyOtherProperties,
+    Units,
 }
