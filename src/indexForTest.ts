@@ -34,4 +34,7 @@ export {
 } from './testing/indexForTest'
 export {
     centsToPitch,
+    windowStepCount,
+    OCTAVE,
+    TRITAVE,
 } from './music/indexForTest'

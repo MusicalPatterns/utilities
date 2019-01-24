@@ -83,6 +83,7 @@ export {
 } from './math'
 export {
     centsToPitch,
+    windowStepCount,
     TRITAVE,
     OCTAVE,
     CENTS_PER_OCTAVE,

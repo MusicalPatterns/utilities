@@ -6,3 +6,4 @@ export {
     BEGINNING,
 } from './constants'
 export { centsToPitch } from './centsToPitch'
+export { windowStepCount } from './windowStepCount'
