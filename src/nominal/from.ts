@@ -21,43 +21,43 @@ import {
 } from './types'
 
 const Count: (count: Count) => number =
-    (count: Count): number => count as any
+    (count: Count): number => count as any as number
 const Scalar: (scalar: Scalar) => number =
-    (scalar: Scalar): number => scalar as any
+    (scalar: Scalar): number => scalar as any as number
 const Offset: (offset: Offset) => number =
-    (offset: Offset): number => offset as any
+    (offset: Offset): number => offset as any as number
 const Power: (power: Power) => number =
-    (power: Power): number => power as any
+    (power: Power): number => power as any as number
 const Base: (base: Base) => number =
-    (base: Base): number => base as any
+    (base: Base): number => base as any as number
 const Time: (time: Time) => number =
-    (time: Time): number => time as any
+    (time: Time): number => time as any as number
 const Index: (index: Index) => number =
-    (index: Index): number => index as any
+    (index: Index): number => index as any as number
 const SumOfIndices: (sumOfIndices: SumOfIndices) => number =
-    (sumOfIndices: SumOfIndices): number => sumOfIndices as any
+    (sumOfIndices: SumOfIndices): number => sumOfIndices as any as number
 const CoordinateElement: (coordinateElement: CoordinateElement) => number =
-    (coordinateElement: CoordinateElement): number => coordinateElement as any
+    (coordinateElement: CoordinateElement): number => coordinateElement as any as number
 const Frequency: (frequency: Frequency) => number =
-    (frequency: Frequency): number => frequency as any
+    (frequency: Frequency): number => frequency as any as number
 const Length: (length: Length) => number =
-    (length: Length): number => length as any
+    (length: Length): number => length as any as number
 const Millisecond: (millisecond: Millisecond) => number =
-    (millisecond: Millisecond): number => millisecond as any
+    (millisecond: Millisecond): number => millisecond as any as number
 const Radian: (radian: Radian) => number =
-    (radian: Radian): number => radian as any
+    (radian: Radian): number => radian as any as number
 const Cents: (cents: Cents) => number =
-    (cents: Cents): number => cents as any
+    (cents: Cents): number => cents as any as number
 const Semitones: (semitones: Semitones) => number =
-    (semitones: Semitones): number => semitones as any
+    (semitones: Semitones): number => semitones as any as number
 const FractionalPart: (fractionalPart: FractionalPart) => number =
-    (fractionalPart: FractionalPart): number => fractionalPart as any
+    (fractionalPart: FractionalPart): number => fractionalPart as any as number
 
 const Coordinate: (_: Array<CoordinateElement | number>) => number[] =
-    (coordinate: Array<CoordinateElement | number>): number[] => coordinate as any
+    (coordinate: Array<CoordinateElement | number>): number[] => coordinate as any as number[]
 
 const Block: (block: Array<Index | number> | Index[]) => number[] =
-    (block: Array<Index | number> | Index[]): number[] => block as any
+    (block: Array<Index | number> | Index[]): number[] => block as any as number[]
 
 export {
     Base,
