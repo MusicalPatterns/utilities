@@ -1,4 +1,4 @@
-// tslint:disable:variable-name no-any no-unsafe-any
+// tslint:disable:variable-name
 
 import {
     Base,
@@ -21,43 +21,61 @@ import {
 } from './types'
 
 const Count: (count: Count) => number =
-    (count: Count): number => count as any
+    // @ts-ignore
+    (count: Count): number => count
 const Scalar: (scalar: Scalar) => number =
-    (scalar: Scalar): number => scalar as any
+    // @ts-ignore
+    (scalar: Scalar): number => scalar
 const Offset: (offset: Offset) => number =
-    (offset: Offset): number => offset as any
+    // @ts-ignore
+    (offset: Offset): number => offset
 const Power: (power: Power) => number =
-    (power: Power): number => power as any
+    // @ts-ignore
+    (power: Power): number => power
 const Base: (base: Base) => number =
-    (base: Base): number => base as any
+    // @ts-ignore
+    (base: Base): number => base
 const Time: (time: Time) => number =
-    (time: Time): number => time as any
+    // @ts-ignore
+    (time: Time): number => time
 const Index: (index: Index) => number =
-    (index: Index): number => index as any
+    // @ts-ignore
+    (index: Index): number => index
 const SumOfIndices: (sumOfIndices: SumOfIndices) => number =
-    (sumOfIndices: SumOfIndices): number => sumOfIndices as any
+    // @ts-ignore
+    (sumOfIndices: SumOfIndices): number => sumOfIndices
 const CoordinateElement: (coordinateElement: CoordinateElement) => number =
-    (coordinateElement: CoordinateElement): number => coordinateElement as any
+    // @ts-ignore
+    (coordinateElement: CoordinateElement): number => coordinateElement
 const Frequency: (frequency: Frequency) => number =
-    (frequency: Frequency): number => frequency as any
+    // @ts-ignore
+    (frequency: Frequency): number => frequency
 const Length: (length: Length) => number =
-    (length: Length): number => length as any
+    // @ts-ignore
+    (length: Length): number => length
 const Millisecond: (millisecond: Millisecond) => number =
-    (millisecond: Millisecond): number => millisecond as any
+    // @ts-ignore
+    (millisecond: Millisecond): number => millisecond
 const Radian: (radian: Radian) => number =
-    (radian: Radian): number => radian as any
+    // @ts-ignore
+    (radian: Radian): number => radian
 const Cents: (cents: Cents) => number =
-    (cents: Cents): number => cents as any
+    // @ts-ignore
+    (cents: Cents): number => cents
 const Semitones: (semitones: Semitones) => number =
-    (semitones: Semitones): number => semitones as any
+    // @ts-ignore
+    (semitones: Semitones): number => semitones
 const FractionalPart: (fractionalPart: FractionalPart) => number =
-    (fractionalPart: FractionalPart): number => fractionalPart as any
+    // @ts-ignore
+    (fractionalPart: FractionalPart): number => fractionalPart
 
 const Coordinate: (_: Array<CoordinateElement | number>) => number[] =
-    (coordinate: Array<CoordinateElement | number>): number[] => coordinate as any
+    // @ts-ignore
+    (coordinate: Array<CoordinateElement | number>): number[] => coordinate
 
 const Block: (block: Array<Index | number> | Index[]) => number[] =
-    (block: Array<Index | number> | Index[]): number[] => block as any
+    // @ts-ignore
+    (block: Array<Index | number> | Index[]): number[] => block
 
 export {
     Base,

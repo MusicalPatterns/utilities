@@ -1,4 +1,4 @@
-// tslint:disable:variable-name no-any no-unsafe-any max-file-line-count
+// tslint:disable:variable-name max-file-line-count
 
 import {
     Base,
@@ -27,62 +27,86 @@ import {
 } from './types'
 
 const Scalar: (scalar: number) => Scalar =
-    (scalar: number): Scalar => scalar as any
+    // @ts-ignore
+    (scalar: number): Scalar => scalar
 const Offset: (offset: number) => Offset =
-    (offset: number): Offset => offset as any
+    // @ts-ignore
+    (offset: number): Offset => offset
 const Power: (power: number) => Power =
-    (power: number): Power => power as any
+    // @ts-ignore
+    (power: number): Power => power
 const Index: (index: number) => Index =
-    (index: number): Index => index as any
+    // @ts-ignore
+    (index: number): Index => index
 const Time: (duration: number) => Time =
-    (duration: number): Time => duration as any
+    // @ts-ignore
+    (duration: number): Time => duration
 const Base: (offset: number) => Base =
-    (base: number): Base => base as any
+    // @ts-ignore
+    (base: number): Base => base
 const Count: (count: number) => Count =
-    (count: number): Count => count as any
+    // @ts-ignore
+    (count: number): Count => count
 const SumOfIndices: (sumOfIndices: number) => SumOfIndices =
-    (sumOfIndices: number): SumOfIndices => sumOfIndices as any
+    // @ts-ignore
+    (sumOfIndices: number): SumOfIndices => sumOfIndices
 const CoordinateElement: (coordinateElement: number) => CoordinateElement =
-    (coordinateElement: number): CoordinateElement => coordinateElement as any
+    // @ts-ignore
+    (coordinateElement: number): CoordinateElement => coordinateElement
 const Frequency: (frequency: number) => Frequency =
-    (frequency: number): Frequency => frequency as any
+    // @ts-ignore
+    (frequency: number): Frequency => frequency
 const Length: (length: number) => Length =
-    (length: number): Length => length as any
+    // @ts-ignore
+    (length: number): Length => length
 const Millisecond: (millisecond: number) => Millisecond =
-    (millisecond: number): Millisecond => millisecond as any
+    // @ts-ignore
+    (millisecond: number): Millisecond => millisecond
 const Radian: (radian: number) => Radian =
-    (radian: number): Radian => radian as any
+    // @ts-ignore
+    (radian: number): Radian => radian
 const Cents: (cents: number) => Cents =
-    (cents: number): Cents => cents as any
+    // @ts-ignore
+    (cents: number): Cents => cents
 const Semitones: (semitones: number) => Semitones =
-    (semitones: number): Semitones => semitones as any
+    // @ts-ignore
+    (semitones: number): Semitones => semitones
 const Numerator: (numerator: number) => Numerator =
-    (numerator: number): Numerator => numerator as any
+    // @ts-ignore
+    (numerator: number): Numerator => numerator
 const Denominator: (denominator: number) => Denominator =
-    (denominator: number): Denominator => denominator as any
+    // @ts-ignore
+    (denominator: number): Denominator => denominator
 
 const Coordinate: (coordinate: Array<number | CoordinateElement>) => Coordinate =
     (coordinate: Array<number | CoordinateElement>): Coordinate =>
         coordinate.map((coordinateElement: number | CoordinateElement): CoordinateElement =>
-            coordinateElement as any) as any
+            // @ts-ignore
+            coordinateElement)
 
 const Block: (block: Array<number | Index>) => Block =
     (block: Array<number | Index>): Block =>
-        block.map((blockElement: Index | number): Index => blockElement as any) as any
+        // @ts-ignore
+        block.map((blockElement: Index | number): Index => blockElement)
 
 const ContourPiece: <N>(contourPiece: Array<number[] | ContourElement<N>>) => ContourPiece<N> =
     <N>(contourPiece: Array<number[] | ContourElement<N>>): ContourPiece<N> =>
+        // @ts-ignore
         contourPiece.map((contourElement: number[] | ContourElement<N>): ContourElement<N> =>
-            contourElement as any) as any
+            // @ts-ignore
+            contourElement)
 
 const ContourWhole: <N>(contourWhole: Array<number[] | ContourElement<N>>) => ContourWhole<N> =
     <N>(contourWhole: Array<number[] | ContourElement<N>>): ContourWhole<N> =>
+        // @ts-ignore
         contourWhole.map((contourElement: number[] | ContourElement<N>): ContourElement<N> =>
-            contourElement as any) as any
+            // @ts-ignore
+            contourElement)
 
 const Ratio: (ratio: [ number | Numerator, number | Denominator ]) => Ratio =
     (ratio: [ number | Numerator, number | Denominator ]): Ratio =>
-        ratio as any
+        // @ts-ignore
+        ratio
 
 export {
     Base,
