@@ -1,4 +1,4 @@
-// tslint:disable:variable-name no-any
+// tslint:disable:variable-name
 
 import * as from from './from'
 import { Base, Count, Index, Offset, Power, Scalar } from './types'
