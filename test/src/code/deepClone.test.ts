@@ -1,4 +1,4 @@
-// tslint:disable:no-any no-unsafe-any
+// tslint:disable:no-any
 
 import { deepClone, deepCloneObject } from '../../../src/indexForTest'
 

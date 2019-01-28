@@ -1,4 +1,4 @@
-// tslint:disable:no-any no-unsafe-any
+// tslint:disable:no-any
 
 const deepEqualArray: (a: any, b: any) => boolean =
     (a: any, b: any): boolean =>

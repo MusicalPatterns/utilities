@@ -16,7 +16,7 @@ interface TypedMap<V, T extends AllowedTypeValues<T, V>> extends Map<string, V> 
 }
 
 const typedMap: <V, T extends AllowedTypeValues<T, V>>(data: T) => TypedMap<V, T> =
-    // tslint:disable-next-line:no-any no-unsafe-any
+    // tslint:disable-next-line:no-any
     <V, T extends AllowedTypeValues<T, V>>(data: T): TypedMap<V, T> => Map(data) as any
 
 export {

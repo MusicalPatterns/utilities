@@ -7,7 +7,6 @@ const deepCloneObject: <T>(objectToDeepClone: T) => T =
         const clonedObject: any = {} as any
         setAllPropertiesOfObjectOnAnother({ objectToChange: clonedObject, objectWithProperties: objectToDeepClone })
 
-        // tslint:disable:no-unsafe-any
         return clonedObject
     }
 
