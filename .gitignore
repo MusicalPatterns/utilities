@@ -24,7 +24,6 @@ test/reporter.ts
 test/tslint.json
 tsconfig.common.json
 tsconfig.json
-tsconfig.library.json
 tsconfig.node.json
 tslint.json
 webpack.browser.js
