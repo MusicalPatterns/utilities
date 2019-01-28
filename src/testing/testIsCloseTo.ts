@@ -14,7 +14,7 @@ const determineIfClose: (rawNumberOne: number, rawNumberTwo: number) => boolean 
         return Math.round(delta * pow) / pow <= maxDelta
     }
 
-const maybeFail: (isClose: boolean, rawNumberOne: number, rawNumberTwo: number, negative?: boolean) => void =
+const maybeFail: (isClose: boolean, rawNumberOne: number, rawNumberTwo: number, negative: boolean) => void =
     (isClose: boolean, rawNumberOne: number, rawNumberTwo: number, negative: boolean = false): void => {
         if (!negative && !isClose) {
             fail(`expected ${rawNumberOne} to be close to ${rawNumberTwo}`)
@@ -24,8 +24,9 @@ const maybeFail: (isClose: boolean, rawNumberOne: number, rawNumberTwo: number, 
         }
     }
 
+// tslint:disable-next-line:bool-param-default
 const testIsCloseTo: <T>(numberOne: T, numberTwo: T, negative?: boolean) => boolean =
-    <T>(numberOne: T, numberTwo: T, negative?: boolean): boolean => {
+    <T>(numberOne: T, numberTwo: T, negative: boolean = false): boolean => {
         const rawNumberOne: number = numberOne as any
         const rawNumberTwo: number = numberTwo as any
 

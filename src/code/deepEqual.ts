@@ -34,6 +34,7 @@ const deepEqual: (a: any, b: any) => boolean =
             equal = deepEqualArray(b, a)
         }
         else if (typeof a === 'object') {
+            // tslint:disable-next-line:arguments-order
             equal = deepEqualObject(b, a)
         }
 

@@ -1,4 +1,4 @@
-// tslint:disable:max-file-line-count
+// tslint:disable:max-file-line-count use-primitive-type
 
 interface Scalar extends Number {
     _ScalarBrand: string,
