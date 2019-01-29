@@ -10,7 +10,7 @@ import {
     Frequency,
     Index,
     Length,
-    Millisecond,
+    Milliseconds,
     Offset,
     Power,
     Radian,
@@ -53,9 +53,9 @@ const Frequency: (frequency: Frequency) => number =
 const Length: (length: Length) => number =
     // @ts-ignore
     (length: Length): number => length
-const Millisecond: (millisecond: Millisecond) => number =
+const Milliseconds: (milliseconds: Milliseconds) => number =
     // @ts-ignore
-    (millisecond: Millisecond): number => millisecond
+    (milliseconds: Milliseconds): number => milliseconds
 const Radian: (radian: Radian) => number =
     // @ts-ignore
     (radian: Radian): number => radian
@@ -89,7 +89,7 @@ export {
     CoordinateElement,
     Frequency,
     Length,
-    Millisecond,
+    Milliseconds,
     Radian,
     Cents,
     Semitones,

@@ -46,7 +46,7 @@ interface Length extends Number {
     _LengthBrand: string,
 }
 
-interface Millisecond extends Number {
+interface Milliseconds extends Number {
     _MillisecondBrand: string,
 }
 
@@ -100,7 +100,7 @@ export {
     Coordinate,
     Frequency,
     Length,
-    Millisecond,
+    Milliseconds,
     Radian,
     Cents,
     Semitones,
