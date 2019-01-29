@@ -2,12 +2,8 @@
 
 import { Map } from 'immutable'
 
-type AllowedTypeValues<T, V> = {
-    [K in keyof T]: V
-}
-
 // @ts-ignore
-interface TypedMap<V, T extends AllowedTypeValues<T, V>> extends Map<string, V> {
+interface TypedMap<T> extends Map<string, T[keyof T]> {
     get<K extends keyof T>(key: K, notSetValue?: T[K]): T[K]
 
     set<K extends keyof T>(key: K, value: T[K]): this
@@ -15,9 +11,10 @@ interface TypedMap<V, T extends AllowedTypeValues<T, V>> extends Map<string, V> 
     toJS(): T
 }
 
-const typedMap: <V, T extends AllowedTypeValues<T, V>>(data: T) => TypedMap<V, T> =
-    // tslint:disable-next-line:no-any
-    <V, T extends AllowedTypeValues<T, V>>(data: T): TypedMap<V, T> => Map(data) as any
+const typedMap: <T>(data: T) => TypedMap<T> =
+    // @ts-ignore
+    // tslint:disable-next-line:no-unnecessary-callback-wrapper
+    <T>(data: T): TypedMap<T> => Map(data)
 
 export {
     typedMap,
