@@ -39,4 +39,5 @@ export {
     windowStepCount,
     OCTAVE,
     TRITAVE,
+    octaveReduce,
 } from './music/indexForTest'

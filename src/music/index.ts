@@ -7,3 +7,4 @@ export {
 } from './constants'
 export { centsToPitch } from './centsToPitch'
 export { windowStepCount } from './windowStepCount'
+export { octaveReduce } from './octaveReduce'
