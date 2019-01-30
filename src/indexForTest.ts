@@ -27,10 +27,12 @@ export {
     Coordinate3d,
     greatestCommonDivisor,
     lowestCommonMultiple,
+    powerSet,
 } from './math/indexForTest'
 export {
     testArraysAreClose,
     testIsCloseTo,
+    testArraysHaveSameElements,
 } from './testing/indexForTest'
 export {
     centsToPitch,

@@ -80,6 +80,7 @@ export {
     isOdd,
     isEven,
     ARBITRARILY_LARGE_NUMBER,
+    powerSet,
 } from './math'
 export {
     centsToPitch,
@@ -93,6 +94,7 @@ export {
 export {
     testIsCloseTo,
     testArraysAreClose,
+    testArraysHaveSameElements,
 } from './testing'
 export {
     MILLISECONDS_PER_SECOND,
