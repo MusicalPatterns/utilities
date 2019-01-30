@@ -91,6 +91,7 @@ export {
     CENTS_PER_SEMITONE,
     BEGINNING,
     octaveReduce,
+    MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS,
 } from './music'
 export {
     testIsCloseTo,
