@@ -103,10 +103,6 @@ export {
     SECONDS_PER_MINUTE,
 } from './time'
 export {
-    PLAYROOM_PORT,
-    PERFORMER_PORT,
-} from './dev'
-export {
     Maybe,
     DictionaryOf,
     AnyOtherProperties,
