@@ -82,6 +82,7 @@ export {
     ARBITRARILY_LARGE_NUMBER,
     powerSet,
     SQUARED,
+    NEGATIVE,
 } from './math'
 export {
     centsToPitch,

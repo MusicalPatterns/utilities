@@ -21,6 +21,8 @@ const SQUARE_ROOT: Power = to.Power(1 / 2)
 const EVEN: number = 2
 const TWO: number = 2
 
+const NEGATIVE: Scalar = to.Scalar(-1)
+
 const ONCE: Count = to.Count(1)
 const TWICE: Count = to.Count(2)
 
@@ -52,4 +54,5 @@ export {
     ADDITIVE_IDENTITY,
     MULTIPLICATIVE_IDENTITY,
     ARBITRARILY_LARGE_NUMBER,
+    NEGATIVE,
 }

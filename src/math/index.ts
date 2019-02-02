@@ -25,6 +25,7 @@ export {
     ADDITIVE_IDENTITY,
     MULTIPLICATIVE_IDENTITY,
     ARBITRARILY_LARGE_NUMBER,
+    NEGATIVE,
 } from './constants'
 export {
     Coordinate2d,
