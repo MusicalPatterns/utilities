@@ -18,6 +18,7 @@ export {
     Z_AXIS,
     EVEN,
     ONCE,
+    SQUARED,
     TWICE,
     EVERY_OTHER,
     THREE_DIMENSIONAL,

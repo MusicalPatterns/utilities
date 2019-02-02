@@ -81,6 +81,7 @@ export {
     isEven,
     ARBITRARILY_LARGE_NUMBER,
     powerSet,
+    SQUARED,
 } from './math'
 export {
     centsToPitch,
