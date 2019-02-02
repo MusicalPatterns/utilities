@@ -87,6 +87,12 @@ interface Denominator extends Number {
 type FractionalPart = Numerator | Denominator
 type Ratio = [ Numerator, Denominator ]
 
+enum _AbsoluteBrand {}
+type Absolute<NominalType> = _AbsoluteBrand & NominalType
+
+enum _IntervalBrand {}
+type Interval<NominalType> = _IntervalBrand & NominalType
+
 export {
     Base,
     Count,
@@ -112,4 +118,6 @@ export {
     Ratio,
     Numerator,
     Denominator,
+    Absolute,
+    Interval,
 }

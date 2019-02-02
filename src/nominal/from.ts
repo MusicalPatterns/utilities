@@ -1,6 +1,7 @@
 // tslint:disable:variable-name no-any
 
 import {
+    Absolute,
     Base,
     Block,
     Cents,
@@ -9,6 +10,7 @@ import {
     FractionalPart,
     Frequency,
     Index,
+    Interval,
     Length,
     Milliseconds,
     Offset,
@@ -59,6 +61,12 @@ const Coordinate: (_: Array<CoordinateElement | number>) => number[] =
 const Block: (block: Array<Index | number> | Index[]) => number[] =
     (block: Array<Index | number> | Index[]): number[] => block as any
 
+const Interval: <T>(interval: Interval<T>) => T =
+    <T>(interval: Interval<T>): T => interval as T
+
+const Absolute: <T>(absolute: Absolute<T>) => T =
+    <T>(absolute: Absolute<T>): T => absolute as T
+
 export {
     Base,
     Count,
@@ -78,4 +86,6 @@ export {
     Coordinate,
     Block,
     FractionalPart,
+    Interval,
+    Absolute,
 }

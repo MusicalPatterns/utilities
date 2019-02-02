@@ -1,6 +1,7 @@
 // tslint:disable:variable-name max-file-line-count no-any
 
 import {
+    Absolute,
     Base,
     Block,
     Cents,
@@ -13,6 +14,7 @@ import {
     Denominator,
     Frequency,
     Index,
+    Interval,
     Length,
     Milliseconds,
     Numerator,
@@ -64,25 +66,33 @@ const Denominator: (denominator: number) => Denominator =
 const Coordinate: (coordinate: Array<number | CoordinateElement>) => Coordinate =
     (coordinate: Array<number | CoordinateElement>): Coordinate =>
         coordinate.map((coordinateElement: number | CoordinateElement): CoordinateElement =>
-                    coordinateElement as any)
+            coordinateElement as any)
 
 const Block: (block: Array<number | Index>) => Block =
     (block: Array<number | Index>): Block =>
-            block.map((blockElement: Index | number): Index => blockElement as any) as any
+        block.map((blockElement: Index | number): Index => blockElement as any) as any
 
 const ContourPiece: <N>(contourPiece: Array<number[] | ContourElement<N>>) => ContourPiece<N> =
     <N>(contourPiece: Array<number[] | ContourElement<N>>): ContourPiece<N> =>
-            contourPiece.map((contourElement: number[] | ContourElement<N>): ContourElement<N> =>
-                    contourElement as any) as any
+        contourPiece.map((contourElement: number[] | ContourElement<N>): ContourElement<N> =>
+            contourElement as any) as any
 
 const ContourWhole: <N>(contourWhole: Array<number[] | ContourElement<N>>) => ContourWhole<N> =
     <N>(contourWhole: Array<number[] | ContourElement<N>>): ContourWhole<N> =>
-            contourWhole.map((contourElement: number[] | ContourElement<N>): ContourElement<N> =>
-                    contourElement as any) as any
+        contourWhole.map((contourElement: number[] | ContourElement<N>): ContourElement<N> =>
+            contourElement as any) as any
 
 const Ratio: (ratio: [ number | Numerator, number | Denominator ]) => Ratio =
     (ratio: [ number | Numerator, number | Denominator ]): Ratio =>
-            ratio as any
+        ratio as any
+
+const Interval: <T>(interval: T) => Interval<T> =
+    <T>(interval: T): Interval<T> =>
+        interval as Interval<T>
+
+const Absolute: <T>(absolute: T) => Absolute<T> =
+    <T>(absolute: T): Absolute<T> =>
+        absolute as Absolute<T>
 
 export {
     Base,
@@ -107,4 +117,6 @@ export {
     Ratio,
     Numerator,
     Denominator,
+    Interval,
+    Absolute,
 }

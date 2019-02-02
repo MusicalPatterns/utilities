@@ -33,4 +33,6 @@ export {
     Denominator,
     FractionalPart,
     Ratio,
+    Absolute,
+    Interval,
 } from './types'
