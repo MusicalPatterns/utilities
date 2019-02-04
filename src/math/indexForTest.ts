@@ -5,6 +5,7 @@ export { rotate } from './rotate'
 export { cycle } from './cycle'
 export { powerSet } from './powerSet'
 export { greatestCommonDivisor, lowestCommonMultiple } from './common'
+export { termialRoot, trapezoidalNumber, triangularNumber, triangularRoot, quarterSquareNumber } from './specialNumbers'
 export {
     X_AXIS,
     Y_AXIS,

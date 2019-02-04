@@ -28,6 +28,11 @@ export {
     greatestCommonDivisor,
     lowestCommonMultiple,
     powerSet,
+    termialRoot,
+    trapezoidalNumber,
+    triangularNumber,
+    triangularRoot,
+    quarterSquareNumber,
 } from './math/indexForTest'
 export {
     testArraysAreClose,

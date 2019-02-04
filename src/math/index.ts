@@ -9,10 +9,19 @@ export { powerSet } from './powerSet'
 export { greatestCommonDivisor, lowestCommonMultiple } from './common'
 export { add, multiply } from './arithmetic'
 export { isOdd, isEven } from './evenOrOdd'
+export { termialRoot, trapezoidalNumber, triangularNumber, triangularRoot, quarterSquareNumber } from './specialNumbers'
 
 export {
     DECIMAL,
-    HALF,
+    ONE_HALF,
+    ONE_THIRD,
+    ONE_FOURTH,
+    ONE_FIFTH,
+    ONE_SIXTH,
+    ONE_SEVENTH,
+    ONE_EIGHTH,
+    ONE_NINTH,
+    ONE_TENTH,
     X_AXIS,
     Y_AXIS,
     Z_AXIS,
