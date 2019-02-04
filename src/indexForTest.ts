@@ -40,4 +40,7 @@ export {
     OCTAVE,
     TRITAVE,
     octaveReduce,
+    SCIENTIFIC_PITCHES,
+    ScientificPitchNoteName,
+    ScientificPitchOctaveNumber,
 } from './music/indexForTest'

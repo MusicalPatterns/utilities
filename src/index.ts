@@ -95,6 +95,10 @@ export {
     BEGINNING,
     octaveReduce,
     MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS,
+    SCIENTIFIC_PITCHES,
+    ScientificPitchOctaveNumber,
+    ScientificPitchNoteName,
+    ScientificPitches,
 } from './music'
 export {
     testIsCloseTo,
