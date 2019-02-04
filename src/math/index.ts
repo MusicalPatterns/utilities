@@ -1,6 +1,6 @@
 export { absoluteRatio } from './absoluteRatio'
 export { isCloseTo } from './isCloseTo'
-export { numbers } from './numbers'
+export { positiveIntegers, zeroAndPositiveIntegers } from './integers'
 export { wrapWithin } from './wrapWithin'
 export { distanceBetween } from './distanceBetween'
 export { rotate } from './rotate'
