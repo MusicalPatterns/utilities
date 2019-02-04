@@ -64,5 +64,10 @@ describe('common', () => {
             expect(lowestCommonMultiple())
                 .toBe(1)
         })
+
+        it('works for very large numbers', () => {
+            expect(lowestCommonMultiple(43999999560, 43999999560, 43999999560, 43999999560, 43999999560, 43999999560))
+                .toBe(43999999560)
+        })
     })
 })

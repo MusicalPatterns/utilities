@@ -1,3 +1,4 @@
+import { allElementsEqual } from '../code'
 import { TWO } from './constants'
 import { NumericOperation } from './types'
 
@@ -36,13 +37,26 @@ const recurseCommon: (commonFunction: NumericOperation, ...numbers: number[]) =>
         }
     }
 
+const common: (numbers: number[], commonFunction: NumericOperation) => number =
+    (numbers: number[], commonFunction: NumericOperation): number => {
+        if (numbers.length === 0) {
+            return 1
+        }
+
+        if (allElementsEqual(numbers)) {
+            return numbers[ 0 ]
+        }
+
+        return recurseCommon(commonFunction, ...numbers)
+    }
+
 const lowestCommonMultiple: (...numbers: number[]) => number =
     (...numbers: number[]): number =>
-        recurseCommon(lowestCommonMultipleOfTwoNumbers, ...numbers)
+        common(numbers, lowestCommonMultipleOfTwoNumbers)
 
 const greatestCommonDivisor: (...numbers: number[]) => number =
     (...numbers: number[]): number =>
-        recurseCommon(greatestCommonDivisorOfTwoNumbers, ...numbers)
+        common(numbers, greatestCommonDivisorOfTwoNumbers)
 
 export {
     lowestCommonMultiple,

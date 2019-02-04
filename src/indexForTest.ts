@@ -10,6 +10,7 @@ export {
     deepCloneObject,
     deepClone,
     isDefined,
+    allElementsEqual,
 } from './code/indexForTest'
 export {
     apply,
