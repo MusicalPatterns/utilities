@@ -1,4 +1,4 @@
-// tslint:disable:no-any
+// tslint:disable no-any
 
 import { DECIMAL, ONE_HALF } from '../math'
 import { apply } from '../nominal'
@@ -24,7 +24,7 @@ const maybeFail: (isClose: boolean, rawNumberOne: number, rawNumberTwo: number, 
         }
     }
 
-// tslint:disable-next-line:bool-param-default
+// tslint:disable-next-line bool-param-default
 const testIsCloseTo: <T>(numberOne: T, numberTwo: T, negative?: boolean) => boolean =
     <T>(numberOne: T, numberTwo: T, negative: boolean = false): boolean => {
         const rawNumberOne: number = numberOne as any

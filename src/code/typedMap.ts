@@ -1,4 +1,4 @@
-// tslint:disable:no-type-definitions-outside-types-modules
+// tslint:disable no-type-definitions-outside-types-modules
 
 import { Map } from 'immutable'
 
@@ -13,7 +13,7 @@ interface TypedMap<T> extends Map<string, T[keyof T]> {
 
 const typedMap: <T>(data: T) => TypedMap<T> =
     // @ts-ignore
-    // tslint:disable-next-line:no-unnecessary-callback-wrapper
+    // tslint:disable-next-line no-unnecessary-callback-wrapper
     <T>(data: T): TypedMap<T> => Map(data)
 
 export {

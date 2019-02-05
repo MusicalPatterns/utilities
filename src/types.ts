@@ -5,7 +5,7 @@ interface DictionaryOf<T> {
 type Maybe<T> = T | undefined
 
 interface AnyOtherProperties {
-    // tslint:disable-next-line:no-any
+    // tslint:disable-next-line no-any
     [ index: string ]: any
 }
 

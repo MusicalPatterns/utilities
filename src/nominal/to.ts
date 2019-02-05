@@ -1,4 +1,4 @@
-// tslint:disable:variable-name max-file-line-count no-any
+// tslint:disable variable-name max-file-line-count no-any
 
 import {
     Absolute,

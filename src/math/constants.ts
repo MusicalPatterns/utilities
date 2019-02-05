@@ -1,4 +1,4 @@
-// tslint:disable:no-magic-numbers max-file-line-count
+// tslint:disable no-magic-numbers max-file-line-count
 
 import { Count, Index, Offset, Power, Scalar, to } from '../nominal'
 

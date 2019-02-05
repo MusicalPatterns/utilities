@@ -1,4 +1,4 @@
-// tslint:disable:no-any
+// tslint:disable no-any
 
 import { apply } from '../nominal'
 import { DECIMAL, DEFAULT_PRECISION, ONE_HALF } from './constants'

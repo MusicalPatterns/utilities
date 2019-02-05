@@ -1,4 +1,4 @@
-// tslint:disable:no-reaching-imports
+// tslint:disable no-reaching-imports
 
 export { distanceBetween } from './distanceBetween'
 export { rotate } from './rotate'

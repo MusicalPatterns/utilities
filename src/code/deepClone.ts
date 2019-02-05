@@ -1,4 +1,4 @@
-// tslint:disable:no-any
+// tslint:disable no-any
 
 import { DictionaryOf } from '../types'
 
@@ -11,7 +11,7 @@ const deepCloneObject: <T>(objectToDeepClone: T) => T =
     }
 
 const setAllPropertiesOfObjectOnAnother: <T>(_: { objectToChange: T, objectWithProperties: T }) => void =
-    // tslint:disable-next-line:max-line-length
+    // tslint:disable-next-line max-line-length
     <T extends DictionaryOf<any>>({ objectToChange, objectWithProperties }: { objectToChange: T, objectWithProperties: T }): void => {
         Object.entries(objectWithProperties)
             .forEach(([ key, value ]: [ string, any ]) => {

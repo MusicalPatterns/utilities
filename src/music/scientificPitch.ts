@@ -1,4 +1,4 @@
-// tslint:disable:no-magic-numbers
+// tslint:disable no-magic-numbers
 
 import { apply, Frequency, from, Power, Scalar, to } from '../nominal'
 import { DictionaryOf } from '../types'
