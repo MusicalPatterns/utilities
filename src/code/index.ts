@@ -11,6 +11,7 @@ export { repeat } from './repeat'
 export { repeatCall } from './repeatCall'
 export { sequence } from './sequence'
 export { noop } from './noop'
+export { random } from './random'
 
 export {
     INCLUSIVE,

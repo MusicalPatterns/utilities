@@ -49,6 +49,7 @@ export {
     INCLUSIVE,
     EXCLUSIVE,
     noop,
+    random,
 } from './code'
 export {
     absoluteRatio,
