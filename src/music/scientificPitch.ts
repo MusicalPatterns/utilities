@@ -1,5 +1,6 @@
 // tslint:disable no-magic-numbers
 
+import { keys } from '../code'
 import { apply, Frequency, from, Power, Scalar, to } from '../nominal'
 import { DictionaryOf } from '../types'
 import { OCTAVE } from './constants'
@@ -43,33 +44,30 @@ const scientificPitch: (noteName: ScientificPitchNoteName, octaveNumber: Scienti
         return apply.Scalar(SCIENTIFIC_PITCH_NOTE_NAME_TO_ZEROTH_OCTAVE_FREQUENCY_MAP[ noteName ], octaveScalar)
     }
 
-const SCIENTIFIC_PITCHES: ScientificPitches =
-    Object.keys(ScientificPitchNoteName)
-        .reduce(
-            // @ts-ignore
-            (accumulator: ScientificPitches, noteName: ScientificPitchNoteName): ScientificPitches => {
-                const frequencies: DictionaryOf<Frequency> = Object.keys(ScientificPitchOctaveNumber)
-                    .reduce(
-                        // @ts-ignore
-                        (
-                            frequenciesAccumulator: DictionaryOf<Frequency>,
-                            octaveNumber: ScientificPitchOctaveNumber,
-                        ): DictionaryOf<Frequency> => ({
-                            ...frequenciesAccumulator,
-                            [ octaveNumber ]: scientificPitch(noteName, octaveNumber),
-                        }),
-                        // @ts-ignore
-                        {},
-                    )
+const SCIENTIFIC_PITCHES: ScientificPitches = keys(SCIENTIFIC_PITCH_NOTE_NAME_TO_ZEROTH_OCTAVE_FREQUENCY_MAP)
+    .reduce(
+        (accumulator: ScientificPitches, noteName: ScientificPitchNoteName): ScientificPitches => {
+            // tslint:disable-next-line no-inferred-empty-object-type
+            const frequencies: DictionaryOf<Frequency> = keys(SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP)
+                .reduce(
+                    (
+                        frequenciesAccumulator: DictionaryOf<Frequency>,
+                        octaveNumber: ScientificPitchOctaveNumber,
+                    ): DictionaryOf<Frequency> => ({
+                        ...frequenciesAccumulator,
+                        [ octaveNumber ]: scientificPitch(noteName, octaveNumber),
+                    }),
+                    {},
+                )
 
-                return {
-                    ...accumulator,
-                    [ noteName ]: frequencies,
-                }
-            },
-            // @ts-ignore
-            {},
-        )
+            return {
+                ...accumulator,
+                [ noteName ]: frequencies,
+            }
+        },
+        // @ts-ignore
+        {},
+    )
 
 export {
     SCIENTIFIC_PITCHES,
