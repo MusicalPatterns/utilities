@@ -54,6 +54,7 @@ export {
     TENTH,
     ELEVENTH,
     TWELFTH,
+    TWO,
 } from './constants'
 export {
     Coordinate2d,

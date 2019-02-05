@@ -119,6 +119,7 @@ export {
     TENTH,
     ELEVENTH,
     TWELFTH,
+    TWO,
 } from './math'
 export {
     centsToPitch,
