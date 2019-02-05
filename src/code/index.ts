@@ -1,7 +1,7 @@
 export { deepEqual } from './deepEqual'
 export { deepClone } from './deepClone'
 export { allElementsEqual } from './allElementsEqual'
-export { typedMap, TypedMap } from './typedMap'
+export { typedMap, TypedMap, entries, keys } from './typedObjects'
 export { logMessageToScreen, logMessageToConsole } from './log'
 export { doAsync } from './doAsync'
 export { isDefined } from './isDefined'

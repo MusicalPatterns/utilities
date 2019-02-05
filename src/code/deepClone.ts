@@ -1,6 +1,6 @@
 // tslint:disable no-any
 
-import { DictionaryOf } from '../types'
+import { entries } from './typedObjects'
 
 const deepCloneObject: <T>(objectToDeepClone: T) => T =
     <T>(objectToDeepClone: T): T => {
@@ -10,11 +10,17 @@ const deepCloneObject: <T>(objectToDeepClone: T) => T =
         return clonedObject
     }
 
-const setAllPropertiesOfObjectOnAnother: <T>(_: { objectToChange: T, objectWithProperties: T }) => void =
+const setAllPropertiesOfObjectOnAnother: <K extends string, V>(_: {
+    objectToChange: { [key in K]: V },
+    objectWithProperties: { [key in K]: V },
+}) => void =
     // tslint:disable-next-line max-line-length
-    <T extends DictionaryOf<any>>({ objectToChange, objectWithProperties }: { objectToChange: T, objectWithProperties: T }): void => {
-        Object.entries(objectWithProperties)
-            .forEach(([ key, value ]: [ string, any ]) => {
+    <K extends string, V>({ objectToChange, objectWithProperties }: {
+        objectToChange: { [key in K]: V },
+        objectWithProperties: { [key in K]: V },
+    }): void => {
+        entries(objectWithProperties)
+            .forEach(([ key, value ]: [ K, V ]) => {
                 objectToChange[ key ] = deepClone(value)
             })
     }

@@ -50,6 +50,8 @@ export {
     EXCLUSIVE,
     noop,
     random,
+    entries,
+    keys,
 } from './code'
 export {
     absoluteRatio,
