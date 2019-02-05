@@ -6,7 +6,7 @@ const zeroAndPositiveIntegers: number[] = [
 ]
 
 const positiveIntegers: number[] =  zeroAndPositiveIntegers
-    .map((n: number): number => n + 1)
+    .map((integer: number): number => integer + 1)
 
 export {
     zeroAndPositiveIntegers,
