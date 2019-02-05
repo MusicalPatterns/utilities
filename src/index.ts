@@ -98,12 +98,14 @@ export {
     triangularNumber,
     triangularRoot,
     quarterSquareNumber,
+    inverse,
 } from './math'
 export {
     centsToPitch,
     windowStepCount,
     TRITAVE,
     OCTAVE,
+    SEMITONE,
     CENTS_PER_OCTAVE,
     CENTS_PER_SEMITONE,
     BEGINNING,
