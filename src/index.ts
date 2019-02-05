@@ -98,7 +98,7 @@ export {
     triangularNumber,
     triangularRoot,
     quarterSquareNumber,
-    inverse,
+    reciprocal,
     CUBE_ROOT,
     CUBED,
     THRICE,

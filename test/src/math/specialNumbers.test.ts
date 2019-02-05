@@ -34,7 +34,7 @@ describe('special numbers', () => {
                 .toBe((Math.pow(6, 2) - 1) / 8)
         })
 
-        it('is the inverse of triangular root', () => {
+        it('is the reciprocal of triangular root', () => {
             expect(triangularNumber(triangularRoot(5)))
                 .toBe(5)
         })
@@ -67,7 +67,7 @@ describe('special numbers', () => {
                 .toBe(2.5413812651491097)
         })
 
-        it('is the inverse of triangular number', () => {
+        it('is the reciprocal of triangular number', () => {
             expect(triangularRoot(triangularNumber(5)))
                 .toBe(5)
         })
