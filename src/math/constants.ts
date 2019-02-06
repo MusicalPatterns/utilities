@@ -30,7 +30,6 @@ const CUBED: Power = to.Power(3)
 const SQUARE_ROOT: Power = to.Power(1 / 2)
 const CUBE_ROOT: Power = to.Power(1 / 3)
 
-const EVEN: number = 2
 const TWO: number = 2
 
 const NEGATIVE: Scalar = to.Scalar(-1)
@@ -40,6 +39,7 @@ const TWICE: Cardinal = to.Cardinal(2)
 const THRICE: Cardinal = to.Cardinal(3)
 const FRICE: Cardinal = to.Cardinal(4)
 const FICE: Cardinal = to.Cardinal(5)
+
 const ZEROTH: Ordinal = to.Ordinal(0)
 const FIRST: Ordinal = to.Ordinal(1)
 const SECOND: Ordinal = to.Ordinal(2)
@@ -80,7 +80,6 @@ export {
     Z_AXIS,
     SQUARE_ROOT,
     SQUARED,
-    EVEN,
     ONCE,
     TWICE,
     EVERY_OTHER,

@@ -26,7 +26,6 @@ export {
     X_AXIS,
     Y_AXIS,
     Z_AXIS,
-    EVEN,
     ONCE,
     SQUARED,
     TWICE,

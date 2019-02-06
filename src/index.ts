@@ -65,7 +65,6 @@ export {
     Z_AXIS,
     distanceBetween,
     rotate,
-    EVEN,
     ONCE,
     TWICE,
     EVERY_OTHER,
