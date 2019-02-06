@@ -2,6 +2,7 @@ import { apply, from, Ordinal, Scalar, to, Translation } from '../nominal'
 import { Maybe } from '../types'
 import { ADJUSTMENT_FOR_ROTATION_MATRIX_CYCLING_FROM_AXIS, TWO_DIMENSIONAL, Z_AXIS } from './constants'
 import { cycle } from './cycle'
+import { difference, negative } from './typedOperations'
 import { ArrayMap, RotateParameters, RotationMatrix, SpatialCoordinate } from './types'
 
 const defaultFixedCoordinateToOriginOfDimensionalityOfCoordinate:
@@ -18,7 +19,7 @@ const buildArrayMapForCyclingRotationMatrixForAxis: (axis: Ordinal) => ArrayMap 
     (axis: Ordinal): ArrayMap =>
         <T>(rotationVectorOrMatrix: T[]): T[] => {
             const translation: Translation =
-                to.Translation(ADJUSTMENT_FOR_ROTATION_MATRIX_CYCLING_FROM_AXIS - from.Ordinal(axis))
+                to.Translation(difference(ADJUSTMENT_FOR_ROTATION_MATRIX_CYCLING_FROM_AXIS, from.Ordinal(axis)))
 
             return cycle(rotationVectorOrMatrix, translation)
         }
@@ -58,12 +59,12 @@ const rotate: (rotateParameters: RotateParameters) => SpatialCoordinate =
             (coordinateElement: number, index: number): number => {
                 const rawFixedCoordinateElement: number = fixedCoordinate[ index ]
 
-                return coordinateElement - rawFixedCoordinateElement
+                return difference(coordinateElement, rawFixedCoordinateElement)
             },
         )
 
         const standardRotationMatrix: RotationMatrix = [
-            [ cos, apply.Scalar(sin, to.Scalar(-1)), to.Scalar(0) ],
+            [ cos, apply.Scalar(sin, to.Scalar(negative(1))), to.Scalar(0) ],
             [ sin, cos, to.Scalar(0) ],
             [ to.Scalar(0), to.Scalar(0), to.Scalar(1) ],
         ]

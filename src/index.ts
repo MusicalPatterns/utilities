@@ -53,6 +53,7 @@ export {
     entries,
     keys,
     lastElement,
+    indexOfLastElement,
 } from './code'
 export {
     absoluteRatio,

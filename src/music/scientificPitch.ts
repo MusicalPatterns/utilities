@@ -1,13 +1,14 @@
 // tslint:disable no-magic-numbers
 
 import { keys } from '../code'
+import { negative } from '../math'
 import { apply, Frequency, from, Power, Scalar, to } from '../nominal'
 import { DictionaryOf } from '../types'
 import { OCTAVE } from './constants'
 import { ScientificPitches, ScientificPitchNoteName, ScientificPitchOctaveNumber } from './types'
 
 const SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP: { [key in ScientificPitchOctaveNumber]: Power } = {
-    [ ScientificPitchOctaveNumber._NEGATIVE_1 ]: to.Power(-1),
+    [ ScientificPitchOctaveNumber._NEGATIVE_1 ]: to.Power(negative(1)),
     [ ScientificPitchOctaveNumber._0 ]: to.Power(0),
     [ ScientificPitchOctaveNumber._1 ]: to.Power(1),
     [ ScientificPitchOctaveNumber._2 ]: to.Power(2),

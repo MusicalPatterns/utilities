@@ -1,6 +1,6 @@
 // tslint:disable no-any
 
-import { absoluteValue, DECIMAL, negative, ONE_HALF, round } from '../math'
+import { absoluteValue, DECIMAL, difference, negative, ONE_HALF, round } from '../math'
 import { apply, to } from '../nominal'
 
 const determineIfClose: (rawNumberOne: number, rawNumberTwo: number) => boolean =
@@ -8,7 +8,7 @@ const determineIfClose: (rawNumberOne: number, rawNumberTwo: number) => boolean 
         const precision: number = 2
 
         const pow: number = apply.Power(DECIMAL, to.Power(apply.Translation(precision, to.Translation(1))))
-        const delta: number = absoluteValue(rawNumberOne - rawNumberTwo)
+        const delta: number = absoluteValue(difference(rawNumberOne, rawNumberTwo))
         const maxDelta: number = apply.Scalar(apply.Power(DECIMAL, to.Power(negative(precision))), ONE_HALF)
 
         return round(delta * pow) / pow <= maxDelta

@@ -11,7 +11,7 @@ export { repeat } from './repeat'
 export { repeatCall } from './repeatCall'
 export { sequence } from './sequence'
 export { noop } from './noop'
-export { lastElement } from './lastElement'
+export { lastElement, indexOfLastElement } from './lastElement'
 export { random } from './random'
 
 export {

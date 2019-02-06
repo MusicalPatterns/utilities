@@ -1,4 +1,4 @@
-import { lastElement, Scalar, to } from '../../../src/indexForTest'
+import { indexOfLastElement, lastElement, Scalar, to } from '../../../src/indexForTest'
 
 describe('last element', () => {
     it('works', () => {
@@ -7,5 +7,7 @@ describe('last element', () => {
 
         expect(lastElement(array))
             .toBe(to.Scalar(5))
+        expect(indexOfLastElement(array))
+            .toBe(to.Ordinal(2))
     })
 })

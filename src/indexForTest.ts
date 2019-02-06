@@ -12,6 +12,7 @@ export {
     isDefined,
     allElementsEqual,
     lastElement,
+    indexOfLastElement,
 } from './code/indexForTest'
 export {
     apply,

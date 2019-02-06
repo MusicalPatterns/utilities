@@ -1,6 +1,7 @@
 // tslint:disable no-magic-numbers max-file-line-count
 
 import { apply, Base, Cardinal, Ordinal, Power, Radians, Scalar, to, Translation } from '../nominal'
+import { negative } from './typedOperations'
 
 const DECIMAL: number = 10
 
@@ -40,7 +41,7 @@ const EIGHT: number = 8
 const NINE: number = 9
 const TEN: number = 10
 
-const NEGATIVE: Scalar = to.Scalar(-1)
+const NEGATIVE: Scalar = to.Scalar(negative(1))
 
 const ONCE: Cardinal = to.Cardinal(1)
 const TWICE: Cardinal = to.Cardinal(2)
