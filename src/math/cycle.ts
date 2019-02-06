@@ -7,11 +7,11 @@ const cycle: <T>(array: T[], translation: Translation) => T[] =
         const cellCount: Cardinal = to.Cardinal(array.length)
 
         for (
-            let i: Ordinal = to.Ordinal(0);
-            i < to.Ordinal(from.Cardinal(cellCount));
-            i = apply.Translation(i, to.Translation(1))
+            let index: Ordinal = to.Ordinal(0);
+            index < to.Ordinal(from.Cardinal(cellCount));
+            index = apply.Translation(index, to.Translation(1))
         ) {
-            let index: Ordinal = apply.Translation(i, translation)
+            let index: Ordinal = apply.Translation(index, translation)
             index = to.Ordinal(wrapWithin(from.Ordinal(index), from.Cardinal(cellCount)))
             cycledArray.push(array[ from.Ordinal(index) ])
         }
