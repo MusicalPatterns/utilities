@@ -2,7 +2,7 @@ import { apply, from, Ordinal, Scalar, to, Translation } from '../nominal'
 import { Maybe } from '../types'
 import { ADJUSTMENT_FOR_ROTATION_MATRIX_CYCLING_FROM_AXIS, TWO_DIMENSIONAL, Z_AXIS } from './constants'
 import { cycle } from './cycle'
-import { difference, negative } from './typedOperations'
+import { difference, negative, sum } from './typedOperations'
 import { ArrayMap, RotateParameters, RotationMatrix, SpatialCoordinate } from './types'
 
 const defaultFixedCoordinateToOriginOfDimensionalityOfCoordinate:
@@ -77,7 +77,7 @@ const rotate: (rotateParameters: RotateParameters) => SpatialCoordinate =
         return rotationMatrix.map((rotationRow: Scalar[]): number =>
             rotationRow.reduce(
                 (row: number, rotationElement: Scalar, index: number): number =>
-                    row + apply.Scalar(rawRelative[ index ], rotationElement),
+                    sum(row, apply.Scalar(rawRelative[ index ], rotationElement)),
                 0,
             ),
         ) as SpatialCoordinate

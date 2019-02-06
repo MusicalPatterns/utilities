@@ -1,11 +1,11 @@
 import { apply, Coordinate, CoordinateElement, from, Length, to } from '../nominal'
 import { SQUARE_ROOT, SQUARED } from './constants'
-import { absoluteValue, difference } from './typedOperations'
+import { absoluteValue, difference, sum } from './typedOperations'
 
 const distanceBetween: (pointA: Coordinate, pointB: Coordinate) => Length =
     (pointA: Coordinate, pointB: Coordinate): Length => {
         const sumOfSquaresOfDimensionalDistances: number = pointA.reduce(
-            (sum: number, pointAElement: CoordinateElement, index: number): number => {
+            (accumulator: number, pointAElement: CoordinateElement, index: number): number => {
                 const pointBElement: CoordinateElement = pointB[ index ]
                 const dimensionalDistance: Length = to.Length(from.CoordinateElement(absoluteValue(
                     difference(pointAElement, pointBElement)),
@@ -15,7 +15,7 @@ const distanceBetween: (pointA: Coordinate, pointB: Coordinate) => Length =
                     SQUARED,
                 )
 
-                return sum + squareOfDimensionalDistance
+                return sum(accumulator, squareOfDimensionalDistance)
             },
             0,
         )

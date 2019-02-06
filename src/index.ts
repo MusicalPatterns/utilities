@@ -54,6 +54,7 @@ export {
     keys,
     lastElement,
     indexOfLastElement,
+    slice,
 } from './code'
 export {
     absoluteRatio,

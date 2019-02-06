@@ -13,6 +13,8 @@ export {
     allElementsEqual,
     lastElement,
     indexOfLastElement,
+    slice,
+    INITIAL,
 } from './code/indexForTest'
 export {
     apply,
