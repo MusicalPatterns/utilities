@@ -55,7 +55,7 @@ const Semitones: (semitones: Semitones) => number =
 const FractionalPart: (fractionalPart: FractionalPart) => number =
     (fractionalPart: FractionalPart): number => fractionalPart as any
 
-const Coordinate: (_: Array<CoordinateElement | number>) => number[] =
+const Coordinate: (coordinate: Array<CoordinateElement | number>) => number[] =
     (coordinate: Array<CoordinateElement | number>): number[] => coordinate as any
 
 const Block: (block: number[]) => number[] =

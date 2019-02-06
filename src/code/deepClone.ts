@@ -10,7 +10,7 @@ const deepCloneObject: <T>(objectToDeepClone: T) => T =
         return clonedObject
     }
 
-const setAllPropertiesOfObjectOnAnother: <K extends string, V>(_: {
+const setAllPropertiesOfObjectOnAnother: <K extends string, V>(setAllPropertiesOfObjectOnAnotherParameters: {
     objectToChange: { [key in K]: V },
     objectWithProperties: { [key in K]: V },
 }) => void =

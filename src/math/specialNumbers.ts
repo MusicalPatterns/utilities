@@ -11,11 +11,11 @@ const triangularRoot: (n: number) => number =
 const quarterSquareNumber: (n: number) => number =
     (n: number): number => Math.floor(apply.Scalar(apply.Power(n, SQUARED), ONE_FOURTH))
 
-const trapezoidalNumber: (_: { height: number, start: number }) => number =
+const trapezoidalNumber: (trapezoidalNumberParameters: { height: number, start: number }) => number =
     ({ height, start }: { height: number, start: number }): number =>
         triangularNumber(start + height) - triangularNumber(start)
 
-const termialRoot: (_: { n: number, rangeDelta: number, rangeStart: number }) => number =
+const termialRoot: (termialRootParameters: { n: number, rangeDelta: number, rangeStart: number }) => number =
     ({ n, rangeDelta, rangeStart }: { n: number, rangeDelta: number, rangeStart: number }): number => {
         // tslint:disable-next-line no-magic-numbers
         const c: number = rangeStart * 2
