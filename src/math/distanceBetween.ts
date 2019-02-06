@@ -1,4 +1,5 @@
 import { apply, Coordinate, CoordinateElement, from, Length, to } from '../nominal'
+import { difference } from './arithmetic'
 import { SQUARE_ROOT, SQUARED } from './constants'
 
 const distanceBetween: (pointA: Coordinate, pointB: Coordinate) => Length =
@@ -7,7 +8,7 @@ const distanceBetween: (pointA: Coordinate, pointB: Coordinate) => Length =
             (sum: number, pointAElement: CoordinateElement, index: number): number => {
                 const pointBElement: CoordinateElement = pointB[ index ]
                 const dimensionalDistance: Length = to.Length(Math.abs(
-                    from.CoordinateElement(pointAElement) - from.CoordinateElement(pointBElement),
+                    from.CoordinateElement(difference(pointAElement, pointBElement)),
                 ))
                 const squareOfDimensionalDistance: number = apply.Power(
                     from.Length(dimensionalDistance),
