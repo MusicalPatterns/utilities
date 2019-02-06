@@ -58,8 +58,8 @@ const FractionalPart: (fractionalPart: FractionalPart) => number =
 const Coordinate: (_: Array<CoordinateElement | number>) => number[] =
     (coordinate: Array<CoordinateElement | number>): number[] => coordinate as any
 
-const Block: (block: Array<Ordinal | number> | Ordinal[]) => number[] =
-    (block: Array<Ordinal | number> | Ordinal[]): number[] => block as any
+const Block: (block: number[]) => number[] =
+    (block: number[]): number[] => block as any
 
 const Interval: <T>(interval: Interval<T>) => T =
     <T>(interval: Interval<T>): T => interval as T

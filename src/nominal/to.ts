@@ -68,9 +68,9 @@ const Coordinate: (coordinate: Array<number | CoordinateElement>) => Coordinate 
         coordinate.map((coordinateElement: number | CoordinateElement): CoordinateElement =>
             coordinateElement as any)
 
-const Block: (block: Array<number | Ordinal>) => Block =
-    (block: Array<number | Ordinal>): Block =>
-        block.map((blockElement: Ordinal | number): Ordinal => blockElement as any) as any
+const Block: (block: number[]) => Block =
+    (block: number[]): Block =>
+        block.map((blockElement: number): number => blockElement as any) as any
 
 const ContourPiece: <N>(contourPiece: Array<number[] | ContourElement<N>>) => ContourPiece<N> =
     <N>(contourPiece: Array<number[] | ContourElement<N>>): ContourPiece<N> =>
