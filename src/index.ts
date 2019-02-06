@@ -102,6 +102,7 @@ export {
     triangularRoot,
     quarterSquareNumber,
     reciprocal,
+    negative,
     CUBE_ROOT,
     CUBED,
     THRICE,
