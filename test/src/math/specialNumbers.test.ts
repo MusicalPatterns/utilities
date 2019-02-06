@@ -75,7 +75,7 @@ describe('special numbers', () => {
 
     describe('#quarterSquareNumber', () => {
         // tslint:disable-next-line max-line-length
-        it('gives the nth entry in the sequence of numbers where you add 1 to the amount you increase by each step every other step', () => {
+        it('gives the nth entry in the sequence of numbers where you sum 1 to the amount you increase by each step every other step', () => {
             let delta: number = 0
             let memo: number = 0
             expect(quarterSquareNumber(0))

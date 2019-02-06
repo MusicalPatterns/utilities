@@ -1,11 +1,14 @@
+// tslint:disable ban-types
+
 import { EVEN } from './constants'
 
-const isEven: (n: number) => boolean =
-    (n: number): boolean =>
+const isEven: <T extends Number>(n: T) => boolean =
+    <T extends Number>(n: T): boolean =>
+        // @ts-ignore
         n % EVEN === 0
 
-const isOdd: (n: number) => boolean =
-    (n: number): boolean =>
+const isOdd: <T extends Number>(n: T) => boolean =
+    <T extends Number>(n: T): boolean =>
         !isEven(n)
 
 export {

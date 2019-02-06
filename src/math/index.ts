@@ -8,7 +8,7 @@ export { cycle } from './cycle'
 export { powerSet } from './powerSet'
 export { reciprocal } from './reciprocal'
 export { greatestCommonDivisor, lowestCommonMultiple } from './common'
-export { add, multiply } from './arithmetic'
+export { sum, product, difference, quotient } from './arithmetic'
 export { isOdd, isEven } from './evenOrOdd'
 export { termialRoot, trapezoidalNumber, triangularNumber, triangularRoot, quarterSquareNumber } from './specialNumbers'
 
