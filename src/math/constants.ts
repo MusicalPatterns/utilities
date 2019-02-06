@@ -31,6 +31,14 @@ const SQUARE_ROOT: Power = to.Power(1 / 2)
 const CUBE_ROOT: Power = to.Power(1 / 3)
 
 const TWO: number = 2
+const THREE: number = 3
+const FOUR: number = 4
+const FIVE: number = 5
+const SIX: number = 6
+const SEVEN: number = 7
+const EIGHT: number = 8
+const NINE: number = 9
+const TEN: number = 10
 
 const NEGATIVE: Scalar = to.Scalar(-1)
 
@@ -108,4 +116,12 @@ export {
     TENTH,
     ELEVENTH,
     TWELFTH,
+    THREE,
+    FOUR,
+    FIVE,
+    SIX,
+    SEVEN,
+    EIGHT,
+    NINE,
+    TEN,
 }

@@ -54,6 +54,14 @@ export {
     ELEVENTH,
     TWELFTH,
     TWO,
+    THREE,
+    FOUR,
+    FIVE,
+    SIX,
+    SEVEN,
+    EIGHT,
+    NINE,
+    TEN,
 } from './constants'
 export {
     Coordinate2d,
