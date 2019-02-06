@@ -11,9 +11,9 @@ const cycle: <T>(array: T[], translation: Translation) => T[] =
             index < to.Ordinal(from.Cardinal(cellCount));
             index = apply.Translation(index, to.Translation(1))
         ) {
-            let index: Ordinal = apply.Translation(index, translation)
-            index = to.Ordinal(wrapWithin(from.Ordinal(index), from.Cardinal(cellCount)))
-            cycledArray.push(array[ from.Ordinal(index) ])
+            let cycledIndex: Ordinal = apply.Translation(index, translation)
+            cycledIndex = to.Ordinal(wrapWithin(from.Ordinal(cycledIndex), from.Cardinal(cellCount)))
+            cycledArray.push(array[ from.Ordinal(cycledIndex) ])
         }
 
         return cycledArray
