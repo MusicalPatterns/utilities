@@ -1,97 +1,50 @@
-// tslint:disable max-file-line-count
+interface Scalar extends Number {_ScalarBrand: void}
 
-interface Scalar extends Number {
-    _ScalarBrand: string,
-}
+interface Cardinal extends Number {_CardinalBrand: void}
 
-interface Translation extends Number {
-    _TranslationBrand: string,
-}
+interface Translation extends Number {_TranslationBrand: void}
 
-interface Time extends Number {
-    _TimeBrand: string,
-}
+interface Ordinal extends Number {_OrdinalBrand: void}
 
-interface Ordinal extends Number {
-    _OrdinalBrand: string,
-}
+interface SumOfIndices extends Number {_SumOfIndicesBrand: void}
 
-interface SumOfIndices extends Number {
-    _SumOfIndicesBrand: string,
-}
+interface Base extends Number {_BaseBrand: void}
 
-interface Cardinal extends Number {
-    _CardinalBrand: string,
-}
+interface Power extends Number {_PowerBrand: void}
 
-interface Base extends Number {
-    _BaseBrand: string,
-}
-
-interface Power extends Number {
-    _PowerBrand: string,
-}
-
-interface CoordinateElement extends Number {
-    _CoordinateElementBrand: string,
-}
+interface CoordinateElement extends Number {_CoordinateElementBrand: void}
 
 type Coordinate = CoordinateElement[]
 
-interface Frequency extends Number {
-    _FrequencyBrand: string,
-}
+interface Frequency extends Number {_FrequencyBrand: void}
 
-interface Length extends Number {
-    _LengthBrand: string,
-}
+interface Length extends Number {_LengthBrand: void}
 
-interface Milliseconds extends Number {
-    _MillisecondBrand: string,
-}
+interface Time extends Number {_TimeBrand: void}
 
-interface Radian extends Number {
-    _RadianBrand: string,
-}
+interface Milliseconds extends Number {_MillisecondBrand: void}
 
-interface Cents extends Number {
-    _CentsBrand: string,
-}
+interface Radian extends Number {_RadianBrand: void}
 
-interface Semitones extends Number {
-    _SemitonesBrand: string,
-}
+interface Cents extends Number {_CentsBrand: void}
 
-enum _BlockBrand {}
+interface Semitones extends Number {_SemitonesBrand: void}
 
-type Block = _BlockBrand & number[]
+type Block = number[] & { _BlockBrand: void }
 
 type ContourElement<N> = [ number, ...number[] ] & { length: N }
+type ContourPiece<N> = Array<ContourElement<N>> & { _ContourPieceBrand: void }
+type ContourWhole<N> = Array<ContourElement<N>> & { _ContourWholeBrand: void }
 
-enum _ContourPieceBrand {}
+interface Numerator extends Number {_NumeratorBrand: void}
 
-type ContourPiece<N> = _ContourPieceBrand & Array<ContourElement<N>>
-
-enum _ContourWholeBrand {}
-
-type ContourWhole<N> = _ContourWholeBrand & Array<ContourElement<N>>
-
-interface Numerator extends Number {
-    _NumeratorBrand: string,
-}
-
-interface Denominator extends Number {
-    _DenominatorBrand: string,
-}
+interface Denominator extends Number {_DenominatorBrand: void}
 
 type FractionalPart = Numerator | Denominator
 type Ratio = [ Numerator, Denominator ]
 
-enum _AbsoluteBrand {}
-type Absolute<NominalType> = _AbsoluteBrand & NominalType
-
-enum _IntervalBrand {}
-type Interval<NominalType> = _IntervalBrand & NominalType
+type Absolute<NominalType> = NominalType & { _AbsoluteBrand: void }
+type Interval<NominalType> = NominalType & { _IntervalBrand: void }
 
 export {
     Base,
