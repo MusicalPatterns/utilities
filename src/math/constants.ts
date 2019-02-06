@@ -62,7 +62,7 @@ const TENTH: Ordinal = to.Ordinal(10)
 const ELEVENTH: Ordinal = to.Ordinal(11)
 const TWELFTH: Ordinal = to.Ordinal(12)
 
-const EVERY_OTHER: Scalar = to.Scalar(2)
+const EVERY_OTHER: Cardinal = to.Cardinal(2)
 
 const ADDITIVE_IDENTITY: Translation = to.Translation(0)
 const MULTIPLICATIVE_IDENTITY: Scalar = to.Scalar(1)
