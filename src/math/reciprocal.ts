@@ -1,5 +1,8 @@
-const reciprocal: (n: number) => number =
-    (n: number): number =>
+// tslint:disable ban-types
+
+const reciprocal: <T extends Number>(n: T) => T =
+    <T extends Number>(n: T): T =>
+        // @ts-ignore
         1 / n
 
 export {
