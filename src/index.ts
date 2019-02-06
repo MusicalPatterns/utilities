@@ -17,7 +17,7 @@ export {
     SumOfIndices,
     Length,
     Milliseconds,
-    Radian,
+    Radians,
     Cents,
     Semitones,
     Block,

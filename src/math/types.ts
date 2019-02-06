@@ -1,17 +1,17 @@
-import { Ordinal, Radian, Scalar } from '../nominal'
+import { Ordinal, Radians, Scalar } from '../nominal'
 
 interface RotateParameters2d {
     axis?: Ordinal,
     coordinate: Coordinate2d,
     fixedCoordinate?: Coordinate2d,
-    rotation: Radian,
+    rotation: Radians,
 }
 
 interface RotateParameters3d {
     axis?: Ordinal,
     coordinate: Coordinate3d,
     fixedCoordinate?: Coordinate3d,
-    rotation: Radian,
+    rotation: Radians,
 }
 
 type RotateParameters = RotateParameters2d | RotateParameters3d

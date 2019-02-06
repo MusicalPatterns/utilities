@@ -20,7 +20,7 @@ export {
     CoordinateElement,
     Frequency,
     SumOfIndices,
-    Radian,
+    Radians,
     Length,
     Milliseconds,
     Cents,

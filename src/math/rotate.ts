@@ -51,8 +51,8 @@ const rotate: (rotateParameters: RotateParameters) => SpatialCoordinate =
             coordinate,
         )
 
-        const sin: Scalar = to.Scalar(Math.sin(from.Radian(rotation)))
-        const cos: Scalar = to.Scalar(Math.cos(from.Radian(rotation)))
+        const sin: Scalar = to.Scalar(Math.sin(from.Radians(rotation)))
+        const cos: Scalar = to.Scalar(Math.cos(from.Radians(rotation)))
 
         const rawRelative: number[] = coordinate.map(
             (coordinateElement: number, index: number): number => {

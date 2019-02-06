@@ -14,7 +14,7 @@ import {
     Milliseconds,
     Ordinal,
     Power,
-    Radian,
+    Radians,
     Scalar,
     Semitones,
     SumOfIndices,
@@ -46,8 +46,8 @@ const Length: (length: Length) => number =
     (length: Length): number => length as any
 const Milliseconds: (milliseconds: Milliseconds) => number =
     (milliseconds: Milliseconds): number => milliseconds as any
-const Radian: (radian: Radian) => number =
-    (radian: Radian): number => radian as any
+const Radians: (radians: Radians) => number =
+    (radians: Radians): number => radians as any
 const Cents: (cents: Cents) => number =
     (cents: Cents): number => cents as any
 const Semitones: (semitones: Semitones) => number =
@@ -80,7 +80,7 @@ export {
     Frequency,
     Length,
     Milliseconds,
-    Radian,
+    Radians,
     Cents,
     Semitones,
     Coordinate,
