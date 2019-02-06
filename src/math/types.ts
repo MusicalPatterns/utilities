@@ -1,14 +1,14 @@
-import { Index, Radian, Scalar } from '../nominal'
+import { Ordinal, Radian, Scalar } from '../nominal'
 
 interface RotateParameters2d {
-    axis?: Index,
+    axis?: Ordinal,
     coordinate: Coordinate2d,
     fixedCoordinate?: Coordinate2d,
     rotation: Radian,
 }
 
 interface RotateParameters3d {
-    axis?: Index,
+    axis?: Ordinal,
     coordinate: Coordinate3d,
     fixedCoordinate?: Coordinate3d,
     rotation: Radian,

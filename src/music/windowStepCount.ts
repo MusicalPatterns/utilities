@@ -1,10 +1,10 @@
-import { apply, Base, Count, from, to } from '../nominal'
+import { apply, Base, Cardinal, from, to } from '../nominal'
 
-const windowStepCount: (window: Base, iteration: Count) => Count =
-    (window: Base, iteration: Count): Count =>
-        to.Count(
-            apply.Power(from.Base(window), to.Power(from.Count(iteration))) -
-            apply.Power(from.Base(window), to.Power(apply.Offset(from.Count(iteration), to.Offset(-1)))),
+const windowStepCount: (window: Base, iteration: Cardinal) => Cardinal =
+    (window: Base, iteration: Cardinal): Cardinal =>
+        to.Cardinal(
+            apply.Power(from.Base(window), to.Power(from.Cardinal(iteration))) -
+            apply.Power(from.Base(window), to.Power(apply.Translation(from.Cardinal(iteration), to.Translation(-1)))),
         )
 
 export {

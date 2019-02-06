@@ -1,9 +1,9 @@
 import { apply, to } from '../../../src/indexForTest'
 
 describe('apply', () => {
-    describe('Index', () => {
+    describe('Ordinal', () => {
         it('when the index exceeds the length of the array, does not crash', () => {
-            apply.Index([], to.Index(1))
+            apply.Ordinal([], to.Ordinal(1))
         })
     })
 })

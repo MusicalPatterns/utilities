@@ -4,38 +4,38 @@ import {
     Absolute,
     Base,
     Block,
+    Cardinal,
     Cents,
     CoordinateElement,
-    Count,
     FractionalPart,
     Frequency,
-    Index,
     Interval,
     Length,
     Milliseconds,
-    Offset,
+    Ordinal,
     Power,
     Radian,
     Scalar,
     Semitones,
     SumOfIndices,
     Time,
+    Translation,
 } from './types'
 
-const Count: (count: Count) => number =
-    (count: Count): number => count as any
+const Cardinal: (cardinal: Cardinal) => number =
+    (cardinal: Cardinal): number => cardinal as any
 const Scalar: (scalar: Scalar) => number =
     (scalar: Scalar): number => scalar as any
-const Offset: (offset: Offset) => number =
-    (offset: Offset): number => offset as any
+const Translation: (translation: Translation) => number =
+    (translation: Translation): number => translation as any
 const Power: (power: Power) => number =
     (power: Power): number => power as any
 const Base: (base: Base) => number =
     (base: Base): number => base as any
 const Time: (time: Time) => number =
     (time: Time): number => time as any
-const Index: (index: Index) => number =
-    (index: Index): number => index as any
+const Ordinal: (ordinal: Ordinal) => number =
+    (ordinal: Ordinal): number => ordinal as any
 const SumOfIndices: (sumOfIndices: SumOfIndices) => number =
     (sumOfIndices: SumOfIndices): number => sumOfIndices as any
 const CoordinateElement: (coordinateElement: CoordinateElement) => number =
@@ -58,8 +58,8 @@ const FractionalPart: (fractionalPart: FractionalPart) => number =
 const Coordinate: (_: Array<CoordinateElement | number>) => number[] =
     (coordinate: Array<CoordinateElement | number>): number[] => coordinate as any
 
-const Block: (block: Array<Index | number> | Index[]) => number[] =
-    (block: Array<Index | number> | Index[]): number[] => block as any
+const Block: (block: Array<Ordinal | number> | Ordinal[]) => number[] =
+    (block: Array<Ordinal | number> | Ordinal[]): number[] => block as any
 
 const Interval: <T>(interval: Interval<T>) => T =
     <T>(interval: Interval<T>): T => interval as T
@@ -69,12 +69,12 @@ const Absolute: <T>(absolute: Absolute<T>) => T =
 
 export {
     Base,
-    Count,
+    Cardinal,
     Scalar,
-    Offset,
+    Translation,
     Power,
     Time,
-    Index,
+    Ordinal,
     SumOfIndices,
     CoordinateElement,
     Frequency,

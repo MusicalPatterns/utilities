@@ -4,21 +4,20 @@ import {
     Absolute,
     Base,
     Block,
+    Cardinal,
     Cents,
     ContourElement,
     ContourPiece,
     ContourWhole,
     Coordinate,
     CoordinateElement,
-    Count,
     Denominator,
     Frequency,
-    Index,
     Interval,
     Length,
     Milliseconds,
     Numerator,
-    Offset,
+    Ordinal,
     Power,
     Radian,
     Ratio,
@@ -26,22 +25,23 @@ import {
     Semitones,
     SumOfIndices,
     Time,
+    Translation,
 } from './types'
 
 const Scalar: (scalar: number) => Scalar =
     (scalar: number): Scalar => scalar as any
-const Offset: (offset: number) => Offset =
-    (offset: number): Offset => offset as any
+const Translation: (translation: number) => Translation =
+    (translation: number): Translation => translation as any
 const Power: (power: number) => Power =
     (power: number): Power => power as any
-const Index: (index: number) => Index =
-    (index: number): Index => index as any
-const Time: (duration: number) => Time =
-    (duration: number): Time => duration as any
-const Base: (offset: number) => Base =
+const Ordinal: (ordinal: number) => Ordinal =
+    (ordinal: number): Ordinal => ordinal as any
+const Time: (time: number) => Time =
+    (time: number): Time => time as any
+const Base: (base: number) => Base =
     (base: number): Base => base as any
-const Count: (count: number) => Count =
-    (count: number): Count => count as any
+const Cardinal: (cardinal: number) => Cardinal =
+    (cardinal: number): Cardinal => cardinal as any
 const SumOfIndices: (sumOfIndices: number) => SumOfIndices =
     (sumOfIndices: number): SumOfIndices => sumOfIndices as any
 const CoordinateElement: (coordinateElement: number) => CoordinateElement =
@@ -68,9 +68,9 @@ const Coordinate: (coordinate: Array<number | CoordinateElement>) => Coordinate 
         coordinate.map((coordinateElement: number | CoordinateElement): CoordinateElement =>
             coordinateElement as any)
 
-const Block: (block: Array<number | Index>) => Block =
-    (block: Array<number | Index>): Block =>
-        block.map((blockElement: Index | number): Index => blockElement as any) as any
+const Block: (block: Array<number | Ordinal>) => Block =
+    (block: Array<number | Ordinal>): Block =>
+        block.map((blockElement: Ordinal | number): Ordinal => blockElement as any) as any
 
 const ContourPiece: <N>(contourPiece: Array<number[] | ContourElement<N>>) => ContourPiece<N> =
     <N>(contourPiece: Array<number[] | ContourElement<N>>): ContourPiece<N> =>
@@ -96,12 +96,12 @@ const Absolute: <T>(absolute: T) => Absolute<T> =
 
 export {
     Base,
-    Count,
+    Cardinal,
     Scalar,
-    Offset,
+    Translation,
     Power,
     Time,
-    Index,
+    Ordinal,
     SumOfIndices,
     Coordinate,
     CoordinateElement,

@@ -1,9 +1,9 @@
-import { Index, Offset, to } from '../nominal'
+import { Ordinal, to, Translation } from '../nominal'
 
-const INCLUSIVE: Offset = to.Offset(1)
-const EXCLUSIVE: Offset = to.Offset(-1)
+const INCLUSIVE: Translation = to.Translation(1)
+const EXCLUSIVE: Translation = to.Translation(-1)
 
-const INITIAL: Index = to.Index(0)
+const INITIAL: Ordinal = to.Ordinal(0)
 
 export {
     INCLUSIVE,

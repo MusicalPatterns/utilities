@@ -4,24 +4,24 @@ interface Scalar extends Number {
     _ScalarBrand: string,
 }
 
-interface Offset extends Number {
-    _OffsetBrand: string,
+interface Translation extends Number {
+    _TranslationBrand: string,
 }
 
 interface Time extends Number {
     _TimeBrand: string,
 }
 
-interface Index extends Number {
-    _IndexBrand: string,
+interface Ordinal extends Number {
+    _OrdinalBrand: string,
 }
 
 interface SumOfIndices extends Number {
     _SumOfIndicesBrand: string,
 }
 
-interface Count extends Number {
-    _CountBrand: string,
+interface Cardinal extends Number {
+    _CardinalBrand: string,
 }
 
 interface Base extends Number {
@@ -95,11 +95,11 @@ type Interval<NominalType> = _IntervalBrand & NominalType
 
 export {
     Base,
-    Count,
+    Cardinal,
     Scalar,
-    Offset,
+    Translation,
     Time,
-    Index,
+    Ordinal,
     Power,
     SumOfIndices,
     CoordinateElement,

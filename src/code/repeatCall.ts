@@ -1,9 +1,9 @@
-import { Count, from } from '../nominal'
+import { Cardinal, from } from '../nominal'
 
-const repeatCall: <T>(arrayFunction: () => T[], count: Count) => T[] =
-    <T>(arrayFunction: () => T[], count: Count): T[] => {
+const repeatCall: <T>(arrayFunction: () => T[], cardinal: Cardinal) => T[] =
+    <T>(arrayFunction: () => T[], cardinal: Cardinal): T[] => {
         let repeatedArrayFunction: T[] = []
-        for (let i: number = 0; i < from.Count(count); i += 1) {
+        for (let i: number = 0; i < from.Cardinal(cardinal); i += 1) {
             repeatedArrayFunction = repeatedArrayFunction.concat(arrayFunction())
         }
 

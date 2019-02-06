@@ -1,6 +1,6 @@
 // tslint:disable no-magic-numbers max-file-line-count
 
-import { Count, Index, Offset, Power, Scalar, to } from '../nominal'
+import { Cardinal, Ordinal, Power, Scalar, to, Translation } from '../nominal'
 
 const DECIMAL: number = 10
 
@@ -15,15 +15,15 @@ const ONE_NINTH: Scalar = to.Scalar(1 / 9)
 const ONE_TENTH: Scalar = to.Scalar(1 / 10)
 
 const DEFAULT_PRECISION: number = 2
-const A_SUFFICIENT_COUNT_OF_NUMBERS: Count = to.Count(Math.pow(2, 8))
+const A_SUFFICIENT_COUNT_OF_NUMBERS: Cardinal = to.Cardinal(Math.pow(2, 8))
 const ADJUSTMENT_FOR_ROTATION_MATRIX_CYCLING_FROM_AXIS: number = 2
 
-const X_AXIS: Index = to.Index(0)
-const Y_AXIS: Index = to.Index(1)
-const Z_AXIS: Index = to.Index(2)
+const X_AXIS: Ordinal = to.Ordinal(0)
+const Y_AXIS: Ordinal = to.Ordinal(1)
+const Z_AXIS: Ordinal = to.Ordinal(2)
 
-const TWO_DIMENSIONAL: Count = to.Count(2)
-const THREE_DIMENSIONAL: Count = to.Count(3)
+const TWO_DIMENSIONAL: Cardinal = to.Cardinal(2)
+const THREE_DIMENSIONAL: Cardinal = to.Cardinal(3)
 
 const SQUARED: Power = to.Power(2)
 const CUBED: Power = to.Power(3)
@@ -35,28 +35,28 @@ const TWO: number = 2
 
 const NEGATIVE: Scalar = to.Scalar(-1)
 
-const ONCE: Count = to.Count(1)
-const TWICE: Count = to.Count(2)
-const THRICE: Count = to.Count(3)
-const FRICE: Count = to.Count(4)
-const FICE: Count = to.Count(5)
-const ZEROTH: Index = to.Index(0)
-const FIRST: Index = to.Index(1)
-const SECOND: Index = to.Index(2)
-const THIRD: Index = to.Index(3)
-const FOURTH: Index = to.Index(4)
-const FIFTH: Index = to.Index(5)
-const SIXTH: Index = to.Index(6)
-const SEVENTH: Index = to.Index(7)
-const EIGHTH: Index = to.Index(8)
-const NINTH: Index = to.Index(9)
-const TENTH: Index = to.Index(10)
-const ELEVENTH: Index = to.Index(11)
-const TWELFTH: Index = to.Index(12)
+const ONCE: Cardinal = to.Cardinal(1)
+const TWICE: Cardinal = to.Cardinal(2)
+const THRICE: Cardinal = to.Cardinal(3)
+const FRICE: Cardinal = to.Cardinal(4)
+const FICE: Cardinal = to.Cardinal(5)
+const ZEROTH: Ordinal = to.Ordinal(0)
+const FIRST: Ordinal = to.Ordinal(1)
+const SECOND: Ordinal = to.Ordinal(2)
+const THIRD: Ordinal = to.Ordinal(3)
+const FOURTH: Ordinal = to.Ordinal(4)
+const FIFTH: Ordinal = to.Ordinal(5)
+const SIXTH: Ordinal = to.Ordinal(6)
+const SEVENTH: Ordinal = to.Ordinal(7)
+const EIGHTH: Ordinal = to.Ordinal(8)
+const NINTH: Ordinal = to.Ordinal(9)
+const TENTH: Ordinal = to.Ordinal(10)
+const ELEVENTH: Ordinal = to.Ordinal(11)
+const TWELFTH: Ordinal = to.Ordinal(12)
 
 const EVERY_OTHER: Scalar = to.Scalar(2)
 
-const ADDITIVE_IDENTITY: Offset = to.Offset(0)
+const ADDITIVE_IDENTITY: Translation = to.Translation(0)
 const MULTIPLICATIVE_IDENTITY: Scalar = to.Scalar(1)
 
 const ARBITRARILY_LARGE_NUMBER: number = 999999999999

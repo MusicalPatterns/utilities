@@ -1,4 +1,4 @@
-import { apply, from, Index, Offset, Scalar, to } from '../nominal'
+import { apply, from, Ordinal, Scalar, to, Translation } from '../nominal'
 import { Maybe } from '../types'
 import { ADJUSTMENT_FOR_ROTATION_MATRIX_CYCLING_FROM_AXIS, TWO_DIMENSIONAL, Z_AXIS } from './constants'
 import { cycle } from './cycle'
@@ -7,19 +7,20 @@ import { ArrayMap, RotateParameters, RotationMatrix, SpatialCoordinate } from '.
 const defaultFixedCoordinateToOriginOfDimensionalityOfCoordinate:
     (fixedCoordinate: Maybe<SpatialCoordinate>, coordinate: SpatialCoordinate) => SpatialCoordinate =
     (fixedCoordinate: Maybe<SpatialCoordinate>, coordinate: SpatialCoordinate): SpatialCoordinate =>
-        fixedCoordinate || coordinate.length === from.Count(TWO_DIMENSIONAL) ? [ 0, 0 ] : [ 0, 0, 0 ]
+        fixedCoordinate || coordinate.length === from.Cardinal(TWO_DIMENSIONAL) ? [ 0, 0 ] : [ 0, 0, 0 ]
 
 const buildArrayMapForScalingRotationMatrixToDimensionalityOfCoordinate: (coordinate: SpatialCoordinate) => ArrayMap =
     (coordinate: SpatialCoordinate): ArrayMap =>
         <T>(rotationVectorOrMatrix: T[]): T[] =>
             rotationVectorOrMatrix.slice(0, coordinate.length)
 
-const buildArrayMapForCyclingRotationMatrixForAxis: (axis: Index) => ArrayMap =
-    (axis: Index): ArrayMap =>
+const buildArrayMapForCyclingRotationMatrixForAxis: (axis: Ordinal) => ArrayMap =
+    (axis: Ordinal): ArrayMap =>
         <T>(rotationVectorOrMatrix: T[]): T[] => {
-            const offset: Offset = to.Offset(ADJUSTMENT_FOR_ROTATION_MATRIX_CYCLING_FROM_AXIS - from.Index(axis))
+            const translation: Translation =
+                to.Translation(ADJUSTMENT_FOR_ROTATION_MATRIX_CYCLING_FROM_AXIS - from.Ordinal(axis))
 
-            return cycle(rotationVectorOrMatrix, offset)
+            return cycle(rotationVectorOrMatrix, translation)
         }
 
 const mapAcrossBothDimensions: (rotationMatrix: RotationMatrix, arrayMap: ArrayMap) => RotationMatrix =
@@ -35,8 +36,8 @@ const scaleRotationMatrixToDimensionalityOfCoordinate:
     }
 
 const cycleRotationMatrixForAxis:
-    (rotationMatrix: RotationMatrix, axis: Index) => RotationMatrix =
-    (rotationMatrix: RotationMatrix, axis: Index): RotationMatrix => {
+    (rotationMatrix: RotationMatrix, axis: Ordinal) => RotationMatrix =
+    (rotationMatrix: RotationMatrix, axis: Ordinal): RotationMatrix => {
         const arrayMap: ArrayMap = buildArrayMapForCyclingRotationMatrixForAxis(axis)
 
         return mapAcrossBothDimensions(rotationMatrix, arrayMap)

@@ -10,12 +10,12 @@ export {
 
 export {
     Base,
-    Offset,
-    Index,
+    Translation,
+    Ordinal,
     Scalar,
     Time,
     Power,
-    Count,
+    Cardinal,
     Coordinate,
     CoordinateElement,
     Frequency,
