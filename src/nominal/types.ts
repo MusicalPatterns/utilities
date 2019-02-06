@@ -1,22 +1,24 @@
-type Scalar = number & { _ScalarBrand: void }
-type Cardinal = number & { _CardinalBrand: void }
-type Translation = number & { _TranslationBrand: void }
-type Ordinal = number & { _OrdinalBrand: void }
-type SumOfIndices = number & { _SumOfIndicesBrand: void }
-type Base = number & { _BaseBrand: void }
-type Power = number & { _PowerBrand: void }
+// tslint:disable ban-types
 
-type CoordinateElement = number & { _CoordinateElementBrand: void }
+type Scalar = Number & { _ScalarBrand: void }
+type Cardinal = Number & { _CardinalBrand: void }
+type Translation = Number & { _TranslationBrand: void }
+type Ordinal = Number & { _OrdinalBrand: void }
+type SumOfIndices = Number & { _SumOfIndicesBrand: void }
+type Base = Number & { _BaseBrand: void }
+type Power = Number & { _PowerBrand: void }
+
+type CoordinateElement = Number & { _CoordinateElementBrand: void }
 type Coordinate = CoordinateElement[]
 
-type Frequency = number & { _FrequencyBrand: void }
-type Length = number & { _LengthBrand: void }
-type Time = number & { _TimeBrand: void }
+type Frequency = Number & { _FrequencyBrand: void }
+type Length = Number & { _LengthBrand: void }
+type Time = Number & { _TimeBrand: void }
 
-type Milliseconds = number & { _MillisecondBrand: void }
-type Radians = number & { _RadiansBrand: void }
-type Cents = number & { _CentsBrand: void }
-type Semitones = number & { _SemitonesBrand: void }
+type Milliseconds = Number & { _MillisecondBrand: void }
+type Radians = Number & { _RadiansBrand: string }
+type Cents = Number & { _CentsBrand: void }
+type Semitones = Number & { _SemitonesBrand: void }
 
 type Block = number[] & { _BlockBrand: void }
 
@@ -24,8 +26,8 @@ type ContourElement<N> = [ number, ...number[] ] & { length: N }
 type ContourPiece<N> = Array<ContourElement<N>> & { _ContourPieceBrand: void }
 type ContourWhole<N> = Array<ContourElement<N>> & { _ContourWholeBrand: void }
 
-type Numerator = number & { _NumeratorBrand: void }
-type Denominator = number & { _DenominatorBrand: void }
+type Numerator = Number & { _NumeratorBrand: void }
+type Denominator = Number & { _DenominatorBrand: void }
 
 type FractionalPart = Numerator | Denominator
 type Ratio = [ Numerator, Denominator ]

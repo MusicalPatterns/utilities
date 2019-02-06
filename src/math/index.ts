@@ -6,11 +6,25 @@ export { distanceBetween } from './distanceBetween'
 export { rotate } from './rotate'
 export { cycle } from './cycle'
 export { powerSet } from './powerSet'
-export { reciprocal, negative } from './inverse'
 export { greatestCommonDivisor, lowestCommonMultiple } from './common'
-export { sum, product, difference, quotient } from './arithmetic'
+export {
+    reciprocal,
+    negative,
+    sum,
+    product,
+    difference,
+    quotient,
+    modulus,
+    round,
+    floor,
+    ceiling,
+    absoluteValue,
+    squareRoot,
+    cubeRoot,
+} from './typedOperations'
 export { isOdd, isEven } from './evenOrOdd'
 export { termialRoot, trapezoidalNumber, triangularNumber, triangularRoot, quarterSquareNumber } from './specialNumbers'
+export { sine, cosine, tangent } from './trigonometry'
 
 export {
     DECIMAL,
@@ -62,6 +76,12 @@ export {
     EIGHT,
     NINE,
     TEN,
+    PI,
+    E,
+    SQUARE_ROOT_OF_TWO,
+    SQUARE_ROOT_OF_THREE,
+    CUBE_ROOT_OF_TWO,
+    CUBE_ROOT_OF_THREE,
 } from './constants'
 export {
     Coordinate2d,

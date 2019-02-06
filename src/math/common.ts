@@ -1,10 +1,11 @@
 import { allElementsEqual } from '../code'
 import { TWO } from './constants'
+import { absoluteValue, product } from './typedOperations'
 import { NumericOperation } from './types'
 
 const lowestCommonMultipleOfTwoNumbers: NumericOperation =
     (a: number, b: number): number =>
-        Math.abs((a * b) / greatestCommonDivisor(a, b))
+        absoluteValue(product(a, b) / greatestCommonDivisor(a, b))
 
 const greatestCommonDivisorOfTwoNumbers: NumericOperation =
     (a: number, b: number): number => {

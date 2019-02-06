@@ -1,6 +1,6 @@
 // tslint:disable no-magic-numbers max-file-line-count
 
-import { Cardinal, Ordinal, Power, Scalar, to, Translation } from '../nominal'
+import { apply, Base, Cardinal, Ordinal, Power, Radians, Scalar, to, Translation } from '../nominal'
 
 const DECIMAL: number = 10
 
@@ -15,7 +15,7 @@ const ONE_NINTH: Scalar = to.Scalar(1 / 9)
 const ONE_TENTH: Scalar = to.Scalar(1 / 10)
 
 const DEFAULT_PRECISION: number = 2
-const A_SUFFICIENT_COUNT_OF_NUMBERS: Cardinal = to.Cardinal(Math.pow(2, 8))
+const A_SUFFICIENT_COUNT_OF_NUMBERS: Cardinal = to.Cardinal(apply.Power(2, to.Power(8)))
 const ADJUSTMENT_FOR_ROTATION_MATRIX_CYCLING_FROM_AXIS: number = 2
 
 const X_AXIS: Ordinal = to.Ordinal(0)
@@ -68,6 +68,13 @@ const ADDITIVE_IDENTITY: Translation = to.Translation(0)
 const MULTIPLICATIVE_IDENTITY: Scalar = to.Scalar(1)
 
 const ARBITRARILY_LARGE_NUMBER: number = 999999999999
+
+const PI: Radians = to.Radians(Math.PI)
+const E: Base = to.Base(Math.E)
+const SQUARE_ROOT_OF_TWO: number = Math.sqrt(2)
+const SQUARE_ROOT_OF_THREE: number = Math.sqrt(3)
+const CUBE_ROOT_OF_TWO: number = Math.cbrt(2)
+const CUBE_ROOT_OF_THREE: number = Math.cbrt(3)
 
 export {
     DECIMAL,
@@ -124,4 +131,10 @@ export {
     EIGHT,
     NINE,
     TEN,
+    PI,
+    E,
+    SQUARE_ROOT_OF_TWO,
+    SQUARE_ROOT_OF_THREE,
+    CUBE_ROOT_OF_TWO,
+    CUBE_ROOT_OF_THREE,
 }

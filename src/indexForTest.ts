@@ -34,6 +34,8 @@ export {
     triangularNumber,
     triangularRoot,
     quarterSquareNumber,
+    PI,
+    negative,
 } from './math/indexForTest'
 export {
     testArraysAreClose,

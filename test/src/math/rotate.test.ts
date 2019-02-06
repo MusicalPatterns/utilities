@@ -1,4 +1,15 @@
-import { Coordinate2d, Coordinate3d, rotate, testArraysAreClose, to, X_AXIS, Y_AXIS } from '../../../src/indexForTest'
+import {
+    apply,
+    Coordinate2d,
+    Coordinate3d,
+    negative,
+    PI,
+    rotate,
+    testArraysAreClose,
+    to,
+    X_AXIS,
+    Y_AXIS,
+} from '../../../src/indexForTest'
 
 describe('rotate', () => {
     describe('in two dimensions', () => {
@@ -6,7 +17,7 @@ describe('rotate', () => {
             const coordinate: Coordinate2d = [ 3, 0 ]
             const actualCoordinate: Coordinate2d = rotate({
                 coordinate,
-                rotation: to.Radians(Math.PI * -1 / 2),
+                rotation: apply.Scalar(PI, to.Scalar(negative(1 / 2))),
             }) as Coordinate2d
             const expectedCoordinate: Coordinate2d = [ 0, -3 ]
 
@@ -19,7 +30,7 @@ describe('rotate', () => {
             const coordinate: Coordinate3d = [ 3, 0, 0 ]
             const actualCoordinate: Coordinate3d = rotate({
                 coordinate,
-                rotation: to.Radians(Math.PI * -1 / 2),
+                rotation: apply.Scalar(PI, to.Scalar(negative(1 / 2))),
             }) as Coordinate3d
             const expectedCoordinate: Coordinate3d = [ 0, -3, 0 ]
 
@@ -31,7 +42,7 @@ describe('rotate', () => {
             const actualCoordinate: Coordinate3d = rotate({
                 axis: Y_AXIS,
                 coordinate,
-                rotation: to.Radians(Math.PI * -1 / 2),
+                rotation: apply.Scalar(PI, to.Scalar(negative(1 / 2))),
             }) as Coordinate3d
             const expectedCoordinate: Coordinate3d = [ 0, 0, 3 ]
 
@@ -43,7 +54,7 @@ describe('rotate', () => {
             const actualCoordinate: Coordinate3d = rotate({
                 axis: X_AXIS,
                 coordinate,
-                rotation: to.Radians(Math.PI * -1 / 2),
+                rotation: apply.Scalar(PI, to.Scalar(negative(1 / 2))),
             }) as Coordinate3d
             const expectedCoordinate: Coordinate3d = [ 0, 0, -3 ]
 

@@ -1,40 +1,40 @@
 // tslint:disable no-any
 
-import { DECIMAL, ONE_HALF } from '../math'
-import { apply } from '../nominal'
+import { absoluteValue, DECIMAL, negative, ONE_HALF, round } from '../math'
+import { apply, to } from '../nominal'
 
 const determineIfClose: (rawNumberOne: number, rawNumberTwo: number) => boolean =
     (rawNumberOne: number, rawNumberTwo: number): boolean => {
         const precision: number = 2
 
-        const pow: number = Math.pow(DECIMAL, precision + 1)
-        const delta: number = Math.abs(rawNumberOne - rawNumberTwo)
-        const maxDelta: number = apply.Scalar(Math.pow(DECIMAL, -precision), ONE_HALF)
+        const pow: number = apply.Power(DECIMAL, to.Power(apply.Translation(precision, to.Translation(1))))
+        const delta: number = absoluteValue(rawNumberOne - rawNumberTwo)
+        const maxDelta: number = apply.Scalar(apply.Power(DECIMAL, to.Power(negative(precision))), ONE_HALF)
 
-        return Math.round(delta * pow) / pow <= maxDelta
+        return round(delta * pow) / pow <= maxDelta
     }
 
-const maybeFail: (isClose: boolean, rawNumberOne: number, rawNumberTwo: number, negative: boolean) => void =
-    (isClose: boolean, rawNumberOne: number, rawNumberTwo: number, negative: boolean = false): void => {
-        if (!negative && !isClose) {
+const maybeFail: (isClose: boolean, rawNumberOne: number, rawNumberTwo: number, negate: boolean) => void =
+    (isClose: boolean, rawNumberOne: number, rawNumberTwo: number, negate: boolean = false): void => {
+        if (!negate && !isClose) {
             fail(`expected ${rawNumberOne} to be close to ${rawNumberTwo}`)
         }
-        else if (negative && isClose) {
+        else if (negate && isClose) {
             fail(`expected ${rawNumberOne} not to be close to ${rawNumberTwo}`)
         }
     }
 
 // tslint:disable-next-line bool-param-default
-const testIsCloseTo: <T>(numberOne: T, numberTwo: T, negative?: boolean) => boolean =
-    <T>(numberOne: T, numberTwo: T, negative: boolean = false): boolean => {
+const testIsCloseTo: <T>(numberOne: T, numberTwo: T, negate?: boolean) => boolean =
+    <T>(numberOne: T, numberTwo: T, negate: boolean = false): boolean => {
         const rawNumberOne: number = numberOne as any
         const rawNumberTwo: number = numberTwo as any
 
         const isClose: boolean = determineIfClose(rawNumberOne, rawNumberTwo)
 
-        maybeFail(isClose, rawNumberOne, rawNumberTwo, negative)
+        maybeFail(isClose, rawNumberOne, rawNumberTwo, negate)
 
-        return negative ? !isClose : isClose
+        return negate ? !isClose : isClose
     }
 
 export {
