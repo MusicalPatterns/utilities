@@ -11,6 +11,7 @@ export {
     deepClone,
     isDefined,
     allElementsEqual,
+    lastElement,
 } from './code/indexForTest'
 export {
     apply,
