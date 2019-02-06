@@ -1,24 +1,18 @@
-// tslint:disable ban-types
+const sum: <T extends number>(a: T, b: T) => T =
+    <T extends number>(a: T, b: T): T =>
+        a + b as T
 
-const sum: <T extends Number>(a: T, b: T) => T =
-    <T extends Number>(a: T, b: T): T =>
-        // @ts-ignore
-        a + b
+const difference: <T extends number>(a: T, b: T) => T =
+    <T extends number>(a: T, b: T): T =>
+        a - b as T
 
-const difference: <T extends Number>(a: T, b: T) => T =
-    <T extends Number>(a: T, b: T): T =>
-        // @ts-ignore
-        a - b
+const product: <T extends number>(a: T, b: T) => T =
+    <T extends number>(a: T, b: T): T =>
+        a * b as T
 
-const product: <T extends Number>(a: T, b: T) => T =
-    <T extends Number>(a: T, b: T): T =>
-        // @ts-ignore
-        a * b
-
-const quotient: <T extends Number>(a: T, b: T) => T =
-    <T extends Number>(a: T, b: T): T =>
-        // @ts-ignore
-        a / b
+const quotient: <T extends number>(a: T, b: T) => T =
+    <T extends number>(a: T, b: T): T =>
+        a / b as T
 
 export {
     sum,

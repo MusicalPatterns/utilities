@@ -1,34 +1,22 @@
-interface Scalar extends Number {_ScalarBrand: void}
+type Scalar = number & { _ScalarBrand: void }
+type Cardinal = number & { _CardinalBrand: void }
+type Translation = number & { _TranslationBrand: void }
+type Ordinal = number & { _OrdinalBrand: void }
+type SumOfIndices = number & { _SumOfIndicesBrand: void }
+type Base = number & { _BaseBrand: void }
+type Power = number & { _PowerBrand: void }
 
-interface Cardinal extends Number {_CardinalBrand: void}
-
-interface Translation extends Number {_TranslationBrand: void}
-
-interface Ordinal extends Number {_OrdinalBrand: void}
-
-interface SumOfIndices extends Number {_SumOfIndicesBrand: void}
-
-interface Base extends Number {_BaseBrand: void}
-
-interface Power extends Number {_PowerBrand: void}
-
-interface CoordinateElement extends Number {_CoordinateElementBrand: void}
-
+type CoordinateElement = number & { _CoordinateElementBrand: void }
 type Coordinate = CoordinateElement[]
 
-interface Frequency extends Number {_FrequencyBrand: void}
+type Frequency = number & { _FrequencyBrand: void }
+type Length = number & { _LengthBrand: void }
+type Time = number & { _TimeBrand: void }
 
-interface Length extends Number {_LengthBrand: void}
-
-interface Time extends Number {_TimeBrand: void}
-
-interface Milliseconds extends Number {_MillisecondBrand: void}
-
-interface Radian extends Number {_RadianBrand: void}
-
-interface Cents extends Number {_CentsBrand: void}
-
-interface Semitones extends Number {_SemitonesBrand: void}
+type Milliseconds = number & { _MillisecondBrand: void }
+type Radians = number & { _RadiansBrand: void }
+type Cents = number & { _CentsBrand: void }
+type Semitones = number & { _SemitonesBrand: void }
 
 type Block = number[] & { _BlockBrand: void }
 
@@ -36,9 +24,8 @@ type ContourElement<N> = [ number, ...number[] ] & { length: N }
 type ContourPiece<N> = Array<ContourElement<N>> & { _ContourPieceBrand: void }
 type ContourWhole<N> = Array<ContourElement<N>> & { _ContourWholeBrand: void }
 
-interface Numerator extends Number {_NumeratorBrand: void}
-
-interface Denominator extends Number {_DenominatorBrand: void}
+type Numerator = number & { _NumeratorBrand: void }
+type Denominator = number & { _DenominatorBrand: void }
 
 type FractionalPart = Numerator | Denominator
 type Ratio = [ Numerator, Denominator ]
