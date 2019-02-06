@@ -52,6 +52,7 @@ export {
     random,
     entries,
     keys,
+    lastElement,
 } from './code'
 export {
     absoluteRatio,
