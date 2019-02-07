@@ -1,4 +1,4 @@
-// tslint:disable ban-types
+// tslint:disable ban-types max-file-line-count
 
 import { ADDITIVE_IDENTITY, MULTIPLICATIVE_IDENTITY } from './constants'
 
@@ -49,10 +49,16 @@ const negative: <T extends Number>(n: T) => T =
         // @ts-ignore
         -n as T
 
-const round: <T extends Number>(n: T) => T =
-    <T extends Number>(n: T): T =>
-        // @ts-ignore
-        Math.round(n) as T
+const round: <T extends Number>(n: T, precision?: number) => T =
+    <T extends Number>(n: T, precision?: number): T => {
+        if (!precision) {
+            // @ts-ignore
+            return Math.round(n) as T
+        }
+
+        // tslint:disable-next-line no-any prefer-template
+        return +(Math.round(`${n}e+${precision}` as any as number) + 'e-' + precision) as any as T
+    }
 
 const floor: <T extends Number>(n: T) => T =
     <T extends Number>(n: T): T =>

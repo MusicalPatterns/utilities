@@ -4,7 +4,7 @@ export { distanceBetween } from './distanceBetween'
 export { rotate } from './rotate'
 export { powerSet } from './powerSet'
 export { greatestCommonDivisor, lowestCommonMultiple } from './common'
-export { negative } from './typedOperations'
+export { negative, round } from './typedOperations'
 export { termialRoot, trapezoidalNumber, triangularNumber, triangularRoot, quarterSquareNumber } from './specialNumbers'
 export {
     X_AXIS,

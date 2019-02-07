@@ -42,6 +42,7 @@ export {
     negative,
     ONE_HALF,
     THREE_HALVES,
+    round,
 } from './math/indexForTest'
 export {
     testArraysAreClose,
