@@ -82,6 +82,10 @@ const Cycle: <T>(cycle: T[]) => Cycle<T> =
         return cycle as any
     }
 
+const ContourElement: <N>(contourElement: number[]) => ContourElement<N> =
+    <N>(contourElement: number[]): ContourElement<N> =>
+        contourElement as any
+
 const ContourPiece: <N>(contourPiece: Array<number[] | ContourElement<N>>) => ContourPiece<N> =
     <N>(contourPiece: Array<number[] | ContourElement<N>>): ContourPiece<N> =>
         contourPiece.map((contourElement: number[] | ContourElement<N>): ContourElement<N> =>
@@ -123,6 +127,7 @@ export {
     Semitones,
     Block,
     Cycle,
+    ContourElement,
     ContourPiece,
     ContourWhole,
     Ratio,
