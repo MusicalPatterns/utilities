@@ -93,6 +93,15 @@ export {
     FOUR_THIRDS,
     FIVE_THIRDS,
     FIVE_FOURTHS,
+    NEXT,
+    PREVIOUS,
+    UP_ONE,
+    DOWN_ONE,
+    NO_TRANSLATION,
+    INCREMENT,
+    DECREMENT,
+    NUMERATOR_INDEX,
+    DENOMINATOR_INDEX,
 } from './constants'
 export {
     Coordinate2d,

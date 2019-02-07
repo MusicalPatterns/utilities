@@ -159,6 +159,15 @@ export {
     FIVE_THIRDS,
     FIVE_FOURTHS,
     dividesEvenly,
+    NEXT,
+    PREVIOUS,
+    UP_ONE,
+    DOWN_ONE,
+    NO_TRANSLATION,
+    INCREMENT,
+    DECREMENT,
+    NUMERATOR_INDEX,
+    DENOMINATOR_INDEX,
 } from './math'
 export {
     centsToPitch,

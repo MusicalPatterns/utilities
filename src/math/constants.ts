@@ -1,6 +1,6 @@
 // tslint:disable no-magic-numbers max-file-line-count
 
-import { apply, Base, Cardinal, Ordinal, Power, Radians, Scalar, to, Translation } from '../nominal'
+import { Base, Cardinal, Ordinal, Power, Radians, Scalar, to, Translation } from '../nominal'
 
 const DECIMAL: number = 10
 
@@ -87,6 +87,17 @@ const SQUARE_ROOT_OF_THREE: number = Math.sqrt(3)
 const CUBE_ROOT_OF_TWO: number = Math.cbrt(2)
 const CUBE_ROOT_OF_THREE: number = Math.cbrt(3)
 
+const NEXT: Translation = to.Translation(1)
+const PREVIOUS: Translation = to.Translation(-1)
+const UP_ONE: Translation = to.Translation(1)
+const DOWN_ONE: Translation = to.Translation(-1)
+const INCREMENT: Translation = to.Translation(1)
+const DECREMENT: Translation = to.Translation(-1)
+const NO_TRANSLATION: Translation = to.Translation(0)
+
+const NUMERATOR_INDEX: Ordinal = to.Ordinal(0)
+const DENOMINATOR_INDEX: Ordinal = to.Ordinal(1)
+
 export {
     DECIMAL,
     ONE_HALF,
@@ -158,4 +169,13 @@ export {
     FOUR_THIRDS,
     FIVE_THIRDS,
     FIVE_FOURTHS,
+    NEXT,
+    PREVIOUS,
+    UP_ONE,
+    DOWN_ONE,
+    NO_TRANSLATION,
+    INCREMENT,
+    DECREMENT,
+    NUMERATOR_INDEX,
+    DENOMINATOR_INDEX,
 }
