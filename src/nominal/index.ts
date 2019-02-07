@@ -35,4 +35,5 @@ export {
     Ratio,
     Absolute,
     Interval,
+    Modulus,
 } from './types'

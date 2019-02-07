@@ -1,7 +1,7 @@
 // tslint:disable variable-name no-any
 
 import * as from from './from'
-import { Base, Cardinal, Ordinal, Power, Scalar, Translation } from './types'
+import { Base, Cardinal, Modulus, Ordinal, Power, Scalar, Translation } from './types'
 
 const Cardinal: <T>(value: T, cardinal: Cardinal) => T =
     <T>(value: T, cardinal: Cardinal): T =>
@@ -27,6 +27,10 @@ const Ordinal: <T>(array: T[], ordinal: Ordinal) => T =
     <T>(array: T[], ordinal: Ordinal): T =>
         array[ from.Ordinal(ordinal) ]
 
+const Modulus: <T>(value: T, modulus: Modulus) => T =
+    <T>(value: T, modulus: Modulus): T =>
+        value as any as number % from.Modulus(modulus) as any as T
+
 export {
     Cardinal,
     Base,
@@ -34,4 +38,5 @@ export {
     Power,
     Scalar,
     Ordinal,
+    Modulus,
 }

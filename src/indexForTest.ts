@@ -40,6 +40,8 @@ export {
     quarterSquareNumber,
     PI,
     negative,
+    ONE_HALF,
+    THREE_HALVES,
 } from './math/indexForTest'
 export {
     testArraysAreClose,

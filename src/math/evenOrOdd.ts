@@ -1,8 +1,9 @@
 import { TWO } from './constants'
+import { dividesEvenly } from './dividesEvenly'
 
 const isEven: <T extends number>(n: T) => boolean =
     <T extends number>(n: T): boolean =>
-        n % TWO === 0
+        dividesEvenly(n, TWO)
 
 const isOdd: <T extends number>(n: T) => boolean =
     <T extends number>(n: T): boolean =>

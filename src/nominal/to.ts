@@ -16,6 +16,7 @@ import {
     Interval,
     Length,
     Milliseconds,
+    Modulus,
     Numerator,
     Ordinal,
     Power,
@@ -62,6 +63,8 @@ const Numerator: (numerator: number) => Numerator =
     (numerator: number): Numerator => numerator as any
 const Denominator: (denominator: number) => Denominator =
     (denominator: number): Denominator => denominator as any
+const Modulus: (modulus: number) => Modulus =
+    (modulus: number): Modulus => modulus as any
 
 const Coordinate: (coordinate: Array<number | CoordinateElement>) => Coordinate =
     (coordinate: Array<number | CoordinateElement>): Coordinate =>
@@ -70,7 +73,7 @@ const Coordinate: (coordinate: Array<number | CoordinateElement>) => Coordinate 
 
 const Block: (block: number[]) => Block =
     (block: number[]): Block =>
-        block.map((blockElement: number): number => blockElement as any) as any
+        block.map((cell: number): number => cell as any) as any
 
 const ContourPiece: <N>(contourPiece: Array<number[] | ContourElement<N>>) => ContourPiece<N> =
     <N>(contourPiece: Array<number[] | ContourElement<N>>): ContourPiece<N> =>
@@ -119,4 +122,5 @@ export {
     Denominator,
     Interval,
     Absolute,
+    Modulus,
 }

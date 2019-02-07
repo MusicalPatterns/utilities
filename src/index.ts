@@ -149,6 +149,17 @@ export {
     SQUARE_ROOT_OF_THREE,
     CUBE_ROOT_OF_TWO,
     CUBE_ROOT_OF_THREE,
+    TWO_THIRDS,
+    TWO_FIFTHS,
+    THREE_FOURTHS,
+    THREE_FIFTHS,
+    FOUR_FIFTHS,
+    THREE_HALVES,
+    FIVE_HALVES,
+    FOUR_THIRDS,
+    FIVE_THIRDS,
+    FIVE_FOURTHS,
+    dividesEvenly,
 } from './math'
 export {
     centsToPitch,

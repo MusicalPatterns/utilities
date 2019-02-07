@@ -14,7 +14,7 @@ const quarterSquareNumber: (n: number) => number =
 
 const trapezoidalNumber: (trapezoidalNumberParameters: { height: number, start: number }) => number =
     ({ height, start }: { height: number, start: number }): number =>
-        difference(triangularNumber(start + height), triangularNumber(start))
+        difference(triangularNumber(sum(start, height)), triangularNumber(start))
 
 const termialRoot: (termialRootParameters: { n: number, rangeDelta: number, rangeStart: number }) => number =
     ({ n, rangeDelta, rangeStart }: { n: number, rangeDelta: number, rangeStart: number }): number => {

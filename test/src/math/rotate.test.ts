@@ -3,6 +3,7 @@ import {
     Coordinate2d,
     Coordinate3d,
     negative,
+    ONE_HALF,
     PI,
     rotate,
     testArraysAreClose,
@@ -17,7 +18,7 @@ describe('rotate', () => {
             const coordinate: Coordinate2d = [ 3, 0 ]
             const actualCoordinate: Coordinate2d = rotate({
                 coordinate,
-                rotation: apply.Scalar(PI, to.Scalar(negative(1 / 2))),
+                rotation: apply.Scalar(PI, negative(ONE_HALF)),
             }) as Coordinate2d
             const expectedCoordinate: Coordinate2d = [ 0, -3 ]
 
@@ -30,7 +31,7 @@ describe('rotate', () => {
             const coordinate: Coordinate3d = [ 3, 0, 0 ]
             const actualCoordinate: Coordinate3d = rotate({
                 coordinate,
-                rotation: apply.Scalar(PI, to.Scalar(negative(1 / 2))),
+                rotation: apply.Scalar(PI, negative(ONE_HALF)),
             }) as Coordinate3d
             const expectedCoordinate: Coordinate3d = [ 0, -3, 0 ]
 
@@ -42,7 +43,7 @@ describe('rotate', () => {
             const actualCoordinate: Coordinate3d = rotate({
                 axis: Y_AXIS,
                 coordinate,
-                rotation: apply.Scalar(PI, to.Scalar(negative(1 / 2))),
+                rotation: apply.Scalar(PI, negative(ONE_HALF)),
             }) as Coordinate3d
             const expectedCoordinate: Coordinate3d = [ 0, 0, 3 ]
 
@@ -54,7 +55,7 @@ describe('rotate', () => {
             const actualCoordinate: Coordinate3d = rotate({
                 axis: X_AXIS,
                 coordinate,
-                rotation: apply.Scalar(PI, to.Scalar(negative(1 / 2))),
+                rotation: apply.Scalar(PI, negative(ONE_HALF)),
             }) as Coordinate3d
             const expectedCoordinate: Coordinate3d = [ 0, 0, -3 ]
 

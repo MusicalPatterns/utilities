@@ -7,6 +7,7 @@ type Ordinal = Number & { _OrdinalBrand: void }
 type SumOfIndices = Number & { _SumOfIndicesBrand: void }
 type Base = Number & { _BaseBrand: void }
 type Power = Number & { _PowerBrand: void }
+type Modulus = Number & { _ModulusBrand: void }
 
 type CoordinateElement = Number & { _CoordinateElementBrand: void }
 type Coordinate = CoordinateElement[]
@@ -62,4 +63,5 @@ export {
     Denominator,
     Absolute,
     Interval,
+    Modulus,
 }

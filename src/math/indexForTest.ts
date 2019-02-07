@@ -11,6 +11,8 @@ export {
     X_AXIS,
     Y_AXIS,
     PI,
+    ONE_HALF,
+    THREE_HALVES,
 } from './constants'
 export {
     Coordinate2d,

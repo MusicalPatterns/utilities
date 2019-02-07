@@ -1,3 +1,5 @@
+// tslint:disable max-file-line-count
+
 export { absoluteRatio } from './absoluteRatio'
 export { isCloseTo } from './isCloseTo'
 export { positiveIntegers, zeroAndPositiveIntegers } from './integers'
@@ -5,6 +7,7 @@ export { wrapWithin } from './wrapWithin'
 export { distanceBetween } from './distanceBetween'
 export { rotate } from './rotate'
 export { cycle } from './cycle'
+export { dividesEvenly } from './dividesEvenly'
 export { powerSet } from './powerSet'
 export { greatestCommonDivisor, lowestCommonMultiple } from './common'
 export {
@@ -82,6 +85,16 @@ export {
     SQUARE_ROOT_OF_THREE,
     CUBE_ROOT_OF_TWO,
     CUBE_ROOT_OF_THREE,
+    TWO_THIRDS,
+    TWO_FIFTHS,
+    THREE_FOURTHS,
+    THREE_FIFTHS,
+    FOUR_FIFTHS,
+    THREE_HALVES,
+    FIVE_HALVES,
+    FOUR_THIRDS,
+    FIVE_THIRDS,
+    FIVE_FOURTHS,
 } from './constants'
 export {
     Coordinate2d,

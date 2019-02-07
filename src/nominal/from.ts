@@ -12,6 +12,7 @@ import {
     Interval,
     Length,
     Milliseconds,
+    Modulus,
     Ordinal,
     Power,
     Radians,
@@ -54,6 +55,8 @@ const Semitones: (semitones: Semitones) => number =
     (semitones: Semitones): number => semitones as any
 const FractionalPart: (fractionalPart: FractionalPart) => number =
     (fractionalPart: FractionalPart): number => fractionalPart as any
+const Modulus: (modulus: Modulus) => number =
+    (modulus: Modulus): number => modulus as any
 
 const Coordinate: (coordinate: Array<CoordinateElement | number>) => number[] =
     (coordinate: Array<CoordinateElement | number>): number[] => coordinate as any
@@ -88,4 +91,5 @@ export {
     FractionalPart,
     Interval,
     Absolute,
+    Modulus,
 }

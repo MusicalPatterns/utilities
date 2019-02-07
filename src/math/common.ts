@@ -1,20 +1,20 @@
 import { allElementsEqual } from '../code'
 import { TWO } from './constants'
-import { absoluteValue, product } from './typedOperations'
+import { absoluteValue, modulus, product, quotient } from './typedOperations'
 import { NumericOperation } from './types'
 
 const lowestCommonMultipleOfTwoNumbers: NumericOperation =
     (a: number, b: number): number =>
-        absoluteValue(product(a, b) / greatestCommonDivisor(a, b))
+        absoluteValue(quotient(product(a, b), greatestCommonDivisor(a, b)))
 
 const greatestCommonDivisorOfTwoNumbers: NumericOperation =
     (a: number, b: number): number => {
         let output: number = a
-        let modulus: number = b
-        while (modulus) {
-            const previousModulus: number = modulus
-            modulus = output % modulus
-            output = previousModulus
+        let remainder: number = b
+        while (remainder) {
+            const previousRemainder: number = remainder
+            remainder = modulus(output, remainder)
+            output = previousRemainder
         }
 
         return output

@@ -15,6 +15,17 @@ const ONE_EIGHTH: Scalar = to.Scalar(1 / 8)
 const ONE_NINTH: Scalar = to.Scalar(1 / 9)
 const ONE_TENTH: Scalar = to.Scalar(1 / 10)
 
+const TWO_THIRDS: Scalar = to.Scalar(2 / 3)
+const TWO_FIFTHS: Scalar = to.Scalar(2 / 5)
+const THREE_FOURTHS: Scalar = to.Scalar(3 / 4)
+const THREE_FIFTHS: Scalar = to.Scalar(3 / 5)
+const FOUR_FIFTHS: Scalar = to.Scalar(4 / 5)
+const THREE_HALVES: Scalar = to.Scalar(3 / 2)
+const FIVE_HALVES: Scalar = to.Scalar(5 / 2)
+const FOUR_THIRDS: Scalar = to.Scalar(4 / 3)
+const FIVE_THIRDS: Scalar = to.Scalar(5 / 3)
+const FIVE_FOURTHS: Scalar = to.Scalar(5 / 4)
+
 const DEFAULT_PRECISION: number = 2
 const A_SUFFICIENT_COUNT_OF_NUMBERS: Cardinal = to.Cardinal(apply.Power(2, to.Power(8)))
 const ADJUSTMENT_FOR_ROTATION_MATRIX_CYCLING_FROM_AXIS: number = 2
@@ -138,4 +149,14 @@ export {
     SQUARE_ROOT_OF_THREE,
     CUBE_ROOT_OF_TWO,
     CUBE_ROOT_OF_THREE,
+    TWO_THIRDS,
+    TWO_FIFTHS,
+    THREE_FOURTHS,
+    THREE_FIFTHS,
+    FOUR_FIFTHS,
+    THREE_HALVES,
+    FIVE_HALVES,
+    FOUR_THIRDS,
+    FIVE_THIRDS,
+    FIVE_FOURTHS,
 }
