@@ -1,4 +1,4 @@
-import { Ordinal, Radians, Scalar } from '../nominal'
+import { Cycle, Ordinal, Radians, Scalar } from '../nominal'
 
 interface RotateParameters2d {
     axis?: Ordinal,
@@ -16,9 +16,9 @@ interface RotateParameters3d {
 
 type RotateParameters = RotateParameters2d | RotateParameters3d
 
-type ArrayMap = <T>(rotationVectorOrMatrix: T[]) => T[]
+type CycleMap = <T>(rotationVectorOrMatrix: Cycle<T>) => Cycle<T>
 
-type RotationMatrix = Scalar[][]
+type RotationMatrix = Cycle<Cycle<Scalar>>
 
 type Coordinate2d = [ number, number ]
 
@@ -29,7 +29,7 @@ type SpatialCoordinate = Coordinate2d | Coordinate3d
 type NumericOperation = (a: number, b: number) => number
 
 export {
-    ArrayMap,
+    CycleMap,
     RotateParameters,
     RotationMatrix,
     Coordinate2d,

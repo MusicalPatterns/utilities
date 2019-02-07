@@ -21,9 +21,9 @@ export {
     Coordinate,
     Scalar,
     to,
+    Cycle,
 } from './nominal/indexForTest'
 export {
-    cycle,
     distanceBetween,
     rotate,
     X_AXIS,

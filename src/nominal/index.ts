@@ -36,4 +36,5 @@ export {
     Absolute,
     Interval,
     Modulus,
+    Cycle,
 } from './types'

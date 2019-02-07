@@ -1,47 +1,47 @@
-import { apply, from, Ordinal, Scalar, to, Translation } from '../nominal'
+import { INITIAL, slice } from '../code'
+import { apply, Cycle, from, Ordinal, Scalar, to, Translation } from '../nominal'
 import { Maybe } from '../types'
 import { ADJUSTMENT_FOR_ROTATION_MATRIX_CYCLING_FROM_AXIS, TWO_DIMENSIONAL, Z_AXIS } from './constants'
-import { cycle } from './cycle'
 import { difference, negative, sum } from './typedOperations'
-import { ArrayMap, RotateParameters, RotationMatrix, SpatialCoordinate } from './types'
+import { CycleMap, RotateParameters, RotationMatrix, SpatialCoordinate } from './types'
 
 const defaultFixedCoordinateToOriginOfDimensionalityOfCoordinate:
     (fixedCoordinate: Maybe<SpatialCoordinate>, coordinate: SpatialCoordinate) => SpatialCoordinate =
     (fixedCoordinate: Maybe<SpatialCoordinate>, coordinate: SpatialCoordinate): SpatialCoordinate =>
         fixedCoordinate || coordinate.length === from.Cardinal(TWO_DIMENSIONAL) ? [ 0, 0 ] : [ 0, 0, 0 ]
 
-const buildArrayMapForScalingRotationMatrixToDimensionalityOfCoordinate: (coordinate: SpatialCoordinate) => ArrayMap =
-    (coordinate: SpatialCoordinate): ArrayMap =>
-        <T>(rotationVectorOrMatrix: T[]): T[] =>
-            rotationVectorOrMatrix.slice(0, coordinate.length)
+const buildArrayMapForScalingRotationMatrixToDimensionalityOfCoordinate: (coordinate: SpatialCoordinate) => CycleMap =
+    (coordinate: SpatialCoordinate): CycleMap =>
+        <T>(rotationVectorOrMatrix: Cycle<T>): Cycle<T> =>
+            to.Cycle(slice(rotationVectorOrMatrix, INITIAL, to.Ordinal(coordinate.length)))
 
-const buildArrayMapForCyclingRotationMatrixForAxis: (axis: Ordinal) => ArrayMap =
-    (axis: Ordinal): ArrayMap =>
-        <T>(rotationVectorOrMatrix: T[]): T[] => {
+const buildArrayMapForCyclingRotationMatrixForAxis: (axis: Ordinal) => CycleMap =
+    (axis: Ordinal): CycleMap =>
+        <T>(rotationVectorOrMatrix: Cycle<T>): Cycle<T> => {
             const translation: Translation =
                 to.Translation(difference(ADJUSTMENT_FOR_ROTATION_MATRIX_CYCLING_FROM_AXIS, from.Ordinal(axis)))
 
-            return cycle(rotationVectorOrMatrix, translation)
+            return apply.Translation(rotationVectorOrMatrix, translation)
         }
 
-const mapAcrossBothDimensions: (rotationMatrix: RotationMatrix, arrayMap: ArrayMap) => RotationMatrix =
-    (rotationMatrix: RotationMatrix, arrayMap: ArrayMap): RotationMatrix =>
-        arrayMap(rotationMatrix.map(arrayMap))
+const mapAcrossBothDimensions: (rotationMatrix: RotationMatrix, cycleMap: CycleMap) => RotationMatrix =
+    (rotationMatrix: RotationMatrix, cycleMap: CycleMap): RotationMatrix =>
+        cycleMap(to.Cycle(rotationMatrix.map(cycleMap)))
 
 const scaleRotationMatrixToDimensionalityOfCoordinate:
     (rotationMatrix: RotationMatrix, coordinate: SpatialCoordinate) => RotationMatrix =
     (rotationMatrix: RotationMatrix, coordinate: SpatialCoordinate): RotationMatrix => {
-        const arrayMap: ArrayMap = buildArrayMapForScalingRotationMatrixToDimensionalityOfCoordinate(coordinate)
+        const cycleMap: CycleMap = buildArrayMapForScalingRotationMatrixToDimensionalityOfCoordinate(coordinate)
 
-        return mapAcrossBothDimensions(rotationMatrix, arrayMap)
+        return mapAcrossBothDimensions(rotationMatrix, cycleMap)
     }
 
 const cycleRotationMatrixForAxis:
     (rotationMatrix: RotationMatrix, axis: Ordinal) => RotationMatrix =
     (rotationMatrix: RotationMatrix, axis: Ordinal): RotationMatrix => {
-        const arrayMap: ArrayMap = buildArrayMapForCyclingRotationMatrixForAxis(axis)
+        const cycleMap: CycleMap = buildArrayMapForCyclingRotationMatrixForAxis(axis)
 
-        return mapAcrossBothDimensions(rotationMatrix, arrayMap)
+        return mapAcrossBothDimensions(rotationMatrix, cycleMap)
     }
 
 const rotate: (rotateParameters: RotateParameters) => SpatialCoordinate =
@@ -63,21 +63,21 @@ const rotate: (rotateParameters: RotateParameters) => SpatialCoordinate =
             },
         )
 
-        const standardRotationMatrix: RotationMatrix = [
-            [ cos, apply.Scalar(sin, to.Scalar(negative(1))), to.Scalar(0) ],
-            [ sin, cos, to.Scalar(0) ],
-            [ to.Scalar(0), to.Scalar(0), to.Scalar(1) ],
-        ]
+        const standardRotationMatrix: RotationMatrix = to.Cycle([
+            to.Cycle([ cos, apply.Scalar(sin, to.Scalar(negative(1))), to.Scalar(0) ]),
+            to.Cycle([ sin, cos, to.Scalar(0) ]),
+            to.Cycle([ to.Scalar(0), to.Scalar(0), to.Scalar(1) ]),
+        ])
 
         const rotationMatrix: RotationMatrix = scaleRotationMatrixToDimensionalityOfCoordinate(
             cycleRotationMatrixForAxis(standardRotationMatrix, axis),
             coordinate,
         )
 
-        return rotationMatrix.map((rotationRow: Scalar[]): number =>
-            rotationRow.reduce(
-                (row: number, rotationElement: Scalar, index: number): number =>
-                    sum(row, apply.Scalar(rawRelative[ index ], rotationElement)),
+        return rotationMatrix.map((rotationVector: Scalar[]): number =>
+            rotationVector.reduce(
+                (vector: number, rotationElement: Scalar, index: number): number =>
+                    sum(vector, apply.Scalar(rawRelative[ index ], rotationElement)),
                 0,
             ),
         ) as SpatialCoordinate

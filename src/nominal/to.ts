@@ -10,7 +10,7 @@ import {
     ContourPiece,
     ContourWhole,
     Coordinate,
-    CoordinateElement,
+    CoordinateElement, Cycle,
     Denominator,
     Frequency,
     Interval,
@@ -72,8 +72,15 @@ const Coordinate: (coordinate: Array<number | CoordinateElement>) => Coordinate 
             coordinateElement as any)
 
 const Block: (block: number[]) => Block =
-    (block: number[]): Block =>
-        block.map((cell: number): number => cell as any) as any
+    (block: number[]): Block => block as any
+
+const Cycle: <T>(cycle: T[]) => Cycle<T> =
+    <T>(cycle: T[]): Cycle<T> => {
+        // @ts-ignore
+        cycle._CycleBrand = ''
+
+        return cycle as any
+    }
 
 const ContourPiece: <N>(contourPiece: Array<number[] | ContourElement<N>>) => ContourPiece<N> =
     <N>(contourPiece: Array<number[] | ContourElement<N>>): ContourPiece<N> =>
@@ -115,6 +122,7 @@ export {
     Cents,
     Semitones,
     Block,
+    Cycle,
     ContourPiece,
     ContourWhole,
     Ratio,

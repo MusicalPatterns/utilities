@@ -7,6 +7,7 @@ import {
     Cardinal,
     Cents,
     CoordinateElement,
+    Cycle,
     FractionalPart,
     Frequency,
     Interval,
@@ -64,9 +65,11 @@ const Coordinate: (coordinate: Array<CoordinateElement | number>) => number[] =
 const Block: (block: number[]) => number[] =
     (block: number[]): number[] => block as any
 
+const Cycle: <T>(cycle: Cycle<T>) => T[] =
+    <T>(cycle: Cycle<T>): T[] => cycle as any
+
 const Interval: <T>(interval: Interval<T>) => T =
     <T>(interval: Interval<T>): T => interval as T
-
 const Absolute: <T>(absolute: Absolute<T>) => T =
     <T>(absolute: Absolute<T>): T => absolute as T
 
@@ -88,6 +91,7 @@ export {
     Semitones,
     Coordinate,
     Block,
+    Cycle,
     FractionalPart,
     Interval,
     Absolute,

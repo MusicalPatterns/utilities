@@ -7,7 +7,7 @@ const zeroAndPositiveIntegers: number[] = [
 ]
 
 const positiveIntegers: number[] =  zeroAndPositiveIntegers
-    .map((integer: number): number => apply.Translation(integer, to.Translation((1))))
+    .map((integer: number): number => integer + 1)
 
 export {
     zeroAndPositiveIntegers,

@@ -58,11 +58,9 @@ export {
 } from './code'
 export {
     absoluteRatio,
-    cycle,
     isCloseTo,
     positiveIntegers,
     zeroAndPositiveIntegers,
-    wrapWithin,
     X_AXIS,
     Y_AXIS,
     Z_AXIS,

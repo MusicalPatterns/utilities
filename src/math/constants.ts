@@ -26,7 +26,7 @@ const FIVE_THIRDS: Scalar = to.Scalar(5 / 3)
 const FIVE_FOURTHS: Scalar = to.Scalar(5 / 4)
 
 const DEFAULT_PRECISION: number = 2
-const A_SUFFICIENT_COUNT_OF_NUMBERS: Cardinal = to.Cardinal(apply.Power(2, to.Power(8)))
+const A_SUFFICIENT_COUNT_OF_NUMBERS: Cardinal = to.Cardinal(Math.pow(2, 8))
 const ADJUSTMENT_FOR_ROTATION_MATRIX_CYCLING_FROM_AXIS: number = 2
 
 const X_AXIS: Ordinal = to.Ordinal(0)

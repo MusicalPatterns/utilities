@@ -11,4 +11,5 @@ export {
 export {
     Coordinate,
     Scalar,
+    Cycle,
 } from './types'

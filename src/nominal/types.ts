@@ -23,6 +23,8 @@ type Semitones = Number & { _SemitonesBrand: void }
 
 type Block = number[] & { _BlockBrand: void }
 
+type Cycle<T> = T[] & { _CycleBrand: void }
+
 type ContourElement<N> = [ number, ...number[] ] & { length: N }
 type ContourPiece<N> = Array<ContourElement<N>> & { _ContourPieceBrand: void }
 type ContourWhole<N> = Array<ContourElement<N>> & { _ContourWholeBrand: void }
@@ -54,6 +56,7 @@ export {
     Cents,
     Semitones,
     Block,
+    Cycle,
     ContourElement,
     ContourPiece,
     ContourWhole,

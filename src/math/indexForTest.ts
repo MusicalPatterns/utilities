@@ -2,7 +2,6 @@
 
 export { distanceBetween } from './distanceBetween'
 export { rotate } from './rotate'
-export { cycle } from './cycle'
 export { powerSet } from './powerSet'
 export { greatestCommonDivisor, lowestCommonMultiple } from './common'
 export { negative } from './typedOperations'
