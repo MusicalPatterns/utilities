@@ -28,6 +28,7 @@ export {
     Denominator,
     FractionalPart,
     Ratio,
+    Cycle,
 } from './nominal'
 export {
     deepEqual,
