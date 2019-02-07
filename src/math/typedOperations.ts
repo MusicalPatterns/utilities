@@ -1,19 +1,33 @@
 // tslint:disable ban-types
 
-const sum: <T extends Number>(a: T, b: T) => T =
-    <T extends Number>(a: T, b: T): T =>
+import { ADDITIVE_IDENTITY, MULTIPLICATIVE_IDENTITY } from './constants'
+
+const sum: <T extends Number>(...values: T[]) => T =
+    <T extends Number>(...values: T[]): T => {
+        const lastValue: T = values.pop() as T
+
+        // tslint:disable-next-line no-any
+        const nextSum: T = values.length ? sum(...values) : ADDITIVE_IDENTITY as any as T
+
         // @ts-ignore
-        a + b as T
+        return nextSum + lastValue
+    }
 
 const difference: <T extends Number>(a: T, b: T) => T =
     <T extends Number>(a: T, b: T): T =>
         // @ts-ignore
         a - b as T
 
-const product: <T extends Number>(a: T, b: T) => T =
-    <T extends Number>(a: T, b: T): T =>
+const product: <T extends Number>(...values: T[]) => T =
+    <T extends Number>(...values: T[]): T => {
+        const lastValue: T = values.pop() as T
+
+        // tslint:disable-next-line no-any
+        const nextProduct: T = values.length ? product(...values) : MULTIPLICATIVE_IDENTITY as any as T
+
         // @ts-ignore
-        a * b as T
+        return nextProduct * lastValue
+    }
 
 const quotient: <T extends Number>(a: T, b: T) => T =
     <T extends Number>(a: T, b: T): T =>

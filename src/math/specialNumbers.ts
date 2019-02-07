@@ -23,7 +23,7 @@ const termialRoot: (termialRootParameters: { n: number, rangeDelta: number, rang
         // tslint:disable-next-line no-magic-numbers
         const a: number = apply.Power(difference(c, rangeDelta), to.Power(2))
         // tslint:disable-next-line no-magic-numbers
-        const b: number = product(product(rangeDelta, n), 8)
+        const b: number = product(rangeDelta, n, 8)
         // tslint:disable-next-line no-magic-numbers
         const d: number = product(rangeDelta, 2)
 
