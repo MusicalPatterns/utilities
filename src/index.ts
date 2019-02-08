@@ -38,6 +38,7 @@ export {
     logMessageToScreen,
     logMessageToConsole,
     translateFromOneIndexedToZeroIndexed,
+    translateFromZeroIndexedToOneIndexed,
     typedMap,
     TypedMap,
     camelCaseToLowerCase,
