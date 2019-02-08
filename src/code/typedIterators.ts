@@ -11,13 +11,13 @@ const forEach: <T>(array: T[], fn: ForEachCallback<T>) => void =
         array.forEach(fn)
     }
 
-const map: <T>(array: T[], fn: MapCallback<T>) => T[] =
-    <T>(array: T[], fn: MapCallback<T>): T[] =>
+const map: <T, U>(array: T[], fn: MapCallback<T, U>) => U[] =
+    <T, U>(array: T[], fn: MapCallback<T, U>): U[] =>
         // @ts-ignore
         array.map(fn)
 
-const reduce: <A, T>(array: T[], fn: ReduceCallback<A, T>, accumulator: A) => A =
-    <A, T>(array: T[], fn: ReduceCallback<A, T>, accumulator: A): A =>
+const reduce: <T, U>(array: T[], fn: ReduceCallback<T, U>, accumulator: U) => U =
+    <T, U>(array: T[], fn: ReduceCallback<T, U>, accumulator: U): U =>
         // @ts-ignore
         array.reduce(fn, accumulator)
 
