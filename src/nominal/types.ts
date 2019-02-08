@@ -12,11 +12,10 @@ type Modulus = Number & { _ModulusBrand: void }
 type CoordinateElement = Number & { _CoordinateElementBrand: void }
 type Coordinate = CoordinateElement[]
 
-type Frequency = Number & { _FrequencyBrand: void }
+type Hz = Number & { _HzBrand: void }
 type Length = Number & { _LengthBrand: void }
-type Time = Number & { _TimeBrand: void }
+type Ms = Number & { _MsBrand: void }
 
-type Milliseconds = Number & { _MillisecondBrand: void }
 type Radians = Number & { _RadiansBrand: string }
 type Cents = Number & { _CentsBrand: void }
 type Semitones = Number & { _SemitonesBrand: void }
@@ -43,15 +42,14 @@ export {
     Cardinal,
     Scalar,
     Translation,
-    Time,
     Ordinal,
     Power,
     SumOfIndices,
     CoordinateElement,
     Coordinate,
-    Frequency,
+    Hz,
     Length,
-    Milliseconds,
+    Ms,
     Radians,
     Cents,
     Semitones,

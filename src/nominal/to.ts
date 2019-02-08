@@ -12,11 +12,11 @@ import {
     Coordinate,
     CoordinateElement, Cycle,
     Denominator,
-    Frequency,
+    Hz,
     Interval,
     Length,
-    Milliseconds,
     Modulus,
+    Ms,
     Numerator,
     Ordinal,
     Power,
@@ -25,7 +25,6 @@ import {
     Scalar,
     Semitones,
     SumOfIndices,
-    Time,
     Translation,
 } from './types'
 
@@ -37,8 +36,8 @@ const Power: (power: number) => Power =
     (power: number): Power => power as any
 const Ordinal: (ordinal: number) => Ordinal =
     (ordinal: number): Ordinal => ordinal as any
-const Time: (time: number) => Time =
-    (time: number): Time => time as any
+const Ms: (ms: number) => Ms =
+    (ms: number): Ms => ms as any
 const Base: (base: number) => Base =
     (base: number): Base => base as any
 const Cardinal: (cardinal: number) => Cardinal =
@@ -47,12 +46,10 @@ const SumOfIndices: (sumOfIndices: number) => SumOfIndices =
     (sumOfIndices: number): SumOfIndices => sumOfIndices as any
 const CoordinateElement: (coordinateElement: number) => CoordinateElement =
     (coordinateElement: number): CoordinateElement => coordinateElement as any
-const Frequency: (frequency: number) => Frequency =
-    (frequency: number): Frequency => frequency as any
+const Hz: (hz: number) => Hz =
+    (hz: number): Hz => hz as any
 const Length: (length: number) => Length =
     (length: number): Length => length as any
-const Milliseconds: (milliseconds: number) => Milliseconds =
-    (milliseconds: number): Milliseconds => milliseconds as any
 const Radians: (radians: number) => Radians =
     (radians: number): Radians => radians as any
 const Cents: (cents: number) => Cents =
@@ -114,14 +111,13 @@ export {
     Scalar,
     Translation,
     Power,
-    Time,
+    Ms,
     Ordinal,
     SumOfIndices,
     Coordinate,
     CoordinateElement,
-    Frequency,
+    Hz,
     Length,
-    Milliseconds,
     Radians,
     Cents,
     Semitones,

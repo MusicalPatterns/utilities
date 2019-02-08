@@ -9,18 +9,17 @@ import {
     CoordinateElement,
     Cycle,
     FractionalPart,
-    Frequency,
+    Hz,
     Interval,
     Length,
-    Milliseconds,
     Modulus,
+    Ms,
     Ordinal,
     Power,
     Radians,
     Scalar,
     Semitones,
     SumOfIndices,
-    Time,
     Translation,
 } from './types'
 
@@ -34,20 +33,18 @@ const Power: (power: Power) => number =
     (power: Power): number => power as any
 const Base: (base: Base) => number =
     (base: Base): number => base as any
-const Time: (time: Time) => number =
-    (time: Time): number => time as any
+const Ms: (ms: Ms) => number =
+    (ms: Ms): number => ms as any
 const Ordinal: (ordinal: Ordinal) => number =
     (ordinal: Ordinal): number => ordinal as any
 const SumOfIndices: (sumOfIndices: SumOfIndices) => number =
     (sumOfIndices: SumOfIndices): number => sumOfIndices as any
 const CoordinateElement: (coordinateElement: CoordinateElement) => number =
     (coordinateElement: CoordinateElement): number => coordinateElement as any
-const Frequency: (frequency: Frequency) => number =
-    (frequency: Frequency): number => frequency as any
+const Hz: (hz: Hz) => number =
+    (hz: Hz): number => hz as any
 const Length: (length: Length) => number =
     (length: Length): number => length as any
-const Milliseconds: (milliseconds: Milliseconds) => number =
-    (milliseconds: Milliseconds): number => milliseconds as any
 const Radians: (radians: Radians) => number =
     (radians: Radians): number => radians as any
 const Cents: (cents: Cents) => number =
@@ -79,13 +76,12 @@ export {
     Scalar,
     Translation,
     Power,
-    Time,
+    Ms,
     Ordinal,
     SumOfIndices,
     CoordinateElement,
-    Frequency,
+    Hz,
     Length,
-    Milliseconds,
     Radians,
     Cents,
     Semitones,

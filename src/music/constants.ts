@@ -1,7 +1,7 @@
 // tslint:disable no-magic-numbers
 
 import { reciprocal } from '../math'
-import { apply, Base, Cardinal, Cents, from, Time, to } from '../nominal'
+import { apply, Base, Cardinal, Cents, from, Ms, to } from '../nominal'
 
 const SEMITONES_PER_OCTAVE: Cardinal = to.Cardinal(12)
 
@@ -12,7 +12,7 @@ const SEMITONE: Base = apply.Power(OCTAVE, to.Power(from.Cardinal(reciprocal(SEM
 const CENTS_PER_SEMITONE: Cents = to.Cents(100)
 const CENTS_PER_OCTAVE: Cents = apply.Cardinal(CENTS_PER_SEMITONE, SEMITONES_PER_OCTAVE)
 
-const BEGINNING: Time = to.Time(0)
+const BEGINNING: Ms = to.Ms(0)
 
 const MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS: Cardinal = to.Cardinal(10)
 

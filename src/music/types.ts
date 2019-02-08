@@ -1,4 +1,4 @@
-import { Frequency } from '../nominal'
+import { Hz } from '../nominal'
 import { DictionaryOf } from '../types'
 
 enum ScientificPitchNoteName {
@@ -31,7 +31,7 @@ enum ScientificPitchOctaveNumber {
     _10 = '_10',
 }
 
-type ScientificPitches = { [key in ScientificPitchNoteName]: DictionaryOf<Frequency> }
+type ScientificPitches = { [key in ScientificPitchNoteName]: DictionaryOf<Hz> }
 
 export {
     ScientificPitchNoteName,

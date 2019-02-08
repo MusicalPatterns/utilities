@@ -2,7 +2,7 @@
 
 import { keys } from '../code'
 import { negative } from '../math'
-import { apply, Frequency, from, Power, Scalar, to } from '../nominal'
+import { apply, from, Hz, Power, Scalar, to } from '../nominal'
 import { DictionaryOf } from '../types'
 import { OCTAVE } from './constants'
 import { ScientificPitches, ScientificPitchNoteName, ScientificPitchOctaveNumber } from './types'
@@ -22,23 +22,23 @@ const SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP: { [key in ScientificPitchOcta
     [ ScientificPitchOctaveNumber._10 ]: to.Power(10),
 }
 
-const SCIENTIFIC_PITCH_NOTE_NAME_TO_ZEROTH_OCTAVE_FREQUENCY_MAP: { [key in ScientificPitchNoteName]: Frequency } = {
-    [ ScientificPitchNoteName.C ]: to.Frequency(16.352),
-    [ ScientificPitchNoteName.C_SHARP_D_FLAT ]: to.Frequency(17.324),
-    [ ScientificPitchNoteName.D ]: to.Frequency(18.354),
-    [ ScientificPitchNoteName.D_SHARP_E_FLAT ]: to.Frequency(19.445),
-    [ ScientificPitchNoteName.E ]: to.Frequency(20.602),
-    [ ScientificPitchNoteName.F ]: to.Frequency(21.827),
-    [ ScientificPitchNoteName.F_SHARP_G_FLAT ]: to.Frequency(23.125),
-    [ ScientificPitchNoteName.G ]: to.Frequency(24.5),
-    [ ScientificPitchNoteName.G_SHARP_A_FLAT ]: to.Frequency(25.957),
-    [ ScientificPitchNoteName.A ]: to.Frequency(27.5),
-    [ ScientificPitchNoteName.A_SHARP_B_FLAT ]: to.Frequency(29.135),
-    [ ScientificPitchNoteName.B ]: to.Frequency(30.868),
+const SCIENTIFIC_PITCH_NOTE_NAME_TO_ZEROTH_OCTAVE_FREQUENCY_MAP: { [key in ScientificPitchNoteName]: Hz } = {
+    [ ScientificPitchNoteName.C ]: to.Hz(16.352),
+    [ ScientificPitchNoteName.C_SHARP_D_FLAT ]: to.Hz(17.324),
+    [ ScientificPitchNoteName.D ]: to.Hz(18.354),
+    [ ScientificPitchNoteName.D_SHARP_E_FLAT ]: to.Hz(19.445),
+    [ ScientificPitchNoteName.E ]: to.Hz(20.602),
+    [ ScientificPitchNoteName.F ]: to.Hz(21.827),
+    [ ScientificPitchNoteName.F_SHARP_G_FLAT ]: to.Hz(23.125),
+    [ ScientificPitchNoteName.G ]: to.Hz(24.5),
+    [ ScientificPitchNoteName.G_SHARP_A_FLAT ]: to.Hz(25.957),
+    [ ScientificPitchNoteName.A ]: to.Hz(27.5),
+    [ ScientificPitchNoteName.A_SHARP_B_FLAT ]: to.Hz(29.135),
+    [ ScientificPitchNoteName.B ]: to.Hz(30.868),
 }
 
-const scientificPitch: (noteName: ScientificPitchNoteName, octaveNumber: ScientificPitchOctaveNumber) => Frequency =
-    (noteName: ScientificPitchNoteName, octaveNumber: ScientificPitchOctaveNumber): Frequency => {
+const scientificPitch: (noteName: ScientificPitchNoteName, octaveNumber: ScientificPitchOctaveNumber) => Hz =
+    (noteName: ScientificPitchNoteName, octaveNumber: ScientificPitchOctaveNumber): Hz => {
         const octaveScalar: Scalar =
             to.Scalar(from.Base(apply.Power(OCTAVE, SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP[ octaveNumber ])))
 
@@ -49,12 +49,12 @@ const SCIENTIFIC_PITCHES: ScientificPitches = keys(SCIENTIFIC_PITCH_NOTE_NAME_TO
     .reduce(
         (accumulator: ScientificPitches, noteName: ScientificPitchNoteName): ScientificPitches => {
             // tslint:disable-next-line no-inferred-empty-object-type
-            const frequencies: DictionaryOf<Frequency> = keys(SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP)
+            const frequencies: DictionaryOf<Hz> = keys(SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP)
                 .reduce(
                     (
-                        frequenciesAccumulator: DictionaryOf<Frequency>,
+                        frequenciesAccumulator: DictionaryOf<Hz>,
                         octaveNumber: ScientificPitchOctaveNumber,
-                    ): DictionaryOf<Frequency> => ({
+                    ): DictionaryOf<Hz> => ({
                         ...frequenciesAccumulator,
                         [ octaveNumber ]: scientificPitch(noteName, octaveNumber),
                     }),
