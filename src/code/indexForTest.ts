@@ -6,7 +6,7 @@ export { isDefined } from './isDefined'
 export { allElementsEqual } from './allElementsEqual'
 export { repeatCall } from './repeatCall'
 export { repeat } from './repeat'
-export { slice } from './slice'
+export { slice } from './typedIterators'
 export { lastElement, indexOfLastElement } from './lastElement'
 export { camelCaseToConstantCase, constantCaseToUpperCase, camelCaseToLowerCase } from './case'
 

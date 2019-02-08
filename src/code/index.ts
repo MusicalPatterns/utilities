@@ -13,7 +13,7 @@ export { sequence } from './sequence'
 export { noop } from './noop'
 export { lastElement, indexOfLastElement } from './lastElement'
 export { random } from './random'
-export { slice } from './slice'
+export { slice, forEach, map } from './typedIterators'
 
 export {
     INCLUSIVE,
