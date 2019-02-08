@@ -1,4 +1,4 @@
-import { INITIAL, slice } from '../code'
+import { INITIAL, reduce, slice } from '../code'
 import { apply, Cycle, from, Ordinal, Scalar, to, Translation } from '../nominal'
 import { Maybe } from '../types'
 import { ADJUSTMENT_FOR_ROTATION_MATRIX_CYCLING_FROM_AXIS, TWO_DIMENSIONAL, Z_AXIS } from './constants'
@@ -75,9 +75,10 @@ const rotate: (rotateParameters: RotateParameters) => SpatialCoordinate =
         )
 
         return rotationMatrix.map((rotationVector: Scalar[]): number =>
-            rotationVector.reduce(
-                (vector: number, rotationElement: Scalar, index: number): number =>
-                    sum(vector, apply.Scalar(rawRelative[ index ], rotationElement)),
+            reduce(
+                rotationVector,
+                (vector: number, rotationElement: Scalar, index: Ordinal): number =>
+                    sum(vector, apply.Scalar(apply.Ordinal(rawRelative, index), rotationElement)),
                 0,
             ),
         ) as SpatialCoordinate

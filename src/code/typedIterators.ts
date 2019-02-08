@@ -16,10 +16,10 @@ const map: <T>(array: T[], fn: MapCallback<T>) => T[] =
         // @ts-ignore
         array.map(fn)
 
-const reduce: <A, T>(array: T[], fn: ReduceCallback<A, T>) => A =
-    <A, T>(array: T[], fn: ReduceCallback<A, T>): A =>
+const reduce: <A, T>(array: T[], fn: ReduceCallback<A, T>, accumulator: A) => A =
+    <A, T>(array: T[], fn: ReduceCallback<A, T>, accumulator: A): A =>
         // @ts-ignore
-        array.reduce(fn)
+        array.reduce(fn, accumulator)
 
 export {
     slice,
