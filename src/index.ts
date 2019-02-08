@@ -58,6 +58,7 @@ export {
     slice,
     map,
     forEach,
+    reduce,
 } from './code'
 export {
     absoluteRatio,

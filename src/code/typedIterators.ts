@@ -1,5 +1,5 @@
 import { from, Ordinal } from '../nominal'
-import { ForEachCallback, MapCallback } from './types'
+import { ForEachCallback, MapCallback, ReduceCallback } from './types'
 
 const slice: <T>(array: T[], initial: Ordinal, terminal: Ordinal) => T[] =
     <T>(array: T[], initial: Ordinal, terminal: Ordinal): T[] =>
@@ -16,8 +16,14 @@ const map: <T>(array: T[], fn: MapCallback<T>) => T[] =
         // @ts-ignore
         array.map(fn)
 
+const reduce: <A, T>(array: T[], fn: ReduceCallback<A, T>) => A =
+    <A, T>(array: T[], fn: ReduceCallback<A, T>): A =>
+        // @ts-ignore
+        array.reduce(fn)
+
 export {
     slice,
     forEach,
     map,
+    reduce,
 }
