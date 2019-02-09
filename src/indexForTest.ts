@@ -51,7 +51,7 @@ export {
 } from './testing/indexForTest'
 export {
     centsToPitch,
-    windowStepCount,
+    windowIterationHarmonicStepCount,
     OCTAVE,
     TRITAVE,
     octaveReduce,

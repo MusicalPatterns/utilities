@@ -174,7 +174,7 @@ export {
 } from './math'
 export {
     centsToPitch,
-    windowStepCount,
+    windowIterationHarmonicStepCount,
     TRITAVE,
     OCTAVE,
     SEMITONE,

@@ -1,5 +1,5 @@
 export { centsToPitch } from './centsToPitch'
-export { windowStepCount } from './windowStepCount'
+export { windowIterationHarmonicStepCount } from './windowIterationHarmonicStepCount'
 export { octaveReduce } from './octaveReduce'
 export { SCIENTIFIC_PITCHES } from './scientificPitch'
 
