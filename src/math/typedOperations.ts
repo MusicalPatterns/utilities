@@ -50,8 +50,8 @@ const negative: <T extends Number>(n: T) => T =
         // @ts-ignore
         -n as T
 
-const round: <T extends Number>(n: T, precision?: Integer) => T =
-    <T extends Number>(n: T, precision?: Integer): T => {
+const round: <T extends Number, U extends Integer>(n: T, precision?: U) => T =
+    <T extends Number, U extends Integer>(n: T, precision?: U): T => {
         if (!precision) {
             // @ts-ignore
             return Math.round(n) as T
