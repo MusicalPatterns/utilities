@@ -197,6 +197,11 @@ describe('to', () => {
             const numberFromInteger: number = to.Integer(3)
         })
 
+        // it('DOES NOT ALLOW making Cardinals or Ordinals if they are already that', () => {
+        //     const doubleOrdinal: Ordinal = to.Ordinal(to.Ordinal(3))
+        //     const doubleCardinal: Cardinal = to.Cardinal(to.Cardinal(3))
+        // })
+        //
         // it('DOES NOT ALLOW making Cardinals or Ordinals if they are some other Units (not Integers)', () => {
         //     to.Ordinal(to.Hz(3))
         //     to.Cardinal(to.Hz(3))

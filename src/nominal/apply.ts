@@ -1,4 +1,4 @@
-// tslint:disable variable-name no-any max-file-line-count
+// tslint:disable variable-name no-any max-file-line-count ban-types
 
 import * as from from './from'
 import * as to from './to'
@@ -21,20 +21,20 @@ const isCycle: (value: any) => value is Cycle<any> =
         // tslint:disable-next-line strict-type-predicates
         (value as Cycle<any>)._CycleBrand !== undefined
 
-const wrapWithin: <T>(n: T, within: number) => T =
-    <T>(n: T, within: number): T => {
+const wrapWithin: <T, U extends Number>(n: T, within: U) => T =
+    <T, U extends Number>(n: T, within: U): T => {
         // @ts-ignore
         let newN: number = n as number
+        const withinN: number = within as any as number
 
         while (newN < 0) {
-            newN += within
+            newN += withinN
         }
-        while (newN >= within) {
-            newN -= within
+        while (newN >= withinN) {
+            newN -= withinN
         }
 
-        // @ts-ignore
-        return newN as T
+        return newN as any as T
     }
 
 const Cardinal: <T>(value: T, cardinal: Cardinal) => T =
@@ -58,7 +58,7 @@ const Translation: <T>(value: T, translation: Translation) => T =
                 index = Translation(index, to.Translation(1))
             ) {
                 let cycledIndex: Ordinal = Translation(index, translation)
-                cycledIndex = to.Ordinal(wrapWithin(from.Ordinal(cycledIndex), from.Cardinal(cellCount)))
+                cycledIndex = wrapWithin(cycledIndex, cellCount)
                 cycledCycle.push(cycle[ from.Ordinal(cycledIndex) ])
             }
 
