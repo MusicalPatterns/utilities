@@ -4,6 +4,7 @@ import { INITIAL, map, reduce, slice } from '../code'
 import { apply, Cycle, from, Ordinal, Scalar, to, Translation } from '../nominal'
 import { Maybe } from '../types'
 import { ADJUSTMENT_FOR_ROTATION_MATRIX_CYCLING_FROM_AXIS, TWO_DIMENSIONAL, Z_AXIS } from './constants'
+import { cosine, sine } from './trigonometry'
 import { difference, negative, sum } from './typedOperations'
 import { Coordinate, CycleMap, RotateParameters, RotationMatrix, Vector } from './types'
 
@@ -21,8 +22,10 @@ const buildArrayMapForScalingRotationMatrixToDimensionalityOfCoordinate:
 const buildArrayMapForCyclingRotationMatrixForAxis: (axis: Ordinal) => CycleMap =
     (axis: Ordinal): CycleMap =>
         <T>(rotationVectorOrMatrix: Cycle<T>): Cycle<T> => {
-            const translation: Translation =
-                to.Translation(difference(ADJUSTMENT_FOR_ROTATION_MATRIX_CYCLING_FROM_AXIS, from.Ordinal(axis)))
+            const translation: Translation = apply.Translation(
+                ADJUSTMENT_FOR_ROTATION_MATRIX_CYCLING_FROM_AXIS,
+                negative(to.Translation(from.Ordinal(axis))),
+            )
 
             return apply.Translation(rotationVectorOrMatrix, translation)
         }
@@ -55,8 +58,8 @@ const rotate: <T extends Number, D extends Number>(rotateParameters: RotateParam
             coordinate,
         )
 
-        const sin: Scalar = to.Scalar(Math.sin(from.Radians(rotation)))
-        const cos: Scalar = to.Scalar(Math.cos(from.Radians(rotation)))
+        const sin: Scalar = to.Scalar(sine(rotation))
+        const cos: Scalar = to.Scalar(cosine(rotation))
 
         const relative: T[] = map(
             coordinate,

@@ -7,7 +7,7 @@ import {
     Cardinal,
     Cycle,
     Denominator,
-    Modulus,
+    Modulus, NoOperation,
     Numerator,
     Ordinal,
     Power,
@@ -41,12 +41,12 @@ const Cardinal: <T>(value: T, cardinal: Cardinal) => T =
     <T>(value: T, cardinal: Cardinal): T =>
         value as any as number * from.Cardinal(cardinal) as any as T
 
-const Base: <T>(value: T, base: Base) => T =
-    <T>(value: T, base: Base): T =>
-        Math.log(value as any as number) / Math.log(from.Base(base)) as any as T
+const Base: <T, U extends Number>(value: T, base: Base<U>) => T =
+    <T, U extends Number>(value: T, base: Base<U>): T =>
+        Math.log(value as any as number) / Math.log(base as any as number) as any as T
 
-const Translation: <T>(value: T, translation: Translation) => T =
-    <T>(value: T, translation: Translation): T => {
+const Translation: <T, U extends Number>(value: T, translation: Translation<U>) => T =
+    <T, U extends Number>(value: T, translation: Translation<U>): T => {
         if (isCycle(value)) {
             const cycle: Cycle<T> = value as any as Cycle<T>
             const cycledCycle: Cycle<T> = to.Cycle([])
@@ -68,12 +68,12 @@ const Translation: <T>(value: T, translation: Translation) => T =
         return value as any as number + from.Translation(translation) as any as T
     }
 
-const Power: <T>(base: T, power: Power) => T =
-    <T>(base: T, power: Power): T =>
-        Math.pow(base as any as number, from.Power(power)) as any as T
+const Power: <T, U extends Number>(base: T, power: Power<U>) => T =
+    <T, U extends Number>(base: T, power: Power<U>): T =>
+        Math.pow(base as any as number, power as any as number) as any as T
 
-const Scalar: <T>(value: T, scalar: Scalar) => T =
-    <T>(value: T, scalar: Scalar): T =>
+const Scalar: <T, U extends Number>(value: T, scalar: Scalar<U>) => T =
+    <T, U extends Number>(value: T, scalar: Scalar<U>): T =>
         value as any as number * from.Scalar(scalar) as any as T
 
 const Ordinal: <T>(array: T[] | Cycle<T>, ordinal: Ordinal) => T =
@@ -88,8 +88,8 @@ const Ordinal: <T>(array: T[] | Cycle<T>, ordinal: Ordinal) => T =
         return array[ from.Ordinal(ordinal) ]
     }
 
-const Modulus: <T>(value: T, modulus: Modulus) => T =
-    <T>(value: T, modulus: Modulus): T =>
+const Modulus: <T, U extends Number>(value: T, modulus: Modulus<U>) => T =
+    <T, U extends Number>(value: T, modulus: Modulus<U>): T =>
         value as any as number % from.Modulus(modulus) as any as T
 
 const Numerator: (denominator: Denominator, numerator: Numerator) => Ratio =

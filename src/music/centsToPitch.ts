@@ -6,10 +6,10 @@ const centsToPitch: (centsToPitch: Cents) => Scalar =
     (cents: Cents): Scalar =>
         to.Scalar(from.Base(apply.Power(
             OCTAVE,
-            to.Power(from.Cents(apply.Scalar(
+            to.Power(apply.Scalar(
                 cents,
-                to.Scalar(from.Cents(reciprocal(CENTS_PER_OCTAVE))),
-            ))),
+                to.Scalar(reciprocal(CENTS_PER_OCTAVE)),
+            )),
         )))
 
 export {
