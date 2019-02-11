@@ -17,6 +17,7 @@ import {
     Rotation,
     Scalar,
     Semitones,
+    Space,
     to,
     Translation,
 } from '../../../src/indexForTest'
@@ -31,6 +32,7 @@ describe('to', () => {
             const cents: Cents = to.Cents(3)
             const semitones: Semitones = to.Semitones(3)
             const meters: Meters = to.Meters(3)
+            const space: Space = to.Space(3)
         })
 
         it('allows comparing things in the same units but with different values', () => {

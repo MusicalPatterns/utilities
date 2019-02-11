@@ -1,25 +1,27 @@
+// tslint:disable ban-types
+
 import { reduce } from '../code'
-import { apply, Coordinate, CoordinateElement, from, Ordinal } from '../nominal'
+import { apply, Ordinal } from '../nominal'
 import { SQUARE_ROOT, SQUARED } from './constants'
 import { absoluteValue, difference, sum } from './typedOperations'
+import { Coordinate } from './types'
 
-const distanceBetween: (pointA: Coordinate, pointB: Coordinate) => number =
-    (pointA: Coordinate, pointB: Coordinate): number => {
-        const sumOfSquaresOfDimensionalDistances: number = reduce(
+const distanceBetween: <T extends Number>(pointA: Coordinate<T>, pointB: Coordinate<T>) => T =
+    <T extends Number>(pointA: Coordinate<T>, pointB: Coordinate<T>): T => {
+        const sumOfSquaresOfDimensionalDistances: T = reduce(
             pointA,
-            (accumulator: number, pointAElement: CoordinateElement, index: Ordinal): number => {
-                const pointBElement: CoordinateElement = apply.Ordinal(pointB, index)
-                const dimensionalDistance: number = from.CoordinateElement(absoluteValue(
-                    difference(pointAElement, pointBElement)),
-                )
-                const squareOfDimensionalDistance: number = apply.Power(
+            (accumulator: T, pointAElement: T, index: Ordinal): T => {
+                const pointBElement: T = apply.Ordinal(pointB, index)
+                const dimensionalDistance: T = absoluteValue(difference(pointAElement, pointBElement))
+                const squareOfDimensionalDistance: T = apply.Power(
                     dimensionalDistance,
                     SQUARED,
                 )
 
                 return sum(accumulator, squareOfDimensionalDistance)
             },
-            0,
+            // tslint:disable-next-line no-any
+            0 as any as T,
         )
 
         return apply.Power(sumOfSquaresOfDimensionalDistances, SQUARE_ROOT)

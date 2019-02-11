@@ -8,8 +8,6 @@ import {
     ContourElement,
     ContourPiece,
     ContourWhole,
-    Coordinate,
-    CoordinateElement,
     Cycle,
     Denominator,
     Hz, Integer, Meters,
@@ -24,7 +22,7 @@ import {
     Ratio,
     Rotation,
     Scalar,
-    Semitones,
+    Semitones, Space,
     Translation,
 } from './types'
 
@@ -42,6 +40,8 @@ const Semitones: <T extends NoUnits>(semitones: T) => Semitones<T> =
     <T extends NoUnits>(semitones: T): Semitones<T> => semitones as Semitones<T>
 const Meters: <T extends NoUnits>(meters: T) => Meters<T> =
     <T extends NoUnits>(meters: T): Meters<T> => meters as Meters<T>
+const Space: <T extends NoUnits>(space: T) => Space<T> =
+    <T extends NoUnits>(space: T): Space<T> => space as Space<T>
 
 // Operation
 
@@ -89,13 +89,6 @@ const Ratio: (ratio: [ number | Numerator, number | Denominator ]) => Ratio =
     (ratio: [ number | Numerator, number | Denominator ]): Ratio =>
         ratio as any
 
-const CoordinateElement: (coordinateElement: number) => CoordinateElement =
-    (coordinateElement: number): CoordinateElement => coordinateElement as any
-const Coordinate: (coordinate: Array<number | CoordinateElement>) => Coordinate =
-    (coordinate: Array<number | CoordinateElement>): Coordinate =>
-        coordinate.map((coordinateElement: number | CoordinateElement): CoordinateElement =>
-            coordinateElement as any)
-
 const Block: (block: number[]) => Block =
     (block: number[]): Block => block as any
 
@@ -127,8 +120,6 @@ export {
     Power,
     Ms,
     Ordinal,
-    Coordinate,
-    CoordinateElement,
     Hz,
     Radians,
     Cents,
@@ -145,4 +136,5 @@ export {
     Rotation,
     Integer,
     Meters,
+    Space,
 }

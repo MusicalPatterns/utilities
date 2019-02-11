@@ -17,6 +17,7 @@ type Radians<T extends NoUnits = number> = UnitsBrand<'Radians', T>
 type Cents<T extends NoUnits = number> = UnitsBrand<'Cents', T>
 type Semitones<T extends NoUnits = number> = UnitsBrand<'Semitones', T>
 type Meters<T extends NoUnits = number> = UnitsBrand<'Meters', T>
+type Space<T extends NoUnits = number> = UnitsBrand<'Space', T>
 
 // Operation
 
@@ -48,9 +49,6 @@ type Cardinal = OperationBrand<'Cardinal', Integer>
 
 type Ratio = [ Numerator, Denominator ]
 
-type CoordinateElement = Number & { _CoordinateElementBrand: void }
-type Coordinate = CoordinateElement[]
-
 type Block = number[] & { _BlockBrand: void }
 
 type Cycle<T> = T[] & { _CycleBrand: void }
@@ -66,8 +64,6 @@ export {
     Translation,
     Ordinal,
     Power,
-    CoordinateElement,
-    Coordinate,
     Hz,
     Ms,
     Radians,
@@ -87,4 +83,5 @@ export {
     NoOperation,
     Integer,
     Meters,
+    Space,
 }

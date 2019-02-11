@@ -1,6 +1,6 @@
 // tslint:disable no-magic-numbers max-file-line-count
 
-import { Base, Cardinal, Integer, Ordinal, Power, Radians, Scalar, to, Translation } from '../nominal'
+import { Base, Cardinal, Integer, Ordinal, Power, Radians, Scalar, Space, to, Translation } from '../nominal'
 
 const DECIMAL: Integer = to.Integer(10)
 
@@ -32,7 +32,7 @@ const ADJUSTMENT_FOR_ROTATION_MATRIX_CYCLING_FROM_AXIS: number = 2
 const X_AXIS: Ordinal = to.Ordinal(0)
 const Y_AXIS: Ordinal = to.Ordinal(1)
 const Z_AXIS: Ordinal = to.Ordinal(2)
-
+const ORIGIN: Space = to.Space(0)
 const TWO_DIMENSIONAL: Cardinal = to.Cardinal(2)
 const THREE_DIMENSIONAL: Cardinal = to.Cardinal(3)
 
@@ -178,4 +178,5 @@ export {
     DECREMENT,
     NUMERATOR_INDEX,
     DENOMINATOR_INDEX,
+    ORIGIN,
 }

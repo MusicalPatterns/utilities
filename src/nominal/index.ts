@@ -16,8 +16,6 @@ export {
     Ms,
     Power,
     Cardinal,
-    Coordinate,
-    CoordinateElement,
     Hz,
     Radians,
     Cents,
@@ -33,4 +31,5 @@ export {
     Cycle,
     Integer,
     Meters,
+    Space,
 } from './types'

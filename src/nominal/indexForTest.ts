@@ -11,7 +11,6 @@ export {
 }
 
 export {
-    Coordinate,
     Scalar,
     Cycle,
     Cents,
@@ -31,4 +30,5 @@ export {
     Integer,
     Meters,
     Ratio,
+    Space,
 } from './types'

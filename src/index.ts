@@ -7,8 +7,6 @@ export {
     Scalar,
     Power,
     Cardinal,
-    Coordinate,
-    CoordinateElement,
     apply,
     from,
     to,
@@ -28,6 +26,7 @@ export {
     Modulus,
     Integer,
     Meters,
+    Space,
 } from './nominal'
 export {
     deepEqual,
@@ -85,8 +84,6 @@ export {
     ONE_NINTH,
     ONE_TENTH,
     THREE_DIMENSIONAL,
-    Coordinate2d,
-    Coordinate3d,
     greatestCommonDivisor,
     lowestCommonMultiple,
     DECIMAL,
@@ -174,6 +171,7 @@ export {
     NUMERATOR_INDEX,
     DENOMINATOR_INDEX,
     IntegerOperation,
+    Coordinate,
 } from './math'
 export {
     centsToPitch,

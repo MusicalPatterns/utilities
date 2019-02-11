@@ -1,18 +1,21 @@
-import { INITIAL, reduce, slice } from '../code'
+// tslint:disable ban-types max-line-length no-any
+
+import { INITIAL, map, reduce, slice } from '../code'
 import { apply, Cycle, from, Ordinal, Scalar, to, Translation } from '../nominal'
 import { Maybe } from '../types'
 import { ADJUSTMENT_FOR_ROTATION_MATRIX_CYCLING_FROM_AXIS, TWO_DIMENSIONAL, Z_AXIS } from './constants'
 import { difference, negative, sum } from './typedOperations'
-import { CycleMap, RotateParameters, RotationMatrix, SpatialCoordinate } from './types'
+import { Coordinate, CycleMap, RotateParameters, RotationMatrix, Vector } from './types'
 
 const defaultFixedCoordinateToOriginOfDimensionalityOfCoordinate:
-    (fixedCoordinate: Maybe<SpatialCoordinate>, coordinate: SpatialCoordinate) => SpatialCoordinate =
-    (fixedCoordinate: Maybe<SpatialCoordinate>, coordinate: SpatialCoordinate): SpatialCoordinate =>
-        fixedCoordinate || coordinate.length === from.Cardinal(TWO_DIMENSIONAL) ? [ 0, 0 ] : [ 0, 0, 0 ]
+    <T extends Number, D extends Number>(fixedCoordinate: Maybe<Coordinate<T, D>>, coordinate: Coordinate<T, D>) => Coordinate<T, D> =
+    <T extends Number, D extends Number>(fixedCoordinate: Maybe<Coordinate<T, D>>, coordinate: Coordinate<T, D>): Coordinate<T, D> =>
+        (fixedCoordinate || coordinate.length === from.Cardinal(TWO_DIMENSIONAL) ? [ 0, 0 ] : [ 0, 0, 0 ]) as any as Coordinate<T, D>
 
-const buildArrayMapForScalingRotationMatrixToDimensionalityOfCoordinate: (coordinate: SpatialCoordinate) => CycleMap =
-    (coordinate: SpatialCoordinate): CycleMap =>
-        <T>(rotationVectorOrMatrix: Cycle<T>): Cycle<T> =>
+const buildArrayMapForScalingRotationMatrixToDimensionalityOfCoordinate:
+    <T extends Number, D extends Number>(coordinate: Coordinate<T, D>) => CycleMap =
+    <T extends Number, D extends Number>(coordinate: Coordinate<T, D>): CycleMap =>
+        <U>(rotationVectorOrMatrix: Cycle<U>): Cycle<U> =>
             to.Cycle(slice(rotationVectorOrMatrix, INITIAL, to.Ordinal(coordinate.length)))
 
 const buildArrayMapForCyclingRotationMatrixForAxis: (axis: Ordinal) => CycleMap =
@@ -29,25 +32,25 @@ const mapAcrossBothDimensions: (rotationMatrix: RotationMatrix, cycleMap: CycleM
         cycleMap(to.Cycle(rotationMatrix.map(cycleMap)))
 
 const scaleRotationMatrixToDimensionalityOfCoordinate:
-    (rotationMatrix: RotationMatrix, coordinate: SpatialCoordinate) => RotationMatrix =
-    (rotationMatrix: RotationMatrix, coordinate: SpatialCoordinate): RotationMatrix => {
+    <T extends Number, D extends Number>(rotationMatrix: RotationMatrix, coordinate: Coordinate<T, D>) => RotationMatrix =
+    <T extends Number, D extends Number>(rotationMatrix: RotationMatrix, coordinate: Coordinate<T, D>): RotationMatrix => {
         const cycleMap: CycleMap = buildArrayMapForScalingRotationMatrixToDimensionalityOfCoordinate(coordinate)
 
         return mapAcrossBothDimensions(rotationMatrix, cycleMap)
     }
 
 const cycleRotationMatrixForAxis:
-    (rotationMatrix: RotationMatrix, axis: Ordinal) => RotationMatrix =
-    (rotationMatrix: RotationMatrix, axis: Ordinal): RotationMatrix => {
+    <T>(rotationMatrix: RotationMatrix, axis: Ordinal) => RotationMatrix =
+    <T>(rotationMatrix: RotationMatrix, axis: Ordinal): RotationMatrix => {
         const cycleMap: CycleMap = buildArrayMapForCyclingRotationMatrixForAxis(axis)
 
         return mapAcrossBothDimensions(rotationMatrix, cycleMap)
     }
 
-const rotate: (rotateParameters: RotateParameters) => SpatialCoordinate =
-    (rotateParameters: RotateParameters): SpatialCoordinate => {
+const rotate: <T extends Number, D extends Number>(rotateParameters: RotateParameters<T, D>) => Coordinate<T, D> =
+    <T extends Number, D extends Number>(rotateParameters: RotateParameters<T, D>): Coordinate<T, D> => {
         const { fixedCoordinate: fixedCoordinateArgument, coordinate, rotation, axis = Z_AXIS } = rotateParameters
-        const fixedCoordinate: SpatialCoordinate = defaultFixedCoordinateToOriginOfDimensionalityOfCoordinate(
+        const fixedCoordinate: Coordinate<T, D> = defaultFixedCoordinateToOriginOfDimensionalityOfCoordinate(
             fixedCoordinateArgument,
             coordinate,
         )
@@ -55,9 +58,10 @@ const rotate: (rotateParameters: RotateParameters) => SpatialCoordinate =
         const sin: Scalar = to.Scalar(Math.sin(from.Radians(rotation)))
         const cos: Scalar = to.Scalar(Math.cos(from.Radians(rotation)))
 
-        const rawRelative: number[] = coordinate.map(
-            (coordinateElement: number, index: number): number => {
-                const rawFixedCoordinateElement: number = fixedCoordinate[ index ]
+        const relative: T[] = map(
+            coordinate,
+            (coordinateElement: T, index: Ordinal): T => {
+                const rawFixedCoordinateElement: T = apply.Ordinal(fixedCoordinate, index)
 
                 return difference(coordinateElement, rawFixedCoordinateElement)
             },
@@ -74,14 +78,14 @@ const rotate: (rotateParameters: RotateParameters) => SpatialCoordinate =
             coordinate,
         )
 
-        return rotationMatrix.map((rotationVector: Scalar[]): number =>
+        return rotationMatrix.map((rotationVector: Vector): T =>
             reduce(
                 rotationVector,
-                (vector: number, rotationElement: Scalar, index: Ordinal): number =>
-                    sum(vector, apply.Scalar(apply.Ordinal(rawRelative, index), rotationElement)),
-                0,
+                (coordinateElement: T, rotationScalar: Scalar, index: Ordinal): T =>
+                    sum(coordinateElement, apply.Scalar(apply.Ordinal(relative, index), rotationScalar)),
+                0 as any as T,
             ),
-        ) as SpatialCoordinate
+        ) as Coordinate<T, D>
     }
 
 export {

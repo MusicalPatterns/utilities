@@ -14,6 +14,5 @@ export {
     THREE_HALVES,
 } from './constants'
 export {
-    Coordinate2d,
-    Coordinate3d,
+    Coordinate,
 } from './types'

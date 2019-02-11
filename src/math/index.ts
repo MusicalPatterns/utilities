@@ -104,8 +104,7 @@ export {
     DENOMINATOR_INDEX,
 } from './constants'
 export {
-    Coordinate2d,
-    Coordinate3d,
+    Coordinate,
     NumericOperation,
     IntegerOperation,
 } from './types'

@@ -5,7 +5,6 @@ import {
     Block,
     Cardinal,
     Cents,
-    CoordinateElement,
     Cycle,
     Denominator,
     Hz,
@@ -16,10 +15,12 @@ import {
     Numerator,
     Ordinal,
     Power,
-    Radians, Ratio,
+    Radians,
+    Ratio,
     Rotation,
     Scalar,
     Semitones,
+    Space,
     Translation,
 } from './types'
 
@@ -37,6 +38,8 @@ const Semitones: <U extends Number, T extends Semitones<U>>(semitones: T) => U &
     <U extends Number, T extends Semitones<U>>(semitones: T): U & number => semitones as any
 const Meters: <U extends Number, T extends Meters<U>>(meters: T) => U & number =
     <U extends Number, T extends Meters<U>>(meters: T): U & number => meters as any
+const Space: <U extends Number, T extends Space<U>>(space: T) => U & number =
+    <U extends Number, T extends Space<U>>(space: T): U & number => space as any
 
 // Operation
 
@@ -81,11 +84,6 @@ const Block: (block: number[]) => number[] =
 const Cycle: <T>(cycle: Cycle<T>) => T[] =
     <T>(cycle: Cycle<T>): T[] => cycle as any
 
-const CoordinateElement: (coordinateElement: CoordinateElement) => number =
-    (coordinateElement: CoordinateElement): number => coordinateElement as any
-const Coordinate: (coordinate: Array<CoordinateElement | number>) => number[] =
-    (coordinate: Array<CoordinateElement | number>): number[] => coordinate as any
-
 export {
     Base,
     Cardinal,
@@ -94,12 +92,10 @@ export {
     Power,
     Ms,
     Ordinal,
-    CoordinateElement,
     Hz,
     Radians,
     Cents,
     Semitones,
-    Coordinate,
     Block,
     Cycle,
     Modulus,
@@ -108,4 +104,5 @@ export {
     Denominator,
     Meters,
     Ratio,
+    Space,
 }
