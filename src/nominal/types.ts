@@ -38,7 +38,7 @@ type Denominator<T extends NoOperation = number> = OperationBrand<'Denominator',
 
 // Special Units & Operation
 
-type Integer<T extends NoUnits = number> = UnitsBrand<'Integer', T>
+type Integer<T extends NoUnits = number> = UnitsBrand<'Integer', T> & number
 
 type Ordinal = OperationBrand<'Ordinal', Integer>
 type Cardinal = OperationBrand<'Cardinal', Integer>

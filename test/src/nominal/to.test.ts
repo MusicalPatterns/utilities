@@ -191,6 +191,10 @@ describe('to', () => {
             const scalarInteger: Scalar<Integer> = to.Scalar(integer)
         })
 
+        it('allows using integers where you would use numbers', () => {
+            const numberFromInteger: number = to.Integer(3)
+        })
+
         // it('DOES NOT ALLOW making Cardinals or Ordinals if they are some other Units (not Integers)', () => {
         //     to.Ordinal(to.Hz(3))
         //     to.Cardinal(to.Hz(3))
