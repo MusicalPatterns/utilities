@@ -1,7 +1,6 @@
 // tslint:disable variable-name max-file-line-count no-any
 
 import {
-    Absolute,
     Base,
     Block,
     Cardinal,
@@ -10,59 +9,86 @@ import {
     ContourPiece,
     ContourWhole,
     Coordinate,
-    CoordinateElement, Cycle,
+    CoordinateElement,
+    Cycle,
     Denominator,
-    Hz,
-    Interval,
-    Length,
+    Hz, Integer,
     Modulus,
     Ms,
+    NoOperation,
+    NoUnits,
     Numerator,
     Ordinal,
     Power,
     Radians,
     Ratio,
+    Rotation,
     Scalar,
     Semitones,
-    SumOfIndices,
     Translation,
 } from './types'
 
-const Scalar: (scalar: number) => Scalar =
-    (scalar: number): Scalar => scalar as any
-const Translation: (translation: number) => Translation =
-    (translation: number): Translation => translation as any
-const Power: (power: number) => Power =
-    (power: number): Power => power as any
-const Ordinal: (ordinal: number) => Ordinal =
-    (ordinal: number): Ordinal => ordinal as any
-const Ms: (ms: number) => Ms =
-    (ms: number): Ms => ms as any
-const Base: (base: number) => Base =
-    (base: number): Base => base as any
-const Cardinal: (cardinal: number) => Cardinal =
-    (cardinal: number): Cardinal => cardinal as any
-const SumOfIndices: (sumOfIndices: number) => SumOfIndices =
-    (sumOfIndices: number): SumOfIndices => sumOfIndices as any
+// Units
+
+const Hz: <T extends NoUnits>(hz: T) => Hz<T> =
+    <T extends NoUnits>(hz: T): Hz<T> => hz as Hz<T>
+const Ms: <T extends NoUnits>(ms: T) => Ms<T> =
+    <T extends NoUnits>(ms: T): Ms<T> => ms as Ms<T>
+const Radians: <T extends NoUnits>(radians: T) => Radians<T> =
+    <T extends NoUnits>(radians: T): Radians<T> => radians as Radians<T>
+const Cents: <T extends NoUnits>(cents: T) => Cents<T> =
+    <T extends NoUnits>(cents: T): Cents<T> => cents as Cents<T>
+const Semitones: <T extends NoUnits>(semitones: T) => Semitones<T> =
+    <T extends NoUnits>(semitones: T): Semitones<T> => semitones as Semitones<T>
+
+// Operation
+
+const Scalar: <T extends NoOperation>(scalar: T) => Scalar<T> =
+    <T extends NoOperation>(scalar: T): Scalar<T> => scalar as Scalar<T>
+const Translation: <T extends NoOperation>(translation: T) => Translation<T> =
+    <T extends NoOperation>(translation: T): Translation<T> => translation as Translation<T>
+const Rotation: <T extends NoOperation>(rotation: T) => Rotation<T> =
+    <T extends NoOperation>(rotation: T): Rotation<T> => rotation as Rotation<T>
+const Base: <T extends NoOperation>(base: T) => Base<T> =
+    <T extends NoOperation>(base: T): Base<T> => base as Base<T>
+const Power: <T extends NoOperation>(power: T) => Power<T> =
+    <T extends NoOperation>(power: T): Power<T> => power as Power<T>
+const Modulus: <T extends NoOperation>(modulus: T) => Modulus<T> =
+    <T extends NoOperation>(modulus: T): Modulus<T> => modulus as Modulus<T>
+const Numerator: <T extends NoOperation>(numerator: T) => Numerator<T> =
+    <T extends NoOperation>(numerator: T): Numerator<T> => numerator as Numerator<T>
+const Denominator: <T extends NoOperation>(denominator: T) => Denominator<T> =
+    <T extends NoOperation>(denominator: T): Denominator<T> => denominator as Denominator<T>
+
+// Special Units & Operation
+
+const Integer: <T extends NoUnits>(integer: T) => Integer<T> =
+    <T extends NoUnits>(integer: T): Integer<T> => integer as Integer<T>
+const Ordinal: (ordinal: number | Integer) => Ordinal =
+    (ordinal: number | Integer): Ordinal => {
+        if (Math.round(ordinal as any as number) !== ordinal as any as number) {
+            throw new Error('Ordinals must be Integers.')
+        }
+
+        return ordinal as any
+    }
+const Cardinal: (cardinal: number | Integer) => Cardinal =
+    (cardinal: number | Integer): Cardinal => {
+        if (Math.round(cardinal as any as number) !== cardinal as any as number) {
+            throw new Error('Cardinals must be Integers.')
+        }
+
+        return cardinal as any
+    }
+
+// Other Stuff
+
+const Ratio: (ratio: [ number | Numerator, number | Denominator ]) => Ratio =
+    (ratio: [ number | Numerator, number | Denominator ]): Ratio =>
+        ratio as any
+
 const CoordinateElement: (coordinateElement: number) => CoordinateElement =
     (coordinateElement: number): CoordinateElement => coordinateElement as any
-const Hz: (hz: number) => Hz =
-    (hz: number): Hz => hz as any
-const Length: (length: number) => Length =
-    (length: number): Length => length as any
-const Radians: (radians: number) => Radians =
-    (radians: number): Radians => radians as any
-const Cents: (cents: number) => Cents =
-    (cents: number): Cents => cents as any
-const Semitones: (semitones: number) => Semitones =
-    (semitones: number): Semitones => semitones as any
-const Numerator: (numerator: number) => Numerator =
-    (numerator: number): Numerator => numerator as any
-const Denominator: (denominator: number) => Denominator =
-    (denominator: number): Denominator => denominator as any
-const Modulus: (modulus: number) => Modulus =
-    (modulus: number): Modulus => modulus as any
-
 const Coordinate: (coordinate: Array<number | CoordinateElement>) => Coordinate =
     (coordinate: Array<number | CoordinateElement>): Coordinate =>
         coordinate.map((coordinateElement: number | CoordinateElement): CoordinateElement =>
@@ -82,28 +108,14 @@ const Cycle: <T>(cycle: T[]) => Cycle<T> =
 const ContourElement: <N>(contourElement: number[]) => ContourElement<N> =
     <N>(contourElement: number[]): ContourElement<N> =>
         contourElement as any
-
 const ContourPiece: <N>(contourPiece: Array<number[] | ContourElement<N>>) => ContourPiece<N> =
     <N>(contourPiece: Array<number[] | ContourElement<N>>): ContourPiece<N> =>
         contourPiece.map((contourElement: number[] | ContourElement<N>): ContourElement<N> =>
             contourElement as any) as any
-
 const ContourWhole: <N>(contourWhole: Array<number[] | ContourElement<N>>) => ContourWhole<N> =
     <N>(contourWhole: Array<number[] | ContourElement<N>>): ContourWhole<N> =>
         contourWhole.map((contourElement: number[] | ContourElement<N>): ContourElement<N> =>
             contourElement as any) as any
-
-const Ratio: (ratio: [ number | Numerator, number | Denominator ]) => Ratio =
-    (ratio: [ number | Numerator, number | Denominator ]): Ratio =>
-        ratio as any
-
-const Interval: <T>(interval: T) => Interval<T> =
-    <T>(interval: T): Interval<T> =>
-        interval as Interval<T>
-
-const Absolute: <T>(absolute: T) => Absolute<T> =
-    <T>(absolute: T): Absolute<T> =>
-        absolute as Absolute<T>
 
 export {
     Base,
@@ -113,11 +125,9 @@ export {
     Power,
     Ms,
     Ordinal,
-    SumOfIndices,
     Coordinate,
     CoordinateElement,
     Hz,
-    Length,
     Radians,
     Cents,
     Semitones,
@@ -129,7 +139,7 @@ export {
     Ratio,
     Numerator,
     Denominator,
-    Interval,
-    Absolute,
     Modulus,
+    Rotation,
+    Integer,
 }

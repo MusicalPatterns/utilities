@@ -1,18 +1,19 @@
 import { allElementsEqual } from '../code'
+import { from, Integer, to } from '../nominal'
 import { TWO } from './constants'
 import { absoluteValue, modulus, product, quotient } from './typedOperations'
-import { NumericOperation } from './types'
+import { IntegerOperation } from './types'
 
-const lowestCommonMultipleOfTwoNumbers: NumericOperation =
-    (a: number, b: number): number =>
+const lowestCommonMultipleOfTwoNumbers: IntegerOperation =
+    (a: Integer, b: Integer): Integer =>
         absoluteValue(quotient(product(a, b), greatestCommonDivisor(a, b)))
 
-const greatestCommonDivisorOfTwoNumbers: NumericOperation =
-    (a: number, b: number): number => {
-        let output: number = a
-        let remainder: number = b
+const greatestCommonDivisorOfTwoNumbers: IntegerOperation =
+    (a: Integer, b: Integer): Integer => {
+        let output: Integer = a
+        let remainder: Integer = b
         while (remainder) {
-            const previousRemainder: number = remainder
+            const previousRemainder: Integer = remainder
             remainder = modulus(output, remainder)
             output = previousRemainder
         }
@@ -20,44 +21,44 @@ const greatestCommonDivisorOfTwoNumbers: NumericOperation =
         return output
     }
 
-const recurseCommon: (commonFunction: NumericOperation, ...numbers: number[]) => number =
-    (commonFunction: NumericOperation, ...numbers: number[]): number => {
-        if (numbers.length === 1) {
-            return numbers[ 0 ]
+const recurseCommon: (commonFunction: IntegerOperation, ...integers: Integer[]) => Integer =
+    (commonFunction: IntegerOperation, ...integers: Integer[]): Integer => {
+        if (integers.length === 1) {
+            return integers[ 0 ]
         }
-        else if (numbers.length === 0) {
-            return 1
+        else if (integers.length === 0) {
+            return to.Integer(1)
         }
 
-        const result: number = commonFunction(numbers[ 0 ], numbers[ 1 ])
-        if (numbers.length === TWO) {
+        const result: Integer = commonFunction(integers[ 0 ], integers[ 1 ])
+        if (to.Integer(integers.length) === TWO) {
             return result
         }
         else {
-            return recurseCommon(commonFunction, result, ...numbers.slice(TWO))
+            return recurseCommon(commonFunction, result, ...integers.slice(from.Integer(TWO)))
         }
     }
 
-const common: (numbers: number[], commonFunction: NumericOperation) => number =
-    (numbers: number[], commonFunction: NumericOperation): number => {
-        if (numbers.length === 0) {
-            return 1
+const common: (integers: Integer[], commonFunction: IntegerOperation) => Integer =
+    (integers: Integer[], commonFunction: IntegerOperation): Integer => {
+        if (integers.length === 0) {
+            return to.Integer(1)
         }
 
-        if (allElementsEqual(numbers)) {
-            return numbers[ 0 ]
+        if (allElementsEqual(integers)) {
+            return integers[ 0 ]
         }
 
-        return recurseCommon(commonFunction, ...numbers)
+        return recurseCommon(commonFunction, ...integers)
     }
 
-const lowestCommonMultiple: (...numbers: number[]) => number =
-    (...numbers: number[]): number =>
-        common(numbers, lowestCommonMultipleOfTwoNumbers)
+const lowestCommonMultiple: (...integers: Integer[]) => Integer =
+    (...integers: Integer[]): Integer =>
+        common(integers, lowestCommonMultipleOfTwoNumbers)
 
-const greatestCommonDivisor: (...numbers: number[]) => number =
-    (...numbers: number[]): number =>
-        common(numbers, greatestCommonDivisorOfTwoNumbers)
+const greatestCommonDivisor: (...integers: Integer[]) => Integer =
+    (...integers: Integer[]): Integer =>
+        common(integers, greatestCommonDivisorOfTwoNumbers)
 
 export {
     lowestCommonMultiple,

@@ -1,4 +1,4 @@
-import { Cycle, Ordinal, Radians, Scalar } from '../nominal'
+import { Cycle, Integer, Ordinal, Radians, Scalar } from '../nominal'
 
 interface RotateParameters2d {
     axis?: Ordinal,
@@ -28,6 +28,8 @@ type SpatialCoordinate = Coordinate2d | Coordinate3d
 
 type NumericOperation = (a: number, b: number) => number
 
+type IntegerOperation = (a: Integer, b: Integer) => Integer
+
 export {
     CycleMap,
     RotateParameters,
@@ -36,4 +38,5 @@ export {
     Coordinate3d,
     SpatialCoordinate,
     NumericOperation,
+    IntegerOperation,
 }

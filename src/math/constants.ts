@@ -1,8 +1,8 @@
 // tslint:disable no-magic-numbers max-file-line-count
 
-import { Base, Cardinal, Ordinal, Power, Radians, Scalar, to, Translation } from '../nominal'
+import { Base, Cardinal, Integer, Ordinal, Power, Radians, Scalar, to, Translation } from '../nominal'
 
-const DECIMAL: number = 10
+const DECIMAL: Integer = to.Integer(10)
 
 const ONE_HALF: Scalar = to.Scalar(1 / 2)
 const ONE_THIRD: Scalar = to.Scalar(1 / 3)
@@ -25,7 +25,7 @@ const FOUR_THIRDS: Scalar = to.Scalar(4 / 3)
 const FIVE_THIRDS: Scalar = to.Scalar(5 / 3)
 const FIVE_FOURTHS: Scalar = to.Scalar(5 / 4)
 
-const DEFAULT_PRECISION: number = 2
+const DEFAULT_PRECISION: Integer = to.Integer(2)
 const A_SUFFICIENT_COUNT_OF_NUMBERS: Cardinal = to.Cardinal(Math.pow(2, 8))
 const ADJUSTMENT_FOR_ROTATION_MATRIX_CYCLING_FROM_AXIS: number = 2
 
@@ -41,15 +41,15 @@ const CUBED: Power = to.Power(3)
 const SQUARE_ROOT: Power = to.Power(1 / 2)
 const CUBE_ROOT: Power = to.Power(1 / 3)
 
-const TWO: number = 2
-const THREE: number = 3
-const FOUR: number = 4
-const FIVE: number = 5
-const SIX: number = 6
-const SEVEN: number = 7
-const EIGHT: number = 8
-const NINE: number = 9
-const TEN: number = 10
+const TWO: Integer = to.Integer(2)
+const THREE: Integer = to.Integer(3)
+const FOUR: Integer = to.Integer(4)
+const FIVE: Integer = to.Integer(5)
+const SIX: Integer = to.Integer(6)
+const SEVEN: Integer = to.Integer(7)
+const EIGHT: Integer = to.Integer(8)
+const NINE: Integer = to.Integer(9)
+const TEN: Integer = to.Integer(10)
 
 const NEGATIVE: Scalar = to.Scalar(-1)
 

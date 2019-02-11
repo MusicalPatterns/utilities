@@ -18,10 +18,26 @@ export {
 } from './code/indexForTest'
 export {
     apply,
+    to,
+    from,
     Coordinate,
     Scalar,
-    to,
     Cycle,
+    Cents,
+    Ms,
+    Hz,
+    Semitones,
+    Rotation,
+    Base,
+    Modulus,
+    Ordinal,
+    Power,
+    Radians,
+    Translation,
+    Cardinal,
+    Numerator,
+    Denominator,
+    Integer,
 } from './nominal/indexForTest'
 export {
     distanceBetween,
@@ -43,6 +59,8 @@ export {
     ONE_HALF,
     THREE_HALVES,
     round,
+    sum,
+    product,
 } from './math/indexForTest'
 export {
     testArraysAreClose,

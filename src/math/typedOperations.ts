@@ -1,5 +1,6 @@
 // tslint:disable ban-types max-file-line-count
 
+import { Integer } from '../nominal'
 import { ADDITIVE_IDENTITY, MULTIPLICATIVE_IDENTITY } from './constants'
 
 const sum: <T extends Number>(...values: T[]) => T =
@@ -49,8 +50,8 @@ const negative: <T extends Number>(n: T) => T =
         // @ts-ignore
         -n as T
 
-const round: <T extends Number>(n: T, precision?: number) => T =
-    <T extends Number>(n: T, precision?: number): T => {
+const round: <T extends Number>(n: T, precision?: Integer) => T =
+    <T extends Number>(n: T, precision?: Integer): T => {
         if (!precision) {
             // @ts-ignore
             return Math.round(n) as T

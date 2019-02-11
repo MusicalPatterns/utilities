@@ -7,9 +7,11 @@ const determineIfClose: (rawNumberOne: number, rawNumberTwo: number) => boolean 
     (rawNumberOne: number, rawNumberTwo: number): boolean => {
         const precision: number = 2
 
-        const pow: number = apply.Power(DECIMAL, to.Power(apply.Translation(precision, to.Translation(1))))
+        const pow: number =
+            apply.Power(DECIMAL, to.Power(apply.Translation(precision, to.Translation(1)))) as any as number
         const delta: number = absoluteValue(difference(rawNumberOne, rawNumberTwo))
-        const maxDelta: number = apply.Scalar(apply.Power(DECIMAL, to.Power(negative(precision))), ONE_HALF)
+        const maxDelta: number =
+            apply.Scalar(apply.Power(DECIMAL, to.Power(negative(precision))), ONE_HALF) as any as number
 
         return quotient(round(product(delta, pow)), pow) <= maxDelta
     }

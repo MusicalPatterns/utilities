@@ -20,3 +20,8 @@ export {
     EXCLUSIVE,
     INITIAL,
 } from './constants'
+
+export {
+    Omit,
+    Difference,
+} from './types'

@@ -107,4 +107,5 @@ export {
     Coordinate2d,
     Coordinate3d,
     NumericOperation,
+    IntegerOperation,
 } from './types'

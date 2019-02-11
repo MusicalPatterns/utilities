@@ -1,13 +1,13 @@
-import { apply, to } from '../nominal'
+import { from, Integer, to } from '../nominal'
 import { A_SUFFICIENT_COUNT_OF_NUMBERS } from './constants'
 
-const zeroAndPositiveIntegers: number[] = [
+const zeroAndPositiveIntegers: Integer[] = [
     ...Array(A_SUFFICIENT_COUNT_OF_NUMBERS)
         .keys(),
-]
+].map(to.Integer)
 
-const positiveIntegers: number[] =  zeroAndPositiveIntegers
-    .map((integer: number): number => integer + 1)
+const positiveIntegers: Integer[] = zeroAndPositiveIntegers
+    .map((integer: Integer): Integer => to.Integer(from.Integer(integer) + 1))
 
 export {
     zeroAndPositiveIntegers,

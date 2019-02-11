@@ -13,8 +13,6 @@ export {
     from,
     to,
     Hz,
-    SumOfIndices,
-    Length,
     Ms,
     Radians,
     Cents,
@@ -25,9 +23,10 @@ export {
     ContourElement,
     Numerator,
     Denominator,
-    FractionalPart,
     Ratio,
     Cycle,
+    Modulus,
+    Integer,
 } from './nominal'
 export {
     deepEqual,
@@ -59,6 +58,8 @@ export {
     map,
     forEach,
     reduce,
+    Omit,
+    Difference,
 } from './code'
 export {
     absoluteRatio,
@@ -171,6 +172,7 @@ export {
     DECREMENT,
     NUMERATOR_INDEX,
     DENOMINATOR_INDEX,
+    IntegerOperation,
 } from './math'
 export {
     centsToPitch,

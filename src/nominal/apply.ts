@@ -1,8 +1,20 @@
-// tslint:disable variable-name no-any
+// tslint:disable variable-name no-any max-file-line-count
 
 import * as from from './from'
 import * as to from './to'
-import { Base, Cardinal, Cycle, Modulus, Ordinal, Power, Scalar, Translation } from './types'
+import {
+    Base,
+    Cardinal,
+    Cycle,
+    Denominator,
+    Modulus,
+    Numerator,
+    Ordinal,
+    Power,
+    Ratio,
+    Scalar,
+    Translation,
+} from './types'
 
 const isCycle: (value: any) => value is Cycle<any> =
     (value: any): value is Cycle<any> =>
@@ -80,6 +92,14 @@ const Modulus: <T>(value: T, modulus: Modulus) => T =
     <T>(value: T, modulus: Modulus): T =>
         value as any as number % from.Modulus(modulus) as any as T
 
+const Numerator: (denominator: Denominator, numerator: Numerator) => Ratio =
+    (denominator: Denominator, numerator: Numerator): Ratio =>
+        [ numerator, denominator ]
+
+const Denominator: (numerator: Numerator, denominator: Denominator) => Ratio =
+    (numerator: Numerator, denominator: Denominator): Ratio =>
+        [ numerator, denominator ]
+
 export {
     Cardinal,
     Base,
@@ -88,4 +108,6 @@ export {
     Scalar,
     Ordinal,
     Modulus,
+    Numerator,
+    Denominator,
 }

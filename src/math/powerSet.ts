@@ -1,7 +1,7 @@
 import { Maybe } from '../types'
 
-const recursiveCombinations: (remainingSet: number[], activeSet?: number[], output?: number[][]) => Maybe<number[][]> =
-    (remainingSet: number[], activeSet: number[] = [], output: number[][] = []): Maybe<number[][]> => {
+const recursiveCombinations: <T>(remainingSet: T[], activeSet?: T[], output?: T[][]) => Maybe<T[][]> =
+    <T>(remainingSet: T[], activeSet: T[] = [], output: T[][] = []): Maybe<T[][]> => {
         if (!activeSet.length && !remainingSet.length) {
             return undefined
         }
@@ -16,10 +16,10 @@ const recursiveCombinations: (remainingSet: number[], activeSet?: number[], outp
         return output
     }
 
-const powerSet: (set: number[]) => number[][] =
-    (set: number[]): number[][] => {
-        const combinations: number[][] = recursiveCombinations(set) as number[][]
-        const emptySet: number[] = []
+const powerSet: <T>(set: T[]) => T[][] =
+    <T>(set: T[]): T[][] => {
+        const combinations: T[][] = recursiveCombinations(set) as T[][]
+        const emptySet: T[] = []
 
         return [ emptySet ].concat(combinations)
     }

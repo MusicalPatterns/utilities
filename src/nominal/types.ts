@@ -1,24 +1,54 @@
 // tslint:disable ban-types
 
-type Scalar = Number & { _ScalarBrand: void }
-type Cardinal = Number & { _CardinalBrand: void }
-type Translation = Number & { _TranslationBrand: void }
-type Ordinal = Number & { _OrdinalBrand: void }
-type SumOfIndices = Number & { _SumOfIndicesBrand: void }
-type Base = Number & { _BaseBrand: void }
-type Power = Number & { _PowerBrand: void }
-type Modulus = Number & { _ModulusBrand: void }
+import { Difference } from '../code'
+
+type OverrideInteriorNeutrality<T, NeutralType> = T extends NeutralType ? Difference<T, NeutralType> & Number : T
+
+// Units
+
+type NoUnits = Number & { _UnitsBrand?: 'Abstract' | 'Integer' }
+type Abstract = Number & { _UnitsBrand: 'Abstract' | 'Integer' }
+type ForUnits<T> = T extends number ? Operand : OverrideInteriorNeutrality<T, Abstract>
+type UnitsBrand<Unit, T extends NoUnits = number> = ForUnits<T> & { _UnitsBrand: Unit }
+
+type Hz<T extends NoUnits = number> = UnitsBrand<'Hz', T>
+type Ms<T extends NoUnits = number> = UnitsBrand<'Ms', T>
+type Radians<T extends NoUnits = number> = UnitsBrand<'Radians', T>
+type Cents<T extends NoUnits = number> = UnitsBrand<'Cents', T>
+type Semitones<T extends NoUnits = number> = UnitsBrand<'Semitones', T>
+
+// Operation
+
+type NoOperation = Number & { _OperationBrand?: 'Operand' }
+type Operand = Number & { _OperationBrand: 'Operand' }
+type ForOperation<T> = T extends number ? Abstract : OverrideInteriorNeutrality<T, Operand>
+type OperationBrand<Operation, T extends NoOperation = number> = ForOperation<T> & { _OperationBrand: Operation }
+
+type Scalar<T extends NoOperation = number> = OperationBrand<'Scalar', T>
+type Translation<T extends NoOperation = number> = OperationBrand<'Translation', T>
+type Rotation<T extends NoOperation = number> = OperationBrand<'Rotation', T>
+
+type Base<T extends NoOperation = number> = OperationBrand<'Base', T>
+type Power<T extends NoOperation = number> = OperationBrand<'Power', T>
+
+type Modulus<T extends NoOperation = number> = OperationBrand<'Modulus', T>
+
+type Numerator<T extends NoOperation = number> = OperationBrand<'Numerator', T>
+type Denominator<T extends NoOperation = number> = OperationBrand<'Denominator', T>
+
+// Special Units & Operation
+
+type Integer<T extends NoUnits = number> = UnitsBrand<'Integer', T>
+
+type Ordinal = OperationBrand<'Ordinal', Integer>
+type Cardinal = OperationBrand<'Cardinal', Integer>
+
+// Other Stuff
+
+type Ratio = [ Numerator, Denominator ]
 
 type CoordinateElement = Number & { _CoordinateElementBrand: void }
 type Coordinate = CoordinateElement[]
-
-type Hz = Number & { _HzBrand: void }
-type Length = Number & { _LengthBrand: void }
-type Ms = Number & { _MsBrand: void }
-
-type Radians = Number & { _RadiansBrand: string }
-type Cents = Number & { _CentsBrand: void }
-type Semitones = Number & { _SemitonesBrand: void }
 
 type Block = number[] & { _BlockBrand: void }
 
@@ -28,15 +58,6 @@ type ContourElement<N> = [ number, ...number[] ] & { length: N }
 type ContourPiece<N> = Array<ContourElement<N>> & { _ContourPieceBrand: void }
 type ContourWhole<N> = Array<ContourElement<N>> & { _ContourWholeBrand: void }
 
-type Numerator = Number & { _NumeratorBrand: void }
-type Denominator = Number & { _DenominatorBrand: void }
-
-type FractionalPart = Numerator | Denominator
-type Ratio = [ Numerator, Denominator ]
-
-type Absolute<NominalType> = NominalType & { _AbsoluteBrand: void }
-type Interval<NominalType> = NominalType & { _IntervalBrand: void }
-
 export {
     Base,
     Cardinal,
@@ -44,11 +65,9 @@ export {
     Translation,
     Ordinal,
     Power,
-    SumOfIndices,
     CoordinateElement,
     Coordinate,
     Hz,
-    Length,
     Ms,
     Radians,
     Cents,
@@ -58,11 +77,12 @@ export {
     ContourElement,
     ContourPiece,
     ContourWhole,
-    FractionalPart,
     Ratio,
     Numerator,
     Denominator,
-    Absolute,
-    Interval,
     Modulus,
+    Rotation,
+    NoUnits,
+    NoOperation,
+    Integer,
 }

@@ -31,6 +31,11 @@ describe('apply', () => {
     })
 
     describe('Translation', () => {
+        it('when applies to a number, translates it (sums)', () => {
+            expect(apply.Translation(to.Scalar(4), to.Translation(1)))
+                .toBe(to.Scalar(5))
+        })
+
         it('when applies to a cyclical array, cycles it to the left', () => {
             expect(apply.Translation(to.Cycle([ 0, 1, 1, 0, 1 ]), to.Translation(1)))
                 .toEqual(to.Cycle([ 1, 1, 0, 1, 0 ]))
@@ -38,6 +43,18 @@ describe('apply', () => {
                 .toEqual(to.Cycle([ 0, 1, 1, 0, 1 ]))
             expect(apply.Translation(to.Cycle([ 0, 1, 1, 0, 1 ]), to.Translation(negative(1))))
                 .toEqual(to.Cycle([ 1, 0, 1, 1, 0 ]))
+        })
+    })
+
+    describe('ratios', () => {
+        it('applying a numerator to a denominator gives a ratio', () => {
+            expect(apply.Numerator(to.Denominator(5), to.Numerator(4)))
+                .toEqual(to.Ratio([ 4, 5 ]))
+        })
+
+        it('applying a denominator to a numerator gives a ratio', () => {
+            expect(apply.Denominator(to.Numerator(5), to.Denominator(4)))
+                .toEqual(to.Ratio([ 5, 4 ]))
         })
     })
 })
