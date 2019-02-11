@@ -172,6 +172,8 @@ export {
     DENOMINATOR_INDEX,
     IntegerOperation,
     Coordinate,
+    TwoDimensional,
+    ThreeDimensional,
 } from './math'
 export {
     centsToPitch,

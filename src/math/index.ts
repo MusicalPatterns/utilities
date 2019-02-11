@@ -107,4 +107,6 @@ export {
     Coordinate,
     NumericOperation,
     IntegerOperation,
+    TwoDimensional,
+    ThreeDimensional,
 } from './types'
