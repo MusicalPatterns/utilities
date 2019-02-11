@@ -16,7 +16,7 @@ import {
     Numerator,
     Ordinal,
     Power,
-    Radians,
+    Radians, Ratio,
     Rotation,
     Scalar,
     Semitones,
@@ -72,6 +72,9 @@ const Cardinal: (cardinal: Cardinal) => number =
 
 // Other Stuff
 
+const Ratio: (ratio: Ratio) => number = (ratio: Ratio): number =>
+    Numerator(ratio[ 0 ]) * (1 / Denominator(ratio[ 1 ]))
+
 const Block: (block: number[]) => number[] =
     (block: number[]): number[] => block as any
 
@@ -104,4 +107,5 @@ export {
     Numerator,
     Denominator,
     Meters,
+    Ratio,
 }

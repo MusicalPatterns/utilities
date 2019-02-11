@@ -30,4 +30,5 @@ export {
     Denominator,
     Integer,
     Meters,
+    Ratio,
 } from './types'

@@ -39,6 +39,7 @@ export {
     Denominator,
     Integer,
     Meters,
+    Ratio,
 } from './nominal/indexForTest'
 export {
     distanceBetween,
