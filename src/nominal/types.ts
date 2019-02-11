@@ -16,6 +16,7 @@ type Ms<T extends NoUnits = number> = UnitsBrand<'Ms', T>
 type Radians<T extends NoUnits = number> = UnitsBrand<'Radians', T>
 type Cents<T extends NoUnits = number> = UnitsBrand<'Cents', T>
 type Semitones<T extends NoUnits = number> = UnitsBrand<'Semitones', T>
+type Meters<T extends NoUnits = number> = UnitsBrand<'Meters', T>
 
 // Operation
 
@@ -85,4 +86,5 @@ export {
     NoUnits,
     NoOperation,
     Integer,
+    Meters,
 }

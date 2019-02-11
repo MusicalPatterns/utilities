@@ -29,4 +29,5 @@ export {
     Numerator,
     Denominator,
     Integer,
+    Meters,
 } from './types'

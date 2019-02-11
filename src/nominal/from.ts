@@ -10,6 +10,7 @@ import {
     Denominator,
     Hz,
     Integer,
+    Meters,
     Modulus,
     Ms,
     Numerator,
@@ -34,6 +35,8 @@ const Cents: <U extends Number, T extends Cents<U>>(cents: T) => U & number =
     <U extends Number, T extends Cents<U>>(cents: T): U & number => cents as any
 const Semitones: <U extends Number, T extends Semitones<U>>(semitones: T) => U & number =
     <U extends Number, T extends Semitones<U>>(semitones: T): U & number => semitones as any
+const Meters: <U extends Number, T extends Meters<U>>(meters: T) => U & number =
+    <U extends Number, T extends Meters<U>>(meters: T): U & number => meters as any
 
 // Operation
 
@@ -100,4 +103,5 @@ export {
     Integer,
     Numerator,
     Denominator,
+    Meters,
 }

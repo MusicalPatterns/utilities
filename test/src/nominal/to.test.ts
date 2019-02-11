@@ -7,6 +7,7 @@ import {
     Denominator,
     Hz,
     Integer,
+    Meters,
     Modulus,
     Ms,
     Numerator,
@@ -29,6 +30,7 @@ describe('to', () => {
             const radians: Radians = to.Radians(3)
             const cents: Cents = to.Cents(3)
             const semitones: Semitones = to.Semitones(3)
+            const meters: Meters = to.Meters(3)
         })
 
         it('allows comparing things in the same units but with different values', () => {

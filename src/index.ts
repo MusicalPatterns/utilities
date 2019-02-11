@@ -27,6 +27,7 @@ export {
     Cycle,
     Modulus,
     Integer,
+    Meters,
 } from './nominal'
 export {
     deepEqual,

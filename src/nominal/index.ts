@@ -32,4 +32,5 @@ export {
     Modulus,
     Cycle,
     Integer,
+    Meters,
 } from './types'

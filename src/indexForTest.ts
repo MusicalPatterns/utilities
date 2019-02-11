@@ -38,6 +38,7 @@ export {
     Numerator,
     Denominator,
     Integer,
+    Meters,
 } from './nominal/indexForTest'
 export {
     distanceBetween,

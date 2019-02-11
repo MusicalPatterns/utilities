@@ -12,7 +12,7 @@ import {
     CoordinateElement,
     Cycle,
     Denominator,
-    Hz, Integer,
+    Hz, Integer, Meters,
     Modulus,
     Ms,
     NoOperation,
@@ -40,6 +40,8 @@ const Cents: <T extends NoUnits>(cents: T) => Cents<T> =
     <T extends NoUnits>(cents: T): Cents<T> => cents as Cents<T>
 const Semitones: <T extends NoUnits>(semitones: T) => Semitones<T> =
     <T extends NoUnits>(semitones: T): Semitones<T> => semitones as Semitones<T>
+const Meters: <T extends NoUnits>(meters: T) => Meters<T> =
+    <T extends NoUnits>(meters: T): Meters<T> => meters as Meters<T>
 
 // Operation
 
@@ -142,4 +144,5 @@ export {
     Modulus,
     Rotation,
     Integer,
+    Meters,
 }
