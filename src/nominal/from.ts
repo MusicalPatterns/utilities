@@ -98,4 +98,6 @@ export {
     Cycle,
     Modulus,
     Integer,
+    Numerator,
+    Denominator,
 }
