@@ -10,7 +10,7 @@ const TRITAVE: Base = to.Base(3)
 const SEMITONE: Base = apply.Power(OCTAVE, to.Power(from.Cardinal(reciprocal(SEMITONES_PER_OCTAVE))))
 
 const CENTS_PER_SEMITONE: Cents = to.Cents(100)
-const CENTS_PER_OCTAVE: Cents = apply.Cardinal(CENTS_PER_SEMITONE, SEMITONES_PER_OCTAVE)
+const CENTS_PER_OCTAVE: Cents = apply.Scalar(CENTS_PER_SEMITONE, to.Scalar(from.Cardinal(SEMITONES_PER_OCTAVE)))
 
 const BEGINNING: Ms = to.Ms(0)
 

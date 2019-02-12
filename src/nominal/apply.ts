@@ -37,10 +37,6 @@ const wrapWithin: <T, U extends Number>(n: T, within: U) => T =
         return newN as any as T
     }
 
-const Cardinal: <T>(value: T, cardinal: Cardinal) => T =
-    <T>(value: T, cardinal: Cardinal): T =>
-        value as any as number * from.Cardinal(cardinal) as any as T
-
 const Base: <T, U extends Number>(value: T, base: Base<U>) => T =
     <T, U extends Number>(value: T, base: Base<U>): T =>
         Math.log(value as any as number) / Math.log(base as any as number) as any as T
