@@ -102,6 +102,7 @@ export {
     DECREMENT,
     NUMERATOR_INDEX,
     DENOMINATOR_INDEX,
+    ORIGIN,
 } from './constants'
 export {
     Coordinate,
