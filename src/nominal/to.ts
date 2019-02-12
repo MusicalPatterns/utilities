@@ -63,15 +63,15 @@ const Modulus: <T extends NoOperation>(modulus: T) => Modulus<T> =
 
 // Special Units & Operation
 
-const integerCheck: (value: number, type: string) => void =
-    (value: number, type: string): void => {
+const integerCheck: (value: number | Integer, type: string) => void =
+    (value: number | Integer, type: string): void => {
         if (Math.round(value as any as number) !== value as any as number) {
             throw new Error(`${type}s must be Integers.`)
         }
     }
 
-const Integer: <T extends NoUnits>(integer: T) => Integer<T> =
-    <T extends NoUnits>(integer: T): Integer<T> => integer as Integer<T>
+const Integer: <T extends NoUnits>(integer: T) => Integer =
+    <T extends NoUnits>(integer: T): Integer => integer as any
 const Ordinal: (ordinal: number | Integer) => Ordinal =
     (ordinal: number | Integer): Ordinal => {
         integerCheck(ordinal, 'Ordinal')

@@ -204,13 +204,13 @@ describe('to', () => {
             const numberFromInteger: number = to.Integer(3)
         })
 
-        // it('DOES NOT ALLOW making special operations if they are already that', () => {
-        //     const doubleOrdinal: Ordinal = to.Ordinal(to.Ordinal(3))
-        //     const doubleCardinal: Cardinal = to.Cardinal(to.Cardinal(3))
-        //     const doubleNumerator: Numerator = to.Numerator(to.Numerator(3))
-        //     const doubleDenominator: Denominator = to.Denominator(to.Denominator(3))
-        // })
-        //
+        it('unfortunately for now allows making special operations if they are already that, but that\'s on you for trying I guess', () => {
+            const doubleOrdinal: Ordinal = to.Ordinal(to.Ordinal(3))
+            const doubleCardinal: Cardinal = to.Cardinal(to.Cardinal(3))
+            const doubleNumerator: Numerator = to.Numerator(to.Numerator(3))
+            const doubleDenominator: Denominator = to.Denominator(to.Denominator(3))
+        })
+
         // it('DOES NOT ALLOW making Cardinals or Ordinals if they are some other Units (not Integers)', () => {
         //     to.Ordinal(to.Hz(3))
         //     to.Cardinal(to.Hz(3))

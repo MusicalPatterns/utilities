@@ -62,8 +62,8 @@ const Modulus: <U extends Operand, T extends Modulus<U>>(modulus: T) => U & numb
 
 // Special Units & Operation
 
-const Integer: <U extends Abstract, T extends Integer<U>>(integer: T) => U & number =
-    <U extends Abstract, T extends Integer<U>>(integer: T): U & number => integer as any
+const Integer: <T extends Integer>(integer: T) => number =
+    <T extends Integer>(integer: T): number => integer as any
 
 const Ordinal: (ordinal: Ordinal) => number =
     (ordinal: Ordinal): number => ordinal as any

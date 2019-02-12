@@ -73,5 +73,12 @@ describe('from', () => {
             expect(from.Ratio(ratio))
                 .toBe(5 / 4)
         })
+
+        // it('DOES NOT ALLOW taking plain numbers', () => {
+        //     from.Cardinal(3)
+        //     from.Ordinal(3)
+        //     from.Numerator(3)
+        //     from.Denominator(3)
+        // })
     })
 })

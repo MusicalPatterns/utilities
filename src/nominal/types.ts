@@ -37,12 +37,12 @@ type Modulus<T extends NoOperation = number> = OperationBrand<'Modulus', T>
 
 // Special Units & Operation
 
-type Integer<T extends NoUnits = number> = UnitsBrand<'Integer', T> & number
+type Integer = number & Operand & { _UnitsBrand: 'Integer' }
 
-type Ordinal = OperationBrand<'Ordinal', Integer>
-type Cardinal = OperationBrand<'Cardinal', Integer>
-type Numerator = OperationBrand<'Numerator', Integer>
-type Denominator  = OperationBrand<'Denominator', Integer>
+type Ordinal = Integer & { _OperationBrand: 'Ordinal' }
+type Cardinal = Integer & { _OperationBrand: 'Cardinal' }
+type Numerator = Integer & { _OperationBrand: 'Numerator' }
+type Denominator = Integer & { _OperationBrand: 'Denominator' }
 
 type Ratio = [ Numerator, Denominator ]
 
