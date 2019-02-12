@@ -35,19 +35,18 @@ type Power<T extends NoOperation = number> = OperationBrand<'Power', T>
 
 type Modulus<T extends NoOperation = number> = OperationBrand<'Modulus', T>
 
-type Numerator<T extends NoOperation = number> = OperationBrand<'Numerator', T>
-type Denominator<T extends NoOperation = number> = OperationBrand<'Denominator', T>
-
 // Special Units & Operation
 
 type Integer<T extends NoUnits = number> = UnitsBrand<'Integer', T> & number
 
 type Ordinal = OperationBrand<'Ordinal', Integer>
 type Cardinal = OperationBrand<'Cardinal', Integer>
-
-// Other Stuff
+type Numerator = OperationBrand<'Numerator', Integer>
+type Denominator  = OperationBrand<'Denominator', Integer>
 
 type Ratio = [ Numerator, Denominator ]
+
+// Other Stuff
 
 type Block = number[] & { _BlockBrand: void }
 

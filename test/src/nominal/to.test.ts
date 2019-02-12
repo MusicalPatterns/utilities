@@ -84,9 +84,6 @@ describe('to', () => {
             const power: Power = to.Power(3)
 
             const modulus: Modulus = to.Modulus(3)
-
-            const numerator: Numerator = to.Numerator(3)
-            const denominator: Denominator = to.Denominator(3)
         })
 
         it('allows comparing things of the same operation but with different values', () => {
@@ -167,11 +164,15 @@ describe('to', () => {
 
             const ordinal: Ordinal = to.Ordinal(integer)
             const cardinal: Cardinal = to.Cardinal(integer)
+            const numerator: Numerator = to.Numerator(integer)
+            const denominator: Denominator = to.Denominator(integer)
         })
 
         it('allows making Cardinals or Ordinals if they are plain numbers which are integers', () => {
             const ordinal: Ordinal = to.Ordinal(3)
             const cardinal: Cardinal = to.Cardinal(3)
+            const numerator: Numerator = to.Numerator(3)
+            const denominator: Denominator = to.Denominator(3)
         })
 
         it('allows calling with numbers which aren\'t integers, but throws', () => {
@@ -179,6 +180,10 @@ describe('to', () => {
                 .toThrow(new Error('Cardinals must be Integers.'))
             expect(() => to.Ordinal(4.3))
                 .toThrow(new Error('Ordinals must be Integers.'))
+            expect(() => to.Numerator(4.3))
+                .toThrow(new Error('Numerators must be Integers.'))
+            expect(() => to.Denominator(4.3))
+                .toThrow(new Error('Denominators must be Integers.'))
         })
 
         it('allows setting things which are integers directly to other units, whether Integer is specified as the generic type or not', () => {
@@ -199,19 +204,25 @@ describe('to', () => {
             const numberFromInteger: number = to.Integer(3)
         })
 
-        // it('DOES NOT ALLOW making Cardinals or Ordinals if they are already that', () => {
+        // it('DOES NOT ALLOW making special operations if they are already that', () => {
         //     const doubleOrdinal: Ordinal = to.Ordinal(to.Ordinal(3))
         //     const doubleCardinal: Cardinal = to.Cardinal(to.Cardinal(3))
+        //     const doubleNumerator: Numerator = to.Numerator(to.Numerator(3))
+        //     const doubleDenominator: Denominator = to.Denominator(to.Denominator(3))
         // })
         //
         // it('DOES NOT ALLOW making Cardinals or Ordinals if they are some other Units (not Integers)', () => {
         //     to.Ordinal(to.Hz(3))
         //     to.Cardinal(to.Hz(3))
+        //     to.Numerator(to.Hz(3))
+        //     to.Denominator(to.Hz(3))
         // })
         //
         // it('DOES NOT ALLOW making Cardinals or Ordinals generic of some other Units (besides Integers)', () => {
         //     const ordinalHz: Ordinal<Hz> = 3 as any as Ordinal<Hz>
         //     const cardinalHz: Cardinal<Hz> = 3 as any as Cardinal<Hz>
+        //     const numeratorHz: Numerator<Hz> = 3 as any as Numerator<Hz>
+        //     const denominatorHz: Denominator<Hz> = 3 as any as Denominator<Hz>
         // })
     })
 })

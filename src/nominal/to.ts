@@ -10,7 +10,9 @@ import {
     ContourWhole,
     Cycle,
     Denominator,
-    Hz, Integer, Meters,
+    Hz,
+    Integer,
+    Meters,
     Modulus,
     Ms,
     NoOperation,
@@ -22,7 +24,8 @@ import {
     Ratio,
     Rotation,
     Scalar,
-    Semitones, Space,
+    Semitones,
+    Space,
     Translation,
 } from './types'
 
@@ -57,37 +60,48 @@ const Power: <T extends NoOperation>(power: T) => Power<T> =
     <T extends NoOperation>(power: T): Power<T> => power as Power<T>
 const Modulus: <T extends NoOperation>(modulus: T) => Modulus<T> =
     <T extends NoOperation>(modulus: T): Modulus<T> => modulus as Modulus<T>
-const Numerator: <T extends NoOperation>(numerator: T) => Numerator<T> =
-    <T extends NoOperation>(numerator: T): Numerator<T> => numerator as Numerator<T>
-const Denominator: <T extends NoOperation>(denominator: T) => Denominator<T> =
-    <T extends NoOperation>(denominator: T): Denominator<T> => denominator as Denominator<T>
 
 // Special Units & Operation
+
+const integerCheck: (value: number, type: string) => void =
+    (value: number, type: string): void => {
+        if (Math.round(value as any as number) !== value as any as number) {
+            throw new Error(`${type}s must be Integers.`)
+        }
+    }
 
 const Integer: <T extends NoUnits>(integer: T) => Integer<T> =
     <T extends NoUnits>(integer: T): Integer<T> => integer as Integer<T>
 const Ordinal: (ordinal: number | Integer) => Ordinal =
     (ordinal: number | Integer): Ordinal => {
-        if (Math.round(ordinal as any as number) !== ordinal as any as number) {
-            throw new Error('Ordinals must be Integers.')
-        }
+        integerCheck(ordinal, 'Ordinal')
 
         return ordinal as any
     }
 const Cardinal: (cardinal: number | Integer) => Cardinal =
     (cardinal: number | Integer): Cardinal => {
-        if (Math.round(cardinal as any as number) !== cardinal as any as number) {
-            throw new Error('Cardinals must be Integers.')
-        }
+        integerCheck(cardinal, 'Cardinal')
 
         return cardinal as any
     }
+const Numerator: (numerator: number | Integer) => Numerator =
+    (numerator: number | Integer): Numerator => {
+        integerCheck(numerator, 'Numerator')
 
-// Other Stuff
+        return numerator as any
+    }
+const Denominator: (denominator: number | Integer) => Denominator =
+    (denominator: number | Integer): Denominator => {
+        integerCheck(denominator, 'Denominator')
+
+        return denominator as any
+    }
 
 const Ratio: (ratio: [ number | Numerator, number | Denominator ]) => Ratio =
     (ratio: [ number | Numerator, number | Denominator ]): Ratio =>
         ratio as any
+
+// Other Stuff
 
 const Block: (block: number[]) => Block =
     (block: number[]): Block => block as any

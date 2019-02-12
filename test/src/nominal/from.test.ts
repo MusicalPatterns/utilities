@@ -38,14 +38,6 @@ describe('from', () => {
         const hzFromScalarHz: Hz = from.Scalar(scalarHz)
     })
 
-    it('works for special units & operation', () => {
-        const fromOrdinal: number = from.Ordinal(to.Ordinal(3))
-        from.Ordinal(to.Ordinal(3)) * 3
-
-        const fromCardinal: number = from.Cardinal(to.Cardinal(3))
-        from.Cardinal(to.Cardinal(3)) * 3
-    })
-
     // it('DOES NOT ALLOW taking a plain number', () => {
     //     from.Hz(3)
     //     from.Scalar(3)
@@ -61,7 +53,21 @@ describe('from', () => {
     //     from.Scalar(to.Hz(3))
     // })
 
-    describe('ratio', () => {
+    describe('special units and operation', () => {
+        it('works for special units & operation', () => {
+            const fromOrdinal: number = from.Ordinal(to.Ordinal(3))
+            from.Ordinal(to.Ordinal(3)) * 3
+
+            const fromCardinal: number = from.Cardinal(to.Cardinal(3))
+            from.Cardinal(to.Cardinal(3)) * 3
+
+            const fromNumerator: number = from.Numerator(to.Numerator(3))
+            from.Numerator(to.Numerator(3)) * 3
+
+            const fromDenominator: number = from.Denominator(to.Denominator(3))
+            from.Denominator(to.Denominator(3)) * 3
+        })
+
         it('converts a ratio tuple into a number', () => {
             const ratio: Ratio = to.Ratio([ 5, 4 ])
             expect(from.Ratio(ratio))

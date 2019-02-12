@@ -60,11 +60,6 @@ const Power: <U extends Operand, T extends Power<U>>(power: T) => U & number =
 const Modulus: <U extends Operand, T extends Modulus<U>>(modulus: T) => U & number =
     <U extends Operand, T extends Modulus<U>>(modulus: T): U & number => modulus as any
 
-const Numerator: <U extends Operand, T extends Numerator<U>>(numerator: T) => U & number =
-    <U extends Operand, T extends Numerator<U>>(numerator: T): U & number => numerator as any
-const Denominator: <U extends Operand, T extends Denominator<U>>(denominator: T) => U & number =
-    <U extends Operand, T extends Denominator<U>>(denominator: T): U & number => denominator as any
-
 // Special Units & Operation
 
 const Integer: <U extends Abstract, T extends Integer<U>>(integer: T) => U & number =
@@ -74,11 +69,15 @@ const Ordinal: (ordinal: Ordinal) => number =
     (ordinal: Ordinal): number => ordinal as any
 const Cardinal: (cardinal: Cardinal) => number =
     (cardinal: Cardinal): number => cardinal as any
-
-// Other Stuff
+const Numerator: (numerator: Numerator) => number =
+    (numerator: Numerator): number => numerator as any
+const Denominator: (denominator: Denominator) => number =
+    (denominator: Denominator): number => denominator as any
 
 const Ratio: (ratio: Ratio) => number = (ratio: Ratio): number =>
     Numerator(ratio[ 0 ]) * (1 / Denominator(ratio[ 1 ]))
+
+// Other Stuff
 
 const Block: (block: number[]) => number[] =
     (block: number[]): number[] => block as any

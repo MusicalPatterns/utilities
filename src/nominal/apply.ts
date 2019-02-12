@@ -7,7 +7,7 @@ import {
     Cardinal,
     Cycle,
     Denominator,
-    Modulus, NoOperation,
+    Modulus,
     Numerator,
     Ordinal,
     Power,
