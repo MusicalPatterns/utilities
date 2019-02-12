@@ -1,6 +1,7 @@
 // tslint:disable variable-name max-file-line-count no-any ban-types
 
 import {
+    Abstract,
     Base,
     Block,
     Cardinal,
@@ -13,6 +14,7 @@ import {
     Modulus,
     Ms,
     Numerator,
+    Operand,
     Ordinal,
     Power,
     Radians,
@@ -26,47 +28,47 @@ import {
 
 // Units
 
-const Hz: <U extends Number, T extends Hz<U>>(hz: T) => U & number =
-    <U extends Number, T extends Hz<U>>(hz: T): U & number => hz as any
-const Ms: <U extends Number, T extends Ms<U>>(ms: T) => U & number =
-    <U extends Number, T extends Ms<U>>(ms: T): U & number => ms as any
-const Radians: <U extends Number, T extends Radians<U>>(radians: T) => U & number =
-    <U extends Number, T extends Radians<U>>(radians: T): U & number => radians as any
-const Cents: <U extends Number, T extends Cents<U>>(cents: T) => U & number =
-    <U extends Number, T extends Cents<U>>(cents: T): U & number => cents as any
-const Semitones: <U extends Number, T extends Semitones<U>>(semitones: T) => U & number =
-    <U extends Number, T extends Semitones<U>>(semitones: T): U & number => semitones as any
-const Meters: <U extends Number, T extends Meters<U>>(meters: T) => U & number =
-    <U extends Number, T extends Meters<U>>(meters: T): U & number => meters as any
-const Space: <U extends Number, T extends Space<U>>(space: T) => U & number =
-    <U extends Number, T extends Space<U>>(space: T): U & number => space as any
+const Hz: <U extends Abstract, T extends Hz<U>>(hz: T) => U & number =
+    <U extends Abstract, T extends Hz<U>>(hz: T): U & number => hz as any
+const Ms: <U extends Abstract, T extends Ms<U>>(ms: T) => U & number =
+    <U extends Abstract, T extends Ms<U>>(ms: T): U & number => ms as any
+const Radians: <U extends Abstract, T extends Radians<U>>(radians: T) => U & number =
+    <U extends Abstract, T extends Radians<U>>(radians: T): U & number => radians as any
+const Cents: <U extends Abstract, T extends Cents<U>>(cents: T) => U & number =
+    <U extends Abstract, T extends Cents<U>>(cents: T): U & number => cents as any
+const Semitones: <U extends Abstract, T extends Semitones<U>>(semitones: T) => U & number =
+    <U extends Abstract, T extends Semitones<U>>(semitones: T): U & number => semitones as any
+const Meters: <U extends Abstract, T extends Meters<U>>(meters: T) => U & number =
+    <U extends Abstract, T extends Meters<U>>(meters: T): U & number => meters as any
+const Space: <U extends Abstract, T extends Space<U>>(space: T) => U & number =
+    <U extends Abstract, T extends Space<U>>(space: T): U & number => space as any
 
 // Operation
 
-const Scalar: <U extends Number, T extends Scalar<U>>(scalar: T) => U & number =
-    <U extends Number, T extends Scalar<U>>(scalar: T): U & number => scalar as any
-const Translation: <U extends Number, T extends Translation<U>>(translation: T) => U & number =
-    <U extends Number, T extends Translation<U>>(translation: T): U & number => translation as any
-const Rotation: <U extends Number, T extends Rotation<U>>(rotation: T) => U & number =
-    <U extends Number, T extends Rotation<U>>(rotation: T): U & number => rotation as any
+const Scalar: <U extends Operand, T extends Scalar<U>>(scalar: T) => U & number =
+    <U extends Operand, T extends Scalar<U>>(scalar: T): U & number => scalar as any
+const Translation: <U extends Operand, T extends Translation<U>>(translation: T) => U & number =
+    <U extends Operand, T extends Translation<U>>(translation: T): U & number => translation as any
+const Rotation: <U extends Operand, T extends Rotation<U>>(rotation: T) => U & number =
+    <U extends Operand, T extends Rotation<U>>(rotation: T): U & number => rotation as any
 
-const Base: <U extends Number, T extends Base<U>>(base: T) => U & number =
-    <U extends Number, T extends Base<U>>(base: T): U & number => base as any
-const Power: <U extends Number, T extends Power<U>>(power: T) => U & number =
-    <U extends Number, T extends Power<U>>(power: T): U & number => power as any
+const Base: <U extends Operand, T extends Base<U>>(base: T) => U & number =
+    <U extends Operand, T extends Base<U>>(base: T): U & number => base as any
+const Power: <U extends Operand, T extends Power<U>>(power: T) => U & number =
+    <U extends Operand, T extends Power<U>>(power: T): U & number => power as any
 
-const Modulus: <U extends Number, T extends Modulus<U>>(modulus: T) => U & number =
-    <U extends Number, T extends Modulus<U>>(modulus: T): U & number => modulus as any
+const Modulus: <U extends Operand, T extends Modulus<U>>(modulus: T) => U & number =
+    <U extends Operand, T extends Modulus<U>>(modulus: T): U & number => modulus as any
 
-const Numerator: <U extends Number, T extends Numerator<U>>(numerator: T) => U & number =
-    <U extends Number, T extends Numerator<U>>(numerator: T): U & number => numerator as any
-const Denominator: <U extends Number, T extends Denominator<U>>(denominator: T) => U & number =
-    <U extends Number, T extends Denominator<U>>(denominator: T): U & number => denominator as any
+const Numerator: <U extends Operand, T extends Numerator<U>>(numerator: T) => U & number =
+    <U extends Operand, T extends Numerator<U>>(numerator: T): U & number => numerator as any
+const Denominator: <U extends Operand, T extends Denominator<U>>(denominator: T) => U & number =
+    <U extends Operand, T extends Denominator<U>>(denominator: T): U & number => denominator as any
 
 // Special Units & Operation
 
-const Integer: <U extends Number, T extends Integer<U>>(integer: T) => U & number =
-    <U extends Number, T extends Integer<U>>(integer: T): U & number => integer as any
+const Integer: <U extends Abstract, T extends Integer<U>>(integer: T) => U & number =
+    <U extends Abstract, T extends Integer<U>>(integer: T): U & number => integer as any
 
 const Ordinal: (ordinal: Ordinal) => number =
     (ordinal: Ordinal): number => ordinal as any
