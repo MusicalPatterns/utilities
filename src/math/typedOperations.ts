@@ -1,4 +1,4 @@
-// tslint:disable ban-types max-file-line-count
+// tslint:disable ban-types max-file-line-count no-any
 
 import { Integer } from '../nominal'
 import { ADDITIVE_IDENTITY, MULTIPLICATIVE_IDENTITY } from './constants'
@@ -7,84 +7,77 @@ const sum: <T extends Number>(...values: T[]) => T =
     <T extends Number>(...values: T[]): T => {
         const lastValue: T = values.pop() as T
 
-        // tslint:disable-next-line no-any
         const nextSum: T = values.length ? sum(...values) : ADDITIVE_IDENTITY as any as T
 
-        // @ts-ignore
-        return nextSum + lastValue
+        return (nextSum as any as number) + (lastValue as any as number) as any as T
     }
 
 const difference: <T extends Number>(a: T, b: T) => T =
     <T extends Number>(a: T, b: T): T =>
-        // @ts-ignore
-        a - b as T
+        (a as any as number) - (b as any as number) as any as T
 
 const product: <T extends Number>(...values: T[]) => T =
     <T extends Number>(...values: T[]): T => {
         const lastValue: T = values.pop() as T
 
-        // tslint:disable-next-line no-any
         const nextProduct: T = values.length ? product(...values) : MULTIPLICATIVE_IDENTITY as any as T
 
-        // @ts-ignore
-        return nextProduct * lastValue
+        return (nextProduct as any as number) * (lastValue as any as number) as any as T
     }
 
 const quotient: <T extends Number>(a: T, b: T) => T =
     <T extends Number>(a: T, b: T): T =>
-        // @ts-ignore
-        a / b as T
+        (a as any as number) / (b as any as number) as any as T
 
 const modulus: <T extends Number>(a: T, b: T) => T =
     <T extends Number>(a: T, b: T): T =>
-        // @ts-ignore
-        a % b as T
+        (a as any as number) % (b as any as number) as any as T
 
-const reciprocal: <T extends Number>(n: T) => T =
-    <T extends Number>(n: T): T =>
-        // @ts-ignore
-        1 / n as T
+const reciprocal: <T extends Number>(value: T) => T =
+    <T extends Number>(value: T): T =>
+        1 / (value as any as number) as any as T
 
-const negative: <T extends Number>(n: T) => T =
-    <T extends Number>(n: T): T =>
-        // @ts-ignore
-        -n as T
+const negative: <T extends Number>(value: T) => T =
+    <T extends Number>(value: T): T =>
+        -(value as any as number) as any as T
 
-const round: <T extends Number, U extends Integer>(n: T, precision?: U) => T =
-    <T extends Number, U extends Integer>(n: T, precision?: U): T => {
+const round: <T extends Number, U extends Integer>(value: T, precision?: U) => T =
+    <T extends Number, U extends Integer>(value: T, precision?: U): T => {
         if (!precision) {
-            // @ts-ignore
-            return Math.round(n) as T
+            return Math.round(value as any as number) as any as T
         }
 
         // tslint:disable-next-line no-any prefer-template
-        return +(Math.round(`${n}e+${precision}` as any as number) + 'e-' + precision) as any as T
+        return +(Math.round(`${value}e+${precision}` as any as number) + 'e-' + precision) as any as T
     }
 
-const floor: <T extends Number>(n: T) => T =
-    <T extends Number>(n: T): T =>
-        // @ts-ignore
-        Math.floor(n) as T
+const floor: <T extends Number>(value: T) => T =
+    <T extends Number>(value: T): T =>
+        Math.floor(value as any as number) as any as T
 
-const ceiling: <T extends Number>(n: T) => T =
-    <T extends Number>(n: T): T =>
-        // @ts-ignore
-        Math.ceil(n) as T
+const ceiling: <T extends Number>(value: T) => T =
+    <T extends Number>(value: T): T =>
+        Math.ceil(value as any as number) as any as T
 
-const absoluteValue: <T extends Number>(n: T) => T =
-    <T extends Number>(n: T): T =>
-        // @ts-ignore
-        Math.abs(n) as T
+const absoluteValue: <T extends Number>(value: T) => T =
+    <T extends Number>(value: T): T =>
+        Math.abs(value as any as number) as any as T
 
-const squareRoot: <T extends Number>(n: T) => T =
-    <T extends Number>(n: T): T =>
-        // @ts-ignore
-        Math.sqrt(n)
+const squareRoot: <T extends Number>(value: T) => T =
+    <T extends Number>(value: T): T =>
+        Math.sqrt(value as any as number) as any as T
 
-const cubeRoot: <T extends Number>(n: T) => T =
-    <T extends Number>(n: T): T =>
-        // @ts-ignore
-        Math.cbrt(n)
+const cubeRoot: <T extends Number>(value: T) => T =
+    <T extends Number>(value: T): T =>
+        Math.cbrt(value as any as number) as any as T
+
+const max: <T extends Number>(...values: T[]) => T =
+    <T extends Number>(...values: T[]): T =>
+        Math.max(...values as any as number[]) as any as T
+
+const min: <T extends Number>(...values: T[]) => T =
+    <T extends Number>(...values: T[]): T =>
+        Math.min(...values as any as number[]) as any as T
 
 export {
     sum,
@@ -100,4 +93,6 @@ export {
     absoluteValue,
     squareRoot,
     cubeRoot,
+    max,
+    min,
 }

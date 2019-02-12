@@ -22,6 +22,8 @@ export {
     absoluteValue,
     squareRoot,
     cubeRoot,
+    max,
+    min,
 } from './typedOperations'
 export { isOdd, isEven } from './evenOrOdd'
 export { termialRoot, trapezoidalNumber, triangularNumber, triangularRoot, quarterSquareNumber } from './specialNumbers'

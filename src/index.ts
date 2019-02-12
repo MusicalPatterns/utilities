@@ -178,6 +178,8 @@ export {
     ThreeDimensional,
     ORIGIN,
     lowestTerms,
+    max,
+    min,
 } from './math'
 export {
     centsToPitch,
