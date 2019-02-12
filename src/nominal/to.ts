@@ -108,8 +108,7 @@ const Block: (block: number[]) => Block =
 
 const Cycle: <T>(cycle: T[]) => Cycle<T> =
     <T>(cycle: T[]): Cycle<T> => {
-        // @ts-ignore
-        cycle._CycleBrand = ''
+        (cycle as Cycle<T>)._CycleBrand = true
 
         return cycle as any
     }

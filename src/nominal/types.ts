@@ -50,7 +50,7 @@ type Ratio = [ Numerator, Denominator ]
 
 type Block = number[] & { _BlockBrand: void }
 
-type Cycle<T> = T[] & { _CycleBrand: void }
+type Cycle<T> = T[] & { _CycleBrand: boolean }
 
 type ContourElement<N> = [ number, ...number[] ] & { length: N }
 type ContourPiece<N> = Array<ContourElement<N>> & { _ContourPieceBrand: void }

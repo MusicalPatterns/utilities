@@ -18,8 +18,7 @@ import {
 
 const isCycle: (value: any) => value is Cycle<any> =
     (value: any): value is Cycle<any> =>
-        // tslint:disable-next-line strict-type-predicates
-        (value as Cycle<any>)._CycleBrand !== undefined
+        value && (value as Cycle<any>)._CycleBrand
 
 const wrapWithin: <T, U extends Number>(n: T, within: U) => T =
     <T, U extends Number>(n: T, within: U): T => {
