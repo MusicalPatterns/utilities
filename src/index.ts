@@ -27,6 +27,8 @@ export {
     Integer,
     Meters,
     Space,
+    Abstract,
+    Operand,
 } from './nominal'
 export {
     deepEqual,

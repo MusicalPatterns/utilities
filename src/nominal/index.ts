@@ -32,4 +32,6 @@ export {
     Integer,
     Meters,
     Space,
+    Abstract,
+    Operand,
 } from './types'
