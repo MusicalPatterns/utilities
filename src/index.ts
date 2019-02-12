@@ -177,6 +177,7 @@ export {
     TwoDimensional,
     ThreeDimensional,
     ORIGIN,
+    lowestTerms,
 } from './math'
 export {
     centsToPitch,

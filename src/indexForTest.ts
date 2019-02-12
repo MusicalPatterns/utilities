@@ -62,6 +62,7 @@ export {
     round,
     sum,
     product,
+    lowestTerms,
 } from './math/indexForTest'
 export {
     testArraysAreClose,
