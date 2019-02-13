@@ -83,7 +83,11 @@ const Block: (block: number[]) => number[] =
     (block: number[]): number[] => block as any
 
 const Cycle: <T>(cycle: Cycle<T>) => T[] =
-    <T>(cycle: Cycle<T>): T[] => cycle as any
+    <T>(cycle: Cycle<T>): T[] => {
+        delete cycle._CycleBrand
+
+        return cycle as any
+    }
 
 export {
     Base,
