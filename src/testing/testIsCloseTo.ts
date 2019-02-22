@@ -1,11 +1,21 @@
 // tslint:disable no-any
 
-import { absoluteValue, DECIMAL, difference, negative, ONE_HALF, product, quotient, round } from '../math'
+import {
+    absoluteValue,
+    DECIMAL,
+    DEFAULT_PRECISION,
+    difference,
+    negative,
+    ONE_HALF,
+    product,
+    quotient,
+    round,
+} from '../math'
 import { apply, to } from '../nominal'
 
 const determineIfClose: (rawNumberOne: number, rawNumberTwo: number) => boolean =
     (rawNumberOne: number, rawNumberTwo: number): boolean => {
-        const precision: number = 2
+        const precision: number = DEFAULT_PRECISION
 
         const pow: number =
             apply.Power(DECIMAL, to.Power(apply.Translation(precision, to.Translation(1)))) as any as number

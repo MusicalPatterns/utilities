@@ -106,6 +106,7 @@ export {
     NUMERATOR_INDEX,
     DENOMINATOR_INDEX,
     ORIGIN,
+    DEFAULT_PRECISION,
 } from './constants'
 export {
     Coordinate,
