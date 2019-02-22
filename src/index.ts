@@ -196,6 +196,7 @@ export {
     ScientificPitchOctaveNumber,
     ScientificPitchNoteName,
     ScientificPitches,
+    buildEqualDivisionScalars,
 } from './music'
 export {
     testIsCloseTo,

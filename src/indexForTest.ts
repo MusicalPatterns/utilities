@@ -78,4 +78,5 @@ export {
     SCIENTIFIC_PITCHES,
     ScientificPitchNoteName,
     ScientificPitchOctaveNumber,
+    buildEqualDivisionScalars,
 } from './music/indexForTest'
