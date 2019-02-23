@@ -63,6 +63,7 @@ export {
     sum,
     product,
     lowestTerms,
+    factorial,
 } from './math/indexForTest'
 export {
     testArraysAreClose,

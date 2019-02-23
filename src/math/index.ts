@@ -26,7 +26,14 @@ export {
     min,
 } from './typedOperations'
 export { isOdd, isEven } from './evenOrOdd'
-export { termialRoot, trapezoidalNumber, triangularNumber, triangularRoot, quarterSquareNumber } from './specialNumbers'
+export {
+    factorial,
+    termialRoot,
+    trapezoidalNumber,
+    triangularNumber,
+    triangularRoot,
+    quarterSquareNumber,
+}from './specialNumbers'
 export { sine, cosine, tangent } from './trigonometry'
 export { lowestTerms } from './lowestTerms'
 

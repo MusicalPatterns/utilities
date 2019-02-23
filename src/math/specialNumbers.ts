@@ -2,15 +2,22 @@ import { apply, to } from '../nominal'
 import { ONE_FOURTH, ONE_HALF, SQUARED } from './constants'
 import { difference, floor, product, quotient, squareRoot, sum } from './typedOperations'
 
+const factorial: (n: number) => number =
+    (n: number): number =>
+        n === 0 ? 1 : n * factorial(n - 1)
+
 const triangularNumber: (n: number) => number =
-    (n: number): number => product(n, apply.Scalar(sum(n, 1), ONE_HALF))
+    (n: number): number =>
+        product(n, apply.Scalar(sum(n, 1), ONE_HALF))
 
 const triangularRoot: (n: number) => number =
-    // tslint:disable-next-line no-magic-numbers
-    (n: number): number => difference(apply.Scalar(squareRoot(sum(product(n, 8), 1)), ONE_HALF), 0.5)
+    (n: number): number =>
+        // tslint:disable-next-line no-magic-numbers
+        difference(apply.Scalar(squareRoot(sum(product(n, 8), 1)), ONE_HALF), 0.5)
 
 const quarterSquareNumber: (n: number) => number =
-    (n: number): number => floor(apply.Scalar(apply.Power(n, SQUARED), ONE_FOURTH))
+    (n: number): number =>
+        floor(apply.Scalar(apply.Power(n, SQUARED), ONE_FOURTH))
 
 const trapezoidalNumber: (trapezoidalNumberParameters: { height: number, start: number }) => number =
     ({ height, start }: { height: number, start: number }): number =>
@@ -31,6 +38,7 @@ const termialRoot: (termialRootParameters: { n: number, rangeDelta: number, rang
     }
 
 export {
+    factorial,
     trapezoidalNumber,
     triangularNumber,
     triangularRoot,

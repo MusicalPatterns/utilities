@@ -110,6 +110,7 @@ export {
     powerSet,
     SQUARED,
     NEGATIVE,
+    factorial,
     termialRoot,
     trapezoidalNumber,
     triangularNumber,

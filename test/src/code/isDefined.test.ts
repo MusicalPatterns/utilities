@@ -1,6 +1,6 @@
 import { isDefined } from '../../../src/indexForTest'
 
-describe('#isDefined', () => {
+describe('is defined', () => {
     it('returns true if defined', () => {
         expect(isDefined('pants'))
             .toBe(true)
