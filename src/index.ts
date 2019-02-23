@@ -62,6 +62,7 @@ export {
     reduce,
     Omit,
     Difference,
+    numericSort,
 } from './code'
 export {
     absoluteRatio,
