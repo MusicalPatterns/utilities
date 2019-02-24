@@ -4,6 +4,10 @@ import { testIsCloseTo } from './testIsCloseTo'
 
 const testArraysAreClose: <T>(actual: T[], expected: T[]) => void =
     <T>(actual: T[], expected: T[]): void => {
+        if (actual.length !== expected.length) {
+            fail(`Expected actual's ${actual.length} length to be ${expected.length}`)
+        }
+
         forEach(expected, (expectedElement: T, index: Ordinal): void => {
             const actualElement: T = apply.Ordinal(actual, index)
             expect(testIsCloseTo(actualElement, expectedElement))
