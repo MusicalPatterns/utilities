@@ -6,6 +6,19 @@ const factorial: (n: number) => number =
     (n: number): number =>
         n === 0 ? 1 : n * factorial(n - 1)
 
+const combinationCount: (n: number, choose: number) => number =
+    (n: number, choose: number): number => {
+        if (choose > n) {
+            throw new Error('You cannot choose more objects than you have.')
+        }
+
+        if (choose < 0) {
+            throw new Error('You cannot choose fewer objects than none.')
+        }
+
+        return quotient(factorial(n), product(factorial(choose), factorial(difference(n, choose))))
+    }
+
 const triangularNumber: (n: number) => number =
     (n: number): number =>
         product(n, apply.Scalar(sum(n, 1), ONE_HALF))
@@ -39,6 +52,7 @@ const termialRoot: (termialRootParameters: { n: number, rangeDelta: number, rang
 
 export {
     factorial,
+    combinationCount,
     trapezoidalNumber,
     triangularNumber,
     triangularRoot,

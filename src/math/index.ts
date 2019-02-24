@@ -33,6 +33,7 @@ export {
     triangularNumber,
     triangularRoot,
     quarterSquareNumber,
+    combinationCount,
 }from './specialNumbers'
 export { sine, cosine, tangent } from './trigonometry'
 export { lowestTerms } from './lowestTerms'

@@ -64,6 +64,7 @@ export {
     product,
     lowestTerms,
     factorial,
+    combinationCount,
 } from './math/indexForTest'
 export {
     testArraysAreClose,

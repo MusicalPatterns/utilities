@@ -8,6 +8,7 @@ export { greatestCommonDivisor, lowestCommonMultiple } from './common'
 export { negative, round, sum, product } from './typedOperations'
 export {
     factorial,
+    combinationCount,
     termialRoot,
     trapezoidalNumber,
     triangularNumber,

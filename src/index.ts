@@ -111,6 +111,7 @@ export {
     SQUARED,
     NEGATIVE,
     factorial,
+    combinationCount,
     termialRoot,
     trapezoidalNumber,
     triangularNumber,

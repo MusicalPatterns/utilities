@@ -1,4 +1,5 @@
 import {
+    combinationCount,
     factorial,
     quarterSquareNumber,
     termialRoot,
@@ -22,6 +23,54 @@ describe('special numbers', () => {
                 .toBe(24)
             expect(factorial(5))
                 .toBe(120)
+        })
+    })
+
+    describe('combination count', () => {
+        it('works when you choose 1', () => {
+            expect(combinationCount(1, 1))
+                .toBe(1)
+            expect(combinationCount(2, 1))
+                .toBe(2)
+            expect(combinationCount(3, 1))
+                .toBe(3)
+        })
+
+        it('works when you choose 2', () => {
+            expect(combinationCount(2, 2))
+                .toBe(1)
+            expect(combinationCount(3, 2))
+                .toBe(3)
+            expect(combinationCount(4, 2))
+                .toBe(6)
+        })
+
+        it('works when you choose 3', () => {
+            expect(combinationCount(3, 3))
+                .toBe(1)
+            expect(combinationCount(4, 3))
+                .toBe(4)
+            expect(combinationCount(5, 3))
+                .toBe(10)
+        })
+
+        it('works when you choose 0', () => {
+            expect(combinationCount(3, 0))
+                .toBe(1)
+            expect(combinationCount(4, 0))
+                .toBe(1)
+            expect(combinationCount(5, 0))
+                .toBe(1)
+        })
+
+        it('throws when you choose greater than n', () => {
+            expect(() => combinationCount(3, 4))
+                .toThrow(new Error ('You cannot choose more objects than you have.'))
+        })
+
+        it('throws when you choose less than 0', () => {
+            expect(() => combinationCount(3, -1))
+                .toThrow(new Error ('You cannot choose fewer objects than none.'))
         })
     })
 
