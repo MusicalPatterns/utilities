@@ -12,9 +12,9 @@ const sum: <T extends Number>(...values: T[]) => T =
         return (nextSum as any as number) + (lastValue as any as number) as any as T
     }
 
-const difference: <T extends Number>(a: T, b: T) => T =
-    <T extends Number>(a: T, b: T): T =>
-        (a as any as number) - (b as any as number) as any as T
+const difference: <T extends Number>(minuend: T, subtrahend: T) => T =
+    <T extends Number>(minuend: T, subtrahend: T): T =>
+        (minuend as any as number) - (subtrahend as any as number) as any as T
 
 const product: <T extends Number>(...values: T[]) => T =
     <T extends Number>(...values: T[]): T => {
@@ -25,13 +25,13 @@ const product: <T extends Number>(...values: T[]) => T =
         return (nextProduct as any as number) * (lastValue as any as number) as any as T
     }
 
-const quotient: <T extends Number>(a: T, b: T) => T =
-    <T extends Number>(a: T, b: T): T =>
-        (a as any as number) / (b as any as number) as any as T
+const quotient: <T extends Number>(dividend: T, divisor: T) => T =
+    <T extends Number>(dividend: T, divisor: T): T =>
+        (dividend as any as number) / (divisor as any as number) as any as T
 
-const modulus: <T extends Number>(a: T, b: T) => T =
-    <T extends Number>(a: T, b: T): T =>
-        (a as any as number) % (b as any as number) as any as T
+const modulus: <T extends Number>(dividend: T, divisor: T) => T =
+    <T extends Number>(dividend: T, divisor: T): T =>
+        (dividend as any as number) % (divisor as any as number) as any as T
 
 const reciprocal: <T extends Number>(value: T) => T =
     <T extends Number>(value: T): T =>

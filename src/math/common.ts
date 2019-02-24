@@ -5,13 +5,13 @@ import { absoluteValue, modulus, product, quotient } from './typedOperations'
 import { IntegerOperation } from './types'
 
 const lowestCommonMultipleOfTwoNumbers: IntegerOperation =
-    (a: Integer, b: Integer): Integer =>
-        absoluteValue(quotient(product(a, b), greatestCommonDivisor(a, b)))
+    (firstValue: Integer, secondValue: Integer): Integer =>
+        absoluteValue(quotient(product(firstValue, secondValue), greatestCommonDivisor(firstValue, secondValue)))
 
 const greatestCommonDivisorOfTwoNumbers: IntegerOperation =
-    (a: Integer, b: Integer): Integer => {
-        let output: Integer = a
-        let remainder: Integer = b
+    (firstValue: Integer, secondValue: Integer): Integer => {
+        let output: Integer = firstValue
+        let remainder: Integer = secondValue
         while (remainder) {
             const previousRemainder: Integer = remainder
             remainder = modulus(output, remainder)

@@ -3,13 +3,13 @@
 import { TWO } from './constants'
 import { dividesEvenly } from './dividesEvenly'
 
-const isEven: <T extends Number>(n: T) => boolean =
-    <T extends Number>(n: T): boolean =>
-        dividesEvenly(n, TWO)
+const isEven: <T extends Number>(value: T) => boolean =
+    <T extends Number>(value: T): boolean =>
+        dividesEvenly(value, TWO)
 
-const isOdd: <T extends Number>(n: T) => boolean =
-    <T extends Number>(n: T): boolean =>
-        !isEven(n)
+const isOdd: <T extends Number>(value: T) => boolean =
+    <T extends Number>(value: T): boolean =>
+        !isEven(value)
 
 export {
     isEven,

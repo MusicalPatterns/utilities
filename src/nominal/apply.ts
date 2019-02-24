@@ -20,10 +20,10 @@ const isCycle: (value: any) => value is Cycle<any> =
     (value: any): value is Cycle<any> =>
         value && (value as Cycle<any>)._CycleBrand
 
-const wrapWithin: <T, U extends Number>(n: T, within: U) => T =
-    <T, U extends Number>(n: T, within: U): T => {
+const wrapWithin: <T, U extends Number>(value: T, within: U) => T =
+    <T, U extends Number>(value: T, within: U): T => {
         // @ts-ignore
-        let newN: number = n as number
+        let newN: number = value as number
         const withinN: number = within as any as number
 
         while (newN < 0) {

@@ -27,9 +27,9 @@ interface RotateParameters<T extends Number, D extends Number> {
     rotation: Radians,
 }
 
-type NumericOperation = (a: number, b: number) => number
+type NumericOperation = (firstValue: number, secondValue: number) => number
 
-type IntegerOperation = (a: Integer, b: Integer) => Integer
+type IntegerOperation = (firstValue: Integer, secondValue: Integer) => Integer
 
 export {
     CycleMap,

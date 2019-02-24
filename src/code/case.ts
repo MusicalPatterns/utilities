@@ -11,7 +11,7 @@ const camelCaseToConstantCase: (str: string) => string =
 const constantCaseToUpperCase: (str: string) => string =
     (str: string): string => {
         const almost: string = str.toLowerCase()
-            .replace(/(\_\w)/g, (m: string) => ` ${m[ 1 ].toUpperCase()}`)
+            .replace(/(\_\w)/g, (match: string) => ` ${match[ 1 ].toUpperCase()}`)
 
         return almost.charAt(0)
             .toUpperCase() + almost.slice(1)

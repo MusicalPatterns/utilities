@@ -1,6 +1,6 @@
-const numericSort: (a: number, b: number) => number =
-    (a: number, b: number): number =>
-        a - b
+const numericSort: (firstValue: number, secondValue: number) => number =
+    (firstValue: number, secondValue: number): number =>
+        firstValue - secondValue
 
 export {
     numericSort,

@@ -63,7 +63,7 @@ describe('special numbers', () => {
                 .toBe(1)
         })
 
-        it('throws when you choose greater than n', () => {
+        it('throws when you choose greater than value', () => {
             expect(() => combinationCount(3, 4))
                 .toThrow(new Error ('You cannot choose more objects than you have.'))
         })
@@ -75,7 +75,7 @@ describe('special numbers', () => {
     })
 
     describe('triangular number', () => {
-        it('returns the triangular number for n', () => {
+        it('returns the triangular number for value', () => {
             expect(triangularNumber(0))
                 .toBe(0)
             expect(triangularNumber(1))
@@ -108,7 +108,7 @@ describe('special numbers', () => {
     })
 
     describe('triangular root', () => {
-        it('given a triangular number, returns its n', () => {
+        it('given a triangular number, returns its value', () => {
             expect(triangularRoot(0))
                 .toBe(0)
             expect(triangularRoot(1))
@@ -248,54 +248,54 @@ describe('special numbers', () => {
 
             rangeStart = 1
             rangeDelta = 1
-            expect(termialRoot({ rangeStart, rangeDelta, n: 0 }))
+            expect(termialRoot({ rangeStart, rangeDelta, value: 0 }))
                 .toBe(0)
-            expect(termialRoot({ rangeStart, rangeDelta, n: 1 }))
+            expect(termialRoot({ rangeStart, rangeDelta, value: 1 }))
                 .toBe(1)
-            expect(termialRoot({ rangeStart, rangeDelta, n: 3 }))
+            expect(termialRoot({ rangeStart, rangeDelta, value: 3 }))
                 .toBe(2)
-            expect(termialRoot({ rangeStart, rangeDelta, n: 6 }))
+            expect(termialRoot({ rangeStart, rangeDelta, value: 6 }))
                 .toBe(3)
-            expect(termialRoot({ rangeStart, rangeDelta, n: 10 }))
+            expect(termialRoot({ rangeStart, rangeDelta, value: 10 }))
                 .toBe(4)
 
             rangeStart = 2
             rangeDelta = 1
-            expect(termialRoot({ rangeStart, rangeDelta, n: 0 }))
+            expect(termialRoot({ rangeStart, rangeDelta, value: 0 }))
                 .toBe(0)
-            expect(termialRoot({ rangeStart, rangeDelta, n: 2 }))
+            expect(termialRoot({ rangeStart, rangeDelta, value: 2 }))
                 .toBe(1)
-            expect(termialRoot({ rangeStart, rangeDelta, n: 5 }))
+            expect(termialRoot({ rangeStart, rangeDelta, value: 5 }))
                 .toBe(2)
-            expect(termialRoot({ rangeStart, rangeDelta, n: 9 }))
+            expect(termialRoot({ rangeStart, rangeDelta, value: 9 }))
                 .toBe(3)
-            expect(termialRoot({ rangeStart, rangeDelta, n: 14 }))
+            expect(termialRoot({ rangeStart, rangeDelta, value: 14 }))
                 .toBe(4)
 
             rangeStart = 1
             rangeDelta = 2
-            expect(termialRoot({ rangeStart, rangeDelta, n: 0 }))
+            expect(termialRoot({ rangeStart, rangeDelta, value: 0 }))
                 .toBe(0)
-            expect(termialRoot({ rangeStart, rangeDelta, n: 1 }))
+            expect(termialRoot({ rangeStart, rangeDelta, value: 1 }))
                 .toBe(1)
-            expect(termialRoot({ rangeStart, rangeDelta, n: 4 }))
+            expect(termialRoot({ rangeStart, rangeDelta, value: 4 }))
                 .toBe(2)
-            expect(termialRoot({ rangeStart, rangeDelta, n: 9 }))
+            expect(termialRoot({ rangeStart, rangeDelta, value: 9 }))
                 .toBe(3)
-            expect(termialRoot({ rangeStart, rangeDelta, n: 16 }))
+            expect(termialRoot({ rangeStart, rangeDelta, value: 16 }))
                 .toBe(4)
 
             rangeStart = 2
             rangeDelta = 2
-            expect(termialRoot({ rangeStart, rangeDelta, n: 0 }))
+            expect(termialRoot({ rangeStart, rangeDelta, value: 0 }))
                 .toBe(0)
-            expect(termialRoot({ rangeStart, rangeDelta, n: 2 }))
+            expect(termialRoot({ rangeStart, rangeDelta, value: 2 }))
                 .toBe(1)
-            expect(termialRoot({ rangeStart, rangeDelta, n: 6 }))
+            expect(termialRoot({ rangeStart, rangeDelta, value: 6 }))
                 .toBe(2)
-            expect(termialRoot({ rangeStart, rangeDelta, n: 12 }))
+            expect(termialRoot({ rangeStart, rangeDelta, value: 12 }))
                 .toBe(3)
-            expect(termialRoot({ rangeStart, rangeDelta, n: 20 }))
+            expect(termialRoot({ rangeStart, rangeDelta, value: 20 }))
                 .toBe(4)
         })
     })

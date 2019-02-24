@@ -2,13 +2,13 @@ import { apply, to } from '../nominal'
 import { ONE_FOURTH, ONE_HALF, SQUARED } from './constants'
 import { difference, floor, product, quotient, squareRoot, sum } from './typedOperations'
 
-const factorial: (n: number) => number =
-    (n: number): number =>
-        n === 0 ? 1 : n * factorial(n - 1)
+const factorial: (value: number) => number =
+    (value: number): number =>
+        value === 0 ? 1 : value * factorial(value - 1)
 
-const combinationCount: (n: number, choose: number) => number =
-    (n: number, choose: number): number => {
-        if (choose > n) {
+const combinationCount: (setSize: number, choose: number) => number =
+    (setSize: number, choose: number): number => {
+        if (choose > setSize) {
             throw new Error('You cannot choose more objects than you have.')
         }
 
@@ -16,38 +16,38 @@ const combinationCount: (n: number, choose: number) => number =
             throw new Error('You cannot choose fewer objects than none.')
         }
 
-        return quotient(factorial(n), product(factorial(choose), factorial(difference(n, choose))))
+        return quotient(factorial(setSize), product(factorial(choose), factorial(difference(setSize, choose))))
     }
 
-const triangularNumber: (n: number) => number =
-    (n: number): number =>
-        product(n, apply.Scalar(sum(n, 1), ONE_HALF))
+const triangularNumber: (value: number) => number =
+    (value: number): number =>
+        product(value, apply.Scalar(sum(value, 1), ONE_HALF))
 
-const triangularRoot: (n: number) => number =
-    (n: number): number =>
+const triangularRoot: (value: number) => number =
+    (value: number): number =>
         // tslint:disable-next-line no-magic-numbers
-        difference(apply.Scalar(squareRoot(sum(product(n, 8), 1)), ONE_HALF), 0.5)
+        difference(apply.Scalar(squareRoot(sum(product(value, 8), 1)), ONE_HALF), 0.5)
 
-const quarterSquareNumber: (n: number) => number =
-    (n: number): number =>
-        floor(apply.Scalar(apply.Power(n, SQUARED), ONE_FOURTH))
+const quarterSquareNumber: (value: number) => number =
+    (value: number): number =>
+        floor(apply.Scalar(apply.Power(value, SQUARED), ONE_FOURTH))
 
 const trapezoidalNumber: (trapezoidalNumberParameters: { height: number, start: number }) => number =
     ({ height, start }: { height: number, start: number }): number =>
         difference(triangularNumber(sum(start, height)), triangularNumber(start))
 
-const termialRoot: (termialRootParameters: { n: number, rangeDelta: number, rangeStart: number }) => number =
-    ({ n, rangeDelta, rangeStart }: { n: number, rangeDelta: number, rangeStart: number }): number => {
+const termialRoot: (termialRootParameters: { rangeDelta: number, rangeStart: number, value: number }) => number =
+    ({ value, rangeDelta, rangeStart }: { rangeDelta: number, rangeStart: number, value: number  }): number => {
         // tslint:disable-next-line no-magic-numbers
-        const c: number = product(rangeStart, 2)
+        const valueC: number = product(rangeStart, 2)
         // tslint:disable-next-line no-magic-numbers
-        const a: number = apply.Power(difference(c, rangeDelta), to.Power(2))
+        const valueA: number = apply.Power(difference(valueC, rangeDelta), to.Power(2))
         // tslint:disable-next-line no-magic-numbers
-        const b: number = product(rangeDelta, n, 8)
+        const valueB: number = product(rangeDelta, value, 8)
         // tslint:disable-next-line no-magic-numbers
-        const d: number = product(rangeDelta, 2)
+        const valueD: number = product(rangeDelta, 2)
 
-        return quotient(sum(difference(squareRoot(sum(a, b)), c), rangeDelta), d)
+        return quotient(sum(difference(squareRoot(sum(valueA, valueB)), valueC), rangeDelta), valueD)
     }
 
 export {
