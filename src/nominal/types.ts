@@ -44,7 +44,7 @@ type Cardinal = Integer & { _OperationBrand: 'Cardinal' }
 type Numerator = Integer & { _OperationBrand: 'Numerator' }
 type Denominator = Integer & { _OperationBrand: 'Denominator' }
 
-type Ratio = [ Numerator, Denominator ]
+type Fraction = [ Numerator, Denominator ]
 
 // Other Stuff
 
@@ -73,7 +73,7 @@ export {
     ContourElement,
     ContourPiece,
     ContourWhole,
-    Ratio,
+    Fraction,
     Numerator,
     Denominator,
     Modulus,

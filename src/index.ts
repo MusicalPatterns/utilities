@@ -21,7 +21,7 @@ export {
     ContourElement,
     Numerator,
     Denominator,
-    Ratio,
+    Fraction,
     Cycle,
     Modulus,
     Integer,

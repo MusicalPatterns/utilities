@@ -46,15 +46,15 @@ describe('apply', () => {
         })
     })
 
-    describe('ratios', () => {
-        it('applying a numerator to a denominator gives a ratio', () => {
+    describe('fractions', () => {
+        it('applying a numerator to a denominator gives a fraction', () => {
             expect(apply.Numerator(to.Denominator(5), to.Numerator(4)))
-                .toEqual(to.Ratio([ 4, 5 ]))
+                .toEqual(to.Fraction([ 4, 5 ]))
         })
 
-        it('applying a denominator to a numerator gives a ratio', () => {
+        it('applying a denominator to a numerator gives a fraction', () => {
             expect(apply.Denominator(to.Numerator(5), to.Denominator(4)))
-                .toEqual(to.Ratio([ 5, 4 ]))
+                .toEqual(to.Fraction([ 5, 4 ]))
         })
     })
 })

@@ -1,9 +1,9 @@
-import { lowestTerms, Ratio, to } from '../../../src/indexForTest'
+import { Fraction, lowestTerms, to } from '../../../src/indexForTest'
 
 describe('lowest terms', () => {
-    it('reduces a ratio', () => {
-        const ratio: Ratio = to.Ratio([ 15, 25 ])
-        expect(lowestTerms(ratio))
-            .toEqual(to.Ratio([ 3, 5 ]))
+    it('reduces a fraction', () => {
+        const fraction: Fraction = to.Fraction([ 15, 25 ])
+        expect(lowestTerms(fraction))
+            .toEqual(to.Fraction([ 3, 5 ]))
     })
 })

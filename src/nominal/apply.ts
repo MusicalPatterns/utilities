@@ -7,11 +7,11 @@ import {
     Cardinal,
     Cycle,
     Denominator,
+    Fraction,
     Modulus,
     Numerator,
     Ordinal,
     Power,
-    Ratio,
     Scalar,
     Translation,
 } from './types'
@@ -87,12 +87,12 @@ const Modulus: <T, U extends Number>(value: T, modulus: Modulus<U>) => T =
     <T, U extends Number>(value: T, modulus: Modulus<U>): T =>
         value as any as number % from.Modulus(modulus) as any as T
 
-const Numerator: (denominator: Denominator, numerator: Numerator) => Ratio =
-    (denominator: Denominator, numerator: Numerator): Ratio =>
+const Numerator: (denominator: Denominator, numerator: Numerator) => Fraction =
+    (denominator: Denominator, numerator: Numerator): Fraction =>
         [ numerator, denominator ]
 
-const Denominator: (numerator: Numerator, denominator: Denominator) => Ratio =
-    (numerator: Numerator, denominator: Denominator): Ratio =>
+const Denominator: (numerator: Numerator, denominator: Denominator) => Fraction =
+    (numerator: Numerator, denominator: Denominator): Fraction =>
         [ numerator, denominator ]
 
 export {

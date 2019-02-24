@@ -8,6 +8,7 @@ import {
     Cents,
     Cycle,
     Denominator,
+    Fraction,
     Hz,
     Integer,
     Meters,
@@ -18,7 +19,6 @@ import {
     Ordinal,
     Power,
     Radians,
-    Ratio,
     Rotation,
     Scalar,
     Semitones,
@@ -74,8 +74,8 @@ const Numerator: (numerator: Numerator) => number =
 const Denominator: (denominator: Denominator) => number =
     (denominator: Denominator): number => denominator as any
 
-const Ratio: (ratio: Ratio) => number = (ratio: Ratio): number =>
-    Numerator(ratio[ 0 ]) * (1 / Denominator(ratio[ 1 ]))
+const Fraction: (fraction: Fraction) => number = (fraction: Fraction): number =>
+    Numerator(fraction[ 0 ]) * (1 / Denominator(fraction[ 1 ]))
 
 // Other Stuff
 
@@ -108,6 +108,6 @@ export {
     Numerator,
     Denominator,
     Meters,
-    Ratio,
+    Fraction,
     Space,
 }

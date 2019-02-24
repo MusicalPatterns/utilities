@@ -1,6 +1,6 @@
 // tslint:disable no-any no-unused-expression comment-format no-commented-code no-dead-store
 
-import { from, Hz, Ratio, Scalar, to } from '../../../src/indexForTest'
+import { Fraction, from, Hz, Scalar, to } from '../../../src/indexForTest'
 
 // tslint:disable-next-line:no-type-definitions-outside-types-modules
 describe('from', () => {
@@ -68,9 +68,9 @@ describe('from', () => {
             from.Denominator(to.Denominator(3)) * 3
         })
 
-        it('converts a ratio tuple into a number', () => {
-            const ratio: Ratio = to.Ratio([ 5, 4 ])
-            expect(from.Ratio(ratio))
+        it('converts a fraction into a number', () => {
+            const fraction: Fraction = to.Fraction([ 5, 4 ])
+            expect(from.Fraction(fraction))
                 .toBe(5 / 4)
         })
 

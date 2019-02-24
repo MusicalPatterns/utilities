@@ -38,7 +38,7 @@ export {
     Denominator,
     Integer,
     Meters,
-    Ratio,
+    Fraction,
     Space,
 } from './nominal/indexForTest'
 export {

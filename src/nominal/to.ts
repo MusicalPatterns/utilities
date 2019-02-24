@@ -10,6 +10,7 @@ import {
     ContourWhole,
     Cycle,
     Denominator,
+    Fraction,
     Hz,
     Integer,
     Meters,
@@ -21,7 +22,6 @@ import {
     Ordinal,
     Power,
     Radians,
-    Ratio,
     Rotation,
     Scalar,
     Semitones,
@@ -97,9 +97,9 @@ const Denominator: (denominator: number | Integer) => Denominator =
         return denominator as any
     }
 
-const Ratio: (ratio: [ number | Numerator, number | Denominator ]) => Ratio =
-    (ratio: [ number | Numerator, number | Denominator ]): Ratio =>
-        ratio as any
+const Fraction: (fraction: [ number | Numerator, number | Denominator ]) => Fraction =
+    (fraction: [ number | Numerator, number | Denominator ]): Fraction =>
+        fraction as any
 
 // Other Stuff
 
@@ -142,7 +142,7 @@ export {
     ContourElement,
     ContourPiece,
     ContourWhole,
-    Ratio,
+    Fraction,
     Numerator,
     Denominator,
     Modulus,

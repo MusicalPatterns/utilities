@@ -1,9 +1,9 @@
-import { Integer, Ratio, to } from '../nominal'
+import { Fraction, Integer, to } from '../nominal'
 import { greatestCommonDivisor } from './common'
 import { quotient } from './typedOperations'
 
-const lowestTerms: (ratio: Ratio) => Ratio =
-    ([ numerator, denominator ]: Ratio): Ratio => {
+const lowestTerms: (fraction: Fraction) => Fraction =
+    ([ numerator, denominator ]: Fraction): Fraction => {
         const gcd: Integer = greatestCommonDivisor(numerator, denominator)
 
         return [
