@@ -206,6 +206,7 @@ export {
 export {
     testIsCloseTo,
     testArraysAreClose,
+    testArraysAreCloseSoFar,
     testArraysHaveSameElements,
 } from './testing'
 export {

@@ -1,3 +1,3 @@
 export { testIsCloseTo } from './testIsCloseTo'
-export { testArraysAreClose } from './testArraysAreClose'
+export { testArraysAreClose, testArraysAreCloseSoFar } from './testArraysAreClose'
 export { testArraysHaveSameElements } from './testArraysHaveSameElements'

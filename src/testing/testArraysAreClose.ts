@@ -8,6 +8,11 @@ const testArraysAreClose: <T>(actual: T[], expected: T[]) => void =
             fail(`Expected actual's ${actual.length} length to be ${expected.length}`)
         }
 
+        testArraysAreCloseSoFar(actual, expected)
+    }
+
+const testArraysAreCloseSoFar: <T>(actual: T[], expected: T[]) => void =
+    <T>(actual: T[], expected: T[]): void => {
         forEach(expected, (expectedElement: T, index: Ordinal): void => {
             const actualElement: T = apply.Ordinal(actual, index)
             expect(testIsCloseTo(actualElement, expectedElement))
@@ -19,4 +24,5 @@ const testArraysAreClose: <T>(actual: T[], expected: T[]) => void =
 
 export {
     testArraysAreClose,
+    testArraysAreCloseSoFar,
 }
