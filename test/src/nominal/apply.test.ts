@@ -36,12 +36,12 @@ describe('apply', () => {
                 .toBe(to.Scalar(5))
         })
 
-        it('when applies to a cyclical array, cycles it to the left', () => {
-            expect(apply.Translation(to.Cycle([ 0, 1, 1, 0, 1 ]), to.Translation(1)))
+        it('when applies to a cyclical array, cycles it to the right', () => {
+            expect(apply.Translation(to.Cycle([ 0, 1, 1, 0, 1 ]), to.Translation(negative(1))))
                 .toEqual(to.Cycle([ 1, 1, 0, 1, 0 ]))
             expect(apply.Translation(to.Cycle([ 0, 1, 1, 0, 1 ]), to.Translation(0)))
                 .toEqual(to.Cycle([ 0, 1, 1, 0, 1 ]))
-            expect(apply.Translation(to.Cycle([ 0, 1, 1, 0, 1 ]), to.Translation(negative(1))))
+            expect(apply.Translation(to.Cycle([ 0, 1, 1, 0, 1 ]), to.Translation(1)))
                 .toEqual(to.Cycle([ 1, 0, 1, 1, 0 ]))
         })
     })

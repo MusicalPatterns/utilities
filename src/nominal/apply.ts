@@ -52,7 +52,7 @@ const Translation: <T, U extends Number>(value: T, translation: Translation<U>) 
                 index < to.Ordinal(from.Cardinal(cellCount));
                 index = Translation(index, to.Translation(1))
             ) {
-                let cycledIndex: Ordinal = Translation(index, translation)
+                let cycledIndex: Ordinal = Translation(index, to.Translation(-from.Translation(translation)))
                 cycledIndex = wrapWithin(cycledIndex, cellCount)
                 cycledCycle.push(cycle[ from.Ordinal(cycledIndex) ])
             }

@@ -24,7 +24,7 @@ const buildArrayMapForCyclingRotationMatrixForAxis: (axis: Ordinal) => CycleMap 
         <T>(rotationVectorOrMatrix: Cycle<T>): Cycle<T> => {
             const translation: Translation = apply.Translation(
                 ADJUSTMENT_FOR_ROTATION_MATRIX_CYCLING_FROM_AXIS,
-                negative(to.Translation(from.Ordinal(axis))),
+                to.Translation(from.Ordinal(axis)),
             )
 
             return apply.Translation(rotationVectorOrMatrix, translation)
