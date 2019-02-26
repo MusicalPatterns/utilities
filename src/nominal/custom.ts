@@ -67,4 +67,5 @@ const DUMMY_VALUE_FOR_BUILDING_NOMINAL_INTERFACE: number = 0
 export {
     DUMMY_VALUE_FOR_BUILDING_NOMINAL_INTERFACE,
     buildNominalInterface,
+    NominalInterface,
 }

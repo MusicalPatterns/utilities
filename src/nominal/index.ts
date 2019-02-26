@@ -11,6 +11,7 @@ export {
 export {
     DUMMY_VALUE_FOR_BUILDING_NOMINAL_INTERFACE,
     buildNominalInterface,
+    NominalInterface,
 } from './custom'
 
 export {
