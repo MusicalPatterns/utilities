@@ -22,10 +22,11 @@ interface NominalInterface<T extends NominalInterfaceOptionObject> {
     to: To<T>,
 }
 
-const buildNominalInterface: <T extends NominalInterfaceOptionObject>(typesObject: T) => NominalInterface<T> =
-    <T extends NominalInterfaceOptionObject>(typesObject: T): NominalInterface<T> => ({
+const buildNominalInterface:
+    <T extends NominalInterfaceOptionObject>(nominalInterfaceOptionsObject: T) => NominalInterface<T> =
+    <T extends NominalInterfaceOptionObject>(nominalInterfaceOptionsObject: T): NominalInterface<T> => ({
         from: {
-            ...Object.keys(typesObject.number)
+            ...Object.keys(nominalInterfaceOptionsObject.number)
                 .reduce(
                     (accumulator: FromMono<T>, typeName: string): FromMono<T> => ({
                         ...accumulator,
@@ -33,7 +34,7 @@ const buildNominalInterface: <T extends NominalInterfaceOptionObject>(typesObjec
                     }),
                     {} as FromMono<T>,
                 ),
-            ...Object.keys(typesObject.numericArray)
+            ...Object.keys(nominalInterfaceOptionsObject.numericArray)
                 .reduce(
                     (accumulator: FromPoly<T>, typeName: string): FromPoly<T> => ({
                         ...accumulator,
@@ -43,7 +44,7 @@ const buildNominalInterface: <T extends NominalInterfaceOptionObject>(typesObjec
                 ),
         },
         to: {
-            ...Object.keys(typesObject.number)
+            ...Object.keys(nominalInterfaceOptionsObject.number)
                 .reduce(
                     (accumulator: ToMono<T>, typeName: string): ToMono<T> => ({
                         ...accumulator,
@@ -51,7 +52,7 @@ const buildNominalInterface: <T extends NominalInterfaceOptionObject>(typesObjec
                     }),
                     {} as ToMono<T>,
                 ),
-            ...Object.keys(typesObject.numericArray)
+            ...Object.keys(nominalInterfaceOptionsObject.numericArray)
                 .reduce(
                     (accumulator: ToPoly<T>, typeName: string): ToPoly<T> => ({
                         ...accumulator,
