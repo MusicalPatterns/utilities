@@ -38,6 +38,16 @@ describe('from', () => {
         const hzFromScalarHz: Hz = from.Scalar(scalarHz)
     })
 
+    it('can assign to an object property without needing an intermediate variable', () => {
+        const hzScalar: Scalar<Hz> = to.Scalar(to.Hz(3))
+        const scalarHz: Hz<Scalar> = to.Hz(to.Scalar(3))
+
+        const recipientObject: { hz: Hz, scalar: Scalar } = {
+            hz: from.Scalar(hzScalar),
+            scalar: from.Hz(scalarHz),
+        }
+    })
+
     // it('DOES NOT ALLOW taking a plain number', () => {
     //     from.Hz(3)
     //     from.Scalar(3)
