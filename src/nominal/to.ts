@@ -1,6 +1,7 @@
 // tslint:disable variable-name max-file-line-count no-any
 
 import {
+    Amplitude,
     Base,
     Block,
     Cardinal,
@@ -11,6 +12,7 @@ import {
     Cycle,
     Denominator,
     Fraction,
+    Frequency,
     Hz,
     Integer,
     Meters,
@@ -26,6 +28,7 @@ import {
     Scalar,
     Semitones,
     Space,
+    Time,
     Translation,
 } from './types'
 
@@ -45,6 +48,12 @@ const Meters: <T extends NoUnits>(meters: T) => Meters<T> =
     <T extends NoUnits>(meters: T): Meters<T> => meters as Meters<T>
 const Space: <T extends NoUnits>(space: T) => Space<T> =
     <T extends NoUnits>(space: T): Space<T> => space as Space<T>
+const Time: <T extends NoUnits>(time: T) => Time<T> =
+    <T extends NoUnits>(time: T): Time<T> => time as Time<T>
+const Frequency: <T extends NoUnits>(frequency: T) => Frequency<T> =
+    <T extends NoUnits>(frequency: T): Frequency<T> => frequency as Frequency<T>
+const Amplitude: <T extends NoUnits>(amplitude: T) => Amplitude<T> =
+    <T extends NoUnits>(amplitude: T): Amplitude<T> => amplitude as Amplitude<T>
 
 // Operation
 
@@ -150,4 +159,7 @@ export {
     Integer,
     Meters,
     Space,
+    Time,
+    Frequency,
+    Amplitude,
 }

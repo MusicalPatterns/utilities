@@ -40,6 +40,9 @@ export {
     Meters,
     Fraction,
     Space,
+    Time,
+    Frequency,
+    Amplitude,
 } from './nominal/indexForTest'
 export {
     distanceBetween,

@@ -1,10 +1,12 @@
 // tslint:disable no-any no-unused-expression comment-format no-commented-code no-dead-store
 
 import {
+    Amplitude,
     Base,
     Cardinal,
     Cents,
     Denominator,
+    Frequency,
     Hz,
     Integer,
     Meters,
@@ -18,6 +20,7 @@ import {
     Scalar,
     Semitones,
     Space,
+    Time,
     to,
     Translation,
 } from '../../../src/indexForTest'
@@ -33,6 +36,9 @@ describe('to', () => {
             const semitones: Semitones = to.Semitones(3)
             const meters: Meters = to.Meters(3)
             const space: Space = to.Space(3)
+            const time: Time = to.Time(3)
+            const frequency: Frequency = to.Frequency(3)
+            const amplitude: Amplitude = to.Amplitude(3)
         })
 
         it('allows comparing things in the same units but with different values', () => {

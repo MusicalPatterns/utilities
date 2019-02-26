@@ -2,6 +2,7 @@
 
 import {
     Abstract,
+    Amplitude,
     Base,
     Block,
     Cardinal,
@@ -9,6 +10,7 @@ import {
     Cycle,
     Denominator,
     Fraction,
+    Frequency,
     Hz,
     Integer,
     Meters,
@@ -23,6 +25,7 @@ import {
     Scalar,
     Semitones,
     Space,
+    Time,
     Translation,
 } from './types'
 
@@ -42,6 +45,12 @@ const Meters: <U extends Abstract, T extends Meters<U>>(meters: T) => U & number
     <U extends Abstract, T extends Meters<U>>(meters: T): U & number => meters as any
 const Space: <U extends Abstract, T extends Space<U>>(space: T) => U & number =
     <U extends Abstract, T extends Space<U>>(space: T): U & number => space as any
+const Time: <U extends Abstract, T extends Time<U>>(time: T) => U & number =
+    <U extends Abstract, T extends Time<U>>(time: T): U & number => time as any
+const Frequency: <U extends Abstract, T extends Frequency<U>>(frequency: T) => U & number =
+    <U extends Abstract, T extends Frequency<U>>(frequency: T): U & number => frequency as any
+const Amplitude: <U extends Abstract, T extends Amplitude<U>>(amplitude: T) => U & number =
+    <U extends Abstract, T extends Amplitude<U>>(amplitude: T): U & number => amplitude as any
 
 // Operation
 
@@ -110,4 +119,7 @@ export {
     Meters,
     Fraction,
     Space,
+    Time,
+    Frequency,
+    Amplitude,
 }

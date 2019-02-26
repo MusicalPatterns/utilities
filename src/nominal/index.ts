@@ -40,4 +40,7 @@ export {
     Space,
     Abstract,
     Operand,
+    Time,
+    Frequency,
+    Amplitude,
 } from './types'

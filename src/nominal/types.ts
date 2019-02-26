@@ -17,7 +17,11 @@ type Radians<T extends NoUnits = number> = UnitsBrand<'Radians', T>
 type Cents<T extends NoUnits = number> = UnitsBrand<'Cents', T>
 type Semitones<T extends NoUnits = number> = UnitsBrand<'Semitones', T>
 type Meters<T extends NoUnits = number> = UnitsBrand<'Meters', T>
+
 type Space<T extends NoUnits = number> = UnitsBrand<'Space', T>
+type Time<T extends NoUnits = number> = UnitsBrand<'Time', T>
+type Frequency<T extends NoUnits = number> = UnitsBrand<'Frequency', T>
+type Amplitude<T extends NoUnits = number> = UnitsBrand<'Amplitude', T>
 
 // Operation
 
@@ -85,4 +89,7 @@ export {
     Space,
     Abstract,
     Operand,
+    Time,
+    Frequency,
+    Amplitude,
 }

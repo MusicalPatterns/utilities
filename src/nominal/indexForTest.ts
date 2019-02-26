@@ -31,4 +31,7 @@ export {
     Meters,
     Fraction,
     Space,
+    Time,
+    Frequency,
+    Amplitude,
 } from './types'

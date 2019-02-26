@@ -2,7 +2,7 @@
 
 import { keys } from '../code'
 import { negative } from '../math'
-import { apply, from, Hz, Power, Scalar, to } from '../nominal'
+import { apply, Frequency, from, Hz, Power, Scalar, to } from '../nominal'
 import { DictionaryOf } from '../types'
 import { OCTAVE } from './constants'
 import { ScientificPitches, ScientificPitchNoteName, ScientificPitchOctaveNumber } from './types'
@@ -39,8 +39,11 @@ const SCIENTIFIC_PITCH_NOTE_NAME_TO_ZEROTH_OCTAVE_FREQUENCY_MAP: { [key in Scien
 
 const scientificPitch: (noteName: ScientificPitchNoteName, octaveNumber: ScientificPitchOctaveNumber) => Hz =
     (noteName: ScientificPitchNoteName, octaveNumber: ScientificPitchOctaveNumber): Hz => {
-        const octaveScalar: Scalar =
-            to.Scalar(from.Base(apply.Power(OCTAVE, SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP[ octaveNumber ])))
+        const octaveScalar: Scalar<Frequency> =
+            to.Scalar(to.Frequency(from.Base(apply.Power(
+                OCTAVE,
+                SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP[ octaveNumber ],
+            ))))
 
         return apply.Scalar(SCIENTIFIC_PITCH_NOTE_NAME_TO_ZEROTH_OCTAVE_FREQUENCY_MAP[ noteName ], octaveScalar)
     }
