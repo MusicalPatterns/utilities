@@ -202,6 +202,8 @@ export {
     Space,
     Abstract,
     Operand,
+    DUMMY_VALUE_FOR_BUILDING_NOMINAL_INTERFACE,
+    buildNominalInterface,
 } from './nominal'
 export {
     testIsCloseTo,

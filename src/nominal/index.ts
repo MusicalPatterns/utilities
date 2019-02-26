@@ -9,6 +9,11 @@ export {
 }
 
 export {
+    DUMMY_VALUE_FOR_BUILDING_NOMINAL_INTERFACE,
+    buildNominalInterface,
+} from './custom'
+
+export {
     Base,
     Translation,
     Ordinal,
