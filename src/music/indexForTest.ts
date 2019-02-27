@@ -1,6 +1,6 @@
 export { centsToPitch } from './centsToPitch'
 export { windowIterationHarmonicStepCount } from './windowIterationHarmonicStepCount'
-export { octaveReduce } from './octaveReduce'
+export { octaveReduce, windowReduce } from './windowReduce'
 export { buildEqualDivisionScalars } from './equalDivisions'
 export { SCIENTIFIC_PITCHES } from './scientificPitch'
 

@@ -156,6 +156,14 @@ export {
     lowestTerms,
     max,
     min,
+    DOUBLE,
+    TRIPLE,
+    QUADRUPLE,
+    PENTUPLE,
+    SEXTUPLE,
+    HEPTUPLE,
+    OCTUPLE,
+    NONTUPLE,
 } from './math'
 export {
     centsToPitch,
@@ -167,6 +175,7 @@ export {
     CENTS_PER_SEMITONE,
     BEGINNING,
     octaveReduce,
+    windowReduce,
     MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS,
     SCIENTIFIC_PITCHES,
     ScientificPitchOctaveNumber,

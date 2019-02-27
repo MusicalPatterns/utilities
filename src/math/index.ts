@@ -115,6 +115,14 @@ export {
     DENOMINATOR_INDEX,
     ORIGIN,
     DEFAULT_PRECISION,
+    DOUBLE,
+    TRIPLE,
+    QUADRUPLE,
+    PENTUPLE,
+    SEXTUPLE,
+    HEPTUPLE,
+    OCTUPLE,
+    NONTUPLE,
 } from './constants'
 export {
     Coordinate,

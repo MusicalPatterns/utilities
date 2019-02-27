@@ -21,6 +21,9 @@ export {
     PI,
     ONE_HALF,
     THREE_HALVES,
+    FOUR_THIRDS,
+    TWO_THIRDS,
+    FIVE_HALVES,
 } from './constants'
 export {
     Coordinate,

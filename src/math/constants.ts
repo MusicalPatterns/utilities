@@ -25,6 +25,15 @@ const FOUR_THIRDS: Scalar = to.Scalar(4 / 3)
 const FIVE_THIRDS: Scalar = to.Scalar(5 / 3)
 const FIVE_FOURTHS: Scalar = to.Scalar(5 / 4)
 
+const DOUBLE: Scalar = to.Scalar(2)
+const TRIPLE: Scalar = to.Scalar(3)
+const QUADRUPLE: Scalar = to.Scalar(4)
+const PENTUPLE: Scalar = to.Scalar(5)
+const SEXTUPLE: Scalar = to.Scalar(6)
+const HEPTUPLE: Scalar = to.Scalar(7)
+const OCTUPLE: Scalar = to.Scalar(8)
+const NONTUPLE: Scalar = to.Scalar(9)
+
 const DEFAULT_PRECISION: Integer = to.Integer(2)
 const A_SUFFICIENT_COUNT_OF_NUMBERS: Cardinal = to.Cardinal(Math.pow(2, 8))
 const ADJUSTMENT_FOR_ROTATION_MATRIX_CYCLING_FROM_AXIS: Translation = to.Translation(-2)
@@ -179,4 +188,12 @@ export {
     NUMERATOR_INDEX,
     DENOMINATOR_INDEX,
     ORIGIN,
+    DOUBLE,
+    TRIPLE,
+    QUADRUPLE,
+    PENTUPLE,
+    SEXTUPLE,
+    HEPTUPLE,
+    OCTUPLE,
+    NONTUPLE,
 }
