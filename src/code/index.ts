@@ -15,6 +15,7 @@ export { lastElement, indexOfLastElement } from './lastElement'
 export { random } from './random'
 export { numericSort } from './sort'
 export { uniqueFilter } from './filter'
+export { sleep } from './sleep'
 export { slice, forEach, map, reduce, filter } from './typedIterators'
 
 export {

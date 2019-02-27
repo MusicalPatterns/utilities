@@ -35,6 +35,7 @@ export {
     numericSort,
     filter,
     uniqueFilter,
+    sleep,
 } from './code'
 export {
     absoluteRatio,
@@ -214,6 +215,18 @@ export {
     testArraysAreClose,
     testArraysAreCloseSoFar,
     testArraysHaveSameElements,
+    elementCount,
+    elementIds,
+    elementChecked,
+    elementInnerText,
+    elementExists,
+    elementValue,
+    findElement,
+    press,
+    loseFocus,
+    selectOption,
+    simulateDesktopViewport,
+    simulateMobileViewport,
 } from './testing'
 export {
     MILLISECONDS_PER_SECOND,
