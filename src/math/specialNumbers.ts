@@ -37,7 +37,7 @@ const trapezoidalNumber: (trapezoidalNumberParameters: { height: number, start: 
         difference(triangularNumber(sum(start, height)), triangularNumber(start))
 
 const termialRoot: (termialRootParameters: { rangeDelta: number, rangeStart: number, value: number }) => number =
-    ({ value, rangeDelta, rangeStart }: { rangeDelta: number, rangeStart: number, value: number  }): number => {
+    ({ value, rangeDelta, rangeStart }: { rangeDelta: number, rangeStart: number, value: number }): number => {
         // tslint:disable-next-line no-magic-numbers
         const valueC: number = product(rangeStart, 2)
         // tslint:disable-next-line no-magic-numbers

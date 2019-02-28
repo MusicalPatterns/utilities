@@ -1,3 +1,5 @@
+// tslint:disable no-reaching-imports
+
 export { centsToPitch } from './centsToPitch'
 export { windowIterationHarmonicStepCount } from './windowIterationHarmonicStepCount'
 export { octaveReduce, windowReduce } from './windowReduce'

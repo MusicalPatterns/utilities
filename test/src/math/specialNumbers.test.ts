@@ -65,12 +65,12 @@ describe('special numbers', () => {
 
         it('throws when you choose greater than value', () => {
             expect(() => combinationCount(3, 4))
-                .toThrow(new Error ('You cannot choose more objects than you have.'))
+                .toThrow(new Error('You cannot choose more objects than you have.'))
         })
 
         it('throws when you choose less than 0', () => {
             expect(() => combinationCount(3, -1))
-                .toThrow(new Error ('You cannot choose fewer objects than none.'))
+                .toThrow(new Error('You cannot choose fewer objects than none.'))
         })
     })
 

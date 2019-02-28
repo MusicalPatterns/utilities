@@ -8,8 +8,8 @@ const windowIterationHarmonicStepCount: (window: Base, iteration: Ordinal) => Ca
             apply.Power(window, to.Power(from.Ordinal(apply.Translation(
                 iteration,
                 to.Translation(negative(1)),
-            ))),
-        ))))
+                ))),
+            ))))
 
 export {
     windowIterationHarmonicStepCount,
