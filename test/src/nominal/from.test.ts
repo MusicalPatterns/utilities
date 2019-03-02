@@ -2,7 +2,7 @@
 
 import { Fraction, from, Hz, Scalar, to } from '../../../src/indexForTest'
 
-// tslint:disable-next-line:no-type-definitions-outside-types-modules
+// tslint:disable-next-line no-type-definitions-outside-types-modules
 describe('from', () => {
     it('converts back to a plain number', () => {
         const hz: Hz = to.Hz(3)

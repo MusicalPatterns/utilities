@@ -1,3 +1,5 @@
+// tslint:disable no-magic-numbers
+
 import { Ordinal, to, Translation } from '../nominal'
 
 const INCLUSIVE: Translation = to.Translation(1)

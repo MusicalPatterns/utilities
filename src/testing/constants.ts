@@ -1,3 +1,5 @@
+// tslint:disable no-magic-numbers
+
 const DESKTOP_VIEWPORT_WIDTH: number = 1600
 const DESKTOP_VIEWPORT_HEIGHT: number = 800
 const MOBILE_VIEWPORT_WIDTH: number = 800

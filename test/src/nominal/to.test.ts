@@ -25,7 +25,7 @@ import {
     Translation,
 } from '../../../src/indexForTest'
 
-// tslint:disable-next-line:no-type-definitions-outside-types-modules
+// tslint:disable-next-line no-type-definitions-outside-types-modules
 describe('to', () => {
     describe('units', () => {
         it('allows converting raw numbers into numbers in certain units', () => {
