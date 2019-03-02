@@ -8,7 +8,7 @@ const loseFocus: (page: Page, selector?: string) => Promise<void> =
             await element.click()
         }
 
-        const anythingElse: ElementHandle = await findElement(page, 'h1')
+        const anythingElse: ElementHandle = await findElement(page, 'div')
         await anythingElse.click()
     }
 
