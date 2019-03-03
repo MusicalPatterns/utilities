@@ -2,7 +2,6 @@
 
 import { Fraction, from, Hz, Scalar, to } from '../../../src/indexForTest'
 
-// tslint:disable-next-line no-type-definitions-outside-types-modules
 describe('from', () => {
     it('converts back to a plain number', () => {
         const hz: Hz = to.Hz(3)
@@ -12,7 +11,7 @@ describe('from', () => {
         const scalarNumber: number = from.Scalar(scalar)
     })
 
-    it('should be able to take the right type and return a plain number without assigning to a plain number', () => {
+    it('should be able to take the correct type and return a plain number without assigning to a plain number', () => {
         const hz: Hz = to.Hz(3)
         from.Hz(hz)
         from.Hz(hz) * 3
