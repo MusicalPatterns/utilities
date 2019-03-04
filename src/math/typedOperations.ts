@@ -1,4 +1,4 @@
-// tslint:disable ban-types max-file-line-count no-any
+// tslint:disable ban-types no-any
 
 import { Integer } from '../nominal'
 import { ADDITIVE_IDENTITY, MULTIPLICATIVE_IDENTITY } from './constants'

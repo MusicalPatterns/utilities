@@ -14,7 +14,6 @@ const setAllPropertiesOfObjectOnAnother: <K extends string, V>(setAllPropertiesO
     objectToChange: { [key in K]: V },
     objectWithProperties: { [key in K]: V },
 }) => void =
-    // tslint:disable-next-line max-line-length
     <K extends string, V>({ objectToChange, objectWithProperties }: {
         objectToChange: { [key in K]: V },
         objectWithProperties: { [key in K]: V },

@@ -241,7 +241,6 @@ describe('special numbers', () => {
     })
 
     describe('termial root', () => {
-        // tslint:disable-next-line max-line-length
         it('for a concrete example of what you can use this method for: given an starting stripe count per tile, the increase in stripe count per next tile, and a stripe number, it will return which tile that stripe passes through, including the fractional part within that tile', () => {
             let rangeStart: number
             let rangeDelta: number

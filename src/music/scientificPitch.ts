@@ -50,8 +50,8 @@ const scientificPitch: (noteName: ScientificPitchNoteName, octaveNumber: Scienti
 
 const SCIENTIFIC_PITCHES: ScientificPitches = keys(SCIENTIFIC_PITCH_NOTE_NAME_TO_ZEROTH_OCTAVE_FREQUENCY_MAP)
     .reduce(
-        (accumulator: ScientificPitches, noteName: ScientificPitchNoteName): ScientificPitches => {
-            // tslint:disable-next-line no-inferred-empty-object-type
+        (pitchesAccumulator: ScientificPitches, noteName: ScientificPitchNoteName): ScientificPitches => {
+            const initialFrequenciesAccumulator: DictionaryOf<Hz> = {}
             const frequencies: DictionaryOf<Hz> = keys(SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP)
                 .reduce(
                     (
@@ -61,11 +61,11 @@ const SCIENTIFIC_PITCHES: ScientificPitches = keys(SCIENTIFIC_PITCH_NOTE_NAME_TO
                         ...frequenciesAccumulator,
                         [ octaveNumber ]: scientificPitch(noteName, octaveNumber),
                     }),
-                    {},
+                    initialFrequenciesAccumulator,
                 )
 
             return {
-                ...accumulator,
+                ...pitchesAccumulator,
                 [ noteName ]: frequencies,
             }
         },

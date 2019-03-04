@@ -1,4 +1,4 @@
-// tslint:disable ban-types max-line-length no-any
+// tslint:disable ban-types max-file-line-count no-any
 
 import { INITIAL, map, reduce, slice } from '../code'
 import { apply, Cycle, from, Ordinal, Scalar, to, Translation } from '../nominal'
@@ -9,9 +9,18 @@ import { difference, negative, sum } from './typedOperations'
 import { Coordinate, CycleMap, RotateParameters, RotationMatrix, Vector } from './types'
 
 const defaultFixedCoordinateToOriginOfDimensionalityOfCoordinate:
-    <T extends Number, D extends Number>(fixedCoordinate: Maybe<Coordinate<T, D>>, coordinate: Coordinate<T, D>) => Coordinate<T, D> =
-    <T extends Number, D extends Number>(fixedCoordinate: Maybe<Coordinate<T, D>>, coordinate: Coordinate<T, D>): Coordinate<T, D> =>
-        (fixedCoordinate || coordinate.length === from.Cardinal(TWO_DIMENSIONAL) ? [ 0, 0 ] : [ 0, 0, 0 ]) as any as Coordinate<T, D>
+    <T extends Number, D extends Number>(
+        fixedCoordinate: Maybe<Coordinate<T, D>>,
+        coordinate: Coordinate<T, D>,
+    ) => Coordinate<T, D> =
+    <T extends Number, D extends Number>(
+        fixedCoordinate: Maybe<Coordinate<T, D>>,
+        coordinate: Coordinate<T, D>,
+    ): Coordinate<T, D> => (
+        fixedCoordinate || coordinate.length === from.Cardinal(TWO_DIMENSIONAL) ?
+            [ 0, 0 ] :
+            [ 0, 0, 0 ]
+    ) as any as Coordinate<T, D>
 
 const buildArrayMapForScalingRotationMatrixToDimensionalityOfCoordinate:
     <T extends Number, D extends Number>(coordinate: Coordinate<T, D>) => CycleMap =
@@ -35,8 +44,13 @@ const mapAcrossBothDimensions: (rotationMatrix: RotationMatrix, cycleMap: CycleM
         cycleMap(to.Cycle(rotationMatrix.map(cycleMap)))
 
 const scaleRotationMatrixToDimensionalityOfCoordinate:
-    <T extends Number, D extends Number>(rotationMatrix: RotationMatrix, coordinate: Coordinate<T, D>) => RotationMatrix =
-    <T extends Number, D extends Number>(rotationMatrix: RotationMatrix, coordinate: Coordinate<T, D>): RotationMatrix => {
+    <T extends Number, D extends Number>(
+        rotationMatrix: RotationMatrix,
+        coordinate: Coordinate<T, D>,
+    ) => RotationMatrix =
+    <T extends Number, D extends Number>(
+        rotationMatrix: RotationMatrix, coordinate: Coordinate<T, D>,
+    ): RotationMatrix => {
         const cycleMap: CycleMap = buildArrayMapForScalingRotationMatrixToDimensionalityOfCoordinate(coordinate)
 
         return mapAcrossBothDimensions(rotationMatrix, cycleMap)
