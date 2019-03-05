@@ -3,27 +3,36 @@
 import { Page } from 'puppeteer'
 import { ElementWithChecked, ElementWithInnerText, ElementWithValue } from './types'
 
-const isElementWithValue: (element: Element | null) => element is ElementWithValue =
-    (element: Element | null): element is ElementWithValue =>
-        !!element && Object.keys(element)
+const isElementWithValue: (element: Element) => element is ElementWithValue =
+    (element: Element): element is ElementWithValue =>
+        Object.keys(element)
             .includes('value')
 
-const isElementWithInnerText: (element: Element | null) => element is ElementWithInnerText =
-    (element: Element | null): element is ElementWithInnerText =>
-        !!element && Object.keys(element)
+const isElementWithInnerText: (element: Element) => element is ElementWithInnerText =
+    (element: Element): element is ElementWithInnerText =>
+        Object.keys(element)
             .includes('innerText')
 
-const isElementWithChecked: (element: Element | null) => element is ElementWithChecked =
-    (element: Element | null): element is ElementWithChecked =>
-        !!element && Object.keys(element)
+const isElementWithChecked: (element: Element) => element is ElementWithChecked =
+    (element: Element): element is ElementWithChecked =>
+        Object.keys(element)
             .includes('checked')
+
+const getElement: (selector: string) => Element =
+    (selector: string): Element => {
+        const element: Element | null = document.querySelector(selector)
+        if (!element) {
+            throw new Error(`element matching ${selector} was not found`)
+        }
+
+        return element
+    }
 
 const elementValue: (page: Page, selector: string) => Promise<any> =
     async (page: Page, selector: string): Promise<any> =>
         page.evaluate(
             (slctr: string) => {
-                const element: Element | null = document.querySelector(slctr)
-
+                const element: Element = getElement(slctr)
                 if (isElementWithValue(element)) {
                     return element.value
                 }
@@ -35,18 +44,13 @@ const elementValue: (page: Page, selector: string) => Promise<any> =
 
 const elementExists: (page: Page, selector: string) => Promise<boolean> =
     async (page: Page, selector: string): Promise<boolean> =>
-        page.evaluate(
-            (slctr: string) =>
-                !!document.querySelector(slctr),
-            selector,
-        )
+        page.evaluate((slctr: string) => !!document.querySelector(slctr), selector)
 
 const elementInnerText: (page: Page, selector: string) => Promise<string> =
     async (page: Page, selector: string): Promise<string> =>
         page.evaluate(
             (slctr: string) => {
-                const element: Element | null = document.querySelector(slctr)
-
+                const element: Element = getElement(slctr)
                 if (isElementWithInnerText(element)) {
                     return element.innerText
                 }
@@ -60,8 +64,7 @@ const elementChecked: (page: Page, selector: string) => Promise<boolean> =
     async (page: Page, selector: string): Promise<boolean> =>
         page.evaluate(
             (slctr: string) => {
-                const element: Element | null = document.querySelector(slctr)
-
+                const element: Element = getElement(slctr)
                 if (isElementWithChecked(element)) {
                     return element.checked
                 }
@@ -73,11 +76,7 @@ const elementChecked: (page: Page, selector: string) => Promise<boolean> =
 
 const elementCount: (page: Page, selector: string) => Promise<number> =
     async (page: Page, selector: string): Promise<number> =>
-        page.evaluate(
-            (slctr: string) =>
-                document.querySelectorAll(slctr).length,
-            selector,
-        )
+        page.evaluate((slctr: string) => document.querySelectorAll(slctr).length, selector)
 
 const elementIds: (page: Page, selector: string) => Promise<string[]> =
     async (page: Page, selector: string): Promise<string[]> =>
