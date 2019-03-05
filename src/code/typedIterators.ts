@@ -1,8 +1,16 @@
 import { from, Ordinal } from '../nominal'
 
-const slice: <T>(array: T[], initial: Ordinal, terminal: Ordinal) => T[] =
-    <T>(array: T[], initial: Ordinal, terminal: Ordinal): T[] =>
-        array.slice(from.Ordinal(initial), from.Ordinal(terminal))
+// tslint:disable-next-line no-any
+const slice: <T extends any[] | string>(array: T, initial: Ordinal, terminal?: Ordinal) => T =
+    // tslint:disable-next-line no-any
+    <T extends any[] | string>(array: T, initial: Ordinal, terminal?: Ordinal): T => {
+        if (terminal !== undefined) {
+            return array.slice(from.Ordinal(initial), from.Ordinal(terminal)) as T
+        }
+        else {
+            return array.slice(from.Ordinal(initial)) as T
+        }
+    }
 
 const forEach: <T>(array: T[], fn: (el: T, index: Ordinal, self: T[]) => void) => void =
     <T>(array: T[], fn: (el: T, index: Ordinal, self: T[]) => void): void => {

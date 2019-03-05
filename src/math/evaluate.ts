@@ -1,18 +1,20 @@
 // tslint:disable max-file-line-count
 
+import { EXCLUSIVE_TO_LEFT, INITIAL, slice } from '../code'
+import { apply, Ordinal, to } from '../nominal'
 import { Operands } from './types'
 
-const splitOperands: (expression: string, operatorIndex: number) => Operands =
-    (expression: string, operatorIndex: number): Operands => {
-        const lhs: number = evaluate(expression.slice(0, operatorIndex))
-        const rhs: number = evaluate(expression.slice(operatorIndex + 1))
+const splitOperands: (expression: string, operatorIndex: Ordinal) => Operands =
+    (expression: string, operatorIndex: Ordinal): Operands => {
+        const lhs: number = evaluate(slice(expression, INITIAL, operatorIndex))
+        const rhs: number = evaluate(slice(expression, apply.Translation(operatorIndex, EXCLUSIVE_TO_LEFT)))
 
         return { lhs, rhs }
     }
 
 const evaluateExponent: (expression: string) => number =
     (expression: string): number => {
-        const lastIndexOfExponentiationSign: number = expression.lastIndexOf('^')
+        const lastIndexOfExponentiationSign: Ordinal = to.Ordinal(expression.lastIndexOf('^'))
         const { lhs, rhs } = splitOperands(expression, lastIndexOfExponentiationSign)
 
         return Math.pow(lhs, rhs)
@@ -20,9 +22,9 @@ const evaluateExponent: (expression: string) => number =
 
 const evaluateGeometricOperation: (expression: string) => number =
     (expression: string): number => {
-        const lastIndexOfMultiplicationSign: number = expression.lastIndexOf('*')
-        const lastIndexOfDivisionSign: number = expression.lastIndexOf('/')
-        const lastIndexOfModulusSign: number = expression.lastIndexOf('%')
+        const lastIndexOfMultiplicationSign: Ordinal = to.Ordinal(expression.lastIndexOf('*'))
+        const lastIndexOfDivisionSign: Ordinal = to.Ordinal(expression.lastIndexOf('/'))
+        const lastIndexOfModulusSign: Ordinal = to.Ordinal(expression.lastIndexOf('%'))
 
         if (
             lastIndexOfMultiplicationSign > lastIndexOfDivisionSign &&
@@ -46,8 +48,8 @@ const evaluateGeometricOperation: (expression: string) => number =
 
 const evaluateArithmeticOperation: (expression: string) => number =
     (expression: string): number => {
-        const lastIndexOfAdditionSign: number = expression.lastIndexOf('+')
-        const lastIndexOfSubtractionSign: number = expression.lastIndexOf('-')
+        const lastIndexOfAdditionSign: Ordinal = to.Ordinal(expression.lastIndexOf('+'))
+        const lastIndexOfSubtractionSign: Ordinal = to.Ordinal(expression.lastIndexOf('-'))
 
         if (lastIndexOfAdditionSign > lastIndexOfSubtractionSign) {
             const { lhs, rhs } = splitOperands(expression, lastIndexOfAdditionSign)
@@ -63,10 +65,14 @@ const evaluateArithmeticOperation: (expression: string) => number =
 
 const evaluateParenthetical: (expression: string) => number =
     (expression: string): number => {
-        const beginParantheticalIndex: number = expression.lastIndexOf('(')
-        const endParantheticalIndex: number =
-            beginParantheticalIndex + expression.slice(beginParantheticalIndex, expression.length)
-                .indexOf(')')
+        const beginParantheticalIndex: Ordinal = to.Ordinal(expression.lastIndexOf('('))
+        const endParantheticalIndex: Ordinal = apply.Translation(
+            beginParantheticalIndex,
+            to.Translation(
+                expression.slice(beginParantheticalIndex, expression.length)
+                    .indexOf(')'),
+            ),
+        )
 
         const partBefore: string = expression.slice(0, beginParantheticalIndex)
         const parenthetical: string = expression.slice(beginParantheticalIndex + 1, endParantheticalIndex)

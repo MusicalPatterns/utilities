@@ -21,6 +21,8 @@ export { slice, forEach, map, reduce, filter } from './typedIterators'
 export {
     INCLUSIVE,
     EXCLUSIVE,
+    EXCLUSIVE_TO_LEFT,
+    INCLUSIVE_TO_LEFT,
     INITIAL,
 } from './constants'
 

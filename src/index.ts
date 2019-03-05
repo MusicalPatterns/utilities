@@ -20,6 +20,8 @@ export {
     INITIAL,
     INCLUSIVE,
     EXCLUSIVE,
+    INCLUSIVE_TO_LEFT,
+    EXCLUSIVE_TO_LEFT,
     noop,
     random,
     entries,
