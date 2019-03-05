@@ -37,6 +37,8 @@ export {
     uniqueFilter,
     sleep,
     PropertyMap,
+    lastCharacter,
+    indexOfLastCharacter,
 } from './code'
 export {
     absoluteRatio,

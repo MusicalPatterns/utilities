@@ -15,6 +15,8 @@ export {
     indexOfLastElement,
     slice,
     INITIAL,
+    indexOfLastCharacter,
+    lastCharacter,
 } from './code/indexForTest'
 export {
     distanceBetween,
