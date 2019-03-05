@@ -1,5 +1,5 @@
 // tslint:disable-next-line ban-types
-type DomValue<T extends string = string, U extends Number | number = number> = T | U
+type DomValue<T extends string = string, U extends Number = Number> = T | U
 
 type DomValueOrChecked = DomValue | boolean
 
