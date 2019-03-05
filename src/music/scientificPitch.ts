@@ -68,8 +68,8 @@ const SCIENTIFIC_PITCHES: ScientificPitches = keys(SCIENTIFIC_PITCH_NOTE_NAME_TO
                 [ noteName ]: frequencies,
             }
         },
-        // @ts-ignore
-        {},
+        // tslint:disable-next-line no-object-literal-type-assertion
+        {} as ScientificPitches,
     )
 
 export {
