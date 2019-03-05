@@ -1,6 +1,5 @@
-// tslint:disable no-any
-
 import { Page } from 'puppeteer'
+import { DomValue } from '../web'
 import { ElementWithChecked, ElementWithInnerText, ElementWithValue } from './types'
 
 const isElementWithValue: (element: Element) => element is ElementWithValue =
@@ -28,8 +27,8 @@ const getElement: (selector: string) => Element =
         return element
     }
 
-const elementValue: (page: Page, selector: string) => Promise<any> =
-    async (page: Page, selector: string): Promise<any> =>
+const elementValue: (page: Page, selector: string) => Promise<DomValue> =
+    async (page: Page, selector: string): Promise<DomValue> =>
         page.evaluate(
             (slctr: string) => {
                 const element: Element = getElement(slctr)

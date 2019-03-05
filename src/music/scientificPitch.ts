@@ -1,9 +1,8 @@
 // tslint:disable no-magic-numbers
 
-import { keys } from '../code'
+import { DictionaryOf, keys } from '../code'
 import { negative } from '../math'
 import { apply, Frequency, from, Hz, Power, Scalar, to } from '../nominal'
-import { DictionaryOf } from '../types'
 import { OCTAVE } from './constants'
 import { ScientificPitches, ScientificPitchNoteName, ScientificPitchOctaveNumber } from './types'
 

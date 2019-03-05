@@ -123,8 +123,7 @@ describe('evaluate', () => {
     })
 
     it('handles it when somehow gets served a number type', () => {
-        // tslint:disable-next-line no-any
-        expect(evaluate(123 as any as string))
+        expect(evaluate(123))
             .toBeCloseTo(123)
     })
 })

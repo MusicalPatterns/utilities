@@ -41,6 +41,9 @@ export {
     PropertyMap,
     lastCharacter,
     indexOfLastCharacter,
+    DictionaryOf,
+    Maybe,
+    AnyOtherProperties,
 } from './code'
 export {
     absoluteRatio,
@@ -248,8 +251,10 @@ export {
     SECONDS_PER_MINUTE,
 } from './time'
 export {
-    Maybe,
-    DictionaryOf,
-    AnyOtherProperties,
+    DomValue,
+    DomValueOrChecked,
+} from './web'
+
+export {
     Units,
 } from './types'

@@ -1,6 +1,7 @@
+import { DomValue } from '../web'
+
 interface ElementWithValue extends Element {
-    // tslint:disable-next-line no-any
-    value: any,
+    value: DomValue,
 }
 
 interface ElementWithInnerText extends Element {

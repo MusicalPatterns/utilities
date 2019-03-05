@@ -30,4 +30,7 @@ export {
     Omit,
     Difference,
     PropertyMap,
+    DictionaryOf,
+    Maybe,
+    AnyOtherProperties,
 } from './types'

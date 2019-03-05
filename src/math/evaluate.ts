@@ -2,12 +2,13 @@
 
 import { EXCLUSIVE_TO_LEFT, INITIAL, slice } from '../code'
 import { apply, Ordinal, to } from '../nominal'
+import { DomValue } from '../web'
 import { Operands } from './types'
 
 const splitOperands: (expression: string, operatorIndex: Ordinal) => Operands =
     (expression: string, operatorIndex: Ordinal): Operands => {
-        const lhs: number = evaluate(slice(expression, INITIAL, operatorIndex))
-        const rhs: number = evaluate(slice(expression, apply.Translation(operatorIndex, EXCLUSIVE_TO_LEFT)))
+        const lhs: number = evaluateString(slice(expression, INITIAL, operatorIndex))
+        const rhs: number = evaluateString(slice(expression, apply.Translation(operatorIndex, EXCLUSIVE_TO_LEFT)))
 
         return { lhs, rhs }
     }
@@ -78,17 +79,14 @@ const evaluateParenthetical: (expression: string) => number =
         const parenthetical: string = expression.slice(beginParantheticalIndex + 1, endParantheticalIndex)
         const partAfter: string = expression.slice(endParantheticalIndex + 1, expression.length)
 
-        return evaluate(`${partBefore}${evaluate(parenthetical)}${partAfter}`)
+        return evaluateString(`${partBefore}${evaluateString(parenthetical)}${partAfter}`)
     }
 
-const evaluate: (expression: string | number) => number =
+const evaluateString: (expression: string) => number =
     // tslint:disable-next-line cyclomatic-complexity
-    (expression: string | number): number => {
+    (expression: string): number => {
         let num: number
-        if (typeof expression === 'number') {
-            num = expression
-        }
-        else if (expression.trim() === '') {
+        if (expression.trim() === '') {
             num = 0
         }
         else if (expression.includes('(')) {
@@ -116,6 +114,15 @@ const evaluate: (expression: string | number) => number =
         }
 
         return num
+    }
+
+const evaluate: (expression: DomValue) => number =
+    (expression: DomValue): number => {
+        if (typeof expression === 'number') {
+            return expression
+        }
+
+        return evaluateString(expression)
     }
 
 export {

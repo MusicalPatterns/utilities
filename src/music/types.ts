@@ -1,5 +1,5 @@
+import { DictionaryOf } from '../code'
 import { Hz } from '../nominal'
-import { DictionaryOf } from '../types'
 
 enum ScientificPitchNoteName {
     C = 'C',

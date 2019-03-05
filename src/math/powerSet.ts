@@ -1,4 +1,4 @@
-import { Maybe } from '../types'
+import { Maybe } from '../code'
 
 const recursiveCombinations: <T>(remainingSet: T[], activeSet?: T[], output?: T[][]) => Maybe<T[][]> =
     <T>(remainingSet: T[], activeSet: T[] = [], output: T[][] = []): Maybe<T[][]> => {
