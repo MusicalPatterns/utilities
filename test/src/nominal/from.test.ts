@@ -1,6 +1,6 @@
 // tslint:disable no-any no-unused-expression comment-format no-commented-code no-dead-store
 
-import { Fraction, from, Hz, Scalar, to } from '../../../src/indexForTest'
+import { Fraction, from, Hz, Scalar, Time, to } from '../../../src/indexForTest'
 
 describe('from', () => {
     it('converts back to a plain number', () => {
@@ -45,6 +45,14 @@ describe('from', () => {
             hz: from.Scalar(hzScalar),
             scalar: from.Hz(scalarHz),
         }
+    })
+
+    it('can work as part of a map', () => {
+        const scalars: Scalar[] = [ to.Scalar(2) ]
+        const numbers: number[] = scalars.map(from.Scalar)
+
+        const hzScalars: Array<Hz<Scalar>> = [ to.Scalar(to.Hz(2)) ]
+        const hzs: Hz[] = hzScalars.map<Hz>(from.Scalar)
     })
 
     // it('DOES NOT ALLOW taking a plain number', () => {
