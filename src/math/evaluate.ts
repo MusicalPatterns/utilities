@@ -75,11 +75,14 @@ const evaluateParenthetical: (expression: string) => number =
         return evaluate(`${partBefore}${evaluate(parenthetical)}${partAfter}`)
     }
 
-const evaluate: (expression: string) => number =
+const evaluate: (expression: string | number) => number =
     // tslint:disable-next-line cyclomatic-complexity
-    (expression: string): number => {
+    (expression: string | number): number => {
         let num: number
-        if (expression.trim() === '') {
+        if (typeof expression === 'number') {
+            num = expression
+        }
+        else if (expression.trim() === '') {
             num = 0
         }
         else if (expression.includes('(')) {

@@ -121,4 +121,10 @@ describe('evaluate', () => {
         expect(evaluate('24 / (8 / (8 / 2))'))
             .toBeCloseTo(12)
     })
+
+    it('handles it when somehow gets served a number type', () => {
+        // tslint:disable-next-line no-any
+        expect(evaluate(123 as any as string))
+            .toBeCloseTo(123)
+    })
 })
