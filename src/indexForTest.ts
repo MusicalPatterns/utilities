@@ -43,6 +43,7 @@ export {
     lowestTerms,
     factorial,
     combinationCount,
+    evaluate,
 } from './math/indexForTest'
 export {
     centsToPitch,

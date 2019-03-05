@@ -31,6 +31,11 @@ type NumericOperation = (firstValue: number, secondValue: number) => number
 
 type IntegerOperation = (firstValue: Integer, secondValue: Integer) => Integer
 
+interface Operands {
+    lhs: number,
+    rhs: number,
+}
+
 export {
     CycleMap,
     RotateParameters,
@@ -41,4 +46,5 @@ export {
     Vector,
     TwoDimensional,
     ThreeDimensional,
+    Operands,
 }

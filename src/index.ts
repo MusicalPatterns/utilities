@@ -165,6 +165,7 @@ export {
     HEPTUPLE,
     OCTUPLE,
     NONTUPLE,
+    evaluate,
 } from './math'
 export {
     centsToPitch,

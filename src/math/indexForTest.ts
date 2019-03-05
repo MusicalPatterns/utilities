@@ -5,6 +5,7 @@ export { rotate } from './rotate'
 export { lowestTerms } from './lowestTerms'
 export { powerSet } from './powerSet'
 export { greatestCommonDivisor, lowestCommonMultiple } from './common'
+export { evaluate } from './evaluate'
 export { negative, round, sum, product } from './typedOperations'
 export {
     factorial,
