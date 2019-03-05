@@ -123,7 +123,7 @@ const evaluate: (expression: DomValue) => number =
             return expression
         }
 
-        return evaluateString(expression)
+        return evaluateString(expression as string)
     }
 
 export {
