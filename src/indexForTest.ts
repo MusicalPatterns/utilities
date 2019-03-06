@@ -9,7 +9,7 @@ export {
     camelCaseToLowerCase,
     deepCloneObject,
     deepClone,
-    isDefined,
+    isUndefined,
     allElementsEqual,
     lastElement,
     indexOfLastElement,
@@ -17,6 +17,7 @@ export {
     INITIAL,
     indexOfLastCharacter,
     lastCharacter,
+    Maybe,
 } from './code/indexForTest'
 export {
     distanceBetween,

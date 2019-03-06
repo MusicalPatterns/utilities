@@ -1,4 +1,4 @@
-// tslint:disable variable-name max-file-line-count no-any
+// tslint:disable variable-name max-file-line-count
 
 import {
     Amplitude,
@@ -74,65 +74,65 @@ const Modulus: <T extends NoOperation>(modulus: T) => Modulus<T> =
 
 const integerCheck: (value: number | Integer, type: string) => void =
     (value: number | Integer, type: string): void => {
-        if (Math.round(value as any as number) !== value as any as number) {
+        if (Math.round(value as unknown as number) !== value as unknown as number) {
             throw new Error(`${type}s must be Integers.`)
         }
     }
 
 const Integer: <T extends NoUnits>(integer: T) => Integer =
-    <T extends NoUnits>(integer: T): Integer => integer as any
+    <T extends NoUnits>(integer: T): Integer => integer as unknown as Integer
 const Ordinal: (ordinal: number | Integer) => Ordinal =
     (ordinal: number | Integer): Ordinal => {
         integerCheck(ordinal, 'Ordinal')
 
-        return ordinal as any
+        return ordinal as unknown as Ordinal
     }
 const Cardinal: (cardinal: number | Integer) => Cardinal =
     (cardinal: number | Integer): Cardinal => {
         integerCheck(cardinal, 'Cardinal')
 
-        return cardinal as any
+        return cardinal as unknown as Cardinal
     }
 const Numerator: (numerator: number | Integer) => Numerator =
     (numerator: number | Integer): Numerator => {
         integerCheck(numerator, 'Numerator')
 
-        return numerator as any
+        return numerator as unknown as Numerator
     }
 const Denominator: (denominator: number | Integer) => Denominator =
     (denominator: number | Integer): Denominator => {
         integerCheck(denominator, 'Denominator')
 
-        return denominator as any
+        return denominator as unknown as Denominator
     }
 
 const Fraction: (fraction: [ number | Numerator, number | Denominator ]) => Fraction =
     (fraction: [ number | Numerator, number | Denominator ]): Fraction =>
-        fraction as any
+        fraction as unknown as Fraction
 
 // Other Stuff
 
 const Block: (block: number[]) => Block =
-    (block: number[]): Block => block as any
+    (block: number[]): Block => block as unknown as Block
 
 const Cycle: <T>(cycle: T[]) => Cycle<T> =
     <T>(cycle: T[]): Cycle<T> => {
         (cycle as Cycle<T>)._CycleBrand = true
 
-        return cycle as any
+        return cycle as Cycle<T>
     }
 
 const ContourElement: <N>(contourElement: number[]) => ContourElement<N> =
     <N>(contourElement: number[]): ContourElement<N> =>
-        contourElement as any
+        contourElement as unknown as ContourElement<N>
 const ContourPiece: <N>(contourPiece: Array<number[] | ContourElement<N>>) => ContourPiece<N> =
     <N>(contourPiece: Array<number[] | ContourElement<N>>): ContourPiece<N> =>
         contourPiece.map((contourElement: number[] | ContourElement<N>): ContourElement<N> =>
-            contourElement as any) as any
+            contourElement as unknown as ContourElement<N>) as unknown as ContourPiece<N>
 const ContourWhole: <N>(contourWhole: Array<number[] | ContourElement<N>>) => ContourWhole<N> =
     <N>(contourWhole: Array<number[] | ContourElement<N>>): ContourWhole<N> =>
         contourWhole.map((contourElement: number[] | ContourElement<N>): ContourElement<N> =>
-            contourElement as any) as any
+            contourElement as unknown as ContourElement<N>) as unknown as ContourWhole<N>
 
 export {
     Base,

@@ -3,7 +3,7 @@
 export {
     deepEqual,
     deepClone,
-    isDefined,
+    isUndefined,
     doAsync,
     logMessageToScreen,
     logMessageToConsole,

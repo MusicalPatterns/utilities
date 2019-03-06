@@ -20,8 +20,7 @@ const distanceBetween: <T extends Number>(pointA: Coordinate<T>, pointB: Coordin
 
                 return sum(accumulator, squareOfDimensionalDistance)
             },
-            // tslint:disable-next-line no-any
-            0 as any as T,
+            0 as unknown as T,
         )
 
         return apply.Power(sumOfSquaresOfDimensionalDistances, SQUARE_ROOT)

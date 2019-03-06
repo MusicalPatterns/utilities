@@ -1,10 +1,9 @@
-// tslint:disable no-any
-
 import { entries } from './typedObjects'
+import { DictionaryOf } from './types'
 
-const deepCloneObject: <T>(objectToDeepClone: T) => T =
-    <T>(objectToDeepClone: T): T => {
-        const clonedObject: any = {} as any
+const deepCloneObject: <T extends DictionaryOf<unknown>>(objectToDeepClone: T) => T =
+    <T extends DictionaryOf<unknown>>(objectToDeepClone: T): T => {
+        const clonedObject: T = {} as unknown as T
         setAllPropertiesOfObjectOnAnother({ objectToChange: clonedObject, objectWithProperties: objectToDeepClone })
 
         return clonedObject
@@ -28,7 +27,7 @@ const deepClone: <T>(maybeObjectToDeepClone: T) => T =
     <T>(maybeObjectToDeepClone: T): T => {
         let clonedMaybeObject: T
         if (maybeObjectToDeepClone instanceof Array) {
-            clonedMaybeObject = maybeObjectToDeepClone.slice() as any
+            clonedMaybeObject = maybeObjectToDeepClone.slice() as unknown as T
         }
         else if (maybeObjectToDeepClone && typeof maybeObjectToDeepClone === 'object') {
             clonedMaybeObject = deepCloneObject(maybeObjectToDeepClone)

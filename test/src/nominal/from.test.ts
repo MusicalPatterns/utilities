@@ -51,7 +51,7 @@ describe('from', () => {
         const scalars: Scalar[] = [ to.Scalar(2) ]
         const numbers: number[] = scalars.map(from.Scalar)
 
-        const hzScalars: Array<Hz<Scalar>> = [ to.Scalar(to.Hz(2)) ]
+        const hzScalars: Array<Scalar<Hz>> = [ to.Scalar(to.Hz(2)) ]
         const hzs: Hz[] = hzScalars.map<Hz>(from.Scalar)
     })
 

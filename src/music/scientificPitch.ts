@@ -47,6 +47,21 @@ const scientificPitch: (noteName: ScientificPitchNoteName, octaveNumber: Scienti
         return apply.Scalar(SCIENTIFIC_PITCH_NOTE_NAME_TO_ZEROTH_OCTAVE_FREQUENCY_MAP[ noteName ], octaveScalar)
     }
 
+const scientificPitchesInitialAccumulator: ScientificPitches = {
+    A: {},
+    A_SHARP_B_FLAT: {},
+    B: {},
+    C: {},
+    C_SHARP_D_FLAT: {},
+    D: {},
+    D_SHARP_E_FLAT: {},
+    E: {},
+    F: {},
+    F_SHARP_G_FLAT: {},
+    G: {},
+    G_SHARP_A_FLAT: {},
+}
+
 const SCIENTIFIC_PITCHES: ScientificPitches = keys(SCIENTIFIC_PITCH_NOTE_NAME_TO_ZEROTH_OCTAVE_FREQUENCY_MAP)
     .reduce(
         (pitchesAccumulator: ScientificPitches, noteName: ScientificPitchNoteName): ScientificPitches => {
@@ -67,8 +82,7 @@ const SCIENTIFIC_PITCHES: ScientificPitches = keys(SCIENTIFIC_PITCH_NOTE_NAME_TO
                 [ noteName ]: frequencies,
             }
         },
-        // tslint:disable-next-line no-object-literal-type-assertion
-        {} as ScientificPitches,
+        scientificPitchesInitialAccumulator,
     )
 
 export {

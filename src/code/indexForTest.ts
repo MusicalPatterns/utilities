@@ -2,7 +2,7 @@
 
 export { deepEqual } from './deepEqual'
 export { deepCloneObject, deepClone } from './deepClone'
-export { isDefined } from './isDefined'
+export { isUndefined } from './isUndefined'
 export { allElementsEqual } from './allElementsEqual'
 export { repeatCall } from './repeatCall'
 export { repeat } from './repeat'
@@ -13,3 +13,7 @@ export { camelCaseToConstantCase, constantCaseToUpperCase, camelCaseToLowerCase 
 export {
     INITIAL,
 } from './constants'
+
+export {
+    Maybe,
+} from './types'

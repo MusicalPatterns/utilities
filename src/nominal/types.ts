@@ -57,9 +57,9 @@ type Fraction = [ Numerator, Denominator ]
 
 // Other Stuff
 
-type Block = number[] & { _BlockBrand: void }
+type Block = Number[] & { _BlockBrand: void }
 
-type Cycle<T> = T[] & { _CycleBrand: boolean }
+type Cycle<T = number> = T[] & { _CycleBrand: boolean }
 
 type ContourElement<N> = [ number, ...number[] ] & { length: N } & { [ index: string ]: number }
 type ContourPiece<N> = Array<ContourElement<N>> & { _ContourPieceBrand: void }

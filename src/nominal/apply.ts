@@ -1,4 +1,4 @@
-// tslint:disable variable-name no-any max-file-line-count ban-types
+// tslint:disable variable-name max-file-line-count ban-types
 
 import * as from from './from'
 import * as to from './to'
@@ -16,14 +16,14 @@ import {
     Translation,
 } from './types'
 
-const isCycle: (value: any) => value is Cycle<any> =
-    (value: any): value is Cycle<any> =>
-        value && (value as Cycle<any>)._CycleBrand
+const isCycle: (value: unknown) => value is Cycle<unknown> =
+    (value: unknown): value is Cycle<unknown> =>
+        value && (value as Cycle<unknown>)._CycleBrand
 
 const wrapWithin: <T, U extends Number>(value: T, within: U) => T =
     <T, U extends Number>(value: T, within: U): T => {
-        let newN: number = value as any as number
-        const withinN: number = within as any as number
+        let newN: number = value as unknown as number
+        const withinN: number = within as unknown as number
 
         while (newN < 0) {
             newN += withinN
@@ -32,17 +32,17 @@ const wrapWithin: <T, U extends Number>(value: T, within: U) => T =
             newN -= withinN
         }
 
-        return newN as any as T
+        return newN as unknown as T
     }
 
 const Base: <T, U extends Number>(value: T, base: Base<U>) => T =
     <T, U extends Number>(value: T, base: Base<U>): T =>
-        Math.log(value as any as number) / Math.log(base as any as number) as any as T
+        Math.log(value as unknown as number) / Math.log(base as unknown as number) as unknown as T
 
 const Translation: <T, U extends Number>(value: T, translation: Translation<U>) => T =
     <T, U extends Number>(value: T, translation: Translation<U>): T => {
         if (isCycle(value)) {
-            const cycle: Cycle<T> = value as any as Cycle<T>
+            const cycle: Cycle<T> = value as unknown as Cycle<T>
             const cycledCycle: Cycle<T> = to.Cycle([])
             const cellCount: Cardinal = to.Cardinal(cycle.length)
 
@@ -56,19 +56,19 @@ const Translation: <T, U extends Number>(value: T, translation: Translation<U>) 
                 cycledCycle.push(cycle[ from.Ordinal(cycledIndex) ])
             }
 
-            return cycledCycle as any
+            return cycledCycle as unknown as T
         }
 
-        return value as any as number + from.Translation(translation) as any as T
+        return value as unknown as number + from.Translation(translation) as unknown as T
     }
 
 const Power: <T, U extends Number>(base: T, power: Power<U>) => T =
     <T, U extends Number>(base: T, power: Power<U>): T =>
-        Math.pow(base as any as number, power as any as number) as any as T
+        Math.pow(base as unknown as number, power as unknown as number) as unknown as T
 
 const Scalar: <T, U extends Number>(value: T, scalar: Scalar<U>) => T =
     <T, U extends Number>(value: T, scalar: Scalar<U>): T =>
-        value as any as number * from.Scalar(scalar) as any as T
+        value as unknown as number * from.Scalar(scalar) as unknown as T
 
 const Ordinal: <T>(array: T[] | Cycle<T>, ordinal: Ordinal) => T =
     <T>(array: T[] | Cycle<T>, ordinal: Ordinal): T => {
@@ -84,7 +84,7 @@ const Ordinal: <T>(array: T[] | Cycle<T>, ordinal: Ordinal) => T =
 
 const Modulus: <T, U extends Number>(value: T, modulus: Modulus<U>) => T =
     <T, U extends Number>(value: T, modulus: Modulus<U>): T =>
-        value as any as number % from.Modulus(modulus) as any as T
+        value as unknown as number % from.Modulus(modulus) as unknown as T
 
 const Numerator: (denominator: Denominator, numerator: Numerator) => Fraction =
     (denominator: Denominator, numerator: Numerator): Fraction =>

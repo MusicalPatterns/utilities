@@ -1,14 +1,15 @@
 import { from, Ordinal } from '../nominal'
+import { isUndefined } from './isUndefined'
 
 // tslint:disable-next-line no-any
 const slice: <T extends any[] | string>(array: T, initial: Ordinal, terminal?: Ordinal) => T =
     // tslint:disable-next-line no-any
     <T extends any[] | string>(array: T, initial: Ordinal, terminal?: Ordinal): T => {
-        if (terminal !== undefined) {
-            return array.slice(from.Ordinal(initial), from.Ordinal(terminal)) as T
+        if (isUndefined(terminal)) {
+            return array.slice(from.Ordinal(initial)) as T
         }
         else {
-            return array.slice(from.Ordinal(initial)) as T
+            return array.slice(from.Ordinal(initial), from.Ordinal(terminal)) as T
         }
     }
 
