@@ -246,6 +246,7 @@ export {
     selectOption,
     simulateDesktopViewport,
     simulateMobileViewport,
+    clickElement,
 } from './testing'
 export {
     MILLISECONDS_PER_SECOND,
