@@ -2,36 +2,20 @@ import { Page } from 'puppeteer'
 import { DomValue } from '../web'
 import { ElementWithChecked, ElementWithInnerText, ElementWithValue } from './types'
 
-const isElementWithValue: (element: Element) => element is ElementWithValue =
-    (element: Element): element is ElementWithValue =>
-        Object.keys(element)
-            .includes('value')
-
-const isElementWithInnerText: (element: Element) => element is ElementWithInnerText =
-    (element: Element): element is ElementWithInnerText =>
-        Object.keys(element)
-            .includes('innerText')
-
-const isElementWithChecked: (element: Element) => element is ElementWithChecked =
-    (element: Element): element is ElementWithChecked =>
-        Object.keys(element)
-            .includes('checked')
-
-const getElement: (selector: string) => Element =
-    (selector: string): Element => {
-        const element: Element | null = document.querySelector(selector)
-        if (!element) {
-            throw new Error(`element matching ${selector} was not found`)
-        }
-
-        return element
-    }
-
 const elementValue: (page: Page, selector: string) => Promise<DomValue> =
     async (page: Page, selector: string): Promise<DomValue> =>
         page.evaluate(
             (slctr: string) => {
-                const element: Element = getElement(slctr)
+                const element: Element | null = document.querySelector(slctr)
+                if (!element) {
+                    throw new Error(`element matching ${selector} was not found`)
+                }
+
+                const isElementWithValue: (el: Element) => el is ElementWithValue =
+                    (el: Element): el is ElementWithValue =>
+                        Object.keys(el)
+                            .includes('value')
+
                 if (isElementWithValue(element)) {
                     return element.value
                 }
@@ -49,7 +33,16 @@ const elementInnerText: (page: Page, selector: string) => Promise<string> =
     async (page: Page, selector: string): Promise<string> =>
         page.evaluate(
             (slctr: string) => {
-                const element: Element = getElement(slctr)
+                const element: Element | null = document.querySelector(slctr)
+                if (!element) {
+                    throw new Error(`element matching ${selector} was not found`)
+                }
+
+                const isElementWithInnerText: (el: Element) => el is ElementWithInnerText =
+                    (el: Element): el is ElementWithInnerText =>
+                        Object.keys(el)
+                            .includes('innerText')
+
                 if (isElementWithInnerText(element)) {
                     return element.innerText
                 }
@@ -63,7 +56,16 @@ const elementChecked: (page: Page, selector: string) => Promise<boolean> =
     async (page: Page, selector: string): Promise<boolean> =>
         page.evaluate(
             (slctr: string) => {
-                const element: Element = getElement(slctr)
+                const element: Element | null = document.querySelector(slctr)
+                if (!element) {
+                    throw new Error(`element matching ${selector} was not found`)
+                }
+
+                const isElementWithChecked: (el: Element) => el is ElementWithChecked =
+                    (el: Element): el is ElementWithChecked =>
+                        Object.keys(el)
+                            .includes('checked')
+
                 if (isElementWithChecked(element)) {
                     return element.checked
                 }
