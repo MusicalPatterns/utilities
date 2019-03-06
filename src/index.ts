@@ -44,6 +44,7 @@ export {
     DictionaryOf,
     Maybe,
     AnyOtherProperties,
+    keyExistsOnObject,
 } from './code'
 export {
     absoluteRatio,
