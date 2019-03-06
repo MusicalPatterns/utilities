@@ -1,6 +1,5 @@
 import { Page } from 'puppeteer'
 import { DomValue } from '../web'
-import { ElementWithChecked, ElementWithInnerText, ElementWithValue } from './types'
 
 const elementValue: (page: Page, selector: string) => Promise<DomValue> =
     async (page: Page, selector: string): Promise<DomValue> =>
@@ -11,16 +10,8 @@ const elementValue: (page: Page, selector: string) => Promise<DomValue> =
                     throw new Error(`element matching ${selectorInEvaluate} was not found`)
                 }
 
-                const isElementWithValue: (el: Element) => el is ElementWithValue =
-                    (el: Element): el is ElementWithValue =>
-                        Object.keys(el)
-                            .includes('value')
-
-                if (isElementWithValue(element)) {
-                    return element.value
-                }
-
-                throw new Error(`element matching ${selectorInEvaluate} did not have the property 'value'`)
+                // @ts-ignore
+                return element.value
             },
             selector,
         )
@@ -38,16 +29,8 @@ const elementInnerText: (page: Page, selector: string) => Promise<string> =
                     throw new Error(`element matching ${selectorInEvaluate} was not found`)
                 }
 
-                const isElementWithInnerText: (el: Element) => el is ElementWithInnerText =
-                    (el: Element): el is ElementWithInnerText =>
-                        Object.keys(el)
-                            .includes('innerText')
-
-                if (isElementWithInnerText(element)) {
-                    return element.innerText
-                }
-
-                throw new Error(`element matching ${selectorInEvaluate} did not have the property 'innerText'`)
+                // @ts-ignore
+                return element.innerText
             },
             selector,
         )
@@ -61,16 +44,8 @@ const elementChecked: (page: Page, selector: string) => Promise<boolean> =
                     throw new Error(`element matching ${selectorInEvaluate} was not found`)
                 }
 
-                const isElementWithChecked: (el: Element) => el is ElementWithChecked =
-                    (el: Element): el is ElementWithChecked =>
-                        Object.keys(el)
-                            .includes('checked')
-
-                if (isElementWithChecked(element)) {
-                    return element.checked
-                }
-
-                throw new Error(`element matching ${selectorInEvaluate} did not have the property 'checked'`)
+                // @ts-ignore
+                return element.checked
             },
             selector,
         )
