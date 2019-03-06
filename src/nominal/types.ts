@@ -1,8 +1,13 @@
-// tslint:disable ban-types
+// tslint:disable ban-types max-file-line-count
 
 import { Difference } from '../code'
 
 type OverrideInteriorNeutrality<T, NeutralType> = T extends NeutralType ? Difference<T, NeutralType> & Number : T
+
+interface NominalNumber {
+    _OperationBrand?: string,
+    _UnitsBrand?: string
+}
 
 // Units
 
@@ -56,7 +61,7 @@ type Block = number[] & { _BlockBrand: void }
 
 type Cycle<T> = T[] & { _CycleBrand: boolean }
 
-type ContourElement<N> = [ number, ...number[] ] & { length: N } & { [index: string]: number }
+type ContourElement<N> = [ number, ...number[] ] & { length: N } & { [ index: string ]: number }
 type ContourPiece<N> = Array<ContourElement<N>> & { _ContourPieceBrand: void }
 type ContourWhole<N> = Array<ContourElement<N>> & { _ContourWholeBrand: void }
 
@@ -92,4 +97,5 @@ export {
     Time,
     Frequency,
     Amplitude,
+    NominalNumber,
 }

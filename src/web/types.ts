@@ -1,5 +1,6 @@
-// tslint:disable-next-line ban-types
-type DomValue<T extends string = string, U extends Number | number = number> = T | U
+import { NominalNumber } from '../nominal'
+
+type DomValue<T extends NominalNumber = NominalNumber> = string | number | T
 
 type DomValueOrChecked = DomValue | boolean
 

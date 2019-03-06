@@ -123,7 +123,9 @@ const evaluate: (expression: DomValue) => number =
             return expression
         }
 
-        return evaluateString(expression)
+        const stringExpression: string = expression as string
+
+        return evaluateString(stringExpression)
     }
 
 export {

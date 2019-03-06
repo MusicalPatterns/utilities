@@ -43,4 +43,5 @@ export {
     Time,
     Frequency,
     Amplitude,
+    NominalNumber,
 } from './types'
