@@ -1,6 +1,4 @@
-import { NominalNumber } from '../nominal'
-
-type DomValue<T extends NominalNumber = NominalNumber> = string | number | T
+type DomValue = string | number
 
 type DomValueOrChecked = DomValue | boolean
 

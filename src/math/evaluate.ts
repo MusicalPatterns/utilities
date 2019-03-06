@@ -118,12 +118,11 @@ const evaluateString: (expression: string) => number =
 
 const evaluate: (expression: DomValue) => number =
     (expression: DomValue): number => {
-        // tslint:disable-next-line strict-type-predicates
         if (typeof expression === 'number') {
             return expression
         }
 
-        const stringExpression: string = expression as string
+        const stringExpression: string = expression
 
         return evaluateString(stringExpression)
     }

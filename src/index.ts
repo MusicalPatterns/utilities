@@ -227,6 +227,7 @@ export {
     Time,
     Frequency,
     Amplitude,
+    NominalNumber,
 } from './nominal'
 export {
     testIsCloseTo,
