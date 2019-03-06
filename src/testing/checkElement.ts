@@ -20,7 +20,7 @@ const elementValue: (page: Page, selector: string) => Promise<DomValue> =
                     return element.value
                 }
 
-                throw new Error('element did not have value')
+                throw new Error(`element matching ${selector} did not have the property 'value'`)
             },
             selector,
         )
@@ -47,7 +47,7 @@ const elementInnerText: (page: Page, selector: string) => Promise<string> =
                     return element.innerText
                 }
 
-                throw new Error('element did not have innerText')
+                throw new Error(`element matching ${selector} did not have the property 'innerText'`)
             },
             selector,
         )
@@ -70,7 +70,7 @@ const elementChecked: (page: Page, selector: string) => Promise<boolean> =
                     return element.checked
                 }
 
-                throw new Error('element did not have checked')
+                throw new Error(`element matching ${selector} did not have the property 'checked'`)
             },
             selector,
         )
