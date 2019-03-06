@@ -116,15 +116,21 @@ const evaluateString: (expression: string) => number =
         return num
     }
 
+const isString: (expression: DomValue) => expression is string =
+    (expression: DomValue): expression is string =>
+        typeof expression === 'string'
+
 const evaluate: (expression: DomValue) => number =
     (expression: DomValue): number => {
         if (typeof expression === 'number') {
             return expression
         }
 
-        const stringExpression: string = expression
+        if (!isString(expression)) {
+            throw new Error('expression is not string')
+        }
 
-        return evaluateString(stringExpression)
+        return evaluateString(expression)
     }
 
 export {
