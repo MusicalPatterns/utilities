@@ -7,6 +7,7 @@ export { allElementsEqual } from './allElementsEqual'
 export { repeatCall } from './repeatCall'
 export { repeat } from './repeat'
 export { slice } from './typedIterators'
+export { keyExistsOnObject } from './keyExistsOnObject'
 export { lastElement, indexOfLastElement, indexOfLastCharacter, lastCharacter } from './lastElement'
 export { camelCaseToConstantCase, constantCaseToUpperCase, camelCaseToLowerCase } from './case'
 

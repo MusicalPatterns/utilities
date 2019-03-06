@@ -18,6 +18,7 @@ export {
     indexOfLastCharacter,
     lastCharacter,
     Maybe,
+    keyExistsOnObject,
 } from './code/indexForTest'
 export {
     distanceBetween,
