@@ -1,15 +1,10 @@
-import { ElementHandle, Page } from 'puppeteer'
-import { findElement } from './findElement'
+import { Page } from 'puppeteer'
+import { clickElement } from './clickElement'
+import { ANYTHING_ELSE_SELECTOR } from './constants'
 
 const loseFocus: (page: Page, selector?: string) => Promise<void> =
     async (page: Page, selector?: string): Promise<void> => {
-        if (selector) {
-            const element: ElementHandle = await findElement(page, selector)
-            await element.click()
-        }
-
-        const anythingElse: ElementHandle = await findElement(page, 'div')
-        await anythingElse.click()
+        await clickElement(page, selector || ANYTHING_ELSE_SELECTOR)
     }
 
 export {
