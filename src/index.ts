@@ -248,6 +248,7 @@ export {
     simulateDesktopViewport,
     simulateMobileViewport,
     clickElement,
+    deleteCharacterFromInput,
 } from './testing'
 export {
     MILLISECONDS_PER_SECOND,
