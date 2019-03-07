@@ -45,6 +45,7 @@ export {
     Maybe,
     AnyOtherProperties,
     keyExistsOnObject,
+    SizedArray,
 } from './code'
 export {
     absoluteRatio,

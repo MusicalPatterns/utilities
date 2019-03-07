@@ -34,4 +34,5 @@ export {
     DictionaryOf,
     Maybe,
     AnyOtherProperties,
+    SizedArray,
 } from './types'

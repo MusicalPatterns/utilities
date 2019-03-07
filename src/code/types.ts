@@ -15,6 +15,9 @@ interface AnyOtherProperties {
     [ index: string ]: any
 }
 
+// tslint:disable-next-line ban-types
+type SizedArray<N extends Number, T = number> = [ T, ...T[] ] & { length: N }
+
 export {
     Omit,
     Difference,
@@ -22,4 +25,5 @@ export {
     DictionaryOf,
     Maybe,
     AnyOtherProperties,
+    SizedArray,
 }
