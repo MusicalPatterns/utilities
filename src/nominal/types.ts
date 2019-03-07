@@ -58,7 +58,7 @@ type Fraction = [ Numerator, Denominator ]
 
 // Other Stuff
 
-type Block = Number[] & { _BlockBrand: void }
+type Block = number[] & { _BlockBrand: void }
 
 type Cycle<T = number> = T[] & { _CycleBrand: boolean }
 
