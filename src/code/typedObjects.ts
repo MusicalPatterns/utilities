@@ -16,8 +16,8 @@ const typedMap: <T>(data: T) => TypedMap<T> =
     // tslint:disable-next-line no-unnecessary-callback-wrapper
     <T>(data: T): TypedMap<T> => Map(data)
 
-const entries: <K extends string, V>(object: { [key in K]: V }) => Array<[ K, V ]> =
-    <K extends string, V>(object: { [key in K]: V }): Array<[ K, V ]> =>
+const entries: <K extends string, V>(object: Partial<{ [key in K]: V }>) => Array<[ K, V ]> =
+    <K extends string, V>(object: Partial<{ [key in K]: V }>): Array<[ K, V ]> =>
         Object.entries(object) as Array<[ K, V ]>
 
 const keys: <K extends string, V>(object: { [key in K]: V }) => K[] =
