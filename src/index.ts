@@ -232,6 +232,9 @@ export {
     NominalNumber,
 } from './nominal'
 export {
+    ActionForState,
+} from './state'
+export {
     testIsCloseTo,
     testArraysAreClose,
     testArraysAreCloseSoFar,
