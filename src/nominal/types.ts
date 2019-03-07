@@ -5,8 +5,9 @@ import { Difference } from '../code'
 type OverrideInteriorNeutrality<T, NeutralType> = T extends NeutralType ? Difference<T, NeutralType> & Number : T
 
 interface NominalNumber {
+    _NominalBrand?: string,
     _OperationBrand?: string,
-    _UnitsBrand?: string
+    _UnitsBrand?: string,
 }
 
 // Units
