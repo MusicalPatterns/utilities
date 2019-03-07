@@ -77,7 +77,7 @@ const rotate: <T extends Number, D extends Number>(rotateParameters: RotateParam
         const relative: T[] = map(
             coordinate,
             (coordinateElement: T, index: Ordinal): T => {
-                const rawFixedCoordinateElement: T = apply.Ordinal(fixedCoordinate, index) as T
+                const rawFixedCoordinateElement: T = apply.Ordinal(fixedCoordinate, index)
 
                 return difference(coordinateElement, rawFixedCoordinateElement)
             },
@@ -98,7 +98,7 @@ const rotate: <T extends Number, D extends Number>(rotateParameters: RotateParam
             reduce(
                 rotationVector,
                 (coordinateElement: T, rotationScalar: Scalar, index: Ordinal): T =>
-                    sum(coordinateElement, apply.Scalar(apply.Ordinal(relative, index) as T, rotationScalar)),
+                    sum(coordinateElement, apply.Scalar(apply.Ordinal(relative, index), rotationScalar)),
                 0 as any as T,
             ),
         ) as Coordinate<T, D>

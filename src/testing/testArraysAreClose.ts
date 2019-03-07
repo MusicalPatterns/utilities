@@ -16,12 +16,7 @@ const testArraysAreClose: <T extends Number>(actual: T[], expected: T[]) => void
 const testArraysAreCloseSoFar: <T extends Number>(actual: T[], expected: T[]) => void =
     <T extends Number>(actual: T[], expected: T[]): void => {
         forEach(expected, (expectedElement: T, index: Ordinal): void => {
-            const actualElement: Maybe<T> = apply.Ordinal(actual, index)
-            if (isUndefined(actualElement)) {
-                fail(`Actual array missing element at index ${index}`)
-
-                return
-            }
+            const actualElement: T = apply.Ordinal(actual, index)
 
             expect(testIsCloseTo(actualElement, expectedElement))
                 .toBeTruthy(

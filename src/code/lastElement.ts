@@ -3,7 +3,7 @@ import { apply, from, Ordinal, to } from '../nominal'
 
 const lastElement: <T>(array: T[]) => T =
     <T>(array: T[]): T =>
-        apply.Ordinal(array, indexOfLastElement(array)) as T
+        apply.Ordinal(array, indexOfLastElement(array))
 
 const indexOfLastElement: <T>(array: T[]) => Ordinal =
     <T>(array: T[]): Ordinal =>

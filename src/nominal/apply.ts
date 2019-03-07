@@ -70,8 +70,8 @@ const Scalar: <T, U extends Number>(value: T, scalar: Scalar<U>) => T =
     <T, U extends Number>(value: T, scalar: Scalar<U>): T =>
         value as unknown as number * from.Scalar(scalar) as unknown as T
 
-const Ordinal: <T>(array: T[] | Cycle<T>, ordinal: Ordinal) => T | undefined =
-    <T>(array: T[] | Cycle<T>, ordinal: Ordinal): T | undefined => {
+const Ordinal: <T>(array: T[] | Cycle<T>, ordinal: Ordinal) => T =
+    <T>(array: T[] | Cycle<T>, ordinal: Ordinal): T => {
         // tslint:disable-next-line strict-type-predicates
         if (isCycle(array)) {
             const cycledIndex: Ordinal = wrapWithin(ordinal, array.length)
