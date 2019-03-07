@@ -12,9 +12,8 @@ interface NominalNumber {
 
 // Units
 
-type NoUnits = Number & { _UnitsBrand?: 'Abstract' | 'Integer' }
-type Abstract = Number & { _UnitsBrand: 'Abstract' | 'Integer' }
-type ForUnits<T> = T extends number ? Operand : OverrideInteriorNeutrality<T, Abstract>
+type NoUnits = Number & { _UnitsBrand?: 'NoUnits' | 'Integer' }
+type ForUnits<T> = T extends number ? NoOperation : OverrideInteriorNeutrality<T, NoUnits>
 type UnitsBrand<Unit, T extends NoUnits = number> = ForUnits<T> & { _UnitsBrand: Unit }
 
 type Hz<T extends NoUnits = number> = UnitsBrand<'Hz', T>
@@ -31,9 +30,8 @@ type Amplitude<T extends NoUnits = number> = UnitsBrand<'Amplitude', T>
 
 // Operation
 
-type NoOperation = Number & { _OperationBrand?: 'Operand' }
-type Operand = Number & { _OperationBrand: 'Operand' }
-type ForOperation<T> = T extends number ? Abstract : OverrideInteriorNeutrality<T, Operand>
+type NoOperation = Number & { _OperationBrand?: 'NoOperation' }
+type ForOperation<T> = T extends number ? NoUnits : OverrideInteriorNeutrality<T, NoOperation>
 type OperationBrand<Operation, T extends NoOperation = number> = ForOperation<T> & { _OperationBrand: Operation }
 
 type Scalar<T extends NoOperation = number> = OperationBrand<'Scalar', T>
@@ -47,7 +45,7 @@ type Modulus<T extends NoOperation = number> = OperationBrand<'Modulus', T>
 
 // Special Units & Operation
 
-type Integer = number & Operand & { _UnitsBrand: 'Integer' }
+type Integer = number & NoOperation & { _UnitsBrand: 'Integer' }
 
 type Ordinal = Integer & { _OperationBrand: 'Ordinal' }
 type Cardinal = Integer & { _OperationBrand: 'Cardinal' }
@@ -93,8 +91,6 @@ export {
     Integer,
     Meters,
     Space,
-    Abstract,
-    Operand,
     Time,
     Frequency,
     Amplitude,

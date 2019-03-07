@@ -35,40 +35,56 @@ import {
 // Units
 
 const Hz: <T extends NoUnits>(hz: T) => Hz<T> =
-    <T extends NoUnits>(hz: T): Hz<T> => hz as Hz<T>
+    <T extends NoUnits>(hz: T): Hz<T> =>
+        hz as Hz<T>
 const Ms: <T extends NoUnits>(ms: T) => Ms<T> =
-    <T extends NoUnits>(ms: T): Ms<T> => ms as Ms<T>
+    <T extends NoUnits>(ms: T): Ms<T> =>
+        ms as Ms<T>
 const Radians: <T extends NoUnits>(radians: T) => Radians<T> =
-    <T extends NoUnits>(radians: T): Radians<T> => radians as Radians<T>
+    <T extends NoUnits>(radians: T): Radians<T> =>
+        radians as Radians<T>
 const Cents: <T extends NoUnits>(cents: T) => Cents<T> =
-    <T extends NoUnits>(cents: T): Cents<T> => cents as Cents<T>
+    <T extends NoUnits>(cents: T): Cents<T> =>
+        cents as Cents<T>
 const Semitones: <T extends NoUnits>(semitones: T) => Semitones<T> =
-    <T extends NoUnits>(semitones: T): Semitones<T> => semitones as Semitones<T>
+    <T extends NoUnits>(semitones: T): Semitones<T> =>
+        semitones as Semitones<T>
 const Meters: <T extends NoUnits>(meters: T) => Meters<T> =
-    <T extends NoUnits>(meters: T): Meters<T> => meters as Meters<T>
+    <T extends NoUnits>(meters: T): Meters<T> =>
+        meters as Meters<T>
 const Space: <T extends NoUnits>(space: T) => Space<T> =
-    <T extends NoUnits>(space: T): Space<T> => space as Space<T>
+    <T extends NoUnits>(space: T): Space<T> =>
+        space as Space<T>
 const Time: <T extends NoUnits>(time: T) => Time<T> =
-    <T extends NoUnits>(time: T): Time<T> => time as Time<T>
+    <T extends NoUnits>(time: T): Time<T> =>
+        time as Time<T>
 const Frequency: <T extends NoUnits>(frequency: T) => Frequency<T> =
-    <T extends NoUnits>(frequency: T): Frequency<T> => frequency as Frequency<T>
+    <T extends NoUnits>(frequency: T): Frequency<T> =>
+        frequency as Frequency<T>
 const Amplitude: <T extends NoUnits>(amplitude: T) => Amplitude<T> =
-    <T extends NoUnits>(amplitude: T): Amplitude<T> => amplitude as Amplitude<T>
+    <T extends NoUnits>(amplitude: T): Amplitude<T> =>
+        amplitude as Amplitude<T>
 
 // Operation
 
 const Scalar: <T extends NoOperation>(scalar: T) => Scalar<T> =
-    <T extends NoOperation>(scalar: T): Scalar<T> => scalar as Scalar<T>
+    <T extends NoOperation>(scalar: T): Scalar<T> =>
+        scalar as Scalar<T>
 const Translation: <T extends NoOperation>(translation: T) => Translation<T> =
-    <T extends NoOperation>(translation: T): Translation<T> => translation as Translation<T>
+    <T extends NoOperation>(translation: T): Translation<T> =>
+        translation as Translation<T>
 const Rotation: <T extends NoOperation>(rotation: T) => Rotation<T> =
-    <T extends NoOperation>(rotation: T): Rotation<T> => rotation as Rotation<T>
+    <T extends NoOperation>(rotation: T): Rotation<T> =>
+        rotation as Rotation<T>
 const Base: <T extends NoOperation>(base: T) => Base<T> =
-    <T extends NoOperation>(base: T): Base<T> => base as Base<T>
+    <T extends NoOperation>(base: T): Base<T> =>
+        base as Base<T>
 const Power: <T extends NoOperation>(power: T) => Power<T> =
-    <T extends NoOperation>(power: T): Power<T> => power as Power<T>
+    <T extends NoOperation>(power: T): Power<T> =>
+        power as Power<T>
 const Modulus: <T extends NoOperation>(modulus: T) => Modulus<T> =
-    <T extends NoOperation>(modulus: T): Modulus<T> => modulus as Modulus<T>
+    <T extends NoOperation>(modulus: T): Modulus<T> =>
+        modulus as Modulus<T>
 
 // Special Units & Operation
 
