@@ -1,6 +1,6 @@
 // tslint:disable ban-types
 
-import { forEach } from '../code'
+import { forEach, isUndefined, Maybe } from '../code'
 import { apply, Ordinal } from '../nominal'
 import { testIsCloseTo } from './testIsCloseTo'
 
@@ -16,7 +16,13 @@ const testArraysAreClose: <T extends Number>(actual: T[], expected: T[]) => void
 const testArraysAreCloseSoFar: <T extends Number>(actual: T[], expected: T[]) => void =
     <T extends Number>(actual: T[], expected: T[]): void => {
         forEach(expected, (expectedElement: T, index: Ordinal): void => {
-            const actualElement: T = apply.Ordinal(actual, index)
+            const actualElement: Maybe<T> = apply.Ordinal(actual, index)
+            if (isUndefined(actualElement)) {
+                fail(`Actual array missing element at index ${index}`)
+
+                return
+            }
+
             expect(testIsCloseTo(actualElement, expectedElement))
                 .toBeTruthy(
                     `Elements not close at index ${index}: actual ${actualElement} vs expected ${expectedElement}`,

@@ -2,10 +2,6 @@ import { apply, Cycle, negative, to } from '../../../src/indexForTest'
 
 describe('apply', () => {
     describe('Ordinal', () => {
-        it('when the index exceeds the length of the array, does not crash', () => {
-            apply.Ordinal([], to.Ordinal(1))
-        })
-
         it('when the array is cyclical, wraps the index, whether negative or beyond its length', () => {
             const myCycle: Cycle<string> = to.Cycle([ 'a', 'b', 'c' ])
             const myArray: string[] = [ 'd', 'e', 'f' ]
@@ -19,8 +15,8 @@ describe('apply', () => {
             expect(apply.Ordinal(myCycle, to.Ordinal(0)))
                 .toBe('a')
 
-            expect(apply.Ordinal(myArray, to.Ordinal(4)))
-                .toBeUndefined()
+            expect(() => apply.Ordinal(myArray, to.Ordinal(4)))
+                .toThrowError(`Ordinal 4 exceeds available indices of array of length 3`)
             expect(apply.Ordinal(myArray, to.Ordinal(negative(1))))
                 .toBeUndefined()
             expect(apply.Ordinal(myArray, to.Ordinal(1)))

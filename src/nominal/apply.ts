@@ -70,13 +70,17 @@ const Scalar: <T, U extends Number>(value: T, scalar: Scalar<U>) => T =
     <T, U extends Number>(value: T, scalar: Scalar<U>): T =>
         value as unknown as number * from.Scalar(scalar) as unknown as T
 
-const Ordinal: <T>(array: T[] | Cycle<T>, ordinal: Ordinal) => T =
-    <T>(array: T[] | Cycle<T>, ordinal: Ordinal): T => {
+const Ordinal: <T>(array: T[] | Cycle<T>, ordinal: Ordinal) => T | undefined =
+    <T>(array: T[] | Cycle<T>, ordinal: Ordinal): T | undefined => {
         // tslint:disable-next-line strict-type-predicates
         if (isCycle(array)) {
             const cycledIndex: Ordinal = wrapWithin(ordinal, array.length)
 
             return array[ from.Ordinal(cycledIndex) ]
+        }
+
+        if (ordinal > array.length - 1) {
+            throw new Error(`Ordinal ${ordinal} exceeds available indices of array of length ${array.length}`)
         }
 
         return array[ from.Ordinal(ordinal) ]

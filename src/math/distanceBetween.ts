@@ -11,7 +11,7 @@ const distanceBetween: <T extends Number>(pointA: Coordinate<T>, pointB: Coordin
         const sumOfSquaresOfDimensionalDistances: T = reduce(
             pointA,
             (accumulator: T, pointAElement: T, index: Ordinal): T => {
-                const pointBElement: T = apply.Ordinal(pointB, index)
+                const pointBElement: T = apply.Ordinal(pointB, index) as T
                 const dimensionalDistance: T = absoluteValue(difference(pointAElement, pointBElement))
                 const squareOfDimensionalDistance: T = apply.Power(
                     dimensionalDistance,
