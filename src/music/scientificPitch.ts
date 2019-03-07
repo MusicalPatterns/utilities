@@ -1,6 +1,6 @@
 // tslint:disable no-magic-numbers
 
-import { DictionaryOf, keys } from '../code'
+import { DictionaryOf, keys, reduce } from '../code'
 import { negative } from '../math'
 import { apply, Frequency, from, Hz, Power, Scalar, to } from '../nominal'
 import { OCTAVE } from './constants'
@@ -65,17 +65,17 @@ const scientificPitchesInitialAccumulator: ScientificPitches = {
 const SCIENTIFIC_PITCHES: ScientificPitches = keys(SCIENTIFIC_PITCH_NOTE_NAME_TO_ZEROTH_OCTAVE_FREQUENCY_MAP)
     .reduce(
         (pitchesAccumulator: ScientificPitches, noteName: ScientificPitchNoteName): ScientificPitches => {
-            const frequencies: DictionaryOf<Hz> = keys(SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP)
-                .reduce<DictionaryOf<Hz>>(
-                    (
-                        frequenciesAccumulator: DictionaryOf<Hz>,
-                        octaveNumber: ScientificPitchOctaveNumber,
-                    ): DictionaryOf<Hz> => ({
-                        ...frequenciesAccumulator,
-                        [ octaveNumber ]: scientificPitch(noteName, octaveNumber),
-                    }),
-                    {},
-                )
+            const frequencies: DictionaryOf<Hz> = reduce(
+                keys(SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP),
+                (
+                    frequenciesAccumulator: DictionaryOf<Hz>,
+                    octaveNumber: ScientificPitchOctaveNumber,
+                ): DictionaryOf<Hz> => ({
+                    ...frequenciesAccumulator,
+                    [ octaveNumber ]: scientificPitch(noteName, octaveNumber),
+                }),
+                {},
+            )
 
             return {
                 ...pitchesAccumulator,

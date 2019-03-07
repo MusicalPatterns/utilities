@@ -1,5 +1,7 @@
 // tslint:disable no-any no-type-definitions-outside-types-modules no-object-literal-type-assertion ban-types
 
+import { reduce } from '../code'
+
 type DummyValueForBuildingNominalInterface = unknown
 
 interface NominalInterfaceOptionObject {
@@ -28,40 +30,40 @@ const buildNominalInterface:
     <T extends NominalInterfaceOptionObject>(nominalInterfaceOptionsObject: T) => NominalInterface<T> =
     <T extends NominalInterfaceOptionObject>(nominalInterfaceOptionsObject: T): NominalInterface<T> => ({
         from: {
-            ...Object.keys(nominalInterfaceOptionsObject.number || {})
-                .reduce(
-                    (accumulator: FromMono<T>, typeName: string): FromMono<T> => ({
-                        ...accumulator,
-                        [ typeName ]: (value: unknown): number => value as number,
-                    }),
-                    {} as FromMono<T>,
-                ),
-            ...Object.keys(nominalInterfaceOptionsObject.numericArray || {})
-                .reduce(
-                    (accumulator: FromPoly<T>, typeName: string): FromPoly<T> => ({
-                        ...accumulator,
-                        [ typeName ]: (values: unknown): number[] => values as number[],
-                    }),
-                    {} as FromPoly<T>,
-                ),
+            ...reduce(
+                Object.keys(nominalInterfaceOptionsObject.number || {}),
+                (accumulator: FromMono<T>, typeName: string): FromMono<T> => ({
+                    ...accumulator,
+                    [ typeName ]: (value: unknown): number => value as number,
+                }),
+                {},
+            ),
+            ...reduce(
+                Object.keys(nominalInterfaceOptionsObject.numericArray || {}),
+                (accumulator: FromPoly<T>, typeName: string): FromPoly<T> => ({
+                    ...accumulator,
+                    [ typeName ]: (values: unknown): number[] => values as number[],
+                }),
+                {},
+            ),
         },
         to: {
-            ...Object.keys(nominalInterfaceOptionsObject.number || {})
-                .reduce(
-                    (accumulator: ToMono<T>, typeName: string): ToMono<T> => ({
-                        ...accumulator,
-                        [ typeName ]: <V extends Number>(value: V): unknown => value,
-                    }),
-                    {} as ToMono<T>,
-                ),
-            ...Object.keys(nominalInterfaceOptionsObject.numericArray || {})
-                .reduce(
-                    (accumulator: ToPoly<T>, typeName: string): ToPoly<T> => ({
-                        ...accumulator,
-                        [ typeName ]: <V extends Number>(values: V[]): unknown => values,
-                    }),
-                    {} as ToPoly<T>,
-                ),
+            ...reduce(
+                Object.keys(nominalInterfaceOptionsObject.number || {}),
+                (accumulator: ToMono<T>, typeName: string): ToMono<T> => ({
+                    ...accumulator,
+                    [ typeName ]: <V extends Number>(value: V): unknown => value,
+                }),
+                {},
+            ),
+            ...reduce(
+                Object.keys(nominalInterfaceOptionsObject.numericArray || {}),
+                (accumulator: ToPoly<T>, typeName: string): ToPoly<T> => ({
+                    ...accumulator,
+                    [ typeName ]: <V extends Number>(values: V[]): unknown => values,
+                }),
+                {},
+            ),
         },
     })
 

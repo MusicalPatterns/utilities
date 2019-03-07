@@ -24,8 +24,9 @@ const map: <T, U>(array: T[], fn: (el: T, index: Ordinal, self: T[]) => U) => U[
         // @ts-ignore
         array.map(fn)
 
-const reduce: <T, U>(array: T[], fn: (accumulator: U, el: T, index: Ordinal, self: T[]) => U, accumulator: U) => U =
-    <T, U>(array: T[], fn: (accumulator: U, el: T, index: Ordinal, self: T[]) => U, accumulator: U): U =>
+const reduce:
+    <T, U>(array: T[], fn: (accumulator: U, el: T, index: Ordinal, self: T[]) => U, accumulator: Partial<U>) => U =
+    <T, U>(array: T[], fn: (accumulator: U, el: T, index: Ordinal, self: T[]) => U, accumulator: Partial<U>): U =>
         // @ts-ignore
         array.reduce(fn, accumulator)
 
