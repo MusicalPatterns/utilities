@@ -1,4 +1,4 @@
 export {
-    DomValueOrChecked,
-    DomValue,
+    HtmlValueOrChecked,
+    HtmlValue,
 } from './types'

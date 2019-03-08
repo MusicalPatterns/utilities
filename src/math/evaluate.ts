@@ -2,7 +2,7 @@
 
 import { EXCLUSIVE_TO_LEFT, INITIAL, slice } from '../code'
 import { apply, Ordinal, to } from '../nominal'
-import { DomValue } from '../web'
+import { HtmlValue } from '../web'
 import { Operands } from './types'
 
 const splitOperands: (expression: string, operatorIndex: Ordinal) => Operands =
@@ -116,12 +116,12 @@ const evaluateString: (expression: string) => number =
         return num
     }
 
-const isString: (expression: DomValue) => expression is string =
-    (expression: DomValue): expression is string =>
+const isString: (expression: HtmlValue) => expression is string =
+    (expression: HtmlValue): expression is string =>
         typeof expression === 'string'
 
-const evaluate: (expression: DomValue) => number =
-    (expression: DomValue): number => {
+const evaluate: (expression: HtmlValue) => number =
+    (expression: HtmlValue): number => {
         if (typeof expression === 'number') {
             return expression
         }

@@ -1,10 +1,10 @@
 import { Maybe } from '../code'
 
-type DomValue = Maybe<string | number | string[]>
+type HtmlValue = Maybe<string | number | string[]>
 
-type DomValueOrChecked = DomValue | boolean
+type HtmlValueOrChecked = HtmlValue | boolean
 
 export {
-    DomValue,
-    DomValueOrChecked,
+    HtmlValue,
+    HtmlValueOrChecked,
 }

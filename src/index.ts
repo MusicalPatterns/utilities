@@ -259,8 +259,8 @@ export {
     SECONDS_PER_MINUTE,
 } from './time'
 export {
-    DomValue,
-    DomValueOrChecked,
+    HtmlValue,
+    HtmlValueOrChecked,
 } from './web'
 
 export {

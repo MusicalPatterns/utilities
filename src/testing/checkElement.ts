@@ -1,8 +1,8 @@
 import { Page } from 'puppeteer'
-import { DomValue } from '../web'
+import { HtmlValue } from '../web'
 
-const elementValue: (page: Page, selector: string) => Promise<DomValue> =
-    async (page: Page, selector: string): Promise<DomValue> =>
+const elementValue: (page: Page, selector: string) => Promise<HtmlValue> =
+    async (page: Page, selector: string): Promise<HtmlValue> =>
         page.evaluate(
             (selectorInEvaluate: string) => {
                 const element: Element | null = document.querySelector(selectorInEvaluate)
