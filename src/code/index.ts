@@ -30,7 +30,7 @@ export {
 export {
     Omit,
     Difference,
-    PropertyMap,
+    KeyMap,
     DictionaryOf,
     Maybe,
     AnyOtherProperties,

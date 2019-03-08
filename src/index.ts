@@ -38,7 +38,7 @@ export {
     filter,
     uniqueFilter,
     sleep,
-    PropertyMap,
+    KeyMap,
     lastCharacter,
     indexOfLastCharacter,
     DictionaryOf,

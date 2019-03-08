@@ -2,7 +2,7 @@ type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 
 type Difference<T extends U, U> = Omit<T, keyof U>
 
-type PropertyMap<ObjectWithProperties, NewValueType> = { [P in keyof ObjectWithProperties]: NewValueType }
+type KeyMap<ObjectWithKeys, NewValueType> = { [P in keyof ObjectWithKeys]: NewValueType }
 
 interface DictionaryOf<T> {
     [ index: string ]: T
@@ -21,7 +21,7 @@ type SizedArray<N extends Number, T = number> = [ T, ...T[] ] & { length: N }
 export {
     Omit,
     Difference,
-    PropertyMap,
+    KeyMap,
     DictionaryOf,
     Maybe,
     AnyOtherProperties,
