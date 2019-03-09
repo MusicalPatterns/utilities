@@ -180,7 +180,7 @@ describe('to', () => {
             const denominator: Denominator = to.Denominator(3)
         })
 
-        it('allows calling with numbers which aren\'t integers, but throws', () => {
+        it(`allows calling with numbers which aren't integers, but throws`, () => {
             expect(() => to.Cardinal(4.3))
                 .toThrow(new Error('Cardinals must be Integers.'))
             expect(() => to.Ordinal(4.3))
@@ -209,7 +209,7 @@ describe('to', () => {
             const numberFromInteger: number = to.Integer(3)
         })
 
-        it('unfortunately for now allows making special operations if they are already that, but that\'s on you for trying I guess', () => {
+        it(`unfortunately for now allows making special operations if they are already that, but that's on you for trying I guess`, () => {
             const doubleOrdinal: Ordinal = to.Ordinal(to.Ordinal(3))
             const doubleCardinal: Cardinal = to.Cardinal(to.Cardinal(3))
             const doubleNumerator: Numerator = to.Numerator(to.Numerator(3))
