@@ -2,8 +2,7 @@
 
 import { Map } from 'immutable'
 
-// @ts-ignore
-interface TypedMap<T> extends Map<string, T[keyof T]> {
+interface TypedMap<T> extends Map<keyof T, T[keyof T]> {
     get<K extends keyof T>(key: K, notSetValue?: T[K]): T[K]
 
     set<K extends keyof T>(key: K, value: T[K]): this
