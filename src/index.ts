@@ -234,6 +234,7 @@ export {
 } from './nominal'
 export {
     ActionForState,
+    buildReducer,
 } from './state'
 export {
     testIsCloseTo,
