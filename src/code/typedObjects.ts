@@ -1,11 +1,12 @@
 // tslint:disable no-type-definitions-outside-types-modules
 
 import { Map } from 'immutable'
+import { DictionaryOf } from './types'
 
-interface TypedMap<T> extends Map<keyof T, T[keyof T]> {
-    get<K extends keyof T>(key: K, notSetValue?: T[K]): T[K]
+interface TypedMap<T extends DictionaryOf<unknown>> extends Map<keyof T, T[keyof T]> {
+    get<K extends keyof T = string>(key: K, notSetValue?: T[K]): T[K]
 
-    set<K extends keyof T>(key: K, value: T[K]): this
+    set<K extends keyof T = string>(key: K, value: T[K]): this
 
     toJS(): T
 }

@@ -1,5 +1,7 @@
-type ActionForState<State, StateKey = keyof State> =
-    StateKey extends keyof State ?
+import { DictionaryOf } from '../code'
+
+type ActionForState<State extends DictionaryOf<unknown>, StateKey extends keyof State = string> =
+    StateKey extends string ?
         { data?: State[StateKey], type: StateKey } :
         never
 
