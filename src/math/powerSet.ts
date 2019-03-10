@@ -1,7 +1,15 @@
 import { isUndefined, Maybe } from '../code'
 
-const recursiveCombinations: <T>(remainingSet: T[], activeSet?: T[], output?: T[][]) => Maybe<T[][]> =
-    <T>(remainingSet: T[], activeSet: T[] = [], output: T[][] = []): Maybe<T[][]> => {
+const recursiveCombinations: <MemberType>(
+    remainingSet: MemberType[],
+    activeSet?: MemberType[],
+    output?: MemberType[][],
+) => Maybe<MemberType[][]> =
+    <MemberType>(
+        remainingSet: MemberType[],
+        activeSet: MemberType[] = [],
+        output: MemberType[][] = [],
+    ): Maybe<MemberType[][]> => {
         if (activeSet.length === 0 && remainingSet.length === 0) {
             return undefined
         }
@@ -16,13 +24,13 @@ const recursiveCombinations: <T>(remainingSet: T[], activeSet?: T[], output?: T[
         return output
     }
 
-const powerSet: <T>(set: T[]) => T[][] =
-    <T>(set: T[]): T[][] => {
-        const combinations: Maybe<T[][]> = recursiveCombinations(set)
+const powerSet: <MemberType>(set: MemberType[]) => MemberType[][] =
+    <MemberType>(set: MemberType[]): MemberType[][] => {
+        const combinations: Maybe<MemberType[][]> = recursiveCombinations(set)
         if (isUndefined(combinations)) {
             throw new Error(`no combinations for power set ${set}`)
         }
-        const emptySet: T[] = []
+        const emptySet: MemberType[] = []
 
         return [ emptySet ].concat(combinations)
     }

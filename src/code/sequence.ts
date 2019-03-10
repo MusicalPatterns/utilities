@@ -1,7 +1,7 @@
-const sequence: <T>(arrayOfArrays: T[][]) => T[] =
-    <T>(arrayOfArrays: T[][]): T[] =>
+const sequence: <ElementType>(arrayOfArrays: ElementType[][]) => ElementType[] =
+    <ElementType>(arrayOfArrays: ElementType[][]): ElementType[] =>
         arrayOfArrays.reduce(
-            (accumulator: T[], array: T[]): T[] =>
+            (accumulator: ElementType[], array: ElementType[]): ElementType[] =>
                 accumulator.concat(array),
             [],
         )

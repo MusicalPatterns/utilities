@@ -1,33 +1,34 @@
 import { entries } from './typedObjects'
-import { DictionaryOf } from './types'
+import { ObjectOf } from './types'
 
-const deepCloneObject: <T extends DictionaryOf<unknown>>(objectToDeepClone: T) => T =
-    <T extends DictionaryOf<unknown>>(objectToDeepClone: T): T => {
-        const clonedObject: T = {} as unknown as T
+const deepCloneObject: <ObjectType extends ObjectOf<unknown>>(objectToDeepClone: ObjectType) => ObjectType =
+    <ObjectType extends ObjectOf<unknown>>(objectToDeepClone: ObjectType): ObjectType => {
+        const clonedObject: ObjectType = {} as unknown as ObjectType
         setAllPropertiesOfObjectOnAnother({ objectToChange: clonedObject, objectWithProperties: objectToDeepClone })
 
         return clonedObject
     }
 
-const setAllPropertiesOfObjectOnAnother: <K extends string, V>(setAllPropertiesOfObjectOnAnotherParameters: {
-    objectToChange: { [key in K]: V },
-    objectWithProperties: { [key in K]: V },
-}) => void =
-    <K extends string, V>({ objectToChange, objectWithProperties }: {
-        objectToChange: { [key in K]: V },
-        objectWithProperties: { [key in K]: V },
+const setAllPropertiesOfObjectOnAnother:
+    <KeyType extends string, ValueType>(setAllPropertiesOfObjectOnAnotherParameters: {
+        objectToChange: { [Index in KeyType]: ValueType },
+        objectWithProperties: { [Index in KeyType]: ValueType },
+    }) => void =
+    <KeyType extends string, ValueType>({ objectToChange, objectWithProperties }: {
+        objectToChange: { [Index in KeyType]: ValueType },
+        objectWithProperties: { [Index in KeyType]: ValueType },
     }): void => {
         entries(objectWithProperties)
-            .forEach(([ key, value ]: [ K, V ]) => {
+            .forEach(([ key, value ]: [ KeyType, ValueType ]) => {
                 objectToChange[ key ] = deepClone(value)
             })
     }
 
-const deepClone: <T>(maybeObjectToDeepClone: T) => T =
-    <T>(maybeObjectToDeepClone: T): T => {
-        let clonedMaybeObject: T
+const deepClone: <ObjectType>(maybeObjectToDeepClone: ObjectType) => ObjectType =
+    <ObjectType>(maybeObjectToDeepClone: ObjectType): ObjectType => {
+        let clonedMaybeObject: ObjectType
         if (maybeObjectToDeepClone instanceof Array) {
-            clonedMaybeObject = maybeObjectToDeepClone.slice() as unknown as T
+            clonedMaybeObject = maybeObjectToDeepClone.slice() as unknown as ObjectType
         }
         else if (maybeObjectToDeepClone && typeof maybeObjectToDeepClone === 'object') {
             clonedMaybeObject = deepCloneObject(maybeObjectToDeepClone)

@@ -1,8 +1,8 @@
 import { deepEqual } from './deepEqual'
 
-const allElementsEqual: <T>(array: T[]) => boolean =
-    <T>(array: T[]): boolean =>
-        array.every((element: T): boolean =>
+const allElementsEqual: <ElementType>(array: ElementType[]) => boolean =
+    <ElementType>(array: ElementType[]): boolean =>
+        array.every((element: ElementType): boolean =>
             deepEqual(element, array[ 0 ]),
         )
 

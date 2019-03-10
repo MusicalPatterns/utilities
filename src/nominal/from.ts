@@ -1,4 +1,4 @@
-// tslint:disable variable-name max-file-line-count ban-types
+// tslint:disable variable-name max-file-line-count ban-types max-line-length
 
 import {
     Amplitude,
@@ -31,74 +31,71 @@ import {
 
 // Units
 
-const Hz: <U extends NoUnits, T extends Hz<U>>(hz: T) => U & number =
-    <U extends NoUnits, T extends Hz<U>>(hz: T): U & number =>
-        hz as unknown as U & number
-const Ms: <U extends NoUnits, T extends Ms<U>>(ms: T) => U & number =
-    <U extends NoUnits, T extends Ms<U>>(ms: T): U & number =>
-        ms as unknown as U & number
-const Radians: <U extends NoUnits, T extends Radians<U>>(radians: T) => U & number =
-    <U extends NoUnits, T extends Radians<U>>(radians: T): U & number =>
-        radians as unknown as U & number
-const Cents: <U extends NoUnits, T extends Cents<U>>(cents: T) => U & number =
-    <U extends NoUnits, T extends Cents<U>>(cents: T): U & number =>
-        cents as unknown as U & number
-const Semitones: <U extends NoUnits, T extends Semitones<U>>(semitones: T) => U & number =
-    <U extends NoUnits, T extends Semitones<U>>(semitones: T): U & number =>
-        semitones as unknown as U & number
-const Meters: <U extends NoUnits, T extends Meters<U>>(meters: T) => U & number =
-    <U extends NoUnits, T extends Meters<U>>(meters: T): U & number =>
-        meters as unknown as U & number
-const Space: <U extends NoUnits, T extends Space<U>>(space: T) => U & number =
-    <U extends NoUnits, T extends Space<U>>(space: T): U & number =>
-        space as unknown as U & number
-const Time: <U extends NoUnits, T extends Time<U>>(time: T) => U & number =
-    <U extends NoUnits, T extends Time<U>>(time: T): U & number =>
-        time as unknown as U & number
-const Frequency: <U extends NoUnits, T extends Frequency<U>>(frequency: T) => U & number =
-    <U extends NoUnits, T extends Frequency<U>>(frequency: T): U & number =>
-        frequency as unknown as U & number
-const Amplitude: <U extends NoUnits, T extends Amplitude<U>>(amplitude: T) => U & number =
-    <U extends NoUnits, T extends Amplitude<U>>(amplitude: T): U & number =>
-        amplitude as unknown as U & number
+const Hz: <OperationType extends NoUnits, UnitsType extends Hz<OperationType>>(hz: UnitsType) => OperationType & number =
+    <OperationType extends NoUnits, UnitsType extends Hz<OperationType>>(hz: UnitsType): OperationType & number =>
+        hz as unknown as OperationType & number
+const Ms: <OperationType extends NoUnits, UnitsType extends Ms<OperationType>>(ms: UnitsType) => OperationType & number =
+    <OperationType extends NoUnits, UnitsType extends Ms<OperationType>>(ms: UnitsType): OperationType & number =>
+        ms as unknown as OperationType & number
+const Radians: <OperationType extends NoUnits, UnitsType extends Radians<OperationType>>(radians: UnitsType) => OperationType & number =
+    <OperationType extends NoUnits, UnitsType extends Radians<OperationType>>(radians: UnitsType): OperationType & number =>
+        radians as unknown as OperationType & number
+const Cents: <OperationType extends NoUnits, UnitsType extends Cents<OperationType>>(cents: UnitsType) => OperationType & number =
+    <OperationType extends NoUnits, UnitsType extends Cents<OperationType>>(cents: UnitsType): OperationType & number =>
+        cents as unknown as OperationType & number
+const Semitones: <OperationType extends NoUnits, UnitsType extends Semitones<OperationType>>(semitones: UnitsType) => OperationType & number =
+    <OperationType extends NoUnits, UnitsType extends Semitones<OperationType>>(semitones: UnitsType): OperationType & number =>
+        semitones as unknown as OperationType & number
+const Meters: <OperationType extends NoUnits, UnitsType extends Meters<OperationType>>(meters: UnitsType) => OperationType & number =
+    <OperationType extends NoUnits, UnitsType extends Meters<OperationType>>(meters: UnitsType): OperationType & number =>
+        meters as unknown as OperationType & number
+const Space: <OperationType extends NoUnits, UnitsType extends Space<OperationType>>(space: UnitsType) => OperationType & number =
+    <OperationType extends NoUnits, UnitsType extends Space<OperationType>>(space: UnitsType): OperationType & number =>
+        space as unknown as OperationType & number
+const Time: <OperationType extends NoUnits, UnitsType extends Time<OperationType>>(time: UnitsType) => OperationType & number =
+    <OperationType extends NoUnits, UnitsType extends Time<OperationType>>(time: UnitsType): OperationType & number =>
+        time as unknown as OperationType & number
+const Frequency: <OperationType extends NoUnits, UnitsType extends Frequency<OperationType>>(frequency: UnitsType) => OperationType & number =
+    <OperationType extends NoUnits, UnitsType extends Frequency<OperationType>>(frequency: UnitsType): OperationType & number =>
+        frequency as unknown as OperationType & number
+const Amplitude: <OperationType extends NoUnits, UnitsType extends Amplitude<OperationType>>(amplitude: UnitsType) => OperationType & number =
+    <OperationType extends NoUnits, UnitsType extends Amplitude<OperationType>>(amplitude: UnitsType): OperationType & number =>
+        amplitude as unknown as OperationType & number
 
 // Operation
 
-const Scalar: <U extends NoOperation, T extends Scalar<U>>(scalar: T) => U & number =
-    <U extends NoOperation, T extends Scalar<U>>(scalar: T): U & number =>
-        scalar as unknown as U & number
-const Translation: <U extends NoOperation, T extends Translation<U>>(translation: T) => U & number =
-    <U extends NoOperation, T extends Translation<U>>(translation: T): U & number =>
-        translation as unknown as U & number
-const Rotation: <U extends NoOperation, T extends Rotation<U>>(rotation: T) => U & number =
-    <U extends NoOperation, T extends Rotation<U>>(rotation: T): U & number =>
-        rotation as unknown as U & number
+const Scalar: <UnitsType extends NoOperation, OperationType extends Scalar<UnitsType>>(scalar: OperationType) => UnitsType & number =
+    <UnitsType extends NoOperation, OperationType extends Scalar<UnitsType>>(scalar: OperationType): UnitsType & number =>
+        scalar as unknown as UnitsType & number
+const Translation: <UnitsType extends NoOperation, OperationType extends Translation<UnitsType>>(translation: OperationType) => UnitsType & number =
+    <UnitsType extends NoOperation, OperationType extends Translation<UnitsType>>(translation: OperationType): UnitsType & number =>
+        translation as unknown as UnitsType & number
+const Rotation: <UnitsType extends NoOperation, OperationType extends Rotation<UnitsType>>(rotation: OperationType) => UnitsType & number =
+    <UnitsType extends NoOperation, OperationType extends Rotation<UnitsType>>(rotation: OperationType): UnitsType & number =>
+        rotation as unknown as UnitsType & number
 
-const Base: <U extends NoOperation, T extends Base<U>>(base: T) => U & number =
-    <U extends NoOperation, T extends Base<U>>(base: T): U & number =>
-        base as unknown as U & number
-const Power: <U extends NoOperation, T extends Power<U>>(power: T) => U & number =
-    <U extends NoOperation, T extends Power<U>>(power: T): U & number =>
-        power as unknown as U & number
+const Base: <UnitsType extends NoOperation, OperationType extends Base<UnitsType>>(base: OperationType) => UnitsType & number =
+    <UnitsType extends NoOperation, OperationType extends Base<UnitsType>>(base: OperationType): UnitsType & number =>
+        base as unknown as UnitsType & number
+const Power: <UnitsType extends NoOperation, OperationType extends Power<UnitsType>>(power: OperationType) => UnitsType & number =
+    <UnitsType extends NoOperation, OperationType extends Power<UnitsType>>(power: OperationType): UnitsType & number =>
+        power as unknown as UnitsType & number
 
-const Modulus: <U extends NoOperation, T extends Modulus<U>>(modulus: T) => U & number =
-    <U extends NoOperation, T extends Modulus<U>>(modulus: T): U & number =>
-        modulus as unknown as U & number
+const Modulus: <UnitsType extends NoOperation, OperationType extends Modulus<UnitsType>>(modulus: OperationType) => UnitsType & number =
+    <UnitsType extends NoOperation, OperationType extends Modulus<UnitsType>>(modulus: OperationType): UnitsType & number =>
+        modulus as unknown as UnitsType & number
 
 // Special Units & Operation
 
-const Integer: <T extends Integer>(integer: T) => number =
-    <T extends Integer>(integer: T): number =>
+const Integer: <IntegerType extends Integer>(integer: IntegerType) => number =
+    <IntegerType extends Integer>(integer: IntegerType): number =>
         integer as unknown as number
 
-const Ordinal: (ordinal: Ordinal) =>
-    number =
+const Ordinal: (ordinal: Ordinal) => number =
     (ordinal: Ordinal): number => ordinal as unknown as number
-const Cardinal: (cardinal: Cardinal) =>
-    number =
+const Cardinal: (cardinal: Cardinal) => number =
     (cardinal: Cardinal): number => cardinal as unknown as number
-const Numerator: (numerator: Numerator) =>
-    number =
+const Numerator: (numerator: Numerator) => number =
     (numerator: Numerator): number =>
         numerator as unknown as number
 const Denominator: (denominator: Denominator) => number =
@@ -115,11 +112,11 @@ const Block: (block: Block) => number[] =
     (block: Block): number[] =>
         block as unknown as number[]
 
-const Cycle: <T>(cycle: Cycle<T>) => T[] =
-    <T>(cycle: Cycle<T>): T[] => {
+const Cycle: <ElementType>(cycle: Cycle<ElementType>) => ElementType[] =
+    <ElementType>(cycle: Cycle<ElementType>): ElementType[] => {
         delete cycle._CycleBrand
 
-        return cycle as T[]
+        return cycle as ElementType[]
     }
 
 export {

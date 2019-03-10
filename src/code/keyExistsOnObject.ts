@@ -1,5 +1,5 @@
-const keyExistsOnObject: <K extends PropertyKey, T>(key: K, object: T) => boolean =
-    <K extends PropertyKey, T>(key: K, object: T): boolean =>
+const keyExistsOnObject: <KeyType extends PropertyKey, ObjectType>(key: KeyType, object: ObjectType) => boolean =
+    <KeyType extends PropertyKey, ObjectType>(key: KeyType, object: ObjectType): boolean =>
         key in object
 
 export {

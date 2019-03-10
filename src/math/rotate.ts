@@ -8,28 +8,32 @@ import { difference, negative, sum } from './typedOperations'
 import { Coordinate, CycleMap, RotateParameters, RotationMatrix, Vector } from './types'
 
 const defaultFixedCoordinateToOriginOfDimensionalityOfCoordinate:
-    <T extends Number, D extends Number>(
-        fixedCoordinate: Maybe<Coordinate<T, D>>,
-        coordinate: Coordinate<T, D>,
-    ) => Coordinate<T, D> =
-    <T extends Number, D extends Number>(
-        fixedCoordinate: Maybe<Coordinate<T, D>>,
-        coordinate: Coordinate<T, D>,
-    ): Coordinate<T, D> => (
+    <ElementType extends Number, Dimensionality extends Number>(
+        fixedCoordinate: Maybe<Coordinate<ElementType, Dimensionality>>,
+        coordinate: Coordinate<ElementType, Dimensionality>,
+    ) => Coordinate<ElementType, Dimensionality> =
+    <ElementType extends Number, Dimensionality extends Number>(
+        fixedCoordinate: Maybe<Coordinate<ElementType, Dimensionality>>,
+        coordinate: Coordinate<ElementType, Dimensionality>,
+    ): Coordinate<ElementType, Dimensionality> => (
         fixedCoordinate || coordinate.length === from.Cardinal(TWO_DIMENSIONAL) ?
             [ 0, 0 ] :
             [ 0, 0, 0 ]
-    ) as any as Coordinate<T, D>
+    ) as any as Coordinate<ElementType, Dimensionality>
 
 const buildArrayMapForScalingRotationMatrixToDimensionalityOfCoordinate:
-    <T extends Number, D extends Number>(coordinate: Coordinate<T, D>) => CycleMap =
-    <T extends Number, D extends Number>(coordinate: Coordinate<T, D>): CycleMap =>
-        <U>(rotationVectorOrMatrix: Cycle<U>): Cycle<U> =>
+    <ElementType extends Number, Dimensionality extends Number>(
+        coordinate: Coordinate<ElementType, Dimensionality>,
+    ) => CycleMap =
+    <ElementType extends Number, Dimensionality extends Number>(
+        coordinate: Coordinate<ElementType, Dimensionality>,
+    ): CycleMap =>
+        <VectorOrMatrix>(rotationVectorOrMatrix: Cycle<VectorOrMatrix>): Cycle<VectorOrMatrix> =>
             to.Cycle(slice(rotationVectorOrMatrix, INITIAL, to.Ordinal(coordinate.length)))
 
 const buildArrayMapForCyclingRotationMatrixForAxis: (axis: Ordinal) => CycleMap =
     (axis: Ordinal): CycleMap =>
-        <T>(rotationVectorOrMatrix: Cycle<T>): Cycle<T> => {
+        <VectorOrMatrix>(rotationVectorOrMatrix: Cycle<VectorOrMatrix>): Cycle<VectorOrMatrix> => {
             const translation: Translation = apply.Translation(
                 ADJUSTMENT_FOR_ROTATION_MATRIX_CYCLING_FROM_AXIS,
                 to.Translation(from.Ordinal(axis)),
@@ -43,12 +47,12 @@ const mapAcrossBothDimensions: (rotationMatrix: RotationMatrix, cycleMap: CycleM
         cycleMap(to.Cycle(rotationMatrix.map(cycleMap)))
 
 const scaleRotationMatrixToDimensionalityOfCoordinate:
-    <T extends Number, D extends Number>(
+    <ElementType extends Number, Dimensionality extends Number>(
         rotationMatrix: RotationMatrix,
-        coordinate: Coordinate<T, D>,
+        coordinate: Coordinate<ElementType, Dimensionality>,
     ) => RotationMatrix =
-    <T extends Number, D extends Number>(
-        rotationMatrix: RotationMatrix, coordinate: Coordinate<T, D>,
+    <ElementType extends Number, Dimensionality extends Number>(
+        rotationMatrix: RotationMatrix, coordinate: Coordinate<ElementType, Dimensionality>,
     ): RotationMatrix => {
         const cycleMap: CycleMap = buildArrayMapForScalingRotationMatrixToDimensionalityOfCoordinate(coordinate)
 
@@ -56,28 +60,33 @@ const scaleRotationMatrixToDimensionalityOfCoordinate:
     }
 
 const cycleRotationMatrixForAxis:
-    <T>(rotationMatrix: RotationMatrix, axis: Ordinal) => RotationMatrix =
-    <T>(rotationMatrix: RotationMatrix, axis: Ordinal): RotationMatrix => {
+    (rotationMatrix: RotationMatrix, axis: Ordinal) => RotationMatrix =
+    (rotationMatrix: RotationMatrix, axis: Ordinal): RotationMatrix => {
         const cycleMap: CycleMap = buildArrayMapForCyclingRotationMatrixForAxis(axis)
 
         return mapAcrossBothDimensions(rotationMatrix, cycleMap)
     }
 
-const rotate: <T extends Number, D extends Number>(rotateParameters: RotateParameters<T, D>) => Coordinate<T, D> =
-    <T extends Number, D extends Number>(rotateParameters: RotateParameters<T, D>): Coordinate<T, D> => {
+const rotate: <ElementType extends Number, Dimensionality extends Number>(
+    rotateParameters: RotateParameters<ElementType, Dimensionality>,
+) => Coordinate<ElementType, Dimensionality> =
+    <ElementType extends Number, Dimensionality extends Number>(
+        rotateParameters: RotateParameters<ElementType, Dimensionality>,
+    ): Coordinate<ElementType, Dimensionality> => {
         const { fixedCoordinate: fixedCoordinateArgument, coordinate, rotation, axis = Z_AXIS } = rotateParameters
-        const fixedCoordinate: Coordinate<T, D> = defaultFixedCoordinateToOriginOfDimensionalityOfCoordinate(
-            fixedCoordinateArgument,
-            coordinate,
-        )
+        const fixedCoordinate: Coordinate<ElementType, Dimensionality> =
+            defaultFixedCoordinateToOriginOfDimensionalityOfCoordinate(
+                fixedCoordinateArgument,
+                coordinate,
+            )
 
         const sin: Scalar = to.Scalar(sine(rotation))
         const cos: Scalar = to.Scalar(cosine(rotation))
 
-        const relative: T[] = map(
+        const relative: ElementType[] = map(
             coordinate,
-            (coordinateElement: T, index: Ordinal): T => {
-                const rawFixedCoordinateElement: T = apply.Ordinal(fixedCoordinate, index)
+            (coordinateElement: ElementType, index: Ordinal): ElementType => {
+                const rawFixedCoordinateElement: ElementType = apply.Ordinal(fixedCoordinate, index)
 
                 return difference(coordinateElement, rawFixedCoordinateElement)
             },
@@ -94,14 +103,14 @@ const rotate: <T extends Number, D extends Number>(rotateParameters: RotateParam
             coordinate,
         )
 
-        return rotationMatrix.map((rotationVector: Vector): T =>
+        return rotationMatrix.map((rotationVector: Vector): ElementType =>
             reduce(
                 rotationVector,
-                (coordinateElement: T, rotationScalar: Scalar, index: Ordinal): T =>
+                (coordinateElement: ElementType, rotationScalar: Scalar, index: Ordinal): ElementType =>
                     sum(coordinateElement, apply.Scalar(apply.Ordinal(relative, index), rotationScalar)),
-                0 as any as T,
+                0 as any as ElementType,
             ),
-        ) as Coordinate<T, D>
+        ) as Coordinate<ElementType, Dimensionality>
     }
 
 export {

@@ -1,4 +1,4 @@
-import { DictionaryOf } from '../code'
+import { ObjectOf } from '../code'
 import { Hz } from '../nominal'
 
 enum ScientificPitchNoteName {
@@ -31,7 +31,7 @@ enum ScientificPitchOctaveNumber {
     _10 = '_10',
 }
 
-type ScientificPitches = { [key in ScientificPitchNoteName]: DictionaryOf<Hz> }
+type ScientificPitches = { [Index in ScientificPitchNoteName]: ObjectOf<Hz> }
 
 export {
     ScientificPitchNoteName,

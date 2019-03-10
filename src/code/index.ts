@@ -32,8 +32,8 @@ export {
     Omit,
     Difference,
     KeyMap,
-    DictionaryOf,
+    ObjectOf,
     Maybe,
     AnyOtherProperties,
-    SizedArray,
+    ArrayOfLength,
 } from './types'

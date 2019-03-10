@@ -41,11 +41,11 @@ export {
     KeyMap,
     lastCharacter,
     indexOfLastCharacter,
-    DictionaryOf,
+    ObjectOf,
     Maybe,
     AnyOtherProperties,
     keyExistsOnObject,
-    SizedArray,
+    ArrayOfLength,
     parseInteger,
 } from './code'
 export {

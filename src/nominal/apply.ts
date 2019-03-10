@@ -9,6 +9,7 @@ import {
     Denominator,
     Fraction,
     Modulus,
+    NoUnits,
     Numerator,
     Ordinal,
     Power,
@@ -20,30 +21,21 @@ const isCycle: (value: unknown) => value is Cycle<unknown> =
     (value: unknown): value is Cycle<unknown> =>
         value && (value as Cycle<unknown>)._CycleBrand
 
-const wrapWithin: <T, U extends Number>(value: T, within: U) => T =
-    <T, U extends Number>(value: T, within: U): T => {
-        let newN: number = value as unknown as number
-        const withinN: number = within as unknown as number
+const Base: <ValueType, UnitsType extends Number = NoUnits>(value: ValueType, base: Base<UnitsType>) => ValueType =
+    <ValueType, UnitsType extends Number = NoUnits>(value: ValueType, base: Base<UnitsType>): ValueType =>
+        Math.log(value as unknown as number) / Math.log(base as unknown as number) as unknown as ValueType
 
-        while (newN < 0) {
-            newN += withinN
-        }
-        while (newN >= withinN) {
-            newN -= withinN
-        }
-
-        return newN as unknown as T
-    }
-
-const Base: <T, U extends Number>(value: T, base: Base<U>) => T =
-    <T, U extends Number>(value: T, base: Base<U>): T =>
-        Math.log(value as unknown as number) / Math.log(base as unknown as number) as unknown as T
-
-const Translation: <T, U extends Number>(value: T, translation: Translation<U>) => T =
-    <T, U extends Number>(value: T, translation: Translation<U>): T => {
+const Translation: <ValueType, UnitsType extends Number = NoUnits>(
+    value: ValueType,
+    translation: Translation<UnitsType>,
+) => ValueType =
+    <ValueType, UnitsType extends Number = NoUnits>(
+        value: ValueType,
+        translation: Translation<UnitsType>,
+    ): ValueType => {
         if (isCycle(value)) {
-            const cycle: Cycle<T> = value as unknown as Cycle<T>
-            const cycledCycle: Cycle<T> = to.Cycle([])
+            const cycle: Cycle<ValueType> = value as unknown as Cycle<ValueType>
+            const cycledCycle: Cycle<ValueType> = to.Cycle([])
             const cellCount: Cardinal = to.Cardinal(cycle.length)
 
             for (
@@ -52,29 +44,41 @@ const Translation: <T, U extends Number>(value: T, translation: Translation<U>) 
                 index = Translation(index, to.Translation(1))
             ) {
                 let cycledIndex: Ordinal = Translation(index, to.Translation(-from.Translation(translation)))
-                cycledIndex = wrapWithin(cycledIndex, cellCount)
+                cycledIndex = Modulus(cycledIndex, cellCount)
                 cycledCycle.push(cycle[ from.Ordinal(cycledIndex) ])
             }
 
-            return cycledCycle as unknown as T
+            return cycledCycle as unknown as ValueType
         }
 
-        return value as unknown as number + from.Translation(translation) as unknown as T
+        return value as unknown as number + from.Translation(translation) as unknown as ValueType
     }
 
-const Power: <T, U extends Number>(base: T, power: Power<U>) => T =
-    <T, U extends Number>(base: T, power: Power<U>): T =>
-        Math.pow(base as unknown as number, power as unknown as number) as unknown as T
+const Power: <ValueType, UnitsType extends Number = NoUnits>(
+    base: ValueType,
+    power: Power<UnitsType>,
+) => ValueType =
+    <ValueType, UnitsType extends Number = NoUnits>(
+        base: ValueType,
+        power: Power<UnitsType>,
+    ): ValueType =>
+        Math.pow(base as unknown as number, power as unknown as number) as unknown as ValueType
 
-const Scalar: <T, U extends Number>(value: T, scalar: Scalar<U>) => T =
-    <T, U extends Number>(value: T, scalar: Scalar<U>): T =>
-        value as unknown as number * from.Scalar(scalar) as unknown as T
+const Scalar: <ValueType, UnitsType extends Number = NoUnits>(
+    value: ValueType,
+    scalar: Scalar<UnitsType>,
+) => ValueType =
+    <ValueType, UnitsType extends Number = NoUnits>(
+        value: ValueType,
+        scalar: Scalar<UnitsType>,
+    ): ValueType =>
+        value as unknown as number * from.Scalar(scalar) as unknown as ValueType
 
-const Ordinal: <T>(array: T[] | Cycle<T>, ordinal: Ordinal) => T =
-    <T>(array: T[] | Cycle<T>, ordinal: Ordinal): T => {
+const Ordinal: <ElementType>(array: ElementType[] | Cycle<ElementType>, ordinal: Ordinal) => ElementType =
+    <ElementType>(array: ElementType[] | Cycle<ElementType>, ordinal: Ordinal): ElementType => {
         // tslint:disable-next-line strict-type-predicates
         if (isCycle(array)) {
-            const cycledIndex: Ordinal = wrapWithin(ordinal, array.length)
+            const cycledIndex: Ordinal = Modulus(ordinal, array.length as unknown as Modulus)
 
             return array[ from.Ordinal(cycledIndex) ]
         }
@@ -86,9 +90,21 @@ const Ordinal: <T>(array: T[] | Cycle<T>, ordinal: Ordinal) => T =
         return array[ from.Ordinal(ordinal) ]
     }
 
-const Modulus: <T, U extends Number>(value: T, modulus: Modulus<U>) => T =
-    <T, U extends Number>(value: T, modulus: Modulus<U>): T =>
-        value as unknown as number % from.Modulus(modulus) as unknown as T
+const Modulus:
+    <ValueType, UnitsType extends Number = NoUnits>(value: ValueType, modulus: Modulus<UnitsType>) => ValueType =
+    <ValueType, UnitsType extends Number = NoUnits>(value: ValueType, modulus: Modulus<UnitsType>): ValueType => {
+        let result: number = value as unknown as number
+        const rawModulus: number = modulus as unknown as number
+
+        while (result < 0) {
+            result += rawModulus
+        }
+        while (result >= rawModulus) {
+            result -= rawModulus
+        }
+
+        return result as unknown as ValueType
+    }
 
 const Numerator: (denominator: Denominator, numerator: Numerator) => Fraction =
     (denominator: Denominator, numerator: Numerator): Fraction =>

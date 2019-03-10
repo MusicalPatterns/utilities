@@ -2,7 +2,9 @@
 
 import { Difference } from '../code'
 
-type OverrideInteriorNeutrality<T, NeutralType> = T extends NeutralType ? Difference<T, NeutralType> & Number : T
+type OverrideInteriorNeutrality<UnitsOrOperationType, NeutralType> = UnitsOrOperationType extends NeutralType ?
+    Difference<UnitsOrOperationType, NeutralType> & Number :
+    UnitsOrOperationType
 
 interface NominalNumber {
     _NominalBrand?: string,
@@ -13,35 +15,41 @@ interface NominalNumber {
 // Units
 
 type NoUnits = Number & { _UnitsBrand?: 'NoUnits' | 'Integer' }
-type ForUnits<T> = T extends number ? NoOperation : OverrideInteriorNeutrality<T, NoUnits>
-type UnitsBrand<Unit, T extends NoUnits = number> = ForUnits<T> & { _UnitsBrand: Unit }
+type ForUnits<OperationType> = OperationType extends number ?
+    NoOperation :
+    OverrideInteriorNeutrality<OperationType, NoUnits>
+type UnitsBrand<Unit, OperationType extends NoUnits = number> =
+    ForUnits<OperationType> & { _UnitsBrand: Unit }
 
-type Hz<T extends NoUnits = number> = UnitsBrand<'Hz', T>
-type Ms<T extends NoUnits = number> = UnitsBrand<'Ms', T>
-type Radians<T extends NoUnits = number> = UnitsBrand<'Radians', T>
-type Cents<T extends NoUnits = number> = UnitsBrand<'Cents', T>
-type Semitones<T extends NoUnits = number> = UnitsBrand<'Semitones', T>
-type Meters<T extends NoUnits = number> = UnitsBrand<'Meters', T>
+type Hz<OperationType extends NoUnits = number> = UnitsBrand<'Hz', OperationType>
+type Ms<OperationType extends NoUnits = number> = UnitsBrand<'Ms', OperationType>
+type Radians<OperationType extends NoUnits = number> = UnitsBrand<'Radians', OperationType>
+type Cents<OperationType extends NoUnits = number> = UnitsBrand<'Cents', OperationType>
+type Semitones<OperationType extends NoUnits = number> = UnitsBrand<'Semitones', OperationType>
+type Meters<OperationType extends NoUnits = number> = UnitsBrand<'Meters', OperationType>
 
-type Space<T extends NoUnits = number> = UnitsBrand<'Space', T>
-type Time<T extends NoUnits = number> = UnitsBrand<'Time', T>
-type Frequency<T extends NoUnits = number> = UnitsBrand<'Frequency', T>
-type Amplitude<T extends NoUnits = number> = UnitsBrand<'Amplitude', T>
+type Space<OperationType extends NoUnits = number> = UnitsBrand<'Space', OperationType>
+type Time<OperationType extends NoUnits = number> = UnitsBrand<'Time', OperationType>
+type Frequency<OperationType extends NoUnits = number> = UnitsBrand<'Frequency', OperationType>
+type Amplitude<OperationType extends NoUnits = number> = UnitsBrand<'Amplitude', OperationType>
 
 // Operation
 
 type NoOperation = Number & { _OperationBrand?: 'NoOperation' }
-type ForOperation<T> = T extends number ? NoUnits : OverrideInteriorNeutrality<T, NoOperation>
-type OperationBrand<Operation, T extends NoOperation = number> = ForOperation<T> & { _OperationBrand: Operation }
+type ForOperation<UnitsType> = UnitsType extends number ?
+    NoUnits :
+    OverrideInteriorNeutrality<UnitsType, NoOperation>
+type OperationBrand<Operation, UnitsType extends NoOperation = number> =
+    ForOperation<UnitsType> & { _OperationBrand: Operation }
 
-type Scalar<T extends NoOperation = number> = OperationBrand<'Scalar', T>
-type Translation<T extends NoOperation = number> = OperationBrand<'Translation', T>
-type Rotation<T extends NoOperation = number> = OperationBrand<'Rotation', T>
+type Scalar<UnitsType extends NoOperation = number> = OperationBrand<'Scalar', UnitsType>
+type Translation<UnitsType extends NoOperation = number> = OperationBrand<'Translation', UnitsType>
+type Rotation<UnitsType extends NoOperation = number> = OperationBrand<'Rotation', UnitsType>
 
-type Base<T extends NoOperation = number> = OperationBrand<'Base', T>
-type Power<T extends NoOperation = number> = OperationBrand<'Power', T>
+type Base<UnitsType extends NoOperation = number> = OperationBrand<'Base', UnitsType>
+type Power<UnitsType extends NoOperation = number> = OperationBrand<'Power', UnitsType>
 
-type Modulus<T extends NoOperation = number> = OperationBrand<'Modulus', T>
+type Modulus<UnitsType extends NoOperation = number> = OperationBrand<'Modulus', UnitsType>
 
 // Special Units & Operation
 
@@ -58,11 +66,11 @@ type Fraction = [ Numerator, Denominator ]
 
 type Block = number[] & { _BlockBrand: void }
 
-type Cycle<T = number> = T[] & { _CycleBrand: boolean }
+type Cycle<ElementType = number> = ElementType[] & { _CycleBrand: boolean }
 
-type ContourElement<N> = [ number, ...number[] ] & { length: N } & { [ index: string ]: number }
-type ContourPiece<N> = Array<ContourElement<N>> & { _ContourPieceBrand: void }
-type ContourWhole<N> = Array<ContourElement<N>> & { _ContourWholeBrand: void }
+type ContourElement<ContourType> = [ number, ...number[] ] & { length: ContourType } & { [ index: string ]: number }
+type ContourPiece<ContourType> = Array<ContourElement<ContourType>> & { _ContourPieceBrand: void }
+type ContourWhole<ContourType> = Array<ContourElement<ContourType>> & { _ContourWholeBrand: void }
 
 export {
     Base,

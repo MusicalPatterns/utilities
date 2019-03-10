@@ -1,12 +1,12 @@
 import { negative } from '../math'
 import { apply, from, Ordinal, to } from '../nominal'
 
-const lastElement: <T>(array: T[]) => T =
-    <T>(array: T[]): T =>
+const lastElement: <ElementType>(array: ElementType[]) => ElementType =
+    <ElementType>(array: ElementType[]): ElementType =>
         apply.Ordinal(array, indexOfLastElement(array))
 
-const indexOfLastElement: <T>(array: T[]) => Ordinal =
-    <T>(array: T[]): Ordinal =>
+const indexOfLastElement: <ElementType>(array: ElementType[]) => Ordinal =
+    <ElementType>(array: ElementType[]): Ordinal =>
         to.Ordinal(apply.Translation(
             array.length,
             to.Translation(negative(1)),

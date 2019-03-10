@@ -2,26 +2,30 @@
 
 import { Map } from 'immutable'
 
-interface TypedMap<T> extends Map<keyof T, T[keyof T]> {
-    get<K extends keyof T>(key: K, notSetValue?: T[K]): T[K]
+interface TypedMap<ObjectType> extends Map<keyof ObjectType, ObjectType[keyof ObjectType]> {
+    get<KeyType extends keyof ObjectType>(key: KeyType, notSetValue?: ObjectType[KeyType]): ObjectType[KeyType]
 
-    set<K extends keyof T>(key: K, value: T[K]): this
+    set<KeyType extends keyof ObjectType>(key: KeyType, value: ObjectType[KeyType]): this
 
-    toJS(): T
+    toJS(): ObjectType
 }
 
-const typedMap: <T>(data: T) => TypedMap<T> =
+const typedMap: <ObjectType>(object: ObjectType) => TypedMap<ObjectType> =
     // @ts-ignore
     // tslint:disable-next-line no-unnecessary-callback-wrapper
-    <T>(data: T): TypedMap<T> => Map(data)
+    <ObjectType>(object: ObjectType): TypedMap<ObjectType> => Map(object)
 
-const entries: <K extends string, V>(object: Partial<{ [key in K]: V }>) => Array<[ K, V ]> =
-    <K extends string, V>(object: Partial<{ [key in K]: V }>): Array<[ K, V ]> =>
-        Object.entries(object) as Array<[ K, V ]>
+const entries: <KeyType extends string, ValueType>(
+    object: Partial<{ [Index in KeyType]: ValueType }>,
+) => Array<[ KeyType, ValueType ]> =
+    <KeyType extends string, ValueType>(
+        object: Partial<{ [Index in KeyType]: ValueType }>,
+    ): Array<[ KeyType, ValueType ]> =>
+        Object.entries(object) as Array<[ KeyType, ValueType ]>
 
-const keys: <K extends string, V>(object: { [key in K]: V }) => K[] =
-    <K extends string, V>(object: { [key in K]: V }): K[] =>
-        Object.keys(object) as K[]
+const keys: <KeyType extends string, ValueType>(object: { [Index in KeyType]: ValueType }) => KeyType[] =
+    <KeyType extends string, ValueType>(object: { [Index in KeyType]: ValueType }): KeyType[] =>
+        Object.keys(object) as KeyType[]
 
 export {
     entries,

@@ -1,12 +1,12 @@
 // tslint:disable no-magic-numbers
 
-import { DictionaryOf, keys, reduce } from '../code'
+import { keys, ObjectOf, reduce } from '../code'
 import { negative } from '../math'
 import { apply, Frequency, from, Hz, Power, Scalar, to } from '../nominal'
 import { OCTAVE } from './constants'
 import { ScientificPitches, ScientificPitchNoteName, ScientificPitchOctaveNumber } from './types'
 
-const SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP: { [key in ScientificPitchOctaveNumber]: Power } = {
+const SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP: { [Index in ScientificPitchOctaveNumber]: Power } = {
     [ ScientificPitchOctaveNumber._NEGATIVE_1 ]: to.Power(negative(1)),
     [ ScientificPitchOctaveNumber._0 ]: to.Power(0),
     [ ScientificPitchOctaveNumber._1 ]: to.Power(1),
@@ -21,7 +21,7 @@ const SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP: { [key in ScientificPitchOcta
     [ ScientificPitchOctaveNumber._10 ]: to.Power(10),
 }
 
-const SCIENTIFIC_PITCH_NOTE_NAME_TO_ZEROTH_OCTAVE_FREQUENCY_MAP: { [key in ScientificPitchNoteName]: Hz } = {
+const SCIENTIFIC_PITCH_NOTE_NAME_TO_ZEROTH_OCTAVE_FREQUENCY_MAP: { [Index in ScientificPitchNoteName]: Hz } = {
     [ ScientificPitchNoteName.C ]: to.Hz(16.352),
     [ ScientificPitchNoteName.C_SHARP_D_FLAT ]: to.Hz(17.324),
     [ ScientificPitchNoteName.D ]: to.Hz(18.354),
@@ -65,12 +65,12 @@ const scientificPitchesInitialAccumulator: ScientificPitches = {
 const SCIENTIFIC_PITCHES: ScientificPitches = keys(SCIENTIFIC_PITCH_NOTE_NAME_TO_ZEROTH_OCTAVE_FREQUENCY_MAP)
     .reduce(
         (pitchesAccumulator: ScientificPitches, noteName: ScientificPitchNoteName): ScientificPitches => {
-            const frequencies: DictionaryOf<Hz> = reduce(
+            const frequencies: ObjectOf<Hz> = reduce(
                 keys(SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP),
                 (
-                    frequenciesAccumulator: DictionaryOf<Hz>,
+                    frequenciesAccumulator: ObjectOf<Hz>,
                     octaveNumber: ScientificPitchOctaveNumber,
-                ): DictionaryOf<Hz> => ({
+                ): ObjectOf<Hz> => ({
                     ...frequenciesAccumulator,
                     [ octaveNumber ]: scientificPitch(noteName, octaveNumber),
                 }),

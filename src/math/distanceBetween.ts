@@ -6,21 +6,22 @@ import { SQUARE_ROOT, SQUARED } from './constants'
 import { absoluteValue, difference, sum } from './typedOperations'
 import { Coordinate } from './types'
 
-const distanceBetween: <T extends Number>(pointA: Coordinate<T>, pointB: Coordinate<T>) => T =
-    <T extends Number>(pointA: Coordinate<T>, pointB: Coordinate<T>): T => {
-        const sumOfSquaresOfDimensionalDistances: T = reduce(
+const distanceBetween:
+    <NumericType extends Number>(pointA: Coordinate<NumericType>, pointB: Coordinate<NumericType>) => NumericType =
+    <NumericType extends Number>(pointA: Coordinate<NumericType>, pointB: Coordinate<NumericType>): NumericType => {
+        const sumOfSquaresOfDimensionalDistances: NumericType = reduce(
             pointA,
-            (accumulator: T, pointAElement: T, index: Ordinal): T => {
-                const pointBElement: T = apply.Ordinal(pointB, index)
-                const dimensionalDistance: T = absoluteValue(difference(pointAElement, pointBElement))
-                const squareOfDimensionalDistance: T = apply.Power(
+            (accumulator: NumericType, pointAElement: NumericType, index: Ordinal): NumericType => {
+                const pointBElement: NumericType = apply.Ordinal(pointB, index)
+                const dimensionalDistance: NumericType = absoluteValue(difference(pointAElement, pointBElement))
+                const squareOfDimensionalDistance: NumericType = apply.Power(
                     dimensionalDistance,
                     SQUARED,
                 )
 
                 return sum(accumulator, squareOfDimensionalDistance)
             },
-            0 as unknown as T,
+            0 as unknown as NumericType,
         )
 
         return apply.Power(sumOfSquaresOfDimensionalDistances, SQUARE_ROOT)

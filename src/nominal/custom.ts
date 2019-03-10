@@ -1,4 +1,4 @@
-// tslint:disable no-any no-type-definitions-outside-types-modules no-object-literal-type-assertion ban-types
+// tslint:disable no-any no-type-definitions-outside-types-modules no-object-literal-type-assertion ban-types max-line-length
 
 import { reduce } from '../code'
 
@@ -9,30 +9,47 @@ interface NominalInterfaceOptionObject {
     numericArray?: any,
 }
 
-type FromMono<T extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> =
-    { [K in keyof T['number']]: (value: T['number'][K]) => number }
-type FromPoly<T extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> =
-    { [K in keyof T['numericArray']]: (value: T['numericArray'][K]) => number[] }
-type From<T extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> = FromMono<T> & FromPoly<T>
+type FromMono<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> = {
+    [Index in keyof NominalInterfaceOptionObjectType['number']]:
+    (value: NominalInterfaceOptionObjectType['number'][Index]) => number
+}
+type FromPoly<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> = {
+    [Index in keyof NominalInterfaceOptionObjectType['numericArray']]:
+    (value: NominalInterfaceOptionObjectType['numericArray'][Index]) => number[]
+}
+type From<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> =
+    FromMono<NominalInterfaceOptionObjectType> & FromPoly<NominalInterfaceOptionObjectType>
 
-type ToMono<T extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> =
-    { [K in keyof T['number']]: <V extends Number>(value: V) => T['number'][K] }
-type ToPoly<T extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> =
-    { [K in keyof T['numericArray']]: <V extends Number>(value: V[]) => T['numericArray'][K] }
-type To<T extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> = ToMono<T> & ToPoly<T>
+type ToMono<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> = {
+    [Index in keyof NominalInterfaceOptionObjectType['number']]:
+    <NumericType extends Number>(value: NumericType) => NominalInterfaceOptionObjectType['number'][Index]
+}
+type ToPoly<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> = {
+    [Index in keyof NominalInterfaceOptionObjectType['numericArray']]:
+    <NumericElementType extends Number>(
+        value: NumericElementType[],
+    ) => NominalInterfaceOptionObjectType['numericArray'][Index]
+}
+type To<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> =
+    ToMono<NominalInterfaceOptionObjectType> & ToPoly<NominalInterfaceOptionObjectType>
 
-interface NominalInterface<T extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> {
-    from: From<T>,
-    to: To<T>,
+interface NominalInterface<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> {
+    from: From<NominalInterfaceOptionObjectType>,
+    to: To<NominalInterfaceOptionObjectType>,
 }
 
-const buildNominalInterface:
-    <T extends NominalInterfaceOptionObject>(nominalInterfaceOptionsObject: T) => NominalInterface<T> =
-    <T extends NominalInterfaceOptionObject>(nominalInterfaceOptionsObject: T): NominalInterface<T> => ({
+const buildNominalInterface: <NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject>(
+    nominalInterfaceOptionsObject: NominalInterfaceOptionObjectType,
+) => NominalInterface<NominalInterfaceOptionObjectType> =
+    <NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject>(
+        nominalInterfaceOptionsObject: NominalInterfaceOptionObjectType,
+    ): NominalInterface<NominalInterfaceOptionObjectType> => ({
         from: {
             ...reduce(
                 Object.keys(nominalInterfaceOptionsObject.number || {}),
-                (accumulator: FromMono<T>, typeName: string): FromMono<T> => ({
+                (
+                    accumulator: FromMono<NominalInterfaceOptionObjectType>, typeName: string,
+                ): FromMono<NominalInterfaceOptionObjectType> => ({
                     ...accumulator,
                     [ typeName ]: (value: unknown): number => value as number,
                 }),
@@ -40,7 +57,9 @@ const buildNominalInterface:
             ),
             ...reduce(
                 Object.keys(nominalInterfaceOptionsObject.numericArray || {}),
-                (accumulator: FromPoly<T>, typeName: string): FromPoly<T> => ({
+                (
+                    accumulator: FromPoly<NominalInterfaceOptionObjectType>, typeName: string,
+                ): FromPoly<NominalInterfaceOptionObjectType> => ({
                     ...accumulator,
                     [ typeName ]: (values: unknown): number[] => values as number[],
                 }),
@@ -50,17 +69,21 @@ const buildNominalInterface:
         to: {
             ...reduce(
                 Object.keys(nominalInterfaceOptionsObject.number || {}),
-                (accumulator: ToMono<T>, typeName: string): ToMono<T> => ({
+                (
+                    accumulator: ToMono<NominalInterfaceOptionObjectType>, typeName: string,
+                ): ToMono<NominalInterfaceOptionObjectType> => ({
                     ...accumulator,
-                    [ typeName ]: <V extends Number>(value: V): unknown => value,
+                    [ typeName ]: <NumericType extends Number>(value: NumericType): unknown => value,
                 }),
                 {},
             ),
             ...reduce(
                 Object.keys(nominalInterfaceOptionsObject.numericArray || {}),
-                (accumulator: ToPoly<T>, typeName: string): ToPoly<T> => ({
+                (
+                    accumulator: ToPoly<NominalInterfaceOptionObjectType>, typeName: string,
+                ): ToPoly<NominalInterfaceOptionObjectType> => ({
                     ...accumulator,
-                    [ typeName ]: <V extends Number>(values: V[]): unknown => values,
+                    [ typeName ]: <NumericElementType extends Number>(values: NumericElementType[]): unknown => values,
                 }),
                 {},
             ),

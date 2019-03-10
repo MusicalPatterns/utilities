@@ -13,8 +13,8 @@ import {
 } from '../math'
 import { apply, to } from '../nominal'
 
-const determineIfClose: <T extends Number>(numberOne: T, numberTwo: T) => boolean =
-    <T extends Number>(numberOne: T, numberTwo: T): boolean => {
+const determineIfClose: <NumericType extends Number>(numberOne: NumericType, numberTwo: NumericType) => boolean =
+    <NumericType extends Number>(numberOne: NumericType, numberTwo: NumericType): boolean => {
         const precision: number = DEFAULT_PRECISION
 
         const pow: number = apply.Power(DECIMAL, to.Power(apply.Translation(precision, to.Translation(1))))
@@ -24,8 +24,18 @@ const determineIfClose: <T extends Number>(numberOne: T, numberTwo: T) => boolea
         return quotient(round(product(delta, pow)), pow) <= maxDelta
     }
 
-const maybeFail: <T extends Number>(isClose: boolean, numberOne: T, numberTwo: T, negate: boolean) => void =
-    <T extends Number>(isClose: boolean, numberOne: T, numberTwo: T, negate: boolean = false): void => {
+const maybeFail: <NumericType extends Number>(
+    isClose: boolean,
+    numberOne: NumericType,
+    numberTwo: NumericType,
+    negate: boolean,
+) => void =
+    <NumericType extends Number>(
+        isClose: boolean,
+        numberOne: NumericType,
+        numberTwo: NumericType,
+        negate: boolean = false,
+    ): void => {
         if (!negate && !isClose) {
             fail(`expected ${numberOne} to be close to ${numberTwo}`)
         }
@@ -34,9 +44,10 @@ const maybeFail: <T extends Number>(isClose: boolean, numberOne: T, numberTwo: T
         }
     }
 
-// tslint:disable-next-line bool-param-default
-const testIsCloseTo: <T extends Number>(numberOne: T, numberTwo: T, negate?: boolean) => boolean =
-    <T extends Number>(numberOne: T, numberTwo: T, negate: boolean = false): boolean => {
+const testIsCloseTo:
+    // tslint:disable-next-line bool-param-default
+    <NumericType extends Number>(numberOne: NumericType, numberTwo: NumericType, negate?: boolean) => boolean =
+    <NumericType extends Number>(numberOne: NumericType, numberTwo: NumericType, negate: boolean = false): boolean => {
         const isClose: boolean = determineIfClose(numberOne, numberTwo)
 
         maybeFail(isClose, numberOne, numberTwo, negate)

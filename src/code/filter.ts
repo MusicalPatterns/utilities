@@ -1,7 +1,7 @@
 import { Ordinal } from '../nominal'
 
-const uniqueFilter: <T>(value: T, index: Ordinal, self: T[]) => boolean =
-    <T>(value: T, index: Ordinal, self: T[]): boolean =>
+const uniqueFilter: <ElementType>(value: ElementType, index: Ordinal, self: ElementType[]) => boolean =
+    <ElementType>(value: ElementType, index: Ordinal, self: ElementType[]): boolean =>
         self.indexOf(value) === index
 
 export {

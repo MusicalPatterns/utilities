@@ -1,4 +1,4 @@
-// tslint:disable variable-name max-file-line-count
+// tslint:disable variable-name max-file-line-count max-line-length
 
 import {
     Amplitude,
@@ -34,57 +34,57 @@ import {
 
 // Units
 
-const Hz: <T extends NoUnits>(hz: T) => Hz<T> =
-    <T extends NoUnits>(hz: T): Hz<T> =>
-        hz as Hz<T>
-const Ms: <T extends NoUnits>(ms: T) => Ms<T> =
-    <T extends NoUnits>(ms: T): Ms<T> =>
-        ms as Ms<T>
-const Radians: <T extends NoUnits>(radians: T) => Radians<T> =
-    <T extends NoUnits>(radians: T): Radians<T> =>
-        radians as Radians<T>
-const Cents: <T extends NoUnits>(cents: T) => Cents<T> =
-    <T extends NoUnits>(cents: T): Cents<T> =>
-        cents as Cents<T>
-const Semitones: <T extends NoUnits>(semitones: T) => Semitones<T> =
-    <T extends NoUnits>(semitones: T): Semitones<T> =>
-        semitones as Semitones<T>
-const Meters: <T extends NoUnits>(meters: T) => Meters<T> =
-    <T extends NoUnits>(meters: T): Meters<T> =>
-        meters as Meters<T>
-const Space: <T extends NoUnits>(space: T) => Space<T> =
-    <T extends NoUnits>(space: T): Space<T> =>
-        space as Space<T>
-const Time: <T extends NoUnits>(time: T) => Time<T> =
-    <T extends NoUnits>(time: T): Time<T> =>
-        time as Time<T>
-const Frequency: <T extends NoUnits>(frequency: T) => Frequency<T> =
-    <T extends NoUnits>(frequency: T): Frequency<T> =>
-        frequency as Frequency<T>
-const Amplitude: <T extends NoUnits>(amplitude: T) => Amplitude<T> =
-    <T extends NoUnits>(amplitude: T): Amplitude<T> =>
-        amplitude as Amplitude<T>
+const Hz: <OperationType extends NoUnits>(hz: OperationType) => Hz<OperationType> =
+    <OperationType extends NoUnits>(hz: OperationType): Hz<OperationType> =>
+        hz as Hz<OperationType>
+const Ms: <OperationType extends NoUnits>(ms: OperationType) => Ms<OperationType> =
+    <OperationType extends NoUnits>(ms: OperationType): Ms<OperationType> =>
+        ms as Ms<OperationType>
+const Radians: <OperationType extends NoUnits>(radians: OperationType) => Radians<OperationType> =
+    <OperationType extends NoUnits>(radians: OperationType): Radians<OperationType> =>
+        radians as Radians<OperationType>
+const Cents: <OperationType extends NoUnits>(cents: OperationType) => Cents<OperationType> =
+    <OperationType extends NoUnits>(cents: OperationType): Cents<OperationType> =>
+        cents as Cents<OperationType>
+const Semitones: <OperationType extends NoUnits>(semitones: OperationType) => Semitones<OperationType> =
+    <OperationType extends NoUnits>(semitones: OperationType): Semitones<OperationType> =>
+        semitones as Semitones<OperationType>
+const Meters: <OperationType extends NoUnits>(meters: OperationType) => Meters<OperationType> =
+    <OperationType extends NoUnits>(meters: OperationType): Meters<OperationType> =>
+        meters as Meters<OperationType>
+const Space: <OperationType extends NoUnits>(space: OperationType) => Space<OperationType> =
+    <OperationType extends NoUnits>(space: OperationType): Space<OperationType> =>
+        space as Space<OperationType>
+const Time: <OperationType extends NoUnits>(time: OperationType) => Time<OperationType> =
+    <OperationType extends NoUnits>(time: OperationType): Time<OperationType> =>
+        time as Time<OperationType>
+const Frequency: <OperationType extends NoUnits>(frequency: OperationType) => Frequency<OperationType> =
+    <OperationType extends NoUnits>(frequency: OperationType): Frequency<OperationType> =>
+        frequency as Frequency<OperationType>
+const Amplitude: <OperationType extends NoUnits>(amplitude: OperationType) => Amplitude<OperationType> =
+    <OperationType extends NoUnits>(amplitude: OperationType): Amplitude<OperationType> =>
+        amplitude as Amplitude<OperationType>
 
 // Operation
 
-const Scalar: <T extends NoOperation>(scalar: T) => Scalar<T> =
-    <T extends NoOperation>(scalar: T): Scalar<T> =>
-        scalar as Scalar<T>
-const Translation: <T extends NoOperation>(translation: T) => Translation<T> =
-    <T extends NoOperation>(translation: T): Translation<T> =>
-        translation as Translation<T>
-const Rotation: <T extends NoOperation>(rotation: T) => Rotation<T> =
-    <T extends NoOperation>(rotation: T): Rotation<T> =>
-        rotation as Rotation<T>
-const Base: <T extends NoOperation>(base: T) => Base<T> =
-    <T extends NoOperation>(base: T): Base<T> =>
-        base as Base<T>
-const Power: <T extends NoOperation>(power: T) => Power<T> =
-    <T extends NoOperation>(power: T): Power<T> =>
-        power as Power<T>
-const Modulus: <T extends NoOperation>(modulus: T) => Modulus<T> =
-    <T extends NoOperation>(modulus: T): Modulus<T> =>
-        modulus as Modulus<T>
+const Scalar: <UnitsType extends NoOperation>(scalar: UnitsType) => Scalar<UnitsType> =
+    <UnitsType extends NoOperation>(scalar: UnitsType): Scalar<UnitsType> =>
+        scalar as Scalar<UnitsType>
+const Translation: <UnitsType extends NoOperation>(translation: UnitsType) => Translation<UnitsType> =
+    <UnitsType extends NoOperation>(translation: UnitsType): Translation<UnitsType> =>
+        translation as Translation<UnitsType>
+const Rotation: <UnitsType extends NoOperation>(rotation: UnitsType) => Rotation<UnitsType> =
+    <UnitsType extends NoOperation>(rotation: UnitsType): Rotation<UnitsType> =>
+        rotation as Rotation<UnitsType>
+const Base: <UnitsType extends NoOperation>(base: UnitsType) => Base<UnitsType> =
+    <UnitsType extends NoOperation>(base: UnitsType): Base<UnitsType> =>
+        base as Base<UnitsType>
+const Power: <UnitsType extends NoOperation>(power: UnitsType) => Power<UnitsType> =
+    <UnitsType extends NoOperation>(power: UnitsType): Power<UnitsType> =>
+        power as Power<UnitsType>
+const Modulus: <UnitsType extends NoOperation>(modulus: UnitsType) => Modulus<UnitsType> =
+    <UnitsType extends NoOperation>(modulus: UnitsType): Modulus<UnitsType> =>
+        modulus as Modulus<UnitsType>
 
 // Special Units & Operation
 
@@ -95,8 +95,8 @@ const integerCheck: (value: number | Integer, type: string) => void =
         }
     }
 
-const Integer: <T extends NoUnits>(integer: T) => Integer =
-    <T extends NoUnits>(integer: T): Integer => integer as unknown as Integer
+const Integer: <OperationType extends NoUnits>(integer: OperationType) => Integer =
+    <OperationType extends NoUnits>(integer: OperationType): Integer => integer as unknown as Integer
 const Ordinal: (ordinal: number | Integer) => Ordinal =
     (ordinal: number | Integer): Ordinal => {
         integerCheck(ordinal, 'Ordinal')
@@ -131,24 +131,24 @@ const Fraction: (fraction: [ number | Numerator, number | Denominator ]) => Frac
 const Block: (block: number[]) => Block =
     (block: number[]): Block => block as unknown as Block
 
-const Cycle: <T>(cycle: T[]) => Cycle<T> =
-    <T>(cycle: T[]): Cycle<T> => {
-        (cycle as Cycle<T>)._CycleBrand = true
+const Cycle: <ElementType>(cycle: ElementType[]) => Cycle<ElementType> =
+    <ElementType>(cycle: ElementType[]): Cycle<ElementType> => {
+        (cycle as Cycle<ElementType>)._CycleBrand = true
 
-        return cycle as Cycle<T>
+        return cycle as Cycle<ElementType>
     }
 
-const ContourElement: <N>(contourElement: number[]) => ContourElement<N> =
-    <N>(contourElement: number[]): ContourElement<N> =>
-        contourElement as unknown as ContourElement<N>
-const ContourPiece: <N>(contourPiece: Array<number[] | ContourElement<N>>) => ContourPiece<N> =
-    <N>(contourPiece: Array<number[] | ContourElement<N>>): ContourPiece<N> =>
-        contourPiece.map((contourElement: number[] | ContourElement<N>): ContourElement<N> =>
-            contourElement as unknown as ContourElement<N>) as unknown as ContourPiece<N>
-const ContourWhole: <N>(contourWhole: Array<number[] | ContourElement<N>>) => ContourWhole<N> =
-    <N>(contourWhole: Array<number[] | ContourElement<N>>): ContourWhole<N> =>
-        contourWhole.map((contourElement: number[] | ContourElement<N>): ContourElement<N> =>
-            contourElement as unknown as ContourElement<N>) as unknown as ContourWhole<N>
+const ContourElement: <ContourType>(contourElement: number[]) => ContourElement<ContourType> =
+    <ContourType>(contourElement: number[]): ContourElement<ContourType> =>
+        contourElement as unknown as ContourElement<ContourType>
+const ContourPiece: <ContourType>(contourPiece: Array<number[] | ContourElement<ContourType>>) => ContourPiece<ContourType> =
+    <ContourType>(contourPiece: Array<number[] | ContourElement<ContourType>>): ContourPiece<ContourType> =>
+        contourPiece.map((contourElement: number[] | ContourElement<ContourType>): ContourElement<ContourType> =>
+            contourElement as unknown as ContourElement<ContourType>) as unknown as ContourPiece<ContourType>
+const ContourWhole: <ContourType>(contourWhole: Array<number[] | ContourElement<ContourType>>) => ContourWhole<ContourType> =
+    <ContourType>(contourWhole: Array<number[] | ContourElement<ContourType>>): ContourWhole<ContourType> =>
+        contourWhole.map((contourElement: number[] | ContourElement<ContourType>): ContourElement<ContourType> =>
+            contourElement as unknown as ContourElement<ContourType>) as unknown as ContourWhole<ContourType>
 
 export {
     Base,

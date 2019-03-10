@@ -2,38 +2,63 @@ import { from, Ordinal } from '../nominal'
 import { isUndefined } from './isUndefined'
 
 // tslint:disable-next-line no-any
-const slice: <T extends any[] | string>(array: T, initial: Ordinal, terminal?: Ordinal) => T =
+const slice: <ArrayType extends any[] | string>(array: ArrayType, initial: Ordinal, terminal?: Ordinal) => ArrayType =
     // tslint:disable-next-line no-any
-    <T extends any[] | string>(array: T, initial: Ordinal, terminal?: Ordinal): T => {
+    <ArrayType extends any[] | string>(array: ArrayType, initial: Ordinal, terminal?: Ordinal): ArrayType => {
         if (isUndefined(terminal)) {
-            return array.slice(from.Ordinal(initial)) as T
+            return array.slice(from.Ordinal(initial)) as ArrayType
         }
         else {
-            return array.slice(from.Ordinal(initial), from.Ordinal(terminal)) as T
+            return array.slice(from.Ordinal(initial), from.Ordinal(terminal)) as ArrayType
         }
     }
 
-const forEach: <T>(array: T[], fn: (el: T, index: Ordinal, self: T[]) => void) => void =
-    <T>(array: T[], fn: (el: T, index: Ordinal, self: T[]) => void): void => {
+const forEach: <ElementType>(
+    array: ElementType[],
+    callback: (element: ElementType, index: Ordinal, self: ElementType[]) => void,
+) => void =
+    <ElementType>(
+        array: ElementType[],
+        callback: (element: ElementType, index: Ordinal, self: ElementType[],
+        ) => void): void => {
         // @ts-ignore
-        array.forEach(fn)
+        array.forEach(callback)
     }
 
-const map: <T, U>(array: T[], fn: (el: T, index: Ordinal, self: T[]) => U) => U[] =
-    <T, U>(array: T[], fn: (el: T, index: Ordinal, self: T[]) => U): U[] =>
+const map: <ElementType, MappedElementType>(
+    array: ElementType[],
+    callback: (element: ElementType, index: Ordinal, self: ElementType[]) => MappedElementType,
+) => MappedElementType[] =
+    <ElementType, MappedElementType>(
+        array: ElementType[],
+        callback: (element: ElementType, index: Ordinal, self: ElementType[],
+        ) => MappedElementType): MappedElementType[] =>
         // @ts-ignore
-        array.map(fn)
+        array.map(callback)
 
-const reduce:
-    <T, U>(array: T[], fn: (accumulator: U, el: T, index: Ordinal, self: T[]) => U, accumulator: Partial<U>) => U =
-    <T, U>(array: T[], fn: (accumulator: U, el: T, index: Ordinal, self: T[]) => U, accumulator: Partial<U>): U =>
+const reduce: <ElementType, ReducedType>(
+    array: ElementType[],
+    callback: (accumulator: ReducedType, element: ElementType, index: Ordinal, self: ElementType[]) => ReducedType,
+    accumulator: Partial<ReducedType>,
+) => ReducedType =
+    <ElementType, ReducedType>(
+        array: ElementType[],
+        callback: (accumulator: ReducedType, element: ElementType, index: Ordinal, self: ElementType[]) => ReducedType,
+        accumulator: Partial<ReducedType>,
+    ): ReducedType =>
         // @ts-ignore
-        array.reduce(fn, accumulator)
+        array.reduce(callback, accumulator)
 
-const filter: <T>(array: T[], fn: (el: T, index: Ordinal, self: T[]) => boolean) => T[] =
-    <T>(array: T[], fn: (el: T, index: Ordinal, self: T[]) => boolean): T[] =>
+const filter: <ElementType>(
+    array: ElementType[],
+    callback: (element: ElementType, index: Ordinal, self: ElementType[]) => boolean,
+) => ElementType[] =
+    <ElementType>(
+        array: ElementType[],
+        callback: (element: ElementType, index: Ordinal, self: ElementType[],
+        ) => boolean): ElementType[] =>
         // @ts-ignore
-        array.filter(fn)
+        array.filter(callback)
 
 export {
     slice,

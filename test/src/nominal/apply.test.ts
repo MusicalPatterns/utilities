@@ -42,15 +42,24 @@ describe('apply', () => {
         })
     })
 
-    describe('fractions', () => {
-        it('applying a numerator to a denominator gives a fraction', () => {
+    describe('Fractions, Numerators, and Denominators', () => {
+        it('applying a Numerator to a Denominator gives a Fraction', () => {
             expect(apply.Numerator(to.Denominator(5), to.Numerator(4)))
                 .toEqual(to.Fraction([ 4, 5 ]))
         })
 
-        it('applying a denominator to a numerator gives a fraction', () => {
+        it('applying a Denominator to a Numerator gives a Fraction', () => {
             expect(apply.Denominator(to.Numerator(5), to.Denominator(4)))
                 .toEqual(to.Fraction([ 5, 4 ]))
+        })
+    })
+
+    describe('Modulus', () => {
+        it('addresses the bug in JavaScript where negative numbers give negative results', () => {
+            expect(-3 % 5)
+                .toBe(-3)
+            expect(apply.Modulus(-3, to.Modulus(5)))
+                .toBe(2)
         })
     })
 })

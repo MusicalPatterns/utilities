@@ -2,9 +2,9 @@ import { NEXT } from '../math'
 import { apply, Cardinal, from, Ordinal, to } from '../nominal'
 import { INITIAL } from './constants'
 
-const repeat: <T>(array: T[], count: Cardinal) => T[] =
-    <T>(array: T[], count: Cardinal): T[] => {
-        let repeatedArray: T[] = []
+const repeat: <ElementType>(array: ElementType[], count: Cardinal) => ElementType[] =
+    <ElementType>(array: ElementType[], count: Cardinal): ElementType[] => {
+        let repeatedArray: ElementType[] = []
         for (
             let index: Ordinal = INITIAL;
             index < to.Ordinal(from.Cardinal(count));
