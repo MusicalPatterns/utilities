@@ -255,6 +255,7 @@ export {
     simulateMobileViewport,
     clickElement,
     deleteCharacterFromInput,
+    waitForHeadfulQaing,
 } from './testing'
 export {
     MILLISECONDS_PER_SECOND,
