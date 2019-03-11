@@ -59,7 +59,7 @@ export {
     SCIENTIFIC_PITCHES,
     ScientificPitchNoteName,
     ScientificPitchOctaveNumber,
-    buildEqualDivisionScalars,
+    computeEqualDivisionScalars,
 } from './music/indexForTest'
 export {
     apply,

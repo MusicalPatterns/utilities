@@ -3,7 +3,7 @@ import { reciprocal, zeroAndPositiveIntegers } from '../math'
 import { apply, Denominator, from, Integer, Scalar, to } from '../nominal'
 import { OCTAVE } from './constants'
 
-const buildEqualDivisionScalars: (equalDivision: Denominator) => Scalar[] =
+const computeEqualDivisionScalars: (equalDivision: Denominator) => Scalar[] =
     (equalDivision: Denominator): Scalar[] => {
         const division: number = from.Denominator(reciprocal(equalDivision))
         const logarithmicStep: Scalar = to.Scalar(from.Base(apply.Power(
@@ -17,5 +17,5 @@ const buildEqualDivisionScalars: (equalDivision: Denominator) => Scalar[] =
     }
 
 export {
-    buildEqualDivisionScalars,
+    computeEqualDivisionScalars,
 }

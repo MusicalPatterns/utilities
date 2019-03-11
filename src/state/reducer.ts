@@ -2,7 +2,7 @@ import { Reducer } from 'redux'
 import { TypedMap } from '../code'
 import { ActionForState } from './types'
 
-const buildReducer:
+const computeReducer:
     <State>(parameters: { initialState: TypedMap<State> }) => Reducer<TypedMap<State>, ActionForState<State>> =
     <State>({ initialState }: { initialState: TypedMap<State> }): Reducer<TypedMap<State>, ActionForState<State>> => {
         const stateKeys: string[] = Object.keys(initialState.toJS())
@@ -17,5 +17,5 @@ const buildReducer:
     }
 
 export {
-    buildReducer,
+    computeReducer,
 }

@@ -193,7 +193,7 @@ export {
     ScientificPitchOctaveNumber,
     ScientificPitchNoteName,
     ScientificPitches,
-    buildEqualDivisionScalars,
+    computeEqualDivisionScalars,
 } from './music'
 export {
     Base,
@@ -224,8 +224,8 @@ export {
     Space,
     NoOperation,
     NoUnits,
-    DUMMY_VALUE_FOR_BUILDING_NOMINAL_INTERFACE,
-    buildNominalInterface,
+    DUMMY_VALUE_FOR_COMPUTING_NOMINAL_INTERFACE,
+    computeNominalInterface,
     NominalInterface,
     Time,
     Frequency,
@@ -234,7 +234,7 @@ export {
 } from './nominal'
 export {
     ActionForState,
-    buildReducer,
+    computeReducer,
 } from './state'
 export {
     testIsCloseTo,

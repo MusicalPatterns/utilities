@@ -21,7 +21,7 @@ const defaultFixedCoordinateToOriginOfDimensionalityOfCoordinate:
             [ 0, 0, 0 ]
     ) as any as Coordinate<ElementType, Dimensionality>
 
-const buildArrayMapForScalingRotationMatrixToDimensionalityOfCoordinate:
+const computeArrayMapForScalingRotationMatrixToDimensionalityOfCoordinate:
     <ElementType extends Number, Dimensionality extends Number>(
         coordinate: Coordinate<ElementType, Dimensionality>,
     ) => CycleMap =
@@ -31,7 +31,7 @@ const buildArrayMapForScalingRotationMatrixToDimensionalityOfCoordinate:
         <VectorOrMatrix>(rotationVectorOrMatrix: Cycle<VectorOrMatrix>): Cycle<VectorOrMatrix> =>
             to.Cycle(slice(rotationVectorOrMatrix, INITIAL, to.Ordinal(coordinate.length)))
 
-const buildArrayMapForCyclingRotationMatrixForAxis: (axis: Ordinal) => CycleMap =
+const computeArrayMapForCyclingRotationMatrixForAxis: (axis: Ordinal) => CycleMap =
     (axis: Ordinal): CycleMap =>
         <VectorOrMatrix>(rotationVectorOrMatrix: Cycle<VectorOrMatrix>): Cycle<VectorOrMatrix> => {
             const translation: Translation = apply.Translation(
@@ -54,7 +54,7 @@ const scaleRotationMatrixToDimensionalityOfCoordinate:
     <ElementType extends Number, Dimensionality extends Number>(
         rotationMatrix: RotationMatrix, coordinate: Coordinate<ElementType, Dimensionality>,
     ): RotationMatrix => {
-        const cycleMap: CycleMap = buildArrayMapForScalingRotationMatrixToDimensionalityOfCoordinate(coordinate)
+        const cycleMap: CycleMap = computeArrayMapForScalingRotationMatrixToDimensionalityOfCoordinate(coordinate)
 
         return mapAcrossBothDimensions(rotationMatrix, cycleMap)
     }
@@ -62,7 +62,7 @@ const scaleRotationMatrixToDimensionalityOfCoordinate:
 const cycleRotationMatrixForAxis:
     (rotationMatrix: RotationMatrix, axis: Ordinal) => RotationMatrix =
     (rotationMatrix: RotationMatrix, axis: Ordinal): RotationMatrix => {
-        const cycleMap: CycleMap = buildArrayMapForCyclingRotationMatrixForAxis(axis)
+        const cycleMap: CycleMap = computeArrayMapForCyclingRotationMatrixForAxis(axis)
 
         return mapAcrossBothDimensions(rotationMatrix, cycleMap)
     }

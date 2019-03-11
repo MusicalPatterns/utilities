@@ -1,2 +1,2 @@
 export { ActionForState } from './types'
-export { buildReducer } from './reducer'
+export { computeReducer } from './reducer'

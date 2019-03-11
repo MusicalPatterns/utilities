@@ -2,7 +2,7 @@
 
 import { reduce } from '../code'
 
-type DummyValueForBuildingNominalInterface = unknown
+type DummyValueForComputingNominalInterface = unknown
 
 interface NominalInterfaceOptionObject {
     number?: any,
@@ -38,7 +38,7 @@ interface NominalInterface<NominalInterfaceOptionObjectType extends NominalInter
     to: To<NominalInterfaceOptionObjectType>,
 }
 
-const buildNominalInterface: <NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject>(
+const computeNominalInterface: <NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject>(
     nominalInterfaceOptionsObject: NominalInterfaceOptionObjectType,
 ) => NominalInterface<NominalInterfaceOptionObjectType> =
     <NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject>(
@@ -90,10 +90,10 @@ const buildNominalInterface: <NominalInterfaceOptionObjectType extends NominalIn
         },
     })
 
-const DUMMY_VALUE_FOR_BUILDING_NOMINAL_INTERFACE: DummyValueForBuildingNominalInterface = undefined
+const DUMMY_VALUE_FOR_COMPUTING_NOMINAL_INTERFACE: DummyValueForComputingNominalInterface = undefined
 
 export {
-    DUMMY_VALUE_FOR_BUILDING_NOMINAL_INTERFACE,
-    buildNominalInterface,
+    DUMMY_VALUE_FOR_COMPUTING_NOMINAL_INTERFACE,
+    computeNominalInterface,
     NominalInterface,
 }

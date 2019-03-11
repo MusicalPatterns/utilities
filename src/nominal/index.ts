@@ -9,8 +9,8 @@ export {
 }
 
 export {
-    DUMMY_VALUE_FOR_BUILDING_NOMINAL_INTERFACE,
-    buildNominalInterface,
+    DUMMY_VALUE_FOR_COMPUTING_NOMINAL_INTERFACE,
+    computeNominalInterface,
     NominalInterface,
 } from './custom'
 

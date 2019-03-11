@@ -1,9 +1,9 @@
-import { buildEqualDivisionScalars, testArraysAreClose, to } from '../../../src/indexForTest'
+import { computeEqualDivisionScalars, testArraysAreClose, to } from '../../../src/indexForTest'
 
 describe('scalars', () => {
     it('divides the window (octave) into equal divisions', () => {
         testArraysAreClose(
-            buildEqualDivisionScalars(to.Denominator(12)),
+            computeEqualDivisionScalars(to.Denominator(12)),
             [
                 1,
                 1.05946309436,
@@ -21,7 +21,7 @@ describe('scalars', () => {
         )
 
         testArraysAreClose(
-            buildEqualDivisionScalars(to.Denominator(5)),
+            computeEqualDivisionScalars(to.Denominator(5)),
             [
                 1,
                 1.148698355,
