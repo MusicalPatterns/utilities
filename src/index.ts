@@ -43,7 +43,6 @@ export {
     indexOfLastCharacter,
     ObjectOf,
     Maybe,
-    AnyOtherProperties,
     keyExistsOnObject,
     ArrayOfLength,
     parseInteger,

@@ -34,6 +34,5 @@ export {
     KeyMap,
     ObjectOf,
     Maybe,
-    AnyOtherProperties,
     ArrayOfLength,
 } from './types'
