@@ -60,6 +60,7 @@ export {
     ScientificPitchNoteName,
     ScientificPitchOctaveNumber,
     computeEqualDivisionScalars,
+    computeOctaveRepeatingScalars,
 } from './music/indexForTest'
 export {
     apply,

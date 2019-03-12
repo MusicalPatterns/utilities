@@ -193,6 +193,7 @@ export {
     ScientificPitchNoteName,
     ScientificPitches,
     computeEqualDivisionScalars,
+    computeOctaveRepeatingScalars,
 } from './music'
 export {
     Base,
