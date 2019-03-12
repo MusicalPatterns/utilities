@@ -2,4 +2,4 @@
 
 # Musical Patterns - Utilities
 
-Shared utilities for code, math, music, testing, and nominal typing.
+Shared generic utilities for code, math, music, testing, and nominal typing used throughout the other repos.
