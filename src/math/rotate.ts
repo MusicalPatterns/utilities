@@ -2,7 +2,7 @@
 
 import { INITIAL, map, Maybe, reduce, slice } from '../code'
 import { apply, Cycle, from, Ordinal, Scalar, to, Translation } from '../nominal'
-import { ADJUSTMENT_FOR_ROTATION_MATRIX_CYCLING_FROM_AXIS, TWO_DIMENSIONAL, Z_AXIS } from './constants'
+import { ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS, TWO_DIMENSIONAL, Z_AXIS } from './constants'
 import { cosine, sine } from './trigonometry'
 import { difference, negative, sum } from './typedOperations'
 import { Coordinate, CycleMap, RotateParameters, RotationMatrix, Vector } from './types'
@@ -21,7 +21,7 @@ const defaultFixedCoordinateToOriginOfDimensionalityOfCoordinate:
             [ 0, 0, 0 ]
     ) as any as Coordinate<ElementType, Dimensionality>
 
-const computeArrayMapForScalingRotationMatrixToDimensionalityOfCoordinate:
+const computeCycleMapForScalingRotationMatrixToDimensionalityOfCoordinate:
     <ElementType extends Number, Dimensionality extends Number>(
         coordinate: Coordinate<ElementType, Dimensionality>,
     ) => CycleMap =
@@ -31,11 +31,11 @@ const computeArrayMapForScalingRotationMatrixToDimensionalityOfCoordinate:
         <VectorOrMatrix>(rotationVectorOrMatrix: Cycle<VectorOrMatrix>): Cycle<VectorOrMatrix> =>
             to.Cycle(slice(rotationVectorOrMatrix, INITIAL, to.Ordinal(coordinate.length)))
 
-const computeArrayMapForCyclingRotationMatrixForAxis: (axis: Ordinal) => CycleMap =
+const computeCycleMapForCyclingRotationMatrixForAxis: (axis: Ordinal) => CycleMap =
     (axis: Ordinal): CycleMap =>
         <VectorOrMatrix>(rotationVectorOrMatrix: Cycle<VectorOrMatrix>): Cycle<VectorOrMatrix> => {
             const translation: Translation = apply.Translation(
-                ADJUSTMENT_FOR_ROTATION_MATRIX_CYCLING_FROM_AXIS,
+                ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS,
                 to.Translation(from.Ordinal(axis)),
             )
 
@@ -54,7 +54,7 @@ const scaleRotationMatrixToDimensionalityOfCoordinate:
     <ElementType extends Number, Dimensionality extends Number>(
         rotationMatrix: RotationMatrix, coordinate: Coordinate<ElementType, Dimensionality>,
     ): RotationMatrix => {
-        const cycleMap: CycleMap = computeArrayMapForScalingRotationMatrixToDimensionalityOfCoordinate(coordinate)
+        const cycleMap: CycleMap = computeCycleMapForScalingRotationMatrixToDimensionalityOfCoordinate(coordinate)
 
         return mapAcrossBothDimensions(rotationMatrix, cycleMap)
     }
@@ -62,7 +62,7 @@ const scaleRotationMatrixToDimensionalityOfCoordinate:
 const cycleRotationMatrixForAxis:
     (rotationMatrix: RotationMatrix, axis: Ordinal) => RotationMatrix =
     (rotationMatrix: RotationMatrix, axis: Ordinal): RotationMatrix => {
-        const cycleMap: CycleMap = computeArrayMapForCyclingRotationMatrixForAxis(axis)
+        const cycleMap: CycleMap = computeCycleMapForCyclingRotationMatrixForAxis(axis)
 
         return mapAcrossBothDimensions(rotationMatrix, cycleMap)
     }

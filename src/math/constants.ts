@@ -36,7 +36,7 @@ const NONTUPLE: Scalar = to.Scalar(9)
 
 const DEFAULT_PRECISION: Integer = to.Integer(2)
 const A_SUFFICIENT_COUNT_OF_NUMBERS: Cardinal = to.Cardinal(Math.pow(2, 8))
-const ADJUSTMENT_FOR_ROTATION_MATRIX_CYCLING_FROM_AXIS: Translation = to.Translation(-2)
+const ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS: Translation = to.Translation(-2)
 
 const X_AXIS: Ordinal = to.Ordinal(0)
 const Y_AXIS: Ordinal = to.Ordinal(1)
@@ -120,7 +120,7 @@ export {
     ONE_TENTH,
     DEFAULT_PRECISION,
     A_SUFFICIENT_COUNT_OF_NUMBERS,
-    ADJUSTMENT_FOR_ROTATION_MATRIX_CYCLING_FROM_AXIS,
+    ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS,
     X_AXIS,
     Y_AXIS,
     Z_AXIS,
