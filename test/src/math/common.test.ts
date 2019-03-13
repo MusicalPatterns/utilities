@@ -1,4 +1,4 @@
-import { greatestCommonDivisor, lowestCommonMultiple, to } from '../../../src/indexForTest'
+import { greatestCommonDivisor, leastCommonMultiple, to } from '../../../src/indexForTest'
 
 describe('common', () => {
     describe('greatest divisor', () => {
@@ -33,40 +33,40 @@ describe('common', () => {
         })
     })
 
-    describe('lowest multiple', () => {
+    describe('least multiple', () => {
         it('works', () => {
-            expect(lowestCommonMultiple(to.Integer(16), to.Integer(24)))
+            expect(leastCommonMultiple(to.Integer(16), to.Integer(24)))
                 .toBe(to.Integer(48))
         })
 
         it('works for co-prime numbers', () => {
-            expect(lowestCommonMultiple(to.Integer(5), to.Integer(8)))
+            expect(leastCommonMultiple(to.Integer(5), to.Integer(8)))
                 .toBe(to.Integer(40))
 
         })
 
         it('works when one number is itself the LCM', () => {
-            expect(lowestCommonMultiple(to.Integer(3), to.Integer(6)))
+            expect(leastCommonMultiple(to.Integer(3), to.Integer(6)))
                 .toBe(to.Integer(6))
         })
 
         it('works for more than two numbers', () => {
-            expect(lowestCommonMultiple(to.Integer(12), to.Integer(16), to.Integer(20)))
+            expect(leastCommonMultiple(to.Integer(12), to.Integer(16), to.Integer(20)))
                 .toBe(to.Integer(240))
         })
 
         it('works for one number', () => {
-            expect(lowestCommonMultiple(to.Integer(7)))
+            expect(leastCommonMultiple(to.Integer(7)))
                 .toBe(to.Integer(7))
         })
 
         it('works for zero numbers', () => {
-            expect(lowestCommonMultiple())
+            expect(leastCommonMultiple())
                 .toBe(to.Integer(1))
         })
 
         it('works for very large numbers', () => {
-            expect(lowestCommonMultiple(to.Integer(43999999560), to.Integer(43999999560), to.Integer(43999999560), to.Integer(43999999560), to.Integer(43999999560), to.Integer(43999999560)))
+            expect(leastCommonMultiple(to.Integer(43999999560), to.Integer(43999999560), to.Integer(43999999560), to.Integer(43999999560), to.Integer(43999999560), to.Integer(43999999560)))
                 .toBe(to.Integer(43999999560))
         })
     })

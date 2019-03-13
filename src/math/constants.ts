@@ -1,6 +1,6 @@
 // tslint:disable no-magic-numbers max-file-line-count
 
-import { Base, Cardinal, Integer, Ordinal, Power, Radians, Scalar, Space, to, Translation } from '../nominal'
+import { Base, Cardinal, Fraction, Integer, Ordinal, Power, Radians, Scalar, Space, to, Translation } from '../nominal'
 
 const DECIMAL: Integer = to.Integer(10)
 
@@ -86,6 +86,7 @@ const EVERY_OTHER: Cardinal = to.Cardinal(2)
 
 const ADDITIVE_IDENTITY: Translation = to.Translation(0)
 const MULTIPLICATIVE_IDENTITY: Scalar = to.Scalar(1)
+const FRACTIONAL_IDENTITY: Fraction = to.Fraction([ 1, 1 ])
 
 const ARBITRARILY_LARGE_NUMBER: number = 999999999999
 
@@ -134,6 +135,7 @@ export {
     TWO,
     ADDITIVE_IDENTITY,
     MULTIPLICATIVE_IDENTITY,
+    FRACTIONAL_IDENTITY,
     ARBITRARILY_LARGE_NUMBER,
     NEGATIVE,
     CUBE_ROOT,

@@ -1,4 +1,4 @@
-// tslint:disable no-reaching-imports
+// tslint:disable no-reaching-imports max-file-line-count
 
 export {
     repeat,
@@ -27,7 +27,7 @@ export {
     Y_AXIS,
     Coordinate,
     greatestCommonDivisor,
-    lowestCommonMultiple,
+    leastCommonMultiple,
     powerSet,
     termialRoot,
     trapezoidalNumber,
@@ -44,10 +44,14 @@ export {
     round,
     sum,
     product,
-    lowestTerms,
     factorial,
     combinationCount,
     evaluate,
+    lowestTerms,
+    commonTerms,
+    getNumerator,
+    getDenominator,
+    multiplyFractions,
 } from './math/indexForTest'
 export {
     centsTranslationToPitchScalar,

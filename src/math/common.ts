@@ -52,15 +52,15 @@ const common: (integers: Integer[], commonFunction: IntegerOperation) => Integer
         return recurseCommon(commonFunction, ...integers)
     }
 
-const lowestCommonMultiple: (...integers: Integer[]) => Integer =
-    (...integers: Integer[]): Integer =>
-        common(integers, lowestCommonMultipleOfTwoNumbers)
+const leastCommonMultiple: <IntegerType extends Integer>(...integers: IntegerType[]) => IntegerType =
+    <IntegerType extends Integer>(...integers: IntegerType[]): IntegerType =>
+        common(integers, lowestCommonMultipleOfTwoNumbers) as IntegerType
 
-const greatestCommonDivisor: (...integers: Integer[]) => Integer =
-    (...integers: Integer[]): Integer =>
-        common(integers, greatestCommonDivisorOfTwoNumbers)
+const greatestCommonDivisor: <IntegerType extends Integer>(...integers: IntegerType[]) => IntegerType =
+    <IntegerType extends Integer>(...integers: IntegerType[]): IntegerType =>
+        common(integers, greatestCommonDivisorOfTwoNumbers) as IntegerType
 
 export {
-    lowestCommonMultiple,
+    leastCommonMultiple,
     greatestCommonDivisor,
 }
