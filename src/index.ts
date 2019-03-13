@@ -177,7 +177,7 @@ export {
     evaluate,
 } from './math'
 export {
-    centsToPitch,
+    centsTranslationToPitchScalar,
     windowIterationHarmonicStepCount,
     TRITAVE,
     OCTAVE,

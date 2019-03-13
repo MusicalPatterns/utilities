@@ -50,7 +50,7 @@ export {
     evaluate,
 } from './math/indexForTest'
 export {
-    centsToPitch,
+    centsTranslationToPitchScalar,
     windowIterationHarmonicStepCount,
     OCTAVE,
     TRITAVE,
