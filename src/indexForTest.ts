@@ -15,8 +15,6 @@ export {
     indexOfLastElement,
     slice,
     INITIAL,
-    indexOfLastCharacter,
-    lastCharacter,
     Maybe,
     keyExistsOnObject,
 } from './code/indexForTest'
@@ -52,6 +50,9 @@ export {
     getNumerator,
     getDenominator,
     multiplyFractions,
+    EIGHTH,
+    FOURTH,
+    THIRD,
 } from './math/indexForTest'
 export {
     centsTranslationToPitchScalar,

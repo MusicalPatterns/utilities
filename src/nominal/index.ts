@@ -13,6 +13,9 @@ export {
     computeNominalInterface,
     NominalInterface,
 } from './custom'
+export {
+    isCycle,
+} from './typeGuards'
 
 export {
     Base,

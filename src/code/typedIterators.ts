@@ -1,16 +1,29 @@
-import { from, Ordinal } from '../nominal'
+import { NEXT } from '../math'
+import { apply, Cycle, from, isCycle, Ordinal } from '../nominal'
 import { isUndefined } from './isUndefined'
+import { indexJustBeyondLastElement } from './lastElement'
+import { Slice } from './types'
 
-// tslint:disable-next-line no-any
-const slice: <ArrayType extends any[] | string>(array: ArrayType, initial: Ordinal, terminal?: Ordinal) => ArrayType =
-    // tslint:disable-next-line no-any
-    <ArrayType extends any[] | string>(array: ArrayType, initial: Ordinal, terminal?: Ordinal): ArrayType => {
-        if (isUndefined(terminal)) {
-            return array.slice(from.Ordinal(initial)) as ArrayType
+const slice: Slice =
+    <Sliceable extends string | Cycle<ElementType> | ElementType[], ElementType>(
+        sliceable: Sliceable, initial: Ordinal, terminal?: Ordinal,
+    ): Sliceable => {
+        const terminalForSlice: Ordinal = isUndefined(terminal) ?
+            // @ts-ignore
+            indexJustBeyondLastElement(sliceable) :
+            terminal
+
+        if (isCycle(sliceable)) {
+            const resultantSlice: ElementType[] = []
+
+            for (let index: Ordinal = initial; index < terminalForSlice; index = apply.Translation(index, NEXT)) {
+                resultantSlice.push(apply.Ordinal(sliceable, index) as ElementType)
+            }
+
+            return resultantSlice as Sliceable
         }
-        else {
-            return array.slice(from.Ordinal(initial), from.Ordinal(terminal)) as ArrayType
-        }
+
+        return sliceable.slice(from.Ordinal(initial), from.Ordinal(terminalForSlice)) as Sliceable
     }
 
 const forEach: <ElementType>(

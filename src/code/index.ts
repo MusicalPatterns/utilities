@@ -11,7 +11,12 @@ export { repeat } from './repeat'
 export { repeatCall } from './repeatCall'
 export { sequence } from './sequence'
 export { noop } from './noop'
-export { lastElement, indexOfLastElement, lastCharacter, indexOfLastCharacter } from './lastElement'
+export {
+    lastElement,
+    indexOfLastElement,
+    totalElements,
+    indexJustBeyondLastElement,
+} from './lastElement'
 export { random } from './random'
 export { keyExistsOnObject } from './keyExistsOnObject'
 export { numericSort } from './sort'

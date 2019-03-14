@@ -25,6 +25,9 @@ export {
     FOUR_THIRDS,
     TWO_THIRDS,
     FIVE_HALVES,
+    EIGHTH,
+    FOURTH,
+    THIRD,
 } from './constants'
 export {
     Coordinate,

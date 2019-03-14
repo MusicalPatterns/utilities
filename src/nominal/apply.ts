@@ -1,7 +1,9 @@
 // tslint:disable variable-name max-file-line-count ban-types
 
+import { totalElements } from '../code'
 import * as from from './from'
 import * as to from './to'
+import { isCycle } from './typeGuards'
 import {
     Base,
     Cardinal,
@@ -16,10 +18,6 @@ import {
     Scalar,
     Translation,
 } from './types'
-
-const isCycle: (value: unknown) => value is Cycle<unknown> =
-    (value: unknown): value is Cycle<unknown> =>
-        value && (value as Cycle<unknown>)._CycleBrand
 
 const Base: <ValueType, UnitsType extends Number = NoUnits>(value: ValueType, base: Base<UnitsType>) => ValueType =
     <ValueType, UnitsType extends Number = NoUnits>(value: ValueType, base: Base<UnitsType>): ValueType =>
@@ -36,7 +34,7 @@ const Translation: <ValueType, UnitsType extends Number = NoUnits>(
         if (isCycle(value)) {
             const cycle: Cycle<ValueType> = value as unknown as Cycle<ValueType>
             const cycledCycle: Cycle<ValueType> = to.Cycle([])
-            const cellCount: Cardinal = to.Cardinal(cycle.length)
+            const cellCount: Cardinal = totalElements(cycle)
 
             for (
                 let index: Ordinal = to.Ordinal(0);

@@ -1,6 +1,6 @@
 // tslint:disable ban-types max-file-line-count no-any
 
-import { INITIAL, map, Maybe, reduce, slice } from '../code'
+import { INITIAL, map, Maybe, reduce, slice, totalElements } from '../code'
 import { apply, Cycle, from, Ordinal, Scalar, to, Translation } from '../nominal'
 import { ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS, TWO_DIMENSIONAL, Z_AXIS } from './constants'
 import { cosine, sine } from './trigonometry'
@@ -29,7 +29,7 @@ const computeCycleMapForScalingRotationMatrixToDimensionalityOfCoordinate:
         coordinate: Coordinate<ElementType, Dimensionality>,
     ): CycleMap =>
         <VectorOrMatrix>(rotationVectorOrMatrix: Cycle<VectorOrMatrix>): Cycle<VectorOrMatrix> =>
-            to.Cycle(slice(rotationVectorOrMatrix, INITIAL, to.Ordinal(coordinate.length)))
+            to.Cycle(slice(rotationVectorOrMatrix, INITIAL, totalElements(coordinate)))
 
 const computeCycleMapForCyclingRotationMatrixForAxis: (axis: Ordinal) => CycleMap =
     (axis: Ordinal): CycleMap =>

@@ -1,28 +1,44 @@
 import { negative } from '../math'
-import { apply, from, Ordinal, to } from '../nominal'
+import { apply, Cardinal, Cycle, from, Ordinal, to } from '../nominal'
+import { IndexOfArrayOrString, LastElementSignature } from './types'
 
-const lastElement: <ElementType>(array: ElementType[]) => ElementType =
-    <ElementType>(array: ElementType[]): ElementType =>
-        apply.Ordinal(array, indexOfLastElement(array))
+const lastElement: LastElementSignature =
+    <ArrayOrString extends string | Cycle<ElementType> | ElementType[], ElementType>(
+        arrayOrString: ArrayOrString,
+    ): ElementType | string => {
+        if (typeof arrayOrString === 'string') {
+            return arrayOrString[ from.Ordinal(indexOfLastElement(arrayOrString)) ]
+        }
 
-const indexOfLastElement: <ElementType>(array: ElementType[]) => Ordinal =
-    <ElementType>(array: ElementType[]): Ordinal =>
+        if (arrayOrString instanceof Array) {
+            return apply.Ordinal(arrayOrString, indexOfLastElement(arrayOrString))
+        }
+
+        throw new Error('could not figure out the last element')
+    }
+
+const indexOfLastElement: IndexOfArrayOrString =
+    <ArrayOrString extends string | Cycle<ElementType> | ElementType[], ElementType>(
+        arrayOrString: ArrayOrString,
+    ): Ordinal =>
         to.Ordinal(apply.Translation(
-            array.length,
+            arrayOrString.length,
             to.Translation(negative(1)),
         ))
 
-const lastCharacter: (str: string) => string =
-    (str: string): string =>
-        str[ from.Ordinal(indexOfLastCharacter(str)) ]
+const indexJustBeyondLastElement: IndexOfArrayOrString =
+    <ArrayOrString extends string | Cycle<ElementType> | ElementType[], ElementType>(
+        arrayOrString: ArrayOrString,
+    ): Ordinal =>
+        to.Ordinal(arrayOrString.length)
 
-const indexOfLastCharacter: (str: string) => Ordinal =
-    (str: string): Ordinal =>
-        to.Ordinal(str.length - 1)
+const totalElements: <ElementType>(array: ElementType[]) => Cardinal =
+    <ElementType>(array: ElementType[]): Cardinal =>
+        to.Cardinal(array.length)
 
 export {
     indexOfLastElement,
+    indexJustBeyondLastElement,
     lastElement,
-    indexOfLastCharacter,
-    lastCharacter,
+    totalElements,
 }

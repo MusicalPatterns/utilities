@@ -39,13 +39,13 @@ export {
     uniqueFilter,
     sleep,
     KeyMap,
-    lastCharacter,
-    indexOfLastCharacter,
     ObjectOf,
     Maybe,
     keyExistsOnObject,
     ArrayOfLength,
     parseInteger,
+    totalElements,
+    indexJustBeyondLastElement,
 } from './code'
 export {
     absoluteRatio,
