@@ -7,7 +7,7 @@ import { Slice } from './types'
 const slice: Slice =
     <Sliceable extends string | Cycle<ElementType> | ElementType[], ElementType>(
         sliceable: Sliceable, initial: Ordinal, terminal?: Ordinal,
-    ): Sliceable => {
+    ): Sliceable | ElementType[] => {
         const terminalForSlice: Ordinal = isUndefined(terminal) ?
             // @ts-ignore
             indexJustBeyondLastElement(sliceable) :
@@ -20,7 +20,7 @@ const slice: Slice =
                 resultantSlice.push(apply.Ordinal(sliceable, index) as ElementType)
             }
 
-            return resultantSlice as Sliceable
+            return resultantSlice
         }
 
         return sliceable.slice(from.Ordinal(initial), from.Ordinal(terminalForSlice)) as Sliceable
