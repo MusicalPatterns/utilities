@@ -266,6 +266,11 @@ export {
 export {
     MILLISECONDS_PER_SECOND,
     SECONDS_PER_MINUTE,
+    ONE_MILLISECOND,
+    ONE_SECOND,
+    ONE_MINUTE,
+    ONE_HOUR,
+    ONE_DAY,
 } from './time'
 export {
     HtmlValue,
