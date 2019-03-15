@@ -46,6 +46,8 @@ export {
     parseInteger,
     totalElements,
     indexJustBeyondLastElement,
+    TRANSLATION_FROM_LENGTH_TO_LAST_INDEX,
+    EXAMPLE_ELEMENT_INDEX,
 } from './code'
 export {
     absoluteRatio,

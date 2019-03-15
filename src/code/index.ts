@@ -31,6 +31,8 @@ export {
     EXCLUSIVE_TO_LEFT,
     INCLUSIVE_TO_LEFT,
     INITIAL,
+    TRANSLATION_FROM_LENGTH_TO_LAST_INDEX,
+    EXAMPLE_ELEMENT_INDEX,
 } from './constants'
 
 export {
