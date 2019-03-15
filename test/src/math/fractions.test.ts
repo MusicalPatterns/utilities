@@ -1,9 +1,9 @@
 import {
-    commonTerms,
+    computeCommonTerms, computeLowestCommonDenominator,
+    computeLowestTerms,
     Fraction,
     getDenominator,
     getNumerator,
-    lowestTerms,
     multiplyFractions,
     to,
 } from '../../../src/indexForTest'
@@ -38,18 +38,29 @@ describe('fractions', () => {
     describe('lowest terms', () => {
         it('simplifies a fraction', () => {
             const fraction: Fraction = to.Fraction([ 15, 25 ])
-            expect(lowestTerms(fraction))
+            expect(computeLowestTerms(fraction))
                 .toEqual(to.Fraction([ 3, 5 ]))
+        })
+    })
+
+    describe('lowest common denominator', () => {
+        it('finds the smallest denominator that all of the fractions can be expressed with', () => {
+            expect(computeLowestCommonDenominator(
+                to.Fraction([ 9, 4 ]),
+                to.Fraction([ 4, 5 ]),
+                to.Fraction([ 16, 15 ]),
+            ))
+                .toEqual(to.Denominator(60))
         })
     })
 
     describe('common terms', () => {
         it('maps a set of fractions to a form where they share a lowest common denominator', () => {
-            expect(commonTerms([
+            expect(computeCommonTerms(
                 to.Fraction([ 1, 1 ]),
                 to.Fraction([ 4, 5 ]),
                 to.Fraction([ 16, 15 ]),
-            ]))
+            ))
                 .toEqual([
                     to.Fraction([ 15, 15 ]),
                     to.Fraction([ 12, 15 ]),
@@ -58,11 +69,11 @@ describe('fractions', () => {
         })
 
         it('puts them in lowest terms if they are not', () => {
-            expect(commonTerms([
+            expect(computeCommonTerms(
                 to.Fraction([ 2, 2 ]),
                 to.Fraction([ 4, 5 ]),
                 to.Fraction([ 16, 15 ]),
-            ]))
+            ))
                 .toEqual([
                     to.Fraction([ 15, 15 ]),
                     to.Fraction([ 12, 15 ]),

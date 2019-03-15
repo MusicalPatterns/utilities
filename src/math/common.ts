@@ -4,11 +4,11 @@ import { TWO } from './constants'
 import { absoluteValue, modulus, product, quotient } from './typedOperations'
 import { IntegerOperation } from './types'
 
-const lowestCommonMultipleOfTwoNumbers: IntegerOperation =
+const computeLowestCommonMultipleOfTwoNumbers: IntegerOperation =
     (firstValue: Integer, secondValue: Integer): Integer =>
-        absoluteValue(quotient(product(firstValue, secondValue), greatestCommonDivisor(firstValue, secondValue)))
+        absoluteValue(quotient(product(firstValue, secondValue), computeGreatestCommonDivisor(firstValue, secondValue)))
 
-const greatestCommonDivisorOfTwoNumbers: IntegerOperation =
+const computeGreatestCommonDivisorOfTwoNumbers: IntegerOperation =
     (firstValue: Integer, secondValue: Integer): Integer => {
         let output: Integer = firstValue
         let remainder: Integer = secondValue
@@ -39,7 +39,7 @@ const recurseCommon: (commonFunction: IntegerOperation, ...integers: Integer[]) 
         }
     }
 
-const common: (integers: Integer[], commonFunction: IntegerOperation) => Integer =
+const computeCommon: (integers: Integer[], commonFunction: IntegerOperation) => Integer =
     (integers: Integer[], commonFunction: IntegerOperation): Integer => {
         if (integers.length === 0) {
             return to.Integer(1)
@@ -52,15 +52,15 @@ const common: (integers: Integer[], commonFunction: IntegerOperation) => Integer
         return recurseCommon(commonFunction, ...integers)
     }
 
-const leastCommonMultiple: <IntegerType extends Integer>(...integers: IntegerType[]) => IntegerType =
+const computeLeastCommonMultiple: <IntegerType extends Integer>(...integers: IntegerType[]) => IntegerType =
     <IntegerType extends Integer>(...integers: IntegerType[]): IntegerType =>
-        common(integers, lowestCommonMultipleOfTwoNumbers) as IntegerType
+        computeCommon(integers, computeLowestCommonMultipleOfTwoNumbers) as IntegerType
 
-const greatestCommonDivisor: <IntegerType extends Integer>(...integers: IntegerType[]) => IntegerType =
+const computeGreatestCommonDivisor: <IntegerType extends Integer>(...integers: IntegerType[]) => IntegerType =
     <IntegerType extends Integer>(...integers: IntegerType[]): IntegerType =>
-        common(integers, greatestCommonDivisorOfTwoNumbers) as IntegerType
+        computeCommon(integers, computeGreatestCommonDivisorOfTwoNumbers) as IntegerType
 
 export {
-    leastCommonMultiple,
-    greatestCommonDivisor,
+    computeLeastCommonMultiple,
+    computeGreatestCommonDivisor,
 }

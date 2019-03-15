@@ -2,9 +2,16 @@
 
 export { distanceBetween } from './distanceBetween'
 export { rotate } from './rotate'
-export { lowestTerms, commonTerms, getNumerator, getDenominator, multiplyFractions } from './fractions'
+export {
+    computeLowestTerms,
+    computeCommonTerms,
+    getNumerator,
+    getDenominator,
+    multiplyFractions,
+    computeLowestCommonDenominator,
+} from './fractions'
 export { powerSet } from './powerSet'
-export { greatestCommonDivisor, leastCommonMultiple } from './common'
+export { computeGreatestCommonDivisor, computeLeastCommonMultiple } from './common'
 export { evaluate } from './evaluate'
 export { negative, round, sum, product } from './typedOperations'
 export {

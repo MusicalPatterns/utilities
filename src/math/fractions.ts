@@ -1,9 +1,9 @@
 import {
+    computeGreatestCommonDivisor,
+    computeLeastCommonMultiple,
     Denominator,
     Fraction,
-    greatestCommonDivisor,
     Integer,
-    leastCommonMultiple,
     Numerator,
     product,
     Scalar,
@@ -34,9 +34,9 @@ const multiplyFractions: (...fractions: Fraction[]) => Fraction =
         ])
     }
 
-const lowestTerms: (fraction: Fraction) => Fraction =
+const computeLowestTerms: (fraction: Fraction) => Fraction =
     ([ numerator, denominator ]: Fraction): Fraction => {
-        const gcd: Integer = greatestCommonDivisor(numerator, denominator)
+        const gcd: Integer = computeGreatestCommonDivisor(numerator, denominator)
 
         return [
             quotient(numerator, to.Numerator(gcd)),
@@ -44,32 +44,40 @@ const lowestTerms: (fraction: Fraction) => Fraction =
         ]
     }
 
-const commonTerms: (fractions: Fraction[]) => Fraction[] =
-    (fractions: Fraction[]): Fraction[] => {
-        const fractionsInLowestTerms: Fraction[] = fractions.map(lowestTerms)
-
+const computeLowestCommonDenominator: (...fractions: Fraction[]) => Denominator =
+    (...fractions: Fraction[]): Denominator => {
+        const fractionsInLowestTerms: Fraction[] = fractions.map(computeLowestTerms)
         const denominators: Denominator[] = fractionsInLowestTerms.map(getDenominator)
-        const lowestCommonDenominator: Denominator = leastCommonMultiple(...denominators)
 
-        return fractionsInLowestTerms.map((fraction: Fraction): Fraction => {
-            const denominator: Denominator = getDenominator(fraction)
-            if (denominator === lowestCommonDenominator) {
-                return fraction
-            }
+        return computeLeastCommonMultiple(...denominators)
+    }
 
-            const termsScalar: Scalar = to.Scalar(quotient(lowestCommonDenominator, denominator))
+const computeCommonTerms: (...fractions: Fraction[]) => Fraction[] =
+    (...fractions: Fraction[]): Fraction[] => {
+        const lowestCommonDenominator: Denominator = computeLowestCommonDenominator(...fractions)
 
-            return to.Fraction([
-                apply.Scalar(getNumerator(fraction), termsScalar),
-                lowestCommonDenominator,
-            ])
-        })
+        return fractions
+            .map(computeLowestTerms)
+            .map((fraction: Fraction): Fraction => {
+                const denominator: Denominator = getDenominator(fraction)
+                if (denominator === lowestCommonDenominator) {
+                    return fraction
+                }
+
+                const termsScalar: Scalar = to.Scalar(quotient(lowestCommonDenominator, denominator))
+
+                return to.Fraction([
+                    apply.Scalar(getNumerator(fraction), termsScalar),
+                    lowestCommonDenominator,
+                ])
+            })
     }
 
 export {
     multiplyFractions,
     getNumerator,
     getDenominator,
-    lowestTerms,
-    commonTerms,
+    computeLowestTerms,
+    computeCommonTerms,
+    computeLowestCommonDenominator,
 }

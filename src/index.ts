@@ -70,8 +70,8 @@ export {
     ONE_NINTH,
     ONE_TENTH,
     THREE_DIMENSIONAL,
-    greatestCommonDivisor,
-    leastCommonMultiple,
+    computeGreatestCommonDivisor,
+    computeLeastCommonMultiple,
     DECIMAL,
     NumericOperation,
     sum,
@@ -178,8 +178,9 @@ export {
     multiplyFractions,
     getDenominator,
     getNumerator,
-    lowestTerms,
-    commonTerms,
+    computeLowestTerms,
+    computeCommonTerms,
+    computeLowestCommonDenominator,
 } from './math'
 export {
     centsTranslationToPitchScalar,

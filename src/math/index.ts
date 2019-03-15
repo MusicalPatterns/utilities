@@ -8,7 +8,7 @@ export { rotate } from './rotate'
 export { dividesEvenly } from './dividesEvenly'
 export { powerSet } from './powerSet'
 export { evaluate } from './evaluate'
-export { greatestCommonDivisor, leastCommonMultiple } from './common'
+export { computeGreatestCommonDivisor, computeLeastCommonMultiple } from './common'
 export {
     reciprocal,
     negative,
@@ -37,7 +37,14 @@ export {
     combinationCount,
 }from './specialNumbers'
 export { sine, cosine, tangent } from './trigonometry'
-export { lowestTerms, getDenominator, getNumerator, multiplyFractions, commonTerms } from './fractions'
+export {
+    computeLowestTerms,
+    getDenominator,
+    getNumerator,
+    multiplyFractions,
+    computeCommonTerms,
+    computeLowestCommonDenominator,
+}from './fractions'
 
 export {
     DECIMAL,
