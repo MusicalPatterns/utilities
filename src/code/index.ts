@@ -23,7 +23,7 @@ export { numericSort } from './sort'
 export { uniqueFilter } from './filter'
 export { parseInteger } from './parseInteger'
 export { sleep } from './sleep'
-export { slice, forEach, map, reduce, filter } from './typedIterators'
+export { slice, forEach, map, reduce, filter, cycleSlice } from './typedIterators'
 
 export {
     INCLUSIVE,

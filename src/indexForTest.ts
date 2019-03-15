@@ -17,6 +17,7 @@ export {
     INITIAL,
     Maybe,
     keyExistsOnObject,
+    cycleSlice,
 } from './code/indexForTest'
 export {
     distanceBetween,

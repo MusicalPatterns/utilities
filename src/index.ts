@@ -48,6 +48,7 @@ export {
     indexJustBeyondLastElement,
     TRANSLATION_FROM_LENGTH_TO_LAST_INDEX,
     EXAMPLE_ELEMENT_INDEX,
+    cycleSlice,
 } from './code'
 export {
     absoluteRatio,

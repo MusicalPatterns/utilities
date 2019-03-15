@@ -1,4 +1,4 @@
-import { Cycle, EIGHTH, FOURTH, INITIAL, Scalar, slice, THIRD, to } from '../../../src/indexForTest'
+import { Cycle, cycleSlice, EIGHTH, FOURTH, INITIAL, Scalar, slice, THIRD, to } from '../../../src/indexForTest'
 
 describe('typed iterators', () => {
     describe('slice', () => {
@@ -19,14 +19,14 @@ describe('typed iterators', () => {
             expect(actualStr)
                 .toEqual('123')
         })
+    })
 
-        it('when given a cycle, is able to return a slice which wraps around (but the slice is not a cycle)', () => {
-            const cycle: Cycle = to.Cycle([ 1, 2, 3, 4, 5, 6 ])
+    it('cycle slice returns a slice which wraps around (but the returned value is not a cycle)\'', () => {
+        const cycle: Cycle = to.Cycle([ 1, 2, 3, 4, 5, 6 ])
 
-            const actualElements: number[] = slice(cycle, FOURTH, EIGHTH)
+        const actualElements: number[] = cycleSlice(cycle, FOURTH, EIGHTH)
 
-            expect(actualElements)
-                .toEqual([ 5, 6, 1, 2 ])
-        })
+        expect(actualElements)
+            .toEqual([ 5, 6, 1, 2 ])
     })
 })

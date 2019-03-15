@@ -1,27 +1,30 @@
 import { NEXT } from '../math'
-import { apply, from, isCycle, Ordinal } from '../nominal'
+import { apply, Cycle, from, Ordinal } from '../nominal'
 import { isUndefined } from './isUndefined'
 import { indexJustBeyondLastElement } from './lastElement'
 
-const slice: <ArrayType extends ElementType[] | string, ElementType>(
-    array: ArrayType, initial: Ordinal, terminal?: Ordinal,
-) => ArrayType =
-    <ArrayType extends ElementType[] | string, ElementType>(
-        array: ArrayType, initial: Ordinal, terminal?: Ordinal,
-    ): ArrayType => {
-        const terminalForSlice: Ordinal = isUndefined(terminal) ? indexJustBeyondLastElement(array) : terminal
+const slice:
+    <ArrayType extends unknown[] | string>(array: ArrayType, initial: Ordinal, terminal?: Ordinal) => ArrayType =
+    <ArrayType extends unknown[] | string>(array: ArrayType, initial: Ordinal, terminal?: Ordinal): ArrayType => {
+        if (isUndefined(terminal)) {
+            return array.slice(from.Ordinal(initial)) as ArrayType
+        }
+        else {
+            return array.slice(from.Ordinal(initial), from.Ordinal(terminal)) as ArrayType
+        }
+    }
 
-        if (isCycle(array)) {
-            const resultantSlice: ElementType[] = [] as unknown as ElementType[]
+const cycleSlice: <ElementType>(cycle: Cycle<ElementType>, initial: Ordinal, terminal?: Ordinal) => ElementType[] =
+    <ElementType>(cycle: Cycle<ElementType>, initial: Ordinal, terminal?: Ordinal): ElementType[] => {
+        const terminalForSlice: Ordinal = isUndefined(terminal) ? indexJustBeyondLastElement(cycle) : terminal
 
-            for (let index: Ordinal = initial; index < terminalForSlice; index = apply.Translation(index, NEXT)) {
-                resultantSlice.push(apply.Ordinal(array, index) as ElementType)
-            }
+        const resultantSlice: ElementType[] = []
 
-            return resultantSlice as ArrayType
+        for (let index: Ordinal = initial; index < terminalForSlice; index = apply.Translation(index, NEXT)) {
+            resultantSlice.push(apply.Ordinal(cycle, index))
         }
 
-        return array.slice(from.Ordinal(initial), from.Ordinal(terminalForSlice)) as ArrayType
+        return resultantSlice
     }
 
 const forEach: <ElementType>(
@@ -77,4 +80,5 @@ export {
     map,
     reduce,
     filter,
+    cycleSlice,
 }
