@@ -1,29 +1,27 @@
 import { NEXT } from '../math'
-import { apply, Cycle, from, isCycle, Ordinal } from '../nominal'
+import { apply, from, isCycle, Ordinal } from '../nominal'
 import { isUndefined } from './isUndefined'
 import { indexJustBeyondLastElement } from './lastElement'
-import { Slice } from './types'
 
-const slice: Slice =
-    <Sliceable extends string | Cycle<ElementType> | ElementType[], ElementType>(
-        sliceable: Sliceable, initial: Ordinal, terminal?: Ordinal,
-    ): Sliceable | ElementType[] => {
-        const terminalForSlice: Ordinal = isUndefined(terminal) ?
-            // @ts-ignore
-            indexJustBeyondLastElement(sliceable) :
-            terminal
+const slice: <ArrayType extends ElementType[] | string, ElementType>(
+    array: ArrayType, initial: Ordinal, terminal?: Ordinal,
+) => ArrayType =
+    <ArrayType extends ElementType[] | string, ElementType>(
+        array: ArrayType, initial: Ordinal, terminal?: Ordinal,
+    ): ArrayType => {
+        const terminalForSlice: Ordinal = isUndefined(terminal) ? indexJustBeyondLastElement(array) : terminal
 
-        if (isCycle(sliceable)) {
-            const resultantSlice: ElementType[] = []
+        if (isCycle(array)) {
+            const resultantSlice: ElementType[] = [] as unknown as ElementType[]
 
             for (let index: Ordinal = initial; index < terminalForSlice; index = apply.Translation(index, NEXT)) {
-                resultantSlice.push(apply.Ordinal(sliceable, index) as ElementType)
+                resultantSlice.push(apply.Ordinal(array, index) as ElementType)
             }
 
-            return resultantSlice
+            return resultantSlice as ArrayType
         }
 
-        return sliceable.slice(from.Ordinal(initial), from.Ordinal(terminalForSlice)) as Sliceable
+        return array.slice(from.Ordinal(initial), from.Ordinal(terminalForSlice)) as ArrayType
     }
 
 const forEach: <ElementType>(

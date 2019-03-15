@@ -7,8 +7,12 @@ import { Operands } from './types'
 
 const splitOperands: (expression: string, operatorIndex: Ordinal) => Operands =
     (expression: string, operatorIndex: Ordinal): Operands => {
-        const lhs: number = evaluateString(slice(expression, INITIAL, operatorIndex))
-        const rhs: number = evaluateString(slice(expression, apply.Translation(operatorIndex, EXCLUSIVE_TO_LEFT)))
+        const lhs: number = evaluateString(
+            slice(expression, INITIAL, operatorIndex),
+        )
+        const rhs: number = evaluateString(
+            slice(expression, apply.Translation(operatorIndex, EXCLUSIVE_TO_LEFT)),
+        )
 
         return { lhs, rhs }
     }

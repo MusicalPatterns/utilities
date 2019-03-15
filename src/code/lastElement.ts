@@ -1,8 +1,9 @@
 import { negative } from '../math'
 import { apply, Cardinal, Cycle, from, Ordinal, to } from '../nominal'
-import { IndexOfArrayOrString, LastElementSignature } from './types'
 
-const lastElement: LastElementSignature =
+const lastElement: <ArrayOrString extends string | Cycle<ElementType> | ElementType[], ElementType>(
+    arrayOrString: ArrayOrString,
+) => ElementType | string =
     <ArrayOrString extends string | Cycle<ElementType> | ElementType[], ElementType>(
         arrayOrString: ArrayOrString,
     ): ElementType | string => {
@@ -17,7 +18,9 @@ const lastElement: LastElementSignature =
         throw new Error('could not figure out the last element')
     }
 
-const indexOfLastElement: IndexOfArrayOrString =
+const indexOfLastElement: <ArrayOrString extends string | Cycle<ElementType> | ElementType[], ElementType>(
+    arrayOrString: ArrayOrString,
+) => Ordinal =
     <ArrayOrString extends string | Cycle<ElementType> | ElementType[], ElementType>(
         arrayOrString: ArrayOrString,
     ): Ordinal =>
@@ -26,7 +29,9 @@ const indexOfLastElement: IndexOfArrayOrString =
             to.Translation(negative(1)),
         ))
 
-const indexJustBeyondLastElement: IndexOfArrayOrString =
+const indexJustBeyondLastElement: <ArrayOrString extends string | Cycle<ElementType> | ElementType[], ElementType>(
+    arrayOrString: ArrayOrString,
+) => Ordinal =
     <ArrayOrString extends string | Cycle<ElementType> | ElementType[], ElementType>(
         arrayOrString: ArrayOrString,
     ): Ordinal =>
