@@ -31,24 +31,21 @@ const evaluateGeometricOperation: (expression: string) => number =
         const lastIndexOfDivisionSign: Ordinal = to.Ordinal(expression.lastIndexOf('/'))
         const lastIndexOfModulusSign: Ordinal = to.Ordinal(expression.lastIndexOf('%'))
 
-        if (
-            lastIndexOfMultiplicationSign > lastIndexOfDivisionSign &&
-            lastIndexOfMultiplicationSign > lastIndexOfModulusSign
-        ) {
-            const { lhs, rhs } = splitOperands(expression, lastIndexOfMultiplicationSign)
+        let operands: Operands
+        if (lastIndexOfMultiplicationSign > lastIndexOfDivisionSign &&
+            lastIndexOfMultiplicationSign > lastIndexOfModulusSign) {
+            operands = splitOperands(expression, lastIndexOfMultiplicationSign)
 
-            return lhs * rhs
+            return operands.lhs * operands.rhs
         }
-        else if (lastIndexOfDivisionSign > lastIndexOfModulusSign) {
-            const { lhs, rhs } = splitOperands(expression, lastIndexOfDivisionSign)
+        if (lastIndexOfDivisionSign > lastIndexOfModulusSign) {
+            operands = splitOperands(expression, lastIndexOfDivisionSign)
 
-            return lhs / rhs
+            return operands.lhs / operands.rhs
         }
-        else {
-            const { lhs, rhs } = splitOperands(expression, lastIndexOfModulusSign)
+        operands = splitOperands(expression, lastIndexOfModulusSign)
 
-            return lhs % rhs
-        }
+        return operands.lhs % operands.rhs
     }
 
 const evaluateArithmeticOperation: (expression: string) => number =
@@ -56,16 +53,15 @@ const evaluateArithmeticOperation: (expression: string) => number =
         const lastIndexOfAdditionSign: Ordinal = to.Ordinal(expression.lastIndexOf('+'))
         const lastIndexOfSubtractionSign: Ordinal = to.Ordinal(expression.lastIndexOf('-'))
 
+        let operands: Operands
         if (lastIndexOfAdditionSign > lastIndexOfSubtractionSign) {
-            const { lhs, rhs } = splitOperands(expression, lastIndexOfAdditionSign)
+            operands = splitOperands(expression, lastIndexOfAdditionSign)
 
-            return lhs + rhs
+            return operands.lhs + operands.rhs
         }
-        else {
-            const { lhs, rhs } = splitOperands(expression, lastIndexOfSubtractionSign)
+        operands = splitOperands(expression, lastIndexOfSubtractionSign)
 
-            return lhs - rhs
-        }
+        return operands.lhs - operands.rhs
     }
 
 const evaluateParenthetical: (expression: string) => number =

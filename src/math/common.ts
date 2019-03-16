@@ -26,7 +26,7 @@ const recurseCommon: (commonFunction: IntegerOperation, ...integers: Integer[]) 
         if (integers.length === 1) {
             return integers[ 0 ]
         }
-        else if (integers.length === 0) {
+        if (integers.length === 0) {
             return to.Integer(1)
         }
 
@@ -34,9 +34,8 @@ const recurseCommon: (commonFunction: IntegerOperation, ...integers: Integer[]) 
         if (to.Integer(integers.length) === TWO) {
             return result
         }
-        else {
-            return recurseCommon(commonFunction, result, ...integers.slice(from.Integer(TWO)))
-        }
+
+        return recurseCommon(commonFunction, result, ...integers.slice(from.Integer(TWO)))
     }
 
 const computeCommon: (integers: Integer[], commonFunction: IntegerOperation) => Integer =
