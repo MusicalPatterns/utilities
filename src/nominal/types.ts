@@ -1,4 +1,4 @@
-// tslint:disable ban-types max-file-line-count
+// tslint:disable ban-types max-file-line-count no-magic-numbers max-line-length
 
 import { Difference } from '../code'
 
@@ -68,7 +68,21 @@ type Block = number[] & { _BlockBrand: void }
 
 type Cycle<ElementType = number> = ElementType[] & { _CycleBrand: boolean }
 
-type ContourElement<ContourType> = [ number, ...number[] ] & { length: ContourType } & { [ index: string ]: number }
+type ContourElement<ContourType> = [ number, ...number[] ] &
+    { length: ContourType } & (
+    ContourType extends 1 ? { 0: number } :
+    ContourType extends 2 ? { 0: number, 1: number } :
+        ContourType extends 3 ? { 0: number, 1: number, 2: number } :
+            ContourType extends 4 ? { 0: number, 1: number, 2: number, 3: number } :
+                ContourType extends 5 ? { 0: number, 1: number, 2: number, 3: number, 4: number } :
+                    ContourType extends 6 ? { 0: number, 1: number, 2: number, 3: number, 4: number, 5: number } :
+                        ContourType extends 7 ? { 0: number, 1: number, 2: number, 3: number, 4: number, 5: number, 6: number } :
+                            ContourType extends 8 ? { 0: number, 1: number, 2: number, 3: number, 4: number, 5: number, 6: number, 7: number } :
+                                ContourType extends 9 ? { 0: number, 1: number, 2: number, 3: number, 4: number, 5: number, 6: number, 7: number, 8: number } :
+                                    ContourType extends 10 ? { 0: number, 1: number, 2: number, 3: number, 4: number, 5: number, 6: number, 7: number, 8: number, 9: number } :
+                                        { [ index: number ]: number }
+    )
+
 type ContourPiece<ContourType> = Array<ContourElement<ContourType>> & { _ContourPieceBrand: void }
 type ContourWhole<ContourType> = Array<ContourElement<ContourType>> & { _ContourWholeBrand: void }
 
