@@ -50,6 +50,7 @@ export {
     EXAMPLE_ELEMENT_INDEX,
     cycleSlice,
     isEmpty,
+    isSingleton,
     camelCaseToUpperCase,
 } from './code'
 export {
