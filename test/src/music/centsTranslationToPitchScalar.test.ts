@@ -4,7 +4,6 @@ describe('cents translation to pitch scalar', () => {
     it('gives the pitch ratio equivalent to the cents amount', () => {
         const actual: Scalar<Frequency> = centsTranslationToPitchScalar(to.Translation(to.Cents(701.955001)))
 
-        expect(testIsCloseTo(actual, to.Frequency(THREE_HALVES)))
-            .toBe(true)
+        testIsCloseTo(actual, to.Frequency(THREE_HALVES))
     })
 })

@@ -248,6 +248,7 @@ export {
 } from './state'
 export {
     testIsCloseTo,
+    testIsNotCloseTo,
     testArraysAreClose,
     testArraysAreCloseSoFar,
     testArraysHaveSameElements,

@@ -24,18 +24,12 @@ const determineIfClose: <NumericType extends Number>(numberOne: NumericType, num
         return quotient(round(product(delta, pow)), pow) <= maxDelta
     }
 
-const maybeFail: <NumericType extends Number>(
-    isClose: boolean,
-    numberOne: NumericType,
-    numberTwo: NumericType,
-    negate: boolean,
-) => void =
-    <NumericType extends Number>(
-        isClose: boolean,
-        numberOne: NumericType,
-        numberTwo: NumericType,
-        negate: boolean = false,
-    ): void => {
+const testIsCloseTo:
+    // tslint:disable-next-line bool-param-default
+    <NumericType extends Number>(numberOne: NumericType, numberTwo: NumericType, negate?: boolean) => void =
+    <NumericType extends Number>(numberOne: NumericType, numberTwo: NumericType, negate: boolean = false): void => {
+        const isClose: boolean = determineIfClose(numberOne, numberTwo)
+
         if (!negate && !isClose) {
             fail(`expected ${numberOne} to be close to ${numberTwo}`)
         }
@@ -44,17 +38,14 @@ const maybeFail: <NumericType extends Number>(
         }
     }
 
-const testIsCloseTo:
+const testIsNotCloseTo:
     // tslint:disable-next-line bool-param-default
-    <NumericType extends Number>(numberOne: NumericType, numberTwo: NumericType, negate?: boolean) => boolean =
-    <NumericType extends Number>(numberOne: NumericType, numberTwo: NumericType, negate: boolean = false): boolean => {
-        const isClose: boolean = determineIfClose(numberOne, numberTwo)
-
-        maybeFail(isClose, numberOne, numberTwo, negate)
-
-        return negate ? !isClose : isClose
+    <NumericType extends Number>(numberOne: NumericType, numberTwo: NumericType, negate?: boolean) => void =
+    <NumericType extends Number>(numberOne: NumericType, numberTwo: NumericType, negate: boolean = false): void => {
+        testIsCloseTo(numberOne, numberTwo, true)
     }
 
 export {
     testIsCloseTo,
+    testIsNotCloseTo,
 }

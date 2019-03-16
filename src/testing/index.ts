@@ -1,4 +1,4 @@
-export { testIsCloseTo } from './testIsCloseTo'
+export { testIsCloseTo, testIsNotCloseTo } from './testIsCloseTo'
 export { testArraysAreClose, testArraysAreCloseSoFar } from './testArraysAreClose'
 export { testArraysHaveSameElements } from './testArraysHaveSameElements'
 export { elementCount, elementIds, elementChecked, elementInnerText, elementExists, elementValue } from './checkElement'

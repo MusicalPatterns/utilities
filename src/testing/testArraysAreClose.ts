@@ -20,10 +20,7 @@ const testArraysAreCloseSoFar:
         forEach(expected, (expectedElement: NumericElementType, index: Ordinal): void => {
             const actualElement: NumericElementType = apply.Ordinal(actual, index)
 
-            expect(testIsCloseTo(actualElement, expectedElement))
-                .toBeTruthy(
-                    `Elements not close at index ${index}: actual ${actualElement} vs expected ${expectedElement}`,
-                )
+            testIsCloseTo(actualElement, expectedElement)
         })
     }
 
