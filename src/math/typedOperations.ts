@@ -1,6 +1,6 @@
 // tslint:disable ban-types max-file-line-count
 
-import { isUndefined } from '../code'
+import { isEmpty, isUndefined } from '../code'
 import { Integer } from '../nominal'
 import { ADDITIVE_IDENTITY, MULTIPLICATIVE_IDENTITY } from './constants'
 
@@ -8,7 +8,7 @@ const sum: <NumericType extends Number>(...values: NumericType[]) => NumericType
     <NumericType extends Number>(...values: NumericType[]): NumericType => {
         const lastValue: NumericType = values.pop() as NumericType
 
-        const nextSum: NumericType = values.length ? sum(...values) : ADDITIVE_IDENTITY as unknown as NumericType
+        const nextSum: NumericType = isEmpty(values) ? ADDITIVE_IDENTITY as unknown as NumericType : sum(...values)
 
         return (nextSum as unknown as number) + (lastValue as unknown as number) as unknown as NumericType
     }
@@ -21,9 +21,9 @@ const product: <NumericType extends Number>(...values: NumericType[]) => Numeric
     <NumericType extends Number>(...values: NumericType[]): NumericType => {
         const lastValue: NumericType = values.pop() as NumericType
 
-        const nextProduct: NumericType = values.length ?
-            product(...values) :
-            MULTIPLICATIVE_IDENTITY as unknown as NumericType
+        const nextProduct: NumericType = isEmpty(values) ?
+            MULTIPLICATIVE_IDENTITY as unknown as NumericType :
+            product(...values)
 
         return (nextProduct as unknown as number) * (lastValue as unknown as number) as unknown as NumericType
     }

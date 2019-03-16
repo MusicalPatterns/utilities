@@ -1,4 +1,4 @@
-import { allElementsEqual } from '../code'
+import { allElementsEqual, isEmpty, isSingleton } from '../code'
 import { from, Integer, to } from '../nominal'
 import { TWO } from './constants'
 import { absoluteValue, modulus, product, quotient } from './typedOperations'
@@ -23,10 +23,10 @@ const computeGreatestCommonDivisorOfTwoNumbers: IntegerOperation =
 
 const recurseCommon: (commonFunction: IntegerOperation, ...integers: Integer[]) => Integer =
     (commonFunction: IntegerOperation, ...integers: Integer[]): Integer => {
-        if (integers.length === 1) {
+        if (isSingleton(integers)) {
             return integers[ 0 ]
         }
-        if (integers.length === 0) {
+        if (isEmpty(integers)) {
             return to.Integer(1)
         }
 
@@ -40,7 +40,7 @@ const recurseCommon: (commonFunction: IntegerOperation, ...integers: Integer[]) 
 
 const computeCommon: (integers: Integer[], commonFunction: IntegerOperation) => Integer =
     (integers: Integer[], commonFunction: IntegerOperation): Integer => {
-        if (integers.length === 0) {
+        if (isEmpty(integers)) {
             return to.Integer(1)
         }
 

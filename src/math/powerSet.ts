@@ -1,4 +1,4 @@
-import { isUndefined, Maybe } from '../code'
+import { isEmpty, isUndefined, Maybe } from '../code'
 
 const recursiveCombinations: <MemberType>(
     remainingSet: MemberType[],
@@ -10,10 +10,10 @@ const recursiveCombinations: <MemberType>(
         activeSet: MemberType[] = [],
         output: MemberType[][] = [],
     ): Maybe<MemberType[][]> => {
-        if (activeSet.length === 0 && remainingSet.length === 0) {
+        if (isEmpty(activeSet) && isEmpty(remainingSet)) {
             return undefined
         }
-        if (remainingSet.length === 0) {
+        if (isEmpty(remainingSet)) {
             output.push(activeSet)
         }
         else {

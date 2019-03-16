@@ -10,6 +10,7 @@ export { camelCaseToLowerCase, camelCaseToConstantCase, constantCaseToUpperCase,
 export { repeat } from './repeat'
 export { repeatCall } from './repeatCall'
 export { sequence } from './sequence'
+export { isEmpty, isSingleton } from './isEmpty'
 export { noop } from './noop'
 export {
     lastElement,
