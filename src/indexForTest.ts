@@ -7,6 +7,7 @@ export {
     camelCaseToConstantCase,
     constantCaseToUpperCase,
     camelCaseToLowerCase,
+    camelCaseToUpperCase,
     deepCloneObject,
     deepClone,
     isUndefined,

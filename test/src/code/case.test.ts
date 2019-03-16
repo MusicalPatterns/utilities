@@ -1,4 +1,9 @@
-import { camelCaseToConstantCase, camelCaseToLowerCase, constantCaseToUpperCase } from '../../../src/indexForTest'
+import {
+    camelCaseToConstantCase,
+    camelCaseToLowerCase,
+    camelCaseToUpperCase,
+    constantCaseToUpperCase,
+} from '../../../src/indexForTest'
 
 describe('case', () => {
     it('camel case to constant case', () => {
@@ -13,6 +18,11 @@ describe('case', () => {
 
     it('constant case to upper case', () => {
         expect(constantCaseToUpperCase('WHATS_UP_DOC'))
+            .toBe('Whats Up Doc')
+    })
+
+    it('camel case to upper case', () => {
+        expect(camelCaseToUpperCase('whatsUpDoc'))
             .toBe('Whats Up Doc')
     })
 })

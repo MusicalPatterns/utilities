@@ -49,6 +49,7 @@ export {
     TRANSLATION_FROM_LENGTH_TO_LAST_INDEX,
     EXAMPLE_ELEMENT_INDEX,
     cycleSlice,
+    camelCaseToUpperCase,
 } from './code'
 export {
     absoluteRatio,

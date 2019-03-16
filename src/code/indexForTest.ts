@@ -9,7 +9,7 @@ export { repeat } from './repeat'
 export { slice, cycleSlice } from './typedIterators'
 export { keyExistsOnObject } from './keyExistsOnObject'
 export { lastElement, indexOfLastElement } from './lastElement'
-export { camelCaseToConstantCase, constantCaseToUpperCase, camelCaseToLowerCase } from './case'
+export { camelCaseToConstantCase, constantCaseToUpperCase, camelCaseToLowerCase, camelCaseToUpperCase } from './case'
 
 export {
     INITIAL,
