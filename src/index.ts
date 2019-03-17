@@ -187,6 +187,8 @@ export {
     computeLowestTerms,
     computeCommonTerms,
     computeLowestCommonDenominator,
+    areCoprime,
+    computeCommonFactors,
 } from './math'
 export {
     centsTranslationToPitchScalar,

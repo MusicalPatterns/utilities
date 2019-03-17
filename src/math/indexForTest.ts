@@ -22,7 +22,9 @@ export {
     triangularNumber,
     triangularRoot,
     quarterSquareNumber,
-}from './specialNumbers'
+} from './specialNumbers'
+export { computeCommonFactors, areCoprime } from './commonFactors'
+
 export {
     X_AXIS,
     Y_AXIS,
@@ -36,6 +38,7 @@ export {
     FOURTH,
     THIRD,
 } from './constants'
+
 export {
     Coordinate,
 } from './types'

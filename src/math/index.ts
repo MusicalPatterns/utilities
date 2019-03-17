@@ -3,6 +3,7 @@
 export { absoluteRatio } from './absoluteRatio'
 export { isCloseTo } from './isCloseTo'
 export { positiveIntegers, zeroAndPositiveIntegers } from './integers'
+export { areCoprime, computeCommonFactors } from './commonFactors'
 export { distanceBetween } from './distanceBetween'
 export { rotate } from './rotate'
 export { dividesEvenly } from './dividesEvenly'

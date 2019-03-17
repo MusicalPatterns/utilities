@@ -108,6 +108,8 @@ const NO_TRANSLATION: Translation = to.Translation(0)
 const NUMERATOR_INDEX: Ordinal = to.Ordinal(0)
 const DENOMINATOR_INDEX: Ordinal = to.Ordinal(1)
 
+const FIRST_FACTOR_NECESSARY_TO_CHECK_IF_COMMON: Integer = to.Integer(2)
+
 export {
     DECIMAL,
     ONE_HALF,
@@ -198,4 +200,5 @@ export {
     HEPTUPLE,
     OCTUPLE,
     NONTUPLE,
+    FIRST_FACTOR_NECESSARY_TO_CHECK_IF_COMMON,
 }
