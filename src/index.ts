@@ -52,6 +52,10 @@ export {
     isEmpty,
     isSingleton,
     camelCaseToUpperCase,
+    isGreaterThan,
+    isLessThan,
+    isGreaterThanOrEqualTo,
+    isLessThanOrEqualTo,
 } from './code'
 export {
     absoluteRatio,

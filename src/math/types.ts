@@ -27,9 +27,11 @@ interface RotateParameters<ElementType extends Number, Dimensionality extends Nu
     rotation: Radians,
 }
 
-type NumericOperation = (firstValue: number, secondValue: number) => number
+type NumericOperation<NumericType extends Number = Number> =
+    (firstValue: NumericType, secondValue: NumericType) => NumericType
 
-type IntegerOperation = (firstValue: Integer, secondValue: Integer) => Integer
+type IntegerOperation<IntegerType extends Integer = Integer> =
+    (firstValue: IntegerType, secondValue: IntegerType) => IntegerType
 
 interface Operands {
     lhs: number,
