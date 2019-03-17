@@ -80,8 +80,13 @@ const NormalScalar: <ValueType, UnitsType extends Number = NoUnits>(
     <ValueType, UnitsType extends Number = NoUnits>(
         value: ValueType,
         scalar: NormalScalar<UnitsType>,
-    ): ValueType =>
-        value as unknown as number * from.NormalScalar(scalar) as unknown as ValueType
+    ): ValueType => {
+        if ((value as unknown as number > 1) || (value as unknown as number < 0)) {
+            throw new Error(`NormalScalar must be between 0 and 1. It was ${value}`)
+        }
+
+        return value as unknown as number * from.Scalar(scalar) as unknown as ValueType
+    }
 
 const Ordinal: <ElementType>(array: ElementType[] | Cycle<ElementType>, ordinal: Ordinal) => ElementType =
     <ElementType>(array: ElementType[] | Cycle<ElementType>, ordinal: Ordinal): ElementType => {
