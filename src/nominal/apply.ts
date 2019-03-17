@@ -11,6 +11,7 @@ import {
     Denominator,
     Fraction,
     Modulus,
+    NormalScalar,
     NoUnits,
     Numerator,
     Ordinal,
@@ -72,6 +73,16 @@ const Scalar: <ValueType, UnitsType extends Number = NoUnits>(
     ): ValueType =>
         value as unknown as number * from.Scalar(scalar) as unknown as ValueType
 
+const NormalScalar: <ValueType, UnitsType extends Number = NoUnits>(
+    value: ValueType,
+    scalar: NormalScalar<UnitsType>,
+) => ValueType =
+    <ValueType, UnitsType extends Number = NoUnits>(
+        value: ValueType,
+        scalar: NormalScalar<UnitsType>,
+    ): ValueType =>
+        value as unknown as number * from.NormalScalar(scalar) as unknown as ValueType
+
 const Ordinal: <ElementType>(array: ElementType[] | Cycle<ElementType>, ordinal: Ordinal) => ElementType =
     <ElementType>(array: ElementType[] | Cycle<ElementType>, ordinal: Ordinal): ElementType => {
         // tslint:disable-next-line strict-type-predicates
@@ -122,4 +133,5 @@ export {
     Modulus,
     Numerator,
     Denominator,
+    NormalScalar,
 }

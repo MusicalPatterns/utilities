@@ -43,6 +43,7 @@ type OperationBrand<Operation, UnitsType extends NoOperation = number> =
     ForOperation<UnitsType> & { _OperationBrand: Operation }
 
 type Scalar<UnitsType extends NoOperation = number> = OperationBrand<'Scalar', UnitsType>
+type NormalScalar<UnitsType extends NoOperation = number> = OperationBrand<'Scalar', UnitsType>
 type Translation<UnitsType extends NoOperation = number> = OperationBrand<'Translation', UnitsType>
 type Rotation<UnitsType extends NoOperation = number> = OperationBrand<'Rotation', UnitsType>
 
@@ -117,4 +118,5 @@ export {
     Frequency,
     Amplitude,
     NominalNumber,
+    NormalScalar,
 }

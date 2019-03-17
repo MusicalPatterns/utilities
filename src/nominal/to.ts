@@ -19,6 +19,7 @@ import {
     Modulus,
     Ms,
     NoOperation,
+    NormalScalar,
     NoUnits,
     Numerator,
     Ordinal,
@@ -70,6 +71,14 @@ const Amplitude: <OperationType extends NoUnits>(amplitude: OperationType) => Am
 const Scalar: <UnitsType extends NoOperation>(scalar: UnitsType) => Scalar<UnitsType> =
     <UnitsType extends NoOperation>(scalar: UnitsType): Scalar<UnitsType> =>
         scalar as Scalar<UnitsType>
+const NormalScalar: <UnitsType extends NoOperation>(normalScalar: UnitsType) => NormalScalar<UnitsType> =
+    <UnitsType extends NoOperation>(normalScalar: UnitsType): NormalScalar<UnitsType> => {
+        if ((normalScalar as unknown as number > 1) || (normalScalar as unknown as number < 0)) {
+            throw new Error(`NormalScalar must be between 0 and 1. It was ${normalScalar}`)
+        }
+
+        return normalScalar as NormalScalar<UnitsType>
+    }
 const Translation: <UnitsType extends NoOperation>(translation: UnitsType) => Translation<UnitsType> =
     <UnitsType extends NoOperation>(translation: UnitsType): Translation<UnitsType> =>
         translation as Translation<UnitsType>
@@ -178,4 +187,5 @@ export {
     Time,
     Frequency,
     Amplitude,
+    NormalScalar,
 }

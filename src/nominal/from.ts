@@ -16,6 +16,7 @@ import {
     Modulus,
     Ms,
     NoOperation,
+    NormalScalar,
     NoUnits,
     Numerator,
     Ordinal,
@@ -67,6 +68,9 @@ const Amplitude: <OperationType extends NoUnits, UnitsType extends Amplitude<Ope
 const Scalar: <UnitsType extends NoOperation, OperationType extends Scalar<UnitsType>>(scalar: OperationType) => UnitsType & number =
     <UnitsType extends NoOperation, OperationType extends Scalar<UnitsType>>(scalar: OperationType): UnitsType & number =>
         scalar as unknown as UnitsType & number
+const NormalScalar: <UnitsType extends NoOperation, OperationType extends NormalScalar<UnitsType>>(normalScalar: OperationType) => UnitsType & number =
+    <UnitsType extends NoOperation, OperationType extends NormalScalar<UnitsType>>(normalScalar: OperationType): UnitsType & number =>
+        normalScalar as unknown as UnitsType & number
 const Translation: <UnitsType extends NoOperation, OperationType extends Translation<UnitsType>>(translation: OperationType) => UnitsType & number =
     <UnitsType extends NoOperation, OperationType extends Translation<UnitsType>>(translation: OperationType): UnitsType & number =>
         translation as unknown as UnitsType & number
@@ -143,4 +147,5 @@ export {
     Time,
     Frequency,
     Amplitude,
+    NormalScalar,
 }
