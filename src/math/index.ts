@@ -8,6 +8,7 @@ export { distanceBetween } from './distanceBetween'
 export { rotate } from './rotate'
 export { dividesEvenly } from './dividesEvenly'
 export { powerSet } from './powerSet'
+export { invertNormalScalar } from './invertNormalScalar'
 export { evaluate } from './evaluate'
 export { computeGreatestCommonDivisor, computeLeastCommonMultiple } from './common'
 export {

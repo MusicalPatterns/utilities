@@ -1,5 +1,6 @@
 // tslint:disable variable-name max-file-line-count max-line-length
 
+import { integerCheck, normalScalarCheck } from './checks'
 import {
     Amplitude,
     Base,
@@ -73,9 +74,7 @@ const Scalar: <UnitsType extends NoOperation>(scalar: UnitsType) => Scalar<Units
         scalar as Scalar<UnitsType>
 const NormalScalar: <UnitsType extends NoOperation>(normalScalar: UnitsType) => NormalScalar<UnitsType> =
     <UnitsType extends NoOperation>(normalScalar: UnitsType): NormalScalar<UnitsType> => {
-        if ((normalScalar as unknown as number > 1) || (normalScalar as unknown as number < 0)) {
-            throw new Error(`NormalScalar must be between 0 and 1. It was ${normalScalar}`)
-        }
+        normalScalarCheck(normalScalar)
 
         return normalScalar as NormalScalar<UnitsType>
     }
@@ -96,13 +95,6 @@ const Modulus: <UnitsType extends NoOperation>(modulus: UnitsType) => Modulus<Un
         modulus as Modulus<UnitsType>
 
 // Special Units & Operation
-
-const integerCheck: (value: number | Integer, type: string) => void =
-    (value: number | Integer, type: string): void => {
-        if (Math.round(value as unknown as number) !== value as unknown as number) {
-            throw new Error(`${type}s must be Integers.`)
-        }
-    }
 
 const Integer: <OperationType extends NoUnits>(integer: OperationType) => Integer =
     <OperationType extends NoUnits>(integer: OperationType): Integer => integer as unknown as Integer

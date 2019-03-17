@@ -58,6 +58,7 @@ export {
     computeLowestCommonDenominator,
     computeCommonFactors,
     areCoprime,
+    invertNormalScalar,
 } from './math/indexForTest'
 export {
     centsTranslationToPitchScalar,

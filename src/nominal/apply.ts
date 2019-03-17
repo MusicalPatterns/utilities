@@ -1,6 +1,7 @@
 // tslint:disable variable-name max-file-line-count ban-types
 
 import { totalElements } from '../code'
+import { normalScalarCheck, ordinalCheck } from './checks'
 import * as from from './from'
 import * as to from './to'
 import { isCycle } from './typeGuards'
@@ -81,9 +82,7 @@ const NormalScalar: <ValueType, UnitsType extends Number = NoUnits>(
         value: ValueType,
         scalar: NormalScalar<UnitsType>,
     ): ValueType => {
-        if ((value as unknown as number > 1) || (value as unknown as number < 0)) {
-            throw new Error(`NormalScalar must be between 0 and 1. It was ${value}`)
-        }
+        normalScalarCheck(value)
 
         return value as unknown as number * from.Scalar(scalar) as unknown as ValueType
     }
@@ -97,9 +96,7 @@ const Ordinal: <ElementType>(array: ElementType[] | Cycle<ElementType>, ordinal:
             return array[ from.Ordinal(cycledIndex) ]
         }
 
-        if (ordinal > array.length - 1) {
-            throw new Error(`Ordinal ${ordinal} exceeds available indices of array of length ${array.length}`)
-        }
+        ordinalCheck(ordinal, array)
 
         return array[ from.Ordinal(ordinal) ]
     }

@@ -24,6 +24,7 @@ export {
     quarterSquareNumber,
 } from './specialNumbers'
 export { computeCommonFactors, areCoprime } from './commonFactors'
+export { invertNormalScalar } from './invertNormalScalar'
 
 export {
     X_AXIS,
