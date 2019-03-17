@@ -249,6 +249,7 @@ export {
     Frequency,
     Amplitude,
     NominalNumber,
+    NormalScalar,
 } from './nominal'
 export {
     ActionForState,

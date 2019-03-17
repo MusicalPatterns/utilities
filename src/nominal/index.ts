@@ -47,4 +47,5 @@ export {
     Frequency,
     Amplitude,
     NominalNumber,
+    NormalScalar,
 } from './types'
