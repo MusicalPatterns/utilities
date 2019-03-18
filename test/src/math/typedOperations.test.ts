@@ -16,6 +16,11 @@ describe('typed operations', () => {
             expect(round(1 / 1000001, to.Integer(4)))
                 .toBe(0)
         })
+
+        it('works for negative numbers when the precision is set', () => {
+            expect(round(to.Scalar(-1.111111111), to.Integer(4)))
+                .toBe(to.Scalar(-1.1111))
+        })
     })
 
     describe('sum', () => {

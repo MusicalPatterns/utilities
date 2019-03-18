@@ -60,7 +60,7 @@ const round: <NumericType extends Number, IntegerType extends Integer>(
             return Math.round(value as unknown as number) as unknown as NumericType
         }
 
-        if (value < (VALUE_BELOW_WHICH_ROUNDING_IMPLEMENTATION_BREAKS as unknown as NumericType)) {
+        if (absoluteValue(value) < (VALUE_BELOW_WHICH_ROUNDING_IMPLEMENTATION_BREAKS as unknown as NumericType)) {
             return 0 as unknown as NumericType
         }
 
