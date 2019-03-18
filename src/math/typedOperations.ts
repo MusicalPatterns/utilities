@@ -2,7 +2,11 @@
 
 import { isEmpty, isUndefined } from '../code'
 import { Integer } from '../nominal'
-import { ADDITIVE_IDENTITY, MULTIPLICATIVE_IDENTITY } from './constants'
+import {
+    ADDITIVE_IDENTITY,
+    MULTIPLICATIVE_IDENTITY,
+    VALUE_BELOW_WHICH_ROUNDING_IMPLEMENTATION_BREAKS,
+} from './constants'
 
 const sum: <NumericType extends Number>(...values: NumericType[]) => NumericType =
     <NumericType extends Number>(...values: NumericType[]): NumericType => {
@@ -54,6 +58,10 @@ const round: <NumericType extends Number, IntegerType extends Integer>(
     ): NumericType => {
         if (isUndefined(precision)) {
             return Math.round(value as unknown as number) as unknown as NumericType
+        }
+
+        if (value < (VALUE_BELOW_WHICH_ROUNDING_IMPLEMENTATION_BREAKS as unknown as NumericType)) {
+            return 0 as unknown as NumericType
         }
 
         // tslint:disable-next-line no-any prefer-template

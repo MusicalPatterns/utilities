@@ -11,6 +11,11 @@ describe('typed operations', () => {
             expect(round(to.Scalar(3.524387), to.Integer(4)))
                 .toBe(to.Scalar(3.5244))
         })
+
+        it('does not poop out on tiny numbers when the precision is set', () => {
+            expect(round(1 / 1000001, to.Integer(4)))
+                .toBe(0)
+        })
     })
 
     describe('sum', () => {
