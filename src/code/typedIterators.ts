@@ -4,8 +4,8 @@ import { indexJustBeyondFinalElement } from './finalElement'
 import { isUndefined } from './isUndefined'
 
 const slice:
-    <ArrayType extends unknown[] | string>(array: ArrayType, initial: Ordinal, terminal?: Ordinal) => ArrayType =
-    <ArrayType extends unknown[] | string>(array: ArrayType, initial: Ordinal, terminal?: Ordinal): ArrayType => {
+    <ArrayType extends Array<unknown> | string>(array: ArrayType, initial: Ordinal, terminal?: Ordinal) => ArrayType =
+    <ArrayType extends Array<unknown> | string>(array: ArrayType, initial: Ordinal, terminal?: Ordinal): ArrayType => {
         if (isUndefined(terminal)) {
             return array.slice(from.Ordinal(initial)) as ArrayType
         }
