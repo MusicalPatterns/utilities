@@ -22,15 +22,15 @@ const getDenominator: (fraction: Fraction) => Denominator =
 
 const multiplyFractions: (...fractions: Fraction[]) => Fraction =
     (...fractions: Fraction[]): Fraction => {
-        const lastFraction: Fraction = fractions.pop() as Fraction
+        const previousFraction: Fraction = fractions.pop() as Fraction
 
         const nextMultipliedFraction: Fraction = fractions.length ?
             multiplyFractions(...fractions) :
             FRACTIONAL_IDENTITY
 
         return to.Fraction([
-            product(getNumerator(nextMultipliedFraction), getNumerator(lastFraction)),
-            product(getDenominator(nextMultipliedFraction), getDenominator(lastFraction)),
+            product(getNumerator(nextMultipliedFraction), getNumerator(previousFraction)),
+            product(getDenominator(nextMultipliedFraction), getDenominator(previousFraction)),
         ])
     }
 

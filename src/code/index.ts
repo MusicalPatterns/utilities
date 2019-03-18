@@ -13,11 +13,11 @@ export { sequence } from './sequence'
 export { isEmpty, isSingleton } from './isEmpty'
 export { noop } from './noop'
 export {
-    lastElement,
-    indexOfLastElement,
+    finalElement,
+    indexOfFinalElement,
     totalElements,
-    indexJustBeyondLastElement,
-} from './lastElement'
+    indexJustBeyondFinalElement,
+} from './finalElement'
 export { random } from './random'
 export { keyExistsOnObject } from './keyExistsOnObject'
 export { numericSort } from './sort'
@@ -38,7 +38,7 @@ export {
     EXCLUSIVE_TO_LEFT,
     INCLUSIVE_TO_LEFT,
     INITIAL,
-    TRANSLATION_FROM_LENGTH_TO_LAST_INDEX,
+    TRANSLATION_FROM_LENGTH_TO_FINAL_INDEX,
     EXAMPLE_ELEMENT_INDEX,
 } from './constants'
 

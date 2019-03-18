@@ -19,47 +19,47 @@ const splitOperands: (expression: string, operatorIndex: Ordinal) => Operands =
 
 const evaluateExponent: (expression: string) => number =
     (expression: string): number => {
-        const lastIndexOfExponentiationSign: Ordinal = to.Ordinal(expression.lastIndexOf('^'))
-        const { lhs, rhs } = splitOperands(expression, lastIndexOfExponentiationSign)
+        const finalIndexOfExponentiationSign: Ordinal = to.Ordinal(expression.lastIndexOf('^'))
+        const { lhs, rhs } = splitOperands(expression, finalIndexOfExponentiationSign)
 
         return Math.pow(lhs, rhs)
     }
 
 const evaluateGeometricOperation: (expression: string) => number =
     (expression: string): number => {
-        const lastIndexOfMultiplicationSign: Ordinal = to.Ordinal(expression.lastIndexOf('*'))
-        const lastIndexOfDivisionSign: Ordinal = to.Ordinal(expression.lastIndexOf('/'))
-        const lastIndexOfModulusSign: Ordinal = to.Ordinal(expression.lastIndexOf('%'))
+        const finalIndexOfMultiplicationSign: Ordinal = to.Ordinal(expression.lastIndexOf('*'))
+        const finalIndexOfDivisionSign: Ordinal = to.Ordinal(expression.lastIndexOf('/'))
+        const finalIndexOfModulusSign: Ordinal = to.Ordinal(expression.lastIndexOf('%'))
 
         let operands: Operands
-        if (lastIndexOfMultiplicationSign > lastIndexOfDivisionSign &&
-            lastIndexOfMultiplicationSign > lastIndexOfModulusSign) {
-            operands = splitOperands(expression, lastIndexOfMultiplicationSign)
+        if (finalIndexOfMultiplicationSign > finalIndexOfDivisionSign &&
+            finalIndexOfMultiplicationSign > finalIndexOfModulusSign) {
+            operands = splitOperands(expression, finalIndexOfMultiplicationSign)
 
             return operands.lhs * operands.rhs
         }
-        if (lastIndexOfDivisionSign > lastIndexOfModulusSign) {
-            operands = splitOperands(expression, lastIndexOfDivisionSign)
+        if (finalIndexOfDivisionSign > finalIndexOfModulusSign) {
+            operands = splitOperands(expression, finalIndexOfDivisionSign)
 
             return operands.lhs / operands.rhs
         }
-        operands = splitOperands(expression, lastIndexOfModulusSign)
+        operands = splitOperands(expression, finalIndexOfModulusSign)
 
         return operands.lhs % operands.rhs
     }
 
 const evaluateArithmeticOperation: (expression: string) => number =
     (expression: string): number => {
-        const lastIndexOfAdditionSign: Ordinal = to.Ordinal(expression.lastIndexOf('+'))
-        const lastIndexOfSubtractionSign: Ordinal = to.Ordinal(expression.lastIndexOf('-'))
+        const finalIndexOfAdditionSign: Ordinal = to.Ordinal(expression.lastIndexOf('+'))
+        const finalIndexOfSubtractionSign: Ordinal = to.Ordinal(expression.lastIndexOf('-'))
 
         let operands: Operands
-        if (lastIndexOfAdditionSign > lastIndexOfSubtractionSign) {
-            operands = splitOperands(expression, lastIndexOfAdditionSign)
+        if (finalIndexOfAdditionSign > finalIndexOfSubtractionSign) {
+            operands = splitOperands(expression, finalIndexOfAdditionSign)
 
             return operands.lhs + operands.rhs
         }
-        operands = splitOperands(expression, lastIndexOfSubtractionSign)
+        operands = splitOperands(expression, finalIndexOfSubtractionSign)
 
         return operands.lhs - operands.rhs
     }

@@ -1,7 +1,7 @@
 import { NEXT } from '../math'
 import { apply, Cycle, from, Ordinal } from '../nominal'
+import { indexJustBeyondFinalElement } from './finalElement'
 import { isUndefined } from './isUndefined'
-import { indexJustBeyondLastElement } from './lastElement'
 
 const slice:
     <ArrayType extends unknown[] | string>(array: ArrayType, initial: Ordinal, terminal?: Ordinal) => ArrayType =
@@ -15,7 +15,7 @@ const slice:
 
 const cycleSlice: <ElementType>(cycle: Cycle<ElementType>, initial: Ordinal, terminal?: Ordinal) => ElementType[] =
     <ElementType>(cycle: Cycle<ElementType>, initial: Ordinal, terminal?: Ordinal): ElementType[] => {
-        const terminalForSlice: Ordinal = isUndefined(terminal) ? indexJustBeyondLastElement(cycle) : terminal
+        const terminalForSlice: Ordinal = isUndefined(terminal) ? indexJustBeyondFinalElement(cycle) : terminal
 
         const resultantSlice: ElementType[] = []
 

@@ -1,18 +1,18 @@
 import { negative } from '../math'
 import { apply, Cardinal, Ordinal, to } from '../nominal'
 
-const lastElement: <ElementType>(array: ElementType[]) => ElementType =
+const finalElement: <ElementType>(array: ElementType[]) => ElementType =
     <ElementType>(array: ElementType[]): ElementType =>
-        apply.Ordinal(array, indexOfLastElement(array))
+        apply.Ordinal(array, indexOfFinalElement(array))
 
-const indexOfLastElement: <ElementType>(array: ElementType[]) => Ordinal =
+const indexOfFinalElement: <ElementType>(array: ElementType[]) => Ordinal =
     <ElementType>(array: ElementType[]): Ordinal =>
         to.Ordinal(apply.Translation(
             array.length,
             to.Translation(negative(1)),
         ))
 
-const indexJustBeyondLastElement: <ElementType>(array: ElementType[]) => Ordinal =
+const indexJustBeyondFinalElement: <ElementType>(array: ElementType[]) => Ordinal =
     <ElementType>(array: ElementType[]): Ordinal =>
         to.Ordinal(array.length)
 
@@ -21,8 +21,8 @@ const totalElements: <ElementType>(array: ElementType[]) => Cardinal =
         to.Cardinal(array.length)
 
 export {
-    indexOfLastElement,
-    lastElement,
-    indexJustBeyondLastElement,
+    indexOfFinalElement,
+    finalElement,
+    indexJustBeyondFinalElement,
     totalElements,
 }

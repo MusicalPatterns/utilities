@@ -10,11 +10,11 @@ import {
 
 const sum: <NumericType extends Number>(...values: NumericType[]) => NumericType =
     <NumericType extends Number>(...values: NumericType[]): NumericType => {
-        const lastValue: NumericType = values.pop() as NumericType
+        const previousValue: NumericType = values.pop() as NumericType
 
         const nextSum: NumericType = isEmpty(values) ? ADDITIVE_IDENTITY as unknown as NumericType : sum(...values)
 
-        return (nextSum as unknown as number) + (lastValue as unknown as number) as unknown as NumericType
+        return (nextSum as unknown as number) + (previousValue as unknown as number) as unknown as NumericType
     }
 
 const difference: <NumericType extends Number>(minuend: NumericType, subtrahend: NumericType) => NumericType =
@@ -23,13 +23,13 @@ const difference: <NumericType extends Number>(minuend: NumericType, subtrahend:
 
 const product: <NumericType extends Number>(...values: NumericType[]) => NumericType =
     <NumericType extends Number>(...values: NumericType[]): NumericType => {
-        const lastValue: NumericType = values.pop() as NumericType
+        const previousValue: NumericType = values.pop() as NumericType
 
         const nextProduct: NumericType = isEmpty(values) ?
             MULTIPLICATIVE_IDENTITY as unknown as NumericType :
             product(...values)
 
-        return (nextProduct as unknown as number) * (lastValue as unknown as number) as unknown as NumericType
+        return (nextProduct as unknown as number) * (previousValue as unknown as number) as unknown as NumericType
     }
 
 const quotient: <NumericType extends Number>(dividend: NumericType, divisor: NumericType) => NumericType =
