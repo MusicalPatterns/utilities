@@ -56,6 +56,9 @@ export {
     isLessThan,
     isGreaterThanOrEqualTo,
     isLessThanOrEqualTo,
+    evenElements,
+    oddElements,
+    SKIP_FIRST_ELEMENT,
 } from './code'
 export {
     absoluteRatio,
@@ -277,6 +280,8 @@ export {
     clickElement,
     deleteCharacterFromInput,
     waitForHeadfulQaing,
+    testAllValuesAreTheSame,
+    testGoesMonotonicallyFromValueToValue,
 } from './testing'
 export {
     MILLISECONDS_PER_SECOND,

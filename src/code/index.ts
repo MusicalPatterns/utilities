@@ -23,6 +23,7 @@ export { keyExistsOnObject } from './keyExistsOnObject'
 export { numericSort } from './sort'
 export { uniqueFilter } from './filter'
 export { parseInteger } from './parseInteger'
+export { evenElements, oddElements } from './evenOrOddElements'
 export { sleep } from './sleep'
 export { slice, forEach, map, reduce, filter, cycleSlice } from './typedIterators'
 export {
@@ -38,6 +39,7 @@ export {
     EXCLUSIVE_TO_LEFT,
     INCLUSIVE_TO_LEFT,
     INITIAL,
+    SKIP_FIRST_ELEMENT,
     TRANSLATION_FROM_LENGTH_TO_FINAL_INDEX,
     EXAMPLE_ELEMENT_INDEX,
 } from './constants'
