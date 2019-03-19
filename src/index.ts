@@ -59,6 +59,7 @@ export {
     evenElements,
     oddElements,
     SKIP_FIRST_ELEMENT,
+    arraysHaveNoCommonValues,
 } from './code'
 export {
     absoluteRatio,

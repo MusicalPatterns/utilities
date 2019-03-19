@@ -19,6 +19,7 @@ export {
     Maybe,
     keyExistsOnObject,
     cycleSlice,
+    arraysHaveNoCommonValues,
 } from './code/indexForTest'
 export {
     distanceBetween,
