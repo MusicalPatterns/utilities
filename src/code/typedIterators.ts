@@ -1,16 +1,28 @@
 import { NEXT } from '../math'
 import { apply, Cycle, from, Ordinal } from '../nominal'
-import { indexJustBeyondFinalElement } from './finalElement'
+import { indexJustBeyondFinalElement, totalElements } from './finalElement'
 import { isUndefined } from './isUndefined'
 
-const slice:
-    <ArrayType extends unknown[] | string>(array: ArrayType, initial: Ordinal, terminal?: Ordinal) => ArrayType =
-    <ArrayType extends unknown[] | string>(array: ArrayType, initial: Ordinal, terminal?: Ordinal): ArrayType => {
+const slice: <ArrayType extends unknown[] | string>(
+    arrayOrString: ArrayType,
+    initial: Ordinal,
+    terminal?: Ordinal,
+) => ArrayType =
+    <ArrayType extends unknown[] | string>(
+        arrayOrString: ArrayType,
+        initial: Ordinal,
+        terminal?: Ordinal,
+    ): ArrayType => {
         if (isUndefined(terminal)) {
-            return array.slice(from.Ordinal(initial)) as ArrayType
+            return arrayOrString.slice(from.Ordinal(initial)) as ArrayType
         }
 
-        return array.slice(from.Ordinal(initial), from.Ordinal(terminal)) as ArrayType
+        if (terminal > totalElements(arrayOrString)) {
+            throw new Error(`You tried to slice up to index ${terminal} of a structure with length \
+of only ${totalElements(arrayOrString)}: ${arrayOrString}`)
+        }
+
+        return arrayOrString.slice(from.Ordinal(initial), from.Ordinal(terminal)) as ArrayType
     }
 
 const cycleSlice: <ElementType>(cycle: Cycle<ElementType>, initial: Ordinal, terminal?: Ordinal) => ElementType[] =
