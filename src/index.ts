@@ -205,6 +205,8 @@ export {
     invertNormalScalar,
     valueLinearlyBetweenValues,
     computeDeltas,
+    isNegative,
+    isPositive,
 } from './math'
 export {
     centsTranslationToPitchScalar,
@@ -291,6 +293,7 @@ export {
     testAllValuesAreTheSame,
     testGoesMonotonicallyFromValueToValue,
     testGoesMonotonicallyBetweenValueAndValue,
+    testGoesMonotonicallyByAFactorOf,
     testConstantDelta,
 } from './testing'
 export {

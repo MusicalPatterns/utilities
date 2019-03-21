@@ -13,6 +13,7 @@ export { invertNormalScalar } from './invertNormalScalar'
 export { evaluate } from './evaluate'
 export { valueLinearlyBetweenValues } from './valueLinearlyBetweenValues'
 export { computeGreatestCommonDivisor, computeLeastCommonMultiple } from './common'
+export { isNegative, isPositive } from './positiveAndNegative'
 export {
     reciprocal,
     negative,

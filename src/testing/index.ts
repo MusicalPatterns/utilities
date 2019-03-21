@@ -10,6 +10,10 @@ export { selectOption } from './selectOption'
 export { deleteCharacterFromInput } from './deleteCharacterFromInput'
 export { simulateDesktopViewport, simulateMobileViewport } from './setViewport'
 export { waitForHeadfulQaing } from './wait'
-export { testGoesMonotonicallyBetweenValueAndValue, testGoesMonotonicallyFromValueToValue } from './testMonotonicArrays'
+export {
+    testGoesMonotonicallyBetweenValueAndValue,
+    testGoesMonotonicallyFromValueToValue,
+    testGoesMonotonicallyByAFactorOf,
+} from './testMonotonicArrays'
 export { testAllValuesAreTheSame } from './testAllValuesAreTheSame'
 export { testConstantDelta } from './deltas'
