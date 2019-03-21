@@ -9,6 +9,7 @@ export { repeat } from './repeat'
 export { slice, cycleSlice } from './typedIterators'
 export { keyExistsOnObject } from './keyExistsOnObject'
 export { arraysHaveNoCommonValues } from './noCommonValues'
+export { everyNthElement } from './regularSamplings'
 export { finalElement, indexOfFinalElement } from './finalElement'
 export { camelCaseToConstantCase, constantCaseToUpperCase, camelCaseToLowerCase, camelCaseToUpperCase } from './case'
 

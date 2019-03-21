@@ -24,7 +24,7 @@ export { numericSort } from './sort'
 export { uniqueFilter } from './filter'
 export { parseInteger } from './parseInteger'
 export { arraysHaveNoCommonValues } from './noCommonValues'
-export { evenElements, oddElements } from './evenOrOddElements'
+export { evenElements, oddElements, everyNthElement } from './regularSamplings'
 export { sleep } from './sleep'
 export { slice, forEach, map, reduce, filter, cycleSlice } from './typedIterators'
 export {

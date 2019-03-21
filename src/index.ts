@@ -58,6 +58,7 @@ export {
     isLessThanOrEqualTo,
     evenElements,
     oddElements,
+    everyNthElement,
     SKIP_FIRST_ELEMENT,
     arraysHaveNoCommonValues,
 } from './code'
@@ -74,6 +75,9 @@ export {
     ONCE,
     TWICE,
     EVERY_OTHER,
+    EVERY_THIRD,
+    EVERY_FOURTH,
+    EVERY_FIFTH,
     ONE_HALF,
     ONE_THIRD,
     ONE_FOURTH,

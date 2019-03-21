@@ -20,6 +20,7 @@ export {
     keyExistsOnObject,
     cycleSlice,
     arraysHaveNoCommonValues,
+    everyNthElement,
 } from './code/indexForTest'
 export {
     distanceBetween,

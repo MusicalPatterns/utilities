@@ -82,7 +82,10 @@ const TENTH: Ordinal = to.Ordinal(10)
 const ELEVENTH: Ordinal = to.Ordinal(11)
 const TWELFTH: Ordinal = to.Ordinal(12)
 
-const EVERY_OTHER: Cardinal = to.Cardinal(2)
+const EVERY_OTHER: Scalar = to.Scalar(2)
+const EVERY_THIRD: Scalar = to.Scalar(3)
+const EVERY_FOURTH: Scalar = to.Scalar(4)
+const EVERY_FIFTH: Scalar = to.Scalar(5)
 
 const ADDITIVE_IDENTITY: Translation = to.Translation(0)
 const MULTIPLICATIVE_IDENTITY: Scalar = to.Scalar(1)
@@ -134,6 +137,9 @@ export {
     ONCE,
     TWICE,
     EVERY_OTHER,
+    EVERY_THIRD,
+    EVERY_FOURTH,
+    EVERY_FIFTH,
     TWO_DIMENSIONAL,
     THREE_DIMENSIONAL,
     TWO,
