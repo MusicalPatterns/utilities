@@ -61,6 +61,7 @@ export {
     everyNthElement,
     SKIP_FIRST_ELEMENT,
     arraysHaveNoCommonValues,
+    initialElement,
 } from './code'
 export {
     absoluteRatio,
@@ -203,6 +204,7 @@ export {
     computeCommonFactors,
     invertNormalScalar,
     valueLinearlyBetweenValues,
+    computeDeltas,
 } from './math'
 export {
     centsTranslationToPitchScalar,
@@ -289,6 +291,7 @@ export {
     testAllValuesAreTheSame,
     testGoesMonotonicallyFromValueToValue,
     testGoesMonotonicallyBetweenValueAndValue,
+    testConstantDelta,
 } from './testing'
 export {
     MILLISECONDS_PER_SECOND,

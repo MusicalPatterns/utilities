@@ -61,6 +61,7 @@ export {
     computeCommonFactors,
     areCoprime,
     invertNormalScalar,
+    computeDeltas,
 } from './math/indexForTest'
 export {
     centsTranslationToPitchScalar,
@@ -107,4 +108,5 @@ export {
     testArraysAreClose,
     testIsCloseTo,
     testArraysHaveSameElements,
+    testConstantDelta,
 } from './testing/indexForTest'

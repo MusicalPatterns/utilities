@@ -2,13 +2,13 @@
 
 import { finalElement, isUndefined, SKIP_FIRST_ELEMENT } from '../code'
 
-const testGoesMonotonicallyFromValueToValue: <NumericElementType extends Number>(
+const testGoesMonotonicallyFromValueToValue: <NumericElementType extends Number = Number>(
     array: NumericElementType[],
     expectedBeginValue: NumericElementType,
     expectedEndValue: NumericElementType,
     precision?: number,
 ) => void =
-    <NumericElementType extends Number>(
+    <NumericElementType extends Number = Number>(
         array: NumericElementType[],
         expectedBeginValue: NumericElementType,
         expectedEndValue: NumericElementType,
@@ -30,13 +30,13 @@ const testGoesMonotonicallyFromValueToValue: <NumericElementType extends Number>
         testGoesMonotonicallyBetweenValueAndValue(array, expectedBeginValue, expectedEndValue, precision)
     }
 
-const testGoesMonotonicallyBetweenValueAndValue: <NumericElementType extends Number>(
+const testGoesMonotonicallyBetweenValueAndValue: <NumericElementType extends Number = Number>(
     array: NumericElementType[],
     expectedBeginValue: NumericElementType,
     expectedEndValue: NumericElementType,
     precision?: number,
 ) => void =
-    <NumericElementType extends Number>(
+    <NumericElementType extends Number = Number>(
         array: NumericElementType[],
         expectedBeginValue: NumericElementType,
         expectedEndValue: NumericElementType,

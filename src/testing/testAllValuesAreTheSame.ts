@@ -2,12 +2,12 @@
 
 import { isUndefined } from '../code'
 
-const testAllValuesAreTheSame: <NumericElementType extends Number>(
+const testAllValuesAreTheSame: <NumericElementType extends Number = Number>(
     array: NumericElementType[],
     expectedValue: NumericElementType,
     precision?: number,
 ) => void =
-    <NumericElementType extends Number>(
+    <NumericElementType extends Number = Number>(
         array: NumericElementType[],
         expectedValue: NumericElementType,
         precision?: number,

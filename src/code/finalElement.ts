@@ -1,5 +1,6 @@
 import { negative } from '../math'
 import { apply, Cardinal, Ordinal, to } from '../nominal'
+import { INITIAL } from './constants'
 
 const finalElement: <ElementType>(array: ElementType[]) => ElementType =
     <ElementType>(array: ElementType[]): ElementType =>
@@ -20,9 +21,14 @@ const totalElements: <ArrayType extends unknown[] | string>(array: ArrayType) =>
     <ArrayType extends unknown[] | string>(array: ArrayType): Cardinal =>
         to.Cardinal(array.length)
 
+const initialElement: <ElementType>(array: ElementType[]) => ElementType =
+    <ElementType>(array: ElementType[]): ElementType =>
+        apply.Ordinal(array, INITIAL)
+
 export {
     indexOfFinalElement,
     finalElement,
     indexJustBeyondFinalElement,
     totalElements,
+    initialElement,
 }

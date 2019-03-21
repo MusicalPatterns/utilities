@@ -25,6 +25,7 @@ export {
 } from './specialNumbers'
 export { computeCommonFactors, areCoprime } from './commonFactors'
 export { invertNormalScalar } from './invertNormalScalar'
+export { computeDeltas } from './deltas'
 
 export {
     X_AXIS,

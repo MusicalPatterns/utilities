@@ -8,11 +8,11 @@ import { difference, negative, sum } from './typedOperations'
 import { Coordinate, CycleMap, RotateParameters, RotationMatrix, Vector } from './types'
 
 const defaultFixedCoordinateToOriginOfDimensionalityOfCoordinate:
-    <ElementType extends Number, Dimensionality extends Number>(
+    <ElementType extends Number = Number, Dimensionality extends Number = Number>(
         fixedCoordinate: Maybe<Coordinate<ElementType, Dimensionality>>,
         coordinate: Coordinate<ElementType, Dimensionality>,
     ) => Coordinate<ElementType, Dimensionality> =
-    <ElementType extends Number, Dimensionality extends Number>(
+    <ElementType extends Number = Number, Dimensionality extends Number = Number>(
         fixedCoordinate: Maybe<Coordinate<ElementType, Dimensionality>>,
         coordinate: Coordinate<ElementType, Dimensionality>,
     ): Coordinate<ElementType, Dimensionality> => (
@@ -22,10 +22,10 @@ const defaultFixedCoordinateToOriginOfDimensionalityOfCoordinate:
     ) as any as Coordinate<ElementType, Dimensionality>
 
 const computeCycleMapForScalingRotationMatrixToDimensionalityOfCoordinate:
-    <ElementType extends Number, Dimensionality extends Number>(
+    <ElementType extends Number = Number, Dimensionality extends Number = Number>(
         coordinate: Coordinate<ElementType, Dimensionality>,
     ) => CycleMap =
-    <ElementType extends Number, Dimensionality extends Number>(
+    <ElementType extends Number = Number, Dimensionality extends Number = Number>(
         coordinate: Coordinate<ElementType, Dimensionality>,
     ): CycleMap =>
         <VectorOrMatrix>(rotationVectorOrMatrix: Cycle<VectorOrMatrix>): Cycle<VectorOrMatrix> =>
@@ -47,11 +47,11 @@ const mapAcrossBothDimensions: (rotationMatrix: RotationMatrix, cycleMap: CycleM
         cycleMap(to.Cycle(rotationMatrix.map(cycleMap)))
 
 const scaleRotationMatrixToDimensionalityOfCoordinate:
-    <ElementType extends Number, Dimensionality extends Number>(
+    <ElementType extends Number, Dimensionality extends Number = Number>(
         rotationMatrix: RotationMatrix,
         coordinate: Coordinate<ElementType, Dimensionality>,
     ) => RotationMatrix =
-    <ElementType extends Number, Dimensionality extends Number>(
+    <ElementType extends Number, Dimensionality extends Number = Number>(
         rotationMatrix: RotationMatrix, coordinate: Coordinate<ElementType, Dimensionality>,
     ): RotationMatrix => {
         const cycleMap: CycleMap = computeCycleMapForScalingRotationMatrixToDimensionalityOfCoordinate(coordinate)
@@ -67,10 +67,10 @@ const cycleRotationMatrixForAxis:
         return mapAcrossBothDimensions(rotationMatrix, cycleMap)
     }
 
-const rotate: <ElementType extends Number, Dimensionality extends Number>(
+const rotate: <ElementType extends Number, Dimensionality extends Number = Number>(
     rotateParameters: RotateParameters<ElementType, Dimensionality>,
 ) => Coordinate<ElementType, Dimensionality> =
-    <ElementType extends Number, Dimensionality extends Number>(
+    <ElementType extends Number, Dimensionality extends Number = Number>(
         rotateParameters: RotateParameters<ElementType, Dimensionality>,
     ): Coordinate<ElementType, Dimensionality> => {
         const { fixedCoordinate: fixedCoordinateArgument, coordinate, rotation, axis = Z_AXIS } = rotateParameters

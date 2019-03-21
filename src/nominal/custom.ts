@@ -22,11 +22,11 @@ type From<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject 
 
 type ToMono<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> = {
     [Index in keyof NominalInterfaceOptionObjectType['number']]:
-    <NumericType extends Number>(value: NumericType) => NominalInterfaceOptionObjectType['number'][Index]
+    <NumericType extends Number = Number>(value: NumericType) => NominalInterfaceOptionObjectType['number'][Index]
 }
 type ToPoly<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> = {
     [Index in keyof NominalInterfaceOptionObjectType['numericArray']]:
-    <NumericElementType extends Number>(
+    <NumericElementType extends Number = Number>(
         value: NumericElementType[],
     ) => NominalInterfaceOptionObjectType['numericArray'][Index]
 }
@@ -73,7 +73,7 @@ const computeNominalInterface: <NominalInterfaceOptionObjectType extends Nominal
                     accumulator: ToMono<NominalInterfaceOptionObjectType>, typeName: string,
                 ): ToMono<NominalInterfaceOptionObjectType> => ({
                     ...accumulator,
-                    [ typeName ]: <NumericType extends Number>(value: NumericType): unknown => value,
+                    [ typeName ]: <NumericType extends Number = Number>(value: NumericType): unknown => value,
                 }),
                 {},
             ),
@@ -83,7 +83,7 @@ const computeNominalInterface: <NominalInterfaceOptionObjectType extends Nominal
                     accumulator: ToPoly<NominalInterfaceOptionObjectType>, typeName: string,
                 ): ToPoly<NominalInterfaceOptionObjectType> => ({
                     ...accumulator,
-                    [ typeName ]: <NumericElementType extends Number>(values: NumericElementType[]): unknown => values,
+                    [ typeName ]: <NumericElementType extends Number = Number>(values: NumericElementType[]): unknown => values,
                 }),
                 {},
             ),

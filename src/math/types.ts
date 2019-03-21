@@ -20,7 +20,7 @@ type Coordinate<ElementType extends Number = Space, Dimensionality extends Numbe
             [ ElementType, ElementType, ElementType ] :
             ElementType[]
 
-interface RotateParameters<ElementType extends Number, Dimensionality extends Number> {
+interface RotateParameters<ElementType extends Number = Number, Dimensionality extends Number = Number> {
     axis?: Ordinal,
     coordinate: Coordinate<ElementType, Dimensionality>,
     fixedCoordinate?: Coordinate<ElementType, Dimensionality>,

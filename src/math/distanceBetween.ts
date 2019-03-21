@@ -6,9 +6,14 @@ import { SQUARE_ROOT, SQUARED } from './constants'
 import { absoluteValue, difference, sum } from './typedOperations'
 import { Coordinate } from './types'
 
-const distanceBetween:
-    <NumericType extends Number>(pointA: Coordinate<NumericType>, pointB: Coordinate<NumericType>) => NumericType =
-    <NumericType extends Number>(pointA: Coordinate<NumericType>, pointB: Coordinate<NumericType>): NumericType => {
+const distanceBetween: <NumericType extends Number = Number>(
+    pointA: Coordinate<NumericType>,
+    pointB: Coordinate<NumericType>,
+) => NumericType =
+    <NumericType extends Number = Number>(
+        pointA: Coordinate<NumericType>,
+        pointB: Coordinate<NumericType>,
+    ): NumericType => {
         const sumOfSquaresOfDimensionalDistances: NumericType = reduce(
             pointA,
             (accumulator: NumericType, pointAElement: NumericType, index: Ordinal): NumericType => {

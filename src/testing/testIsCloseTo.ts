@@ -13,8 +13,11 @@ import {
 } from '../math'
 import { apply, to } from '../nominal'
 
-const determineIfClose: <NumericType extends Number>(numberOne: NumericType, numberTwo: NumericType) => boolean =
-    <NumericType extends Number>(numberOne: NumericType, numberTwo: NumericType): boolean => {
+const determineIfClose: <NumericType extends Number = Number>(
+    numberOne: NumericType,
+    numberTwo: NumericType,
+) => boolean =
+    <NumericType extends Number = Number>(numberOne: NumericType, numberTwo: NumericType): boolean => {
         const precision: number = DEFAULT_PRECISION
 
         const pow: number = apply.Power(DECIMAL, to.Power(apply.Translation(precision, to.Translation(1))))
@@ -26,8 +29,12 @@ const determineIfClose: <NumericType extends Number>(numberOne: NumericType, num
 
 const testIsCloseTo:
     // tslint:disable-next-line bool-param-default
-    <NumericType extends Number>(numberOne: NumericType, numberTwo: NumericType, negate?: boolean) => void =
-    <NumericType extends Number>(numberOne: NumericType, numberTwo: NumericType, negate: boolean = false): void => {
+    <NumericType extends Number = Number>(numberOne: NumericType, numberTwo: NumericType, negate?: boolean) => void =
+    <NumericType extends Number = Number>(
+        numberOne: NumericType,
+        numberTwo: NumericType,
+        negate: boolean = false,
+    ): void => {
         const isClose: boolean = determineIfClose(numberOne, numberTwo)
 
         if (!negate && !isClose) {
@@ -40,8 +47,8 @@ const testIsCloseTo:
 
 const testIsNotCloseTo:
     // tslint:disable-next-line bool-param-default
-    <NumericType extends Number>(numberOne: NumericType, numberTwo: NumericType, negate?: boolean) => void =
-    <NumericType extends Number>(numberOne: NumericType, numberTwo: NumericType, negate: boolean = false): void => {
+    <NumericType extends Number = Number>(numberOne: NumericType, numberTwo: NumericType) => void =
+    <NumericType extends Number = Number>(numberOne: NumericType, numberTwo: NumericType): void => {
         testIsCloseTo(numberOne, numberTwo, true)
     }
 
