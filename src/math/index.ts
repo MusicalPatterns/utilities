@@ -10,6 +10,7 @@ export { dividesEvenly } from './dividesEvenly'
 export { powerSet } from './powerSet'
 export { invertNormalScalar } from './invertNormalScalar'
 export { evaluate } from './evaluate'
+export { valueLinearlyBetweenValues } from './valueLinearlyBetweenValues'
 export { computeGreatestCommonDivisor, computeLeastCommonMultiple } from './common'
 export {
     reciprocal,

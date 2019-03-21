@@ -198,6 +198,7 @@ export {
     areCoprime,
     computeCommonFactors,
     invertNormalScalar,
+    valueLinearlyBetweenValues,
 } from './math'
 export {
     centsTranslationToPitchScalar,
