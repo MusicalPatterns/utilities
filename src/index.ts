@@ -283,6 +283,7 @@ export {
     waitForHeadfulQaing,
     testAllValuesAreTheSame,
     testGoesMonotonicallyFromValueToValue,
+    testGoesMonotonicallyBetweenValueAndValue,
 } from './testing'
 export {
     MILLISECONDS_PER_SECOND,
