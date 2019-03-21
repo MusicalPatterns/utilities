@@ -1,7 +1,7 @@
 // tslint:disable ban-types max-file-line-count
 
 import { finalElement, initialElement, isUndefined, SKIP_FIRST_ELEMENT } from '../code'
-import { isPositive, product } from '../math'
+import { isPositive, product, quotient } from '../math'
 import { from, Scalar } from '../nominal'
 
 const testGoesMonotonicallyFromValueToValue: <NumericElementType extends Number = Number>(
@@ -94,7 +94,7 @@ const testGoesMonotonicallyByAFactorOf: <NumericElementType extends Number = Num
     ): void => {
         const isIncreasing: boolean = isPositive(factor)
 
-        expect(product(initialElement(array), finalElement(array)))
+        expect(quotient(initialElement(array), finalElement(array)))
             .toBeCloseTo(from.Scalar(factor))
 
         testGoesMonotonically(array, isIncreasing)
