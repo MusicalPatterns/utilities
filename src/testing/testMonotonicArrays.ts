@@ -53,11 +53,17 @@ to the expected end value ${expectedEndValue}, with precision ${precision}`,
 const testGoesMonotonically: <NumericElementType extends Number = Number>(
     array: NumericElementType[],
     manualIsIncreasing?: boolean,
+    expectedBeginValue?: NumericElementType,
+    precision?: number,
 ) => void =
     <NumericElementType extends Number = Number>(
         array: NumericElementType[],
         manualIsIncreasing?: boolean,
+        expectedBeginValue?: NumericElementType,
+        precision?: number,
     ): void => {
+        testBeginValue(array, expectedBeginValue, precision)
+
         let isIncreasing: Maybe<boolean> = manualIsIncreasing
 
         let previousValue: NumericElementType = initialElement(array)
