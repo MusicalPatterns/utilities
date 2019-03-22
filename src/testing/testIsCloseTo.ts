@@ -16,9 +16,14 @@ import { apply, to } from '../nominal'
 const determineIfClose: <NumericType extends Number = Number>(
     numberOne: NumericType,
     numberTwo: NumericType,
+    manualPrecision?: number,
 ) => boolean =
-    <NumericType extends Number = Number>(numberOne: NumericType, numberTwo: NumericType): boolean => {
-        const precision: number = DEFAULT_PRECISION
+    <NumericType extends Number = Number>(
+        numberOne: NumericType,
+        numberTwo: NumericType,
+        manualPrecision?: number,
+    ): boolean => {
+        const precision: number = manualPrecision || DEFAULT_PRECISION
 
         const pow: number = apply.Power(DECIMAL, to.Power(apply.Translation(precision, to.Translation(1))))
         const delta: Number = absoluteValue(difference(numberOne, numberTwo))
@@ -27,15 +32,20 @@ const determineIfClose: <NumericType extends Number = Number>(
         return quotient(round(product(delta, pow)), pow) <= maxDelta
     }
 
-const testIsCloseTo:
+const testIsCloseTo: <NumericType extends Number = Number>(
+    numberOne: NumericType,
+    numberTwo: NumericType,
+    precision?: number,
     // tslint:disable-next-line bool-param-default
-    <NumericType extends Number = Number>(numberOne: NumericType, numberTwo: NumericType, negate?: boolean) => void =
+    negate?: boolean,
+) => void =
     <NumericType extends Number = Number>(
         numberOne: NumericType,
         numberTwo: NumericType,
+        precision?: number,
         negate: boolean = false,
     ): void => {
-        const isClose: boolean = determineIfClose(numberOne, numberTwo)
+        const isClose: boolean = determineIfClose(numberOne, numberTwo, precision)
 
         if (!negate && !isClose) {
             fail(`expected ${numberOne} to be close to ${numberTwo}`)
@@ -47,9 +57,9 @@ const testIsCloseTo:
 
 const testIsNotCloseTo:
     // tslint:disable-next-line bool-param-default
-    <NumericType extends Number = Number>(numberOne: NumericType, numberTwo: NumericType) => void =
-    <NumericType extends Number = Number>(numberOne: NumericType, numberTwo: NumericType): void => {
-        testIsCloseTo(numberOne, numberTwo, true)
+    <NumericType extends Number = Number>(numberOne: NumericType, numberTwo: NumericType, precision?: number) => void =
+    <NumericType extends Number = Number>(numberOne: NumericType, numberTwo: NumericType, precision?: number): void => {
+        testIsCloseTo(numberOne, numberTwo, precision, true)
     }
 
 export {
