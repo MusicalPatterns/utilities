@@ -21,8 +21,7 @@ const testAllValuesAreTheSame: <NumericElementType extends Number = Number>(
                     .toBeCloseTo(
                         expectedValue as unknown as number,
                         precision,
-                        `expected ${value} at index ${index} to conform to value ${expectedValue}; \
-all values of this array ${array} should be the same`,
+                        `expected ${value} at index ${index} to conform to value ${expectedValue}`,
                     )
             }
             else {
