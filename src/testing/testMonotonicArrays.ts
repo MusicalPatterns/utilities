@@ -1,8 +1,8 @@
 // tslint:disable ban-types max-file-line-count
 
-import { finalElement, initialElement, isUndefined, SKIP_FIRST_ELEMENT } from '../code'
+import { finalElement, forEach, initialElement, isUndefined, SKIP_FIRST_ELEMENT } from '../code'
 import { isPositive, quotient } from '../math'
-import { from, Scalar } from '../nominal'
+import { from, Ordinal, Scalar } from '../nominal'
 
 const testGoesMonotonicallyFromValueToValue: <NumericElementType extends Number = Number>(
     array: NumericElementType[],
@@ -16,17 +16,35 @@ const testGoesMonotonicallyFromValueToValue: <NumericElementType extends Number 
         expectedEndValue: NumericElementType,
         precision?: number,
     ): void => {
-        if (!isUndefined(precision)) {
+        if (isUndefined(precision)) {
             expect(initialElement(array))
-                .toBeCloseTo(expectedBeginValue as unknown as number, precision)
+                .toEqual(
+                    expectedBeginValue,
+                    `initial element ${initialElement(array)} was not equal \
+to the expected begin value ${expectedBeginValue}`,
+                )
             expect(finalElement(array))
-                .toBeCloseTo(expectedEndValue as unknown as number, precision)
+                .toEqual(
+                    expectedEndValue,
+                    `final element ${finalElement(array)} was not equal \
+to the expected end value ${expectedEndValue}`,
+                )
         }
         else {
             expect(initialElement(array))
-                .toEqual(expectedBeginValue)
+                .toBeCloseTo(
+                    expectedBeginValue as unknown as number,
+                    precision,
+                    `initial element ${initialElement(array)} was not close enough \
+to the expected begin value ${expectedBeginValue}, with precision ${precision}`,
+                )
             expect(finalElement(array))
-                .toEqual(expectedEndValue)
+                .toBeCloseTo(
+                    expectedEndValue as unknown as number,
+                    precision,
+                    `final element ${finalElement(array)} was not close enough \
+to the expected end value ${expectedEndValue}, with precision ${precision}`,
+                )
         }
 
         testGoesMonotonicallyBetweenValueAndValue(array, expectedBeginValue, expectedEndValue)
@@ -41,19 +59,29 @@ const testGoesMonotonically: <NumericElementType extends Number = Number>(
         isIncreasing: boolean,
     ): void => {
         let previousValue: NumericElementType = initialElement(array)
-        array.slice(SKIP_FIRST_ELEMENT)
-            .forEach((value: NumericElementType) => {
+        forEach(
+            array.slice(SKIP_FIRST_ELEMENT),
+            (value: NumericElementType, index: Ordinal) => {
                 if (isIncreasing) {
                     expect(value)
-                        .toBeGreaterThanOrEqual(previousValue as unknown as number)
+                        .toBeGreaterThanOrEqual(
+                            previousValue as unknown as number,
+                            `array did not go monotonically; \
+value ${value} at index ${index} did not weakly increase along with the other elements: ${array}`,
+                        )
                 }
                 else {
                     expect(value)
-                        .toBeLessThanOrEqual(previousValue as unknown as number)
+                        .toBeLessThanOrEqual(
+                            previousValue as unknown as number,
+                            `array did not go monotonically; \
+value ${value} at index ${index} did not weakly decrease along with the other elements: ${array}`,
+                        )
                 }
 
                 previousValue = value
-            })
+            },
+        )
     }
 
 const testGoesMonotonicallyBetweenValueAndValue: <NumericElementType extends Number = Number>(
@@ -69,16 +97,32 @@ const testGoesMonotonicallyBetweenValueAndValue: <NumericElementType extends Num
         const isIncreasing: boolean = expectedEndValue > expectedBeginValue
 
         if (isIncreasing) {
-            expect(array[ 0 ])
-                .toBeGreaterThanOrEqual(expectedBeginValue as unknown as number)
+            expect(initialElement(array))
+                .toBeGreaterThanOrEqual(
+                    expectedBeginValue as unknown as number,
+                    `initial element ${initialElement(array)} was not between the expected values \
+${expectedBeginValue} and ${expectedEndValue}`,
+                )
             expect(finalElement(array))
-                .toBeLessThanOrEqual(expectedEndValue as unknown as number)
+                .toBeLessThanOrEqual(
+                    expectedEndValue as unknown as number,
+                    `final element ${finalElement(array)} was not between the expected values \
+${expectedBeginValue} and ${expectedEndValue}`,
+                )
         }
         else {
-            expect(array[ 0 ])
-                .toBeLessThanOrEqual(expectedBeginValue as unknown as number)
+            expect(initialElement(array))
+                .toBeLessThanOrEqual(
+                    expectedBeginValue as unknown as number,
+                    `initial element ${initialElement(array)} was not between the expected values \
+${expectedBeginValue} and ${expectedEndValue}`,
+                )
             expect(finalElement(array))
-                .toBeGreaterThanOrEqual(expectedEndValue as unknown as number)
+                .toBeGreaterThanOrEqual(
+                    expectedEndValue as unknown as number,
+                    `final element ${finalElement(array)} was not between the expected values \
+${expectedBeginValue} and ${expectedEndValue}`,
+                )
         }
 
         testGoesMonotonically(array, isIncreasing)
@@ -86,18 +130,35 @@ const testGoesMonotonicallyBetweenValueAndValue: <NumericElementType extends Num
 
 const testGoesMonotonicallyByAFactorOf: <NumericElementType extends Number = Number>(
     array: NumericElementType[],
-    factor: Scalar,
+    expectedFactor: Scalar,
     precision?: number,
 ) => void =
     <NumericElementType extends Number = Number>(
         array: NumericElementType[],
-        factor: Scalar,
+        expectedFactor: Scalar,
         precision?: number,
     ): void => {
-        const isIncreasing: boolean = isPositive(factor)
+        const isIncreasing: boolean = isPositive(expectedFactor)
 
-        expect(quotient(finalElement(array), initialElement(array)))
-            .toBeCloseTo(from.Scalar(factor), precision)
+        const actualFactor: NumericElementType = quotient(finalElement(array), initialElement(array))
+
+        if (isUndefined(precision)) {
+            expect(actualFactor)
+                .toEqual(
+                    from.Scalar<number, Scalar>(expectedFactor) as unknown as NumericElementType,
+                    `this array does not change by a factor of ${expectedFactor}; \
+ratio between initial and final elements is instead ${actualFactor}`,
+                )
+        }
+        else {
+            expect(actualFactor)
+                .toBeCloseTo(
+                    from.Scalar(expectedFactor),
+                    precision,
+                    `this array does not change by a factor of ${expectedFactor}; \
+ratio between initial and final elements is instead ${actualFactor}; precision used in test was ${precision}`,
+                )
+        }
 
         testGoesMonotonically(array, isIncreasing)
     }
