@@ -9,11 +9,13 @@ import { testGoesMonotonically, testGoesMonotonicallyByAFactorOf } from './testM
 const testGoesQuadratically: <NumericElementType extends Number = Number>(
     array: NumericElementType[],
     expectedFactor?: Scalar,
+    expectedBeginValue?: NumericElementType,
     precision?: number,
 ) => void =
     <NumericElementType extends Number = Number>(
         array: NumericElementType[],
         expectedFactor?: Scalar,
+        expectedBeginValue?: NumericElementType,
         precision?: number,
     ): void => {
         const durationDeltas: Translation[] = computeDeltas(array)
@@ -22,7 +24,12 @@ const testGoesQuadratically: <NumericElementType extends Number = Number>(
             testGoesMonotonically(array)
         }
         else {
-            testGoesMonotonicallyByAFactorOf(durationDeltas, expectedFactor, precision)
+            testGoesMonotonicallyByAFactorOf(
+                durationDeltas,
+                expectedFactor,
+                expectedBeginValue as unknown as Translation,
+                precision,
+            )
         }
 
         testAllValuesAreTheSame(computeIntervals(durationDeltas), undefined, precision)

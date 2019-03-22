@@ -136,16 +136,38 @@ ${expectedBeginValue} and ${expectedEndValue}`,
 const testGoesMonotonicallyByAFactorOf: <NumericElementType extends Number = Number>(
     array: NumericElementType[],
     expectedFactor: Scalar,
+    expectedBeginValue?: NumericElementType,
     precision?: number,
 ) => void =
     <NumericElementType extends Number = Number>(
         array: NumericElementType[],
         expectedFactor: Scalar,
+        expectedBeginValue?: NumericElementType,
         precision?: number,
     ): void => {
         const isIncreasing: boolean = isPositive(expectedFactor)
 
         const actualFactor: NumericElementType = quotient(finalElement(array), initialElement(array))
+
+        if (!isUndefined(expectedBeginValue)) {
+            if (isUndefined(precision)) {
+                expect(initialElement(array))
+                    .toEqual(
+                        expectedBeginValue,
+                        `array did not begin at expected value ${expectedBeginValue}; \
+it began at ${initialElement(array)}; array was ${array}`,
+                    )
+            }
+            else {
+                expect(initialElement(array))
+                    .toBeCloseTo(
+                        expectedBeginValue as unknown as number,
+                        precision,
+                        `array did not begin close to expected value ${expectedBeginValue}; \
+it began at ${initialElement(array)}; array was ${array}; precision used was ${precision}`,
+                    )
+            }
+        }
 
         if (isUndefined(precision)) {
             expect(actualFactor)
