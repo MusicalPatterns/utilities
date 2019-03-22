@@ -17,3 +17,8 @@ export {
 } from './testMonotonicArrays'
 export { testAllValuesAreTheSame } from './testAllValuesAreTheSame'
 export { testConstantDelta } from './deltas'
+
+export {
+    VERY_HIGH_PRECISION,
+    VERY_LOW_PRECISION,
+} from './constants'
