@@ -1,7 +1,7 @@
 // tslint:disable ban-types max-file-line-count bool-param-default
 
 import { finalElement, forEach, initialElement, isUndefined, Maybe, SKIP_FIRST_ELEMENT } from '../code'
-import { isPositive, quotient } from '../math'
+import { isPositive, MULTIPLICATIVE_IDENTITY, quotient } from '../math'
 import { from, Ordinal, Scalar } from '../nominal'
 
 const testGoesMonotonicallyFromValueToValue: <NumericElementType extends Number = Number>(
@@ -182,7 +182,7 @@ const testGoesMonotonicallyByAFactorOf: <NumericElementType extends Number = Num
         expectedBeginValue?: NumericElementType,
         precision?: number,
     ): void => {
-        const isIncreasing: boolean = isPositive(expectedFactor)
+        const isIncreasing: boolean = expectedFactor > MULTIPLICATIVE_IDENTITY
 
         const actualFactor: NumericElementType = quotient(finalElement(array), initialElement(array))
 
