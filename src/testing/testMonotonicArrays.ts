@@ -1,7 +1,7 @@
 // tslint:disable ban-types max-file-line-count bool-param-default
 
 import { finalElement, forEach, initialElement, isUndefined, Maybe, SKIP_FIRST_ELEMENT } from '../code'
-import { isPositive, MULTIPLICATIVE_IDENTITY, quotient } from '../math'
+import { MULTIPLICATIVE_IDENTITY, quotient } from '../math'
 import { from, Ordinal, Scalar } from '../nominal'
 
 const testGoesMonotonicallyFromValueToValue: <NumericElementType extends Number = Number>(

@@ -10,11 +10,16 @@ export { selectOption } from './selectOption'
 export { deleteCharacterFromInput } from './deleteCharacterFromInput'
 export { simulateDesktopViewport, simulateMobileViewport } from './setViewport'
 export { waitForHeadfulQaing } from './wait'
-export { testGoesQuadratically } from './testQuadraticArrays'
+export {
+    testGoesQuadratically,
+    testGoesQuadraticallyByAFactorOf,
+    testGoesQuadraticallyBetweenValueAndValue,
+} from './testQuadraticArrays'
 export {
     testGoesMonotonicallyBetweenValueAndValue,
     testGoesMonotonicallyFromValueToValue,
     testGoesMonotonicallyByAFactorOf,
+    testGoesMonotonically,
 } from './testMonotonicArrays'
 export { testAllValuesAreTheSame } from './testAllValuesAreTheSame'
 export { testConstantDelta } from './deltas'

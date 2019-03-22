@@ -295,8 +295,11 @@ export {
     testGoesMonotonicallyFromValueToValue,
     testGoesMonotonicallyBetweenValueAndValue,
     testGoesMonotonicallyByAFactorOf,
+    testGoesMonotonically,
     testConstantDelta,
     testGoesQuadratically,
+    testGoesQuadraticallyByAFactorOf,
+    testGoesQuadraticallyBetweenValueAndValue,
     VERY_HIGH_PRECISION,
     VERY_LOW_PRECISION,
 } from './testing'

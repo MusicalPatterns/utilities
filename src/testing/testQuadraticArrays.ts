@@ -1,37 +1,57 @@
 // tslint:disable ban-types
 
-import { isUndefined, Maybe } from '../code'
-import { computeDeltas, computeIntervals, quotient } from '../math'
-import { Scalar, to } from '../nominal'
+import { computeDeltas, computeIntervals } from '../math'
+import { Scalar } from '../nominal'
 import { testAllValuesAreTheSame } from './testAllValuesAreTheSame'
-import { testGoesMonotonically, testGoesMonotonicallyByAFactorOf } from './testMonotonicArrays'
+import { testGoesMonotonicallyBetweenValueAndValue, testGoesMonotonicallyByAFactorOf } from './testMonotonicArrays'
 
-const testGoesQuadratically: <NumericElementType extends Number = Number>(
+const testGoesQuadraticallyByAFactorOf: <NumericElementType extends Number = Number>(
     array: NumericElementType[],
+    expectedFactor: Scalar,
     expectedBeginValue?: NumericElementType,
-    expectedEndValue?: NumericElementType,
     precision?: number,
 ) => void =
     <NumericElementType extends Number = Number>(
         array: NumericElementType[],
+        expectedFactor: Scalar,
         expectedBeginValue?: NumericElementType,
-        expectedEndValue?: NumericElementType,
         precision?: number,
     ): void => {
-        let expectedFactor: Maybe<Scalar> = undefined
-        if (!isUndefined(expectedBeginValue) && !isUndefined(expectedEndValue)) {
-            expectedFactor = to.Scalar(quotient(expectedEndValue, expectedBeginValue))
-        }
-        if (isUndefined(expectedFactor)) {
-            testGoesMonotonically(array, undefined, expectedBeginValue)
-        }
-        else {
-            testGoesMonotonicallyByAFactorOf(array, expectedFactor, expectedBeginValue, precision)
-        }
+        testGoesMonotonicallyByAFactorOf(array, expectedFactor, expectedBeginValue, precision)
 
+        testGoesQuadratically(array, precision)
+    }
+
+const testGoesQuadraticallyBetweenValueAndValue: <NumericElementType extends Number = Number>(
+    array: NumericElementType[],
+    expectedBeginValue: NumericElementType,
+    expectedEndValue: NumericElementType,
+    precision?: number,
+) => void =
+    <NumericElementType extends Number = Number>(
+        array: NumericElementType[],
+        expectedBeginValue: NumericElementType,
+        expectedEndValue: NumericElementType,
+        precision?: number,
+    ): void => {
+        testGoesMonotonicallyBetweenValueAndValue(array, expectedBeginValue, expectedEndValue)
+
+        testGoesQuadratically(array, precision)
+    }
+
+const testGoesQuadratically: <NumericElementType extends Number = Number>(
+    array: NumericElementType[],
+    precision?: number,
+) => void =
+    <NumericElementType extends Number = Number>(
+        array: NumericElementType[],
+        precision?: number,
+    ): void => {
         testAllValuesAreTheSame(computeIntervals(computeDeltas(array)), undefined, precision)
     }
 
 export {
     testGoesQuadratically,
+    testGoesQuadraticallyBetweenValueAndValue,
+    testGoesQuadraticallyByAFactorOf,
 }
