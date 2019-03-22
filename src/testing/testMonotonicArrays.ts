@@ -1,6 +1,6 @@
-// tslint:disable ban-types max-file-line-count
+// tslint:disable ban-types max-file-line-count bool-param-default
 
-import { finalElement, forEach, initialElement, isUndefined, SKIP_FIRST_ELEMENT } from '../code'
+import { finalElement, forEach, initialElement, isUndefined, Maybe, SKIP_FIRST_ELEMENT } from '../code'
 import { isPositive, quotient } from '../math'
 import { from, Ordinal, Scalar } from '../nominal'
 
@@ -52,17 +52,22 @@ to the expected end value ${expectedEndValue}, with precision ${precision}`,
 
 const testGoesMonotonically: <NumericElementType extends Number = Number>(
     array: NumericElementType[],
-    isIncreasing: boolean,
+    manualIsIncreasing?: boolean,
 ) => void =
     <NumericElementType extends Number = Number>(
         array: NumericElementType[],
-        isIncreasing: boolean,
+        manualIsIncreasing?: boolean,
     ): void => {
+        let isIncreasing: Maybe<boolean> = manualIsIncreasing
+
         let previousValue: NumericElementType = initialElement(array)
         forEach(
             array.slice(SKIP_FIRST_ELEMENT),
             (value: NumericElementType, index: Ordinal) => {
-                if (isIncreasing) {
+                if (isUndefined(isIncreasing)) {
+                    isIncreasing = value > previousValue
+                }
+                else if (isIncreasing) {
                     expect(value)
                         .toBeGreaterThanOrEqual(
                             previousValue as unknown as number,
@@ -167,4 +172,5 @@ export {
     testGoesMonotonicallyFromValueToValue,
     testGoesMonotonicallyBetweenValueAndValue,
     testGoesMonotonicallyByAFactorOf,
+    testGoesMonotonically,
 }

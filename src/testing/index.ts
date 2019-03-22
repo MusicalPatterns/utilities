@@ -10,6 +10,7 @@ export { selectOption } from './selectOption'
 export { deleteCharacterFromInput } from './deleteCharacterFromInput'
 export { simulateDesktopViewport, simulateMobileViewport } from './setViewport'
 export { waitForHeadfulQaing } from './wait'
+export { testGoesQuadratically } from './testQuadraticArrays'
 export {
     testGoesMonotonicallyBetweenValueAndValue,
     testGoesMonotonicallyFromValueToValue,
