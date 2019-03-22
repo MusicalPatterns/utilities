@@ -205,6 +205,7 @@ export {
     invertNormalScalar,
     valueLinearlyBetweenValues,
     computeDeltas,
+    computeIntervals,
     isNegative,
     isPositive,
 } from './math'

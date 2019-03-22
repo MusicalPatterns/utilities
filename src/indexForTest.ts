@@ -1,5 +1,7 @@
 // tslint:disable no-reaching-imports max-file-line-count
 
+import { computeIntervals } from './math'
+
 export {
     repeat,
     repeatCall,
@@ -62,6 +64,7 @@ export {
     areCoprime,
     invertNormalScalar,
     computeDeltas,
+    computeIntervals,
 } from './math/indexForTest'
 export {
     centsTranslationToPitchScalar,

@@ -1,5 +1,7 @@
 // tslint:disable no-reaching-imports
 
+import { computeIntervals } from './rateOfChange'
+
 export { distanceBetween } from './distanceBetween'
 export { rotate } from './rotate'
 export {
@@ -25,7 +27,7 @@ export {
 } from './specialNumbers'
 export { computeCommonFactors, areCoprime } from './commonFactors'
 export { invertNormalScalar } from './invertNormalScalar'
-export { computeDeltas } from './deltas'
+export { computeDeltas, computeIntervals } from './rateOfChange'
 
 export {
     X_AXIS,
