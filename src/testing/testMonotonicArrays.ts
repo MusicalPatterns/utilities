@@ -133,22 +133,16 @@ ${expectedBeginValue} and ${expectedEndValue}`,
         testGoesMonotonically(array, isIncreasing)
     }
 
-const testGoesMonotonicallyByAFactorOf: <NumericElementType extends Number = Number>(
+const testBeginValue: <NumericElementType extends Number = Number>(
     array: NumericElementType[],
-    expectedFactor: Scalar,
     expectedBeginValue?: NumericElementType,
     precision?: number,
 ) => void =
     <NumericElementType extends Number = Number>(
         array: NumericElementType[],
-        expectedFactor: Scalar,
         expectedBeginValue?: NumericElementType,
         precision?: number,
     ): void => {
-        const isIncreasing: boolean = isPositive(expectedFactor)
-
-        const actualFactor: NumericElementType = quotient(finalElement(array), initialElement(array))
-
         if (!isUndefined(expectedBeginValue)) {
             if (isUndefined(precision)) {
                 expect(initialElement(array))
@@ -168,6 +162,25 @@ it began at ${initialElement(array)}; array was ${array}; precision used was ${p
                     )
             }
         }
+    }
+
+const testGoesMonotonicallyByAFactorOf: <NumericElementType extends Number = Number>(
+    array: NumericElementType[],
+    expectedFactor: Scalar,
+    expectedBeginValue?: NumericElementType,
+    precision?: number,
+) => void =
+    <NumericElementType extends Number = Number>(
+        array: NumericElementType[],
+        expectedFactor: Scalar,
+        expectedBeginValue?: NumericElementType,
+        precision?: number,
+    ): void => {
+        const isIncreasing: boolean = isPositive(expectedFactor)
+
+        const actualFactor: NumericElementType = quotient(finalElement(array), initialElement(array))
+
+        testBeginValue(array, expectedBeginValue, precision)
 
         if (isUndefined(precision)) {
             expect(actualFactor)
@@ -195,4 +208,5 @@ export {
     testGoesMonotonicallyBetweenValueAndValue,
     testGoesMonotonicallyByAFactorOf,
     testGoesMonotonically,
+    testBeginValue,
 }

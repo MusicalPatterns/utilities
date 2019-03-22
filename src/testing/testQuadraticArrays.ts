@@ -1,10 +1,10 @@
 // tslint:disable ban-types
 
-import { isUndefined } from '../code'
+import { initialElement, isUndefined } from '../code'
 import { computeDeltas, computeIntervals } from '../math'
 import { Scalar, Translation } from '../nominal'
 import { testAllValuesAreTheSame } from './testAllValuesAreTheSame'
-import { testGoesMonotonically, testGoesMonotonicallyByAFactorOf } from './testMonotonicArrays'
+import { testBeginValue, testGoesMonotonically, testGoesMonotonicallyByAFactorOf } from './testMonotonicArrays'
 
 const testGoesQuadratically: <NumericElementType extends Number = Number>(
     array: NumericElementType[],
@@ -20,6 +20,8 @@ const testGoesQuadratically: <NumericElementType extends Number = Number>(
     ): void => {
         const durationDeltas: Translation[] = computeDeltas(array)
 
+        testBeginValue(array, expectedBeginValue, precision)
+
         if (isUndefined(expectedFactor)) {
             testGoesMonotonically(array)
         }
@@ -27,7 +29,7 @@ const testGoesQuadratically: <NumericElementType extends Number = Number>(
             testGoesMonotonicallyByAFactorOf(
                 durationDeltas,
                 expectedFactor,
-                expectedBeginValue as unknown as Translation,
+                undefined,
                 precision,
             )
         }
