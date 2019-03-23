@@ -3,7 +3,11 @@
 import { computeDeltas, computeIntervals } from '../math'
 import { Scalar } from '../nominal'
 import { testAllValuesAreTheSame } from './testAllValuesAreTheSame'
-import { testGoesMonotonicallyBetweenValueAndValue, testGoesMonotonicallyByAFactorOf } from './testMonotonicArrays'
+import {
+    testGoesMonotonicallyBetweenValueAndValue,
+    testGoesMonotonicallyByAFactorOf,
+    testGoesMonotonicallyFromValueToValue,
+} from './testMonotonicArrays'
 
 const testGoesQuadraticallyByAFactorOf: <NumericElementType extends Number = Number>(
     array: NumericElementType[],
@@ -39,6 +43,23 @@ const testGoesQuadraticallyBetweenValueAndValue: <NumericElementType extends Num
         testGoesQuadratically(array, precision)
     }
 
+const testGoesQuadraticallyFromValueToValue: <NumericElementType extends Number = Number>(
+    array: NumericElementType[],
+    expectedBeginValue: NumericElementType,
+    expectedEndValue: NumericElementType,
+    precision?: number,
+) => void =
+    <NumericElementType extends Number = Number>(
+        array: NumericElementType[],
+        expectedBeginValue: NumericElementType,
+        expectedEndValue: NumericElementType,
+        precision?: number,
+    ): void => {
+        testGoesMonotonicallyFromValueToValue(array, expectedBeginValue, expectedEndValue, precision)
+
+        testGoesQuadratically(array, precision)
+    }
+
 const testGoesQuadratically: <NumericElementType extends Number = Number>(
     array: NumericElementType[],
     precision?: number,
@@ -53,5 +74,6 @@ const testGoesQuadratically: <NumericElementType extends Number = Number>(
 export {
     testGoesQuadratically,
     testGoesQuadraticallyBetweenValueAndValue,
+    testGoesQuadraticallyFromValueToValue,
     testGoesQuadraticallyByAFactorOf,
 }

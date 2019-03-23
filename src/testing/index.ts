@@ -14,6 +14,7 @@ export {
     testGoesQuadratically,
     testGoesQuadraticallyByAFactorOf,
     testGoesQuadraticallyBetweenValueAndValue,
+    testGoesQuadraticallyFromValueToValue,
 } from './testQuadraticArrays'
 export {
     testGoesMonotonicallyBetweenValueAndValue,

@@ -300,6 +300,7 @@ export {
     testGoesQuadratically,
     testGoesQuadraticallyByAFactorOf,
     testGoesQuadraticallyBetweenValueAndValue,
+    testGoesQuadraticallyFromValueToValue,
     VERY_HIGH_PRECISION,
     VERY_LOW_PRECISION,
 } from './testing'
