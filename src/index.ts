@@ -63,6 +63,8 @@ export {
     arraysHaveNoCommonValues,
     initialElement,
     finalIndexFromElementsTotal,
+    objectSet,
+    arraySet,
 } from './code'
 export {
     absoluteRatio,

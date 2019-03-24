@@ -1,3 +1,4 @@
+import { objectSet } from './set'
 import { entries } from './typedObjects'
 import { ObjectOf } from './types'
 
@@ -20,7 +21,7 @@ const setAllPropertiesOfObjectOnAnother:
     }): void => {
         entries(objectWithProperties)
             .forEach(([ key, value ]: [ KeyType, ValueType ]) => {
-                objectToChange[ key ] = deepClone(value)
+                objectSet(objectToChange, key, deepClone(value))
             })
     }
 
