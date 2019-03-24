@@ -65,6 +65,7 @@ export {
     invertNormalScalar,
     computeDeltas,
     computeIntervals,
+    computePartialSumOfPowers,
 } from './math/indexForTest'
 export {
     centsTranslationToPitchScalar,

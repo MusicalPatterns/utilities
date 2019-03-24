@@ -27,6 +27,7 @@ export {
 } from './specialNumbers'
 export { computeCommonFactors, areCoprime } from './commonFactors'
 export { invertNormalScalar } from './invertNormalScalar'
+export { computePartialSumOfPowers } from './partialSumOfPowers'
 export { computeDeltas, computeIntervals } from './rateOfChange'
 
 export {

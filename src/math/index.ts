@@ -12,6 +12,7 @@ export { computeDeltas, computeIntervals } from './rateOfChange'
 export { invertNormalScalar } from './invertNormalScalar'
 export { evaluate } from './evaluate'
 export { valueLinearlyBetweenValues } from './valueLinearlyBetweenValues'
+export { computePartialSumOfPowers } from './partialSumOfPowers'
 export { computeGreatestCommonDivisor, computeLeastCommonMultiple } from './common'
 export { isNegative, isPositive } from './positiveAndNegative'
 export {

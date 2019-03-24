@@ -211,6 +211,7 @@ export {
     isPositive,
     ONE_FEWER,
     ONE_MORE,
+    computePartialSumOfPowers,
 } from './math'
 export {
     centsTranslationToPitchScalar,
