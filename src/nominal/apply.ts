@@ -1,6 +1,6 @@
 // tslint:disable variable-name max-file-line-count ban-types
 
-import { totalElements } from '../code'
+import { finalIndexFromElementsTotal, totalElements } from '../code'
 import { normalScalarCheck, ordinalCheck } from './checks'
 import * as from from './from'
 import * as to from './to'
@@ -40,7 +40,7 @@ const Translation: <ValueType, UnitsType extends Number = NoUnits>(
 
             for (
                 let index: Ordinal = to.Ordinal(0);
-                index < to.Ordinal(from.Cardinal(cellCount));
+                index <= finalIndexFromElementsTotal(cellCount);
                 index = Translation(index, to.Translation(1))
             ) {
                 let cycledIndex: Ordinal = Translation(index, to.Translation(-from.Translation(translation)))
