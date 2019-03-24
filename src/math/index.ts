@@ -140,6 +140,8 @@ export {
     HEPTUPLE,
     OCTUPLE,
     NONTUPLE,
+    ONE_FEWER,
+    ONE_MORE,
 } from './constants'
 export {
     Coordinate,

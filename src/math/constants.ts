@@ -107,6 +107,8 @@ const DOWN_ONE: Translation = to.Translation(-1)
 const INCREMENT: Translation = to.Translation(1)
 const DECREMENT: Translation = to.Translation(-1)
 const NO_TRANSLATION: Translation = to.Translation(0)
+const ONE_FEWER: Translation = to.Translation(-1)
+const ONE_MORE: Translation = to.Translation(1)
 
 const NUMERATOR_INDEX: Ordinal = to.Ordinal(0)
 const DENOMINATOR_INDEX: Ordinal = to.Ordinal(1)
@@ -210,4 +212,6 @@ export {
     NONTUPLE,
     FIRST_FACTOR_NECESSARY_TO_CHECK_IF_COMMON,
     VALUE_BELOW_WHICH_ROUNDING_IMPLEMENTATION_BREAKS,
+    ONE_FEWER,
+    ONE_MORE,
 }

@@ -209,6 +209,8 @@ export {
     computeIntervals,
     isNegative,
     isPositive,
+    ONE_FEWER,
+    ONE_MORE,
 } from './math'
 export {
     centsTranslationToPitchScalar,
