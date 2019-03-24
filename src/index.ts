@@ -62,6 +62,7 @@ export {
     SKIP_FIRST_ELEMENT,
     arraysHaveNoCommonValues,
     initialElement,
+    finalIndexFromElementsTotal,
 } from './code'
 export {
     absoluteRatio,

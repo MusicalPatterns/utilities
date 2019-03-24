@@ -18,6 +18,7 @@ export {
     totalElements,
     indexJustBeyondFinalElement,
     initialElement,
+    finalIndexFromElementsTotal,
 } from './finalElement'
 export { random } from './random'
 export { keyExistsOnObject } from './keyExistsOnObject'
