@@ -13,7 +13,9 @@ const testAllValuesAreTheSame: <NumericElementType extends Number = Number>(
         manualExpectedValue?: NumericElementType,
         precision?: number,
     ): void => {
-        const expectedValue: NumericElementType = manualExpectedValue || initialElement(array)
+        const expectedValue: NumericElementType = isUndefined(manualExpectedValue) ?
+            initialElement(array) :
+            manualExpectedValue
 
         forEach(array, (value: NumericElementType, index: Ordinal) => {
             if (!isUndefined(precision)) {
