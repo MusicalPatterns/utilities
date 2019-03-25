@@ -3,6 +3,7 @@
 import { finalElement, forEach, initialElement, isUndefined, Maybe, SKIP_FIRST_ELEMENT } from '../code'
 import { MULTIPLICATIVE_IDENTITY, quotient } from '../math'
 import { from, Ordinal, Scalar } from '../nominal'
+import { testGreaterThanOrCloseTo, testLessThanOrCloseTo } from './testIsCloseTo'
 
 const testGoesMonotonicallyFromValueToValue: <NumericElementType extends Number = Number>(
     array: NumericElementType[],
@@ -36,18 +37,18 @@ to the expected end value ${expectedEndValue}`,
                     expectedBeginValue as unknown as number,
                     precision,
                     `initial element ${initialElement(array)} was not close enough \
-to the expected begin value ${expectedBeginValue}, with precision ${precision}`,
+to the expected begin value ${expectedBeginValue}, to precision ${precision}`,
                 )
             expect(finalElement(array))
                 .toBeCloseTo(
                     expectedEndValue as unknown as number,
                     precision,
                     `final element ${finalElement(array)} was not close enough \
-to the expected end value ${expectedEndValue}, with precision ${precision}`,
+to the expected end value ${expectedEndValue}, to precision ${precision}`,
                 )
         }
 
-        testGoesMonotonicallyBetweenValueAndValue(array, expectedBeginValue, expectedEndValue)
+        testGoesMonotonicallyBetweenValueAndValue(array, expectedBeginValue, expectedEndValue, precision)
     }
 
 const testGoesMonotonically: <NumericElementType extends Number = Number>(
@@ -74,20 +75,44 @@ const testGoesMonotonically: <NumericElementType extends Number = Number>(
                     isIncreasing = value > previousValue
                 }
                 else if (isIncreasing) {
-                    expect(value)
-                        .toBeGreaterThanOrEqual(
-                            previousValue as unknown as number,
-                            `array did not go monotonically; \
+                    if (isUndefined(precision)) {
+                        expect(value)
+                            .toBeGreaterThanOrEqual(
+                                previousValue as unknown as number,
+                                `array did not go monotonically; \
 value ${value} at index ${index} did not weakly increase along with the other elements: ${array}`,
+                            )
+                    }
+                    else {
+                        testGreaterThanOrCloseTo(
+                            value,
+                            previousValue,
+                            precision,
+                            `array did not go monotonically; \
+value ${value} at index ${index} did not weakly increase along with the other elements: ${array}, \
+to precision ${precision}`,
                         )
+                    }
                 }
                 else {
-                    expect(value)
-                        .toBeLessThanOrEqual(
-                            previousValue as unknown as number,
-                            `array did not go monotonically; \
+                    if (isUndefined(precision)) {
+                        expect(value)
+                            .toBeLessThanOrEqual(
+                                previousValue as unknown as number,
+                                `array did not go monotonically; \
 value ${value} at index ${index} did not weakly decrease along with the other elements: ${array}`,
+                            )
+                    }
+                    else {
+                        testLessThanOrCloseTo(
+                            value,
+                            previousValue,
+                            precision,
+                            `array did not go monotonically; \
+value ${value} at index ${index} did not weakly decrease along with the other elements: ${array}, \
+to precision ${precision}`,
                         )
+                    }
                 }
 
                 previousValue = value
@@ -99,41 +124,82 @@ const testGoesMonotonicallyBetweenValueAndValue: <NumericElementType extends Num
     array: NumericElementType[],
     expectedBeginValue: NumericElementType,
     expectedEndValue: NumericElementType,
+    precision?: number,
 ) => void =
     <NumericElementType extends Number = Number>(
         array: NumericElementType[],
         expectedBeginValue: NumericElementType,
         expectedEndValue: NumericElementType,
+        precision?: number,
     ): void => {
         const isIncreasing: boolean = expectedEndValue > expectedBeginValue
 
+        const initial: NumericElementType = initialElement(array)
+        const final: NumericElementType = finalElement(array)
+
         if (isIncreasing) {
-            expect(initialElement(array))
-                .toBeGreaterThanOrEqual(
-                    expectedBeginValue as unknown as number,
-                    `initial element ${initialElement(array)} was not between the expected values \
+            if (isUndefined(precision)) {
+                expect(initial)
+                    .toBeGreaterThanOrEqual(
+                        expectedBeginValue as unknown as number,
+                        `initial element ${initial} was not between the expected values \
 ${expectedBeginValue} and ${expectedEndValue}`,
-                )
-            expect(finalElement(array))
-                .toBeLessThanOrEqual(
-                    expectedEndValue as unknown as number,
-                    `final element ${finalElement(array)} was not between the expected values \
+                    )
+                expect(final)
+                    .toBeLessThanOrEqual(
+                        expectedEndValue as unknown as number,
+                        `final element ${final} was not between the expected values \
 ${expectedBeginValue} and ${expectedEndValue}`,
+                    )
+            }
+            else {
+                testGreaterThanOrCloseTo(
+                    initial,
+                    expectedBeginValue,
+                    precision,
+                    `initial element ${initial} was not between the expected values \
+${expectedBeginValue} and ${expectedEndValue}, to precision ${precision}`,
                 )
+                testLessThanOrCloseTo(
+                    final,
+                    expectedEndValue,
+                    precision,
+                    `final element ${final} was not between the expected values \
+${expectedBeginValue} and ${expectedEndValue}, to precision ${precision}`,
+                )
+            }
         }
         else {
-            expect(initialElement(array))
-                .toBeLessThanOrEqual(
-                    expectedBeginValue as unknown as number,
-                    `initial element ${initialElement(array)} was not between the expected values \
+            if (isUndefined(precision)) {
+                expect(initial)
+                    .toBeLessThanOrEqual(
+                        expectedBeginValue as unknown as number,
+                        `initial element ${initial} was not between the expected values \
 ${expectedBeginValue} and ${expectedEndValue}`,
-                )
-            expect(finalElement(array))
-                .toBeGreaterThanOrEqual(
-                    expectedEndValue as unknown as number,
-                    `final element ${finalElement(array)} was not between the expected values \
+                    )
+                expect(final)
+                    .toBeGreaterThanOrEqual(
+                        expectedEndValue as unknown as number,
+                        `final element ${final} was not between the expected values \
 ${expectedBeginValue} and ${expectedEndValue}`,
+                    )
+            }
+            else {
+                testLessThanOrCloseTo(
+                    initial,
+                    expectedBeginValue,
+                    precision,
+                    `initial element ${initial} was not between the expected values \
+${expectedBeginValue} and ${expectedEndValue}, to precision ${precision}`,
                 )
+                testGreaterThanOrCloseTo(
+                    final,
+                    expectedEndValue,
+                    precision,
+                    `final element ${final} was not between the expected values \
+${expectedBeginValue} and ${expectedEndValue}, to precision ${precision}`,
+                )
+            }
         }
 
         testGoesMonotonically(array, isIncreasing)

@@ -309,6 +309,8 @@ export {
     testGoesQuadraticallyFromValueToValue,
     VERY_HIGH_PRECISION,
     VERY_LOW_PRECISION,
+    testGreaterThanOrCloseTo,
+    testLessThanOrCloseTo,
 } from './testing'
 export {
     MILLISECONDS_PER_SECOND,

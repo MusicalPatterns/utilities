@@ -38,7 +38,7 @@ const testGoesQuadraticallyBetweenValueAndValue: <NumericElementType extends Num
         expectedEndValue: NumericElementType,
         precision?: number,
     ): void => {
-        testGoesMonotonicallyBetweenValueAndValue(array, expectedBeginValue, expectedEndValue)
+        testGoesMonotonicallyBetweenValueAndValue(array, expectedBeginValue, expectedEndValue, precision)
 
         testGoesQuadratically(array, precision)
     }
