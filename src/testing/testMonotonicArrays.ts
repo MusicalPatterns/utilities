@@ -80,7 +80,7 @@ const testGoesMonotonically: <NumericElementType extends Number = Number>(
                             .toBeGreaterThanOrEqual(
                                 previousValue as unknown as number,
                                 `array did not go monotonically; \
-value ${value} at index ${index} did not weakly increase along with the other elements: ${array}`,
+value ${value} at index ${index} did not weakly increase along with the other elements`,
                             )
                     }
                     else {
@@ -89,7 +89,7 @@ value ${value} at index ${index} did not weakly increase along with the other el
                             previousValue,
                             precision,
                             `array did not go monotonically; \
-value ${value} at index ${index} did not weakly increase along with the other elements: ${array}, \
+value ${value} at index ${index} did not weakly increase along with the other elements, \
 to precision ${precision}`,
                         )
                     }
@@ -100,7 +100,7 @@ to precision ${precision}`,
                             .toBeLessThanOrEqual(
                                 previousValue as unknown as number,
                                 `array did not go monotonically; \
-value ${value} at index ${index} did not weakly decrease along with the other elements: ${array}`,
+value ${value} at index ${index} did not weakly decrease along with the other elements`,
                             )
                     }
                     else {
@@ -109,7 +109,7 @@ value ${value} at index ${index} did not weakly decrease along with the other el
                             previousValue,
                             precision,
                             `array did not go monotonically; \
-value ${value} at index ${index} did not weakly decrease along with the other elements: ${array}, \
+value ${value} at index ${index} did not weakly decrease along with the other elements, \
 to precision ${precision}`,
                         )
                     }
@@ -221,7 +221,7 @@ const testBeginValue: <NumericElementType extends Number = Number>(
                     .toEqual(
                         expectedBeginValue,
                         `array did not begin at expected value ${expectedBeginValue}; \
-it began at ${initialElement(array)}; array was ${array}`,
+it began at ${initialElement(array)}`,
                     )
             }
             else {
@@ -230,7 +230,7 @@ it began at ${initialElement(array)}; array was ${array}`,
                         expectedBeginValue as unknown as number,
                         precision,
                         `array did not begin close to expected value ${expectedBeginValue}; \
-it began at ${initialElement(array)}; array was ${array}; precision used was ${precision}`,
+it began at ${initialElement(array)}; precision used was ${precision}`,
                     )
             }
         }
