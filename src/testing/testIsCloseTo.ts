@@ -40,6 +40,7 @@ const testIsCloseTo: <NumericType extends Number = Number>(
     // tslint:disable-next-line bool-param-default
     negate?: boolean,
 ) => void =
+    // tslint:disable-next-line cyclomatic-complexity
     <NumericType extends Number = Number>(
         actual: NumericType,
         expected: NumericType,
@@ -48,11 +49,12 @@ const testIsCloseTo: <NumericType extends Number = Number>(
     ): void => {
         const isClose: boolean = determineIfClose(actual, expected, precision)
 
+        const precisionMessage: string = isUndefined(precision) ? '' : `, to precision ${precision}`
         if (!negate && !isClose) {
-            fail(`expected ${actual} to be close to ${expected}, to precision ${precision}`)
+            fail(`expected ${actual} to be close to ${expected}${precisionMessage}`)
         }
         else if (negate && isClose) {
-            fail(`expected ${actual} not to be close to ${expected}, to precision ${precision}`)
+            fail(`expected ${actual} not to be close to ${expected}${precisionMessage}`)
         }
     }
 
