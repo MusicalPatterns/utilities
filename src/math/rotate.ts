@@ -1,7 +1,7 @@
 // tslint:disable ban-types max-file-line-count no-any
 
 import { INITIAL, map, Maybe, reduce, slice, totalElements } from '../code'
-import { apply, Cycle, from, Ordinal, Scalar, to, Translation } from '../nominal'
+import { apply, Cycle, from, Ordinal, Radians, Scalar, to, Translation } from '../nominal'
 import { ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS, TWO_DIMENSIONAL, Z_AXIS } from './constants'
 import { cosine, sine } from './trigonometry'
 import { difference, negative, sum } from './typedOperations'
@@ -67,9 +67,12 @@ const cycleRotationMatrixForAxis:
         return mapAcrossBothDimensions(rotationMatrix, cycleMap)
     }
 
-const rotate: <ElementType extends Number, Dimensionality extends Number = Number>(
-    rotateParameters: RotateParameters<ElementType, Dimensionality>,
-) => Coordinate<ElementType, Dimensionality> =
+const rotate: <ElementType extends Number, Dimensionality extends Number = Number>(rotateParameters: {
+    axis?: Ordinal,
+    coordinate: Coordinate<ElementType, Dimensionality>,
+    fixedCoordinate?: Coordinate<ElementType, Dimensionality>,
+    rotation: Radians,
+}) => Coordinate<ElementType, Dimensionality> =
     <ElementType extends Number, Dimensionality extends Number = Number>(
         rotateParameters: RotateParameters<ElementType, Dimensionality>,
     ): Coordinate<ElementType, Dimensionality> => {
