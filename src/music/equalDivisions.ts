@@ -1,13 +1,13 @@
 import { INITIAL, slice } from '../code'
 import { reciprocal, zeroAndPositiveIntegers } from '../math'
-import { apply, Denominator, from, Integer, Scalar, to } from '../nominal'
+import { apply, Base, Denominator, from, Integer, Scalar, to } from '../nominal'
 import { OCTAVE } from './constants'
 
-const computeEqualDivisionScalars: (equalDivision: Denominator) => Scalar[] =
-    (equalDivision: Denominator): Scalar[] => {
+const computeEqualDivisionScalars: (equalDivision: Denominator, window?: Base) => Scalar[] =
+    (equalDivision: Denominator, window: Base = OCTAVE): Scalar[] => {
         const division: number = from.Denominator(reciprocal(equalDivision))
         const logarithmicStep: Scalar = to.Scalar(from.Base(apply.Power(
-            OCTAVE,
+            window,
             to.Power(division),
         )))
 
