@@ -40,8 +40,8 @@ const goesFromValueToValue: <NumericElementType extends Number = Number>(
         }
         else {
             if (
-                !isCloseTo(initialElement(array), expectedBeginValue) ||
-                !isCloseTo(finalElement(array), expectedEndValue)
+                !isCloseTo(initialElement(array), expectedBeginValue, precision) ||
+                !isCloseTo(finalElement(array), expectedEndValue, precision)
             ) {
                 return false
             }
@@ -71,7 +71,7 @@ const allValuesAreTheSame: <NumericElementType extends Number = Number>(
                 }
             }
             else {
-                if (!isCloseTo(value, expectedValue)) {
+                if (!isCloseTo(value, expectedValue, precision)) {
                     return false
                 }
             }
