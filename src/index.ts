@@ -65,6 +65,7 @@ export {
     finalIndexFromElementsTotal,
     objectSet,
     arraySet,
+    every,
 } from './code'
 export {
     absoluteRatio,
@@ -214,6 +215,15 @@ export {
     ONE_FEWER,
     ONE_MORE,
     computePartialSumOfPowers,
+    goesMonotonically,
+    goesMonotonicallyBetweenValueAndValue,
+    goesMonotonicallyFromValueToValue,
+    inBounds,
+    allValuesAreTheSame,
+    goesFromValueToValue,
+    goesQuadratically,
+    goesQuadraticallyBetweenValueAndValue,
+    goesQuadraticallyFromValueToValue,
 } from './math'
 export {
     centsTranslationToPitchScalar,
@@ -300,11 +310,9 @@ export {
     testAllValuesAreTheSame,
     testGoesMonotonicallyFromValueToValue,
     testGoesMonotonicallyBetweenValueAndValue,
-    testGoesMonotonicallyByAFactorOf,
     testGoesMonotonically,
     testConstantDelta,
     testGoesQuadratically,
-    testGoesQuadraticallyByAFactorOf,
     testGoesQuadraticallyBetweenValueAndValue,
     testGoesQuadraticallyFromValueToValue,
     VERY_HIGH_PRECISION,

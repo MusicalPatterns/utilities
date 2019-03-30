@@ -12,6 +12,18 @@ export { computeDeltas, computeIntervals } from './rateOfChange'
 export { invertNormalScalar } from './invertNormalScalar'
 export { evaluate } from './evaluate'
 export { valueLinearlyBetweenValues } from './valueLinearlyBetweenValues'
+export {
+    goesMonotonically,
+    goesMonotonicallyBetweenValueAndValue,
+    goesMonotonicallyFromValueToValue,
+} from './monotonic'
+export {
+    goesQuadratically,
+    goesQuadraticallyBetweenValueAndValue,
+    goesQuadraticallyFromValueToValue,
+} from './quadratic'
+export { inBounds } from './inBounds'
+export { allValuesAreTheSame, goesFromValueToValue } from './goes'
 export { computePartialSumOfPowers } from './partialSumOfPowers'
 export { computeGreatestCommonDivisor, computeLeastCommonMultiple } from './common'
 export { isNegative, isPositive } from './positiveAndNegative'
@@ -41,7 +53,7 @@ export {
     triangularRoot,
     quarterSquareNumber,
     combinationCount,
-}from './specialNumbers'
+} from './specialNumbers'
 export { sine, cosine, tangent } from './trigonometry'
 export {
     computeLowestTerms,
@@ -50,7 +62,7 @@ export {
     multiplyFractions,
     computeCommonTerms,
     computeLowestCommonDenominator,
-}from './fractions'
+} from './fractions'
 
 export {
     DECIMAL,

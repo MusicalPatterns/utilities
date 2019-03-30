@@ -12,14 +12,12 @@ export { simulateDesktopViewport, simulateMobileViewport } from './setViewport'
 export { waitForHeadfulQaing } from './wait'
 export {
     testGoesQuadratically,
-    testGoesQuadraticallyByAFactorOf,
     testGoesQuadraticallyBetweenValueAndValue,
     testGoesQuadraticallyFromValueToValue,
 } from './testQuadraticArrays'
 export {
     testGoesMonotonicallyBetweenValueAndValue,
     testGoesMonotonicallyFromValueToValue,
-    testGoesMonotonicallyByAFactorOf,
     testGoesMonotonically,
 } from './testMonotonicArrays'
 export { testAllValuesAreTheSame } from './testAllValuesAreTheSame'

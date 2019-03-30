@@ -1,3 +1,5 @@
+// tslint:disable max-file-line-count
+
 import { NEXT } from '../math'
 import { apply, Cycle, from, Ordinal } from '../nominal'
 import { indexJustBeyondFinalElement, totalElements } from './finalElement'
@@ -85,6 +87,17 @@ const filter: <ElementType>(
         // @ts-ignore
         array.filter(callback)
 
+const every: <ElementType>(
+    array: ElementType[],
+    callback: (element: ElementType, index: Ordinal, self: ElementType[]) => boolean,
+) => boolean =
+    <ElementType>(
+        array: ElementType[],
+        callback: (element: ElementType, index: Ordinal, self: ElementType[]) => boolean,
+    ): boolean =>
+        // @ts-ignore
+        array.every(callback)
+
 export {
     slice,
     forEach,
@@ -92,4 +105,5 @@ export {
     reduce,
     filter,
     cycleSlice,
+    every,
 }

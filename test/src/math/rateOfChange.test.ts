@@ -23,5 +23,10 @@ describe('deltas', () => {
             expect(computeIntervals(to.Cycle([ 4, 7, 9, 4, 357, 3, 8 ].map(to.Hz))))
                 .toEqual([ 7 / 4, 9 / 7, 4 / 9, 357 / 4, 3 / 357, 8 / 3, 1 / 2 ].map(to.Scalar))
         })
+
+        it('gives an interval of 0 to zeroes, but NaN from zeroes', () => {
+            expect(computeIntervals([ 5, 5, 5, 0, 0, 0, 5, 5, 5 ]))
+                .toEqual([ to.Scalar(1), to.Scalar(1), to.Scalar(0), to.Scalar(0), to.Scalar(0), undefined, to.Scalar(1), to.Scalar(1) ])
+        })
     })
 })

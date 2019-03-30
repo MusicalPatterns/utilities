@@ -1,7 +1,6 @@
 // tslint:disable ban-types
 
-import { forEach, initialElement, isUndefined } from '../code'
-import { Ordinal } from '../nominal'
+import { allValuesAreTheSame } from '../math'
 
 const testAllValuesAreTheSame: <NumericElementType extends Number = Number>(
     array: NumericElementType[],
@@ -13,24 +12,9 @@ const testAllValuesAreTheSame: <NumericElementType extends Number = Number>(
         manualExpectedValue?: NumericElementType,
         precision?: number,
     ): void => {
-        const expectedValue: NumericElementType = isUndefined(manualExpectedValue) ?
-            initialElement(array) :
-            manualExpectedValue
-
-        forEach(array, (value: NumericElementType, index: Ordinal) => {
-            if (!isUndefined(precision)) {
-                expect(value)
-                    .toBeCloseTo(
-                        expectedValue as unknown as number,
-                        precision,
-                        `expected ${value} at index ${index} to conform to value ${expectedValue}`,
-                    )
-            }
-            else {
-                expect(value)
-                    .toEqual(expectedValue)
-            }
-        })
+        if (!allValuesAreTheSame(array, manualExpectedValue, precision)) {
+            fail(`expected all values to be the same`)
+        }
     }
 
 export {

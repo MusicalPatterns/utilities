@@ -27,6 +27,18 @@ export {
 } from './specialNumbers'
 export { computeCommonFactors, areCoprime } from './commonFactors'
 export { invertNormalScalar } from './invertNormalScalar'
+export { allValuesAreTheSame } from './goes'
+export {
+    goesMonotonically,
+    goesMonotonicallyBetweenValueAndValue,
+    goesMonotonicallyFromValueToValue,
+} from './monotonic'
+export {
+    goesQuadratically,
+    goesQuadraticallyBetweenValueAndValue,
+    goesQuadraticallyFromValueToValue,
+} from './quadratic'
+export { inBounds } from './inBounds'
 export { computePartialSumOfPowers } from './partialSumOfPowers'
 export { computeDeltas, computeIntervals } from './rateOfChange'
 

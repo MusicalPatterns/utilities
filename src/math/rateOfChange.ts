@@ -1,6 +1,6 @@
 // tslint:disable ban-types
 
-import { finalElement, initialElement, map } from '../code'
+import { finalElement, initialElement, map, Maybe } from '../code'
 import { indexOfFinalElement, INITIAL, Ordinal, Scalar, slice, Translation } from '../indexForTest'
 import { apply, isCycle, to } from '../nominal'
 import { NEXT } from './constants'
@@ -27,12 +27,21 @@ const computeDeltas: <NumericElementType extends Number = Number>(array: Numeric
         return deltas
     }
 
-const computeIntervals: <NumericElementType extends Number = Number>(array: NumericElementType[]) => Scalar[] =
-    <NumericElementType extends Number = Number>(array: NumericElementType[]): Scalar[] => {
-        const intervals: Scalar[] = map(
+const computeIntervals:
+    <NumericElementType extends Number = Number>(array: NumericElementType[]) => Array<Maybe<Scalar>> =
+    <NumericElementType extends Number = Number>(array: NumericElementType[]): Array<Maybe<Scalar>> => {
+        const intervals: Array<Maybe<Scalar>> = map(
             slice(array, INITIAL, indexOfFinalElement(array)),
             (value: NumericElementType, index: Ordinal) => {
                 const nextValue: NumericElementType = apply.Ordinal(array, apply.Translation(index, NEXT))
+
+                if (value as unknown as number === 0) {
+                    if (nextValue as unknown as number === 0) {
+                        return to.Scalar(0)
+                    }
+
+                    return undefined
+                }
 
                 return to.Scalar(quotient(nextValue, value))
             },

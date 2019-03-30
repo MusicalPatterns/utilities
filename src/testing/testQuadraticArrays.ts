@@ -1,30 +1,10 @@
 // tslint:disable ban-types
 
-import { computeDeltas, computeIntervals } from '../math'
-import { Scalar } from '../nominal'
-import { testAllValuesAreTheSame } from './testAllValuesAreTheSame'
 import {
-    testGoesMonotonicallyBetweenValueAndValue,
-    testGoesMonotonicallyByAFactorOf,
-    testGoesMonotonicallyFromValueToValue,
-} from './testMonotonicArrays'
-
-const testGoesQuadraticallyByAFactorOf: <NumericElementType extends Number = Number>(
-    array: NumericElementType[],
-    expectedFactor: Scalar,
-    expectedBeginValue?: NumericElementType,
-    precision?: number,
-) => void =
-    <NumericElementType extends Number = Number>(
-        array: NumericElementType[],
-        expectedFactor: Scalar,
-        expectedBeginValue?: NumericElementType,
-        precision?: number,
-    ): void => {
-        testGoesMonotonicallyByAFactorOf(array, expectedFactor, expectedBeginValue, precision)
-
-        testGoesQuadratically(array, precision)
-    }
+    goesQuadratically,
+    goesQuadraticallyBetweenValueAndValue,
+    goesQuadraticallyFromValueToValue,
+} from '../math'
 
 const testGoesQuadraticallyBetweenValueAndValue: <NumericElementType extends Number = Number>(
     array: NumericElementType[],
@@ -38,9 +18,9 @@ const testGoesQuadraticallyBetweenValueAndValue: <NumericElementType extends Num
         expectedEndValue: NumericElementType,
         precision?: number,
     ): void => {
-        testGoesMonotonicallyBetweenValueAndValue(array, expectedBeginValue, expectedEndValue, precision)
-
-        testGoesQuadratically(array, precision)
+        if (!goesQuadraticallyBetweenValueAndValue(array, expectedBeginValue, expectedEndValue, precision)) {
+            fail(`did not go quadratically between ${expectedBeginValue} and ${expectedEndValue}`)
+        }
     }
 
 const testGoesQuadraticallyFromValueToValue: <NumericElementType extends Number = Number>(
@@ -55,25 +35,28 @@ const testGoesQuadraticallyFromValueToValue: <NumericElementType extends Number 
         expectedEndValue: NumericElementType,
         precision?: number,
     ): void => {
-        testGoesMonotonicallyFromValueToValue(array, expectedBeginValue, expectedEndValue, precision)
-
-        testGoesQuadratically(array, precision)
+        if (!goesQuadraticallyFromValueToValue(array, expectedBeginValue, expectedEndValue, precision)) {
+            fail(`array did not go quadratically from ${expectedBeginValue} to ${expectedEndValue}`)
+        }
     }
 
 const testGoesQuadratically: <NumericElementType extends Number = Number>(
     array: NumericElementType[],
+    expectedBeginValue?: NumericElementType,
     precision?: number,
 ) => void =
     <NumericElementType extends Number = Number>(
         array: NumericElementType[],
+        expectedBeginValue?: NumericElementType,
         precision?: number,
     ): void => {
-        testAllValuesAreTheSame(computeIntervals(computeDeltas(array)), undefined, precision)
+        if (!goesQuadratically(array, expectedBeginValue, precision)) {
+            fail('array did not go quadratically')
+        }
     }
 
 export {
     testGoesQuadratically,
     testGoesQuadraticallyBetweenValueAndValue,
     testGoesQuadraticallyFromValueToValue,
-    testGoesQuadraticallyByAFactorOf,
 }

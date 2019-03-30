@@ -66,6 +66,14 @@ export {
     computeDeltas,
     computeIntervals,
     computePartialSumOfPowers,
+    goesMonotonically,
+    goesMonotonicallyBetweenValueAndValue,
+    goesMonotonicallyFromValueToValue,
+    goesQuadratically,
+    goesQuadraticallyBetweenValueAndValue,
+    goesQuadraticallyFromValueToValue,
+    inBounds,
+    allValuesAreTheSame,
 } from './math/indexForTest'
 export {
     centsTranslationToPitchScalar,
