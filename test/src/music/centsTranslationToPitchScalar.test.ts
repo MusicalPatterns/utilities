@@ -1,4 +1,11 @@
-import { centsTranslationToPitchScalar, Frequency, Scalar, testIsCloseTo, THREE_HALVES, to } from '../../../src/indexForTest'
+import {
+    centsTranslationToPitchScalar,
+    Frequency,
+    Scalar,
+    testIsCloseTo,
+    THREE_HALVES,
+    to,
+} from '../../../src/indexForTest'
 
 describe('cents translation to pitch scalar', () => {
     it('gives the pitch ratio equivalent to the cents amount', () => {

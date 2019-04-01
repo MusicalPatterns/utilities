@@ -67,7 +67,7 @@ const allValuesAreTheSame: <NumericElementType extends Number = Number>(
         return every(array, (value: NumericElementType) => {
             if (isUndefined(precision)) {
                 if (value !== expectedValue) {
-                   return false
+                    return false
                 }
             }
             else {

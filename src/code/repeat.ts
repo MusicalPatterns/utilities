@@ -1,5 +1,5 @@
 import { NEXT } from '../math'
-import { apply, Cardinal, from, Ordinal, to } from '../nominal'
+import { apply, Cardinal, Ordinal } from '../nominal'
 import { INITIAL } from './constants'
 import { finalIndexFromElementsTotal } from './finalElement'
 

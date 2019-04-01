@@ -254,7 +254,7 @@ describe('quadratic', () => {
             })
 
             it('with precision provided - false because begin value is beyond precision', () => {
-                expect(goesQuadraticallyFromValueToValue([ 1.1, 2, 4, 8  ], 1, 8, 2))
+                expect(goesQuadraticallyFromValueToValue([ 1.1, 2, 4, 8 ], 1, 8, 2))
                     .toBeFalsy()
             })
 

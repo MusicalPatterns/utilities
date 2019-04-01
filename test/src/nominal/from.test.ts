@@ -1,6 +1,6 @@
 // tslint:disable no-any no-unused-expression comment-format no-commented-code no-dead-store
 
-import { Fraction, from, Hz, Scalar, Time, to } from '../../../src/indexForTest'
+import { Fraction, from, Hz, Scalar, to } from '../../../src/indexForTest'
 
 describe('from', () => {
     it('converts back to a plain number', () => {

@@ -1,5 +1,6 @@
 import {
-    computeCommonTerms, computeLowestCommonDenominator,
+    computeCommonTerms,
+    computeLowestCommonDenominator,
     computeLowestTerms,
     Fraction,
     getDenominator,
