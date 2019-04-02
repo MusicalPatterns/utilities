@@ -26,5 +26,10 @@ describe('goes', () => {
             expect(allValuesAreTheSame([ 6, 6, 6, 6, 6, 6, 6, 6, 6 ], 5))
                 .toBeFalsy()
         })
+
+        it('returns true there are no values', () => {
+            expect(allValuesAreTheSame([]))
+                .toBeTruthy()
+        })
     })
 })

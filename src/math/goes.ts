@@ -1,6 +1,6 @@
 // tslint:disable ban-types
 
-import { every, finalElement, initialElement, isUndefined } from '../code'
+import { every, finalElement, initialElement, isEmpty, isUndefined } from '../code'
 import { isCloseTo } from './isCloseTo'
 
 const beginValueIsCorrect: <NumericElementType extends Number = Number>(
@@ -60,6 +60,10 @@ const allValuesAreTheSame: <NumericElementType extends Number = Number>(
         manualExpectedValue?: NumericElementType,
         precision?: number,
     ): boolean => {
+        if (isEmpty(array)) {
+            return true
+        }
+
         const expectedValue: NumericElementType = isUndefined(manualExpectedValue) ?
             initialElement(array) :
             manualExpectedValue

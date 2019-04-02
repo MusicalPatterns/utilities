@@ -5,12 +5,12 @@ import { apply, Cycle, from, Ordinal } from '../nominal'
 import { indexJustBeyondFinalElement, totalElements } from './finalElement'
 import { isUndefined } from './isUndefined'
 
-const slice: <ArrayType extends Array<unknown> | string>(
+const slice: <ArrayType extends unknown[] | string>(
     arrayOrString: ArrayType,
     initial: Ordinal,
     terminal?: Ordinal,
 ) => ArrayType =
-    <ArrayType extends Array<unknown> | string>(
+    <ArrayType extends unknown[] | string>(
         arrayOrString: ArrayType,
         initial: Ordinal,
         terminal?: Ordinal,

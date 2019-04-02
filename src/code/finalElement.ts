@@ -1,6 +1,7 @@
 import { negative } from '../math'
 import { apply, Cardinal, from, Ordinal, to } from '../nominal'
 import { INITIAL, TRANSLATION_FROM_LENGTH_TO_FINAL_INDEX } from './constants'
+import { isEmpty } from './isEmpty'
 
 const finalElement: <ElementType>(array: ElementType[]) => ElementType =
     <ElementType>(array: ElementType[]): ElementType =>
@@ -17,13 +18,18 @@ const indexJustBeyondFinalElement: <ElementType>(array: ElementType[]) => Ordina
     <ElementType>(array: ElementType[]): Ordinal =>
         to.Ordinal(array.length)
 
-const totalElements: <ArrayType extends Array<unknown> | string>(array: ArrayType) => Cardinal =
-    <ArrayType extends Array<unknown> | string>(array: ArrayType): Cardinal =>
+const totalElements: <ArrayType extends unknown[] | string>(array: ArrayType) => Cardinal =
+    <ArrayType extends unknown[] | string>(array: ArrayType): Cardinal =>
         to.Cardinal(array.length)
 
 const initialElement: <ElementType>(array: ElementType[]) => ElementType =
-    <ElementType>(array: ElementType[]): ElementType =>
-        apply.Ordinal(array, INITIAL)
+    <ElementType>(array: ElementType[]): ElementType => {
+        if (isEmpty(array)) {
+            throw new Error('an empty array has no initial element')
+        }
+
+        return apply.Ordinal(array, INITIAL)
+    }
 
 const finalIndexFromElementsTotal: (elementsTotal: Cardinal) => Ordinal =
     (elementsTotal: Cardinal): Ordinal =>
