@@ -38,6 +38,11 @@ describe('typed operations', () => {
             expect(sum(3, 4, 5))
                 .toBe(12)
         })
+
+        it('works for 0 values', () => {
+            expect(sum())
+                .toBe(0)
+        })
     })
 
     describe('product', () => {
@@ -54,6 +59,11 @@ describe('typed operations', () => {
         it('works for 3 values', () => {
             expect(product(3, 4, 5))
                 .toBe(60)
+        })
+
+        it('works for 0 values', () => {
+            expect(product())
+                .toBe(1)
         })
     })
 })

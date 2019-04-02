@@ -10,6 +10,10 @@ import {
 
 const sum: <NumericType extends Number = Number>(...values: NumericType[]) => NumericType =
     <NumericType extends Number = Number>(...values: NumericType[]): NumericType => {
+        if (isEmpty(values)) {
+            return ADDITIVE_IDENTITY as unknown as NumericType
+        }
+
         const previousValue: NumericType = values.pop() as NumericType
 
         const nextSum: NumericType = isEmpty(values) ? ADDITIVE_IDENTITY as unknown as NumericType : sum(...values)
@@ -23,6 +27,10 @@ const difference: <NumericType extends Number = Number>(minuend: NumericType, su
 
 const product: <NumericType extends Number = Number>(...values: NumericType[]) => NumericType =
     <NumericType extends Number = Number>(...values: NumericType[]): NumericType => {
+        if (isEmpty(values)) {
+            return MULTIPLICATIVE_IDENTITY as unknown as NumericType
+        }
+
         const previousValue: NumericType = values.pop() as NumericType
 
         const nextProduct: NumericType = isEmpty(values) ?
