@@ -10,6 +10,7 @@ const testIsCloseTo: <NumericType extends Number = Number>(
     precision?: number,
     // tslint:disable-next-line bool-param-default
     negate?: boolean,
+    message?: string,
 ) => void =
     // tslint:disable-next-line cyclomatic-complexity
     <NumericType extends Number = Number>(
@@ -17,22 +18,39 @@ const testIsCloseTo: <NumericType extends Number = Number>(
         expected: NumericType,
         precision?: number,
         negate: boolean = false,
+        message?: string,
     ): void => {
         const isClose: boolean = isCloseTo(actual, expected, precision)
 
         if (!negate && !isClose) {
-            fail(`expected ${actual} to be close to ${expected}${precisionMessage(precision)}`)
+            fail(
+                isUndefined(message) ?
+                    `expected ${actual} to be close to ${expected}${precisionMessage(precision)}` :
+                    message,
+            )
         }
         else if (negate && isClose) {
-            fail(`expected ${actual} not to be close to ${expected}${precisionMessage(precision)}`)
+            fail(
+                isUndefined(message) ?
+                    `expected ${actual} not to be close to ${expected}${precisionMessage(precision)}` :
+                    message,
+            )
         }
     }
 
-const testIsNotCloseTo:
-    // tslint:disable-next-line bool-param-default
-    <NumericType extends Number = Number>(actual: NumericType, expected: NumericType, precision?: number) => void =
-    <NumericType extends Number = Number>(actual: NumericType, expected: NumericType, precision?: number): void => {
-        testIsCloseTo(actual, expected, precision, true)
+const testIsNotCloseTo: <NumericType extends Number = Number>(
+    actual: NumericType,
+    expected: NumericType,
+    precision?: number,
+    message?: string,
+) => void =
+    <NumericType extends Number = Number>(
+        actual: NumericType,
+        expected: NumericType,
+        precision?: number,
+        message?: string,
+    ): void => {
+        testIsCloseTo(actual, expected, precision, true, message)
     }
 
 const testGreaterThanOrCloseTo: <NumericType extends Number = Number>(

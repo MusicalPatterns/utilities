@@ -3,35 +3,76 @@
 import { isGreaterThan, isGreaterThanOrEqualTo, isLessThan, isLessThanOrEqualTo, isUndefined } from '../code'
 import { precisionMessage } from './precisionMessage'
 
-const testIsLessThan: <NumericType extends Number = Number>(value: NumericType, otherValue: NumericType) => void =
-    <NumericType extends Number = Number>(value: NumericType, otherValue: NumericType): void => {
+const testIsLessThan: <NumericType extends Number = Number>(
+    value: NumericType,
+    otherValue: NumericType,
+    message?: string,
+) => void =
+    <NumericType extends Number = Number>(
+        value: NumericType,
+        otherValue: NumericType,
+        message?: string,
+    ): void => {
         if (!isLessThan(value, otherValue)) {
-            fail(`expected ${value} to be less than ${otherValue}`)
+            fail(isUndefined(message) ? `expected ${value} to be less than ${otherValue}` : message)
         }
     }
 
-const testIsGreaterThan: <NumericType extends Number = Number>(value: NumericType, otherValue: NumericType) => void =
-    <NumericType extends Number = Number>(value: NumericType, otherValue: NumericType): void => {
+const testIsGreaterThan: <NumericType extends Number = Number>(
+    value: NumericType,
+    otherValue: NumericType,
+    message?: string,
+) =>
+void =
+    <NumericType extends Number = Number>(
+        value: NumericType,
+        otherValue: NumericType,
+        message?: string,
+    ): void => {
         if (!isGreaterThan(value, otherValue)) {
-            fail(`expected ${value} to be greater than ${otherValue}`)
+            fail(isUndefined(message) ? `expected ${value} to be greater than ${otherValue}` : message)
         }
     }
 
 const testIsLessThanOrEqualTo: <NumericType extends Number = Number>(
-    value: NumericType, otherValue: NumericType, precision?: number,
+    value: NumericType,
+    otherValue: NumericType,
+    precision?: number,
+    message?: string,
 ) => void =
-    <NumericType extends Number = Number>(value: NumericType, otherValue: NumericType, precision?: number): void => {
+    <NumericType extends Number = Number>(
+        value: NumericType,
+        otherValue: NumericType,
+        precision?: number,
+        message?: string,
+    ): void => {
         if (!isLessThanOrEqualTo(value, otherValue, precision)) {
-            fail(`expected ${value} to be less than or equal to ${otherValue}${precisionMessage(precision)}`)
+            fail(
+                isUndefined(message) ?
+                    `expected ${value} to be less than or equal to ${otherValue}${precisionMessage(precision)}` :
+                    message,
+            )
         }
     }
 
 const testIsGreaterThanOrEqualTo: <NumericType extends Number = Number>(
-    value: NumericType, otherValue: NumericType, precision?: number,
+    value: NumericType,
+    otherValue: NumericType,
+    precision?: number,
+    message?: string,
 ) => void =
-    <NumericType extends Number = Number>(value: NumericType, otherValue: NumericType, precision?: number): void => {
+    <NumericType extends Number = Number>(
+        value: NumericType,
+        otherValue: NumericType,
+        precision?: number,
+        message?: string,
+    ): void => {
         if (!isGreaterThanOrEqualTo(value, otherValue, precision)) {
-            fail(`expected ${value} to be greater than or equal to ${otherValue}${precisionMessage(precision)}`)
+            fail(
+                isUndefined(message) ?
+                    `expected ${value} to be greater than or equal to ${otherValue}${precisionMessage(precision)}` :
+                    message,
+            )
         }
     }
 
