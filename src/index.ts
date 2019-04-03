@@ -67,6 +67,7 @@ export {
     arraySet,
     every,
     NOT_FOUND,
+    findIndex,
 } from './code'
 export {
     absoluteRatio,

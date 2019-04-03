@@ -98,6 +98,17 @@ const every: <ElementType>(
         // @ts-ignore
         array.every(callback)
 
+const findIndex: <ElementType>(
+    array: ElementType[],
+    callback: (element: ElementType, index: Ordinal, self: ElementType[]) => boolean,
+) => ElementType =
+    <ElementType>(
+        array: ElementType[],
+        callback: (element: ElementType, index: Ordinal, self: ElementType[]) => boolean,
+    ): ElementType =>
+        // @ts-ignore
+        array.findIndex(callback)
+
 export {
     slice,
     forEach,
@@ -106,4 +117,5 @@ export {
     filter,
     cycleSlice,
     every,
+    findIndex,
 }
