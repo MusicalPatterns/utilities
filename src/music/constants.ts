@@ -13,6 +13,7 @@ const CENTS_PER_SEMITONE: Cents = to.Cents(100)
 const CENTS_PER_OCTAVE: Cents = apply.Scalar(CENTS_PER_SEMITONE, to.Scalar(from.Cardinal(SEMITONES_PER_OCTAVE)))
 
 const BEGINNING: Ms = to.Ms(0)
+const NO_DURATION: Ms = to.Ms(0)
 
 const MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS: Cardinal = to.Cardinal(10)
 
@@ -24,4 +25,5 @@ export {
     CENTS_PER_SEMITONE,
     BEGINNING,
     MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS,
+    NO_DURATION,
 }

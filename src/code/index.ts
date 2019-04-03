@@ -46,6 +46,7 @@ export {
     SKIP_FIRST_ELEMENT,
     TRANSLATION_FROM_LENGTH_TO_FINAL_INDEX,
     EXAMPLE_ELEMENT_INDEX,
+    NOT_FOUND,
 } from './constants'
 
 export {

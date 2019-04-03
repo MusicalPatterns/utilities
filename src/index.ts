@@ -66,6 +66,7 @@ export {
     objectSet,
     arraySet,
     every,
+    NOT_FOUND,
 } from './code'
 export {
     absoluteRatio,
@@ -243,6 +244,7 @@ export {
     ScientificPitches,
     computeEqualDivisionScalars,
     computeOctaveRepeatingScalars,
+    NO_DURATION,
 } from './music'
 export {
     Base,

@@ -13,6 +13,7 @@ export {
     CENTS_PER_SEMITONE,
     BEGINNING,
     MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS,
+    NO_DURATION,
 } from './constants'
 
 export {
