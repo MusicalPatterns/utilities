@@ -22,6 +22,12 @@ export {
 } from './testMonotonicArrays'
 export { testAllValuesAreTheSame } from './testAllValuesAreTheSame'
 export { testConstantDelta } from './deltas'
+export {
+    testIsGreaterThan,
+    testIsGreaterThanOrEqualTo,
+    testIsLessThan,
+    testIsLessThanOrEqualTo,
+} from './testComparators'
 
 export {
     VERY_HIGH_PRECISION,

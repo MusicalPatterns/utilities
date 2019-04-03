@@ -319,6 +319,10 @@ export {
     VERY_LOW_PRECISION,
     testGreaterThanOrCloseTo,
     testLessThanOrCloseTo,
+    testIsGreaterThan,
+    testIsGreaterThanOrEqualTo,
+    testIsLessThan,
+    testIsLessThanOrEqualTo,
 } from './testing'
 export {
     MILLISECONDS_PER_SECOND,

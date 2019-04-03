@@ -2,6 +2,7 @@
 
 import { isUndefined } from '../code'
 import { goesMonotonically, goesMonotonicallyBetweenValueAndValue, goesMonotonicallyFromValueToValue } from '../math'
+import { precisionMessage } from './precisionMessage'
 
 const testGoesMonotonicallyFromValueToValue: <NumericElementType extends Number = Number>(
     array: NumericElementType[],
@@ -16,10 +17,9 @@ const testGoesMonotonicallyFromValueToValue: <NumericElementType extends Number 
         precision?: number,
     ): void => {
         if (!goesMonotonicallyFromValueToValue(array, expectedBeginValue, expectedEndValue, precision)) {
-            const precisionMessage: string = isUndefined(precision) ? '' : `, with precision ${precision}`
             fail(
                 `array ${array} did not go monotonically from ${expectedBeginValue} to ${expectedEndValue}\
-${precisionMessage}`,
+${precisionMessage(precision)}`,
             )
         }
     }
@@ -36,8 +36,7 @@ const testGoesMonotonically: <NumericElementType extends Number = Number>(
     ): void => {
         if (!goesMonotonically(array, expectedBeginValue, undefined, precision)) {
             const fromMessage: string = isUndefined(expectedBeginValue) ? '' : ` from ${expectedBeginValue}`
-            const precisionMessage: string = isUndefined(precision) ? '' : `, with precision ${precision}`
-            fail(`array ${array} did not go monotonically${fromMessage}${precisionMessage}`)
+            fail(`array ${array} did not go monotonically${fromMessage}${precisionMessage(precision)}`)
         }
     }
 
@@ -54,10 +53,9 @@ const testGoesMonotonicallyBetweenValueAndValue: <NumericElementType extends Num
         precision?: number,
     ): void => {
         if (!goesMonotonicallyBetweenValueAndValue(array, expectedBeginValue, expectedEndValue, precision)) {
-            const precisionMessage: string = isUndefined(precision) ? '' : `, with precision ${precision}`
             fail(
                 `array ${array} did not go monotonically between ${expectedBeginValue} and ${expectedEndValue}\
-${precisionMessage}`,
+${precisionMessage(precision)}`,
             )
         }
     }

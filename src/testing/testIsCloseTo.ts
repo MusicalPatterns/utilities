@@ -2,6 +2,7 @@
 
 import { isGreaterThanOrEqualTo, isLessThanOrEqualTo, isUndefined } from '../code'
 import { isCloseTo } from '../math'
+import { precisionMessage } from './precisionMessage'
 
 const testIsCloseTo: <NumericType extends Number = Number>(
     actual: NumericType,
@@ -19,12 +20,11 @@ const testIsCloseTo: <NumericType extends Number = Number>(
     ): void => {
         const isClose: boolean = isCloseTo(actual, expected, precision)
 
-        const precisionMessage: string = isUndefined(precision) ? '' : `, to precision ${precision}`
         if (!negate && !isClose) {
-            fail(`expected ${actual} to be close to ${expected}${precisionMessage}`)
+            fail(`expected ${actual} to be close to ${expected}${precisionMessage(precision)}`)
         }
         else if (negate && isClose) {
-            fail(`expected ${actual} not to be close to ${expected}${precisionMessage}`)
+            fail(`expected ${actual} not to be close to ${expected}${precisionMessage(precision)}`)
         }
     }
 
