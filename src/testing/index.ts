@@ -1,7 +1,15 @@
 export { testIsCloseTo, testIsNotCloseTo, testGreaterThanOrCloseTo, testLessThanOrCloseTo } from './testIsCloseTo'
 export { testArraysAreClose, testArraysAreCloseSoFar } from './testArraysAreClose'
 export { testArraysHaveSameElements } from './testArraysHaveSameElements'
-export { elementCount, elementIds, elementChecked, elementInnerText, elementExists, elementValue } from './checkElement'
+export {
+    elementCount,
+    elementIds,
+    elementChecked,
+    elementInnerText,
+    elementExists,
+    elementValue,
+    elementAttribute,
+}from './checkElement'
 export { findElement } from './findElement'
 export { press } from './keyboard'
 export { clickElement } from './clickElement'

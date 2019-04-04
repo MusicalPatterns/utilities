@@ -301,6 +301,7 @@ export {
     elementInnerText,
     elementExists,
     elementValue,
+    elementAttribute,
     findElement,
     press,
     loseFocus,

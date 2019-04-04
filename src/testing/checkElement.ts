@@ -1,20 +1,25 @@
 import { Page } from 'puppeteer'
 import { HtmlValue } from '../web'
 
-const elementValue: (page: Page, selector: string) => Promise<HtmlValue> =
-    async (page: Page, selector: string): Promise<HtmlValue> =>
+const elementAttribute: (page: Page, selector: string, attribute: string) => Promise<unknown> =
+    async (page: Page, selector: string, attribute: string): Promise<unknown> =>
         page.evaluate(
-            (selectorInEvaluate: string) => {
+            (selectorInEvaluate: string, attributeInEvaluate: string) => {
                 const element: Element | null = document.querySelector(selectorInEvaluate)
                 if (!element) {
                     throw new Error(`element matching ${selectorInEvaluate} was not found`)
                 }
 
                 // @ts-ignore
-                return element.value
+                return element[ attributeInEvaluate ]
             },
             selector,
+            attribute,
         )
+
+const elementValue: (page: Page, selector: string) => Promise<HtmlValue> =
+    async (page: Page, selector: string): Promise<HtmlValue> =>
+        elementAttribute(page, selector, 'value') as Promise<HtmlValue>
 
 const elementExists: (page: Page, selector: string) => Promise<boolean> =
     async (page: Page, selector: string): Promise<boolean> =>
@@ -22,33 +27,11 @@ const elementExists: (page: Page, selector: string) => Promise<boolean> =
 
 const elementInnerText: (page: Page, selector: string) => Promise<string> =
     async (page: Page, selector: string): Promise<string> =>
-        page.evaluate(
-            (selectorInEvaluate: string) => {
-                const element: Element | null = document.querySelector(selectorInEvaluate)
-                if (!element) {
-                    throw new Error(`element matching ${selectorInEvaluate} was not found`)
-                }
-
-                // @ts-ignore
-                return element.innerText
-            },
-            selector,
-        )
+        elementAttribute(page, selector, 'innerText') as Promise<string>
 
 const elementChecked: (page: Page, selector: string) => Promise<boolean> =
     async (page: Page, selector: string): Promise<boolean> =>
-        page.evaluate(
-            (selectorInEvaluate: string) => {
-                const element: Element | null = document.querySelector(selectorInEvaluate)
-                if (!element) {
-                    throw new Error(`element matching ${selectorInEvaluate} was not found`)
-                }
-
-                // @ts-ignore
-                return element.checked
-            },
-            selector,
-        )
+        elementAttribute(page, selector, 'checked') as Promise<boolean>
 
 const elementCount: (page: Page, selector: string) => Promise<number> =
     async (page: Page, selector: string): Promise<number> =>
@@ -70,4 +53,5 @@ export {
     elementChecked,
     elementCount,
     elementIds,
+    elementAttribute,
 }
