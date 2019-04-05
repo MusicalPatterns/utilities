@@ -44,7 +44,7 @@ const Translation: <ValueType, UnitsType extends Number = NoUnits>(
                 index = Translation(index, to.Translation(1))
             ) {
                 let cycledIndex: Ordinal = Translation(index, to.Translation(-from.Translation(translation)))
-                cycledIndex = Modulus(cycledIndex, cellCount)
+                cycledIndex = Modulus(cycledIndex, to.Modulus(from.Cardinal(cellCount)))
                 cycledCycle.push(cycle[ from.Ordinal(cycledIndex) ])
             }
 

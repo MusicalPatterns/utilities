@@ -89,7 +89,7 @@ const EVERY_FIFTH: Scalar = to.Scalar(5)
 
 const ADDITIVE_IDENTITY: Translation = to.Translation(0)
 const MULTIPLICATIVE_IDENTITY: Scalar = to.Scalar(1)
-const FRACTIONAL_IDENTITY: Fraction = to.Fraction([ 1, 1 ])
+const FRACTIONAL_IDENTITY: Fraction = to.Fraction([ to.Numerator(1), to.Denominator(1) ])
 
 const ARBITRARILY_LARGE_NUMBER: number = 999999999999
 

@@ -216,6 +216,17 @@ describe('to', () => {
             const doubleDenominator: Denominator = to.Denominator(to.Denominator(3))
         })
 
+        it('allows making fractions out of integers or numerator/denominators or any combination thereof', () => {
+            to.Fraction([ to.Integer(4), to.Integer(4) ])
+            to.Fraction([ to.Numerator(4), to.Denominator(4) ])
+            to.Fraction([ to.Numerator(4), to.Integer(4) ])
+            to.Fraction([ to.Integer(4), to.Denominator(4) ])
+        })
+
+        // it('DOES NOT ALLOW creating fractions out of mere numbers', () => {
+        //     to.Fraction([ 4, 4 ])
+        // })
+
         // it('DOES NOT ALLOW making Cardinals or Ordinals if they are some other Units (not Integers)', () => {
         //     to.Ordinal(to.Hz(3))
         //     to.Cardinal(to.Hz(3))
@@ -228,6 +239,13 @@ describe('to', () => {
         //     const cardinalHz: Cardinal<Hz> = 3 as any as Cardinal<Hz>
         //     const numeratorHz: Numerator<Hz> = 3 as any as Numerator<Hz>
         //     const denominatorHz: Denominator<Hz> = 3 as any as Denominator<Hz>
+        // })
+        //
+        // it('DOES NOT ALLOW making Cardinals or Ordinals directly into other operations', () => {
+        //     const ordinalScalar: Scalar<Ordinal> = to.Scalar(to.Ordinal(3))
+        //     const cardinalScalar: Scalar<Cardinal> = to.Scalar(to.Cardinal(3))
+        //     const numeratorScalar: Scalar<Numerator> = to.Scalar(to.Numerator(3))
+        //     const denominatorScalar: Scalar<Denominator> = to.Scalar(to.Denominator(3))
         // })
     })
 })

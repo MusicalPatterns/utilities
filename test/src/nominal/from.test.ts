@@ -86,7 +86,7 @@ describe('from', () => {
         })
 
         it('converts a fraction into a number', () => {
-            const fraction: Fraction = to.Fraction([ 5, 4 ])
+            const fraction: Fraction = to.Fraction([ to.Numerator(5), to.Denominator(4) ])
             expect(from.Fraction(fraction))
                 .toBe(5 / 4)
         })

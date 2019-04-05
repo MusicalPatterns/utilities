@@ -45,12 +45,12 @@ describe('apply', () => {
     describe('Fractions, Numerators, and Denominators', () => {
         it('applying a Numerator to a Denominator gives a Fraction', () => {
             expect(apply.Numerator(to.Denominator(5), to.Numerator(4)))
-                .toEqual(to.Fraction([ 4, 5 ]))
+                .toEqual(to.Fraction([ to.Numerator(4), to.Denominator(5) ]))
         })
 
         it('applying a Denominator to a Numerator gives a Fraction', () => {
             expect(apply.Denominator(to.Numerator(5), to.Denominator(4)))
-                .toEqual(to.Fraction([ 5, 4 ]))
+                .toEqual(to.Fraction([ to.Numerator(5), to.Denominator(4) ]))
         })
     })
 

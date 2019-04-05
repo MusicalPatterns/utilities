@@ -123,8 +123,8 @@ const Denominator: (denominator: number | Integer) => Denominator =
         return denominator as unknown as Denominator
     }
 
-const Fraction: (fraction: [ number | Numerator, number | Denominator ]) => Fraction =
-    (fraction: [ number | Numerator, number | Denominator ]): Fraction =>
+const Fraction: (fraction: [ Integer | Numerator, Integer | Denominator ]) => Fraction =
+    (fraction: [ Integer | Numerator, Integer | Denominator ]): Fraction =>
         fraction as unknown as Fraction
 
 // Other Stuff
