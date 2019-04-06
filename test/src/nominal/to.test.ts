@@ -226,7 +226,7 @@ describe('to', () => {
         // it('DOES NOT ALLOW creating fractions out of mere numbers', () => {
         //     to.Fraction([ 4, 4 ])
         // })
-
+        //
         // it('DOES NOT ALLOW making Cardinals or Ordinals if they are some other Units (not Integers)', () => {
         //     to.Ordinal(to.Hz(3))
         //     to.Cardinal(to.Hz(3))

@@ -54,12 +54,12 @@ type Modulus<UnitsType extends NoOperation = number> = OperationBrand<'Modulus',
 
 // Special Units & Operation
 
-type Integer = number & NoOperation & { _UnitsBrand: 'Integer' }
+type Integer = number & { _UnitsBrand: 'Integer' }
 
-type Ordinal = number & { _UnitsBrand: 'Integer' } & { _OperationBrand: 'Ordinal' }
-type Cardinal = number & { _UnitsBrand: 'Integer' } & { _OperationBrand: 'Cardinal' }
-type Numerator = number & { _UnitsBrand: 'Integer' } & { _OperationBrand: 'Numerator' }
-type Denominator = number & { _UnitsBrand: 'Integer' } & { _OperationBrand: 'Denominator' }
+type Ordinal = Integer & { _OperationBrand: 'Ordinal' }
+type Cardinal = Integer & { _OperationBrand: 'Cardinal' }
+type Numerator = Integer & { _OperationBrand: 'Numerator' }
+type Denominator = Integer & { _OperationBrand: 'Denominator' }
 
 type Fraction = [ Numerator, Denominator ]
 
