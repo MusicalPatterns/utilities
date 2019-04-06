@@ -35,6 +35,10 @@ const finalIndexFromElementsTotal: (elementsTotal: Cardinal) => Ordinal =
     (elementsTotal: Cardinal): Ordinal =>
         to.Ordinal(from.Cardinal(apply.Translation(elementsTotal, TRANSLATION_FROM_LENGTH_TO_FINAL_INDEX)))
 
+const indexJustBeyondFinalElementFromElementsTotal: (elementsTotal: Cardinal) => Ordinal =
+    (elementsTotal: Cardinal): Ordinal =>
+        to.Ordinal(from.Cardinal(elementsTotal))
+
 export {
     indexOfFinalElement,
     finalElement,
@@ -42,4 +46,5 @@ export {
     totalElements,
     initialElement,
     finalIndexFromElementsTotal,
+    indexJustBeyondFinalElementFromElementsTotal,
 }

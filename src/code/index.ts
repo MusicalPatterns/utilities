@@ -20,6 +20,7 @@ export {
     indexJustBeyondFinalElement,
     initialElement,
     finalIndexFromElementsTotal,
+    indexJustBeyondFinalElementFromElementsTotal,
 } from './finalElement'
 export { random } from './random'
 export { keyExistsOnObject } from './keyExistsOnObject'
