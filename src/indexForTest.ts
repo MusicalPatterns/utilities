@@ -74,6 +74,7 @@ export {
     goesQuadraticallyFromValueToValue,
     inBounds,
     allValuesAreTheSame,
+    isCloseTo,
 } from './math/indexForTest'
 export {
     centsTranslationToPitchScalar,
@@ -118,7 +119,6 @@ export {
 } from './nominal/indexForTest'
 export {
     testArraysAreClose,
-    testIsCloseTo,
     testArraysHaveSameElements,
     testConstantDelta,
 } from './testing/indexForTest'

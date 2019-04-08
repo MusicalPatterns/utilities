@@ -1,4 +1,4 @@
-export { testIsCloseTo, testIsNotCloseTo, testGreaterThanOrCloseTo, testLessThanOrCloseTo } from './testIsCloseTo'
+export { testIsNotCloseTo, testGreaterThanOrCloseTo, testLessThanOrCloseTo } from './testIsCloseTo'
 export { testArraysAreClose, testArraysAreCloseSoFar } from './testArraysAreClose'
 export { testArraysHaveSameElements } from './testArraysHaveSameElements'
 export {

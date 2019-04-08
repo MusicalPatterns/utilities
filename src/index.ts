@@ -291,7 +291,6 @@ export {
     computeReducer,
 } from './state'
 export {
-    testIsCloseTo,
     testIsNotCloseTo,
     testArraysAreClose,
     testArraysAreCloseSoFar,
