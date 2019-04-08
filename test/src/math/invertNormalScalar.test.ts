@@ -1,6 +1,3 @@
-// tslint:disable-next-line no-reference
-/// <reference path="../../types/index.d.ts" />
-
 import { invertNormalScalar, to } from '../../../src/indexForTest'
 
 describe('invert normal scalar', () => {

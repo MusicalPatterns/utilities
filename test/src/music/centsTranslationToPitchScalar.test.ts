@@ -1,6 +1,3 @@
-// tslint:disable-next-line no-reference
-/// <reference path="../../types/index.d.ts" />
-
 import { centsTranslationToPitchScalar, Frequency, Scalar, THREE_HALVES, to } from '../../../src/indexForTest'
 
 describe('cents translation to pitch scalar', () => {
