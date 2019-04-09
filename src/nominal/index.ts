@@ -15,7 +15,7 @@ export {
     computeNominalInterface,
     NominalInterface,
 } from './custom'
-export { positiveIntegers, zeroAndPositiveIntegers } from './integers'
+export { POSITIVE_INTEGERS, ZERO_AND_POSITIVE_INTEGERS } from './integers'
 export {
     isCycle,
 } from './typeGuards'
