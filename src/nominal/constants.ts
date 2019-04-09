@@ -1,22 +1,22 @@
 // tslint:disable no-magic-numbers max-file-line-count
 
-import { reciprocal } from '../math'
+import * as apply from './apply'
+import * as from from './from'
+import * as to from './to'
 import {
-    apply,
     Base,
-    Cardinal, Cents,
+    Cardinal,
+    Cents,
     Fraction,
-    from,
+    Integer,
     Ms,
     Ordinal,
     Power,
     Radians,
     Scalar,
     Space,
-    to,
     Translation,
-} from './index'
-import { Integer } from './types'
+} from './types'
 
 const DECIMAL: Integer = to.Integer(10)
 
@@ -144,7 +144,7 @@ const SEMITONES_PER_OCTAVE: Cardinal = to.Cardinal(12)
 
 const OCTAVE: Base = to.Base(2)
 const TRITAVE: Base = to.Base(3)
-const SEMITONE: Base = apply.Power(OCTAVE, to.Power(from.Cardinal(reciprocal(SEMITONES_PER_OCTAVE))))
+const SEMITONE: Base = apply.Power(OCTAVE, to.Power(1 / from.Cardinal(SEMITONES_PER_OCTAVE)))
 
 const CENTS_PER_SEMITONE: Cents = to.Cents(100)
 const CENTS_PER_OCTAVE: Cents = apply.Scalar(CENTS_PER_SEMITONE, to.Scalar(from.Cardinal(SEMITONES_PER_OCTAVE)))
