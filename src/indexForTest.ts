@@ -122,6 +122,3 @@ export {
     Frequency,
     Amplitude,
 } from './nominal/indexForTest'
-export {
-    testConstantDelta,
-} from './testing/indexForTest'

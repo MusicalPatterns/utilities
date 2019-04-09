@@ -15,9 +15,13 @@ export { selectOption } from './selectOption'
 export { deleteCharacterFromInput } from './deleteCharacterFromInput'
 export { simulateDesktopViewport, simulateMobileViewport } from './setViewport'
 export { waitForHeadfulQaing } from './wait'
-export { testConstantDelta } from './deltas'
 
 export {
     VERY_HIGH_PRECISION,
     VERY_LOW_PRECISION,
 } from './constants'
+
+export {
+    HtmlValueOrChecked,
+    HtmlValue,
+} from './types'

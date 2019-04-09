@@ -1,6 +1,28 @@
 // tslint:disable max-file-line-count
 
 export {
+    elementCount,
+    elementIds,
+    elementChecked,
+    elementInnerText,
+    elementExists,
+    elementValue,
+    elementAttribute,
+    findElement,
+    press,
+    loseFocus,
+    selectOption,
+    simulateDesktopViewport,
+    simulateMobileViewport,
+    clickElement,
+    deleteCharacterFromInput,
+    waitForHeadfulQaing,
+    VERY_HIGH_PRECISION,
+    VERY_LOW_PRECISION,
+    HtmlValue,
+    HtmlValueOrChecked,
+} from './browser'
+export {
     deepEqual,
     deepClone,
     isUndefined,
@@ -291,27 +313,6 @@ export {
     computeReducer,
 } from './state'
 export {
-    elementCount,
-    elementIds,
-    elementChecked,
-    elementInnerText,
-    elementExists,
-    elementValue,
-    elementAttribute,
-    findElement,
-    press,
-    loseFocus,
-    selectOption,
-    simulateDesktopViewport,
-    simulateMobileViewport,
-    clickElement,
-    deleteCharacterFromInput,
-    waitForHeadfulQaing,
-    testConstantDelta,
-    VERY_HIGH_PRECISION,
-    VERY_LOW_PRECISION,
-} from './testing'
-export {
     MILLISECONDS_PER_SECOND,
     SECONDS_PER_MINUTE,
     ONE_MILLISECOND,
@@ -320,10 +321,6 @@ export {
     ONE_HOUR,
     ONE_DAY,
 } from './time'
-export {
-    HtmlValue,
-    HtmlValueOrChecked,
-} from './web'
 
 export {
     Units,
