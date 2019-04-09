@@ -18,6 +18,10 @@ export {
 export {
     isCycle,
 } from './typeGuards'
+export {
+    ZERO_AND_POSITIVE_INTEGERS,
+    POSITIVE_INTEGERS,
+} from './integers'
 
 export {
     TWO_THIRDS,
@@ -134,8 +138,6 @@ export {
     ONE_MINUTE,
     ONE_HOUR,
     ONE_DAY,
-    ZERO_AND_POSITIVE_INTEGERS,
-    POSITIVE_INTEGERS,
 } from './constants'
 
 export {
