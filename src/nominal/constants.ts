@@ -162,6 +162,8 @@ const ONE_MINUTE: Ms = to.Ms(60000)
 const ONE_HOUR: Ms = to.Ms(3600000)
 const ONE_DAY: Ms = to.Ms(86400000)
 
+const A_SUFFICIENT_COUNT_OF_NUMBERS: Cardinal = to.Cardinal(Math.pow(2, 8))
+
 export {
     TWO_THIRDS,
     TWO_FIFTHS,
@@ -277,4 +279,5 @@ export {
     ONE_MINUTE,
     ONE_HOUR,
     ONE_DAY,
+    A_SUFFICIENT_COUNT_OF_NUMBERS,
 }
