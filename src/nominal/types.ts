@@ -1,4 +1,4 @@
-// tslint:disable ban-types max-file-line-count no-magic-numbers max-line-length
+// tslint:disable max-file-line-count no-magic-numbers max-line-length
 
 import { Difference } from '../code'
 

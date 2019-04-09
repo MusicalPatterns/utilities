@@ -1,5 +1,3 @@
-// tslint:disable ban-types
-
 import { isCloseTo } from '../math'
 import { isUndefined } from './isUndefined'
 

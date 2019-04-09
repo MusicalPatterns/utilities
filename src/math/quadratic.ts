@@ -1,8 +1,7 @@
-// tslint:disable ban-types bool-param-default
+// tslint:disable bool-param-default
 
-import { EXAMPLE_ELEMENT_INDEX, isUndefined, Maybe } from '../code'
-import { apply, Scalar, Translation } from '../nominal'
-import { MULTIPLICATIVE_IDENTITY } from './constants'
+import { isUndefined, Maybe } from '../code'
+import { apply, EXAMPLE_ELEMENT_INDEX, MULTIPLICATIVE_IDENTITY, Scalar, Translation } from '../nominal'
 import { allValuesAreTheSame, beginValueIsCorrect } from './goes'
 import { goesMonotonicallyBetweenValueAndValue, goesMonotonicallyFromValueToValue } from './monotonic'
 import { computeDeltas, computeIntervals } from './rateOfChange'

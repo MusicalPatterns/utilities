@@ -11,6 +11,23 @@ export {
 }
 
 export {
+    OCTAVE,
+    TRITAVE,
+    INITIAL,
+    X_AXIS,
+    Y_AXIS,
+    PI,
+    ONE_HALF,
+    THREE_HALVES,
+    FOUR_THIRDS,
+    TWO_THIRDS,
+    FIVE_HALVES,
+    EIGHTH,
+    FOURTH,
+    THIRD,
+} from './constants'
+
+export {
     Scalar,
     Cycle,
     Cents,

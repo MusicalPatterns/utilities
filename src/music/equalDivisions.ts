@@ -1,7 +1,17 @@
-import { INITIAL, slice } from '../code'
-import { reciprocal, zeroAndPositiveIntegers } from '../math'
-import { apply, Base, Denominator, from, Integer, Scalar, to } from '../nominal'
-import { OCTAVE } from './constants'
+import { slice } from '../code'
+import { reciprocal } from '../math'
+import {
+    apply,
+    Base,
+    Denominator,
+    from,
+    INITIAL,
+    Integer,
+    OCTAVE,
+    Scalar,
+    to,
+    zeroAndPositiveIntegers,
+} from '../nominal'
 
 const computeEqualDivisionScalars: (equalDivision: Denominator, window?: Base) => Scalar[] =
     (equalDivision: Denominator, window: Base = OCTAVE): Scalar[] => {

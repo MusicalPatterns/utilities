@@ -1,12 +1,8 @@
-// tslint:disable ban-types max-file-line-count
+// tslint:disable max-file-line-count
 
 import { isEmpty, isUndefined } from '../code'
-import { Integer } from '../nominal'
-import {
-    ADDITIVE_IDENTITY,
-    MULTIPLICATIVE_IDENTITY,
-    VALUE_BELOW_WHICH_ROUNDING_IMPLEMENTATION_BREAKS,
-} from './constants'
+import { ADDITIVE_IDENTITY, Integer, MULTIPLICATIVE_IDENTITY } from '../nominal'
+import { VALUE_BELOW_WHICH_ROUNDING_IMPLEMENTATION_BREAKS } from './constants'
 
 const sum: <NumericType extends Number = Number>(...values: NumericType[]) => NumericType =
     <NumericType extends Number = Number>(...values: NumericType[]): NumericType => {

@@ -1,7 +1,4 @@
-// tslint:disable no-any ban-types
-
-import { apply, to } from '../nominal'
-import { DECIMAL, DEFAULT_PRECISION, ONE_HALF } from './constants'
+import { apply, DECIMAL, DEFAULT_PRECISION, ONE_HALF, to } from '../nominal'
 import { absoluteValue, difference, negative, product, quotient, round } from './typedOperations'
 
 const isCloseTo: <NumericType extends Number = Number>(

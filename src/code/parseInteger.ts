@@ -1,5 +1,4 @@
-import { DECIMAL } from '../math'
-import { Integer, to } from '../nominal'
+import { DECIMAL, Integer, to } from '../nominal'
 
 const parseInteger: (integerString: string, radix?: Integer) => Integer =
     (integerString: string, radix: Integer = DECIMAL): Integer =>

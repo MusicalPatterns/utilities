@@ -1,6 +1,5 @@
 import { negative } from '../math'
-import { apply, Cardinal, from, Ordinal, to } from '../nominal'
-import { INITIAL, TRANSLATION_FROM_LENGTH_TO_FINAL_INDEX } from './constants'
+import { apply, Cardinal, from, INITIAL, Ordinal, to, TRANSLATION_FROM_LENGTH_TO_FINAL_INDEX } from '../nominal'
 import { isEmpty } from './isEmpty'
 
 const finalElement: <ElementType>(array: ElementType[]) => ElementType =

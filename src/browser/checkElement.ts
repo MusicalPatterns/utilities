@@ -1,5 +1,5 @@
 import { Page } from 'puppeteer'
-import { HtmlValue } from '../browser'
+import { HtmlValue } from './types'
 
 const elementAttribute: (page: Page, selector: string, attribute: string) => Promise<unknown> =
     async (page: Page, selector: string, attribute: string): Promise<unknown> =>

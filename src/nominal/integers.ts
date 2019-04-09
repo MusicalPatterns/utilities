@@ -1,5 +1,6 @@
-import { Integer, to } from '../nominal'
 import { A_SUFFICIENT_COUNT_OF_NUMBERS } from './constants'
+import * as to from './to'
+import { Integer } from './types'
 
 const zeroAndPositiveIntegers: Integer[] = [
     ...Array(A_SUFFICIENT_COUNT_OF_NUMBERS)

@@ -1,6 +1,4 @@
-// tslint:disable ban-types
-
-import { TWO } from './constants'
+import { TWO } from '../nominal'
 import { dividesEvenly } from './dividesEvenly'
 
 const isEven: <NumericType extends Number = Number>(value: NumericType) => boolean =

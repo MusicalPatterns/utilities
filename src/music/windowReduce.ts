@@ -1,6 +1,5 @@
 import { reciprocal } from '../math'
-import { apply, Frequency, from, Scalar, to } from '../nominal'
-import { OCTAVE } from './constants'
+import { apply, Frequency, from, OCTAVE, Scalar, to } from '../nominal'
 
 const octaveReduce: (scalar: Scalar<Frequency>) => Scalar<Frequency> =
     (scalar: Scalar<Frequency>): Scalar<Frequency> =>

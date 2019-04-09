@@ -1,7 +1,6 @@
 // tslint:disable max-file-line-count
 
-import { NEXT } from '../math'
-import { apply, Cycle, from, Ordinal } from '../nominal'
+import { apply, Cycle, from, NEXT, Ordinal } from '../nominal'
 import { indexJustBeyondFinalElement, totalElements } from './finalElement'
 import { isUndefined } from './isUndefined'
 

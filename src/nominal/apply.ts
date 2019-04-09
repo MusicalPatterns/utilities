@@ -1,4 +1,4 @@
-// tslint:disable variable-name max-file-line-count ban-types
+// tslint:disable variable-name max-file-line-count
 
 import { finalIndexFromElementsTotal, totalElements } from '../code'
 import { normalScalarCheck, ordinalCheck } from './checks'

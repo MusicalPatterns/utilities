@@ -1,8 +1,8 @@
 // tslint:disable max-file-line-count
 
 import { HtmlValue } from '../browser'
-import { EXCLUSIVE_TO_LEFT, INITIAL, slice } from '../code'
-import { apply, Ordinal, to } from '../nominal'
+import { slice } from '../code'
+import { apply, EXCLUSIVE_TO_LEFT, INITIAL, Ordinal, to } from '../nominal'
 import { Operands } from './types'
 
 const splitOperands: (expression: string, operatorIndex: Ordinal) => Operands =

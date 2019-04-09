@@ -1,5 +1,4 @@
-// tslint:disable ban-types object-literal-sort-keys max-file-line-count
-
+// tslint:disable object-literal-sort-keys max-file-line-count
 import {
     allValuesAreTheSame,
     apply,

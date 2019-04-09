@@ -1,6 +1,4 @@
-import { NEXT } from '../math'
-import { apply, Cardinal, Ordinal } from '../nominal'
-import { INITIAL } from './constants'
+import { apply, Cardinal, INITIAL, NEXT, Ordinal } from '../nominal'
 import { finalIndexFromElementsTotal } from './finalElement'
 
 const repeatCall: <ElementType>(arrayFunction: () => ElementType[], count: Cardinal) => ElementType[] =

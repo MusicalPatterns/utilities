@@ -1,6 +1,5 @@
 import { allElementsEqual, isEmpty, isSingleton } from '../code'
-import { from, Integer, to } from '../nominal'
-import { TWO } from './constants'
+import { from, Integer, to, TWO } from '../nominal'
 import { absoluteValue, modulus, product, quotient } from './typedOperations'
 import { IntegerOperation } from './types'
 

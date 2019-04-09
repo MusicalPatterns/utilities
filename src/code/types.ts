@@ -11,7 +11,6 @@ interface ObjectOf<ValueType> {
 
 type Maybe<Type> = Type | undefined
 
-// tslint:disable-next-line ban-types
 type ArrayOfLength<Length extends Number, NumericType = number> = [ NumericType, ...NumericType[] ] & { length: Length }
 
 export {

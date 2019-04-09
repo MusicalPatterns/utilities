@@ -1,8 +1,5 @@
-// tslint:disable ban-types
-
 import { reduce } from '../code'
-import { apply, Ordinal } from '../nominal'
-import { SQUARE_ROOT, SQUARED } from './constants'
+import { apply, Ordinal, SQUARE_ROOT, SQUARED } from '../nominal'
 import { absoluteValue, difference, sum } from './typedOperations'
 import { Coordinate } from './types'
 

@@ -1,8 +1,20 @@
-// tslint:disable ban-types max-file-line-count no-any
+// tslint:disable max-file-line-count
 
-import { indexJustBeyondFinalElement, INITIAL, map, Maybe, reduce, slice } from '../code'
-import { apply, Cycle, from, Ordinal, Radians, Scalar, to, Translation } from '../nominal'
-import { ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS, TWO_DIMENSIONAL, Z_AXIS } from './constants'
+import { indexJustBeyondFinalElement, map, Maybe, reduce, slice } from '../code'
+import {
+    apply,
+    Cycle,
+    from,
+    INITIAL,
+    Ordinal,
+    Radians,
+    ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS,
+    Scalar,
+    to,
+    Translation,
+    TWO_DIMENSIONAL,
+    Z_AXIS,
+} from '../nominal'
 import { cosine, sine } from './trigonometry'
 import { difference, negative, sum } from './typedOperations'
 import { Coordinate, CycleMap, RotateParameters, RotationMatrix, Vector } from './types'
@@ -19,7 +31,7 @@ const defaultFixedCoordinateToOriginOfDimensionalityOfCoordinate:
         fixedCoordinate || coordinate.length === from.Cardinal(TWO_DIMENSIONAL) ?
             [ 0, 0 ] :
             [ 0, 0, 0 ]
-    ) as any as Coordinate<ElementType, Dimensionality>
+    ) as unknown as Coordinate<ElementType, Dimensionality>
 
 const computeCycleMapForScalingRotationMatrixToDimensionalityOfCoordinate:
     <ElementType extends Number = Number, Dimensionality extends Number = Number>(
@@ -111,7 +123,7 @@ const rotate: <ElementType extends Number, Dimensionality extends Number = Numbe
                 rotationVector,
                 (coordinateElement: ElementType, rotationScalar: Scalar, index: Ordinal): ElementType =>
                     sum(coordinateElement, apply.Scalar(apply.Ordinal(relative, index), rotationScalar)),
-                0 as any as ElementType,
+                0 as unknown as ElementType,
             ),
         ) as Coordinate<ElementType, Dimensionality>
     }

@@ -44,19 +44,5 @@ export { computePartialSumOfPowers } from './partialSumOfPowers'
 export { computeDeltas, computeIntervals } from './rateOfChange'
 
 export {
-    X_AXIS,
-    Y_AXIS,
-    PI,
-    ONE_HALF,
-    THREE_HALVES,
-    FOUR_THIRDS,
-    TWO_THIRDS,
-    FIVE_HALVES,
-    EIGHTH,
-    FOURTH,
-    THIRD,
-} from './constants'
-
-export {
     Coordinate,
 } from './types'

@@ -1,5 +1,3 @@
-// tslint:disable ban-types
-
 import { Cycle, Integer, Ordinal, Radians, Scalar, Space } from '../nominal'
 
 // tslint:disable-next-line no-magic-numbers

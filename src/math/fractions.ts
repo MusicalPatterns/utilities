@@ -9,8 +9,8 @@ import {
     Scalar,
     to,
 } from '../indexForTest'
-import { DENOMINATOR_INDEX, FRACTIONAL_IDENTITY, NUMERATOR_INDEX, quotient } from '../math'
-import { apply, from } from '../nominal'
+import { quotient } from '../math'
+import { apply, DENOMINATOR_INDEX, FRACTIONAL_IDENTITY, from, NUMERATOR_INDEX } from '../nominal'
 
 const getNumerator: (fraction: Fraction) => Numerator =
     (fraction: Fraction): Numerator =>

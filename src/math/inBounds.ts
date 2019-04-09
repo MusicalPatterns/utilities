@@ -1,5 +1,3 @@
-// tslint:disable ban-types
-
 import { isGreaterThanOrEqualTo, isLessThanOrEqualTo, isUndefined } from '../code'
 
 const inBounds: <NumericElementType extends Number = Number>(

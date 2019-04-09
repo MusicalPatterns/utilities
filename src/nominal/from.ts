@@ -1,4 +1,4 @@
-// tslint:disable variable-name max-file-line-count ban-types max-line-length
+// tslint:disable variable-name max-file-line-count max-line-length
 
 import {
     Amplitude,

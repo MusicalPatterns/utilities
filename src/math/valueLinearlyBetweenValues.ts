@@ -1,5 +1,3 @@
-// tslint:disable ban-types
-
 import { apply, from, NormalScalar, Scalar, to } from '../nominal'
 import { negative } from './typedOperations'
 

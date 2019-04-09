@@ -1,4 +1,4 @@
-// tslint:disable ban-types max-file-line-count bool-param-default
+// tslint:disable max-file-line-count bool-param-default
 
 import {
     initialElement,
@@ -6,8 +6,8 @@ import {
     isLessThanOrEqualTo,
     isUndefined,
     Maybe,
-    SKIP_FIRST_ELEMENT,
 } from '../code'
+import { SKIP_FIRST_ELEMENT } from '../nominal'
 import { beginValueIsCorrect, goesFromValueToValue } from './goes'
 import { inBounds } from './inBounds'
 

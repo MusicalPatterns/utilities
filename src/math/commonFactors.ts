@@ -1,8 +1,5 @@
-// tslint:disable ban-types
-
 import { isSingleton } from '../code'
-import { apply, Integer } from '../nominal'
-import { FIRST_FACTOR_NECESSARY_TO_CHECK_IF_COMMON, NEXT } from './constants'
+import { apply, FIRST_FACTOR_NECESSARY_TO_CHECK_IF_COMMON, Integer, NEXT } from '../nominal'
 import { dividesEvenly } from './dividesEvenly'
 import { max } from './typedOperations'
 

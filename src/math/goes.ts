@@ -1,5 +1,3 @@
-// tslint:disable ban-types
-
 import { every, finalElement, initialElement, isEmpty, isUndefined } from '../code'
 import { isCloseTo } from './isCloseTo'
 

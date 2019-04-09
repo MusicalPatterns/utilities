@@ -1,5 +1,4 @@
-import { apply, to } from '../nominal'
-import { ONE_FOURTH, ONE_HALF, SQUARED } from './constants'
+import { apply, ONE_FOURTH, ONE_HALF, SQUARED, to } from '../nominal'
 import { difference, floor, product, quotient, squareRoot, sum } from './typedOperations'
 
 const factorial: (value: number) => number =

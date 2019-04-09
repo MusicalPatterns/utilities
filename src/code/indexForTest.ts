@@ -15,9 +15,5 @@ export { finalElement, indexOfFinalElement } from './finalElement'
 export { camelCaseToConstantCase, constantCaseToUpperCase, camelCaseToLowerCase, camelCaseToUpperCase } from './case'
 
 export {
-    INITIAL,
-} from './constants'
-
-export {
     Maybe,
 } from './types'

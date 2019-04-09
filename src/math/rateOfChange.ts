@@ -1,9 +1,6 @@
-// tslint:disable ban-types
-
 import { finalElement, initialElement, map, Maybe } from '../code'
 import { indexOfFinalElement, INITIAL, Ordinal, Scalar, slice, Translation } from '../indexForTest'
-import { apply, isCycle, to } from '../nominal'
-import { NEXT } from './constants'
+import { apply, isCycle, NEXT, to } from '../nominal'
 import { difference, quotient } from './typedOperations'
 
 const computeDeltas: <NumericElementType extends Number = Number>(array: NumericElementType[]) => Translation[] =

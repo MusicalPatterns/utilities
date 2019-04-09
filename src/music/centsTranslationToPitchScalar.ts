@@ -1,6 +1,5 @@
 import { reciprocal } from '../math'
-import { apply, Cents, Frequency, from, Scalar, to, Translation } from '../nominal'
-import { CENTS_PER_OCTAVE, OCTAVE } from './constants'
+import { apply, Cents, CENTS_PER_OCTAVE, Frequency, from, OCTAVE, Scalar, to, Translation } from '../nominal'
 
 const centsTranslationToPitchScalar: (centsTranslationToPitchScalar: Translation<Cents>) => Scalar<Frequency> =
     (cents: Translation<Cents>): Scalar<Frequency> =>

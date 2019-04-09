@@ -1,7 +1,17 @@
-import { INITIAL } from '../code'
-import { NEXT } from '../math'
-import { apply, Base, Frequency, from, NoOperation, Ordinal, Scalar, to } from '../nominal'
-import { MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS, OCTAVE } from './constants'
+import {
+    apply,
+    Base,
+    Frequency,
+    from,
+    INITIAL,
+    MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS,
+    NEXT,
+    NoOperation,
+    OCTAVE,
+    Ordinal,
+    Scalar,
+    to,
+} from '../nominal'
 
 const computeOctaveRepeatingScalars: (scalars: Array<Scalar<Frequency>>) => Array<Scalar<Frequency>> =
     (scalars: Array<Scalar<Frequency>>): Array<Scalar<Frequency>> => {

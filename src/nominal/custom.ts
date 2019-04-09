@@ -1,4 +1,4 @@
-// tslint:disable no-any no-type-definitions-outside-types-modules no-object-literal-type-assertion ban-types max-line-length
+// tslint:disable no-any no-type-definitions-outside-types-modules no-object-literal-type-assertion max-line-length
 
 import { reduce } from '../code'
 
