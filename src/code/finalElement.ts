@@ -17,8 +17,8 @@ const indexJustBeyondFinalElement: <ElementType>(array: ElementType[]) => Ordina
     <ElementType>(array: ElementType[]): Ordinal =>
         to.Ordinal(array.length)
 
-const totalElements: <ArrayType extends Array<unknown> | string>(array: ArrayType) => Cardinal =
-    <ArrayType extends Array<unknown> | string>(array: ArrayType): Cardinal =>
+const totalElements: <ArrayType extends unknown[] | string>(array: ArrayType) => Cardinal =
+    <ArrayType extends unknown[] | string>(array: ArrayType): Cardinal =>
         to.Cardinal(array.length)
 
 const initialElement: <ElementType>(array: ElementType[]) => ElementType =
