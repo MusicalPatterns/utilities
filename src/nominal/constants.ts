@@ -51,6 +51,7 @@ const OCTUPLE: Scalar = to.Scalar(8)
 const NONTUPLE: Scalar = to.Scalar(9)
 
 const DEFAULT_PRECISION: Integer = to.Integer(2)
+const A_SUFFICIENT_COUNT_OF_NUMBERS: Cardinal = to.Cardinal(Math.pow(2, 8))
 const ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS: Translation = to.Translation(-2)
 
 const X_AXIS: Ordinal = to.Ordinal(0)
@@ -162,11 +163,11 @@ const ONE_MINUTE: Ms = to.Ms(60000)
 const ONE_HOUR: Ms = to.Ms(3600000)
 const ONE_DAY: Ms = to.Ms(86400000)
 
-const A_SUFFICIENT_COUNT_OF_NUMBERS: Cardinal = to.Cardinal(Math.pow(2, 8))
 const ZERO_AND_POSITIVE_INTEGERS: Integer[] = [
     ...Array(A_SUFFICIENT_COUNT_OF_NUMBERS)
         .keys(),
 ].map(to.Integer)
+
 const POSITIVE_INTEGERS: Integer[] = ZERO_AND_POSITIVE_INTEGERS
     .map((integer: Integer): Integer => to.Integer(integer + 1))
 
@@ -215,6 +216,7 @@ export {
     ONE_NINTH,
     ONE_TENTH,
     DEFAULT_PRECISION,
+    A_SUFFICIENT_COUNT_OF_NUMBERS,
     ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS,
     X_AXIS,
     Y_AXIS,
