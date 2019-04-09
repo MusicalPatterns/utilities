@@ -312,8 +312,8 @@ export {
     TEN,
     PI,
     E,
-    POSITIVE_INTEGERS,
-    ZERO_AND_POSITIVE_INTEGERS,
+    positiveIntegers,
+    zeroAndPositiveIntegers,
 } from './nominal'
 export {
     ActionForState,

@@ -15,6 +15,7 @@ export {
     computeNominalInterface,
     NominalInterface,
 } from './custom'
+export { positiveIntegers, zeroAndPositiveIntegers } from './integers'
 export {
     isCycle,
 } from './typeGuards'
@@ -135,8 +136,6 @@ export {
     ONE_MINUTE,
     ONE_HOUR,
     ONE_DAY,
-    ZERO_AND_POSITIVE_INTEGERS,
-    POSITIVE_INTEGERS,
 } from './constants'
 
 export {
