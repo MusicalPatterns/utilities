@@ -291,10 +291,6 @@ export {
     computeReducer,
 } from './state'
 export {
-    testIsNotCloseTo,
-    testArraysAreClose,
-    testArraysAreCloseSoFar,
-    testArraysHaveSameElements,
     elementCount,
     elementIds,
     elementChecked,
@@ -311,22 +307,9 @@ export {
     clickElement,
     deleteCharacterFromInput,
     waitForHeadfulQaing,
-    testAllValuesAreTheSame,
-    testGoesMonotonicallyFromValueToValue,
-    testGoesMonotonicallyBetweenValueAndValue,
-    testGoesMonotonically,
     testConstantDelta,
-    testGoesQuadratically,
-    testGoesQuadraticallyBetweenValueAndValue,
-    testGoesQuadraticallyFromValueToValue,
     VERY_HIGH_PRECISION,
     VERY_LOW_PRECISION,
-    testGreaterThanOrCloseTo,
-    testLessThanOrCloseTo,
-    testIsGreaterThan,
-    testIsGreaterThanOrEqualTo,
-    testIsLessThan,
-    testIsLessThanOrEqualTo,
 } from './testing'
 export {
     MILLISECONDS_PER_SECOND,

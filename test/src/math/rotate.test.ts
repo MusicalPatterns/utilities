@@ -5,7 +5,6 @@ import {
     ONE_HALF,
     PI,
     rotate,
-    testArraysAreClose,
     X_AXIS,
     Y_AXIS,
 } from '../../../src/indexForTest'
@@ -20,7 +19,8 @@ describe('rotate', () => {
             })
             const expectedCoordinate: Coordinate<number, 2> = [ 0, -3 ]
 
-            testArraysAreClose(actualCoordinate, expectedCoordinate)
+            expect(actualCoordinate)
+                .toBeCloseToArray(expectedCoordinate)
         })
     })
 
@@ -33,7 +33,8 @@ describe('rotate', () => {
             })
             const expectedCoordinate: Coordinate<number, 3> = [ 0, -3, 0 ]
 
-            testArraysAreClose(actualCoordinate, expectedCoordinate)
+            expect(actualCoordinate)
+                .toBeCloseToArray(expectedCoordinate)
         })
 
         it('works for rotating around the y-axis', () => {
@@ -45,7 +46,8 @@ describe('rotate', () => {
             })
             const expectedCoordinate: Coordinate<number, 3> = [ 0, 0, 3 ]
 
-            testArraysAreClose(actualCoordinate, expectedCoordinate)
+            expect(actualCoordinate)
+                .toBeCloseToArray(expectedCoordinate)
         })
 
         it('works for rotating around the x-axis', () => {
@@ -57,7 +59,8 @@ describe('rotate', () => {
             })
             const expectedCoordinate: Coordinate<number, 3> = [ 0, 0, -3 ]
 
-            testArraysAreClose(actualCoordinate, expectedCoordinate)
+            expect(actualCoordinate)
+                .toBeCloseToArray(expectedCoordinate)
         })
     })
 })

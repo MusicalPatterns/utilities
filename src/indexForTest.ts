@@ -23,6 +23,11 @@ export {
     cycleSlice,
     arraysHaveNoCommonValues,
     everyNthElement,
+    isGreaterThanOrEqualTo,
+    isLessThanOrEqualTo,
+    forEach,
+    isGreaterThan,
+    isLessThan,
 } from './code/indexForTest'
 export {
     distanceBetween,
@@ -118,7 +123,5 @@ export {
     Amplitude,
 } from './nominal/indexForTest'
 export {
-    testArraysAreClose,
-    testArraysHaveSameElements,
     testConstantDelta,
 } from './testing/indexForTest'
