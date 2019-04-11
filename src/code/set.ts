@@ -3,7 +3,7 @@ import { ObjectOf } from './types'
 
 const arraySet: <ElementType>(array: ElementType[], index: Ordinal, value: ElementType) => ElementType[] =
     <ElementType>(array: ElementType[], index: Ordinal, value: ElementType): ElementType[] => {
-        array[ index ] = value
+        array[ index as unknown as number ] = value
 
         return array
     }

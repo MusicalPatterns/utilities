@@ -121,4 +121,5 @@ export {
     EIGHTH,
     FOURTH,
     THIRD,
+    Index,
 } from './nominal/indexForTest'

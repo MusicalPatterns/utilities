@@ -1,27 +1,27 @@
 import { apply, Cycle, negative, to } from '../../../src/indexForTest'
 
 describe('apply', () => {
-    describe('Ordinal', () => {
+    describe('Index', () => {
         it('when the array is cyclical, wraps the index, whether negative or beyond its length', () => {
             const myCycle: Cycle<string> = to.Cycle([ 'a', 'b', 'c' ])
             const myArray: string[] = [ 'd', 'e', 'f' ]
 
-            expect(apply.Ordinal(myCycle, to.Ordinal(4)))
+            expect(apply.Index(myCycle, to.Index(4)))
                 .toBe('b')
-            expect(apply.Ordinal(myCycle, to.Ordinal(negative(1))))
+            expect(apply.Index(myCycle, to.Index(negative(1))))
                 .toBe('c')
-            expect(apply.Ordinal(myCycle, to.Ordinal(1)))
+            expect(apply.Index(myCycle, to.Index(1)))
                 .toBe('b')
-            expect(apply.Ordinal(myCycle, to.Ordinal(0)))
+            expect(apply.Index(myCycle, to.Index(0)))
                 .toBe('a')
 
-            expect(() => apply.Ordinal(myArray, to.Ordinal(4)))
-                .toThrowError(`Ordinal 4 exceeds available indices of array of length 3`)
-            expect(apply.Ordinal(myArray, to.Ordinal(negative(1))))
+            expect(() => apply.Index(myArray, to.Index(4)))
+                .toThrowError(`Index 4 exceeds available indices of array of length 3`)
+            expect(apply.Index(myArray, to.Index(negative(1))))
                 .toBeUndefined()
-            expect(apply.Ordinal(myArray, to.Ordinal(1)))
+            expect(apply.Index(myArray, to.Index(1)))
                 .toBe('e')
-            expect(apply.Ordinal(myArray, to.Ordinal(0)))
+            expect(apply.Index(myArray, to.Index(0)))
                 .toBe('d')
         })
     })
@@ -58,7 +58,7 @@ describe('apply', () => {
         it('addresses the bug in JavaScript where negative numbers give negative results', () => {
             expect(-3 % 5)
                 .toBe(-3)
-            expect(apply.Modulus(-3, to.Modulus(5)))
+            expect(apply.Modulus(-3, to.Modulus(5)) as number)
                 .toBe(2)
         })
     })

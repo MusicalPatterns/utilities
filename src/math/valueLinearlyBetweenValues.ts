@@ -8,11 +8,11 @@ const valueLinearlyBetweenValues:
             startValue,
             to.Translation(from.NormalScalar<number, Scalar>(apply.Scalar(
                 progress,
-                to.Scalar(apply.Translation(
+                to.Scalar(to.NormalScalar(apply.Translation(
                     endValue as unknown as number,
                     to.Translation(negative(startValue as unknown as number)),
-                )),
-            ))),
+                ))),
+            )) as unknown as NumericValue),
         )
 
 export {

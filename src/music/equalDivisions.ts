@@ -16,14 +16,16 @@ import {
 const computeEqualDivisionScalars: (equalDivision: Denominator, window?: Base) => Scalar[] =
     (equalDivision: Denominator, window: Base = OCTAVE): Scalar[] => {
         const division: number = from.Denominator(reciprocal(equalDivision))
-        const logarithmicStep: Scalar = to.Scalar(from.Base(apply.Power(
+        const base: Base = apply.Power(
             window,
-            to.Power(division),
-        )))
+            to.Power(to.Base(division)),
+        )
+
+        const logarithmicStep: Scalar = to.Scalar(from.Base(base))
 
         return slice(ZERO_AND_POSITIVE_INTEGERS, INITIAL, to.Ordinal(from.Denominator(equalDivision)))
             .map((integer: Integer): Scalar =>
-                apply.Power(logarithmicStep, to.Power(integer)))
+                apply.Power(logarithmicStep, to.Power(to.Scalar(integer))))
     }
 
 export {

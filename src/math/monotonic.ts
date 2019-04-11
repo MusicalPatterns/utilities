@@ -7,7 +7,7 @@ import {
     isUndefined,
     Maybe,
 } from '../code'
-import { SKIP_FIRST_ELEMENT } from '../nominal'
+import { from, SKIP_FIRST_ELEMENT } from '../nominal'
 import { beginValueIsCorrect, goesFromValueToValue } from './goes'
 import { inBounds } from './inBounds'
 
@@ -32,7 +32,7 @@ const goesMonotonically: <NumericElementType extends Number = Number>(
         let previousValue: NumericElementType = initialElement(array)
         let result: boolean = true
 
-        array.slice(SKIP_FIRST_ELEMENT)
+        array.slice(from.Ordinal(SKIP_FIRST_ELEMENT))
             .forEach((value: NumericElementType) => {
                 if (isUndefined(isIncreasing)) {
                     isIncreasing = value > previousValue

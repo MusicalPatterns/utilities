@@ -14,11 +14,11 @@ import { apply, DENOMINATOR_INDEX, FRACTIONAL_IDENTITY, from, NUMERATOR_INDEX } 
 
 const getNumerator: (fraction: Fraction) => Numerator =
     (fraction: Fraction): Numerator =>
-        apply.Ordinal(fraction, NUMERATOR_INDEX) as Numerator
+        apply.Index(fraction, NUMERATOR_INDEX) as Numerator
 
 const getDenominator: (fraction: Fraction) => Denominator =
     (fraction: Fraction): Denominator =>
-        apply.Ordinal(fraction, DENOMINATOR_INDEX) as Denominator
+        apply.Index(fraction, DENOMINATOR_INDEX) as Denominator
 
 const multiplyFractions: (...fractions: Fraction[]) => Fraction =
     (...fractions: Fraction[]): Fraction => {
@@ -29,18 +29,21 @@ const multiplyFractions: (...fractions: Fraction[]) => Fraction =
             FRACTIONAL_IDENTITY
 
         return to.Fraction([
-            product(getNumerator(nextMultipliedFraction), getNumerator(previousFraction)),
-            product(getDenominator(nextMultipliedFraction), getDenominator(previousFraction)),
+            to.Numerator(product(getNumerator(nextMultipliedFraction), getNumerator(previousFraction))),
+            to.Denominator(product(getDenominator(nextMultipliedFraction), getDenominator(previousFraction))),
         ])
     }
 
 const computeLowestTerms: (fraction: Fraction) => Fraction =
     ([ numerator, denominator ]: Fraction): Fraction => {
-        const gcd: Integer = computeGreatestCommonDivisor(numerator as Integer, denominator as Integer)
+        const gcd: Integer = computeGreatestCommonDivisor(
+            numerator as unknown as Integer,
+            denominator as unknown as Integer,
+        )
 
         return to.Fraction([
-            quotient(numerator as Integer, gcd),
-            quotient(denominator as Integer, gcd),
+            from.Scalar(quotient(numerator as unknown as Integer, gcd)),
+            from.Scalar(quotient(denominator as unknown as Integer, gcd)),
         ])
     }
 
@@ -49,7 +52,7 @@ const computeLowestCommonDenominator: (...fractions: Fraction[]) => Denominator 
         const fractionsInLowestTerms: Fraction[] = fractions.map(computeLowestTerms)
         const denominators: Denominator[] = fractionsInLowestTerms.map(getDenominator)
 
-        return to.Denominator(computeLeastCommonMultiple(...denominators as Integer[]))
+        return to.Denominator(computeLeastCommonMultiple(...denominators as unknown as Integer[]))
     }
 
 const computeCommonTerms: (...fractions: Fraction[]) => Fraction[] =
@@ -64,10 +67,13 @@ const computeCommonTerms: (...fractions: Fraction[]) => Fraction[] =
                     return fraction
                 }
 
-                const termsScalar: Scalar = to.Scalar(from.Denominator(quotient(lowestCommonDenominator, denominator)))
+                const termsScalar: Scalar = to.Scalar(from.Denominator(from.Scalar(quotient(
+                    lowestCommonDenominator,
+                    denominator,
+                ))))
 
                 return to.Fraction([
-                    apply.Scalar(getNumerator(fraction), termsScalar),
+                    apply.Scalar(getNumerator(fraction), termsScalar as Scalar<Numerator>),
                     lowestCommonDenominator,
                 ])
             })

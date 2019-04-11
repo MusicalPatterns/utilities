@@ -1,5 +1,5 @@
 import { isSingleton } from '../code'
-import { apply, FIRST_FACTOR_NECESSARY_TO_CHECK_IF_COMMON, Integer, NEXT } from '../nominal'
+import { apply, FIRST_FACTOR_NECESSARY_TO_CHECK_IF_COMMON, Integer, to } from '../nominal'
 import { dividesEvenly } from './dividesEvenly'
 import { max } from './typedOperations'
 
@@ -12,7 +12,7 @@ const computeCommonFactors: <IntegerType extends Integer>(...values: IntegerType
         for (
             let candidateFactor: IntegerType = FIRST_FACTOR_NECESSARY_TO_CHECK_IF_COMMON as IntegerType;
             candidateFactor <= maxValue;
-            candidateFactor = apply.Translation(candidateFactor, NEXT)
+            candidateFactor = apply.Translation(candidateFactor, to.Translation(1 as IntegerType))
         ) {
             const isCommon: boolean = values.every((value: IntegerType) =>
                 dividesEvenly(value, candidateFactor))

@@ -11,11 +11,12 @@ import {
     Fraction,
     Frequency,
     Hz,
+    Index,
     Integer,
     Meters,
     Modulus,
     Ms,
-    NoOperation,
+    NoDoubleInterior,
     NormalScalar,
     NoUnits,
     Numerator,
@@ -65,31 +66,28 @@ const Amplitude: <OperationType extends NoUnits, UnitsType extends Amplitude<Ope
 
 // Operation
 
-const Scalar: <UnitsType extends NoOperation, OperationType extends Scalar<UnitsType>>(scalar: OperationType) => UnitsType & number =
-    <UnitsType extends NoOperation, OperationType extends Scalar<UnitsType>>(scalar: OperationType): UnitsType & number =>
+const Scalar: <UnitsType extends NoDoubleInterior, OperationType extends Scalar<UnitsType>>(scalar: OperationType) => UnitsType & number =
+    <UnitsType extends NoDoubleInterior, OperationType extends Scalar<UnitsType>>(scalar: OperationType): UnitsType & number =>
         scalar as unknown as UnitsType & number
-const NormalScalar: <UnitsType extends NoOperation, OperationType extends NormalScalar<UnitsType>>(normalScalar: OperationType) => UnitsType & number =
-    <UnitsType extends NoOperation, OperationType extends NormalScalar<UnitsType>>(normalScalar: OperationType): UnitsType & number =>
+const NormalScalar: <UnitsType extends NoDoubleInterior, OperationType extends NormalScalar<UnitsType>>(normalScalar: OperationType) => UnitsType & number =
+    <UnitsType extends NoDoubleInterior, OperationType extends NormalScalar<UnitsType>>(normalScalar: OperationType): UnitsType & number =>
         normalScalar as unknown as UnitsType & number
-const Translation: <UnitsType extends NoOperation, OperationType extends Translation<UnitsType>>(translation: OperationType) => UnitsType & number =
-    <UnitsType extends NoOperation, OperationType extends Translation<UnitsType>>(translation: OperationType): UnitsType & number =>
-        translation as unknown as UnitsType & number
-const Rotation: <UnitsType extends NoOperation, OperationType extends Rotation<UnitsType>>(rotation: OperationType) => UnitsType & number =
-    <UnitsType extends NoOperation, OperationType extends Rotation<UnitsType>>(rotation: OperationType): UnitsType & number =>
+const Rotation: <UnitsType extends NoDoubleInterior, OperationType extends Rotation<UnitsType>>(rotation: OperationType) => UnitsType & number =
+    <UnitsType extends NoDoubleInterior, OperationType extends Rotation<UnitsType>>(rotation: OperationType): UnitsType & number =>
         rotation as unknown as UnitsType & number
 
-const Base: <UnitsType extends NoOperation, OperationType extends Base<UnitsType>>(base: OperationType) => UnitsType & number =
-    <UnitsType extends NoOperation, OperationType extends Base<UnitsType>>(base: OperationType): UnitsType & number =>
+const Base: <UnitsType extends NoDoubleInterior, OperationType extends Base<UnitsType>>(base: OperationType) => UnitsType & number =
+    <UnitsType extends NoDoubleInterior, OperationType extends Base<UnitsType>>(base: OperationType): UnitsType & number =>
         base as unknown as UnitsType & number
-const Power: <UnitsType extends NoOperation, OperationType extends Power<UnitsType>>(power: OperationType) => UnitsType & number =
-    <UnitsType extends NoOperation, OperationType extends Power<UnitsType>>(power: OperationType): UnitsType & number =>
+const Power: <UnitsType extends NoDoubleInterior, OperationType extends Power<UnitsType>>(power: OperationType) => UnitsType & number =
+    <UnitsType extends NoDoubleInterior, OperationType extends Power<UnitsType>>(power: OperationType): UnitsType & number =>
         power as unknown as UnitsType & number
 
-const Modulus: <UnitsType extends NoOperation, OperationType extends Modulus<UnitsType>>(modulus: OperationType) => UnitsType & number =
-    <UnitsType extends NoOperation, OperationType extends Modulus<UnitsType>>(modulus: OperationType): UnitsType & number =>
+const Modulus: <UnitsType extends NoDoubleInterior, OperationType extends Modulus<UnitsType>>(modulus: OperationType) => UnitsType & number =
+    <UnitsType extends NoDoubleInterior, OperationType extends Modulus<UnitsType>>(modulus: OperationType): UnitsType & number =>
         modulus as unknown as UnitsType & number
 
-// Special Units & Operation
+// Special Units
 
 const Integer: <IntegerType extends Integer>(integer: IntegerType) => number =
     <IntegerType extends Integer>(integer: IntegerType): number =>
@@ -109,6 +107,15 @@ const Denominator: (denominator: Denominator) => number =
 const Fraction: (fraction: Fraction) => number =
     (fraction: Fraction): number =>
         Numerator(fraction[ 0 ]) * (1 / Denominator(fraction[ 1 ]))
+
+// Special Operations
+
+const Index: <NumericType extends Number, OperationType extends Index<NumericType>>(index: OperationType) => NumericType & number =
+    <NumericType extends Number, OperationType extends Index<NumericType>>(index: OperationType): NumericType & number =>
+        index as unknown as NumericType & number
+const Translation: <NumericType extends Number, OperationType extends Translation<NumericType>>(translation: OperationType) => NumericType & number =
+    <NumericType extends Number, OperationType extends Translation<NumericType>>(translation: OperationType): NumericType & number =>
+        translation as unknown as NumericType & number
 
 // Other Stuff
 
@@ -148,4 +155,6 @@ export {
     Frequency,
     Amplitude,
     NormalScalar,
+    Rotation,
+    Index,
 }

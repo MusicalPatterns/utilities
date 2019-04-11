@@ -1,6 +1,6 @@
-// tslint:disable no-any no-unused-expression comment-format no-commented-code no-dead-store
+// tslint:disable no-unused-expression no-dead-store
 
-import { Fraction, from, Hz, Scalar, to } from '../../../src/indexForTest'
+import { Base, Fraction, from, Hz, Scalar, to } from '../../../src/indexForTest'
 
 describe('from', () => {
     it('converts back to a plain number', () => {
@@ -15,35 +15,33 @@ describe('from', () => {
         const hz: Hz = to.Hz(3)
         from.Hz(hz)
         from.Hz(hz) * 3
+        from.Hz(to.Hz(3))
 
         const scalar: Scalar = to.Scalar(3)
         from.Scalar(scalar)
         from.Scalar(scalar) * 3
+        from.Scalar(to.Scalar(3))
     })
 
     it('can downgrade units while preserving operation', () => {
         const hzScalar: Scalar<Hz> = to.Scalar(to.Hz(3))
-        const scalarHz: Hz<Scalar> = to.Hz(to.Scalar(3))
 
         const scalarFromHzScalar: Scalar = from.Hz(hzScalar)
-        const scalarFromScalarHz: Scalar = from.Hz(scalarHz)
     })
 
     it('can downgrade operation while preserving type', () => {
         const hzScalar: Scalar<Hz> = to.Scalar(to.Hz(3))
-        const scalarHz: Hz<Scalar> = to.Hz(to.Scalar(3))
-
         const hzFromHzScalar: Hz = from.Scalar(hzScalar)
-        const hzFromScalarHz: Hz = from.Scalar(scalarHz)
+
+        const baseScalar: Scalar<Base> = to.Scalar(to.Base(3))
+        const baseFromBaseScalar: Base = from.Scalar(baseScalar)
     })
 
     it('can assign to an object property without needing an intermediate variable', () => {
         const hzScalar: Scalar<Hz> = to.Scalar(to.Hz(3))
-        const scalarHz: Hz<Scalar> = to.Hz(to.Scalar(3))
 
-        const recipientObject: { hz: Hz, scalar: Scalar } = {
+        const recipientObject: { hz: Hz } = {
             hz: from.Scalar(hzScalar),
-            scalar: from.Hz(scalarHz),
         }
     })
 
@@ -55,23 +53,8 @@ describe('from', () => {
         const hzs: Hz[] = hzScalars.map<Hz>(from.Scalar)
     })
 
-    // it('DOES NOT ALLOW taking a plain number', () => {
-    //     from.Hz(3)
-    //     from.Scalar(3)
-    // })
-    //
-    // it('DOES NOT ALLOW taking the wrong units or operation', () => {
-    //     from.Hz(to.Ms(3))
-    //     from.Scalar(to.Translation(3))
-    // })
-    //
-    // it('DOES NOT ALLOW taking the wrong type of nominal', () => {
-    //     from.Hz(to.Scalar(3))
-    //     from.Scalar(to.Hz(3))
-    // })
-
-    describe('special units and operation', () => {
-        it('works for special units & operation', () => {
+    describe('special units', () => {
+        it('works', () => {
             const fromOrdinal: number = from.Ordinal(to.Ordinal(3))
             from.Ordinal(to.Ordinal(3)) * 3
 
@@ -90,12 +73,5 @@ describe('from', () => {
             expect(from.Fraction(fraction))
                 .toBe(5 / 4)
         })
-
-        // it('DOES NOT ALLOW taking plain numbers', () => {
-        //     from.Cardinal(3)
-        //     from.Ordinal(3)
-        //     from.Numerator(3)
-        //     from.Denominator(3)
-        // })
     })
 })

@@ -1,15 +1,27 @@
-import { difference, negative } from '../math'
-import { apply, Base, Cardinal, from, Ordinal, to } from '../nominal'
+import { difference } from '../math'
+import { apply, Base, Cardinal, from, Ordinal, PREVIOUS, to, Translation } from '../nominal'
 
 const windowIterationHarmonicStepCount: (window: Base, iteration: Ordinal) => Cardinal =
-    (window: Base, iteration: Ordinal): Cardinal =>
-        to.Cardinal(from.Base(difference(
-            apply.Power(window, to.Power(from.Ordinal(iteration))),
-            apply.Power(window, to.Power(from.Ordinal(apply.Translation(
+    (window: Base, iteration: Ordinal): Cardinal => {
+        const minuend: Base = apply.Power(
+            window,
+            to.Power(to.Base(from.Ordinal(iteration))),
+        )
+        const subtrahend: Base = apply.Power(
+            window,
+            to.Power(to.Base(from.Ordinal(apply.Translation(
                 iteration,
-                to.Translation(negative(1)),
-                ))),
-            ))))
+                PREVIOUS,
+            )))),
+        )
+
+        const count: Base = from.Translation(difference(
+            minuend,
+            subtrahend,
+        ))
+
+        return to.Cardinal(from.Base(count))
+    }
 
 export {
     windowIterationHarmonicStepCount,

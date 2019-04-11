@@ -1,5 +1,5 @@
 import { reduce } from '../code'
-import { apply, Ordinal, SQUARE_ROOT, SQUARED } from '../nominal'
+import { apply, from, Ordinal, Power, SQUARE_ROOT, SQUARED, to } from '../nominal'
 import { absoluteValue, difference, sum } from './typedOperations'
 import { Coordinate } from './types'
 
@@ -14,19 +14,21 @@ const distanceBetween: <NumericType extends Number = Number>(
         const sumOfSquaresOfDimensionalDistances: NumericType = reduce(
             pointA,
             (accumulator: NumericType, pointAElement: NumericType, index: Ordinal): NumericType => {
-                const pointBElement: NumericType = apply.Ordinal(pointB, index)
-                const dimensionalDistance: NumericType = absoluteValue(difference(pointAElement, pointBElement))
+                const pointBElement: NumericType =
+                    apply.Index(pointB, to.Index(from.Ordinal(index) as unknown as NumericType))
+                const dimensionalDistance: NumericType =
+                    absoluteValue(from.Translation(difference(pointAElement, pointBElement)))
                 const squareOfDimensionalDistance: NumericType = apply.Power(
                     dimensionalDistance,
-                    SQUARED,
+                    SQUARED as Power<NumericType>,
                 )
 
-                return sum(accumulator, squareOfDimensionalDistance)
+                return sum(accumulator, squareOfDimensionalDistance) as unknown as NumericType
             },
             0 as unknown as NumericType,
         )
 
-        return apply.Power(sumOfSquaresOfDimensionalDistances, SQUARE_ROOT)
+        return apply.Power(sumOfSquaresOfDimensionalDistances, SQUARE_ROOT as Power<NumericType>)
     }
 
 export {

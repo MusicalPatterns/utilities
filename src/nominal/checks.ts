@@ -1,9 +1,10 @@
-import { Integer, Ordinal } from './types'
+import * as from from './from'
+import { Index, Integer } from './types'
 
-const ordinalCheck: <ElementType>(ordinal: Ordinal, array: ElementType[]) => void =
-    <ElementType>(ordinal: Ordinal, array: ElementType[]): void => {
-        if (ordinal > array.length - 1) {
-            throw new Error(`Ordinal ${ordinal} exceeds available indices of array of length ${array.length}`)
+const indexCheck: <ElementType>(index: Index<ElementType>, array: ElementType[]) => void =
+    <ElementType>(index: Index<ElementType>, array: ElementType[]): void => {
+        if (from.Index(index) > array.length - 1) {
+            throw new Error(`Index ${index} exceeds available indices of array of length ${array.length}`)
         }
     }
 
@@ -14,15 +15,15 @@ const normalScalarCheck: (value: unknown) => void =
         }
     }
 
-const integerCheck: (value: number | Integer, type: string) => void =
-    (value: number | Integer, type: string): void => {
+const integerCheck: (value: number | Number |  Integer, type: string) => void =
+    (value: number | Number | Integer, type: string): void => {
         if (Math.round(value as unknown as number) !== value as unknown as number) {
             throw new Error(`${type}s must be Integers.`)
         }
     }
 
 export {
-    ordinalCheck,
+    indexCheck,
     normalScalarCheck,
     integerCheck,
 }

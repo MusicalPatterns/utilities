@@ -15,11 +15,11 @@ import {
     Fraction,
     Frequency,
     Hz,
+    Index,
     Integer,
     Meters,
     Modulus,
-    Ms,
-    NoOperation,
+    Ms, NoDoubleInterior,
     NormalScalar,
     NoUnits,
     Numerator,
@@ -69,63 +69,70 @@ const Amplitude: <OperationType extends NoUnits>(amplitude: OperationType) => Am
 
 // Operation
 
-const Scalar: <UnitsType extends NoOperation>(scalar: UnitsType) => Scalar<UnitsType> =
-    <UnitsType extends NoOperation>(scalar: UnitsType): Scalar<UnitsType> =>
-        scalar as Scalar<UnitsType>
-const NormalScalar: <UnitsType extends NoOperation>(normalScalar: UnitsType) => NormalScalar<UnitsType> =
-    <UnitsType extends NoOperation>(normalScalar: UnitsType): NormalScalar<UnitsType> => {
+const Scalar: <NumericType extends NoDoubleInterior | number>(scalar: NumericType) => Scalar<NumericType> =
+    <NumericType extends NoDoubleInterior | number>(scalar: NumericType): Scalar<NumericType> =>
+        scalar as unknown as Scalar<NumericType>
+const NormalScalar: <NumericType extends NoDoubleInterior | number>(normalScalar: NumericType) => NormalScalar<NumericType> =
+    <NumericType extends NoDoubleInterior | number>(normalScalar: NumericType): NormalScalar<NumericType> => {
         normalScalarCheck(normalScalar)
 
-        return normalScalar as NormalScalar<UnitsType>
+        return normalScalar as unknown as NormalScalar<NumericType>
     }
-const Translation: <UnitsType extends NoOperation>(translation: UnitsType) => Translation<UnitsType> =
-    <UnitsType extends NoOperation>(translation: UnitsType): Translation<UnitsType> =>
-        translation as Translation<UnitsType>
-const Rotation: <UnitsType extends NoOperation>(rotation: UnitsType) => Rotation<UnitsType> =
-    <UnitsType extends NoOperation>(rotation: UnitsType): Rotation<UnitsType> =>
-        rotation as Rotation<UnitsType>
-const Base: <UnitsType extends NoOperation>(base: UnitsType) => Base<UnitsType> =
-    <UnitsType extends NoOperation>(base: UnitsType): Base<UnitsType> =>
-        base as Base<UnitsType>
-const Power: <UnitsType extends NoOperation>(power: UnitsType) => Power<UnitsType> =
-    <UnitsType extends NoOperation>(power: UnitsType): Power<UnitsType> =>
-        power as Power<UnitsType>
-const Modulus: <UnitsType extends NoOperation>(modulus: UnitsType) => Modulus<UnitsType> =
-    <UnitsType extends NoOperation>(modulus: UnitsType): Modulus<UnitsType> =>
-        modulus as Modulus<UnitsType>
+const Rotation: <NumericType extends NoDoubleInterior | number>(rotation: NumericType) => Rotation<NumericType> =
+    <NumericType extends NoDoubleInterior | number>(rotation: NumericType): Rotation<NumericType> =>
+        rotation as unknown as Rotation<NumericType>
+const Base: <NumericType extends NoDoubleInterior | number>(base: NumericType) => Base<NumericType> =
+    <NumericType extends NoDoubleInterior | number>(base: NumericType): Base<NumericType> =>
+        base as unknown as Base<NumericType>
+const Power: <NumericType extends NoDoubleInterior | number>(power: NumericType) => Power<NumericType> =
+    <NumericType extends NoDoubleInterior | number>(power: NumericType): Power<NumericType> =>
+        power as unknown as Power<NumericType>
+const Modulus: <NumericType extends NoDoubleInterior | number>(modulus: NumericType) => Modulus<NumericType> =
+    <NumericType extends NoDoubleInterior | number>(modulus: NumericType): Modulus<NumericType> =>
+        modulus as unknown as Modulus<NumericType>
 
-// Special Units & Operation
+// Special Units
 
 const Integer: <OperationType extends NoUnits>(integer: OperationType) => Integer =
     <OperationType extends NoUnits>(integer: OperationType): Integer => integer as unknown as Integer
-const Ordinal: (ordinal: number | Integer) => Ordinal =
-    (ordinal: number | Integer): Ordinal => {
+
+const Ordinal: <OperationType extends NoUnits>(ordinal: OperationType) => Ordinal<OperationType> =
+    <OperationType extends NoUnits>(ordinal: OperationType): Ordinal<OperationType> => {
         integerCheck(ordinal, 'Ordinal')
 
-        return ordinal as unknown as Ordinal
+        return ordinal as unknown as Ordinal<OperationType>
     }
-const Cardinal: (cardinal: number | Integer) => Cardinal =
-    (cardinal: number | Integer): Cardinal => {
+const Cardinal: <OperationType extends NoUnits>(cardinal: OperationType) => Cardinal<OperationType> =
+    <OperationType extends NoUnits>(cardinal: OperationType): Cardinal<OperationType> => {
         integerCheck(cardinal, 'Cardinal')
 
-        return cardinal as unknown as Cardinal
+        return cardinal as unknown as Cardinal<OperationType>
     }
-const Numerator: (numerator: number | Integer) => Numerator =
-    (numerator: number | Integer): Numerator => {
+const Numerator: <OperationType extends NoUnits>(numerator: OperationType) => Numerator<OperationType> =
+    <OperationType extends NoUnits>(numerator: OperationType): Numerator<OperationType> => {
         integerCheck(numerator, 'Numerator')
 
-        return numerator as unknown as Numerator
+        return numerator as unknown as Numerator<OperationType>
     }
-const Denominator: (denominator: number | Integer) => Denominator =
-    (denominator: number | Integer): Denominator => {
+const Denominator: <OperationType extends NoUnits>(denominator: OperationType) => Denominator<OperationType> =
+    <OperationType extends NoUnits>(denominator: OperationType): Denominator<OperationType> => {
         integerCheck(denominator, 'Denominator')
 
-        return denominator as unknown as Denominator
+        return denominator as unknown as Denominator<OperationType>
     }
 
 const Fraction: (fraction: [ Integer | Numerator, Integer | Denominator ]) => Fraction =
     (fraction: [ Integer | Numerator, Integer | Denominator ]): Fraction =>
         fraction as unknown as Fraction
+
+// Special Operations
+
+const Index: <IndexType>(index: IndexType) => Index<IndexType> =
+    <IndexType>(index: IndexType): Index<IndexType> =>
+        index as unknown as Index<IndexType>
+const Translation: <TranslationType>(translation: TranslationType) => Translation<TranslationType> =
+    <TranslationType>(translation: TranslationType): Translation<TranslationType> =>
+        translation as unknown as Translation<TranslationType>
 
 // Other Stuff
 
@@ -173,6 +180,7 @@ export {
     Denominator,
     Modulus,
     Rotation,
+    Index,
     Integer,
     Meters,
     Space,

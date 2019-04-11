@@ -1,15 +1,15 @@
 // tslint:disable max-file-line-count
 
-import { apply, Cycle, from, NEXT, Ordinal } from '../nominal'
+import { apply, Cycle, from, NEXT, Ordinal, to } from '../nominal'
 import { indexJustBeyondFinalElement, totalElements } from './finalElement'
 import { isUndefined } from './isUndefined'
 
-const slice: <ArrayType extends Array<unknown> | string>(
+const slice: <ArrayType extends unknown[] | string>(
     arrayOrString: ArrayType,
     initial: Ordinal,
     terminal?: Ordinal,
 ) => ArrayType =
-    <ArrayType extends Array<unknown> | string>(
+    <ArrayType extends unknown[] | string>(
         arrayOrString: ArrayType,
         initial: Ordinal,
         terminal?: Ordinal,
@@ -18,7 +18,7 @@ const slice: <ArrayType extends Array<unknown> | string>(
             return arrayOrString.slice(from.Ordinal(initial)) as ArrayType
         }
 
-        if (terminal > totalElements(arrayOrString)) {
+        if (terminal > to.Ordinal(from.Cardinal(totalElements(arrayOrString)))) {
             throw new Error(`You tried to slice up to index ${terminal} of a structure with length \
 of only ${totalElements(arrayOrString)}: ${arrayOrString}`)
         }
@@ -33,7 +33,7 @@ const cycleSlice: <ElementType>(cycle: Cycle<ElementType>, initial: Ordinal, ter
         const resultantSlice: ElementType[] = []
 
         for (let index: Ordinal = initial; index < terminalForSlice; index = apply.Translation(index, NEXT)) {
-            resultantSlice.push(apply.Ordinal(cycle, index))
+            resultantSlice.push(apply.Index(cycle, to.Index(from.Ordinal(index) as unknown as ElementType)))
         }
 
         return resultantSlice

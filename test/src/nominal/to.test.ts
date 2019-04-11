@@ -1,4 +1,4 @@
-// tslint:disable no-any no-unused-expression comment-format no-commented-code no-dead-store
+// tslint:disable no-unused-expression no-dead-store
 
 import {
     Amplitude,
@@ -22,7 +22,6 @@ import {
     Space,
     Time,
     to,
-    Translation,
 } from '../../../src/indexForTest'
 
 describe('to', () => {
@@ -45,44 +44,11 @@ describe('to', () => {
                 .not
                 .toBe(to.Hz(4))
         })
-
-        // it('DOES NOT ALLOW assignment to units from raw numbers (which is not using `to`, but why we need `to`)', () => {
-        //     const hzFromRaw: Hz = 3
-        // })
-        //
-        // it('DOES NOT ALLOW assignment to units by as\'ing (which is not using `to`, but why we need `to`)', () => {
-        //     3 as Hz
-        // })
-        //
-        // it('DOES NOT ALLOW assignment to raw numbers', () => {
-        //     const hzToRaw: number = to.Hz(3)
-        // })
-        //
-        // it('DOES NOT ALLOW assignment to the wrong unit', () => {
-        //     const hzToMs: Ms = to.Hz(3)
-        // })
-        //
-        // it('DOES NOT ALLOW re-assignment to the same unit', () => {
-        //     to.Hz(to.Hz(3))
-        // })
-        //
-        // it('DOES NOT ALLOW direct conversion from one unit into another, whether directly or intermediated by an explicit varible', () => {
-        //     const ms: Ms = to.Ms(3)
-        //     const centsFromExplicitMsVariable: Cents = to.Cents(ms)
-        //
-        //     const centsFromToMsDirectly: Cents = to.Cents(to.Ms(3))
-        // })
-        //
-        // it('DOES NOT ALLOW unholy hybrids of units', () => {
-        //     const centsMsFromMs: Cents<Ms> = 3 as any
-        //     const msCentsFromMs: Ms<Cents> = 3 as any
-        // })
     })
 
     describe('operations', () => {
         it('allows converting raw numbers into numbers for certain operations', () => {
             const scalar: Scalar = to.Scalar(3)
-            const translation: Translation = to.Translation(3)
             const rotation: Rotation = to.Rotation(3)
 
             const base: Base = to.Base(3)
@@ -97,37 +63,10 @@ describe('to', () => {
                 .toBe(to.Rotation(4))
         })
 
-        // it('DOES NOT ALLOW assignment to operations from raw numbers (which is not using `to`, but why we need `to`)', () => {
-        //     const rotationFromRaw: Rotation = 3
-        // })
-        //
-        // it('DOES NOT ALLOW assignment to operations by as\'ing (which is not using `to`, but why we need `to`)', () => {
-        //     3 as Rotation
-        // })
-        //
-        // it('DOES NOT ALLOW assignment to raw numbers', () => {
-        //     const rotationToRaw: number = to.Rotation(3)
-        // })
-        //
-        // it('DOES NOT ALLOW assignment to the wrong operation', () => {
-        //     const rotationToTranslation: Translation = to.Rotation(3)
-        // })
-        //
-        // it('DOES NOT ALLOW re-assignment to the same operation', () => {
-        //     to.Rotation(to.Rotation(3))
-        // })
-        //
-        // it('DOES NOT ALLOW direct conversion from one operation into another, whether directly or intermediated by an explicit varible', () => {
-        //     const rotation: Rotation = to.Rotation(3)
-        //     const scalarFromExplicitRotationVariable: Scalar = to.Scalar(rotation)
-        //
-        //     const scalarFromRotationDirectly: Scalar = to.Scalar(to.Rotation(3))
-        // })
-        //
-        // it('DOES NOT ALLOW unholy hybrids of operations', () => {
-        //     const centsMsFromMs: Rotation<Scalar> = 3 as any
-        //     const msCentsFromMs: Scalar<Rotation> = 3 as any
-        // })
+        it('allows operation of operations', () => {
+            const rotationOfRotation: Rotation<Rotation> = to.Rotation(to.Rotation(3))
+            const rotationOfScalar: Rotation<Scalar> = to.Rotation(to.Scalar(3))
+        })
     })
 
     describe('units and operations', () => {
@@ -138,29 +77,18 @@ describe('to', () => {
 
         it('allows attributing units to something already with an operation', () => {
             const scalar: Scalar = to.Scalar(3)
-            const scalarHz: Hz<Scalar> = to.Hz(scalar)
+            const scalarHz: Scalar<Hz> = to.Hz(scalar)
         })
 
         it('allows switching the nesting order of the types', () => {
             const exampleOne: Scalar<Hz> = to.Scalar(to.Hz(3))
-            const exampleTwo: Hz<Scalar> = to.Hz(to.Scalar(3))
 
-            const exampleThree: Hz<Scalar> = to.Scalar(to.Hz(3))
             const exampleFour: Scalar<Hz> = to.Hz(to.Scalar(3))
         })
 
-        // it('DOES NOT ALLOW assigning something with both units and type to either the wrong units or the wrong type', () => {
-        //     const scalarHzAsWrongHz: Hz<Translation> = to.Hz(to.Scalar(3))
-        //     const scalarHzAsScalarWrong: Cents<Scalar> = to.Hz(to.Scalar(3))
-        //     const scalarHzAsWrongWrong: Cents<Translation> = to.Hz(to.Scalar(3))
-        // })
-        //
-        // it('DOES NOT ALLOW assigning something with both units and operation to something with only one or the other', () => {
-        //     const scalarHzAsJustScalar: Scalar = to.Hz(to.Scalar(3))
-        //     const scalarHzAsJustHz: Hz = to.Hz(to.Scalar(3))
-        //     const scalarHzAsJustScalarDirect: Scalar = 3 as any as Hz<Scalar>
-        //     const scalarHzAsJustHzDirect: Hz = 3 as any as Scalar<Hz>
-        // })
+        it('allows double nesting', () => {
+            const modulusOfIndexOfScalar: Modulus<Rotation<Scalar>> = to.Modulus(to.Rotation(to.Scalar(3)))
+        })
     })
 
     describe('special units/operation', () => {
@@ -209,43 +137,11 @@ describe('to', () => {
             const numberFromInteger: number = to.Integer(3)
         })
 
-        it(`unfortunately for now allows making special operations if they are already that, but that's on you for trying I guess`, () => {
-            const doubleOrdinal: Ordinal = to.Ordinal(to.Ordinal(3))
-            const doubleCardinal: Cardinal = to.Cardinal(to.Cardinal(3))
-            const doubleNumerator: Numerator = to.Numerator(to.Numerator(3))
-            const doubleDenominator: Denominator = to.Denominator(to.Denominator(3))
-        })
-
         it('allows making fractions out of integers or numerator/denominators or any combination thereof', () => {
             to.Fraction([ to.Integer(4), to.Integer(4) ])
             to.Fraction([ to.Numerator(4), to.Denominator(4) ])
             to.Fraction([ to.Numerator(4), to.Integer(4) ])
             to.Fraction([ to.Integer(4), to.Denominator(4) ])
         })
-
-        // it('DOES NOT ALLOW creating fractions out of mere numbers', () => {
-        //     to.Fraction([ 4, 4 ])
-        // })
-        //
-        // it('DOES NOT ALLOW making Cardinals or Ordinals if they are some other Units (not Integers)', () => {
-        //     to.Ordinal(to.Hz(3))
-        //     to.Cardinal(to.Hz(3))
-        //     to.Numerator(to.Hz(3))
-        //     to.Denominator(to.Hz(3))
-        // })
-        //
-        // it('DOES NOT ALLOW making Cardinals or Ordinals generic of some other Units (besides Integers)', () => {
-        //     const ordinalHz: Ordinal<Hz> = 3 as any as Ordinal<Hz>
-        //     const cardinalHz: Cardinal<Hz> = 3 as any as Cardinal<Hz>
-        //     const numeratorHz: Numerator<Hz> = 3 as any as Numerator<Hz>
-        //     const denominatorHz: Denominator<Hz> = 3 as any as Denominator<Hz>
-        // })
-        //
-        // it('DOES NOT ALLOW making Cardinals or Ordinals directly into other operations', () => {
-        //     const ordinalScalar: Scalar<Ordinal> = to.Scalar(to.Ordinal(3))
-        //     const cardinalScalar: Scalar<Cardinal> = to.Scalar(to.Cardinal(3))
-        //     const numeratorScalar: Scalar<Numerator> = to.Scalar(to.Numerator(3))
-        //     const denominatorScalar: Scalar<Denominator> = to.Scalar(to.Denominator(3))
-        // })
     })
 })

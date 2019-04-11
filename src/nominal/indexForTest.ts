@@ -51,4 +51,5 @@ export {
     Time,
     Frequency,
     Amplitude,
+    Index,
 } from './types'

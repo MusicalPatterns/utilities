@@ -2,7 +2,7 @@
 
 import { HtmlValue } from '../browser'
 import { slice } from '../code'
-import { apply, EXCLUSIVE_TO_LEFT, INITIAL, Ordinal, to } from '../nominal'
+import { apply, EXCLUSIVE_TO_LEFT, from, INITIAL, Ordinal, to } from '../nominal'
 import { Operands } from './types'
 
 const splitOperands: (expression: string, operatorIndex: Ordinal) => Operands =
@@ -70,14 +70,15 @@ const evaluateParenthetical: (expression: string) => number =
         const endParantheticalIndex: Ordinal = apply.Translation(
             beginParantheticalIndex,
             to.Translation(
-                expression.slice(beginParantheticalIndex, expression.length)
+                expression.slice(from.Ordinal(beginParantheticalIndex), expression.length)
                     .indexOf(')'),
             ),
         )
 
-        const partBefore: string = expression.slice(0, beginParantheticalIndex)
-        const parenthetical: string = expression.slice(beginParantheticalIndex + 1, endParantheticalIndex)
-        const partAfter: string = expression.slice(endParantheticalIndex + 1, expression.length)
+        const partBefore: string = expression.slice(0, from.Ordinal(beginParantheticalIndex))
+        const parenthetical: string =
+            expression.slice(from.Ordinal(beginParantheticalIndex) + 1, from.Ordinal(endParantheticalIndex))
+        const partAfter: string = expression.slice(from.Ordinal(endParantheticalIndex) + 1, expression.length)
 
         return evaluateString(`${partBefore}${evaluateString(parenthetical)}${partAfter}`)
     }

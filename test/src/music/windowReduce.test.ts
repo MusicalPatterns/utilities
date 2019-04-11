@@ -38,27 +38,27 @@ describe('reducing', () => {
 
     describe('general window reduce', () => {
         it('if the scalar is greater than the window, repeatedly divides the scalar until it is less than the window', () => {
-            expect(windowReduce(to.Frequency(to.Scalar(4)), to.Frequency(to.Scalar(3))))
+            expect(windowReduce(to.Frequency(to.Scalar(4)), to.Scalar(to.Scalar(to.Frequency(3)))))
                 .toBe(to.Frequency(FOUR_THIRDS))
         })
 
         it('does nothing if the scalar is already between 1 and the window', () => {
-            expect(windowReduce(to.Frequency(FIVE_HALVES), to.Frequency(to.Scalar(3))))
+            expect(windowReduce(to.Frequency(FIVE_HALVES), to.Scalar(to.Scalar(to.Frequency(3)))))
                 .toBe(to.Frequency(FIVE_HALVES))
         })
 
         it('does nothing if the scalar is already 1', () => {
-            expect(windowReduce(to.Frequency(to.Scalar(1)), to.Frequency(to.Scalar(3))))
+            expect(windowReduce(to.Frequency(to.Scalar(1)), to.Scalar(to.Scalar(to.Frequency(3)))))
                 .toBe(to.Frequency(to.Scalar(1)))
         })
 
         it('if the scalar is the window, changes it to 1', () => {
-            expect(windowReduce(to.Frequency(to.Scalar(3)), to.Frequency(to.Scalar(3))))
+            expect(windowReduce(to.Frequency(to.Scalar(3)), to.Scalar(to.Scalar(to.Frequency(3)))))
                 .toBe(to.Frequency(to.Scalar(1)))
         })
 
         it('actually multiplies until it is greater than 1 but less than the window if it was less than 1', () => {
-            expect(windowReduce(to.Frequency(TWO_THIRDS), to.Frequency(to.Scalar(3))))
+            expect(windowReduce(to.Frequency(TWO_THIRDS), to.Scalar(to.Scalar(to.Frequency(3)))))
                 .toBe(to.Frequency(to.Scalar(2)))
         })
     })

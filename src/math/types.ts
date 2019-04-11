@@ -1,4 +1,4 @@
-import { Cycle, Integer, Ordinal, Radians, Scalar, Space } from '../nominal'
+import { Cycle, Integer, Integerlike, Ordinal, Radians, Scalar, Space } from '../nominal'
 
 // tslint:disable-next-line no-magic-numbers
 type TwoDimensional = 2
@@ -7,28 +7,28 @@ type ThreeDimensional = 3
 
 type CycleMap = <VectorOrMatrix>(rotationVectorOrMatrix: Cycle<VectorOrMatrix>) => Cycle<VectorOrMatrix>
 
-type Vector = Scalar[]
+type Vector<NumericType extends Number = Number> = Array<Scalar<NumericType>>
 
-type RotationMatrix = Cycle<Cycle<Scalar>>
+type RotationMatrix<NumericType extends Number = Number> = Cycle<Cycle<Scalar<NumericType>>>
 
-type Coordinate<ElementType extends Number = Space, Dimensionality extends Number = 0> =
+type Coordinate<NumericType extends Number = Space, Dimensionality extends Number = 0> =
     Dimensionality extends TwoDimensional ?
-        [ ElementType, ElementType ] :
+        [ NumericType, NumericType ] :
         Dimensionality extends ThreeDimensional ?
-            [ ElementType, ElementType, ElementType ] :
-            ElementType[]
+            [ NumericType, NumericType, NumericType ] :
+            NumericType[]
 
-interface RotateParameters<ElementType extends Number = Number, Dimensionality extends Number = Number> {
+interface RotateParameters<NumericType extends Number = Number, Dimensionality extends Number = Number> {
     axis?: Ordinal,
-    coordinate: Coordinate<ElementType, Dimensionality>,
-    fixedCoordinate?: Coordinate<ElementType, Dimensionality>,
+    coordinate: Coordinate<NumericType, Dimensionality>,
+    fixedCoordinate?: Coordinate<NumericType, Dimensionality>,
     rotation: Radians,
 }
 
 type NumericOperation<NumericType extends Number = Number> =
     (firstValue: NumericType, secondValue: NumericType) => NumericType
 
-type IntegerOperation<IntegerType extends Integer = Integer> =
+type IntegerOperation<IntegerType extends Integerlike = Integer> =
     (firstValue: IntegerType, secondValue: IntegerType) => IntegerType
 
 interface Operands {

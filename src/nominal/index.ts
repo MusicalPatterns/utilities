@@ -169,4 +169,6 @@ export {
     Amplitude,
     NominalNumber,
     NormalScalar,
+    Index,
+    Integerlike,
 } from './types'

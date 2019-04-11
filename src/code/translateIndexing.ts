@@ -1,13 +1,12 @@
-import { negative } from '../math'
-import { apply, Ordinal, to } from '../nominal'
+import { apply, NEXT, Ordinal, PREVIOUS } from '../nominal'
 
 const translateFromOneIndexedToZeroIndexed: (index: Ordinal) => Ordinal =
     (index: Ordinal): Ordinal =>
-        apply.Translation(index, to.Translation(negative(1)))
+        apply.Translation(index, PREVIOUS)
 
 const translateFromZeroIndexedToOneIndexed: (index: Ordinal) => Ordinal =
     (index: Ordinal): Ordinal =>
-        apply.Translation(index, to.Translation(1))
+        apply.Translation(index, NEXT)
 
 export {
     translateFromOneIndexedToZeroIndexed,
