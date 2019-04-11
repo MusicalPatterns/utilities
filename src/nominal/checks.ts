@@ -18,7 +18,7 @@ const normalScalarCheck: (value: unknown) => void =
 const integerCheck: (value: number | Number | Integer, type: string) => void =
     (value: number | Number | Integer, type: string): void => {
         if (Math.round(value as unknown as number) !== value as unknown as number) {
-            throw new Error(`${type}s must be Integers.`)
+            throw new Error(`Numerals of type ${type} must be Integers. This numeral had value ${value}.`)
         }
     }
 
