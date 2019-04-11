@@ -170,4 +170,5 @@ export {
     Numerator,
     Denominator,
     NormalScalar,
+    Multiple,
 }
