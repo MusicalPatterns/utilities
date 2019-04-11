@@ -1,5 +1,5 @@
 import { difference } from '../math'
-import { apply, Base, Cardinal, from, Ordinal, PREVIOUS, to, Translation } from '../nominal'
+import { apply, Base, Cardinal, from, Ordinal, PREVIOUS, to } from '../nominal'
 
 const windowIterationHarmonicStepCount: (window: Base, iteration: Ordinal) => Cardinal =
     (window: Base, iteration: Ordinal): Cardinal => {

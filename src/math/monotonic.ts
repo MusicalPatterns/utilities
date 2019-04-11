@@ -1,12 +1,6 @@
 // tslint:disable max-file-line-count bool-param-default
 
-import {
-    initialElement,
-    isGreaterThanOrEqualTo,
-    isLessThanOrEqualTo,
-    isUndefined,
-    Maybe,
-} from '../code'
+import { initialElement, isGreaterThanOrEqualTo, isLessThanOrEqualTo, isUndefined, Maybe } from '../code'
 import { from, SKIP_FIRST_ELEMENT } from '../nominal'
 import { beginValueIsCorrect, goesFromValueToValue } from './goes'
 import { inBounds } from './inBounds'

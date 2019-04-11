@@ -1,13 +1,4 @@
-import {
-    apply,
-    Coordinate,
-    negative,
-    ONE_HALF,
-    PI,
-    rotate, to,
-    X_AXIS,
-    Y_AXIS,
-} from '../../../src/indexForTest'
+import { apply, Coordinate, negative, ONE_HALF, PI, rotate, to, X_AXIS, Y_AXIS } from '../../../src/indexForTest'
 
 describe('rotate', () => {
     describe('in two dimensions', () => {

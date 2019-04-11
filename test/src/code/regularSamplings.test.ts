@@ -8,12 +8,12 @@ describe('regular samplings', () => {
         })
 
         it('filters the array properly', () => {
-            expect(everyNthElement(array, to.Scalar(3)))
+            expect(everyNthElement(array, to.Multiple(3)))
                 .toEqual([ 9, 6, 3, 0 ].map(to.Hz))
         })
 
         it('can take an optional starting with parameter', () => {
-            expect(everyNthElement(array, to.Scalar(2), to.Ordinal(5)))
+            expect(everyNthElement(array, to.Multiple(2), to.Ordinal(5)))
                 .toEqual([ 4, 2, 0 ].map(to.Hz))
         })
     })

@@ -12,6 +12,7 @@ import {
     Index,
     Integer,
     Ms,
+    Multiple,
     Numerator,
     Ordinal,
     Power,
@@ -44,19 +45,19 @@ const FOUR_THIRDS: Scalar = to.Scalar(4 / 3)
 const FIVE_THIRDS: Scalar = to.Scalar(5 / 3)
 const FIVE_FOURTHS: Scalar = to.Scalar(5 / 4)
 
-const DOUBLE: Scalar = to.Scalar(2)
-const TRIPLE: Scalar = to.Scalar(3)
-const QUADRUPLE: Scalar = to.Scalar(4)
-const PENTUPLE: Scalar = to.Scalar(5)
-const SEXTUPLE: Scalar = to.Scalar(6)
-const HEPTUPLE: Scalar = to.Scalar(7)
-const OCTUPLE: Scalar = to.Scalar(8)
-const NONTUPLE: Scalar = to.Scalar(9)
+const DOUBLE: Multiple = to.Multiple(2)
+const TRIPLE: Multiple = to.Multiple(3)
+const QUADRUPLE: Multiple = to.Multiple(4)
+const PENTUPLE: Multiple = to.Multiple(5)
+const SEXTUPLE: Multiple = to.Multiple(6)
+const HEPTUPLE: Multiple = to.Multiple(7)
+const OCTUPLE: Multiple = to.Multiple(8)
+const NONTUPLE: Multiple = to.Multiple(9)
 
-const EVERY_OTHER: Scalar = to.Scalar(2)
-const EVERY_THIRD: Scalar = to.Scalar(3)
-const EVERY_FOURTH: Scalar = to.Scalar(4)
-const EVERY_FIFTH: Scalar = to.Scalar(5)
+const EVERY_OTHER: Multiple<Ordinal> = to.Multiple(to.Ordinal(2))
+const EVERY_THIRD: Multiple<Ordinal> = to.Multiple(to.Ordinal(3))
+const EVERY_FOURTH: Multiple<Ordinal> = to.Multiple(to.Ordinal(4))
+const EVERY_FIFTH: Multiple<Ordinal> = to.Multiple(to.Ordinal(5))
 
 const ONCE: Cardinal = to.Cardinal(1)
 const TWICE: Cardinal = to.Cardinal(2)

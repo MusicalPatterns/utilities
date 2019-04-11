@@ -12,7 +12,9 @@ import {
     Denominator,
     Fraction,
     Index,
-    Modulus, NoDoubleInterior,
+    Modulus,
+    Multiple,
+    NoDoubleInterior,
     NormalScalar,
     Numerator,
     Ordinal,
@@ -21,9 +23,12 @@ import {
     Translation,
 } from './types'
 
-const Base: <UnitsType extends NoDoubleInterior = number>(value: UnitsType, base: Base<UnitsType>) => UnitsType =
-    <UnitsType extends NoDoubleInterior = number>(value: UnitsType, base: Base<UnitsType>): UnitsType =>
-        Math.log(value as unknown as number) / Math.log(base as unknown as number) as unknown as UnitsType
+const Base: <InteriorType extends NoDoubleInterior = number>(
+    value: InteriorType,
+    base: Base<InteriorType>,
+) => InteriorType =
+    <InteriorType extends NoDoubleInterior = number>(value: InteriorType, base: Base<InteriorType>): InteriorType =>
+        Math.log(value as unknown as number) / Math.log(base as unknown as number) as unknown as InteriorType
 
 const Translation: <TranslatedType = number>(
     value: TranslatedType,
@@ -58,38 +63,48 @@ const Translation: <TranslatedType = number>(
         from.Translation(translation as unknown as Translation) as unknown as TranslatedType
     }
 
-const Power: <UnitsType extends NoDoubleInterior = number>(
-    base: UnitsType,
-    power: Power<UnitsType>,
-) => UnitsType =
-    <UnitsType extends NoDoubleInterior = number>(
-        base: UnitsType,
-        power: Power<UnitsType>,
-    ): UnitsType =>
-        Math.pow(base as unknown as number, power as unknown as number) as unknown as UnitsType
+const Power: <InteriorType extends NoDoubleInterior = number>(
+    base: InteriorType,
+    power: Power<InteriorType>,
+) => InteriorType =
+    <InteriorType extends NoDoubleInterior = number>(
+        base: InteriorType,
+        power: Power<InteriorType>,
+    ): InteriorType =>
+        Math.pow(base as unknown as number, power as unknown as number) as unknown as InteriorType
 
-const Scalar: <UnitsType extends NoDoubleInterior = number>(
-    value: UnitsType,
-    scalar: Scalar<UnitsType>,
-) => UnitsType =
-    <UnitsType extends NoDoubleInterior = number>(
-        value: UnitsType,
-        scalar: Scalar<UnitsType>,
-    ): UnitsType =>
-        value as unknown as number * from.Scalar(scalar as unknown as Scalar) as unknown as UnitsType
+const Scalar: <InteriorType extends NoDoubleInterior = number>(
+    value: InteriorType,
+    scalar: Scalar<InteriorType>,
+) => InteriorType =
+    <InteriorType extends NoDoubleInterior = number>(
+        value: InteriorType,
+        scalar: Scalar<InteriorType>,
+    ): InteriorType =>
+        value as unknown as number * from.Scalar(scalar as unknown as Scalar) as unknown as InteriorType
 
-const NormalScalar: <UnitsType extends NoDoubleInterior = number>(
-    value: UnitsType,
-    scalar: NormalScalar<UnitsType>,
-) => UnitsType =
-    <UnitsType extends NoDoubleInterior = number>(
-        value: UnitsType,
-        scalar: NormalScalar<UnitsType>,
-    ): UnitsType => {
+const NormalScalar: <InteriorType extends NoDoubleInterior = number>(
+    value: InteriorType,
+    scalar: NormalScalar<InteriorType>,
+) => InteriorType =
+    <InteriorType extends NoDoubleInterior = number>(
+        value: InteriorType,
+        scalar: NormalScalar<InteriorType>,
+    ): InteriorType => {
         normalScalarCheck(value)
 
-        return value as unknown as number * from.Scalar(scalar as unknown as Scalar) as unknown as UnitsType
+        return value as unknown as number * from.Scalar(scalar as unknown as Scalar) as unknown as InteriorType
     }
+
+const Multiple: <InteriorType extends NoDoubleInterior = number>(
+    value: InteriorType,
+    scalar: Multiple<InteriorType>,
+) => InteriorType =
+    <InteriorType extends NoDoubleInterior = number>(
+        value: InteriorType,
+        scalar: Multiple<InteriorType>,
+    ): InteriorType =>
+        value as unknown as number * from.Multiple(scalar as unknown as Multiple) as unknown as InteriorType
 
 const Index: <ElementType>(
     array: ElementType[] | Cycle<ElementType>,
@@ -113,9 +128,14 @@ const Index: <ElementType>(
         return array[ from.Index(index as Index) ]
     }
 
-const Modulus:
-    <UnitsType extends NoDoubleInterior = number>(value: UnitsType, modulus: Modulus<UnitsType>) => UnitsType =
-    <UnitsType extends NoDoubleInterior = number>(value: UnitsType, modulus: Modulus<UnitsType>): UnitsType => {
+const Modulus: <InteriorType extends NoDoubleInterior = number>(
+    value: InteriorType,
+    modulus: Modulus<InteriorType>,
+) => InteriorType =
+    <InteriorType extends NoDoubleInterior = number>(
+        value: InteriorType,
+        modulus: Modulus<InteriorType>,
+    ): InteriorType => {
         let result: number = value as unknown as number
         const rawModulus: number = modulus as unknown as number
 
@@ -126,7 +146,7 @@ const Modulus:
             result -= rawModulus
         }
 
-        return result as unknown as UnitsType
+        return result as unknown as InteriorType
     }
 
 const Numerator: (denominator: Denominator, numerator: Numerator) => Fraction =

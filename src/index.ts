@@ -314,6 +314,7 @@ export {
     E,
     POSITIVE_INTEGERS,
     ZERO_AND_POSITIVE_INTEGERS,
+    Multiple,
 } from './nominal'
 export {
     ActionForState,

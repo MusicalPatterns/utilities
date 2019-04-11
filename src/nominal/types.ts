@@ -106,6 +106,8 @@ type Index<InteriorType extends NoDoubleInteriorIndex = Number> =
 type Translation<InteriorType extends NoDoubleInteriorIndex = Number> =
     Number & OperationBrandIndex<'Translation', InteriorType>
 
+type Multiple<InteriorType extends Number = number> = Integer & OperationBrand<'Multiple', InteriorType>
+
 // Other Stuff
 
 type Block = number[] & { _BlockBrand: void }
@@ -165,4 +167,5 @@ export {
     NormalScalar,
     NoDoubleInterior,
     Integerlike,
+    Multiple,
 }

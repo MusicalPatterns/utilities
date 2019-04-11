@@ -19,7 +19,9 @@ import {
     Integer,
     Meters,
     Modulus,
-    Ms, NoDoubleInterior,
+    Ms,
+    Multiple,
+    NoDoubleInterior,
     NormalScalar,
     NoUnits,
     Numerator,
@@ -134,6 +136,13 @@ const Translation: <TranslationType>(translation: TranslationType) => Translatio
     <TranslationType>(translation: TranslationType): Translation<TranslationType> =>
         translation as unknown as Translation<TranslationType>
 
+const Multiple: <OperationType extends NoDoubleInterior | number>(multiple: OperationType) => Multiple<OperationType> =
+    <OperationType extends NoDoubleInterior | number>(multiple: OperationType): Multiple<OperationType> => {
+        integerCheck(multiple, 'Multiple')
+
+        return multiple as unknown as Multiple<OperationType>
+    }
+
 // Other Stuff
 
 const Block: (block: number[]) => Block =
@@ -188,4 +197,5 @@ export {
     Frequency,
     Amplitude,
     NormalScalar,
+    Multiple,
 }

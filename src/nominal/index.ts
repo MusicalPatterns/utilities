@@ -171,4 +171,5 @@ export {
     NormalScalar,
     Index,
     Integerlike,
+    Multiple,
 } from './types'
