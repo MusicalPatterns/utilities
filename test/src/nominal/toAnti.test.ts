@@ -5,6 +5,7 @@
 //     Cents,
 //     Denominator,
 //     Hz,
+//     Index,
 //     Ms,
 //     Numerator,
 //     Ordinal,
@@ -115,6 +116,12 @@
 //             const cardinalHz: Cardinal<Hz> = 3 as any as Cardinal<Hz>
 //             const numeratorHz: Numerator<Hz> = 3 as any as Numerator<Hz>
 //             const denominatorHz: Denominator<Hz> = 3 as any as Denominator<Hz>
+//         })
+//
+//         it('DOES NOT ALLOW these oddities for Index', () => {
+//             const nestedIndexIndex: Index = to.Index(to.Index(3))
+//             const indexIndexScalar: Index<Scalar> = to.Index(3)
+//             const indexWrongScalar: Scalar = to.Index(3)
 //         })
 //     })
 // })

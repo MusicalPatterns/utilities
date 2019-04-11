@@ -1,21 +1,21 @@
 import { negative } from '../math'
-import { apply, Cardinal, from, Index, Ordinal, to, TRANSLATION_FROM_LENGTH_TO_FINAL_INDEX } from '../nominal'
+import { apply, Cardinal, from, Index, to, TRANSLATION_FROM_LENGTH_TO_FINAL_INDEX } from '../nominal'
 import { isEmpty } from './isEmpty'
 
 const finalElement: <ElementType>(array: ElementType[]) => ElementType =
     <ElementType>(array: ElementType[]): ElementType =>
         apply.Index(array, indexOfFinalElement(array) as unknown as Index<ElementType>)
 
-const indexOfFinalElement: <ElementType>(array: ElementType[]) => Ordinal =
-    <ElementType>(array: ElementType[]): Ordinal =>
-        to.Ordinal(apply.Translation(
+const indexOfFinalElement: <ElementType>(array: ElementType[]) => Index =
+    <ElementType>(array: ElementType[]): Index =>
+        to.Index(apply.Translation(
             array.length,
             to.Translation(negative(1)),
         ))
 
-const indexJustBeyondFinalElement: <ElementType>(array: ElementType[]) => Ordinal =
-    <ElementType>(array: ElementType[]): Ordinal =>
-        to.Ordinal(array.length)
+const indexJustBeyondFinalElement: <ElementType>(array: ElementType[]) => Index =
+    <ElementType>(array: ElementType[]): Index =>
+        to.Index(array.length)
 
 const totalElements: <ArrayType extends unknown[] | string>(array: ArrayType) => Cardinal =
     <ArrayType extends unknown[] | string>(array: ArrayType): Cardinal =>
@@ -30,13 +30,13 @@ const initialElement: <ElementType>(array: ElementType[]) => ElementType =
         return apply.Index(array, 0 as unknown as Index<ElementType>)
     }
 
-const finalIndexFromElementsTotal: (elementsTotal: Cardinal) => Ordinal =
-    (elementsTotal: Cardinal): Ordinal =>
-        to.Ordinal(from.Cardinal(apply.Translation(elementsTotal, TRANSLATION_FROM_LENGTH_TO_FINAL_INDEX)))
+const finalIndexFromElementsTotal: (elementsTotal: Cardinal) => Index =
+    (elementsTotal: Cardinal): Index =>
+        to.Index(from.Cardinal(apply.Translation(elementsTotal, TRANSLATION_FROM_LENGTH_TO_FINAL_INDEX)))
 
-const indexJustBeyondFinalElementFromElementsTotal: (elementsTotal: Cardinal) => Ordinal =
-    (elementsTotal: Cardinal): Ordinal =>
-        to.Ordinal(from.Cardinal(elementsTotal))
+const indexJustBeyondFinalElementFromElementsTotal: (elementsTotal: Cardinal) => Index =
+    (elementsTotal: Cardinal): Index =>
+        to.Index(from.Cardinal(elementsTotal))
 
 export {
     indexOfFinalElement,

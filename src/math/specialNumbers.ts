@@ -28,7 +28,7 @@ const triangularNumber: (value: number) => number =
 const triangularRoot: (value: number) => number =
     (value: number): number =>
         // tslint:disable-next-line no-magic-numbers
-        from.Translation(difference(apply.Scalar(squareRoot(sum(product(value, 8), 1)), ONE_HALF), 0.5))
+        from.Translation(difference(apply.Scalar<number>(squareRoot(sum(product(value, 8), 1)), ONE_HALF), 0.5))
 
 const quarterSquareNumber: (value: number) => number =
     (value: number): number =>

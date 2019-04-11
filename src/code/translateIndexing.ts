@@ -1,11 +1,11 @@
-import { apply, NEXT, Ordinal, PREVIOUS } from '../nominal'
+import { apply, Index, NEXT, PREVIOUS } from '../nominal'
 
-const translateFromOneIndexedToZeroIndexed: (index: Ordinal) => Ordinal =
-    (index: Ordinal): Ordinal =>
+const translateFromOneIndexedToZeroIndexed: (index: Index) => Index =
+    (index: Index): Index =>
         apply.Translation(index, PREVIOUS)
 
-const translateFromZeroIndexedToOneIndexed: (index: Ordinal) => Ordinal =
-    (index: Ordinal): Ordinal =>
+const translateFromZeroIndexedToOneIndexed: (index: Index) => Index =
+    (index: Index): Index =>
         apply.Translation(index, NEXT)
 
 export {

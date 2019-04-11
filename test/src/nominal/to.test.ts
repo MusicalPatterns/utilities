@@ -7,7 +7,7 @@ import {
     Cents,
     Denominator,
     Frequency,
-    Hz,
+    Hz, Index,
     Integer,
     Meters,
     Modulus,
@@ -142,6 +142,13 @@ describe('to', () => {
             to.Fraction([ to.Numerator(4), to.Denominator(4) ])
             to.Fraction([ to.Numerator(4), to.Integer(4) ])
             to.Fraction([ to.Integer(4), to.Denominator(4) ])
+        })
+
+        it('allows these things for Index', () => {
+            const index: Index = to.Index(3)
+            const indexScalar: Index<Scalar> = to.Index(to.Scalar(3))
+            const indexIndex: Index<Index> = to.Index(to.Index(3))
+            const stringIndex: Index<string> = to.Index(3) as Index<string>
         })
     })
 })

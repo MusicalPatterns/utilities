@@ -1,5 +1,5 @@
 import { dividesEvenly, isEven, isOdd } from '../math'
-import { Multiple, Ordinal, to } from '../nominal'
+import { Index, Multiple, to } from '../nominal'
 import { slice } from './typedIterators'
 
 const evenElements: <ElementType>(array: ElementType[]) => ElementType[] =
@@ -14,8 +14,8 @@ const oddElements: <ElementType>(array: ElementType[]) => ElementType[] =
             isOdd(index),
         )
 
-const everyNthElement: <ElementType>(array: ElementType[], nth: Multiple, startingWith?: Ordinal) => ElementType[] =
-    <ElementType>(array: ElementType[], nth: Multiple, startingWith: Ordinal = to.Ordinal(0)): ElementType[] =>
+const everyNthElement: <ElementType>(array: ElementType[], nth: Multiple, startingWith?: Index) => ElementType[] =
+    <ElementType>(array: ElementType[], nth: Multiple, startingWith: Index = to.Index(0)): ElementType[] =>
         slice(array, startingWith)
             .filter((element: ElementType, index: number) =>
                 dividesEvenly(index, nth),

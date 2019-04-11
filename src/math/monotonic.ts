@@ -26,7 +26,7 @@ const goesMonotonically: <NumericElementType extends Number = Number>(
         let previousValue: NumericElementType = initialElement(array)
         let result: boolean = true
 
-        array.slice(from.Ordinal(SKIP_FIRST_ELEMENT))
+        array.slice(from.Index(SKIP_FIRST_ELEMENT))
             .forEach((value: NumericElementType) => {
                 if (isUndefined(isIncreasing)) {
                     isIncreasing = value > previousValue

@@ -1,5 +1,5 @@
 import { finalElement, initialElement, map, Maybe } from '../code'
-import { Index, indexOfFinalElement, INITIAL, Ordinal, Scalar, slice, Translation } from '../indexForTest'
+import { Index, indexOfFinalElement, INITIAL, Scalar, slice, Translation } from '../indexForTest'
 import { apply, isCycle, NEXT, to } from '../nominal'
 import { difference, quotient } from './typedOperations'
 
@@ -11,10 +11,10 @@ const computeDeltas: <NumericElementType extends Number = Number>(
     ): Array<Translation<NumericElementType>> => {
         const deltas: Array<Translation<NumericElementType>> = map(
             slice(array, INITIAL, indexOfFinalElement(array)),
-            (value: NumericElementType, index: Ordinal) => {
+            (value: NumericElementType, index: Index) => {
                 const nextValue: NumericElementType = apply.Index(
                     array,
-                    to.Index(apply.Translation(index, NEXT)) as Index<NumericElementType>,
+                    apply.Translation(index, NEXT) as Index<NumericElementType>,
                 )
 
                 return difference(nextValue, value)
@@ -39,10 +39,10 @@ const computeIntervals: <NumericElementType extends Number = Number>(
     ): Array<Maybe<Scalar<NumericElementType>>> => {
         const intervals: Array<Maybe<Scalar<NumericElementType>>> = map(
             slice(array, INITIAL, indexOfFinalElement(array)),
-            (value: NumericElementType, index: Ordinal): Maybe<Scalar<NumericElementType>> => {
+            (value: NumericElementType, index: Index): Maybe<Scalar<NumericElementType>> => {
                 const nextValue: NumericElementType = apply.Index(
                     array,
-                    to.Index(apply.Translation(index, NEXT)) as Index<NumericElementType>,
+                    apply.Translation(index, NEXT) as Index<NumericElementType>,
                 )
 
                 if (value as unknown as number === 0) {

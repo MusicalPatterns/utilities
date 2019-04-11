@@ -23,7 +23,7 @@ const computeEqualDivisionScalars: (equalDivision: Denominator, window?: Base) =
 
         const logarithmicStep: Scalar = to.Scalar(from.Base(base))
 
-        return slice(ZERO_AND_POSITIVE_INTEGERS, INITIAL, to.Ordinal(from.Denominator(equalDivision)))
+        return slice(ZERO_AND_POSITIVE_INTEGERS, INITIAL, to.Index(from.Denominator(equalDivision)))
             .map((integer: Integer): Scalar =>
                 apply.Power(logarithmicStep, to.Power(to.Scalar(integer))))
     }

@@ -5,8 +5,8 @@ import {
     apply,
     Cycle,
     from,
+    Index,
     INITIAL,
-    Ordinal,
     Radians,
     ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS,
     Scalar,
@@ -43,13 +43,13 @@ const computeCycleMapForScalingRotationMatrixToDimensionalityOfCoordinate:
         <VectorOrMatrix>(rotationVectorOrMatrix: Cycle<VectorOrMatrix>): Cycle<VectorOrMatrix> =>
             to.Cycle(slice(rotationVectorOrMatrix, INITIAL, indexJustBeyondFinalElement(coordinate)))
 
-const computeCycleMapForCyclingRotationMatrixForAxis: (axis: Ordinal) => CycleMap =
-    (axis: Ordinal): CycleMap =>
+const computeCycleMapForCyclingRotationMatrixForAxis: (axis: Index) => CycleMap =
+    (axis: Index): CycleMap =>
         <VectorOrMatrix>(rotationVectorOrMatrix: Cycle<VectorOrMatrix>): Cycle<VectorOrMatrix> => {
-            const translation: Translation = apply.Translation(
+            const translation: Translation<Cycle<VectorOrMatrix>> = apply.Translation(
                 ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS,
-                to.Translation(to.Translation(from.Ordinal(axis))),
-            ) as Translation
+                to.Translation(to.Translation(from.Index(axis))),
+            ) as Translation<Cycle<VectorOrMatrix>>
 
             return apply.Translation(rotationVectorOrMatrix, translation)
         }
@@ -78,15 +78,15 @@ const scaleRotationMatrixToDimensionalityOfCoordinate:
     }
 
 const cycleRotationMatrixForAxis:
-    (rotationMatrix: RotationMatrix, axis: Ordinal) => RotationMatrix =
-    (rotationMatrix: RotationMatrix, axis: Ordinal): RotationMatrix => {
+    (rotationMatrix: RotationMatrix, axis: Index) => RotationMatrix =
+    (rotationMatrix: RotationMatrix, axis: Index): RotationMatrix => {
         const cycleMap: CycleMap = computeCycleMapForCyclingRotationMatrixForAxis(axis)
 
         return mapAcrossBothDimensions(rotationMatrix, cycleMap)
     }
 
 const rotate: <NumericType extends Number = Number, Dimensionality extends Number = Number>(rotateParameters: {
-    axis?: Ordinal,
+    axis?: Index,
     coordinate: Coordinate<NumericType, Dimensionality>,
     fixedCoordinate?: Coordinate<NumericType, Dimensionality>,
     rotation: Radians,
@@ -106,9 +106,9 @@ const rotate: <NumericType extends Number = Number, Dimensionality extends Numbe
 
         const relative: NumericType[] = map(
             coordinate,
-            (coordinateElement: NumericType, index: Ordinal): NumericType => {
+            (coordinateElement: NumericType, index: Index): NumericType => {
                 const rawFixedCoordinateElement: NumericType =
-                    apply.Index(fixedCoordinate, to.Index(from.Ordinal(index) as unknown as NumericType))
+                    apply.Index(fixedCoordinate, index as Index<NumericType>)
 
                 return from.Translation(difference(coordinateElement, rawFixedCoordinateElement))
             },
@@ -140,11 +140,11 @@ const rotate: <NumericType extends Number = Number, Dimensionality extends Numbe
         return rotationMatrix.map((rotationVector: Vector<NumericType>): NumericType =>
             reduce(
                 rotationVector,
-                (coordinateElement: NumericType, rotationScalar: Scalar<NumericType>, index: Ordinal): NumericType =>
+                (coordinateElement: NumericType, rotationScalar: Scalar<NumericType>, index: Index): NumericType =>
                     sum(
                         coordinateElement,
                         apply.Scalar(
-                            apply.Index(relative, to.Index(from.Ordinal(index) as unknown as NumericType)),
+                            apply.Index(relative, index as Index<NumericType>),
                             rotationScalar,
                         ),
                     ) as unknown as NumericType,

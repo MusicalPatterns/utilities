@@ -20,8 +20,8 @@ import {
     Meters,
     Modulus,
     Ms,
-    Multiple,
-    NoDoubleInterior,
+    Multiple, NoDoubleInteriorMaybe,
+    NoDoubleInteriorNumeric,
     NormalScalar,
     NoUnits,
     Numerator,
@@ -71,26 +71,26 @@ const Amplitude: <OperationType extends NoUnits>(amplitude: OperationType) => Am
 
 // Operation
 
-const Scalar: <NumericType extends NoDoubleInterior | number>(scalar: NumericType) => Scalar<NumericType> =
-    <NumericType extends NoDoubleInterior | number>(scalar: NumericType): Scalar<NumericType> =>
+const Scalar: <NumericType extends NoDoubleInteriorNumeric>(scalar: NumericType) => Scalar<NumericType> =
+    <NumericType extends NoDoubleInteriorNumeric>(scalar: NumericType): Scalar<NumericType> =>
         scalar as unknown as Scalar<NumericType>
-const NormalScalar: <NumericType extends NoDoubleInterior | number>(normalScalar: NumericType) => NormalScalar<NumericType> =
-    <NumericType extends NoDoubleInterior | number>(normalScalar: NumericType): NormalScalar<NumericType> => {
+const NormalScalar: <NumericType extends NoDoubleInteriorNumeric>(normalScalar: NumericType) => NormalScalar<NumericType> =
+    <NumericType extends NoDoubleInteriorNumeric>(normalScalar: NumericType): NormalScalar<NumericType> => {
         normalScalarCheck(normalScalar)
 
         return normalScalar as unknown as NormalScalar<NumericType>
     }
-const Rotation: <NumericType extends NoDoubleInterior | number>(rotation: NumericType) => Rotation<NumericType> =
-    <NumericType extends NoDoubleInterior | number>(rotation: NumericType): Rotation<NumericType> =>
+const Rotation: <NumericType extends NoDoubleInteriorNumeric>(rotation: NumericType) => Rotation<NumericType> =
+    <NumericType extends NoDoubleInteriorNumeric>(rotation: NumericType): Rotation<NumericType> =>
         rotation as unknown as Rotation<NumericType>
-const Base: <NumericType extends NoDoubleInterior | number>(base: NumericType) => Base<NumericType> =
-    <NumericType extends NoDoubleInterior | number>(base: NumericType): Base<NumericType> =>
+const Base: <NumericType extends NoDoubleInteriorNumeric>(base: NumericType) => Base<NumericType> =
+    <NumericType extends NoDoubleInteriorNumeric>(base: NumericType): Base<NumericType> =>
         base as unknown as Base<NumericType>
-const Power: <NumericType extends NoDoubleInterior | number>(power: NumericType) => Power<NumericType> =
-    <NumericType extends NoDoubleInterior | number>(power: NumericType): Power<NumericType> =>
+const Power: <NumericType extends NoDoubleInteriorNumeric>(power: NumericType) => Power<NumericType> =
+    <NumericType extends NoDoubleInteriorNumeric>(power: NumericType): Power<NumericType> =>
         power as unknown as Power<NumericType>
-const Modulus: <NumericType extends NoDoubleInterior | number>(modulus: NumericType) => Modulus<NumericType> =
-    <NumericType extends NoDoubleInterior | number>(modulus: NumericType): Modulus<NumericType> =>
+const Modulus: <NumericType extends NoDoubleInteriorNumeric>(modulus: NumericType) => Modulus<NumericType> =
+    <NumericType extends NoDoubleInteriorNumeric>(modulus: NumericType): Modulus<NumericType> =>
         modulus as unknown as Modulus<NumericType>
 
 // Special Units
@@ -129,15 +129,19 @@ const Fraction: (fraction: [ Integer | Numerator, Integer | Denominator ]) => Fr
 
 // Special Operations
 
-const Index: <IndexType>(index: IndexType) => Index<IndexType> =
-    <IndexType>(index: IndexType): Index<IndexType> =>
-        index as unknown as Index<IndexType>
-const Translation: <TranslationType>(translation: TranslationType) => Translation<TranslationType> =
-    <TranslationType>(translation: TranslationType): Translation<TranslationType> =>
+const Index: <IndexType extends NoDoubleInteriorMaybe>(index: IndexType) => Index<IndexType> =
+    <IndexType extends NoDoubleInteriorMaybe>(index: IndexType): Index<IndexType> => {
+        integerCheck(index as unknown as number, 'Index')
+
+        return index as unknown as Index<IndexType>
+    }
+
+const Translation: <TranslationType extends NoDoubleInteriorMaybe>(translation: TranslationType) => Translation<TranslationType> =
+    <TranslationType extends NoDoubleInteriorMaybe>(translation: TranslationType): Translation<TranslationType> =>
         translation as unknown as Translation<TranslationType>
 
-const Multiple: <OperationType extends NoDoubleInterior | number>(multiple: OperationType) => Multiple<OperationType> =
-    <OperationType extends NoDoubleInterior | number>(multiple: OperationType): Multiple<OperationType> => {
+const Multiple: <OperationType extends NoDoubleInteriorNumeric>(multiple: OperationType) => Multiple<OperationType> =
+    <OperationType extends NoDoubleInteriorNumeric>(multiple: OperationType): Multiple<OperationType> => {
         integerCheck(multiple, 'Multiple')
 
         return multiple as unknown as Multiple<OperationType>

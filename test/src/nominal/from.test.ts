@@ -53,7 +53,7 @@ describe('from', () => {
         const hzs: Hz[] = hzScalars.map<Hz>(from.Scalar)
     })
 
-    describe('special units', () => {
+    describe('special units/operations', () => {
         it('works', () => {
             const fromOrdinal: number = from.Ordinal(to.Ordinal(3))
             from.Ordinal(to.Ordinal(3)) * 3
@@ -72,6 +72,11 @@ describe('from', () => {
             const fraction: Fraction = to.Fraction([ to.Numerator(5), to.Denominator(4) ])
             expect(from.Fraction(fraction))
                 .toBe(5 / 4)
+        })
+
+        it('works for Index', () => {
+            const three: number = from.Index(to.Index(3))
+            const threeScalar: Scalar = from.Index(to.Index(to.Scalar(3)))
         })
     })
 })

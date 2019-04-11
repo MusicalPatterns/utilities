@@ -14,27 +14,29 @@ import {
     Index,
     Modulus,
     Multiple,
-    NoDoubleInterior,
+    NoDoubleInteriorNumeric,
     NormalScalar,
     Numerator,
-    Ordinal,
     Power,
     Scalar,
     Translation,
 } from './types'
 
-const Base: <InteriorType extends NoDoubleInterior = number>(
+const Base: <InteriorType extends NoDoubleInteriorNumeric>(
     value: InteriorType,
     base: Base<InteriorType>,
 ) => InteriorType =
-    <InteriorType extends NoDoubleInterior = number>(value: InteriorType, base: Base<InteriorType>): InteriorType =>
+    <InteriorType extends NoDoubleInteriorNumeric>(
+        value: InteriorType,
+        base: Base<InteriorType>,
+    ): InteriorType =>
         Math.log(value as unknown as number) / Math.log(base as unknown as number) as unknown as InteriorType
 
-const Translation: <TranslatedType = number>(
+const Translation: <TranslatedType>(
     value: TranslatedType,
     translation: Translation<TranslatedType>,
 ) => TranslatedType =
-    <TranslatedType = number>(
+    <TranslatedType>(
         value: TranslatedType,
         translation: Translation<TranslatedType>,
     ): TranslatedType => {
@@ -44,16 +46,16 @@ const Translation: <TranslatedType = number>(
             const cellCount: Cardinal = totalElements(cycle)
 
             for (
-                let index: Ordinal = to.Ordinal(0);
+                let index: Index = to.Index(0);
                 index <= finalIndexFromElementsTotal(cellCount);
-                index = to.Ordinal(from.Ordinal(index) + 1)
+                index = Translation(index, to.Translation(to.Index(1)))
             ) {
-                let cycledIndex: Ordinal = Translation(
+                let cycledIndex: Index = Translation(
                     index,
-                    to.Translation(to.Ordinal(-from.Translation(translation as Translation))),
+                    to.Translation(to.Index(-from.Translation(translation as unknown as Translation))),
                 )
-                cycledIndex = Modulus(cycledIndex, to.Modulus(to.Ordinal(from.Cardinal(cellCount))))
-                cycledCycle.push(cycle[ from.Ordinal(cycledIndex) ])
+                cycledIndex = Modulus(cycledIndex, to.Modulus(to.Index(from.Cardinal(cellCount))))
+                cycledCycle.push(cycle[ from.Index(cycledIndex) ])
             }
 
             return cycledCycle as unknown as TranslatedType
@@ -63,31 +65,31 @@ const Translation: <TranslatedType = number>(
         from.Translation(translation as unknown as Translation) as unknown as TranslatedType
     }
 
-const Power: <InteriorType extends NoDoubleInterior = number>(
+const Power: <InteriorType extends NoDoubleInteriorNumeric>(
     base: InteriorType,
     power: Power<InteriorType>,
 ) => InteriorType =
-    <InteriorType extends NoDoubleInterior = number>(
+    <InteriorType extends NoDoubleInteriorNumeric>(
         base: InteriorType,
         power: Power<InteriorType>,
     ): InteriorType =>
         Math.pow(base as unknown as number, power as unknown as number) as unknown as InteriorType
 
-const Scalar: <InteriorType extends NoDoubleInterior = number>(
+const Scalar: <InteriorType extends NoDoubleInteriorNumeric>(
     value: InteriorType,
     scalar: Scalar<InteriorType>,
 ) => InteriorType =
-    <InteriorType extends NoDoubleInterior = number>(
+    <InteriorType extends NoDoubleInteriorNumeric>(
         value: InteriorType,
         scalar: Scalar<InteriorType>,
     ): InteriorType =>
         value as unknown as number * from.Scalar(scalar as unknown as Scalar) as unknown as InteriorType
 
-const NormalScalar: <InteriorType extends NoDoubleInterior = number>(
+const NormalScalar: <InteriorType extends NoDoubleInteriorNumeric>(
     value: InteriorType,
     scalar: NormalScalar<InteriorType>,
 ) => InteriorType =
-    <InteriorType extends NoDoubleInterior = number>(
+    <InteriorType extends NoDoubleInteriorNumeric>(
         value: InteriorType,
         scalar: NormalScalar<InteriorType>,
     ): InteriorType => {
@@ -96,11 +98,11 @@ const NormalScalar: <InteriorType extends NoDoubleInterior = number>(
         return value as unknown as number * from.Scalar(scalar as unknown as Scalar) as unknown as InteriorType
     }
 
-const Multiple: <InteriorType extends NoDoubleInterior = number>(
+const Multiple: <InteriorType extends NoDoubleInteriorNumeric>(
     value: InteriorType,
     scalar: Multiple<InteriorType>,
 ) => InteriorType =
-    <InteriorType extends NoDoubleInterior = number>(
+    <InteriorType extends NoDoubleInteriorNumeric>(
         value: InteriorType,
         scalar: Multiple<InteriorType>,
     ): InteriorType =>
@@ -128,11 +130,11 @@ const Index: <ElementType>(
         return array[ from.Index(index as Index) ]
     }
 
-const Modulus: <InteriorType extends NoDoubleInterior = number>(
+const Modulus: <InteriorType extends NoDoubleInteriorNumeric>(
     value: InteriorType,
     modulus: Modulus<InteriorType>,
 ) => InteriorType =
-    <InteriorType extends NoDoubleInterior = number>(
+    <InteriorType extends NoDoubleInteriorNumeric>(
         value: InteriorType,
         modulus: Modulus<InteriorType>,
     ): InteriorType => {

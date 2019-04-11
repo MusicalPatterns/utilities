@@ -1,11 +1,11 @@
-import { apply, Cardinal, INITIAL, NEXT, Ordinal } from '../nominal'
+import { apply, Cardinal, Index, INITIAL, NEXT } from '../nominal'
 import { finalIndexFromElementsTotal } from './finalElement'
 
 const repeatCall: <ElementType>(arrayFunction: () => ElementType[], count: Cardinal) => ElementType[] =
     <ElementType>(arrayFunction: () => ElementType[], count: Cardinal): ElementType[] => {
         let repeatedArrayFunction: ElementType[] = []
         for (
-            let index: Ordinal = INITIAL;
+            let index: Index = INITIAL;
             index <= finalIndexFromElementsTotal(count);
             index = apply.Translation(index, NEXT)
         ) {

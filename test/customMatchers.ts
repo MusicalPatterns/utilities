@@ -4,21 +4,19 @@ import {
     apply,
     deepEqual,
     forEach,
-    from,
     goesMonotonically,
     goesMonotonicallyBetweenValueAndValue,
     goesMonotonicallyFromValueToValue,
     goesQuadratically,
     goesQuadraticallyBetweenValueAndValue,
     goesQuadraticallyFromValueToValue,
+    Index,
     isCloseTo,
     isGreaterThan,
     isGreaterThanOrEqualTo,
     isLessThan,
     isLessThanOrEqualTo,
     isUndefined,
-    Ordinal,
-    to,
 } from '../src/indexForTest'
 import CustomEqualityTester = jasmine.CustomEqualityTester
 import CustomMatcher = jasmine.CustomMatcher
@@ -167,8 +165,8 @@ const customMatchers: CustomMatcherFactories = {
                         message,
                 )
 
-                forEach(expected, (expectedElement: NumericElementType, index: Ordinal): void => {
-                    const actualElement: NumericElementType = apply.Index(actual, to.Index(index as unknown as NumericElementType))
+                forEach(expected, (expectedElement: NumericElementType, index: Index): void => {
+                    const actualElement: NumericElementType = apply.Index(actual, index as Index<NumericElementType>)
 
                     testIsCloseTo(actualElement, expectedElement, precision, negate, message)
                 })
@@ -184,8 +182,8 @@ const customMatchers: CustomMatcherFactories = {
             message?: string,
         ): CustomMatcherResult =>
             doAssertions(() => {
-                forEach(expected, (expectedElement: NumericElementType, index: Ordinal): void => {
-                    const actualElement: NumericElementType = apply.Index(actual, to.Index(from.Ordinal(index) as unknown as NumericElementType))
+                forEach(expected, (expectedElement: NumericElementType, index: Index): void => {
+                    const actualElement: NumericElementType = apply.Index(actual, index as Index<NumericElementType>)
 
                     testIsCloseTo(actualElement, expectedElement, precision, negate, message)
                 })
