@@ -1,25 +1,24 @@
 import { apply, Base, from, Power, to } from '../nominal'
-import { negative, quotient } from './typedOperations'
+import { negative, reciprocal } from './typedOperations'
 
 const computePartialSumOfPowers: (base: Base, upperBound: Power) => number =
-    (base: Base, upperBound: Power): number => {
-        const dividend: Base = apply.Translation(
-            apply.Power(
-                base,
-                apply.Translation(
-                    upperBound,
-                    to.Translation(to.Power(1)),
-                ) as Power<Base>,
+    (base: Base, upperBound: Power): number =>
+        from.Base<number, Base>(apply.Scalar(
+            apply.Translation(
+                apply.Power(
+                    base,
+                    apply.Translation(
+                        upperBound,
+                        to.Translation(to.Power(1)),
+                    ) as Power<Base>,
+                ),
+                to.Translation(to.Base(negative(1))),
             ),
-            to.Translation(to.Base(negative(1))),
-        )
-        const divisor: Base = apply.Translation(
-            base,
-            to.Translation(to.Base(negative(1))),
-        )
-
-        return from.Base<number, Base>(from.Scalar(quotient(dividend, divisor)))
-    }
+            to.Scalar(reciprocal(apply.Translation(
+                base,
+                to.Translation(to.Base(negative(1))),
+            ))),
+        ))
 
 export {
     computePartialSumOfPowers,

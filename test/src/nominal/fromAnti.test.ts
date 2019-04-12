@@ -1,7 +1,7 @@
 // tslint:disable no-any no-unused-expression comment-format no-commented-code no-dead-store
 
-import { from, to } from '../../../src/indexForTest'
-
+// import { from, to } from '../../../src/indexForTest'
+//
 // describe('from', () => {
 //     it('DOES NOT ALLOW taking a plain number', () => {
 //         from.Hz(3)

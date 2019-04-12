@@ -1,4 +1,4 @@
-import { Cycle, Index, Integer, Integerlike, Radians, Scalar, Space } from '../nominal'
+import { Cycle, Index, Integer, Integerlike, NoOperation, Radians, Scalar, Space } from '../nominal'
 
 // tslint:disable-next-line no-magic-numbers
 type TwoDimensional = 2
@@ -36,6 +36,11 @@ interface Operands {
     rhs: number,
 }
 
+interface ManyToOneOperation {
+    (...values: number[]): number
+    <NumericType extends NoOperation | number = number>(...values: NumericType[]): NumericType
+}
+
 export {
     CycleMap,
     RotateParameters,
@@ -47,4 +52,5 @@ export {
     TwoDimensional,
     ThreeDimensional,
     Operands,
+    ManyToOneOperation,
 }

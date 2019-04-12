@@ -1,54 +1,70 @@
 // tslint:disable max-file-line-count
 
 import { isEmpty, isUndefined } from '../code'
-import { ADDITIVE_IDENTITY, Integer, MULTIPLICATIVE_IDENTITY, Scalar, Translation } from '../nominal'
+import { ADDITIVE_IDENTITY, Integer, MULTIPLICATIVE_IDENTITY, NoOperation, Scalar, Translation } from '../nominal'
 import { VALUE_BELOW_WHICH_ROUNDING_IMPLEMENTATION_BREAKS } from './constants'
+import { ManyToOneOperation } from './types'
 
-const sum: <NumericType extends Number = Number>(...values: NumericType[]) => number =
-    <NumericType extends Number = Number>(...values: NumericType[]): number => {
+const sum: ManyToOneOperation =
+    <NumericType extends NoOperation | number = number>(
+        ...values: Array<number | NumericType>
+    ): number | NumericType => {
         if (isEmpty(values)) {
-            return ADDITIVE_IDENTITY as unknown as number
+            return ADDITIVE_IDENTITY as unknown as NumericType
         }
 
         const previousValue: NumericType = values.pop() as NumericType
 
-        const nextSum: number = isEmpty(values) ? ADDITIVE_IDENTITY as unknown as number : sum(...values)
+        const nextSum: number | NumericType = isEmpty(values) ?
+            ADDITIVE_IDENTITY as unknown as NumericType :
+            sum(...values)
 
-        return nextSum + (previousValue as unknown as number) as unknown as number
+        return (nextSum as unknown as number) + (previousValue as unknown as number) as unknown as NumericType
     }
 
-const difference: <NumericType extends Number = Number>(
+const difference: <NumericType extends NoOperation | number = number>(
     minuend: NumericType,
     subtrahend: NumericType,
 ) => Translation<NumericType> =
-    <NumericType extends Number = Number>(minuend: NumericType, subtrahend: NumericType): Translation<NumericType> =>
+    <NumericType extends NoOperation | number = number>(
+        minuend: NumericType,
+        subtrahend: NumericType,
+    ): Translation<NumericType> =>
         (minuend as unknown as number) - (subtrahend as unknown as number) as unknown as Translation<NumericType>
 
-const product: <NumericType extends Number = Number>(...values: NumericType[]) => number =
-    <NumericType extends Number = Number>(...values: NumericType[]): number => {
+const product: ManyToOneOperation =
+    <NumericType extends NoOperation | number = number>(
+        ...values: Array<number | NumericType>
+    ): number | NumericType => {
         if (isEmpty(values)) {
-            return MULTIPLICATIVE_IDENTITY as unknown as number
+            return MULTIPLICATIVE_IDENTITY as unknown as NumericType
         }
 
         const previousValue: NumericType = values.pop() as NumericType
 
-        const nextProduct: number = isEmpty(values) ?
-            MULTIPLICATIVE_IDENTITY as unknown as number :
+        const nextProduct: number | NumericType = isEmpty(values) ?
+            MULTIPLICATIVE_IDENTITY as unknown as NumericType :
             product(...values)
 
-        return nextProduct * (previousValue as unknown as number) as unknown as number
+        return (nextProduct as unknown as number) * (previousValue as unknown as number) as unknown as NumericType
     }
 
-const quotient: <NumericType extends Number = Number>(
+const quotient: <NumericType extends NoOperation | number = number>(
     dividend: NumericType,
     divisor: NumericType,
 ) => Scalar<NumericType> =
-    <NumericType extends Number = Number>(dividend: NumericType, divisor: NumericType): Scalar<NumericType> =>
+    <NumericType extends NoOperation | number = number>(
+        dividend: NumericType,
+        divisor: NumericType,
+    ): Scalar<NumericType> =>
         (dividend as unknown as number) / (divisor as unknown as number) as unknown as Scalar<NumericType>
 
-const modulus: <NumericType extends Number = Number>(dividend: NumericType, divisor: NumericType) => number =
-    <NumericType extends Number = Number>(dividend: NumericType, divisor: NumericType): number =>
-        (dividend as unknown as number) % (divisor as unknown as number) as unknown as number
+const modulus: <NumericType extends NoOperation | number = number>(
+    dividend: NumericType,
+    divisor: NumericType,
+) => NumericType =
+    <NumericType extends NoOperation | number = number>(dividend: NumericType, divisor: NumericType): NumericType =>
+        (dividend as unknown as number) % (divisor as unknown as number) as unknown as NumericType
 
 const reciprocal: <NumericType extends Number = Number>(value: NumericType) => NumericType =
     <NumericType extends Number = Number>(value: NumericType): NumericType =>

@@ -29,8 +29,8 @@ const multiplyFractions: (...fractions: Fraction[]) => Fraction =
             FRACTIONAL_IDENTITY
 
         return to.Fraction([
-            to.Numerator(product(getNumerator(nextMultipliedFraction), getNumerator(previousFraction))),
-            to.Denominator(product(getDenominator(nextMultipliedFraction), getDenominator(previousFraction))),
+            product(getNumerator(nextMultipliedFraction), getNumerator(previousFraction)),
+            product(getDenominator(nextMultipliedFraction), getDenominator(previousFraction)),
         ])
     }
 

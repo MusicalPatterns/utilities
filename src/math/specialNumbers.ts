@@ -23,7 +23,7 @@ const combinationCount: (setSize: number, choose: number) => number =
 
 const triangularNumber: (value: number) => number =
     (value: number): number =>
-        product(value, apply.Scalar(sum(value, 1), ONE_HALF))
+        product(value, apply.Scalar(sum(value, 1), ONE_HALF) as number)
 
 const triangularRoot: (value: number) => number =
     (value: number): number =>
