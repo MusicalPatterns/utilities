@@ -6,11 +6,10 @@ import {
     Integer,
     Numerator,
     product,
-    Scalar,
     to,
 } from '../indexForTest'
 import { quotient } from '../math'
-import { apply, DENOMINATOR_INDEX, FRACTIONAL_IDENTITY, from, NUMERATOR_INDEX } from '../nominal'
+import { apply, DENOMINATOR_INDEX, FRACTIONAL_IDENTITY, from, Multiple, NUMERATOR_INDEX } from '../nominal'
 
 const getNumerator: (fraction: Fraction) => Numerator =
     (fraction: Fraction): Numerator =>
@@ -67,13 +66,14 @@ const computeCommonTerms: (...fractions: Fraction[]) => Fraction[] =
                     return fraction
                 }
 
-                const termsScalar: Scalar = to.Scalar(from.Denominator(from.Scalar(quotient(
-                    lowestCommonDenominator,
-                    denominator,
-                ))))
+                const termsMultiple: Multiple<Numerator> =
+                    to.Multiple(to.Numerator(from.Denominator(from.Scalar(quotient(
+                        lowestCommonDenominator,
+                        denominator,
+                    )))))
 
                 return to.Fraction([
-                    apply.Scalar(getNumerator(fraction), termsScalar as Scalar<Numerator>),
+                    apply.Multiple(getNumerator(fraction), termsMultiple),
                     lowestCommonDenominator,
                 ])
             })
