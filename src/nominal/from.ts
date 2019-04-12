@@ -68,25 +68,25 @@ const Amplitude: <OperationType extends NoUnits, UnitsType extends Amplitude<Ope
 
 // Operation
 
-const Scalar: <InteriorType extends NoDoubleInteriorNumeric, OperationType extends Scalar<InteriorType>>(scalar: OperationType) => InteriorType & number =
-    <InteriorType extends NoDoubleInteriorNumeric, OperationType extends Scalar<InteriorType>>(scalar: OperationType): InteriorType & number =>
+const Scalar: <InteriorType extends NoDoubleInteriorNumeric = number, OperationType extends Scalar<InteriorType> = Scalar<InteriorType>>(scalar: OperationType) => InteriorType & number =
+    <InteriorType extends NoDoubleInteriorNumeric = number, OperationType extends Scalar<InteriorType> = Scalar<InteriorType>>(scalar: OperationType): InteriorType & number =>
         scalar as unknown as InteriorType & number
-const NormalScalar: <InteriorType extends NoDoubleInteriorNumeric, OperationType extends NormalScalar<InteriorType>>(normalScalar: OperationType) => InteriorType & number =
-    <InteriorType extends NoDoubleInteriorNumeric, OperationType extends NormalScalar<InteriorType>>(normalScalar: OperationType): InteriorType & number =>
+const NormalScalar: <InteriorType extends NoDoubleInteriorNumeric = number, OperationType extends NormalScalar<InteriorType> = NormalScalar<InteriorType>>(normalScalar: OperationType) => InteriorType & number =
+    <InteriorType extends NoDoubleInteriorNumeric = number, OperationType extends NormalScalar<InteriorType> = NormalScalar<InteriorType>>(normalScalar: OperationType): InteriorType & number =>
         normalScalar as unknown as InteriorType & number
-const Rotation: <InteriorType extends NoDoubleInteriorNumeric, OperationType extends Rotation<InteriorType>>(rotation: OperationType) => InteriorType & number =
-    <InteriorType extends NoDoubleInteriorNumeric, OperationType extends Rotation<InteriorType>>(rotation: OperationType): InteriorType & number =>
+const Rotation: <InteriorType extends NoDoubleInteriorNumeric = number, OperationType extends Rotation<InteriorType> = Rotation<InteriorType>>(rotation: OperationType) => InteriorType & number =
+    <InteriorType extends NoDoubleInteriorNumeric = number, OperationType extends Rotation<InteriorType> = Rotation<InteriorType>>(rotation: OperationType): InteriorType & number =>
         rotation as unknown as InteriorType & number
 
-const Base: <InteriorType extends NoDoubleInteriorNumeric, OperationType extends Base<InteriorType>>(base: OperationType) => InteriorType & number =
-    <InteriorType extends NoDoubleInteriorNumeric, OperationType extends Base<InteriorType>>(base: OperationType): InteriorType & number =>
+const Base: <InteriorType extends NoDoubleInteriorNumeric = number, OperationType extends Base<InteriorType> = Base<InteriorType>>(base: OperationType) => InteriorType & number =
+    <InteriorType extends NoDoubleInteriorNumeric = number, OperationType extends Base<InteriorType> = Base<InteriorType>>(base: OperationType): InteriorType & number =>
         base as unknown as InteriorType & number
-const Power: <InteriorType extends NoDoubleInteriorNumeric, OperationType extends Power<InteriorType>>(power: OperationType) => InteriorType & number =
-    <InteriorType extends NoDoubleInteriorNumeric, OperationType extends Power<InteriorType>>(power: OperationType): InteriorType & number =>
+const Power: <InteriorType extends NoDoubleInteriorNumeric = number, OperationType extends Power<InteriorType> = Power<InteriorType>>(power: OperationType) => InteriorType & number =
+    <InteriorType extends NoDoubleInteriorNumeric = number, OperationType extends Power<InteriorType> = Power<InteriorType>>(power: OperationType): InteriorType & number =>
         power as unknown as InteriorType & number
 
-const Modulus: <InteriorType extends NoDoubleInteriorNumeric, OperationType extends Modulus<InteriorType>>(modulus: OperationType) => InteriorType & number =
-    <InteriorType extends NoDoubleInteriorNumeric, OperationType extends Modulus<InteriorType>>(modulus: OperationType): InteriorType & number =>
+const Modulus: <InteriorType extends NoDoubleInteriorNumeric = number, OperationType extends Modulus<InteriorType> = Modulus<InteriorType>>(modulus: OperationType) => InteriorType & number =
+    <InteriorType extends NoDoubleInteriorNumeric = number, OperationType extends Modulus<InteriorType> = Modulus<InteriorType>>(modulus: OperationType): InteriorType & number =>
         modulus as unknown as InteriorType & number
 
 // Special Units

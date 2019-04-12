@@ -66,12 +66,12 @@ const modulus: <NumericType extends NoOperation | number = number>(
     <NumericType extends NoOperation | number = number>(dividend: NumericType, divisor: NumericType): NumericType =>
         (dividend as unknown as number) % (divisor as unknown as number) as unknown as NumericType
 
-const reciprocal: <NumericType extends Number = Number>(value: NumericType) => NumericType =
-    <NumericType extends Number = Number>(value: NumericType): NumericType =>
+const reciprocal: <NumericType extends Number = number>(value: NumericType) => NumericType =
+    <NumericType extends Number = number>(value: NumericType): NumericType =>
         1 / (value as unknown as number) as unknown as NumericType
 
-const negative: <NumericType extends Number = Number>(value: NumericType) => NumericType =
-    <NumericType extends Number = Number>(value: NumericType): NumericType =>
+const negative: <NumericType extends Number = number>(value: NumericType) => NumericType =
+    <NumericType extends Number = number>(value: NumericType): NumericType =>
         -(value as unknown as number) as unknown as NumericType
 
 const round: <NumericType extends Number, IntegerType extends Integer>(
@@ -94,32 +94,32 @@ const round: <NumericType extends Number, IntegerType extends Integer>(
         return +(Math.round(`${value}e+${precision}` as unknown as number) + 'e-' + precision) as unknown as NumericType
     }
 
-const floor: <NumericType extends Number = Number>(value: NumericType) => NumericType =
-    <NumericType extends Number = Number>(value: NumericType): NumericType =>
+const floor: <NumericType extends Number = number>(value: NumericType) => NumericType =
+    <NumericType extends Number = number>(value: NumericType): NumericType =>
         Math.floor(value as unknown as number) as unknown as NumericType
 
-const ceiling: <NumericType extends Number = Number>(value: NumericType) => NumericType =
-    <NumericType extends Number = Number>(value: NumericType): NumericType =>
+const ceiling: <NumericType extends Number = number>(value: NumericType) => NumericType =
+    <NumericType extends Number = number>(value: NumericType): NumericType =>
         Math.ceil(value as unknown as number) as unknown as NumericType
 
-const absoluteValue: <NumericType extends Number = Number>(value: NumericType) => NumericType =
-    <NumericType extends Number = Number>(value: NumericType): NumericType =>
+const absoluteValue: <NumericType extends Number = number>(value: NumericType) => NumericType =
+    <NumericType extends Number = number>(value: NumericType): NumericType =>
         Math.abs(value as unknown as number) as unknown as NumericType
 
-const squareRoot: <NumericType extends Number = Number>(value: NumericType) => NumericType =
-    <NumericType extends Number = Number>(value: NumericType): NumericType =>
+const squareRoot: <NumericType extends Number = number>(value: NumericType) => NumericType =
+    <NumericType extends Number = number>(value: NumericType): NumericType =>
         Math.sqrt(value as unknown as number) as unknown as NumericType
 
-const cubeRoot: <NumericType extends Number = Number>(value: NumericType) => NumericType =
-    <NumericType extends Number = Number>(value: NumericType): NumericType =>
+const cubeRoot: <NumericType extends Number = number>(value: NumericType) => NumericType =
+    <NumericType extends Number = number>(value: NumericType): NumericType =>
         Math.cbrt(value as unknown as number) as unknown as NumericType
 
-const max: <NumericType extends Number = Number>(...values: NumericType[]) => NumericType =
-    <NumericType extends Number = Number>(...values: NumericType[]): NumericType =>
+const max: <NumericType extends Number = number>(...values: NumericType[]) => NumericType =
+    <NumericType extends Number = number>(...values: NumericType[]): NumericType =>
         Math.max(...values as unknown as number[]) as unknown as NumericType
 
-const min: <NumericType extends Number = Number>(...values: NumericType[]) => NumericType =
-    <NumericType extends Number = Number>(...values: NumericType[]): NumericType =>
+const min: <NumericType extends Number = number>(...values: NumericType[]) => NumericType =
+    <NumericType extends Number = number>(...values: NumericType[]): NumericType =>
         Math.min(...values as unknown as number[]) as unknown as NumericType
 
 export {

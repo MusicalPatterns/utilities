@@ -1,6 +1,6 @@
 // tslint:disable no-unused-expression no-dead-store
 
-import { Base, Fraction, from, Hz, Scalar, to } from '../../../src/indexForTest'
+import { Base, Fraction, from, Hz, ONE_HALF, Scalar, to } from '../../../src/indexForTest'
 
 describe('from', () => {
     it('converts back to a plain number', () => {
@@ -21,6 +21,10 @@ describe('from', () => {
         from.Scalar(scalar)
         from.Scalar(scalar) * 3
         from.Scalar(to.Scalar(3))
+    })
+
+    it('can do this', () => {
+        from.Scalar(ONE_HALF)
     })
 
     it('can downgrade units while preserving operation', () => {
