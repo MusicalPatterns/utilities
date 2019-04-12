@@ -110,13 +110,13 @@ describe('to', () => {
 
         it(`allows calling with numbers which aren't integers, but throws`, () => {
             expect(() => to.Cardinal(4.3))
-                .toThrow(new Error('Cardinals must be Integers.'))
+                .toThrow(new Error('Numerals of type Cardinal must be Integers. This numeral had value 4.3.'))
             expect(() => to.Ordinal(4.3))
-                .toThrow(new Error('Ordinals must be Integers.'))
+                .toThrow(new Error('Numerals of type Ordinal must be Integers. This numeral had value 4.3.'))
             expect(() => to.Numerator(4.3))
-                .toThrow(new Error('Numerators must be Integers.'))
+                .toThrow(new Error('Numerals of type Numerator must be Integers. This numeral had value 4.3.'))
             expect(() => to.Denominator(4.3))
-                .toThrow(new Error('Denominators must be Integers.'))
+                .toThrow(new Error('Numerals of type Denominator must be Integers. This numeral had value 4.3.'))
         })
 
         it('allows setting things which are integers directly to other units, whether Integer is specified as the generic type or not', () => {

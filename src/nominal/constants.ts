@@ -155,7 +155,7 @@ const CENTS_PER_OCTAVE: Cents = apply.Scalar(
     to.Scalar(to.Cents(from.Cardinal(SEMITONES_PER_OCTAVE))),
 )
 
-const BEGINNING: Index<Ms> = to.Index(to.Ms(0))
+const BEGINNING: Ms = to.Ms(0)
 const NO_DURATION: Ms = to.Ms(0)
 
 const MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS: Cardinal = to.Cardinal(10)
