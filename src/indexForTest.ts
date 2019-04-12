@@ -93,7 +93,6 @@ export {
     Rotation,
     Base,
     Modulus,
-    Ordinal,
     Power,
     Radians,
     Translation,

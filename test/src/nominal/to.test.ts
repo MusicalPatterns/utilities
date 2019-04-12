@@ -13,7 +13,6 @@ import {
     Modulus,
     Ms,
     Numerator,
-    Ordinal,
     Power,
     Radians,
     Rotation,
@@ -95,14 +94,12 @@ describe('to', () => {
         it('allows making Cardinals or Ordinals if they are Integers, and does not require you to specify Integer as the generic parameter', () => {
             const integer: Integer = to.Integer(3)
 
-            const ordinal: Ordinal = to.Ordinal(integer)
             const cardinal: Cardinal = to.Cardinal(integer)
             const numerator: Numerator = to.Numerator(integer)
             const denominator: Denominator = to.Denominator(integer)
         })
 
         it('allows making Cardinals or Ordinals if they are plain numbers which are integers', () => {
-            const ordinal: Ordinal = to.Ordinal(3)
             const cardinal: Cardinal = to.Cardinal(3)
             const numerator: Numerator = to.Numerator(3)
             const denominator: Denominator = to.Denominator(3)
@@ -111,8 +108,6 @@ describe('to', () => {
         it(`allows calling with numbers which aren't integers, but throws`, () => {
             expect(() => to.Cardinal(4.3))
                 .toThrow(new Error('Numerals of type Cardinal must be Integers. This numeral had value 4.3.'))
-            expect(() => to.Ordinal(4.3))
-                .toThrow(new Error('Numerals of type Ordinal must be Integers. This numeral had value 4.3.'))
             expect(() => to.Numerator(4.3))
                 .toThrow(new Error('Numerals of type Numerator must be Integers. This numeral had value 4.3.'))
             expect(() => to.Denominator(4.3))

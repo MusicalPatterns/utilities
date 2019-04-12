@@ -69,7 +69,6 @@ type Modulus<InteriorType extends NoDoubleInteriorNumeric = number> = OperationB
 type Integer = number & Integerlike
 type Integerlike = Number & { _IntegerBrand: 'Integer' }
 
-type Ordinal<OperationType extends NoUnits = number> = Integerlike & UnitsBrand<'Ordinal', OperationType>
 type Cardinal<OperationType extends NoUnits = number> = Integerlike & UnitsBrand<'Cardinal', OperationType>
 type Numerator<OperationType extends NoUnits = number> = Integerlike & UnitsBrand<'Numerator', OperationType>
 type Denominator<OperationType extends NoUnits = number> = Integerlike & UnitsBrand<'Denominator', OperationType>
@@ -134,7 +133,6 @@ export {
     Cardinal,
     Scalar,
     Translation,
-    Ordinal,
     Power,
     Hz,
     Ms,

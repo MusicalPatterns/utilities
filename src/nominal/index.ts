@@ -141,7 +141,6 @@ export {
 export {
     Base,
     Translation,
-    Ordinal,
     Scalar,
     Ms,
     Power,

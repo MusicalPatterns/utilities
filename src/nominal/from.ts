@@ -22,7 +22,6 @@ import {
     NormalScalar,
     NoUnits,
     Numerator,
-    Ordinal,
     Power,
     Radians,
     Rotation,
@@ -95,8 +94,6 @@ const Integer: <IntegerType extends Integer>(integer: IntegerType) => number =
     <IntegerType extends Integer>(integer: IntegerType): number =>
         integer as unknown as number
 
-const Ordinal: (ordinal: Ordinal) => number =
-    (ordinal: Ordinal): number => ordinal as unknown as number
 const Cardinal: (cardinal: Cardinal) => number =
     (cardinal: Cardinal): number => cardinal as unknown as number
 const Numerator: (numerator: Numerator) => number =
@@ -143,7 +140,6 @@ export {
     Translation,
     Power,
     Ms,
-    Ordinal,
     Hz,
     Radians,
     Cents,

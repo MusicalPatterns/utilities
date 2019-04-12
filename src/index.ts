@@ -170,7 +170,6 @@ export {
 export {
     Base,
     Translation,
-    Ordinal,
     Scalar,
     Power,
     Cardinal,

@@ -59,9 +59,6 @@ describe('from', () => {
 
     describe('special units/operations', () => {
         it('works', () => {
-            const fromOrdinal: number = from.Ordinal(to.Ordinal(3))
-            from.Ordinal(to.Ordinal(3)) * 3
-
             const fromCardinal: number = from.Cardinal(to.Cardinal(3))
             from.Cardinal(to.Cardinal(3)) * 3
 

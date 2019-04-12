@@ -25,7 +25,6 @@ import {
     NormalScalar,
     NoUnits,
     Numerator,
-    Ordinal,
     Power,
     Radians,
     Rotation,
@@ -98,12 +97,6 @@ const Modulus: <NumericType extends NoDoubleInteriorNumeric>(modulus: NumericTyp
 const Integer: <OperationType extends NoUnits>(integer: OperationType) => Integer =
     <OperationType extends NoUnits>(integer: OperationType): Integer => integer as unknown as Integer
 
-const Ordinal: <OperationType extends NoUnits>(ordinal: OperationType) => Ordinal<OperationType> =
-    <OperationType extends NoUnits>(ordinal: OperationType): Ordinal<OperationType> => {
-        integerCheck(ordinal, 'Ordinal')
-
-        return ordinal as unknown as Ordinal<OperationType>
-    }
 const Cardinal: <OperationType extends NoUnits>(cardinal: OperationType) => Cardinal<OperationType> =
     <OperationType extends NoUnits>(cardinal: OperationType): Cardinal<OperationType> => {
         integerCheck(cardinal, 'Cardinal')
@@ -178,7 +171,6 @@ export {
     Translation,
     Power,
     Ms,
-    Ordinal,
     Hz,
     Radians,
     Cents,

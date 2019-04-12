@@ -8,7 +8,6 @@
 //     Index,
 //     Ms,
 //     Numerator,
-//     Ordinal,
 //     Rotation,
 //     Scalar,
 //     to,
@@ -105,14 +104,12 @@
 //         })
 //
 //         it('DOES NOT ALLOW making Cardinals or Ordinals if they are some other Units (not Integers)', () => {
-//             to.Ordinal(to.Hz(3))
 //             to.Cardinal(to.Hz(3))
 //             to.Numerator(to.Hz(3))
 //             to.Denominator(to.Hz(3))
 //         })
 //
 //         it('DOES NOT ALLOW making Cardinals or Ordinals generic of some other Units (besides Integers)', () => {
-//             const ordinalHz: Ordinal<Hz> = 3 as any as Ordinal<Hz>
 //             const cardinalHz: Cardinal<Hz> = 3 as any as Cardinal<Hz>
 //             const numeratorHz: Numerator<Hz> = 3 as any as Numerator<Hz>
 //             const denominatorHz: Denominator<Hz> = 3 as any as Denominator<Hz>
