@@ -1,12 +1,13 @@
 // tslint:disable no-magic-numbers max-file-line-count
 
-import * as apply from './apply'
 import * as from from './from'
+import * as of from './of'
 import * as to from './to'
 import {
     Base,
     Cardinal,
     Cents,
+    Cycle,
     Denominator,
     Fraction,
     Index,
@@ -14,6 +15,7 @@ import {
     Ms,
     Multiple,
     Numerator,
+    Of,
     Power,
     Radians,
     Scalar,
@@ -53,10 +55,10 @@ const HEPTUPLE: Multiple = to.Multiple(7)
 const OCTUPLE: Multiple = to.Multiple(8)
 const NONTUPLE: Multiple = to.Multiple(9)
 
-const EVERY_OTHER: Multiple<Index> = to.Multiple(to.Index(2))
-const EVERY_THIRD: Multiple<Index> = to.Multiple(to.Index(3))
-const EVERY_FOURTH: Multiple<Index> = to.Multiple(to.Index(4))
-const EVERY_FIFTH: Multiple<Index> = to.Multiple(to.Index(5))
+const EVERY_OTHER: Multiple<Index> = to.Multiple(of.Index(2))
+const EVERY_THIRD: Multiple<Index> = to.Multiple(of.Index(3))
+const EVERY_FOURTH: Multiple<Index> = to.Multiple(of.Index(4))
+const EVERY_FIFTH: Multiple<Index> = to.Multiple(of.Index(5))
 
 const ONCE: Cardinal = to.Cardinal(1)
 const TWICE: Cardinal = to.Cardinal(2)
@@ -66,7 +68,8 @@ const FICE: Cardinal = to.Cardinal(5)
 
 const DEFAULT_PRECISION: Integer = to.Integer(2)
 const A_SUFFICIENT_COUNT_OF_NUMBERS: Cardinal = to.Cardinal(Math.pow(2, 8))
-const ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS: Translation = to.Translation(-2)
+const ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS: Translation<Cycle> =
+    to.Translation(-2 as Of<Cycle>)
 
 const X_AXIS: Index = to.Index(0)
 const Y_AXIS: Index = to.Index(1)
@@ -110,18 +113,18 @@ const ADDITIVE_IDENTITY: Translation = to.Translation(0)
 const MULTIPLICATIVE_IDENTITY: Scalar = to.Scalar(1)
 const FRACTIONAL_IDENTITY: Fraction = to.Fraction([ to.Numerator(1), to.Denominator(1) ])
 
-const NEXT: Translation<Index> = to.Translation(to.Index(1))
-const PREVIOUS: Translation<Index> = to.Translation(to.Index(-1))
-const UP_ONE: Translation<Cardinal> = to.Translation(to.Cardinal(1))
-const DOWN_ONE: Translation<Cardinal> = to.Translation(to.Cardinal(-1))
+const NEXT: Translation<Index> = to.Translation(of.Index(1))
+const PREVIOUS: Translation<Index> = to.Translation(of.Index(-1))
+const UP_ONE: Translation<Cardinal> = to.Translation(of.Cardinal(1))
+const DOWN_ONE: Translation<Cardinal> = to.Translation(of.Cardinal(-1))
 const INCREMENT: Translation = to.Translation(1)
 const DECREMENT: Translation = to.Translation(-1)
-const ONE_MORE: Translation<Cardinal> = to.Translation(to.Cardinal(1))
-const ONE_FEWER: Translation<Cardinal> = to.Translation(to.Cardinal(-1))
+const ONE_MORE: Translation<Cardinal> = to.Translation(of.Cardinal(1))
+const ONE_FEWER: Translation<Cardinal> = to.Translation(of.Cardinal(-1))
 const NO_TRANSLATION: Translation = to.Translation(0)
 
-const NUMERATOR_INDEX: Index<Numerator> = to.Index(to.Numerator(0))
-const DENOMINATOR_INDEX: Index<Denominator> = to.Index(to.Denominator(1))
+const NUMERATOR_INDEX: Index<Numerator> = to.Index(of.Numerator(0))
+const DENOMINATOR_INDEX: Index<Denominator> = to.Index(of.Denominator(1))
 
 const FIRST_FACTOR_NECESSARY_TO_CHECK_IF_COMMON: Integer = to.Integer(2)
 
@@ -130,15 +133,15 @@ const E: Base = to.Base(Math.E)
 
 const GOOD_AMOUNT_OF_TIME_TO_SEE_WHAT_THE_SITUATION_IS_WHEN_HEADFULLY_DEBUGGING_TESTS: Ms = to.Ms(3000)
 
-const INCLUSIVE: Translation<Index> = to.Translation(to.Index(1))
-const EXCLUSIVE: Translation<Index> = to.Translation(to.Index(-1))
-const INCLUSIVE_TO_LEFT: Translation<Index> = to.Translation(to.Index(-1))
-const EXCLUSIVE_TO_LEFT: Translation<Index> = to.Translation(to.Index(1))
+const INCLUSIVE: Translation<Index> = to.Translation(of.Index(1))
+const EXCLUSIVE: Translation<Index> = to.Translation(of.Index(-1))
+const INCLUSIVE_TO_LEFT: Translation<Index> = to.Translation(of.Index(-1))
+const EXCLUSIVE_TO_LEFT: Translation<Index> = to.Translation(of.Index(1))
 
 const INITIAL: Index = to.Index(0)
 const SKIP_FIRST_ELEMENT: Index = to.Index(1)
 
-const TRANSLATION_FROM_LENGTH_TO_FINAL_INDEX: Translation<Cardinal> = to.Translation(to.Cardinal(-1))
+const TRANSLATION_FROM_LENGTH_TO_FINAL_INDEX: Translation<Cardinal> = to.Translation(of.Cardinal(-1))
 const EXAMPLE_ELEMENT_INDEX: Index = to.Index(0)
 
 const NOT_FOUND: Index = to.Index(-1)
@@ -147,13 +150,10 @@ const SEMITONES_PER_OCTAVE: Cardinal = to.Cardinal(12)
 
 const OCTAVE: Base = to.Base(2)
 const TRITAVE: Base = to.Base(3)
-const SEMITONE: Base = apply.Power(OCTAVE, to.Power(to.Base((1 / from.Cardinal(SEMITONES_PER_OCTAVE)))))
+const SEMITONE: Base = to.Base(Math.pow(from.Base(OCTAVE), (1 / from.Cardinal(SEMITONES_PER_OCTAVE))))
 
 const CENTS_PER_SEMITONE: Cents = to.Cents(100)
-const CENTS_PER_OCTAVE: Cents = apply.Scalar(
-    CENTS_PER_SEMITONE,
-    to.Scalar(to.Cents(from.Cardinal(SEMITONES_PER_OCTAVE))),
-)
+const CENTS_PER_OCTAVE: Cents = to.Cents(from.Cents(CENTS_PER_SEMITONE) * from.Cardinal(SEMITONES_PER_OCTAVE))
 
 const BEGINNING: Ms = to.Ms(0)
 const NO_DURATION: Ms = to.Ms(0)

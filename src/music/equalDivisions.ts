@@ -1,4 +1,4 @@
-import { slice } from '../code'
+import { map, slice } from '../code'
 import { reciprocal } from '../math'
 import {
     apply,
@@ -8,6 +8,7 @@ import {
     INITIAL,
     Integer,
     OCTAVE,
+    of,
     Scalar,
     to,
     ZERO_AND_POSITIVE_INTEGERS,
@@ -18,14 +19,20 @@ const computeEqualDivisionScalars: (equalDivision: Denominator, window?: Base) =
         const division: number = from.Denominator(reciprocal(equalDivision))
         const base: Base = apply.Power(
             window,
-            to.Power(to.Base(division)),
+            to.Power(of.Base(division)),
         )
 
         const logarithmicStep: Scalar = to.Scalar(from.Base(base))
 
-        return slice(ZERO_AND_POSITIVE_INTEGERS, INITIAL, to.Index(from.Denominator(equalDivision)))
-            .map((integer: Integer): Scalar =>
-                apply.Power(logarithmicStep, to.Power(to.Scalar(integer))))
+        return map(
+            slice(
+                ZERO_AND_POSITIVE_INTEGERS,
+                to.Index(of.Integer(from.Index(INITIAL))),
+                to.Index(from.Denominator(equalDivision)),
+            ),
+            (integer: Integer): Scalar =>
+                apply.Power(logarithmicStep, to.Power(of.Scalar(integer))),
+        )
     }
 
 export {

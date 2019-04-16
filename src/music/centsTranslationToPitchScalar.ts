@@ -1,13 +1,13 @@
 import { reciprocal } from '../math'
-import { apply, Cents, CENTS_PER_OCTAVE, Frequency, from, OCTAVE, Scalar, to, Translation } from '../nominal'
+import { apply, Cents, CENTS_PER_OCTAVE, Frequency, from, OCTAVE, of, Scalar, to, Translation } from '../nominal'
 
 const centsTranslationToPitchScalar: (centsTranslationToPitchScalar: Translation<Cents>) => Scalar<Frequency> =
     (cents: Translation<Cents>): Scalar<Frequency> =>
-        to.Scalar(to.Frequency(from.Base(apply.Power(
+        to.Scalar(of.Frequency(from.Base(apply.Power(
             OCTAVE,
-            to.Power(to.Base(from.Translation<Cents, Translation<Cents>>(apply.Scalar(
+            to.Power(of.Base(from.Translation<Cents, Translation<Cents>>(apply.Scalar(
                 cents,
-                to.Scalar(to.Translation(reciprocal(CENTS_PER_OCTAVE))),
+                to.Scalar(of.Translation<Cents>(from.Cents(reciprocal(CENTS_PER_OCTAVE)))),
             )))),
         ))))
 

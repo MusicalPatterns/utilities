@@ -1,18 +1,18 @@
 import { isSingleton } from '../code'
-import { apply, FIRST_FACTOR_NECESSARY_TO_CHECK_IF_COMMON, Integer, to } from '../nominal'
+import { apply, FIRST_FACTOR_NECESSARY_TO_CHECK_IF_COMMON, Integer, Integerlike, Translation } from '../nominal'
 import { dividesEvenly } from './dividesEvenly'
 import { max } from './typedOperations'
 
-const computeCommonFactors: <IntegerType extends Integer>(...values: IntegerType[]) => IntegerType[] =
-    <IntegerType extends Integer>(...values: IntegerType[]): IntegerType[] => {
-        const commonFactors: IntegerType[] = [ 1 as IntegerType ]
+const computeCommonFactors: <IntegerType extends Integerlike = Integer>(...values: IntegerType[]) => IntegerType[] =
+    <IntegerType extends Integerlike = Integer>(...values: IntegerType[]): IntegerType[] => {
+        const commonFactors: IntegerType[] = [ 1 as unknown as IntegerType ]
 
         const maxValue: IntegerType = max(...values)
 
         for (
-            let candidateFactor: IntegerType = FIRST_FACTOR_NECESSARY_TO_CHECK_IF_COMMON as IntegerType;
+            let candidateFactor: IntegerType = FIRST_FACTOR_NECESSARY_TO_CHECK_IF_COMMON as unknown as IntegerType;
             candidateFactor <= maxValue;
-            candidateFactor = apply.Translation(candidateFactor, to.Translation(1 as IntegerType))
+            candidateFactor = apply.Translation(candidateFactor, 1 as unknown as Translation<IntegerType>)
         ) {
             const isCommon: boolean = values.every((value: IntegerType) =>
                 dividesEvenly(value, candidateFactor))
@@ -24,8 +24,8 @@ const computeCommonFactors: <IntegerType extends Integer>(...values: IntegerType
         return commonFactors
     }
 
-const areCoprime: <IntegerType extends Integer>(...values: IntegerType[]) => boolean =
-    <IntegerType extends Integer>(...values: IntegerType[]): boolean =>
+const areCoprime: <IntegerType extends Integerlike = Integer>(...values: IntegerType[]) => boolean =
+    <IntegerType extends Integerlike = Integer>(...values: IntegerType[]): boolean =>
         isSingleton(computeCommonFactors(...values))
 
 export {

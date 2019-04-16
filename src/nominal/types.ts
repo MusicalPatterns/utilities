@@ -1,7 +1,5 @@
 // tslint:disable max-file-line-count no-magic-numbers max-line-length
 
-import { Difference, Maybe } from '../code'
-
 interface NominalNumber {
     _NominalBrand?: string,
     _OperationBrand?: string,
@@ -10,103 +8,65 @@ interface NominalNumber {
 
 // Units
 
-type NoUnits = Number & { _UnitsBrand?: 'NoUnits' | 'Integer' }
-type ForUnits<OperationType, Unit> = OperationType extends number ?
-    NoOperation :
-    OperationType extends NoOperation ?
-        OverrideInteriorNeutrality<OperationType, NoUnits> :
-        OverrideInteriorNeutrality<OperationType, NoUnits> & { _InteriorBrand: UnitsBrand<Unit> }
-type UnitsBrand<Unit, OperationType extends NoUnits = number> =
-    ForUnits<OperationType, Unit> & { _UnitsBrand: Unit }
-type OverrideInteriorNeutrality<UnitsOrOperationType, NeutralType> = UnitsOrOperationType extends NeutralType ?
-    Difference<UnitsOrOperationType, NeutralType> & Number :
-    UnitsOrOperationType
+type NoUnits = Number & { _UnitsBrand?: 'NoUnits' }
+type UnitsBrand<Unit> = NoOperation & { _UnitsBrand: Unit }
 
-type Hz<OperationType extends NoUnits = number> = UnitsBrand<'Hz', OperationType>
-type Ms<OperationType extends NoUnits = number> = UnitsBrand<'Ms', OperationType>
-type Radians<OperationType extends NoUnits = number> = UnitsBrand<'Radians', OperationType>
-type Cents<OperationType extends NoUnits = number> = UnitsBrand<'Cents', OperationType>
-type Semitones<OperationType extends NoUnits = number> = UnitsBrand<'Semitones', OperationType>
-type Meters<OperationType extends NoUnits = number> = UnitsBrand<'Meters', OperationType>
+type Hz = UnitsBrand<'Hz'>
+type Ms = UnitsBrand<'Ms'>
+type Radians = UnitsBrand<'Radians'>
+type Cents = UnitsBrand<'Cents'>
+type Semitones = UnitsBrand<'Semitones'>
+type Meters = UnitsBrand<'Meters'>
 
-type Space<OperationType extends NoUnits = number> = UnitsBrand<'Space', OperationType>
-type Time<OperationType extends NoUnits = number> = UnitsBrand<'Time', OperationType>
-type Frequency<OperationType extends NoUnits = number> = UnitsBrand<'Frequency', OperationType>
-type Amplitude<OperationType extends NoUnits = number> = UnitsBrand<'Amplitude', OperationType>
+type Space = UnitsBrand<'Space'>
+type Time = UnitsBrand<'Time'>
+type Frequency = UnitsBrand<'Frequency'>
+type Amplitude = UnitsBrand<'Amplitude'>
 
 // Operation
 
 type NoOperation = Number & { _OperationBrand?: 'NoOperation' }
-type NoInterior = Number & { _InteriorBrand?: 'NoInterior' }
-type NoDoubleInteriorNumeric = (Number & { _DoubleInteriorBrand?: 'NoDoubleInteriorNumeric', [ index: string ]: unknown }) | number
-type ForOperation<InteriorType> = InteriorType extends number ?
-    NoInterior :
-    InteriorType extends NoInterior ?
-        InteriorType extends NoUnits ?
-            Number & { _InteriorBrand: InteriorType } :
-            InteriorType extends NoOperation ?
-                Difference<InteriorType, NoOperation> & Number & { _InteriorBrand: InteriorType } :
-                InteriorType & { _InteriorBrand: InteriorType } :
-        InteriorType extends NoUnits ?
-            Number & { _DoubleInteriorBrand: InteriorType } :
-            InteriorType extends NoOperation ?
-                Difference<InteriorType, NoOperation> & Number & { _InteriorBrand: InteriorType } :
-                InteriorType & { _DoubleInteriorBrand: InteriorType }
-type OperationBrand<Operation, InteriorType extends NoDoubleInteriorNumeric = number> =
-    ForOperation<InteriorType> & { _OperationBrand: Operation }
 
-type Scalar<InteriorType extends NoDoubleInteriorNumeric = number> = OperationBrand<'Scalar', InteriorType>
-type NormalScalar<InteriorType extends NoDoubleInteriorNumeric = number> = OperationBrand<'Scalar', InteriorType>
-type Rotation<InteriorType extends NoDoubleInteriorNumeric = number> = OperationBrand<'Rotation', InteriorType>
+type OperationOf<OfType> = Number & { _OperationOfBrand: OfType }
 
-type Base<InteriorType extends NoDoubleInteriorNumeric = number> = OperationBrand<'Base', InteriorType>
-type Power<InteriorType extends NoDoubleInteriorNumeric = number> = OperationBrand<'Power', InteriorType>
+type OperationBrand<Operation, OfType = number> = OperationOf<OfType> & { _OperationBrand: Operation }
 
-type Modulus<InteriorType extends NoDoubleInteriorNumeric = number> = OperationBrand<'Modulus', InteriorType>
+type Scalar<OfType extends Number = number> = OperationBrand<'Scalar', OfType>
+type NormalScalar<OfType extends Number = number> = OperationBrand<'NormalScalar', OfType>
+type Rotation<OfType extends Number = number> = OperationBrand<'Rotation', OfType>
+
+type Base<OfType extends Number = number> = OperationBrand<'Base', OfType>
+type Power<OfType extends Number = number> = OperationBrand<'Power', OfType>
+
+type Modulus<OfType extends Number = number> = OperationBrand<'Modulus', OfType>
 
 // Special Units
 
-type Integer = number & Integerlike
-type Integerlike = Number & { _IntegerBrand: 'Integer' }
-
-type Cardinal<OperationType extends NoUnits = number> = Integerlike & UnitsBrand<'Cardinal', OperationType>
-type Numerator<OperationType extends NoUnits = number> = Integerlike & UnitsBrand<'Numerator', OperationType>
-type Denominator<OperationType extends NoUnits = number> = Integerlike & UnitsBrand<'Denominator', OperationType>
+type Cardinal = Integerlike & UnitsBrand<'Cardinal'>
+type Numerator = Integerlike & UnitsBrand<'Numerator'>
+type Denominator = Integerlike & UnitsBrand<'Denominator'>
 
 type Fraction = [ Numerator, Denominator ]
 
 // Special Operations
 
-type NoDoubleInteriorMaybe = Maybe<{
-    _DoubleInteriorBrand?: 'NoDoubleInteriorMaybe',
-    [ index: string ]: unknown,
-}> | number | string
-type ForOperationMaybe<InteriorType> = InteriorType extends number ?
-    NoInterior :
-    InteriorType extends NoInterior ?
-        InteriorType extends NoUnits ?
-            { _InteriorBrand: InteriorType } :
-            InteriorType extends NoOperation ?
-                Difference<InteriorType, NoOperation> & { _InteriorBrand: InteriorType } :
-                InteriorType & { _InteriorBrand: InteriorType } :
-        InteriorType extends NoUnits ?
-            { _DoubleInteriorBrand: InteriorType } :
-            InteriorType extends NoOperation ?
-                Difference<InteriorType, NoOperation> & { _InteriorBrand: InteriorType } :
-                InteriorType & { _DoubleInteriorBrand: InteriorType }
-type OperationBrandIndex<Operation, InteriorType extends NoDoubleInteriorMaybe = Number> =
-    ForOperationMaybe<InteriorType> & { _OperationBrand: Operation }
+type Index<OfType = number> = OperationBrand<'Index', OfType>
+type Translation<OfType extends Number | string | unknown[] = number> = OperationBrand<'Translation', OfType>
 
-type Index<InteriorType extends NoDoubleInteriorMaybe = number> =
-    Number & OperationBrandIndex<'Index', InteriorType>
-type Translation<InteriorType extends NoDoubleInteriorMaybe = number> =
-    Number & OperationBrandIndex<'Translation', InteriorType>
+type Multiple<OfType extends Number = number> = Integerlike & OperationBrand<'Multiple', OfType>
 
-type Multiple<InteriorType extends NoDoubleInteriorNumeric = number> = Integer & OperationBrand<'Multiple', InteriorType>
+// Of
+
+type Of<OfType> = number & { _OfBrand: OfType }
+
+// Integer
+
+type Integer = Number & Integerlike
+type Integerlike = number & { _IntegerBrand: 'Integer' }
 
 // Other Stuff
 
-type Block = number[] & { _BlockBrand: void }
+type Block = Number[] & { _BlockBrand: void }
 
 type Cycle<ElementType = number> = ElementType[] & { _CycleBrand: boolean }
 
@@ -160,8 +120,10 @@ export {
     Amplitude,
     NominalNumber,
     NormalScalar,
-    NoDoubleInteriorNumeric,
-    NoDoubleInteriorMaybe,
+    OperationBrand,
+    OperationOf,
+    UnitsBrand,
     Integerlike,
     Multiple,
+    Of,
 }

@@ -1,6 +1,7 @@
-// tslint:disable no-any no-type-definitions-outside-types-modules no-object-literal-type-assertion max-line-length
+// tslint:disable
 
 import { reduce } from '../code'
+import { NoUnits, Of } from './types'
 
 type DummyValueForComputingNominalInterface = unknown
 
@@ -9,33 +10,47 @@ interface NominalInterfaceOptionObject {
     numericArray?: any,
 }
 
-type FromMono<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> = {
+type CustomFromMono<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> = {
     [Index in keyof NominalInterfaceOptionObjectType['number']]:
     (value: NominalInterfaceOptionObjectType['number'][Index]) => number
 }
-type FromPoly<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> = {
+type CustomFromPoly<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> = {
     [Index in keyof NominalInterfaceOptionObjectType['numericArray']]:
     (value: NominalInterfaceOptionObjectType['numericArray'][Index]) => number[]
 }
-type From<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> =
-    FromMono<NominalInterfaceOptionObjectType> & FromPoly<NominalInterfaceOptionObjectType>
+type CustomFrom<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> =
+    CustomFromMono<NominalInterfaceOptionObjectType> & CustomFromPoly<NominalInterfaceOptionObjectType>
 
-type ToMono<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> = {
+type CustomToMono<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> = {
     [Index in keyof NominalInterfaceOptionObjectType['number']]:
-    <NumericType extends Number = Number>(value: NumericType) => NominalInterfaceOptionObjectType['number'][Index]
+    <NumericType extends NoUnits>(value: NumericType) => NominalInterfaceOptionObjectType['number'][Index]
 }
-type ToPoly<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> = {
+type CustomToPoly<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> = {
     [Index in keyof NominalInterfaceOptionObjectType['numericArray']]:
-    <NumericElementType extends Number = Number>(
+    <NumericElementType extends NoUnits>(
         value: NumericElementType[],
     ) => NominalInterfaceOptionObjectType['numericArray'][Index]
 }
-type To<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> =
-    ToMono<NominalInterfaceOptionObjectType> & ToPoly<NominalInterfaceOptionObjectType>
+type CustomTo<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> =
+    CustomToMono<NominalInterfaceOptionObjectType> & CustomToPoly<NominalInterfaceOptionObjectType>
+
+type CustomOfMono<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> = {
+    [Index in keyof NominalInterfaceOptionObjectType['number']]:
+    <NumericType extends NoUnits>(value: NumericType) => Of<NominalInterfaceOptionObjectType['number'][Index]>
+}
+type CustomOfPoly<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> = {
+    [Index in keyof NominalInterfaceOptionObjectType['numericArray']]:
+    <NumericElementType extends NoUnits>(
+        value: NumericElementType[],
+    ) => Of<NominalInterfaceOptionObjectType['numericArray'][Index]>
+}
+type CustomOf<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> =
+    CustomOfMono<NominalInterfaceOptionObjectType> & CustomOfPoly<NominalInterfaceOptionObjectType>
 
 interface NominalInterface<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> {
-    from: From<NominalInterfaceOptionObjectType>,
-    to: To<NominalInterfaceOptionObjectType>,
+    from: CustomFrom<NominalInterfaceOptionObjectType>,
+    of: CustomOf<NominalInterfaceOptionObjectType>,
+    to: CustomTo<NominalInterfaceOptionObjectType>,
 }
 
 const computeNominalInterface: <NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject>(
@@ -48,8 +63,8 @@ const computeNominalInterface: <NominalInterfaceOptionObjectType extends Nominal
             ...reduce(
                 Object.keys(nominalInterfaceOptionsObject.number || {}),
                 (
-                    accumulator: FromMono<NominalInterfaceOptionObjectType>, typeName: string,
-                ): FromMono<NominalInterfaceOptionObjectType> => ({
+                    accumulator: CustomFromMono<NominalInterfaceOptionObjectType>, typeName: string,
+                ): CustomFromMono<NominalInterfaceOptionObjectType> => ({
                     ...accumulator,
                     [ typeName ]: (value: unknown): number => value as number,
                 }),
@@ -58,10 +73,32 @@ const computeNominalInterface: <NominalInterfaceOptionObjectType extends Nominal
             ...reduce(
                 Object.keys(nominalInterfaceOptionsObject.numericArray || {}),
                 (
-                    accumulator: FromPoly<NominalInterfaceOptionObjectType>, typeName: string,
-                ): FromPoly<NominalInterfaceOptionObjectType> => ({
+                    accumulator: CustomFromPoly<NominalInterfaceOptionObjectType>, typeName: string,
+                ): CustomFromPoly<NominalInterfaceOptionObjectType> => ({
                     ...accumulator,
                     [ typeName ]: (values: unknown): number[] => values as number[],
+                }),
+                {},
+            ),
+        },
+        of: {
+            ...reduce(
+                Object.keys(nominalInterfaceOptionsObject.number || {}),
+                (
+                    accumulator: CustomToMono<NominalInterfaceOptionObjectType>, typeName: string,
+                ): CustomToMono<NominalInterfaceOptionObjectType> => ({
+                    ...accumulator,
+                    [ typeName ]: <NumericType extends NoUnits>(value: NumericType): unknown => value,
+                }),
+                {},
+            ),
+            ...reduce(
+                Object.keys(nominalInterfaceOptionsObject.numericArray || {}),
+                (
+                    accumulator: CustomToPoly<NominalInterfaceOptionObjectType>, typeName: string,
+                ): CustomToPoly<NominalInterfaceOptionObjectType> => ({
+                    ...accumulator,
+                    [ typeName ]: <NumericElementType extends NoUnits>(values: NumericElementType[]): unknown => values,
                 }),
                 {},
             ),
@@ -70,20 +107,20 @@ const computeNominalInterface: <NominalInterfaceOptionObjectType extends Nominal
             ...reduce(
                 Object.keys(nominalInterfaceOptionsObject.number || {}),
                 (
-                    accumulator: ToMono<NominalInterfaceOptionObjectType>, typeName: string,
-                ): ToMono<NominalInterfaceOptionObjectType> => ({
+                    accumulator: CustomToMono<NominalInterfaceOptionObjectType>, typeName: string,
+                ): CustomToMono<NominalInterfaceOptionObjectType> => ({
                     ...accumulator,
-                    [ typeName ]: <NumericType extends Number = Number>(value: NumericType): unknown => value,
+                    [ typeName ]: <NumericType extends NoUnits>(value: NumericType): unknown => value,
                 }),
                 {},
             ),
             ...reduce(
                 Object.keys(nominalInterfaceOptionsObject.numericArray || {}),
                 (
-                    accumulator: ToPoly<NominalInterfaceOptionObjectType>, typeName: string,
-                ): ToPoly<NominalInterfaceOptionObjectType> => ({
+                    accumulator: CustomToPoly<NominalInterfaceOptionObjectType>, typeName: string,
+                ): CustomToPoly<NominalInterfaceOptionObjectType> => ({
                     ...accumulator,
-                    [ typeName ]: <NumericElementType extends Number = Number>(values: NumericElementType[]): unknown => values,
+                    [ typeName ]: <NumericElementType extends NoUnits>(values: NumericElementType[]): unknown => values,
                 }),
                 {},
             ),
@@ -96,4 +133,8 @@ export {
     DUMMY_VALUE_FOR_COMPUTING_NOMINAL_INTERFACE,
     computeNominalInterface,
     NominalInterface,
+    NominalInterfaceOptionObject,
+    CustomTo,
+    CustomFrom,
+    CustomOf,
 }

@@ -1,17 +1,17 @@
 // tslint:disable bool-param-default
 
 import { isUndefined, Maybe } from '../code'
-import { apply, EXAMPLE_ELEMENT_INDEX, from, Index, MULTIPLICATIVE_IDENTITY, Scalar, Translation } from '../nominal'
+import { apply, EXAMPLE_ELEMENT_INDEX, from, Index, MULTIPLICATIVE_IDENTITY, Of, Scalar, Translation } from '../nominal'
 import { allValuesAreTheSame, beginValueIsCorrect } from './goes'
 import { goesMonotonicallyBetweenValueAndValue, goesMonotonicallyFromValueToValue } from './monotonic'
 import { computeDeltas, computeIntervals } from './rateOfChange'
 
-const goesQuadratically: <NumericElementType extends Number = Number>(
+const goesQuadratically: <NumericElementType extends Number>(
     array: NumericElementType[],
     expectedBeginValue?: NumericElementType,
     precision?: number,
 ) => boolean =
-    <NumericElementType extends Number = Number>(
+    <NumericElementType extends Number>(
         array: NumericElementType[],
         expectedBeginValue?: NumericElementType,
         precision?: number,
@@ -21,13 +21,13 @@ const goesQuadratically: <NumericElementType extends Number = Number>(
         }
 
         const deltas: Array<Translation<NumericElementType>> = computeDeltas(array)
-        const deltaIntervals: Array<Maybe<Scalar<NumericElementType>>> = computeIntervals(
+        const deltaIntervals: Array<Maybe<Scalar<Of<NumericElementType>>>> = computeIntervals(
             deltas.map((delta: Translation<NumericElementType>) => from.Translation(delta)),
         )
 
-        const exampleInterval: Maybe<Scalar<NumericElementType>> = apply.Index(
+        const exampleInterval: Maybe<Scalar> = apply.Index(
             deltaIntervals,
-            EXAMPLE_ELEMENT_INDEX as Index<Maybe<Scalar<NumericElementType>>>,
+            EXAMPLE_ELEMENT_INDEX as unknown as Index<Maybe<Scalar>>,
         )
         if (isUndefined(exampleInterval)) {
             return false
@@ -37,13 +37,13 @@ const goesQuadratically: <NumericElementType extends Number = Number>(
             exampleInterval !== MULTIPLICATIVE_IDENTITY
     }
 
-const goesQuadraticallyBetweenValueAndValue: <NumericElementType extends Number = Number>(
+const goesQuadraticallyBetweenValueAndValue: <NumericElementType extends Number>(
     array: NumericElementType[],
     expectedBeginBound: NumericElementType,
     expectedEndBound: NumericElementType,
     precision?: number,
 ) => boolean =
-    <NumericElementType extends Number = Number>(
+    <NumericElementType extends Number>(
         array: NumericElementType[],
         expectedBeginBound: NumericElementType,
         expectedEndBound: NumericElementType,
@@ -56,13 +56,13 @@ const goesQuadraticallyBetweenValueAndValue: <NumericElementType extends Number 
         return goesQuadratically(array, undefined, precision)
     }
 
-const goesQuadraticallyFromValueToValue: <NumericElementType extends Number = Number>(
+const goesQuadraticallyFromValueToValue: <NumericElementType extends Number>(
     array: NumericElementType[],
     expectedBeginValue: NumericElementType,
     expectedEndValue: NumericElementType,
     precision?: number,
 ) => boolean =
-    <NumericElementType extends Number = Number>(
+    <NumericElementType extends Number>(
         array: NumericElementType[],
         expectedBeginValue: NumericElementType,
         expectedEndValue: NumericElementType,

@@ -6,19 +6,19 @@ const finalElement: <ElementType>(array: ElementType[]) => ElementType =
     <ElementType>(array: ElementType[]): ElementType =>
         apply.Index(array, indexOfFinalElement(array) as unknown as Index<ElementType>)
 
-const indexOfFinalElement: <ElementType>(array: ElementType[]) => Index =
-    <ElementType>(array: ElementType[]): Index =>
+const indexOfFinalElement: <ElementType>(array: ElementType[]) => Index<ElementType> =
+    <ElementType>(array: ElementType[]): Index<ElementType> =>
         to.Index(apply.Translation(
             array.length,
             to.Translation(negative(1)),
-        ))
+        )) as unknown as Index<ElementType>
 
-const indexJustBeyondFinalElement: <ElementType>(array: ElementType[]) => Index =
-    <ElementType>(array: ElementType[]): Index =>
-        to.Index(array.length)
+const indexJustBeyondFinalElement: <ElementType>(array: ElementType[]) => Index<ElementType> =
+    <ElementType>(array: ElementType[]): Index<ElementType> =>
+        to.Index(array.length) as unknown as Index<ElementType>
 
-const totalElements: <ArrayType extends unknown[] | string>(array: ArrayType) => Cardinal =
-    <ArrayType extends unknown[] | string>(array: ArrayType): Cardinal =>
+const totalElements: <ElementType>(array: ElementType[]) => Cardinal =
+    <ElementType>(array: ElementType[]): Cardinal =>
         to.Cardinal(array.length)
 
 const initialElement: <ElementType>(array: ElementType[]) => ElementType =

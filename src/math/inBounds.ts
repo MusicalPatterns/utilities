@@ -1,12 +1,12 @@
 import { isGreaterThanOrEqualTo, isLessThanOrEqualTo, isUndefined } from '../code'
 
-const inBounds: <NumericElementType extends Number = Number>(
+const inBounds: <NumericElementType extends Number>(
     array: NumericElementType[],
     lowerBound?: NumericElementType,
     upperBound?: NumericElementType,
     precision?: number,
 ) => boolean =
-    <NumericElementType extends Number = Number>(
+    <NumericElementType extends Number>(
         array: NumericElementType[],
         lowerBound?: NumericElementType,
         upperBound?: NumericElementType,

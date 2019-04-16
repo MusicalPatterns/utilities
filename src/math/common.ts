@@ -8,10 +8,10 @@ const computeLowestCommonMultipleOfTwoNumbers: <IntegerType extends Integerlike 
     secondValue: IntegerType,
 ) => IntegerType =
     <IntegerType extends Integerlike = Integer>(firstValue: IntegerType, secondValue: IntegerType): IntegerType =>
-        absoluteValue(from.Scalar(quotient(
+        absoluteValue(quotient(
             product(firstValue, secondValue) as unknown as IntegerType,
             computeGreatestCommonDivisor(firstValue, secondValue),
-        ))) as unknown as IntegerType
+        )) as unknown as IntegerType
 
 const computeGreatestCommonDivisorOfTwoNumbers: <IntegerType extends Integerlike = Integer>(
     firstValue: IntegerType,

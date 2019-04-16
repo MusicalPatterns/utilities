@@ -16,7 +16,7 @@ export { powerSet } from './powerSet'
 export { computeGreatestCommonDivisor, computeLeastCommonMultiple } from './common'
 export { evaluate } from './evaluate'
 export { isCloseTo } from './isCloseTo'
-export { negative, round, sum, product } from './typedOperations'
+export { negative, round, sum, product, delta, difference, interval, quotient } from './typedOperations'
 export {
     factorial,
     combinationCount,

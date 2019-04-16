@@ -5,13 +5,13 @@ import { from, SKIP_FIRST_ELEMENT } from '../nominal'
 import { beginValueIsCorrect, goesFromValueToValue } from './goes'
 import { inBounds } from './inBounds'
 
-const goesMonotonically: <NumericElementType extends Number = Number>(
+const goesMonotonically: <NumericElementType extends Number>(
     array: NumericElementType[],
     expectedBeginValue?: NumericElementType,
     isIncreasingOverride?: boolean,
     precision?: number,
 ) => boolean =
-    <NumericElementType extends Number = Number>(
+    <NumericElementType extends Number>(
         array: NumericElementType[],
         expectedBeginValue?: NumericElementType,
         isIncreasingOverride?: boolean,
@@ -48,13 +48,13 @@ const goesMonotonically: <NumericElementType extends Number = Number>(
         return result
     }
 
-const goesMonotonicallyBetweenValueAndValue: <NumericElementType extends Number = Number>(
+const goesMonotonicallyBetweenValueAndValue: <NumericElementType extends Number>(
     array: NumericElementType[],
     expectedBeginBound: NumericElementType,
     expectedEndBound: NumericElementType,
     precision?: number,
 ) => boolean =
-    <NumericElementType extends Number = Number>(
+    <NumericElementType extends Number>(
         array: NumericElementType[],
         expectedBeginBound: NumericElementType,
         expectedEndBound: NumericElementType,
@@ -72,13 +72,13 @@ const goesMonotonicallyBetweenValueAndValue: <NumericElementType extends Number 
         return goesMonotonically(array, undefined, isIncreasing, precision)
     }
 
-const goesMonotonicallyFromValueToValue: <NumericElementType extends Number = Number>(
+const goesMonotonicallyFromValueToValue: <NumericElementType extends Number>(
     array: NumericElementType[],
     expectedBeginValue: NumericElementType,
     expectedEndValue: NumericElementType,
     precision?: number,
 ) => boolean =
-    <NumericElementType extends Number = Number>(
+    <NumericElementType extends Number>(
         array: NumericElementType[],
         expectedBeginValue: NumericElementType,
         expectedEndValue: NumericElementType,

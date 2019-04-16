@@ -2,13 +2,28 @@
 
 import * as apply from './apply'
 import * as from from './from'
+import * as of from './of'
 import * as to from './to'
 
 export {
     apply,
-    to,
     from,
+    to,
+    of,
 }
+
+export { insteadOf } from './insteadOf'
+export { ofOperation, ofUnits } from './ofFrom'
+
+export {
+    computeNominalInterface,
+    DUMMY_VALUE_FOR_COMPUTING_NOMINAL_INTERFACE,
+    NominalInterface,
+    NominalInterfaceOptionObject,
+    CustomTo,
+    CustomFrom,
+    CustomOf,
+} from './custom'
 
 export {
     OCTAVE,
@@ -51,4 +66,5 @@ export {
     Frequency,
     Amplitude,
     Index,
+    Of,
 } from './types'

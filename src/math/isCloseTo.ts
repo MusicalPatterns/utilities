@@ -1,12 +1,12 @@
-import { apply, DECIMAL, DEFAULT_PRECISION, from, ONE_HALF, to, Translation } from '../nominal'
+import { apply, DECIMAL, DEFAULT_PRECISION, ONE_HALF, to } from '../nominal'
 import { absoluteValue, difference, negative, product, quotient, round } from './typedOperations'
 
-const isCloseTo: <NumericType extends Number = number>(
+const isCloseTo: <NumericType extends Number>(
     actual: NumericType,
     expected: NumericType,
     manualPrecision?: number,
 ) => boolean =
-    <NumericType extends Number = number>(
+    <NumericType extends Number>(
         actual: NumericType,
         expected: NumericType,
         manualPrecision?: number,
@@ -14,10 +14,10 @@ const isCloseTo: <NumericType extends Number = number>(
         const precision: number = manualPrecision || DEFAULT_PRECISION
 
         const pow: number = apply.Power(DECIMAL, to.Power(apply.Translation(precision, to.Translation(1))))
-        const delta: number = absoluteValue(from.Translation(difference(actual, expected) as Translation))
+        const delta: NumericType = absoluteValue(difference(actual, expected))
         const maxDelta: number = apply.Scalar(apply.Power(DECIMAL, to.Power(negative(precision))), ONE_HALF)
 
-        return from.Scalar(quotient(round(product(delta, pow)), pow)) <= maxDelta
+        return quotient(round(product(delta as unknown as number, pow)), pow) <= maxDelta
     }
 
 export {

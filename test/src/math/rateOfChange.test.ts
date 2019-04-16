@@ -1,4 +1,4 @@
-import { computeDeltas, computeIntervals, to } from '../../../src/indexForTest'
+import { computeDeltas, computeIntervals, of, to } from '../../../src/indexForTest'
 
 describe('deltas', () => {
     describe('deltas', () => {
@@ -6,7 +6,7 @@ describe('deltas', () => {
             expect(computeDeltas([ 4, 7, 9, 4, 357, 3, 8 ].map(to.Hz)))
                 .toEqual(
                     [ 3, 2, -5, 353, -354, 5 ]
-                        .map(to.Hz)
+                        .map(of.Hz)
                         .map(to.Translation),
                 )
         })
@@ -15,7 +15,7 @@ describe('deltas', () => {
             expect(computeDeltas(to.Cycle([ 4, 7, 9, 4, 357, 3, 8 ].map(to.Hz))))
                 .toEqual(
                     [ 3, 2, -5, 353, -354, 5, -4 ]
-                        .map(to.Hz)
+                        .map(of.Hz)
                         .map(to.Translation),
                 )
         })
@@ -26,7 +26,7 @@ describe('deltas', () => {
             expect(computeIntervals([ 4, 7, 9, 4, 357, 3, 8 ].map(to.Hz)))
                 .toEqual(
                     [ 7 / 4, 9 / 7, 4 / 9, 357 / 4, 3 / 357, 8 / 3 ]
-                        .map(to.Hz)
+                        .map(of.Hz)
                         .map(to.Scalar),
                 )
         })
@@ -35,7 +35,7 @@ describe('deltas', () => {
             expect(computeIntervals(to.Cycle([ 4, 7, 9, 4, 357, 3, 8 ].map(to.Hz))))
                 .toEqual(
                     [ 7 / 4, 9 / 7, 4 / 9, 357 / 4, 3 / 357, 8 / 3, 1 / 2 ]
-                        .map(to.Hz)
+                        .map(of.Hz)
                         .map(to.Scalar),
                 )
         })

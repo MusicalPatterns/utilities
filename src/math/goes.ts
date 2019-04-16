@@ -1,12 +1,12 @@
 import { every, finalElement, initialElement, isEmpty, isUndefined } from '../code'
 import { isCloseTo } from './isCloseTo'
 
-const beginValueIsCorrect: <NumericElementType extends Number = Number>(
+const beginValueIsCorrect: <NumericElementType extends Number>(
     array: NumericElementType[],
     expectedBeginValue: NumericElementType,
     precision?: number,
 ) => boolean =
-    <NumericElementType extends Number = Number>(
+    <NumericElementType extends Number>(
         array: NumericElementType[],
         expectedBeginValue: NumericElementType,
         precision?: number,
@@ -18,14 +18,14 @@ const beginValueIsCorrect: <NumericElementType extends Number = Number>(
         return isCloseTo(initialElement(array), expectedBeginValue, precision)
     }
 
-const goesFromValueToValue: <NumericElementType extends Number = Number>(
+const goesFromValueToValue: <NumericElementType extends Number>(
     array: NumericElementType[],
     expectedBeginValue: NumericElementType,
     expectedEndValue: NumericElementType,
     precision?: number,
 ) => boolean =
     // tslint:disable-next-line cyclomatic-complexity
-    <NumericElementType extends Number = Number>(
+    <NumericElementType extends Number>(
         array: NumericElementType[],
         expectedBeginValue: NumericElementType,
         expectedEndValue: NumericElementType,
@@ -48,12 +48,12 @@ const goesFromValueToValue: <NumericElementType extends Number = Number>(
         return true
     }
 
-const allValuesAreTheSame: <NumericElementType extends Number = Number>(
+const allValuesAreTheSame: <NumericElementType extends Number>(
     array: NumericElementType[],
     manualExpectedValue?: NumericElementType,
     precision?: number,
 ) => boolean =
-    <NumericElementType extends Number = Number>(
+    <NumericElementType extends Number>(
         array: NumericElementType[],
         manualExpectedValue?: NumericElementType,
         precision?: number,

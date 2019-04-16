@@ -14,8 +14,16 @@ const oddElements: <ElementType>(array: ElementType[]) => ElementType[] =
             isOdd(index),
         )
 
-const everyNthElement: <ElementType>(array: ElementType[], nth: Multiple, startingWith?: Index) => ElementType[] =
-    <ElementType>(array: ElementType[], nth: Multiple, startingWith: Index = to.Index(0)): ElementType[] =>
+const everyNthElement: <ElementType>(
+    array: ElementType[],
+    nth: Multiple,
+    startingWith?: Index<ElementType>,
+) => ElementType[] =
+    <ElementType>(
+        array: ElementType[],
+        nth: Multiple,
+        startingWith: Index<ElementType> = to.Index(0) as unknown as Index<ElementType>,
+    ): ElementType[] =>
         slice(array, startingWith)
             .filter((element: ElementType, index: number) =>
                 dividesEvenly(index, nth),

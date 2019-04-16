@@ -3,7 +3,7 @@ import { Index, Integer } from './types'
 
 const indexCheck: <ElementType>(index: Index<ElementType>, array: ElementType[]) => void =
     <ElementType>(index: Index<ElementType>, array: ElementType[]): void => {
-        if (from.Index(index as Index) > array.length - 1) {
+        if (from.Index(index as unknown as Index) > array.length - 1) {
             throw new Error(`Index ${index} exceeds available indices of array of length ${array.length}`)
         }
     }

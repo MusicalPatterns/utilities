@@ -7,12 +7,15 @@ import {
     Cents,
     Denominator,
     Frequency,
-    Hz, Index,
+    Hz,
+    Index,
     Integer,
     Meters,
     Modulus,
     Ms,
     Numerator,
+    Of,
+    of,
     Power,
     Radians,
     Rotation,
@@ -61,32 +64,12 @@ describe('to', () => {
                 .not
                 .toBe(to.Rotation(4))
         })
-
-        it('allows operation of operations', () => {
-            const rotationOfRotation: Rotation<Rotation> = to.Rotation(to.Rotation(3))
-            const rotationOfScalar: Rotation<Scalar> = to.Rotation(to.Scalar(3))
-        })
     })
 
     describe('units and operations', () => {
         it('allows attributing an operation to something already in units', () => {
-            const hz: Hz = to.Hz(3)
-            const hzScalar: Scalar<Hz> = to.Scalar(hz)
-        })
-
-        it('allows attributing units to something already with an operation', () => {
-            const scalar: Scalar = to.Scalar(3)
-            const scalarHz: Scalar<Hz> = to.Hz(scalar)
-        })
-
-        it('allows switching the nesting order of the types', () => {
-            const exampleOne: Scalar<Hz> = to.Scalar(to.Hz(3))
-
-            const exampleFour: Scalar<Hz> = to.Hz(to.Scalar(3))
-        })
-
-        it('allows double nesting', () => {
-            const modulusOfIndexOfScalar: Modulus<Rotation<Scalar>> = to.Modulus(to.Rotation(to.Scalar(3)))
+            const ofHz: Of<Hz> = of.Hz(3)
+            const hzScalar: Scalar<Hz> = to.Scalar(ofHz)
         })
     })
 
@@ -114,11 +97,10 @@ describe('to', () => {
                 .toThrow(new Error('Numerals of type Denominator must be Integers. This numeral had value 4.3.'))
         })
 
-        it('allows setting things which are integers directly to other units, whether Integer is specified as the generic type or not', () => {
+        it('allows setting things which are integers directly to other units', () => {
             const integer: Integer = to.Integer(3)
 
             const ms: Ms = to.Ms(integer)
-            const msInteger: Ms<Integer> = to.Ms(integer)
         })
 
         it('allows setting things which are integers to operations, whether Integer is specified as the generic type or not', () => {
@@ -141,9 +123,7 @@ describe('to', () => {
 
         it('allows these things for Index', () => {
             const index: Index = to.Index(3)
-            const indexScalar: Index<Scalar> = to.Index(to.Scalar(3))
-            const indexIndex: Index<Index> = to.Index(to.Index(3))
-            const stringIndex: Index<string> = to.Index(3) as Index<string>
+            const stringIndex: Index<string> = to.Index(of.string(3))
         })
     })
 })

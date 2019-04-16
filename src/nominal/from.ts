@@ -17,11 +17,9 @@ import {
     Modulus,
     Ms,
     Multiple,
-    NoDoubleInteriorMaybe,
-    NoDoubleInteriorNumeric,
     NormalScalar,
-    NoUnits,
     Numerator,
+    Of,
     Power,
     Radians,
     Rotation,
@@ -34,64 +32,64 @@ import {
 
 // Units
 
-const Hz: <OperationType extends NoUnits, UnitsType extends Hz<OperationType>>(hz: UnitsType) => OperationType & number =
-    <OperationType extends NoUnits, UnitsType extends Hz<OperationType>>(hz: UnitsType): OperationType & number =>
-        hz as unknown as OperationType & number
-const Ms: <OperationType extends NoUnits, UnitsType extends Ms<OperationType>>(ms: UnitsType) => OperationType & number =
-    <OperationType extends NoUnits, UnitsType extends Ms<OperationType>>(ms: UnitsType): OperationType & number =>
-        ms as unknown as OperationType & number
-const Radians: <OperationType extends NoUnits, UnitsType extends Radians<OperationType>>(radians: UnitsType) => OperationType & number =
-    <OperationType extends NoUnits, UnitsType extends Radians<OperationType>>(radians: UnitsType): OperationType & number =>
-        radians as unknown as OperationType & number
-const Cents: <OperationType extends NoUnits, UnitsType extends Cents<OperationType>>(cents: UnitsType) => OperationType & number =
-    <OperationType extends NoUnits, UnitsType extends Cents<OperationType>>(cents: UnitsType): OperationType & number =>
-        cents as unknown as OperationType & number
-const Semitones: <OperationType extends NoUnits, UnitsType extends Semitones<OperationType>>(semitones: UnitsType) => OperationType & number =
-    <OperationType extends NoUnits, UnitsType extends Semitones<OperationType>>(semitones: UnitsType): OperationType & number =>
-        semitones as unknown as OperationType & number
-const Meters: <OperationType extends NoUnits, UnitsType extends Meters<OperationType>>(meters: UnitsType) => OperationType & number =
-    <OperationType extends NoUnits, UnitsType extends Meters<OperationType>>(meters: UnitsType): OperationType & number =>
-        meters as unknown as OperationType & number
-const Space: <OperationType extends NoUnits, UnitsType extends Space<OperationType>>(space: UnitsType) => OperationType & number =
-    <OperationType extends NoUnits, UnitsType extends Space<OperationType>>(space: UnitsType): OperationType & number =>
-        space as unknown as OperationType & number
-const Time: <OperationType extends NoUnits, UnitsType extends Time<OperationType>>(time: UnitsType) => OperationType & number =
-    <OperationType extends NoUnits, UnitsType extends Time<OperationType>>(time: UnitsType): OperationType & number =>
-        time as unknown as OperationType & number
-const Frequency: <OperationType extends NoUnits, UnitsType extends Frequency<OperationType>>(frequency: UnitsType) => OperationType & number =
-    <OperationType extends NoUnits, UnitsType extends Frequency<OperationType>>(frequency: UnitsType): OperationType & number =>
-        frequency as unknown as OperationType & number
-const Amplitude: <OperationType extends NoUnits, UnitsType extends Amplitude<OperationType>>(amplitude: UnitsType) => OperationType & number =
-    <OperationType extends NoUnits, UnitsType extends Amplitude<OperationType>>(amplitude: UnitsType): OperationType & number =>
-        amplitude as unknown as OperationType & number
+const Hz: (hz: Hz) => number =
+    (hz: Hz): number =>
+        hz as unknown as number
+const Ms: (ms: Ms) => number =
+    (ms: Ms): number =>
+        ms as unknown as number
+const Radians: (radians: Radians) => number =
+    (radians: Radians): number =>
+        radians as unknown as number
+const Cents: (cents: Cents) => number =
+    (cents: Cents): number =>
+        cents as unknown as number
+const Semitones: (semitones: Semitones) => number =
+    (semitones: Semitones): number =>
+        semitones as unknown as number
+const Meters: (meters: Meters) => number =
+    (meters: Meters): number =>
+        meters as unknown as number
+const Space: (space: Space) => number =
+    (space: Space): number =>
+        space as unknown as number
+const Time: (time: Time) => number =
+    (time: Time): number =>
+        time as unknown as number
+const Frequency: (frequency: Frequency) => number =
+    (frequency: Frequency): number =>
+        frequency as unknown as number
+const Amplitude: (amplitude: Amplitude) => number =
+    (amplitude: Amplitude): number =>
+        amplitude as unknown as number
 
 // Operation
 
-const Scalar: <InteriorType extends NoDoubleInteriorNumeric = number, OperationType extends Scalar<InteriorType> = Scalar<InteriorType>>(scalar: OperationType) => InteriorType & number =
-    <InteriorType extends NoDoubleInteriorNumeric = number, OperationType extends Scalar<InteriorType> = Scalar<InteriorType>>(scalar: OperationType): InteriorType & number =>
-        scalar as unknown as InteriorType & number
-const NormalScalar: <InteriorType extends NoDoubleInteriorNumeric = number, OperationType extends NormalScalar<InteriorType> = NormalScalar<InteriorType>>(normalScalar: OperationType) => InteriorType & number =
-    <InteriorType extends NoDoubleInteriorNumeric = number, OperationType extends NormalScalar<InteriorType> = NormalScalar<InteriorType>>(normalScalar: OperationType): InteriorType & number =>
-        normalScalar as unknown as InteriorType & number
-const Rotation: <InteriorType extends NoDoubleInteriorNumeric = number, OperationType extends Rotation<InteriorType> = Rotation<InteriorType>>(rotation: OperationType) => InteriorType & number =
-    <InteriorType extends NoDoubleInteriorNumeric = number, OperationType extends Rotation<InteriorType> = Rotation<InteriorType>>(rotation: OperationType): InteriorType & number =>
-        rotation as unknown as InteriorType & number
+const Scalar: <OfType extends Number = number, OperationType extends Scalar<OfType> = Scalar<OfType>>(scalar: OperationType) => Of<OfType> =
+    <OfType extends Number = number, OperationType extends Scalar<OfType> = Scalar<OfType>>(scalar: OperationType): Of<OfType> =>
+        scalar as unknown as Of<OfType>
+const NormalScalar: <OfType extends Number = number, OperationType extends NormalScalar<OfType> = NormalScalar<OfType>>(normalScalar: OperationType) => Of<OfType> =
+    <OfType extends Number = number, OperationType extends NormalScalar<OfType> = NormalScalar<OfType>>(normalScalar: OperationType): Of<OfType> =>
+        normalScalar as unknown as Of<OfType>
+const Rotation: <OfType extends Number = number, OperationType extends Rotation<OfType> = Rotation<OfType>>(rotation: OperationType) => Of<OfType> =
+    <OfType extends Number = number, OperationType extends Rotation<OfType> = Rotation<OfType>>(rotation: OperationType): Of<OfType> =>
+        rotation as unknown as Of<OfType>
 
-const Base: <InteriorType extends NoDoubleInteriorNumeric = number, OperationType extends Base<InteriorType> = Base<InteriorType>>(base: OperationType) => InteriorType & number =
-    <InteriorType extends NoDoubleInteriorNumeric = number, OperationType extends Base<InteriorType> = Base<InteriorType>>(base: OperationType): InteriorType & number =>
-        base as unknown as InteriorType & number
-const Power: <InteriorType extends NoDoubleInteriorNumeric = number, OperationType extends Power<InteriorType> = Power<InteriorType>>(power: OperationType) => InteriorType & number =
-    <InteriorType extends NoDoubleInteriorNumeric = number, OperationType extends Power<InteriorType> = Power<InteriorType>>(power: OperationType): InteriorType & number =>
-        power as unknown as InteriorType & number
+const Base: <OfType extends Number = number, OperationType extends Base<OfType> = Base<OfType>>(base: OperationType) => Of<OfType> =
+    <OfType extends Number = number, OperationType extends Base<OfType> = Base<OfType>>(base: OperationType): Of<OfType> =>
+        base as unknown as Of<OfType>
+const Power: <OfType extends Number = number, OperationType extends Power<OfType> = Power<OfType>>(power: OperationType) => Of<OfType> =
+    <OfType extends Number = number, OperationType extends Power<OfType> = Power<OfType>>(power: OperationType): Of<OfType> =>
+        power as unknown as Of<OfType>
 
-const Modulus: <InteriorType extends NoDoubleInteriorNumeric = number, OperationType extends Modulus<InteriorType> = Modulus<InteriorType>>(modulus: OperationType) => InteriorType & number =
-    <InteriorType extends NoDoubleInteriorNumeric = number, OperationType extends Modulus<InteriorType> = Modulus<InteriorType>>(modulus: OperationType): InteriorType & number =>
-        modulus as unknown as InteriorType & number
+const Modulus: <OfType extends Number = number, OperationType extends Modulus<OfType> = Modulus<OfType>>(modulus: OperationType) => Of<OfType> =
+    <OfType extends Number = number, OperationType extends Modulus<OfType> = Modulus<OfType>>(modulus: OperationType): Of<OfType> =>
+        modulus as unknown as Of<OfType>
 
 // Special Units
 
-const Integer: <IntegerType extends Integer>(integer: IntegerType) => number =
-    <IntegerType extends Integer>(integer: IntegerType): number =>
+const Integer: (integer: Integer) => number =
+    (integer: Integer): number =>
         integer as unknown as number
 
 const Cardinal: (cardinal: Cardinal) => number =
@@ -109,16 +107,16 @@ const Fraction: (fraction: Fraction) => number =
 
 // Special Operations
 
-const Index: <NumericType extends NoDoubleInteriorMaybe = number, OperationType extends Index<NumericType> = Index<NumericType>>(index: OperationType) => NumericType & number =
-    <NumericType extends NoDoubleInteriorMaybe = number, OperationType extends Index<NumericType> = Index<NumericType>>(index: OperationType): NumericType & number =>
-        index as unknown as NumericType & number
-const Translation: <NumericType extends NoDoubleInteriorMaybe = number, OperationType extends Translation<NumericType> = Translation<NumericType>>(translation: OperationType) => NumericType & number =
-    <NumericType extends NoDoubleInteriorMaybe = number, OperationType extends Translation<NumericType> = Translation<NumericType>>(translation: OperationType): NumericType & number =>
-        translation as unknown as NumericType & number
+const Index: <OfType extends Number = number, OperationType extends Index<OfType> = Index<OfType>>(index: OperationType) => Of<OfType> =
+    <OfType extends Number = number, OperationType extends Index<OfType> = Index<OfType>>(index: OperationType): Of<OfType> =>
+        index as unknown as Of<OfType>
+const Translation: <OfType extends Number = number, OperationType extends Translation<OfType> = Translation<OfType>>(translation: OperationType) => Of<OfType> =
+    <OfType extends Number = number, OperationType extends Translation<OfType> = Translation<OfType>>(translation: OperationType): Of<OfType> =>
+        translation as unknown as Of<OfType>
 
-const Multiple: <InteriorType extends NoDoubleInteriorNumeric, OperationType extends Multiple<InteriorType>>(multiple: OperationType) => InteriorType & number =
-    <InteriorType extends NoDoubleInteriorNumeric, OperationType extends Multiple<InteriorType>>(multiple: OperationType): InteriorType & number =>
-        multiple as unknown as InteriorType & number
+const Multiple: <OfType extends Number = number, OperationType extends Multiple<OfType> = Multiple<OfType>>(multiple: OperationType) => Of<OfType> =
+    <OfType extends Number = number, OperationType extends Multiple<OfType> = Multiple<OfType>>(multiple: OperationType): Of<OfType> =>
+        multiple as unknown as Of<OfType>
 
 // Other Stuff
 

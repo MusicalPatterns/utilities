@@ -37,8 +37,9 @@ interface Operands {
 }
 
 interface ManyToOneOperation {
-    (...values: number[]): number
-    <NumericType extends NoOperation | number = number>(...values: NumericType[]): NumericType
+    <IntegerType extends Integerlike>(...values: IntegerType[]): IntegerType,
+    (...values: number[]): number,
+    <NumericType extends NoOperation | number>(...values: NumericType[]): NumericType,
 }
 
 export {
@@ -53,4 +54,6 @@ export {
     ThreeDimensional,
     Operands,
     ManyToOneOperation,
+    // DifferenceOperation,
+    // QuotientOperation,
 }

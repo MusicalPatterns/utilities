@@ -1,6 +1,6 @@
 // tslint:disable no-unused-expression no-dead-store
 
-import { Base, Fraction, from, Hz, ONE_HALF, Scalar, to } from '../../../src/indexForTest'
+import { Base, Fraction, from, Hz, Of, of, ONE_HALF, Scalar, to } from '../../../src/indexForTest'
 
 describe('from', () => {
     it('converts back to a plain number', () => {
@@ -27,25 +27,19 @@ describe('from', () => {
         from.Scalar(ONE_HALF)
     })
 
-    it('can downgrade units while preserving operation', () => {
-        const hzScalar: Scalar<Hz> = to.Scalar(to.Hz(3))
-
-        const scalarFromHzScalar: Scalar = from.Hz(hzScalar)
-    })
-
     it('can downgrade operation while preserving type', () => {
-        const hzScalar: Scalar<Hz> = to.Scalar(to.Hz(3))
-        const hzFromHzScalar: Hz = from.Scalar(hzScalar)
+        const hzScalar: Scalar<Hz> = to.Scalar(of.Hz(3))
+        const ofHzFromHzScalar: Of<Hz> = from.Scalar<Hz, Scalar<Hz>>(hzScalar)
 
-        const baseScalar: Scalar<Base> = to.Scalar(to.Base(3))
-        const baseFromBaseScalar: Base = from.Scalar(baseScalar)
+        const baseScalar: Scalar<Base> = to.Scalar(of.Base(3))
+        const ofBaseFromBaseScalar: Of<Base> = from.Scalar(baseScalar)
     })
 
     it('can assign to an object property without needing an intermediate variable', () => {
-        const hzScalar: Scalar<Hz> = to.Scalar(to.Hz(3))
+        const hzScalar: Scalar<Hz> = to.Scalar(of.Hz(3))
 
-        const recipientObject: { hz: Hz } = {
-            hz: from.Scalar(hzScalar),
+        const recipientObject: { ofHz: Of<Hz> } = {
+            ofHz: from.Scalar<Hz, Scalar<Hz>>(hzScalar),
         }
     })
 
@@ -53,8 +47,8 @@ describe('from', () => {
         const scalars: Scalar[] = [ to.Scalar(2) ]
         const numbers: number[] = scalars.map(from.Scalar)
 
-        const hzScalars: Array<Scalar<Hz>> = [ to.Scalar(to.Hz(2)) ]
-        const hzs: Hz[] = hzScalars.map<Hz>(from.Scalar)
+        const hzScalars: Array<Scalar<Hz>> = [ to.Scalar(of.Hz(2)) ]
+        const ofHzs: Array<Of<Hz>> = hzScalars.map((hzScalar: Scalar<Hz>) => from.Scalar<Hz, Scalar<Hz>>(hzScalar))
     })
 
     describe('special units/operations', () => {
@@ -77,7 +71,7 @@ describe('from', () => {
 
         it('works for Index', () => {
             const three: number = from.Index(to.Index(3))
-            const threeScalar: Scalar = from.Index(to.Index(to.Scalar(3)))
+            const threeScalar: Of<Scalar> = from.Index(to.Index(of.Scalar(3)))
         })
     })
 })

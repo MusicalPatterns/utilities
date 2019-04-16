@@ -82,6 +82,7 @@ export {
     arraySet,
     every,
     findIndex,
+    stringSlice,
 } from './code'
 export {
     absoluteRatio,
@@ -154,6 +155,8 @@ export {
     goesQuadratically,
     goesQuadraticallyBetweenValueAndValue,
     goesQuadraticallyFromValueToValue,
+    delta,
+    interval,
 } from './math'
 export {
     centsTranslationToPitchScalar,
@@ -315,6 +318,10 @@ export {
     ZERO_AND_POSITIVE_INTEGERS,
     Multiple,
     Index,
+    insteadOf,
+    ofUnits,
+    ofOperation,
+    of,
 } from './nominal'
 export {
     ActionForState,

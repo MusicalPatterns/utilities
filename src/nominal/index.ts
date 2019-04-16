@@ -2,12 +2,14 @@
 
 import * as apply from './apply'
 import * as from from './from'
+import * as of from './of'
 import * as to from './to'
 
 export {
     apply,
     from,
     to,
+    of,
 }
 
 export {
@@ -19,6 +21,8 @@ export { POSITIVE_INTEGERS, ZERO_AND_POSITIVE_INTEGERS } from './integers'
 export {
     isCycle,
 } from './typeGuards'
+export { insteadOf } from './insteadOf'
+export { ofOperation, ofUnits } from './ofFrom'
 
 export {
     TWO_THIRDS,
@@ -171,4 +175,5 @@ export {
     Index,
     Integerlike,
     Multiple,
+    Of,
 } from './types'

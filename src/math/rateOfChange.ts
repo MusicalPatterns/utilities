@@ -1,28 +1,31 @@
 import { finalElement, initialElement, map, Maybe } from '../code'
 import { Index, indexOfFinalElement, INITIAL, Scalar, slice, Translation } from '../indexForTest'
-import { apply, isCycle, NEXT, to } from '../nominal'
-import { difference, quotient } from './typedOperations'
+import { apply, from, isCycle, NEXT, of, to } from '../nominal'
+import { delta, interval } from './typedOperations'
 
-const computeDeltas: <NumericElementType extends Number = Number>(
+const computeDeltas: <NumericElementType extends Number>(
     array: NumericElementType[],
 ) => Array<Translation<NumericElementType>> =
-    <NumericElementType extends Number = Number>(
+    <NumericElementType extends Number>(
         array: NumericElementType[],
     ): Array<Translation<NumericElementType>> => {
         const deltas: Array<Translation<NumericElementType>> = map(
-            slice(array, INITIAL, indexOfFinalElement(array)),
-            (value: NumericElementType, index: Index) => {
+            slice(array, INITIAL as unknown as Index<NumericElementType>, indexOfFinalElement(array)),
+            (value: NumericElementType, index: Index<NumericElementType>) => {
                 const nextValue: NumericElementType = apply.Index(
                     array,
-                    apply.Translation(index, NEXT) as Index<NumericElementType>,
+                    apply.Translation(
+                        index,
+                        to.Translation(of.Index<NumericElementType>(from.Translation<Index>(NEXT))),
+                    ),
                 )
 
-                return difference(nextValue, value)
+                return delta(nextValue, value)
             },
         )
 
         if (isCycle(array)) {
-            deltas.push(difference(
+            deltas.push(delta(
                 initialElement(array) as NumericElementType,
                 finalElement(array) as NumericElementType,
             ))
@@ -31,34 +34,37 @@ const computeDeltas: <NumericElementType extends Number = Number>(
         return deltas
     }
 
-const computeIntervals: <NumericElementType extends Number = Number>(
+const computeIntervals: <NumericElementType extends Number>(
     array: NumericElementType[],
 ) => Array<Maybe<Scalar<NumericElementType>>> =
-    <NumericElementType extends Number = Number>(
+    <NumericElementType extends Number>(
         array: NumericElementType[],
     ): Array<Maybe<Scalar<NumericElementType>>> => {
         const intervals: Array<Maybe<Scalar<NumericElementType>>> = map(
-            slice(array, INITIAL, indexOfFinalElement(array)),
-            (value: NumericElementType, index: Index): Maybe<Scalar<NumericElementType>> => {
+            slice(array, INITIAL as unknown as Index<NumericElementType>, indexOfFinalElement(array)),
+            (value: NumericElementType, index: Index<NumericElementType>): Maybe<Scalar<NumericElementType>> => {
                 const nextValue: NumericElementType = apply.Index(
                     array,
-                    apply.Translation(index, NEXT) as Index<NumericElementType>,
+                    apply.Translation(
+                        index,
+                        to.Translation(of.Index<NumericElementType>(from.Translation<Index>(NEXT))),
+                    ),
                 )
 
                 if (value as unknown as number === 0) {
                     if (nextValue as unknown as number === 0) {
-                        return to.Scalar(0 as unknown as NumericElementType)
+                        return 0 as unknown as Scalar<NumericElementType>
                     }
 
                     return undefined
                 }
 
-                return quotient(nextValue, value)
+                return interval(nextValue, value)
             },
         )
 
         if (isCycle(array)) {
-            intervals.push(quotient(
+            intervals.push(interval(
                 initialElement(array) as NumericElementType,
                 finalElement(array) as NumericElementType,
             ))

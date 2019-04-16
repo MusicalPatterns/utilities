@@ -27,6 +27,7 @@ export {
     forEach,
     isGreaterThan,
     isLessThan,
+    stringSlice,
 } from './code/indexForTest'
 export {
     distanceBetween,
@@ -68,6 +69,10 @@ export {
     inBounds,
     allValuesAreTheSame,
     isCloseTo,
+    delta,
+    difference,
+    interval,
+    quotient,
 } from './math/indexForTest'
 export {
     centsTranslationToPitchScalar,
@@ -121,4 +126,16 @@ export {
     FOURTH,
     THIRD,
     Index,
+    of,
+    Of,
+    computeNominalInterface,
+    NominalInterface,
+    DUMMY_VALUE_FOR_COMPUTING_NOMINAL_INTERFACE,
+    NominalInterfaceOptionObject,
+    CustomTo,
+    CustomFrom,
+    CustomOf,
+    insteadOf,
+    ofOperation,
+    ofUnits,
 } from './nominal/indexForTest'
