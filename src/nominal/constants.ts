@@ -1,4 +1,4 @@
-// tslint:disable no-magic-numbers max-file-line-count
+// tslint:disable no-magic-numbers max-file-line-count no-any
 
 import * as from from './from'
 import * as of from './of'
@@ -10,6 +10,7 @@ import {
     Cycle,
     Denominator,
     Fraction,
+    Frequency,
     Index,
     Integer,
     Ms,
@@ -25,26 +26,26 @@ import {
 
 const DECIMAL: Integer = to.Integer(10)
 
-const ONE_HALF: Scalar = to.Scalar(1 / 2)
-const ONE_THIRD: Scalar = to.Scalar(1 / 3)
-const ONE_FOURTH: Scalar = to.Scalar(1 / 4)
-const ONE_FIFTH: Scalar = to.Scalar(1 / 5)
-const ONE_SIXTH: Scalar = to.Scalar(1 / 6)
-const ONE_SEVENTH: Scalar = to.Scalar(1 / 7)
-const ONE_EIGHTH: Scalar = to.Scalar(1 / 8)
-const ONE_NINTH: Scalar = to.Scalar(1 / 9)
-const ONE_TENTH: Scalar = to.Scalar(1 / 10)
+const ONE_HALF: Scalar<any> = to.Scalar(1 / 2)
+const ONE_THIRD: Scalar<any> = to.Scalar(1 / 3)
+const ONE_FOURTH: Scalar<any> = to.Scalar(1 / 4)
+const ONE_FIFTH: Scalar<any> = to.Scalar(1 / 5)
+const ONE_SIXTH: Scalar<any> = to.Scalar(1 / 6)
+const ONE_SEVENTH: Scalar<any> = to.Scalar(1 / 7)
+const ONE_EIGHTH: Scalar<any> = to.Scalar(1 / 8)
+const ONE_NINTH: Scalar<any> = to.Scalar(1 / 9)
+const ONE_TENTH: Scalar<any> = to.Scalar(1 / 10)
 
-const TWO_THIRDS: Scalar = to.Scalar(2 / 3)
-const TWO_FIFTHS: Scalar = to.Scalar(2 / 5)
-const THREE_FOURTHS: Scalar = to.Scalar(3 / 4)
-const THREE_FIFTHS: Scalar = to.Scalar(3 / 5)
-const FOUR_FIFTHS: Scalar = to.Scalar(4 / 5)
-const THREE_HALVES: Scalar = to.Scalar(3 / 2)
-const FIVE_HALVES: Scalar = to.Scalar(5 / 2)
-const FOUR_THIRDS: Scalar = to.Scalar(4 / 3)
-const FIVE_THIRDS: Scalar = to.Scalar(5 / 3)
-const FIVE_FOURTHS: Scalar = to.Scalar(5 / 4)
+const TWO_THIRDS: Scalar<any> = to.Scalar(2 / 3)
+const TWO_FIFTHS: Scalar<any> = to.Scalar(2 / 5)
+const THREE_FOURTHS: Scalar<any> = to.Scalar(3 / 4)
+const THREE_FIFTHS: Scalar<any> = to.Scalar(3 / 5)
+const FOUR_FIFTHS: Scalar<any> = to.Scalar(4 / 5)
+const THREE_HALVES: Scalar<any> = to.Scalar(3 / 2)
+const FIVE_HALVES: Scalar<any> = to.Scalar(5 / 2)
+const FOUR_THIRDS: Scalar<any> = to.Scalar(4 / 3)
+const FIVE_THIRDS: Scalar<any> = to.Scalar(5 / 3)
+const FIVE_FOURTHS: Scalar<any> = to.Scalar(5 / 4)
 
 const DOUBLE: Multiple = to.Multiple(2)
 const TRIPLE: Multiple = to.Multiple(3)
@@ -71,17 +72,17 @@ const A_SUFFICIENT_COUNT_OF_NUMBERS: Cardinal = to.Cardinal(Math.pow(2, 8))
 const ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS: Translation<Cycle> =
     to.Translation(-2 as Of<Cycle>)
 
-const X_AXIS: Index = to.Index(0)
-const Y_AXIS: Index = to.Index(1)
-const Z_AXIS: Index = to.Index(2)
+const X_AXIS: Index<any> = to.Index(0)
+const Y_AXIS: Index<any> = to.Index(1)
+const Z_AXIS: Index<any> = to.Index(2)
 const ORIGIN: Space = to.Space(0)
 const TWO_DIMENSIONAL: Cardinal = to.Cardinal(2)
 const THREE_DIMENSIONAL: Cardinal = to.Cardinal(3)
 
-const SQUARED: Power = to.Power(2)
-const CUBED: Power = to.Power(3)
-const SQUARE_ROOT: Power = to.Power(1 / 2)
-const CUBE_ROOT: Power = to.Power(1 / 3)
+const SQUARED: Power<any> = to.Power(2)
+const CUBED: Power<any> = to.Power(3)
+const SQUARE_ROOT: Power<any> = to.Power(1 / 2)
+const CUBE_ROOT: Power<any> = to.Power(1 / 3)
 
 const TWO: Integer = to.Integer(2)
 const THREE: Integer = to.Integer(3)
@@ -93,35 +94,35 @@ const EIGHT: Integer = to.Integer(8)
 const NINE: Integer = to.Integer(9)
 const TEN: Integer = to.Integer(10)
 
-const NEGATIVE: Scalar = to.Scalar(-1)
+const NEGATIVE: Scalar<any> = to.Scalar(-1)
 
-const ZEROTH: Index = to.Index(0)
-const FIRST: Index = to.Index(1)
-const SECOND: Index = to.Index(2)
-const THIRD: Index = to.Index(3)
-const FOURTH: Index = to.Index(4)
-const FIFTH: Index = to.Index(5)
-const SIXTH: Index = to.Index(6)
-const SEVENTH: Index = to.Index(7)
-const EIGHTH: Index = to.Index(8)
-const NINTH: Index = to.Index(9)
-const TENTH: Index = to.Index(10)
-const ELEVENTH: Index = to.Index(11)
-const TWELFTH: Index = to.Index(12)
+const ZEROTH: Index<any> = to.Index(0)
+const FIRST: Index<any> = to.Index(1)
+const SECOND: Index<any> = to.Index(2)
+const THIRD: Index<any> = to.Index(3)
+const FOURTH: Index<any> = to.Index(4)
+const FIFTH: Index<any> = to.Index(5)
+const SIXTH: Index<any> = to.Index(6)
+const SEVENTH: Index<any> = to.Index(7)
+const EIGHTH: Index<any> = to.Index(8)
+const NINTH: Index<any> = to.Index(9)
+const TENTH: Index<any> = to.Index(10)
+const ELEVENTH: Index<any> = to.Index(11)
+const TWELFTH: Index<any> = to.Index(12)
 
-const ADDITIVE_IDENTITY: Translation = to.Translation(0)
-const MULTIPLICATIVE_IDENTITY: Scalar = to.Scalar(1)
+const ADDITIVE_IDENTITY: Translation<any> = to.Translation(0)
+const MULTIPLICATIVE_IDENTITY: Scalar<any> = to.Scalar(1)
 const FRACTIONAL_IDENTITY: Fraction = to.Fraction([ to.Numerator(1), to.Denominator(1) ])
 
 const NEXT: Translation<Index> = to.Translation(of.Index(1))
 const PREVIOUS: Translation<Index> = to.Translation(of.Index(-1))
 const UP_ONE: Translation<Cardinal> = to.Translation(of.Cardinal(1))
 const DOWN_ONE: Translation<Cardinal> = to.Translation(of.Cardinal(-1))
-const INCREMENT: Translation = to.Translation(1)
-const DECREMENT: Translation = to.Translation(-1)
+const INCREMENT: Translation<any> = to.Translation(1)
+const DECREMENT: Translation<any> = to.Translation(-1)
 const ONE_MORE: Translation<Cardinal> = to.Translation(of.Cardinal(1))
 const ONE_FEWER: Translation<Cardinal> = to.Translation(of.Cardinal(-1))
-const NO_TRANSLATION: Translation = to.Translation(0)
+const NO_TRANSLATION: Translation<any> = to.Translation(0)
 
 const NUMERATOR_INDEX: Index<Numerator> = to.Index(of.Numerator(0))
 const DENOMINATOR_INDEX: Index<Denominator> = to.Index(of.Denominator(1))
@@ -129,7 +130,7 @@ const DENOMINATOR_INDEX: Index<Denominator> = to.Index(of.Denominator(1))
 const FIRST_FACTOR_NECESSARY_TO_CHECK_IF_COMMON: Integer = to.Integer(2)
 
 const PI: Radians = to.Radians(Math.PI)
-const E: Base = to.Base(Math.E)
+const E: Base<any> = to.Base(Math.E)
 
 const GOOD_AMOUNT_OF_TIME_TO_SEE_WHAT_THE_SITUATION_IS_WHEN_HEADFULLY_DEBUGGING_TESTS: Ms = to.Ms(3000)
 
@@ -138,19 +139,20 @@ const EXCLUSIVE: Translation<Index> = to.Translation(of.Index(-1))
 const INCLUSIVE_TO_LEFT: Translation<Index> = to.Translation(of.Index(-1))
 const EXCLUSIVE_TO_LEFT: Translation<Index> = to.Translation(of.Index(1))
 
-const INITIAL: Index = to.Index(0)
-const SKIP_FIRST_ELEMENT: Index = to.Index(1)
+const INITIAL: Index<any> = to.Index(0)
+const SKIP_FIRST_ELEMENT: Index<any> = to.Index(1)
 
 const TRANSLATION_FROM_LENGTH_TO_FINAL_INDEX: Translation<Cardinal> = to.Translation(of.Cardinal(-1))
-const EXAMPLE_ELEMENT_INDEX: Index = to.Index(0)
+const EXAMPLE_ELEMENT_INDEX: Index<any> = to.Index(0)
 
-const NOT_FOUND: Index = to.Index(-1)
+const NOT_FOUND: Index<any> = to.Index(-1)
 
 const SEMITONES_PER_OCTAVE: Cardinal = to.Cardinal(12)
 
-const OCTAVE: Base = to.Base(2)
-const TRITAVE: Base = to.Base(3)
-const SEMITONE: Base = to.Base(Math.pow(from.Base(OCTAVE), (1 / from.Cardinal(SEMITONES_PER_OCTAVE))))
+const OCTAVE: Base<Frequency> = to.Base(of.Frequency(2))
+const TRITAVE: Base<Frequency> = to.Base(of.Frequency(3))
+const SEMITONE: Base<Frequency> =
+    to.Base(of.Frequency(Math.pow(from.Base<Frequency>(OCTAVE), (1 / from.Cardinal(SEMITONES_PER_OCTAVE)))))
 
 const CENTS_PER_SEMITONE: Cents = to.Cents(100)
 const CENTS_PER_OCTAVE: Cents = to.Cents(from.Cents(CENTS_PER_SEMITONE) * from.Cardinal(SEMITONES_PER_OCTAVE))

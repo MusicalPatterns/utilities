@@ -1,5 +1,7 @@
 // tslint:disable no-any no-unused-expression comment-format no-commented-code no-dead-store no-type-definitions-outside-types-modules
 
+// There should be 86 errors in this file.
+
 // import {
 //     Base,
 //     Cardinal,

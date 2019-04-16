@@ -32,11 +32,11 @@ const Base: <OfType extends Number>(
     ): OfType =>
         Math.log(value as unknown as number) / Math.log(base as unknown as number) as unknown as OfType
 
-const Translation: <TranslatedType extends Number | string | unknown[]>(
+const Translation: <TranslatedType>(
     value: TranslatedType,
     translation: Translation<TranslatedType>,
 ) => TranslatedType =
-    <TranslatedType extends Number | string | unknown[]>(
+    <TranslatedType>(
         value: TranslatedType,
         translation: Translation<TranslatedType>,
     ): TranslatedType => {

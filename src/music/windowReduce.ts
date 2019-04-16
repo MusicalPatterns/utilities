@@ -3,7 +3,7 @@ import { apply, Frequency, from, OCTAVE, of, Scalar, to } from '../nominal'
 
 const octaveReduce: (scalar: Scalar<Frequency>) => Scalar<Frequency> =
     (scalar: Scalar<Frequency>): Scalar<Frequency> =>
-        windowReduce(scalar, to.Scalar(of.Scalar<Frequency>(from.Base(OCTAVE))))
+        windowReduce(scalar, to.Scalar(of.Scalar<Frequency>(from.Base<Frequency>(OCTAVE))))
 
 const windowReduce: (scalar: Scalar<Frequency>, window: Scalar<Scalar<Frequency>>) => Scalar<Frequency> =
     (scalar: Scalar<Frequency>, window: Scalar<Scalar<Frequency>>): Scalar<Frequency> => {

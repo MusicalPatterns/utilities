@@ -40,18 +40,6 @@ type Power<OfType extends Number = number> = OperationBrand<'Power', OfType>
 
 type Modulus<OfType extends Number = number> = OperationBrand<'Modulus', OfType>
 
-type OperationTypeNameFromOperationType<OperationType> =
-    OperationType extends Scalar ? 'Scalar' :
-        OperationType extends NormalScalar ? 'NormalScalar' :
-            OperationType extends Rotation ? 'Rotation' :
-                OperationType extends Base ? 'Base' :
-                    OperationType extends Power ? 'Power' :
-                        OperationType extends Modulus ? 'Modulus' :
-                            OperationType extends Translation ? 'Translation' :
-                                OperationType extends Multiple ? 'Multiple' :
-                                    OperationType extends Index ? 'Index' :
-                                        ''
-
 // Special Units
 
 type Cardinal = Integerlike & UnitsBrand<'Cardinal'>
@@ -77,6 +65,31 @@ type Integer = Number & Integerlike
 type Integerlike = number & { _IntegerBrand: 'Integer' }
 
 // Other Stuff
+
+type UnitsNameFromUnits<UnitsType> =
+    UnitsType extends Hz ? 'Hz' :
+        UnitsType extends Ms ? 'Ms' :
+            UnitsType extends Radians ? 'Radians' :
+                UnitsType extends Cents ? 'Cents' :
+                    UnitsType extends Semitones ? 'Semitones' :
+                        UnitsType extends Meters ? 'Meters' :
+                            UnitsType extends Space ? 'Space' :
+                                UnitsType extends Time ? 'Time' :
+                                    UnitsType extends Frequency ? 'Frequency' :
+                                        UnitsType extends Amplitude ? 'Amplitude' :
+                                            ''
+
+type OperationNameFromOperation<OperationType> =
+    OperationType extends Scalar ? 'Scalar' :
+        OperationType extends NormalScalar ? 'NormalScalar' :
+            OperationType extends Rotation ? 'Rotation' :
+                OperationType extends Base ? 'Base' :
+                    OperationType extends Power ? 'Power' :
+                        OperationType extends Modulus ? 'Modulus' :
+                            OperationType extends Translation ? 'Translation' :
+                                OperationType extends Multiple ? 'Multiple' :
+                                    OperationType extends Index ? 'Index' :
+                                        ''
 
 type Block = Number[] & { _BlockBrand: void }
 
@@ -138,5 +151,6 @@ export {
     Integerlike,
     Multiple,
     Of,
-    OperationTypeNameFromOperationType,
+    OperationNameFromOperation,
+    UnitsNameFromUnits,
 }

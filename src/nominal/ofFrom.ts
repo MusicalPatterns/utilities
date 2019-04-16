@@ -1,24 +1,24 @@
 import { Of, OperationBrand, UnitsBrand } from './types'
 
 // tslint:disable-next-line max-line-length
-const ofOperation: <Operation, ValueType extends OperationBrand<Operation> = OperationBrand<Operation>>(
+const ofOperation: <OperationName, ValueType extends OperationBrand<OperationName> = OperationBrand<OperationName>>(
     value: ValueType,
-) =>  Of<OperationBrand<Operation>> =
+) =>  Of<OperationBrand<OperationName>> =
     // tslint:disable-next-line max-line-length
-    <Operation, ValueType extends OperationBrand<Operation> = OperationBrand<Operation>>(
+    <OperationName, ValueType extends OperationBrand<OperationName> = OperationBrand<OperationName>>(
         value: ValueType,
-    ): Of<OperationBrand<Operation>> =>
-        value as unknown as  Of<OperationBrand<Operation>>
+    ): Of<OperationBrand<OperationName>> =>
+        value as unknown as  Of<OperationBrand<OperationName>>
 
 // tslint:disable-next-line max-line-length
-const ofUnits: <Units, ValueType extends UnitsBrand<Units> = UnitsBrand<Units>>(
+const ofUnits: <UnitsName, ValueType extends UnitsBrand<UnitsName> = UnitsBrand<UnitsName>>(
     value: ValueType,
-) =>  Of<UnitsBrand<Units>> =
+) =>  Of<UnitsBrand<UnitsName>> =
     // tslint:disable-next-line max-line-length
-    <Operation, ValueType extends UnitsBrand<Operation> = UnitsBrand<Operation>>(
+    <UnitsName, ValueType extends UnitsBrand<UnitsName> = UnitsBrand<UnitsName>>(
         value: ValueType,
-    ): Of<UnitsBrand<Operation>> =>
-        value as unknown as  Of<UnitsBrand<Operation>>
+    ): Of<UnitsBrand<UnitsName>> =>
+        value as unknown as  Of<UnitsBrand<UnitsName>>
 
 export {
     ofOperation,

@@ -29,7 +29,7 @@ describe('from', () => {
 
     it('can downgrade operation while preserving type', () => {
         const hzScalar: Scalar<Hz> = to.Scalar(of.Hz(3))
-        const ofHzFromHzScalar: Of<Hz> = from.Scalar<Hz, Scalar<Hz>>(hzScalar)
+        const ofHzFromHzScalar: Of<Hz> = from.Scalar(hzScalar)
 
         const baseScalar: Scalar<Base> = to.Scalar(of.Base(3))
         const ofBaseFromBaseScalar: Of<Base> = from.Scalar(baseScalar)
@@ -39,7 +39,7 @@ describe('from', () => {
         const hzScalar: Scalar<Hz> = to.Scalar(of.Hz(3))
 
         const recipientObject: { ofHz: Of<Hz> } = {
-            ofHz: from.Scalar<Hz, Scalar<Hz>>(hzScalar),
+            ofHz: from.Scalar(hzScalar),
         }
     })
 
@@ -48,7 +48,7 @@ describe('from', () => {
         const numbers: number[] = scalars.map(from.Scalar)
 
         const hzScalars: Array<Scalar<Hz>> = [ to.Scalar(of.Hz(2)) ]
-        const ofHzs: Array<Of<Hz>> = hzScalars.map((hzScalar: Scalar<Hz>) => from.Scalar<Hz, Scalar<Hz>>(hzScalar))
+        const ofHzs: Array<Of<Hz>> = hzScalars.map((hzScalar: Scalar<Hz>) => from.Scalar(hzScalar))
     })
 
     describe('special units/operations', () => {

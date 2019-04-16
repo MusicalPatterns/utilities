@@ -1,20 +1,20 @@
 import { negative } from '../math'
-import { apply, Base, Cardinal, from, Index, of, ofOperation, PREVIOUS, to } from '../nominal'
+import { apply, Base, Cardinal, Frequency, from, Index, of, PREVIOUS, to } from '../nominal'
 
-const windowIterationHarmonicStepCount: (window: Base, iteration: Index) => Cardinal =
-    (window: Base, iteration: Index): Cardinal =>
-        to.Cardinal(from.Base(apply.Translation(
+const windowIterationHarmonicStepCount: (window: Base<Frequency>, iteration: Index) => Cardinal =
+    (window: Base<Frequency>, iteration: Index): Cardinal =>
+        to.Cardinal(from.Base<Frequency>(apply.Translation(
             apply.Power(
                 window,
-                to.Power(of.Base(from.Index(iteration))),
+                to.Power(of.Base<Frequency>(from.Index(iteration))),
             ),
-            to.Translation(ofOperation<'Base'>(negative(apply.Power(
+            to.Translation(of.Base<Frequency>(from.Base<Frequency>(negative(apply.Power(
                 window,
-                to.Power(of.Base(from.Index(apply.Translation(
+                to.Power(of.Base<Frequency>(from.Index(apply.Translation(
                     iteration,
                     PREVIOUS,
                 )))),
-            )))),
+            ))))),
         )))
 
 export {

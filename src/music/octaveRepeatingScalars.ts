@@ -21,12 +21,12 @@ const computeOctaveRepeatingScalars: (scalars: Array<Scalar<Frequency>>) => Arra
             from.Index(index) < from.Cardinal(MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS);
             index = apply.Translation(index, NEXT)
         ) {
-            const nextOctave: Base = apply.Power(OCTAVE, to.Power(of.Base(from.Index(index))))
+            const nextOctave: Base<Frequency> = apply.Power(OCTAVE, to.Power(of.Base<Frequency>(from.Index(index))))
             octaveRepeatingScalars = octaveRepeatingScalars.concat(
                 scalars.map((scalar: Scalar<Frequency>): Scalar<Frequency> =>
                     apply.Scalar(
                         scalar,
-                        to.Scalar(of.Scalar<Frequency>(from.Base(nextOctave))),
+                        to.Scalar(of.Scalar<Frequency>(from.Base<Frequency>(nextOctave))),
                     ),
                 ),
             )
