@@ -40,6 +40,18 @@ type Power<OfType extends Number = number> = OperationBrand<'Power', OfType>
 
 type Modulus<OfType extends Number = number> = OperationBrand<'Modulus', OfType>
 
+type OperationTypeNameFromOperationType<OperationType> =
+    OperationType extends Scalar ? 'Scalar' :
+        OperationType extends NormalScalar ? 'NormalScalar' :
+            OperationType extends Rotation ? 'Rotation' :
+                OperationType extends Base ? 'Base' :
+                    OperationType extends Power ? 'Power' :
+                        OperationType extends Modulus ? 'Modulus' :
+                            OperationType extends Translation ? 'Translation' :
+                                OperationType extends Multiple ? 'Multiple' :
+                                    OperationType extends Index ? 'Index' :
+                                        ''
+
 // Special Units
 
 type Cardinal = Integerlike & UnitsBrand<'Cardinal'>
@@ -126,4 +138,5 @@ export {
     Integerlike,
     Multiple,
     Of,
+    OperationTypeNameFromOperationType,
 }

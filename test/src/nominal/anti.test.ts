@@ -3,14 +3,20 @@
 // import {
 //     Base,
 //     Cardinal,
-//     Cents, computeNominalInterface, CustomFrom, CustomOf, CustomTo,
-//     Denominator, DUMMY_VALUE_FOR_COMPUTING_NOMINAL_INTERFACE,
+//     Cents,
+//     computeNominalInterface,
+//     CustomFrom,
+//     CustomOf,
+//     CustomTo,
+//     Denominator,
+//     DUMMY_VALUE_FOR_COMPUTING_NOMINAL_INTERFACE,
 //     from,
 //     Hz,
 //     Index,
 //     INITIAL,
 //     insteadOf,
-//     Ms, NominalInterface,
+//     Ms,
+//     NominalInterface,
 //     Numerator,
 //     of,
 //     Of,
@@ -225,9 +231,9 @@
 //     })
 //
 //     describe('instead of', () => {
-//         const wrongOf: Index<Translation> = insteadOf<Scalar, number, 'Index'>(INITIAL)
-//         const noOf: Index = insteadOf<Scalar, number, 'Index'>(INITIAL)
-//         const fromFullOf: Scalar<Base> = insteadOf<Rotation, Translation, 'Scalar'>(to.Scalar(of.Translation(1)))
+//         const wrongOf: Index<Translation> = insteadOf<Index, Scalar>(INITIAL)
+//         const noOf: Index = insteadOf<Index, Scalar>(INITIAL)
+//         const fromFullOf: Scalar<Base> = insteadOf<Scalar, Rotation>(to.Scalar(of.Translation(1)))
 //     })
 //
 //     describe('of from', () => {

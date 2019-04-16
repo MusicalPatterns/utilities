@@ -1,14 +1,14 @@
-import { OperationBrand } from './types'
+import { OperationBrand, OperationTypeNameFromOperationType } from './types'
 
 // tslint:disable-next-line max-line-length
-const insteadOf: <OfType, DiscardingOfType, OperationTypeName, OperationType extends OperationBrand<OperationTypeName, DiscardingOfType> = OperationBrand<OperationTypeName, DiscardingOfType>>(
+const insteadOf: <Operation, OfType, DiscardingOfType extends Number = Number, OperationType extends OperationBrand<OperationTypeNameFromOperationType<Operation>, DiscardingOfType> = OperationBrand<OperationTypeNameFromOperationType<Operation>, DiscardingOfType>>(
     operation: OperationType,
-) => OperationBrand<OperationTypeName, OfType> =
+) => OperationBrand<OperationTypeNameFromOperationType<Operation>, OfType> =
 // tslint:disable-next-line max-line-length
-    <OfType, DiscardingOfType, OperationTypeName, OperationType extends OperationBrand<OperationTypeName, DiscardingOfType> = OperationBrand<OperationTypeName, DiscardingOfType>>(
+    <Operation, OfType, DiscardingOfType extends Number = Number, OperationType extends OperationBrand<OperationTypeNameFromOperationType<Operation>, DiscardingOfType> = OperationBrand<OperationTypeNameFromOperationType<Operation>, DiscardingOfType>>(
         operation: OperationType,
-    ): OperationBrand<OperationTypeName, OfType> =>
-        operation as unknown as OperationBrand<OperationTypeName, OfType>
+    ): OperationBrand<OperationTypeNameFromOperationType<Operation>, OfType> =>
+        operation as unknown as OperationBrand<OperationTypeNameFromOperationType<Operation>, OfType>
 
 export {
     insteadOf,

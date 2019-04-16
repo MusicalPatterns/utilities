@@ -13,6 +13,6 @@ describe('cents translation to pitch scalar', () => {
         const actual: Scalar<Frequency> = centsTranslationToPitchScalar(to.Translation(of.Cents(701.955001)))
 
         expect(actual)
-            .toBeCloseToTyped(insteadOf<Frequency, number, 'Scalar'>(THREE_HALVES))
+            .toBeCloseToTyped(insteadOf<Scalar, Frequency>(THREE_HALVES))
     })
 })
