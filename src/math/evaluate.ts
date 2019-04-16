@@ -2,7 +2,7 @@
 
 import { HtmlValue } from '../browser'
 import { stringSlice } from '../code'
-import { apply, EXCLUSIVE_TO_LEFT, from, Index, INITIAL, insteadOf, of, to, Translation } from '../nominal'
+import { apply, EXCLUSIVE_TO_LEFT, from, Index, INITIAL, insteadOf, to, Translation } from '../nominal'
 import { Operands } from './types'
 
 const splitOperands: (expression: string, operatorIndex: Index<string>) => Operands =

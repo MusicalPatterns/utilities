@@ -3,7 +3,6 @@
 import { finalIndexFromElementsTotal, totalElements } from '../code'
 import { indexCheck, normalScalarCheck } from './checks'
 import * as from from './from'
-import * as of from './of'
 import * as to from './to'
 import { isCycle } from './typeGuards'
 import {

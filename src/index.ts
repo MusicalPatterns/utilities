@@ -169,6 +169,7 @@ export {
     ScientificPitches,
     computeEqualDivisionScalars,
     computeOctaveRepeatingScalars,
+    semitonesToCents,
 } from './music'
 export {
     Base,

@@ -8,7 +8,6 @@ import {
     MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS,
     NEXT,
     OCTAVE,
-    of,
     Scalar,
     to,
 } from '../nominal'

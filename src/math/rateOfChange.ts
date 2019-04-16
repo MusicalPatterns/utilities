@@ -1,6 +1,6 @@
 import { finalElement, initialElement, map, Maybe } from '../code'
 import { Index, indexOfFinalElement, INITIAL, insteadOf, Scalar, slice, Translation } from '../indexForTest'
-import { apply, from, isCycle, NEXT, of, to } from '../nominal'
+import { apply, isCycle, NEXT } from '../nominal'
 import { delta, interval } from './typedOperations'
 
 const computeDeltas: <NumericElementType extends Number>(

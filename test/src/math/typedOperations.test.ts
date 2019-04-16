@@ -1,4 +1,4 @@
-import { delta, difference, interval, Ms, of, product, quotient, round, sum, to } from '../../../src/indexForTest'
+import { delta, difference, interval, Ms, product, quotient, round, sum, to } from '../../../src/indexForTest'
 
 describe('typed operations', () => {
     describe('round', () => {

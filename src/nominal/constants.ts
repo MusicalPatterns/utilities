@@ -1,7 +1,6 @@
 // tslint:disable no-magic-numbers max-file-line-count no-any
 
 import * as from from './from'
-import * as of from './of'
 import * as to from './to'
 import {
     Base,

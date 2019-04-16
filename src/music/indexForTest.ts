@@ -1,6 +1,6 @@
 // tslint:disable no-reaching-imports
 
-export { centsTranslationToPitchScalar } from './centsTranslationToPitchScalar'
+export { centsTranslationToPitchScalar } from './conversions'
 export { windowIterationHarmonicStepCount } from './windowIterationHarmonicStepCount'
 export { octaveReduce, windowReduce } from './windowReduce'
 export { computeEqualDivisionScalars } from './equalDivisions'

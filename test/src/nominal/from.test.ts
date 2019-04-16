@@ -1,6 +1,6 @@
 // tslint:disable no-unused-expression no-dead-store
 
-import { Base, Fraction, from, Hz, Of, of, ONE_HALF, Scalar, to } from '../../../src/indexForTest'
+import { Base, Fraction, from, Hz, Of, ONE_HALF, Scalar, to } from '../../../src/indexForTest'
 
 describe('from', () => {
     it('converts back to a plain number', () => {

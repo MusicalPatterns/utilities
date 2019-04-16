@@ -1,4 +1,4 @@
-import { apply, from, NormalScalar, of, to, Translation } from '../nominal'
+import { apply, from, NormalScalar, to, Translation } from '../nominal'
 import { negative } from './typedOperations'
 
 const valueLinearlyBetweenValues: <NumericValue extends number>(

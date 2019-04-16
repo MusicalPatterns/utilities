@@ -1,4 +1,4 @@
-import { Index, INITIAL, insteadOf, of, Rotation, Scalar, to, Translation } from '../../../src/indexForTest'
+import { Index, INITIAL, insteadOf, Rotation, Scalar, to, Translation } from '../../../src/indexForTest'
 
 describe('instead of', () => {
     it('discards whatever an operation used to be Of and replaces it with what you specify instead', () => {

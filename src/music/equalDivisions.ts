@@ -9,7 +9,6 @@ import {
     INITIAL,
     Integer,
     OCTAVE,
-    of,
     Scalar,
     to,
     ZERO_AND_POSITIVE_INTEGERS,

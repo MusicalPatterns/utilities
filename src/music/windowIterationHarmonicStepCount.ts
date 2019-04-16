@@ -1,5 +1,5 @@
 import { negative } from '../math'
-import { apply, Base, Cardinal, Frequency, from, Index, of, PREVIOUS, to } from '../nominal'
+import { apply, Base, Cardinal, Frequency, from, Index, PREVIOUS, to } from '../nominal'
 
 const windowIterationHarmonicStepCount: (window: Base<Frequency>, iteration: Index) => Cardinal =
     (window: Base<Frequency>, iteration: Index): Cardinal =>

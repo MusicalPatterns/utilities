@@ -2,7 +2,7 @@
 
 import { keys, ObjectOf, reduce } from '../code'
 import { negative } from '../math'
-import { apply, Base, Frequency, from, Hz, OCTAVE, of, Power, Scalar, to } from '../nominal'
+import { apply, Base, Frequency, from, Hz, OCTAVE, Power, Scalar, to } from '../nominal'
 import { ScientificPitches, ScientificPitchNoteName, ScientificPitchOctaveNumber } from './types'
 
 const SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP: {

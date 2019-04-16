@@ -1,6 +1,6 @@
 // tslint:disable no-dead-store no-unused-expression
 
-import { apply, Cycle, Index, negative, of, ONE_HALF, Scalar, to, Translation } from '../../../src/indexForTest'
+import { apply, Cycle, Index, negative, ONE_HALF, Scalar, to, Translation } from '../../../src/indexForTest'
 
 describe('apply', () => {
     describe('Scalar', () => {

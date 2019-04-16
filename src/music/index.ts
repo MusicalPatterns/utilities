@@ -1,4 +1,4 @@
-export { centsTranslationToPitchScalar } from './centsTranslationToPitchScalar'
+export { centsTranslationToPitchScalar, semitonesToCents } from './conversions'
 export { windowIterationHarmonicStepCount } from './windowIterationHarmonicStepCount'
 export { octaveReduce, windowReduce } from './windowReduce'
 export { computeEqualDivisionScalars } from './equalDivisions'
