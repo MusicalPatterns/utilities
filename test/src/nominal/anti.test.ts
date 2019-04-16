@@ -1,6 +1,6 @@
 // tslint:disable no-any no-unused-expression comment-format no-commented-code no-dead-store no-type-definitions-outside-types-modules
 
-// There should be 92 errors in this file.
+// There should be 97 errors in this file.
 
 // import {
 //     Base,
@@ -119,6 +119,19 @@
 //                 const scalarScalar: Translation<Rotation> = to.Scalar<Rotation>(3)
 //                 const hzScalar: Scalar<Ms> = to.Scalar<Hz>(3)
 //                 const msScalar: Rotation<Hz> = to.Scalar<Hz>(3)
+//             })
+//
+//             it('DOES NOT ALLOW assigning a mere operation to a operation Of something (this one does not quite work yet)', () => {
+//                 const scalarToScalarOfUnits: Scalar<Ms> = to.Scalar(2)
+//                 const asdgsdaggdsdgsdgdgsd: Scalar<Ms> = to.Scalar<number>(2)
+//
+//                 const asg: Scalar<Ms> = 2 as unknown as Scalar
+//                 const asgg: Scalar<Ms> = 2 as unknown as Scalar<number>
+//
+//                 const scalarToScalarOfOperation: Scalar<Rotation> = to.Scalar(2)
+//
+//                 const thing: Scalar<Ms> = 2 as unknown as Scalar
+//                 const thing2: Scalar = 2 as unknown as Scalar<Ms>
 //             })
 //         })
 //
