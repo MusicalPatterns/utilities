@@ -1,6 +1,6 @@
 // tslint:disable no-any no-unused-expression comment-format no-commented-code no-dead-store no-type-definitions-outside-types-modules
 
-// There should be 90 errors in this file.
+// There should be 92 errors in this file.
 
 // import {
 //     Base,
@@ -243,6 +243,8 @@
 //         const wrongOf: Index<Translation> = insteadOf<Index, Scalar>(INITIAL)
 //         const noOf: Index = insteadOf<Index, Scalar>(INITIAL)
 //         const fromFullOf: Scalar<Base> = insteadOf<Scalar, Rotation>(to.Scalar<Translation>(1))
+//         const doesntHoldOnToInstead: Translation<string> = insteadOf<Translation>(to.Translation<string>(1))
+//         const doesntAssignToWrongInstead: Translation<Scalar> = insteadOf<Translation>(to.Translation<string>(1))
 //     })
 //
 //     describe('of from', () => {

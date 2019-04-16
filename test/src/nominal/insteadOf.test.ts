@@ -10,5 +10,8 @@ describe('instead of', () => {
 
         expect(insteadOf<Translation, Rotation>(to.Translation<string>(1)))
             .toBe(to.Translation<Rotation>(1))
+
+        expect(insteadOf<Translation>(to.Translation<string>(1)))
+            .toBe(to.Translation(1))
     })
 })
