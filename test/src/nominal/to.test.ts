@@ -67,7 +67,7 @@ describe('to', () => {
     })
 
     describe('units and operations', () => {
-        it('allows attributing an operation to something already in units', () => {
+        it('allows attributing an operation to something already Of units', () => {
             const ofHz: Of<Hz> = of.Hz(3)
             const hzScalar: Scalar<Hz> = to.Scalar(ofHz)
         })
@@ -129,7 +129,7 @@ describe('to', () => {
 
         it('allows these things for Index', () => {
             const index: Index = to.Index(3)
-            const stringIndex: Index<string> = to.Index(of.string(3))
+            const stringIndex: Index<string> = to.Index<string>(3)
         })
     })
 })

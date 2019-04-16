@@ -35,7 +35,7 @@ const stringSlice: (str: string, initial: Index<string>, terminal?: Index<string
             return str.slice(from.Index(initial as unknown as Index))
         }
 
-        if (terminal > to.Index(of.string(str.length))) {
+        if (terminal > to.Index<string>(str.length)) {
             throw new Error(`You tried to slice up to index ${terminal} of a string with length \
 of only ${str.length}: ${str}`)
         }

@@ -45,10 +45,9 @@ describe('custom nominals', () => {
         it('works like a normal To, for Units', () => {
             const numero: Numero = customTo.Numero(3)
             const numeros: Numeros = customTo.Numeros([ 3 ])
-        })
 
-        it('allows passing the Of as a type parameter when it is a numeric type', () => {
             const numeroTranslation: Translation<Numero> = to.Translation<Numero>(3)
+            const numerosTranslation: Translation<Numeros> = to.Translation<Numeros>(3)
         })
     })
 

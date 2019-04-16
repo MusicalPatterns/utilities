@@ -7,9 +7,8 @@ import { Operands } from './types'
 
 const splitOperands: (expression: string, operatorIndex: Index<string>) => Operands =
     (expression: string, operatorIndex: Index<string>): Operands => {
-        const lhs: number = evaluateString(
-            stringSlice(expression, to.Index(of.string(from.Index(INITIAL))), operatorIndex),
-        )
+        const lhs: number =
+            evaluateString(stringSlice(expression, to.Index<string>(from.Index(INITIAL)), operatorIndex))
         const rhs: number = evaluateString(
             stringSlice(
                 expression,
@@ -25,7 +24,7 @@ const splitOperands: (expression: string, operatorIndex: Index<string>) => Opera
 
 const evaluateExponent: (expression: string) => number =
     (expression: string): number => {
-        const finalIndexOfExponentiationSign: Index<string> = to.Index(of.string(expression.lastIndexOf('^')))
+        const finalIndexOfExponentiationSign: Index<string> = to.Index<string>(expression.lastIndexOf('^'))
         const { lhs, rhs } = splitOperands(expression, finalIndexOfExponentiationSign)
 
         return Math.pow(lhs, rhs)
@@ -33,9 +32,9 @@ const evaluateExponent: (expression: string) => number =
 
 const evaluateGeometricOperation: (expression: string) => number =
     (expression: string): number => {
-        const finalIndexOfMultiplicationSign: Index<string> = to.Index(of.string(expression.lastIndexOf('*')))
-        const finalIndexOfDivisionSign: Index<string> = to.Index(of.string(expression.lastIndexOf('/')))
-        const finalIndexOfModulusSign: Index<string> = to.Index(of.string(expression.lastIndexOf('%')))
+        const finalIndexOfMultiplicationSign: Index<string> = to.Index<string>(expression.lastIndexOf('*'))
+        const finalIndexOfDivisionSign: Index<string> = to.Index<string>(expression.lastIndexOf('/'))
+        const finalIndexOfModulusSign: Index<string> = to.Index<string>(expression.lastIndexOf('%'))
 
         let operands: Operands
         if (finalIndexOfMultiplicationSign > finalIndexOfDivisionSign &&
@@ -56,8 +55,8 @@ const evaluateGeometricOperation: (expression: string) => number =
 
 const evaluateArithmeticOperation: (expression: string) => number =
     (expression: string): number => {
-        const finalIndexOfAdditionSign: Index<string> = to.Index(of.string(expression.lastIndexOf('+')))
-        const finalIndexOfSubtractionSign: Index<string> = to.Index(of.string(expression.lastIndexOf('-')))
+        const finalIndexOfAdditionSign: Index<string> = to.Index<string>(expression.lastIndexOf('+'))
+        const finalIndexOfSubtractionSign: Index<string> = to.Index<string>(expression.lastIndexOf('-'))
 
         let operands: Operands
         if (finalIndexOfAdditionSign > finalIndexOfSubtractionSign) {
@@ -72,17 +71,17 @@ const evaluateArithmeticOperation: (expression: string) => number =
 
 const evaluateParenthetical: (expression: string) => number =
     (expression: string): number => {
-        const beginParantheticalIndex: Index<string> = to.Index(of.string(expression.lastIndexOf('(')))
-        const endIndex: Index<string> = to.Index(of.string(expression.length))
+        const beginParantheticalIndex: Index<string> = to.Index<string>(expression.lastIndexOf('('))
+        const endIndex: Index<string> = to.Index<string>(expression.length)
         const endParantheticalIndex: Index<string> = apply.Translation(
             beginParantheticalIndex,
-            to.Translation(of.Index<string>(
+            to.Translation<Index<string>>(
                 stringSlice(expression, beginParantheticalIndex, endIndex)
                     .indexOf(')'),
-            )),
+            ),
         )
 
-        const partBefore: string = stringSlice(expression, to.Index(of.string(0)), beginParantheticalIndex)
+        const partBefore: string = stringSlice(expression, to.Index<string>(0), beginParantheticalIndex)
         const parenthetical: string = stringSlice(
             expression,
             apply.Translation(beginParantheticalIndex, to.Translation<Index<string>>(1)),
