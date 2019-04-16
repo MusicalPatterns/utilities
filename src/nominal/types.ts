@@ -51,7 +51,7 @@ type Fraction = [ Numerator, Denominator ]
 // Special Operations
 
 type Index<OfType = number> = OperationBrand<'Index', OfType>
-type Translation<OfType extends Number | string | unknown[] = number> = OperationBrand<'Translation', OfType>
+type Translation<OfType = number> = OperationBrand<'Translation', OfType>
 
 type Multiple<OfType extends Number = number> = Integerlike & OperationBrand<'Multiple', OfType>
 

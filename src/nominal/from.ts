@@ -107,11 +107,11 @@ const Fraction: (fraction: Fraction) => number =
 
 // Special Operations
 
-const Index: <OfType extends Number = number, OperationType extends Index<OfType> = Index<OfType>>(index: OperationType) => Of<OfType> =
-    <OfType extends Number = number, OperationType extends Index<OfType> = Index<OfType>>(index: OperationType): Of<OfType> =>
+const Index: <OfType = number, OperationType extends Index<OfType> = Index<OfType>>(index: OperationType) => Of<OfType> =
+    <OfType = number, OperationType extends Index<OfType> = Index<OfType>>(index: OperationType): Of<OfType> =>
         index as unknown as Of<OfType>
-const Translation: <OfType extends Number = number, OperationType extends Translation<OfType> = Translation<OfType>>(translation: OperationType) => Of<OfType> =
-    <OfType extends Number = number, OperationType extends Translation<OfType> = Translation<OfType>>(translation: OperationType): Of<OfType> =>
+const Translation: <OfType = number, OperationType extends Translation<OfType> = Translation<OfType>>(translation: OperationType) => Of<OfType> =
+    <OfType = number, OperationType extends Translation<OfType> = Translation<OfType>>(translation: OperationType): Of<OfType> =>
         translation as unknown as Of<OfType>
 
 const Multiple: <OfType extends Number = number, OperationType extends Multiple<OfType> = Multiple<OfType>>(multiple: OperationType) => Of<OfType> =
