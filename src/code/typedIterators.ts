@@ -140,11 +140,11 @@ const every: <ElementType>(
 const findIndex: <ElementType>(
     array: ElementType[],
     callback: (element: ElementType, index: Index<ElementType>, self: ElementType[]) => boolean,
-) => Index =
+) => Index<ElementType> =
     <ElementType>(
         array: ElementType[],
         callback: (element: ElementType, index: Index<ElementType>, self: ElementType[]) => boolean,
-    ): Index =>
+    ): Index<ElementType> =>
         // @ts-ignore
         array.findIndex(callback)
 
