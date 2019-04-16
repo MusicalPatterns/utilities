@@ -13,13 +13,13 @@ const valueLinearlyBetweenValues: <NumericValue extends number>(
     ): NumericValue =>
         apply.Translation(
             startValue,
-            to.Translation(from.NormalScalar(apply.Scalar(
+            to.Translation(from.NormalScalar<NumericValue>(apply.Scalar(
                 progress,
-                to.Scalar<NormalScalar>(apply.Translation(
+                to.Scalar<NormalScalar<NumericValue>>(apply.Translation(
                     endValue as unknown as number,
                     to.Translation(negative(startValue as unknown as number)),
                 )),
-            ))) as Translation<NumericValue>,
+            ))),
         )
 
 export {

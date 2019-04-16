@@ -1,6 +1,6 @@
 // tslint:disable no-any no-unused-expression comment-format no-commented-code no-dead-store no-type-definitions-outside-types-modules
 
-// There should be 97 errors in this file.
+// There should be 101 errors in this file.
 
 // import {
 //     Base,
@@ -249,6 +249,9 @@
 //
 //             const cantAssignToOperationOfOperationOfUnitsFromOperationOfOperation: Scalar<Scalar<Ms>> = to.Scalar(of.Scalar(3))
 //             const cantAssignToOperationOfOperationOfOperationFromOperationOfOperation: Scalar<Scalar<Rotation>> = to.Scalar(of.Scalar(3))
+//
+//             const cantAssignToOperationOfOperationOfUnitsFromOperationOfOperationUsingTypeParam: Scalar<Scalar<Ms>> = to.Scalar<Scalar>(3)
+//             const cantAssignToOperationOfOperationOfOperationFromOperationOfOperationUsingTypeParam: Scalar<Scalar<Rotation>> = to.Scalar<Scalar>(3)
 //         })
 //     })
 //

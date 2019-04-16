@@ -20,7 +20,7 @@ const distanceBetween: <NumericType extends Number>(
                     absoluteValue(difference(pointAElement, pointBElement))
                 const squareOfDimensionalDistance: NumericType = apply.Power(
                     dimensionalDistance,
-                    SQUARED as unknown as Power<NumericType>,
+                    SQUARED,
                 )
 
                 return sum(accumulator, squareOfDimensionalDistance)
@@ -28,7 +28,7 @@ const distanceBetween: <NumericType extends Number>(
             0 as unknown as NumericType,
         )
 
-        return apply.Power(sumOfSquaresOfDimensionalDistances, SQUARE_ROOT as unknown as Power<NumericType>)
+        return apply.Power(sumOfSquaresOfDimensionalDistances, SQUARE_ROOT)
     }
 
 export {

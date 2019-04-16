@@ -77,6 +77,13 @@ describe('to', () => {
             const scalarScalar: Scalar<Scalar> = to.Scalar<Scalar>(3)
             const hzScalar: Scalar<Hz> = to.Scalar<Hz>(3)
         })
+
+        it('should allow generic numeric types (which extend Number)', () => {
+            const genericOperation: <NumericType extends Number>(argument: NumericType) => void =
+                <NumericType extends Number>(argument: NumericType): void => {
+                    const numericScalar: Scalar<NumericType> = to.Scalar<NumericType>(3)
+                }
+        })
     })
 
     describe('special units/operation', () => {

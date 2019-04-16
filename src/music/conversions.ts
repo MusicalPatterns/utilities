@@ -18,7 +18,7 @@ const centsTranslationToPitchScalar: (centsTranslationToPitchScalar: Translation
     (cents: Translation<Cents>): Scalar<Frequency> =>
         to.Scalar(from.Base<Frequency>(apply.Power(
             OCTAVE,
-            to.Power<Base<Frequency>>(from.Translation<Cents, Translation<Cents>>(apply.Scalar(
+            to.Power<Base<Frequency>>(from.Translation<Cents>(apply.Scalar(
                 cents,
                 to.Scalar<Translation<Cents>>(from.Cents(reciprocal(CENTS_PER_OCTAVE))),
             ))),

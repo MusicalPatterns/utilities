@@ -64,23 +64,23 @@ const Amplitude: (ofAmplitude: number) => Of<Amplitude> =
 
 // Operations
 
-const Scalar: <OfType extends Number = number>(ofScalar: number) => Of<Scalar<OfType>> =
-    <OfType extends Number = number>(ofScalar: number): Of<Scalar<OfType>> =>
+const Scalar: <OfType extends Number = number>(ofScalar: number | OfType) => Of<Scalar<OfType>> =
+    <OfType extends Number = number>(ofScalar: number | OfType): Of<Scalar<OfType>> =>
         ofScalar as unknown as Of<Scalar<OfType>>
-const NormalScalar: <OfType extends Number = number>(ofNormalScalar: number) => Of<NormalScalar<OfType>> =
-    <OfType extends Number = number>(ofNormalScalar: number): Of<NormalScalar<OfType>> =>
+const NormalScalar: <OfType extends Number = number>(ofNormalScalar: number | OfType) => Of<NormalScalar<OfType>> =
+    <OfType extends Number = number>(ofNormalScalar: number | OfType): Of<NormalScalar<OfType>> =>
         ofNormalScalar as unknown as Of<NormalScalar<OfType>>
-const Rotation: <OfType extends Number = number>(ofRotation: number) => Of<Rotation<OfType>> =
-    <OfType extends Number = number>(ofRotation: number): Of<Rotation<OfType>> =>
+const Rotation: <OfType extends Number = number>(ofRotation: number | OfType) => Of<Rotation<OfType>> =
+    <OfType extends Number = number>(ofRotation: number | OfType): Of<Rotation<OfType>> =>
         ofRotation as unknown as Of<Rotation<OfType>>
-const Base: <OfType extends Number = number>(ofBase: number) => Of<Base<OfType>> =
-    <OfType extends Number = number>(ofBase: number): Of<Base<OfType>> =>
+const Base: <OfType extends Number = number>(ofBase: number | OfType) => Of<Base<OfType>> =
+    <OfType extends Number = number>(ofBase: number | OfType): Of<Base<OfType>> =>
         ofBase as unknown as Of<Base<OfType>>
-const Power: <OfType extends Number = number>(ofPower: number) => Of<Power<OfType>> =
-    <OfType extends Number = number>(ofPower: number): Of<Power<OfType>> =>
+const Power: <OfType extends Number = number>(ofPower: number | OfType) => Of<Power<OfType>> =
+    <OfType extends Number = number>(ofPower: number | OfType): Of<Power<OfType>> =>
         ofPower as unknown as Of<Power<OfType>>
-const Modulus: <OfType extends Number = number>(ofModulus: number) => Of<Modulus<OfType>> =
-    <OfType extends Number = number>(ofModulus: number): Of<Modulus<OfType>> =>
+const Modulus: <OfType extends Number = number>(ofModulus: number | OfType) => Of<Modulus<OfType>> =
+    <OfType extends Number = number>(ofModulus: number | OfType): Of<Modulus<OfType>> =>
         ofModulus as unknown as Of<Modulus<OfType>>
 
 // Special Units
@@ -103,14 +103,14 @@ const Fraction: (ofFraction: number) => Of<Fraction> =
 
 // Special Operations
 
-const Translation: <OfType extends Number = number>(ofTranslation: number) => Of<Translation<OfType>> =
-    <OfType extends Number = number>(ofTranslation: number): Of<Translation<OfType>> =>
+const Translation: <OfType extends Number = number>(ofTranslation: number | OfType) => Of<Translation<OfType>> =
+    <OfType extends Number = number>(ofTranslation: number | OfType): Of<Translation<OfType>> =>
         ofTranslation as unknown as Of<Translation<OfType>>
-const Index: <OfType = number>(ofIndex: number) => Of<Index<OfType>> =
-    <OfType = number>(ofIndex: number): Of<Index<OfType>> =>
+const Index: <OfType = number>(ofIndex: number | OfType) => Of<Index<OfType>> =
+    <OfType = number>(ofIndex: number | OfType): Of<Index<OfType>> =>
         ofIndex as unknown as Of<Index<OfType>>
-const Multiple: <OfType extends Number = number>(ofMultiple: number) => Of<Multiple<OfType>> =
-    <OfType extends Number = number>(ofMultiple: number): Of<Multiple<OfType>> =>
+const Multiple: <OfType extends Number = number>(ofMultiple: number | OfType) => Of<Multiple<OfType>> =
+    <OfType extends Number = number>(ofMultiple: number | OfType): Of<Multiple<OfType>> =>
         ofMultiple as unknown as Of<Multiple<OfType>>
 
 // Other

@@ -1,8 +1,8 @@
 import { negative } from '../math'
-import { apply, Base, Cardinal, Frequency, from, Index, PREVIOUS, to } from '../nominal'
+import { apply, Base, Cardinal, DECREMENT, Frequency, from, Index, to } from '../nominal'
 
-const windowIterationHarmonicStepCount: (window: Base<Frequency>, iteration: Index) => Cardinal =
-    (window: Base<Frequency>, iteration: Index): Cardinal =>
+const windowIterationHarmonicStepCount: (window: Base<Frequency>, iteration: Index<Base<Frequency>>) => Cardinal =
+    (window: Base<Frequency>, iteration: Index<Base<Frequency>>): Cardinal =>
         to.Cardinal(from.Base<Frequency>(apply.Translation(
             apply.Power(
                 window,
@@ -12,7 +12,7 @@ const windowIterationHarmonicStepCount: (window: Base<Frequency>, iteration: Ind
                 window,
                 to.Power<Base<Frequency>>(from.Index(apply.Translation(
                     iteration,
-                    PREVIOUS,
+                    DECREMENT,
                 )))),
             )))),
         ))

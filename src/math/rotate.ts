@@ -55,7 +55,7 @@ const computeCycleMapForCyclingRotationMatrixForAxis: (axis: Index) => CycleMap 
                 insteadOf<Translation, Cycle<VectorOrMatrix>>(
                     ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS,
                 ),
-                to.Translation<Translation<Cycle<VectorOrMatrix>>>(from.Index(axis)),
+                to.Translation<Translation<Cycle<VectorOrMatrix>>>(from.Index<Number>(axis)),
             )
 
             return apply.Translation(rotationVectorOrMatrix, translation)
@@ -108,8 +108,8 @@ const rotate: <NumericType extends Number, Dimensionality extends number>(rotate
                 coordinate,
             )
 
-        const sin: Scalar<NumericType> = sine(rotation) as unknown as Scalar<NumericType>
-        const cos: Scalar<NumericType> = cosine(rotation) as unknown as Scalar<NumericType>
+        const sin: Scalar<NumericType> = to.Scalar<NumericType>(sine(rotation))
+        const cos: Scalar<NumericType> = to.Scalar<NumericType>(cosine(rotation))
 
         const relative: NumericType[] = map(
             coordinate,
@@ -124,18 +124,18 @@ const rotate: <NumericType extends Number, Dimensionality extends number>(rotate
         const standardRotationMatrix: RotationMatrix<NumericType> = to.Cycle([
             to.Cycle([
                 cos,
-                apply.Scalar(sin, negative(1) as unknown as Scalar<Scalar<NumericType>>),
-                0 as unknown as Scalar<NumericType>,
+                apply.Scalar(sin, to.Scalar<Scalar<NumericType>>(negative(1))),
+                to.Scalar<NumericType>(0),
             ]),
             to.Cycle([
                 sin,
                 cos,
-                0 as unknown as Scalar<NumericType>,
+                to.Scalar<NumericType>(0),
             ]),
             to.Cycle([
-                0 as unknown as Scalar<NumericType>,
-                0 as unknown as Scalar<NumericType>,
-                1 as unknown as Scalar<NumericType>,
+                to.Scalar<NumericType>(0),
+                to.Scalar<NumericType>(0),
+                to.Scalar<NumericType>(1),
             ]),
         ])
 
@@ -155,7 +155,7 @@ const rotate: <NumericType extends Number, Dimensionality extends number>(rotate
                     sum(
                         coordinateElement,
                         apply.Scalar(
-                            apply.Index(relative, index as unknown as Index<NumericType>),
+                            apply.Index(relative, insteadOf<Index, NumericType>(index)),
                             rotationScalar,
                         ),
                     ),
