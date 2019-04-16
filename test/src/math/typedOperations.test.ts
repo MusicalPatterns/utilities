@@ -1,4 +1,4 @@
-import { delta, difference, interval, of, product, quotient, round, sum, to } from '../../../src/indexForTest'
+import { delta, difference, interval, Ms, of, product, quotient, round, sum, to } from '../../../src/indexForTest'
 
 describe('typed operations', () => {
     describe('round', () => {
@@ -70,7 +70,7 @@ describe('typed operations', () => {
     describe('delta vs difference', () => {
         it('delta returns a Translation type Of the Units; difference simply dumbly subtracts if types match and returns of the same Units', () => {
             expect(delta(to.Ms(4), to.Ms(1)))
-                .toBe(to.Translation(of.Ms(3)))
+                .toBe(to.Translation<Ms>(3))
             expect(difference(to.Ms(4), to.Ms(1)))
                 .toBe(to.Ms(3))
         })
@@ -79,7 +79,7 @@ describe('typed operations', () => {
     describe('interval vs quotient', () => {
         it('interval returns a Scalar type Of the Units; quotient simply dumbly divides if types match and returns of the same Units', () => {
             expect(interval(to.Ms(6), to.Ms(2)))
-                .toBe(to.Scalar(of.Ms(3)))
+                .toBe(to.Scalar<Ms>(3))
             expect(quotient(to.Ms(6), to.Ms(2)))
                 .toBe(to.Ms(3))
         })

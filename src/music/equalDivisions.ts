@@ -20,7 +20,7 @@ const computeEqualDivisionScalars: (equalDivision: Denominator, window?: Base<Fr
         const division: number = from.Denominator(reciprocal(equalDivision))
         const base: Base<Frequency> = apply.Power(
             window,
-            to.Power(of.Base<Frequency>(division)),
+            to.Power<Base<Frequency>>(division),
         )
 
         const logarithmicStep: Scalar<Frequency> = to.Scalar(from.Base<Frequency>(base))
@@ -28,11 +28,11 @@ const computeEqualDivisionScalars: (equalDivision: Denominator, window?: Base<Fr
         return map(
             slice(
                 ZERO_AND_POSITIVE_INTEGERS,
-                to.Index(of.Integer(from.Index(INITIAL))),
+                INITIAL,
                 to.Index(from.Denominator(equalDivision)),
             ),
             (integer: Integer): Scalar<Frequency> =>
-                apply.Power(logarithmicStep, to.Power(of.Scalar<Frequency>(integer))),
+                apply.Power(logarithmicStep, to.Power<Scalar<Frequency>>(integer)),
         )
     }
 

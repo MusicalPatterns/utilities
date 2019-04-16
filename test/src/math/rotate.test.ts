@@ -1,16 +1,4 @@
-import {
-    apply,
-    Coordinate,
-    from,
-    negative,
-    of,
-    ONE_HALF,
-    PI,
-    rotate,
-    to,
-    X_AXIS,
-    Y_AXIS,
-} from '../../../src/indexForTest'
+import { apply, Coordinate, negative, ONE_HALF, PI, rotate, X_AXIS, Y_AXIS } from '../../../src/indexForTest'
 
 describe('rotate', () => {
     describe('in two dimensions', () => {
@@ -18,7 +6,7 @@ describe('rotate', () => {
             const coordinate: Coordinate<number, 2> = [ 3, 0 ]
             const actualCoordinate: Coordinate<number, 2> = rotate<number, 2>({
                 coordinate,
-                rotation: apply.Scalar(PI, to.Scalar(of.Radians(from.Scalar(negative(ONE_HALF))))),
+                rotation: apply.Scalar(PI, negative(ONE_HALF)),
             })
             const expectedCoordinate: Coordinate<number, 2> = [ 0, -3 ]
 
@@ -32,7 +20,7 @@ describe('rotate', () => {
             const coordinate: Coordinate<number, 3> = [ 3, 0, 0 ]
             const actualCoordinate: Coordinate<number, 3> = rotate<number, 3>({
                 coordinate,
-                rotation: apply.Scalar(PI, to.Scalar(of.Radians(from.Scalar(negative(ONE_HALF))))),
+                rotation: apply.Scalar(PI, negative(ONE_HALF)),
             })
             const expectedCoordinate: Coordinate<number, 3> = [ 0, -3, 0 ]
 
@@ -45,7 +33,7 @@ describe('rotate', () => {
             const actualCoordinate: Coordinate<number, 3> = rotate<number, 3>({
                 axis: Y_AXIS,
                 coordinate,
-                rotation: apply.Scalar(PI, to.Scalar(of.Radians(from.Scalar(negative(ONE_HALF))))),
+                rotation: apply.Scalar(PI, negative(ONE_HALF)),
             })
             const expectedCoordinate: Coordinate<number, 3> = [ 0, 0, 3 ]
 
@@ -58,7 +46,7 @@ describe('rotate', () => {
             const actualCoordinate: Coordinate<number, 3> = rotate<number, 3>({
                 axis: X_AXIS,
                 coordinate,
-                rotation: apply.Scalar(PI, to.Scalar(of.Radians(from.Scalar(negative(ONE_HALF))))),
+                rotation: apply.Scalar(PI, negative(ONE_HALF)),
             })
             const expectedCoordinate: Coordinate<number, 3> = [ 0, 0, -3 ]
 

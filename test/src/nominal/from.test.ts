@@ -28,15 +28,15 @@ describe('from', () => {
     })
 
     it('can downgrade operation while preserving type', () => {
-        const hzScalar: Scalar<Hz> = to.Scalar(of.Hz(3))
+        const hzScalar: Scalar<Hz> = to.Scalar<Hz>(3)
         const ofHzFromHzScalar: Of<Hz> = from.Scalar(hzScalar)
 
-        const baseScalar: Scalar<Base> = to.Scalar(of.Base(3))
+        const baseScalar: Scalar<Base> = to.Scalar<Base>(3)
         const ofBaseFromBaseScalar: Of<Base> = from.Scalar(baseScalar)
     })
 
     it('can assign to an object property without needing an intermediate variable', () => {
-        const hzScalar: Scalar<Hz> = to.Scalar(of.Hz(3))
+        const hzScalar: Scalar<Hz> = to.Scalar<Hz>(3)
 
         const recipientObject: { ofHz: Of<Hz> } = {
             ofHz: from.Scalar(hzScalar),
@@ -47,7 +47,7 @@ describe('from', () => {
         const scalars: Scalar[] = [ to.Scalar(2) ]
         const numbers: number[] = scalars.map(from.Scalar)
 
-        const hzScalars: Array<Scalar<Hz>> = [ to.Scalar(of.Hz(2)) ]
+        const hzScalars: Array<Scalar<Hz>> = [ to.Scalar<Hz>(2) ]
         const ofHzs: Array<Of<Hz>> = hzScalars.map((hzScalar: Scalar<Hz>) => from.Scalar(hzScalar))
     })
 
@@ -71,7 +71,7 @@ describe('from', () => {
 
         it('works for Index', () => {
             const three: number = from.Index(to.Index(3))
-            const threeScalar: Of<Scalar> = from.Index(to.Index(of.Scalar(3)))
+            const threeScalar: Of<Scalar> = from.Index(to.Index<Scalar>(3))
         })
     })
 })

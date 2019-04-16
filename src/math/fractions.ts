@@ -67,10 +67,10 @@ const computeCommonTerms: (...fractions: Fraction[]) => Fraction[] =
                 }
 
                 const termsMultiple: Multiple<Numerator> =
-                    to.Multiple(of.Numerator(from.Denominator(quotient(
+                    to.Multiple<Numerator>(from.Denominator(quotient(
                         lowestCommonDenominator,
                         denominator,
-                    ))))
+                    )))
 
                 return to.Fraction([
                     apply.Multiple(getNumerator(fraction), termsMultiple),

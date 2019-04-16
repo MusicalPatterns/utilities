@@ -2,7 +2,7 @@
 
 import { HtmlValue } from '../browser'
 import { stringSlice } from '../code'
-import { apply, EXCLUSIVE_TO_LEFT, from, Index, INITIAL, of, to } from '../nominal'
+import { apply, EXCLUSIVE_TO_LEFT, from, Index, INITIAL, insteadOf, of, to, Translation } from '../nominal'
 import { Operands } from './types'
 
 const splitOperands: (expression: string, operatorIndex: Index<string>) => Operands =
@@ -15,7 +15,7 @@ const splitOperands: (expression: string, operatorIndex: Index<string>) => Opera
                 expression,
                 apply.Translation(
                     operatorIndex,
-                    to.Translation(of.Index<string>(from.Translation<Index>(EXCLUSIVE_TO_LEFT))),
+                    insteadOf<Translation, Index<string>>(EXCLUSIVE_TO_LEFT),
                 ),
             ),
         )
@@ -85,12 +85,12 @@ const evaluateParenthetical: (expression: string) => number =
         const partBefore: string = stringSlice(expression, to.Index(of.string(0)), beginParantheticalIndex)
         const parenthetical: string = stringSlice(
             expression,
-            apply.Translation(beginParantheticalIndex, to.Translation(of.Index<string>(1))),
+            apply.Translation(beginParantheticalIndex, to.Translation<Index<string>>(1)),
             endParantheticalIndex,
         )
         const partAfter: string = stringSlice(
             expression,
-            apply.Translation(endParantheticalIndex, to.Translation(of.Index<string>(1))),
+            apply.Translation(endParantheticalIndex, to.Translation<Index<string>>(1)),
             endIndex,
         )
 

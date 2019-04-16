@@ -71,6 +71,12 @@ describe('to', () => {
             const ofHz: Of<Hz> = of.Hz(3)
             const hzScalar: Scalar<Hz> = to.Scalar(ofHz)
         })
+
+        it('allows choosing the Of as a type parameter', () => {
+            const rotationScalar: Scalar<Rotation> = to.Scalar<Rotation>(3)
+            const scalarScalar: Scalar<Scalar> = to.Scalar<Scalar>(3)
+            const hzScalar: Scalar<Hz> = to.Scalar<Hz>(3)
+        })
     })
 
     describe('special units/operation', () => {

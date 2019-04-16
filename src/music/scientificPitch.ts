@@ -8,18 +8,18 @@ import { ScientificPitches, ScientificPitchNoteName, ScientificPitchOctaveNumber
 const SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP: {
     [Index in ScientificPitchOctaveNumber]: Power<Base<Frequency>>
 } = {
-    [ ScientificPitchOctaveNumber._NEGATIVE_1 ]: to.Power(of.Base<Frequency>(negative(1))),
-    [ ScientificPitchOctaveNumber._0 ]: to.Power(of.Base<Frequency>(0)),
-    [ ScientificPitchOctaveNumber._1 ]: to.Power(of.Base<Frequency>(1)),
-    [ ScientificPitchOctaveNumber._2 ]: to.Power(of.Base<Frequency>(2)),
-    [ ScientificPitchOctaveNumber._3 ]: to.Power(of.Base<Frequency>(3)),
-    [ ScientificPitchOctaveNumber._4 ]: to.Power(of.Base<Frequency>(4)),
-    [ ScientificPitchOctaveNumber._5 ]: to.Power(of.Base<Frequency>(5)),
-    [ ScientificPitchOctaveNumber._6 ]: to.Power(of.Base<Frequency>(6)),
-    [ ScientificPitchOctaveNumber._7 ]: to.Power(of.Base<Frequency>(7)),
-    [ ScientificPitchOctaveNumber._8 ]: to.Power(of.Base<Frequency>(8)),
-    [ ScientificPitchOctaveNumber._9 ]: to.Power(of.Base<Frequency>(9)),
-    [ ScientificPitchOctaveNumber._10 ]: to.Power(of.Base<Frequency>(10)),
+    [ ScientificPitchOctaveNumber._NEGATIVE_1 ]: to.Power<Base<Frequency>>(negative(1)),
+    [ ScientificPitchOctaveNumber._0 ]: to.Power<Base<Frequency>>(0),
+    [ ScientificPitchOctaveNumber._1 ]: to.Power<Base<Frequency>>(1),
+    [ ScientificPitchOctaveNumber._2 ]: to.Power<Base<Frequency>>(2),
+    [ ScientificPitchOctaveNumber._3 ]: to.Power<Base<Frequency>>(3),
+    [ ScientificPitchOctaveNumber._4 ]: to.Power<Base<Frequency>>(4),
+    [ ScientificPitchOctaveNumber._5 ]: to.Power<Base<Frequency>>(5),
+    [ ScientificPitchOctaveNumber._6 ]: to.Power<Base<Frequency>>(6),
+    [ ScientificPitchOctaveNumber._7 ]: to.Power<Base<Frequency>>(7),
+    [ ScientificPitchOctaveNumber._8 ]: to.Power<Base<Frequency>>(8),
+    [ ScientificPitchOctaveNumber._9 ]: to.Power<Base<Frequency>>(9),
+    [ ScientificPitchOctaveNumber._10 ]: to.Power<Base<Frequency>>(10),
 }
 
 const SCIENTIFIC_PITCH_NOTE_NAME_TO_ZEROTH_OCTAVE_FREQUENCY_MAP: { [Index in ScientificPitchNoteName]: Hz } = {
@@ -40,10 +40,10 @@ const SCIENTIFIC_PITCH_NOTE_NAME_TO_ZEROTH_OCTAVE_FREQUENCY_MAP: { [Index in Sci
 const scientificPitch: (noteName: ScientificPitchNoteName, octaveNumber: ScientificPitchOctaveNumber) => Hz =
     (noteName: ScientificPitchNoteName, octaveNumber: ScientificPitchOctaveNumber): Hz => {
         const octaveScalar: Scalar<Hz> =
-            to.Scalar(of.Hz(from.Base<Frequency>(apply.Power(
+            to.Scalar<Hz>(from.Base<Frequency>(apply.Power(
                 OCTAVE,
                 SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP[ octaveNumber ],
-            ))))
+            )))
 
         return apply.Scalar(SCIENTIFIC_PITCH_NOTE_NAME_TO_ZEROTH_OCTAVE_FREQUENCY_MAP[ noteName ], octaveScalar)
     }

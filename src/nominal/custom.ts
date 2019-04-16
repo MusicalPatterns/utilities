@@ -40,9 +40,7 @@ type CustomOfMono<NominalInterfaceOptionObjectType extends NominalInterfaceOptio
 }
 type CustomOfPoly<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> = {
     [Index in keyof NominalInterfaceOptionObjectType['numericArray']]:
-    <NumericElementType extends NoUnits>(
-        value: NumericElementType[],
-    ) => Of<NominalInterfaceOptionObjectType['numericArray'][Index]>
+    <NumericType extends NoUnits>(value: NumericType) => Of<NominalInterfaceOptionObjectType['numericArray'][Index]>
 }
 type CustomOf<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> =
     CustomOfMono<NominalInterfaceOptionObjectType> & CustomOfPoly<NominalInterfaceOptionObjectType>
@@ -85,8 +83,8 @@ const computeNominalInterface: <NominalInterfaceOptionObjectType extends Nominal
             ...reduce(
                 Object.keys(nominalInterfaceOptionsObject.number || {}),
                 (
-                    accumulator: CustomToMono<NominalInterfaceOptionObjectType>, typeName: string,
-                ): CustomToMono<NominalInterfaceOptionObjectType> => ({
+                    accumulator: CustomOfMono<NominalInterfaceOptionObjectType>, typeName: string,
+                ): CustomOfMono<NominalInterfaceOptionObjectType> => ({
                     ...accumulator,
                     [ typeName ]: <NumericType extends NoUnits>(value: NumericType): unknown => value,
                 }),
@@ -95,10 +93,10 @@ const computeNominalInterface: <NominalInterfaceOptionObjectType extends Nominal
             ...reduce(
                 Object.keys(nominalInterfaceOptionsObject.numericArray || {}),
                 (
-                    accumulator: CustomToPoly<NominalInterfaceOptionObjectType>, typeName: string,
-                ): CustomToPoly<NominalInterfaceOptionObjectType> => ({
+                    accumulator: CustomOfPoly<NominalInterfaceOptionObjectType>, typeName: string,
+                ): CustomOfPoly<NominalInterfaceOptionObjectType> => ({
                     ...accumulator,
-                    [ typeName ]: <NumericElementType extends NoUnits>(values: NumericElementType[]): unknown => values,
+                    [ typeName ]: <NumericType extends NoUnits>(value: NumericType): unknown => value,
                 }),
                 {},
             ),

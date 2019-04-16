@@ -1,6 +1,6 @@
 // tslint:disable no-any no-unused-expression comment-format no-commented-code no-dead-store no-type-definitions-outside-types-modules
 
-// There should be 86 errors in this file.
+// There should be 90 errors in this file.
 
 // import {
 //     Base,
@@ -112,6 +112,13 @@
 //                 const scalarHzAsWrongHz: Rotation<Hz> = to.Hz(to.Scalar(3))
 //                 const scalarHzAsScalarWrong: Scalar<Cents> = to.Hz(to.Scalar(3))
 //                 const scalarHzAsWrongWrong: Rotation<Cents> = to.Hz(to.Scalar(3))
+//             })
+//
+//             it('DOES NOT ALLOW choosing the wrong type parameter', () => {
+//                 const rotationScalar: Scalar<Translation> = to.Scalar<Rotation>(3)
+//                 const scalarScalar: Translation<Rotation> = to.Scalar<Rotation>(3)
+//                 const hzScalar: Scalar<Ms> = to.Scalar<Hz>(3)
+//                 const msScalar: Rotation<Hz> = to.Scalar<Hz>(3)
 //             })
 //         })
 //
@@ -235,7 +242,7 @@
 //     describe('instead of', () => {
 //         const wrongOf: Index<Translation> = insteadOf<Index, Scalar>(INITIAL)
 //         const noOf: Index = insteadOf<Index, Scalar>(INITIAL)
-//         const fromFullOf: Scalar<Base> = insteadOf<Scalar, Rotation>(to.Scalar(of.Translation(1)))
+//         const fromFullOf: Scalar<Base> = insteadOf<Scalar, Rotation>(to.Scalar<Translation>(1))
 //     })
 //
 //     describe('of from', () => {

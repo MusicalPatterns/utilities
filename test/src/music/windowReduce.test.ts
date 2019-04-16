@@ -14,7 +14,7 @@ import {
 describe('reducing', () => {
     describe('octave reduce', () => {
         it('if the scalar is greater than 2, repeatedly divides the scalar until it is less than 2, thereby wrapping it within the octave window', () => {
-            expect(octaveReduce(to.Scalar(of.Frequency(3))))
+            expect(octaveReduce(to.Scalar<Frequency>(3)))
                 .toBe(THREE_HALVES)
         })
 
@@ -24,13 +24,13 @@ describe('reducing', () => {
         })
 
         it('does nothing if the scalar is already 1', () => {
-            expect(octaveReduce(to.Scalar(of.Frequency(1))))
-                .toBe(to.Scalar(of.Frequency(1)))
+            expect(octaveReduce(to.Scalar<Frequency>(1)))
+                .toBe(to.Scalar<Frequency>(1))
         })
 
         it('if the scalar is 2, changes it to 1', () => {
-            expect(octaveReduce(to.Scalar(of.Frequency(2))))
-                .toBe(to.Scalar(of.Frequency(1)))
+            expect(octaveReduce(to.Scalar<Frequency>(2)))
+                .toBe(to.Scalar<Frequency>(1))
         })
 
         it('actually multiplies until it is greater than 1 but less than 2 if it was less than 1', () => {
@@ -41,28 +41,28 @@ describe('reducing', () => {
 
     describe('general window reduce', () => {
         it('if the scalar is greater than the window, repeatedly divides the scalar until it is less than the window', () => {
-            expect(windowReduce(to.Scalar(of.Frequency(4)), to.Scalar(of.Scalar<Frequency>(3))))
+            expect(windowReduce(to.Scalar<Frequency>(4), to.Scalar<Scalar<Frequency>>(3)))
                 .toBe(FOUR_THIRDS)
         })
 
         it('does nothing if the scalar is already between 1 and the window', () => {
-            expect(windowReduce(FIVE_HALVES, to.Scalar(of.Scalar<Frequency>(3))))
+            expect(windowReduce(FIVE_HALVES, to.Scalar<Scalar<Frequency>>(3)))
                 .toBe(FIVE_HALVES)
         })
 
         it('does nothing if the scalar is already 1', () => {
-            expect(windowReduce(to.Scalar(of.Frequency(1)), to.Scalar(of.Scalar<Frequency>(3))))
-                .toBe(to.Scalar(of.Frequency(1)))
+            expect(windowReduce(to.Scalar<Frequency>(1), to.Scalar<Scalar<Frequency>>(3)))
+                .toBe(to.Scalar<Frequency>(1))
         })
 
         it('if the scalar is the window, changes it to 1', () => {
-            expect(windowReduce(to.Scalar(of.Frequency(3)), to.Scalar(of.Scalar<Frequency>(3))))
-                .toBe(to.Scalar(of.Frequency(1)))
+            expect(windowReduce(to.Scalar<Frequency>(3), to.Scalar<Scalar<Frequency>>(3)))
+                .toBe(to.Scalar<Frequency>(1))
         })
 
         it('actually multiplies until it is greater than 1 but less than the window if it was less than 1', () => {
-            expect(windowReduce(TWO_THIRDS, to.Scalar(of.Scalar<Frequency>(3))))
-                .toBe(to.Scalar(of.Frequency(2)))
+            expect(windowReduce(TWO_THIRDS, to.Scalar<Scalar<Frequency>>(3)))
+                .toBe(to.Scalar<Frequency>(2))
         })
     })
 })

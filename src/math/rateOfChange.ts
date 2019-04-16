@@ -1,5 +1,5 @@
 import { finalElement, initialElement, map, Maybe } from '../code'
-import { Index, indexOfFinalElement, INITIAL, Scalar, slice, Translation } from '../indexForTest'
+import { Index, indexOfFinalElement, INITIAL, insteadOf, Scalar, slice, Translation } from '../indexForTest'
 import { apply, from, isCycle, NEXT, of, to } from '../nominal'
 import { delta, interval } from './typedOperations'
 
@@ -16,7 +16,7 @@ const computeDeltas: <NumericElementType extends Number>(
                     array,
                     apply.Translation(
                         index,
-                        to.Translation(of.Index<NumericElementType>(from.Translation<Index>(NEXT))),
+                        insteadOf<Translation, Index<NumericElementType>>(NEXT),
                     ),
                 )
 
@@ -47,7 +47,7 @@ const computeIntervals: <NumericElementType extends Number>(
                     array,
                     apply.Translation(
                         index,
-                        to.Translation(of.Index<NumericElementType>(from.Translation<Index>(NEXT))),
+                        insteadOf<Translation, Index<NumericElementType>>(NEXT),
                     ),
                 )
 

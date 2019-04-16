@@ -7,8 +7,7 @@ import {
     from,
     Index,
     INITIAL,
-    Of,
-    of,
+    insteadOf,
     Radians,
     ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS,
     Scalar,
@@ -45,17 +44,18 @@ const computeCycleMapForScalingRotationMatrixToDimensionalityOfCoordinate:
         <VectorOrMatrix>(rotationVectorOrMatrix: Cycle<VectorOrMatrix>): Cycle<VectorOrMatrix> =>
             to.Cycle(slice(
                 rotationVectorOrMatrix,
-                INITIAL as unknown as Index<VectorOrMatrix>,
-                indexJustBeyondFinalElement(coordinate) as unknown as Index<VectorOrMatrix>,
+                INITIAL,
+                indexJustBeyondFinalElement(coordinate),
             ))
 
 const computeCycleMapForCyclingRotationMatrixForAxis: (axis: Index) => CycleMap =
     (axis: Index): CycleMap =>
         <VectorOrMatrix>(rotationVectorOrMatrix: Cycle<VectorOrMatrix>): Cycle<VectorOrMatrix> => {
             const translation: Translation<Cycle<VectorOrMatrix>> = apply.Translation(
-                ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS as unknown as
-                    Translation<Cycle<VectorOrMatrix>>,
-                to.Translation(of.Translation(from.Index(axis)) as unknown as Of<Translation<Cycle<VectorOrMatrix>>>),
+                insteadOf<Translation, Cycle<VectorOrMatrix>>(
+                    ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS,
+                ),
+                to.Translation<Translation<Cycle<VectorOrMatrix>>>(from.Index(axis)),
             )
 
             return apply.Translation(rotationVectorOrMatrix, translation)

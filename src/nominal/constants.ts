@@ -56,10 +56,10 @@ const HEPTUPLE: Multiple = to.Multiple(7)
 const OCTUPLE: Multiple = to.Multiple(8)
 const NONTUPLE: Multiple = to.Multiple(9)
 
-const EVERY_OTHER: Multiple<Index> = to.Multiple(of.Index(2))
-const EVERY_THIRD: Multiple<Index> = to.Multiple(of.Index(3))
-const EVERY_FOURTH: Multiple<Index> = to.Multiple(of.Index(4))
-const EVERY_FIFTH: Multiple<Index> = to.Multiple(of.Index(5))
+const EVERY_OTHER: Multiple<Index> = to.Multiple<Index>(2)
+const EVERY_THIRD: Multiple<Index> = to.Multiple<Index>(3)
+const EVERY_FOURTH: Multiple<Index> = to.Multiple<Index>(4)
+const EVERY_FIFTH: Multiple<Index> = to.Multiple<Index>(5)
 
 const ONCE: Cardinal = to.Cardinal(1)
 const TWICE: Cardinal = to.Cardinal(2)
@@ -114,18 +114,18 @@ const ADDITIVE_IDENTITY: Translation<any> = to.Translation(0)
 const MULTIPLICATIVE_IDENTITY: Scalar<any> = to.Scalar(1)
 const FRACTIONAL_IDENTITY: Fraction = to.Fraction([ to.Numerator(1), to.Denominator(1) ])
 
-const NEXT: Translation<Index> = to.Translation(of.Index(1))
-const PREVIOUS: Translation<Index> = to.Translation(of.Index(-1))
-const UP_ONE: Translation<Cardinal> = to.Translation(of.Cardinal(1))
-const DOWN_ONE: Translation<Cardinal> = to.Translation(of.Cardinal(-1))
+const NEXT: Translation<Index> = to.Translation<Index>(1)
+const PREVIOUS: Translation<Index> = to.Translation<Index>(-1)
+const UP_ONE: Translation<Cardinal> = to.Translation<Cardinal>(1)
+const DOWN_ONE: Translation<Cardinal> = to.Translation<Cardinal>(-1)
 const INCREMENT: Translation<any> = to.Translation(1)
 const DECREMENT: Translation<any> = to.Translation(-1)
-const ONE_MORE: Translation<Cardinal> = to.Translation(of.Cardinal(1))
-const ONE_FEWER: Translation<Cardinal> = to.Translation(of.Cardinal(-1))
+const ONE_MORE: Translation<Cardinal> = to.Translation<Cardinal>(1)
+const ONE_FEWER: Translation<Cardinal> = to.Translation<Cardinal>(-1)
 const NO_TRANSLATION: Translation<any> = to.Translation(0)
 
-const NUMERATOR_INDEX: Index<Numerator> = to.Index(of.Numerator(0))
-const DENOMINATOR_INDEX: Index<Denominator> = to.Index(of.Denominator(1))
+const NUMERATOR_INDEX: Index<Numerator> = to.Index<Numerator>(0)
+const DENOMINATOR_INDEX: Index<Denominator> = to.Index<Denominator>(1)
 
 const FIRST_FACTOR_NECESSARY_TO_CHECK_IF_COMMON: Integer = to.Integer(2)
 
@@ -134,25 +134,25 @@ const E: Base<any> = to.Base(Math.E)
 
 const GOOD_AMOUNT_OF_TIME_TO_SEE_WHAT_THE_SITUATION_IS_WHEN_HEADFULLY_DEBUGGING_TESTS: Ms = to.Ms(3000)
 
-const INCLUSIVE: Translation<Index> = to.Translation(of.Index(1))
-const EXCLUSIVE: Translation<Index> = to.Translation(of.Index(-1))
-const INCLUSIVE_TO_LEFT: Translation<Index> = to.Translation(of.Index(-1))
-const EXCLUSIVE_TO_LEFT: Translation<Index> = to.Translation(of.Index(1))
+const INCLUSIVE: Translation<Index> = to.Translation<Index>(1)
+const EXCLUSIVE: Translation<Index> = to.Translation<Index>(-1)
+const INCLUSIVE_TO_LEFT: Translation<Index> = to.Translation<Index>(-1)
+const EXCLUSIVE_TO_LEFT: Translation<Index> = to.Translation<Index>(1)
 
 const INITIAL: Index<any> = to.Index(0)
 const SKIP_FIRST_ELEMENT: Index<any> = to.Index(1)
 
-const TRANSLATION_FROM_LENGTH_TO_FINAL_INDEX: Translation<Cardinal> = to.Translation(of.Cardinal(-1))
+const TRANSLATION_FROM_LENGTH_TO_FINAL_INDEX: Translation<Cardinal> = to.Translation<Cardinal>(-1)
 const EXAMPLE_ELEMENT_INDEX: Index<any> = to.Index(0)
 
 const NOT_FOUND: Index<any> = to.Index(-1)
 
 const SEMITONES_PER_OCTAVE: Cardinal = to.Cardinal(12)
 
-const OCTAVE: Base<Frequency> = to.Base(of.Frequency(2))
-const TRITAVE: Base<Frequency> = to.Base(of.Frequency(3))
+const OCTAVE: Base<Frequency> = to.Base<Frequency>(2)
+const TRITAVE: Base<Frequency> = to.Base<Frequency>(3)
 const SEMITONE: Base<Frequency> =
-    to.Base(of.Frequency(Math.pow(from.Base<Frequency>(OCTAVE), (1 / from.Cardinal(SEMITONES_PER_OCTAVE)))))
+    to.Base<Frequency>(Math.pow(from.Base<Frequency>(OCTAVE), (1 / from.Cardinal(SEMITONES_PER_OCTAVE))))
 
 const CENTS_PER_SEMITONE: Cents = to.Cents(100)
 const CENTS_PER_OCTAVE: Cents = to.Cents(from.Cents(CENTS_PER_SEMITONE) * from.Cardinal(SEMITONES_PER_OCTAVE))

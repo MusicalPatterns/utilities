@@ -6,16 +6,16 @@ const windowIterationHarmonicStepCount: (window: Base<Frequency>, iteration: Ind
         to.Cardinal(from.Base<Frequency>(apply.Translation(
             apply.Power(
                 window,
-                to.Power(of.Base<Frequency>(from.Index(iteration))),
+                to.Power<Base<Frequency>>(from.Index(iteration)),
             ),
-            to.Translation(of.Base<Frequency>(from.Base<Frequency>(negative(apply.Power(
+            to.Translation<Base<Frequency>>(from.Base<Frequency>(negative(apply.Power(
                 window,
-                to.Power(of.Base<Frequency>(from.Index(apply.Translation(
+                to.Power<Base<Frequency>>(from.Index(apply.Translation(
                     iteration,
                     PREVIOUS,
                 )))),
-            ))))),
-        )))
+            )))),
+        ))
 
 export {
     windowIterationHarmonicStepCount,

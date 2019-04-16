@@ -48,13 +48,13 @@ const Translation: <TranslatedType>(
             for (
                 let index: Index = to.Index(0);
                 index <= finalIndexFromElementsTotal(cellCount);
-                index = Translation(index, to.Translation(of.Index(1)))
+                index = Translation(index, to.Translation<Index>(1))
             ) {
                 let cycledIndex: Index = Translation(
                     index,
-                    to.Translation(of.Index(-from.Translation(translation as unknown as Translation))),
+                    to.Translation<Index>(-from.Translation(translation as unknown as Translation)),
                 )
-                cycledIndex = Modulus(cycledIndex, to.Modulus(of.Index(from.Cardinal(cellCount))))
+                cycledIndex = Modulus(cycledIndex, to.Modulus<Index>(from.Cardinal(cellCount)))
                 cycledCycle.push(cycle[ from.Index(cycledIndex) ])
             }
 
@@ -119,7 +119,7 @@ const Index: <ElementType>(
         if (isCycle(array)) {
             const cycledIndex: Index<ElementType> = Modulus(
                 index,
-                to.Modulus(of.Index<ElementType>(array.length)),
+                to.Modulus<Index<ElementType>>(array.length),
             )
 
             return array[ from.Index(cycledIndex as unknown as Index) ]
