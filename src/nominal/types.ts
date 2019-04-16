@@ -91,7 +91,7 @@ type OperationNameFromOperation<OperationType> =
                                     OperationType extends Index ? 'Index' :
                                         ''
 
-type Block = Number[] & { _BlockBrand: void }
+type Block = number[] & { _BlockBrand: void }
 
 type Cycle<ElementType = number> = ElementType[] & { _CycleBrand: boolean }
 
