@@ -123,14 +123,14 @@ const Fraction: (fraction: [ Integer | Numerator, Integer | Denominator ]) => Fr
 
 // Special Operations
 
-const Index: <IndexType extends Number | string = number>(index: IndexType extends Number ? number : Of<IndexType>) => Index<IndexType> =
-    <IndexType extends Number | string = number>(index: IndexType extends Number ? number : Of<IndexType>): Index<IndexType> => {
+const Index: <IndexType = number>(index: IndexType extends Number ? number : Of<IndexType>) => Index<IndexType> =
+    <IndexType = number>(index: IndexType extends Number ? number : Of<IndexType>): Index<IndexType> => {
         integerCheck(index as unknown as number, 'Index')
 
         return index as unknown as Index<IndexType>
     }
-const Translation: <TranslationType extends Number | unknown[] = number>(translation: TranslationType extends Number ? number : Of<TranslationType>) => Translation<TranslationType> =
-    <TranslationType extends Number | unknown[] = number>(translation: TranslationType extends Number ? number : Of<TranslationType>): Translation<TranslationType> =>
+const Translation: <TranslationType = number>(translation: TranslationType extends Number ? number : Of<TranslationType>) => Translation<TranslationType> =
+    <TranslationType = number>(translation: TranslationType extends Number ? number : Of<TranslationType>): Translation<TranslationType> =>
         translation as unknown as Translation<TranslationType>
 
 const Multiple: <NumericType extends Number = number>(multiple: NumericType extends Number ? number : Of<NumericType>) => Multiple<NumericType> =
