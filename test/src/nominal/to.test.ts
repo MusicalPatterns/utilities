@@ -64,6 +64,12 @@ describe('to', () => {
                 .not
                 .toBe(to.Rotation(4))
         })
+
+        it('should be able to map', () => {
+            const single: Scalar = to.Scalar(3)
+            const array: Scalar[] = [ 3, 4, 5 ]
+                .map(to.Scalar)
+        })
     })
 
     describe('units and operations', () => {
@@ -120,7 +126,7 @@ describe('to', () => {
             const integer: Integer = to.Integer(3)
 
             const scalar: Scalar = to.Scalar(integer)
-            const scalarInteger: Scalar<Integer> = to.Scalar(integer)
+            const scalarInteger: Scalar<Integer> = to.Scalar(of.Integer(integer))
         })
 
         it('allows using integers where you would use numbers', () => {

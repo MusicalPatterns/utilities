@@ -1,6 +1,6 @@
 // tslint:disable no-any no-unused-expression comment-format no-commented-code no-dead-store no-type-definitions-outside-types-modules
 
-// There should be 101 errors in this file.
+// There should be 112 errors in this file.
 
 // import {
 //     Base,
@@ -121,7 +121,7 @@
 //                 const msScalar: Rotation<Hz> = to.Scalar<Hz>(3)
 //             })
 //
-//             it('DOES NOT ALLOW assigning a mere operation to a operation Of something (this one does not quite work yet)', () => {
+//             it('DOES NOT ALLOW assigning a mere operation to a operation Of something', () => {
 //                 const scalarToScalarOfUnits: Scalar<Ms> = to.Scalar(2)
 //                 const asdgsdaggdsdgsdgdgsd: Scalar<Ms> = to.Scalar<number>(2)
 //
@@ -132,6 +132,9 @@
 //
 //                 const thing: Scalar<Ms> = 2 as unknown as Scalar
 //                 const thing2: Scalar = 2 as unknown as Scalar<Ms>
+//
+//                 const never: Scalar = to.Scalar<Ms>(3)
+//                 const never2: Scalar = to.Scalar<Rotation>(3)
 //             })
 //         })
 //
@@ -155,6 +158,19 @@
 //             it('DOES NOT ALLOW these oddities for Index', () => {
 //                 const nestedIndexIndex: Index = to.Index(to.Index(3))
 //                 const indexWrongScalar: Scalar = to.Index(3)
+//             })
+//
+//             it('DOES NOT ALLOW same as above but for special operation', () => {
+//                 const indexToIndexOfUnits: Index<Ms> = to.Index(2)
+//                 const asdgsdaggdsdgsdgdgsd: Index<Ms> = to.Index<number>(2)
+//
+//                 const asg: Index<Ms> = 2 as unknown as Index
+//                 const asgg: Index<Ms> = 2 as unknown as Index<number>
+//
+//                 const indexToIndexOfOperation: Index<Rotation> = to.Index(2)
+//
+//                 const thing: Index<Ms> = 2 as unknown as Index
+//                 const thing2: Index = 2 as unknown as Index<Ms>
 //             })
 //         })
 //     })

@@ -1,5 +1,5 @@
 import { reduce } from '../code'
-import { apply, Index, Power, SQUARE_ROOT, SQUARED } from '../nominal'
+import { apply, Index, SQUARE_ROOT, SQUARED } from '../nominal'
 import { absoluteValue, difference, sum } from './typedOperations'
 import { Coordinate } from './types'
 

@@ -57,6 +57,7 @@ type Multiple<OfType extends Number = number> = Integerlike & OperationBrand<'Mu
 
 // Of
 
+type NoOf = number & { _OfBrand?: 'NoOf' }
 type Of<OfType> = number & { _OfBrand: OfType }
 
 // Integer
@@ -153,4 +154,5 @@ export {
     Of,
     OperationNameFromOperation,
     UnitsNameFromUnits,
+    NoOf,
 }

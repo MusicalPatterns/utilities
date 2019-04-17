@@ -21,6 +21,7 @@ import {
     Modulus,
     Ms,
     Multiple,
+    NoOf,
     NormalScalar,
     NoUnits,
     Numerator,
@@ -70,26 +71,50 @@ const Amplitude: <NumericType extends NoUnits>(amplitude: NumericType) => Amplit
 
 // Operation
 
-const Scalar: <NumericType extends Number = number>(scalar: number | Of<NumericType>) => Scalar<NumericType> =
-    <NumericType extends Number = number>(scalar: number | Of<NumericType>): Scalar<NumericType> =>
+const Scalar: {
+    <NumericType extends NoOf = number>(scalar: NumericType): Scalar,
+    <NumericType extends Number = number>(scalar: number | Of<NumericType>): Scalar<NumericType>,
+    <NumericType extends NoOf = number>(scalar: NumericType): Scalar,
+} =
+    <NumericType extends Number | NoOf = number>(scalar: NumericType | number | Of<NumericType>): Scalar<NumericType> =>
         scalar as unknown as Scalar<NumericType>
-const NormalScalar: <NumericType extends Number = number>(normalScalar: number | Of<NumericType>) => NormalScalar<NumericType> =
-    <NumericType extends Number = number>(normalScalar: number | Of<NumericType>): NormalScalar<NumericType> => {
+const NormalScalar: {
+    <NumericType extends NoOf = number>(normalScalar: NumericType): NormalScalar,
+    <NumericType extends Number = number>(normalScalar: number | Of<NumericType>): NormalScalar<NumericType>,
+    <NumericType extends NoOf = number>(normalScalar: NumericType): NormalScalar,
+} =
+    <NumericType extends Number | NoOf = number>(normalScalar: NumericType | number | Of<NumericType>): NormalScalar<NumericType> => {
         normalScalarCheck(normalScalar)
 
         return normalScalar as unknown as NormalScalar<NumericType>
     }
-const Rotation: <NumericType extends Number = number>(rotation: number | Of<NumericType>) => Rotation<NumericType> =
-    <NumericType extends Number = number>(rotation: number | Of<NumericType>): Rotation<NumericType> =>
+const Rotation: {
+    <NumericType extends NoOf = number>(rotation: NumericType): Rotation,
+    <NumericType extends Number = number>(rotation: number | Of<NumericType>): Rotation<NumericType>,
+    <NumericType extends NoOf = number>(rotation: NumericType): Rotation,
+} =
+    <NumericType extends Number | NoOf = number>(rotation: NumericType | number | Of<NumericType>): Rotation<NumericType> =>
         rotation as unknown as Rotation<NumericType>
-const Base: <NumericType extends Number = number>(base: number | Of<NumericType>) => Base<NumericType> =
-    <NumericType extends Number = number>(base: number | Of<NumericType>): Base<NumericType> =>
+const Base: {
+    <NumericType extends NoOf = number>(base: NumericType): Base,
+    <NumericType extends Number = number>(base: number | Of<NumericType>): Base<NumericType>,
+    <NumericType extends NoOf = number>(base: NumericType): Base,
+} =
+    <NumericType extends Number | NoOf = number>(base: NumericType | number | Of<NumericType>): Base<NumericType> =>
         base as unknown as Base<NumericType>
-const Power: <NumericType extends Number = number>(power: number | Of<NumericType>) => Power<NumericType> =
-    <NumericType extends Number = number>(power: number | Of<NumericType>): Power<NumericType> =>
+const Power: {
+    <NumericType extends NoOf = number>(power: NumericType): Power,
+    <NumericType extends Number = number>(power: number | Of<NumericType>): Power<NumericType>,
+    <NumericType extends NoOf = number>(power: NumericType): Power,
+} =
+    <NumericType extends Number | NoOf = number>(power: NumericType | number | Of<NumericType>): Power<NumericType> =>
         power as unknown as Power<NumericType>
-const Modulus: <NumericType extends Number = number>(modulus: number | Of<NumericType>) => Modulus<NumericType> =
-    <NumericType extends Number = number>(modulus: number | Of<NumericType>): Modulus<NumericType> =>
+const Modulus: {
+    <NumericType extends NoOf = number>(modulus: NumericType): Modulus,
+    <NumericType extends Number = number>(modulus: number | Of<NumericType>): Modulus<NumericType>,
+    <NumericType extends NoOf = number>(modulus: NumericType): Modulus,
+} =
+    <NumericType extends Number | NoOf = number>(modulus: NumericType | number | Of<NumericType>): Modulus<NumericType> =>
         modulus as unknown as Modulus<NumericType>
 
 // Special Units
@@ -123,18 +148,30 @@ const Fraction: (fraction: [ Integer | Numerator, Integer | Denominator ]) => Fr
 
 // Special Operations
 
-const Index: <IndexType = number>(index: number | Of<IndexType>) => Index<IndexType> =
-    <IndexType = number>(index: number | Of<IndexType>): Index<IndexType> => {
+const Index: {
+    <IndexType extends NoOf = number>(scalar: IndexType): Index,
+    <IndexType = number>(scalar: number | Of<IndexType>): Index<IndexType>,
+    <IndexType extends NoOf = number>(scalar: IndexType): Index,
+} =
+    <IndexType = number>(index: IndexType | number | Of<IndexType>): Index<IndexType> => {
         integerCheck(index as unknown as number, 'Index')
 
         return index as unknown as Index<IndexType>
     }
-const Translation: <TranslationType = number>(translation: number | Of<TranslationType>) => Translation<TranslationType> =
-    <TranslationType = number>(translation: number | Of<TranslationType>): Translation<TranslationType> =>
+const Translation: {
+    <TranslationType extends NoOf = number>(scalar: TranslationType): Translation,
+    <TranslationType = number>(scalar: number | Of<TranslationType>): Translation<TranslationType>,
+    <TranslationType extends NoOf = number>(scalar: TranslationType): Translation,
+} =
+    <TranslationType = number>(translation: TranslationType | number | Of<TranslationType>): Translation<TranslationType> =>
         translation as unknown as Translation<TranslationType>
 
-const Multiple: <NumericType extends Number = number>(multiple: number | Of<NumericType>) => Multiple<NumericType> =
-    <NumericType extends Number = number>(multiple: number | Of<NumericType>): Multiple<NumericType> => {
+const Multiple: {
+    <NumericType extends NoOf = number>(multiple: NumericType): Multiple,
+    <NumericType extends Number = number>(multiple: number | Of<NumericType>): Multiple<NumericType>,
+    <NumericType extends NoOf = number>(multiple: NumericType): Multiple,
+} =
+    <NumericType extends Number | NoOf = number>(multiple: NumericType | number | Of<NumericType>): Multiple<NumericType> => {
         integerCheck(multiple as number, 'Multiple')
 
         return multiple as unknown as Multiple<NumericType>

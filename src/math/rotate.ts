@@ -55,7 +55,7 @@ const computeCycleMapForCyclingRotationMatrixForAxis: (axis: Index) => CycleMap 
                 insteadOf<Translation, Cycle<VectorOrMatrix>>(
                     ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS,
                 ),
-                to.Translation<Translation<Cycle<VectorOrMatrix>>>(from.Index<Number>(axis)),
+                insteadOf<Translation, Translation<Cycle<VectorOrMatrix>>>(to.Translation(from.Index(axis))),
             )
 
             return apply.Translation(rotationVectorOrMatrix, translation)
