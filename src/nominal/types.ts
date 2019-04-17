@@ -42,9 +42,9 @@ type Modulus<OfType extends Number = number> = OperationBrand<'Modulus', OfType>
 
 // Special Units
 
-type Cardinal = Integerlike & UnitsBrand<'Cardinal'>
-type Numerator = Integerlike & UnitsBrand<'Numerator'>
-type Denominator = Integerlike & UnitsBrand<'Denominator'>
+type Cardinal = Integer & UnitsBrand<'Cardinal'>
+type Numerator = Integer & UnitsBrand<'Numerator'>
+type Denominator = Integer & UnitsBrand<'Denominator'>
 
 type Fraction = [ Numerator, Denominator ]
 
@@ -53,7 +53,7 @@ type Fraction = [ Numerator, Denominator ]
 type Ordinal<OfType = number> = OperationBrand<'Ordinal', OfType>
 type Translation<OfType = number> = OperationBrand<'Translation', OfType>
 
-type Multiple<OfType extends Number = number> = Integerlike & OperationBrand<'Multiple', OfType>
+type Multiple<OfType extends Number = number> = Integer & OperationBrand<'Multiple', OfType>
 
 // Of
 
@@ -62,8 +62,7 @@ type Of<OfType> = number & { _OfBrand: OfType }
 
 // Integer
 
-type Integer = Number & Integerlike
-type Integerlike = number & { _IntegerBrand: 'Integer' }
+type Integer = Number & number & { _IntegerBrand: 'Integer' }
 
 // Other Stuff
 
@@ -136,7 +135,6 @@ export {
     OperationBrand,
     OperationOf,
     UnitsBrand,
-    Integerlike,
     Multiple,
     Of,
     OperationNameFromOperation,

@@ -4,7 +4,6 @@ import { isEmpty, isUndefined } from '../code'
 import {
     ADDITIVE_IDENTITY,
     Integer,
-    Integerlike,
     MULTIPLICATIVE_IDENTITY,
     NoOperation,
     Scalar,
@@ -102,11 +101,11 @@ const negative: <NumericType extends Number>(value: NumericType) => NumericType 
     <NumericType extends Number>(value: NumericType): NumericType =>
         -(value as unknown as number) as unknown as NumericType
 
-const round: <NumericType extends Number, IntegerType extends Integerlike = Integer>(
+const round: <NumericType extends Number, IntegerType extends Integer>(
     value: NumericType,
     precision?: IntegerType,
 ) => NumericType =
-    <NumericType extends Number, IntegerType extends Integerlike = Integer>(
+    <NumericType extends Number, IntegerType extends Integer>(
         value: NumericType,
         precision?: IntegerType,
     ): NumericType => {

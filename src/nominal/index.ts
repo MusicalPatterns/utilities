@@ -173,7 +173,6 @@ export {
     NominalNumber,
     NormalScalar,
     Ordinal,
-    Integerlike,
     Multiple,
     Of,
 } from './types'
