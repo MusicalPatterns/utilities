@@ -28,7 +28,7 @@ const computeEqualDivisionScalars: (equalDivision: Denominator, window?: Base<Fr
             slice(
                 ZERO_AND_POSITIVE_INTEGERS,
                 INITIAL,
-                to.Index(from.Denominator(equalDivision)),
+                to.Ordinal(from.Denominator(equalDivision)),
             ),
             (integer: Integer): Scalar<Frequency> =>
                 apply.Power(logarithmicStep, to.Power<Scalar<Frequency>>(integer)),

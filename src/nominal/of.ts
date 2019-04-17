@@ -10,7 +10,6 @@ import {
     Fraction,
     Frequency,
     Hz,
-    Index,
     Integer,
     Meters,
     Modulus,
@@ -19,6 +18,7 @@ import {
     NormalScalar,
     Numerator,
     Of,
+    Ordinal,
     Power,
     Radians,
     Rotation,
@@ -106,9 +106,9 @@ const Fraction: (ofFraction: number) => Of<Fraction> =
 const Translation: <OfType extends Number = number>(ofTranslation: number | OfType) => Of<Translation<OfType>> =
     <OfType extends Number = number>(ofTranslation: number | OfType): Of<Translation<OfType>> =>
         ofTranslation as unknown as Of<Translation<OfType>>
-const Index: <OfType = number>(ofIndex: number | OfType) => Of<Index<OfType>> =
-    <OfType = number>(ofIndex: number | OfType): Of<Index<OfType>> =>
-        ofIndex as unknown as Of<Index<OfType>>
+const Ordinal: <OfType = number>(ofIndex: number | OfType) => Of<Ordinal<OfType>> =
+    <OfType = number>(ofIndex: number | OfType): Of<Ordinal<OfType>> =>
+        ofIndex as unknown as Of<Ordinal<OfType>>
 const Multiple: <OfType extends Number = number>(ofMultiple: number | OfType) => Of<Multiple<OfType>> =
     <OfType extends Number = number>(ofMultiple: number | OfType): Of<Multiple<OfType>> =>
         ofMultiple as unknown as Of<Multiple<OfType>>
@@ -144,7 +144,7 @@ export {
     Numerator,
     Denominator,
     Fraction,
-    Index,
+    Ordinal,
     Translation,
     Multiple,
     Cycle,

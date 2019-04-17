@@ -1,5 +1,5 @@
 import { finalElement, initialElement, map, Maybe } from '../code'
-import { Index, indexOfFinalElement, INITIAL, insteadOf, Scalar, slice, Translation } from '../indexForTest'
+import { indexOfFinalElement, INITIAL, insteadOf, Ordinal, Scalar, slice, Translation } from '../indexForTest'
 import { apply, isCycle, NEXT } from '../nominal'
 import { delta, interval } from './typedOperations'
 
@@ -10,13 +10,13 @@ const computeDeltas: <NumericElementType extends Number>(
         array: NumericElementType[],
     ): Array<Translation<NumericElementType>> => {
         const deltas: Array<Translation<NumericElementType>> = map(
-            slice(array, INITIAL as unknown as Index<NumericElementType>, indexOfFinalElement(array)),
-            (value: NumericElementType, index: Index<NumericElementType>) => {
-                const nextValue: NumericElementType = apply.Index(
+            slice(array, INITIAL as unknown as Ordinal<NumericElementType>, indexOfFinalElement(array)),
+            (value: NumericElementType, index: Ordinal<NumericElementType>) => {
+                const nextValue: NumericElementType = apply.Ordinal(
                     array,
                     apply.Translation(
                         index,
-                        insteadOf<Translation, Index<NumericElementType>>(NEXT),
+                        insteadOf<Translation, Ordinal<NumericElementType>>(NEXT),
                     ),
                 )
 
@@ -41,13 +41,13 @@ const computeIntervals: <NumericElementType extends Number>(
         array: NumericElementType[],
     ): Array<Maybe<Scalar<NumericElementType>>> => {
         const intervals: Array<Maybe<Scalar<NumericElementType>>> = map(
-            slice(array, INITIAL as unknown as Index<NumericElementType>, indexOfFinalElement(array)),
-            (value: NumericElementType, index: Index<NumericElementType>): Maybe<Scalar<NumericElementType>> => {
-                const nextValue: NumericElementType = apply.Index(
+            slice(array, INITIAL as unknown as Ordinal<NumericElementType>, indexOfFinalElement(array)),
+            (value: NumericElementType, index: Ordinal<NumericElementType>): Maybe<Scalar<NumericElementType>> => {
+                const nextValue: NumericElementType = apply.Ordinal(
                     array,
                     apply.Translation(
                         index,
-                        insteadOf<Translation, Index<NumericElementType>>(NEXT),
+                        insteadOf<Translation, Ordinal<NumericElementType>>(NEXT),
                     ),
                 )
 

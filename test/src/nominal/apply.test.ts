@@ -1,6 +1,6 @@
 // tslint:disable no-dead-store no-unused-expression
 
-import { apply, Cycle, Index, negative, ONE_HALF, Scalar, to, Translation } from '../../../src/indexForTest'
+import { apply, Cycle, negative, ONE_HALF, Ordinal, Scalar, to, Translation } from '../../../src/indexForTest'
 
 describe('apply', () => {
     describe('Scalar', () => {
@@ -9,27 +9,27 @@ describe('apply', () => {
         })
     })
 
-    describe('Index', () => {
+    describe('Ordinal', () => {
         it('when the array is cyclical, wraps the index, whether negative or beyond its length', () => {
             const myCycle: Cycle<string> = to.Cycle([ 'a', 'b', 'c' ])
             const myArray: string[] = [ 'd', 'e', 'f' ]
 
-            expect(apply.Index(myCycle, to.Index<string>(4)))
+            expect(apply.Ordinal(myCycle, to.Ordinal<string>(4)))
                 .toBe('b')
-            expect(apply.Index(myCycle, to.Index<string>(negative(1))))
+            expect(apply.Ordinal(myCycle, to.Ordinal<string>(negative(1))))
                 .toBe('c')
-            expect(apply.Index(myCycle, to.Index<string>(1)))
+            expect(apply.Ordinal(myCycle, to.Ordinal<string>(1)))
                 .toBe('b')
-            expect(apply.Index(myCycle, to.Index<string>(0)))
+            expect(apply.Ordinal(myCycle, to.Ordinal<string>(0)))
                 .toBe('a')
 
-            expect(() => apply.Index(myArray, to.Index<string>(4)))
-                .toThrowError(`Index 4 exceeds available indices of array of length 3`)
-            expect(apply.Index(myArray, to.Index<string>(negative(1))))
+            expect(() => apply.Ordinal(myArray, to.Ordinal<string>(4)))
+                .toThrowError(`Ordinal 4 exceeds available indices of array of length 3`)
+            expect(apply.Ordinal(myArray, to.Ordinal<string>(negative(1))))
                 .toBeUndefined()
-            expect(apply.Index(myArray, to.Index<string>(1)))
+            expect(apply.Ordinal(myArray, to.Ordinal<string>(1)))
                 .toBe('e')
-            expect(apply.Index(myArray, to.Index<string>(0)))
+            expect(apply.Ordinal(myArray, to.Ordinal<string>(0)))
                 .toBe('d')
         })
     })

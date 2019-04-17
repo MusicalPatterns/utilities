@@ -69,9 +69,9 @@ describe('from', () => {
                 .toBe(5 / 4)
         })
 
-        it('works for Index', () => {
-            const three: number = from.Index(to.Index(3))
-            const threeScalar: Of<Scalar> = from.Index(to.Index<Scalar>(3))
+        it('works for Ordinal', () => {
+            const three: number = from.Ordinal(to.Ordinal(3))
+            const threeScalar: Of<Scalar> = from.Ordinal(to.Ordinal<Scalar>(3))
         })
     })
 })

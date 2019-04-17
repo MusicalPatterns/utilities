@@ -10,13 +10,13 @@ import {
     goesQuadratically,
     goesQuadraticallyBetweenValueAndValue,
     goesQuadraticallyFromValueToValue,
-    Index,
     isCloseTo,
     isGreaterThan,
     isGreaterThanOrEqualTo,
     isLessThan,
     isLessThanOrEqualTo,
     isUndefined,
+    Ordinal,
 } from '@musical-patterns/utilities'
 import CustomEqualityTester = jasmine.CustomEqualityTester
 import CustomMatcher = jasmine.CustomMatcher
@@ -165,8 +165,8 @@ const customMatchers: CustomMatcherFactories = {
                         message,
                 )
 
-                forEach(expected, (expectedElement: NumericElementType, index: Index<NumericElementType>): void => {
-                    const actualElement: NumericElementType = apply.Index(actual, index)
+                forEach(expected, (expectedElement: NumericElementType, index: Ordinal<NumericElementType>): void => {
+                    const actualElement: NumericElementType = apply.Ordinal(actual, index)
 
                     testIsCloseTo(actualElement, expectedElement, precision, negate, message)
                 })
@@ -182,8 +182,8 @@ const customMatchers: CustomMatcherFactories = {
             message?: string,
         ): CustomMatcherResult =>
             doAssertions(() => {
-                forEach(expected, (expectedElement: NumericElementType, index: Index<NumericElementType>): void => {
-                    const actualElement: NumericElementType = apply.Index(actual, index)
+                forEach(expected, (expectedElement: NumericElementType, index: Ordinal<NumericElementType>): void => {
+                    const actualElement: NumericElementType = apply.Ordinal(actual, index)
 
                     testIsCloseTo(actualElement, expectedElement, precision, negate, message)
                 })

@@ -16,15 +16,15 @@ const typedMap: <ObjectType>(object: ObjectType) => TypedMap<ObjectType> =
     <ObjectType>(object: ObjectType): TypedMap<ObjectType> => Map(object)
 
 const entries: <KeyType extends string, ValueType>(
-    object: Partial<{ [Index in KeyType]: ValueType }>,
+    object: Partial<{ [Ordinal in KeyType]: ValueType }>,
 ) => Array<[ KeyType, ValueType ]> =
     <KeyType extends string, ValueType>(
-        object: Partial<{ [Index in KeyType]: ValueType }>,
+        object: Partial<{ [Ordinal in KeyType]: ValueType }>,
     ): Array<[ KeyType, ValueType ]> =>
         Object.entries(object) as Array<[ KeyType, ValueType ]>
 
-const keys: <KeyType extends string, ValueType>(object: { [Index in KeyType]: ValueType }) => KeyType[] =
-    <KeyType extends string, ValueType>(object: { [Index in KeyType]: ValueType }): KeyType[] =>
+const keys: <KeyType extends string, ValueType>(object: { [Ordinal in KeyType]: ValueType }) => KeyType[] =
+    <KeyType extends string, ValueType>(object: { [Ordinal in KeyType]: ValueType }): KeyType[] =>
         Object.keys(object) as KeyType[]
 
 export {

@@ -13,11 +13,11 @@ import { apply, DENOMINATOR_INDEX, FRACTIONAL_IDENTITY, from, Multiple, NUMERATO
 
 const getNumerator: (fraction: Fraction) => Numerator =
     (fraction: Fraction): Numerator =>
-        apply.Index(fraction, NUMERATOR_INDEX) as Numerator
+        apply.Ordinal(fraction, NUMERATOR_INDEX) as Numerator
 
 const getDenominator: (fraction: Fraction) => Denominator =
     (fraction: Fraction): Denominator =>
-        apply.Index(fraction, DENOMINATOR_INDEX) as Denominator
+        apply.Ordinal(fraction, DENOMINATOR_INDEX) as Denominator
 
 const multiplyFractions: (...fractions: Fraction[]) => Fraction =
     (...fractions: Fraction[]): Fraction => {

@@ -8,7 +8,6 @@ import {
     Denominator,
     Frequency,
     Hz,
-    Index,
     Integer,
     Meters,
     Modulus,
@@ -16,6 +15,7 @@ import {
     Numerator,
     Of,
     of,
+    Ordinal,
     Power,
     Radians,
     Rotation,
@@ -140,9 +140,9 @@ describe('to', () => {
             to.Fraction([ to.Integer(4), to.Denominator(4) ])
         })
 
-        it('allows these things for Index', () => {
-            const index: Index = to.Index(3)
-            const stringIndex: Index<string> = to.Index<string>(3)
+        it('allows these things for Ordinal', () => {
+            const index: Ordinal = to.Ordinal(3)
+            const stringIndex: Ordinal<string> = to.Ordinal<string>(3)
         })
     })
 })

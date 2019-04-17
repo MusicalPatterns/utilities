@@ -15,7 +15,6 @@ import {
     Fraction,
     Frequency,
     Hz,
-    Index,
     Integer,
     Meters,
     Modulus,
@@ -26,6 +25,7 @@ import {
     NoUnits,
     Numerator,
     Of,
+    Ordinal,
     Power,
     Radians,
     Rotation,
@@ -148,15 +148,15 @@ const Fraction: (fraction: [ Integer | Numerator, Integer | Denominator ]) => Fr
 
 // Special Operations
 
-const Index: {
-    <IndexType extends NoOf = number>(scalar: IndexType): Index,
-    <IndexType = number>(scalar: number | Of<IndexType>): Index<IndexType>,
-    <IndexType extends NoOf = number>(scalar: IndexType): Index,
+const Ordinal: {
+    <IndexType extends NoOf = number>(scalar: IndexType): Ordinal,
+    <IndexType = number>(scalar: number | Of<IndexType>): Ordinal<IndexType>,
+    <IndexType extends NoOf = number>(scalar: IndexType): Ordinal,
 } =
-    <IndexType = number>(index: IndexType | number | Of<IndexType>): Index<IndexType> => {
-        integerCheck(index as unknown as number, 'Index')
+    <IndexType = number>(index: IndexType | number | Of<IndexType>): Ordinal<IndexType> => {
+        integerCheck(index as unknown as number, 'Ordinal')
 
-        return index as unknown as Index<IndexType>
+        return index as unknown as Ordinal<IndexType>
     }
 const Translation: {
     <TranslationType extends NoOf = number>(scalar: TranslationType): Translation,
@@ -222,7 +222,7 @@ export {
     Denominator,
     Modulus,
     Rotation,
-    Index,
+    Ordinal,
     Integer,
     Meters,
     Space,

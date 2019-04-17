@@ -12,12 +12,12 @@ const deepCloneObject: <ObjectType extends ObjectOf<unknown>>(objectToDeepClone:
 
 const setAllPropertiesOfObjectOnAnother:
     <KeyType extends string, ValueType>(setAllPropertiesOfObjectOnAnotherParameters: {
-        objectToChange: { [Index in KeyType]: ValueType },
-        objectWithProperties: { [Index in KeyType]: ValueType },
+        objectToChange: { [Ordinal in KeyType]: ValueType },
+        objectWithProperties: { [Ordinal in KeyType]: ValueType },
     }) => void =
     <KeyType extends string, ValueType>({ objectToChange, objectWithProperties }: {
-        objectToChange: { [Index in KeyType]: ValueType },
-        objectWithProperties: { [Index in KeyType]: ValueType },
+        objectToChange: { [Ordinal in KeyType]: ValueType },
+        objectWithProperties: { [Ordinal in KeyType]: ValueType },
     }): void => {
         entries(objectWithProperties)
             .forEach(([ key, value ]: [ KeyType, ValueType ]) => {

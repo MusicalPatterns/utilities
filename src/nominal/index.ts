@@ -172,7 +172,7 @@ export {
     Amplitude,
     NominalNumber,
     NormalScalar,
-    Index,
+    Ordinal,
     Integerlike,
     Multiple,
     Of,

@@ -1,10 +1,10 @@
 import * as from from './from'
-import { Index, Integer } from './types'
+import { Integer, Ordinal } from './types'
 
-const indexCheck: <ElementType>(index: Index<ElementType>, array: ElementType[]) => void =
-    <ElementType>(index: Index<ElementType>, array: ElementType[]): void => {
-        if (from.Index(index as unknown as Index) > array.length - 1) {
-            throw new Error(`Index ${index} exceeds available indices of array of length ${array.length}`)
+const indexCheck: <ElementType>(index: Ordinal<ElementType>, array: ElementType[]) => void =
+    <ElementType>(index: Ordinal<ElementType>, array: ElementType[]): void => {
+        if (from.Ordinal(index as unknown as Ordinal) > array.length - 1) {
+            throw new Error(`Ordinal ${index} exceeds available indices of array of length ${array.length}`)
         }
     }
 

@@ -65,6 +65,6 @@ export {
     Time,
     Frequency,
     Amplitude,
-    Index,
+    Ordinal,
     Of,
 } from './types'

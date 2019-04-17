@@ -125,7 +125,7 @@ export {
     EIGHTH,
     FOURTH,
     THIRD,
-    Index,
+    Ordinal,
     of,
     Of,
     computeNominalInterface,

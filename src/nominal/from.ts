@@ -11,7 +11,6 @@ import {
     Fraction,
     Frequency,
     Hz,
-    Index,
     Integer,
     Meters,
     Modulus,
@@ -20,6 +19,7 @@ import {
     NormalScalar,
     Numerator,
     Of,
+    Ordinal,
     Power,
     Radians,
     Rotation,
@@ -107,8 +107,8 @@ const Fraction: (fraction: Fraction) => number =
 
 // Special Operations
 
-const Index: <OfType = Number, OperationType extends Index<OfType> = Index<OfType>>(index: OperationType) => Of<OfType> =
-    <OfType = number, OperationType extends Index<OfType> = Index<OfType>>(index: OperationType): Of<OfType> =>
+const Ordinal: <OfType = Number, OperationType extends Ordinal<OfType> = Ordinal<OfType>>(index: OperationType) => Of<OfType> =
+    <OfType = number, OperationType extends Ordinal<OfType> = Ordinal<OfType>>(index: OperationType): Of<OfType> =>
         index as unknown as Of<OfType>
 const Translation: <OfType = Number, OperationType extends Translation<OfType> = Translation<OfType>>(translation: OperationType) => Of<OfType> =
     <OfType = number, OperationType extends Translation<OfType> = Translation<OfType>>(translation: OperationType): Of<OfType> =>
@@ -156,6 +156,6 @@ export {
     Amplitude,
     NormalScalar,
     Rotation,
-    Index,
+    Ordinal,
     Multiple,
 }

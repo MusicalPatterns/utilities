@@ -10,12 +10,12 @@ import {
     Denominator,
     Fraction,
     Frequency,
-    Index,
     Integer,
     Ms,
     Multiple,
     Numerator,
     Of,
+    Ordinal,
     Power,
     Radians,
     Scalar,
@@ -55,10 +55,10 @@ const HEPTUPLE: Multiple = to.Multiple(7)
 const OCTUPLE: Multiple = to.Multiple(8)
 const NONTUPLE: Multiple = to.Multiple(9)
 
-const EVERY_OTHER: Multiple<Index> = to.Multiple<Index>(2)
-const EVERY_THIRD: Multiple<Index> = to.Multiple<Index>(3)
-const EVERY_FOURTH: Multiple<Index> = to.Multiple<Index>(4)
-const EVERY_FIFTH: Multiple<Index> = to.Multiple<Index>(5)
+const EVERY_OTHER: Multiple<Ordinal> = to.Multiple<Ordinal>(2)
+const EVERY_THIRD: Multiple<Ordinal> = to.Multiple<Ordinal>(3)
+const EVERY_FOURTH: Multiple<Ordinal> = to.Multiple<Ordinal>(4)
+const EVERY_FIFTH: Multiple<Ordinal> = to.Multiple<Ordinal>(5)
 
 const ONCE: Cardinal = to.Cardinal(1)
 const TWICE: Cardinal = to.Cardinal(2)
@@ -71,9 +71,9 @@ const A_SUFFICIENT_COUNT_OF_NUMBERS: Cardinal = to.Cardinal(Math.pow(2, 8))
 const ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS: Translation<Cycle> =
     to.Translation(-2 as Of<Cycle>)
 
-const X_AXIS: Index<any> = to.Index(0)
-const Y_AXIS: Index<any> = to.Index(1)
-const Z_AXIS: Index<any> = to.Index(2)
+const X_AXIS: Ordinal<any> = to.Ordinal(0)
+const Y_AXIS: Ordinal<any> = to.Ordinal(1)
+const Z_AXIS: Ordinal<any> = to.Ordinal(2)
 const ORIGIN: Space = to.Space(0)
 const TWO_DIMENSIONAL: Cardinal = to.Cardinal(2)
 const THREE_DIMENSIONAL: Cardinal = to.Cardinal(3)
@@ -95,26 +95,26 @@ const TEN: Integer = to.Integer(10)
 
 const NEGATIVE: Scalar<any> = to.Scalar(-1)
 
-const ZEROTH: Index<any> = to.Index(0)
-const FIRST: Index<any> = to.Index(1)
-const SECOND: Index<any> = to.Index(2)
-const THIRD: Index<any> = to.Index(3)
-const FOURTH: Index<any> = to.Index(4)
-const FIFTH: Index<any> = to.Index(5)
-const SIXTH: Index<any> = to.Index(6)
-const SEVENTH: Index<any> = to.Index(7)
-const EIGHTH: Index<any> = to.Index(8)
-const NINTH: Index<any> = to.Index(9)
-const TENTH: Index<any> = to.Index(10)
-const ELEVENTH: Index<any> = to.Index(11)
-const TWELFTH: Index<any> = to.Index(12)
+const ZEROTH: Ordinal<any> = to.Ordinal(0)
+const FIRST: Ordinal<any> = to.Ordinal(1)
+const SECOND: Ordinal<any> = to.Ordinal(2)
+const THIRD: Ordinal<any> = to.Ordinal(3)
+const FOURTH: Ordinal<any> = to.Ordinal(4)
+const FIFTH: Ordinal<any> = to.Ordinal(5)
+const SIXTH: Ordinal<any> = to.Ordinal(6)
+const SEVENTH: Ordinal<any> = to.Ordinal(7)
+const EIGHTH: Ordinal<any> = to.Ordinal(8)
+const NINTH: Ordinal<any> = to.Ordinal(9)
+const TENTH: Ordinal<any> = to.Ordinal(10)
+const ELEVENTH: Ordinal<any> = to.Ordinal(11)
+const TWELFTH: Ordinal<any> = to.Ordinal(12)
 
 const ADDITIVE_IDENTITY: Translation<any> = to.Translation(0)
 const MULTIPLICATIVE_IDENTITY: Scalar<any> = to.Scalar(1)
 const FRACTIONAL_IDENTITY: Fraction = to.Fraction([ to.Numerator(1), to.Denominator(1) ])
 
-const NEXT: Translation<Index> = to.Translation<Index>(1)
-const PREVIOUS: Translation<Index> = to.Translation<Index>(-1)
+const NEXT: Translation<Ordinal> = to.Translation<Ordinal>(1)
+const PREVIOUS: Translation<Ordinal> = to.Translation<Ordinal>(-1)
 const UP_ONE: Translation<Cardinal> = to.Translation<Cardinal>(1)
 const DOWN_ONE: Translation<Cardinal> = to.Translation<Cardinal>(-1)
 const INCREMENT: Translation<any> = to.Translation(1)
@@ -123,8 +123,8 @@ const ONE_MORE: Translation<Cardinal> = to.Translation<Cardinal>(1)
 const ONE_FEWER: Translation<Cardinal> = to.Translation<Cardinal>(-1)
 const NO_TRANSLATION: Translation<any> = to.Translation(0)
 
-const NUMERATOR_INDEX: Index<Numerator> = to.Index<Numerator>(0)
-const DENOMINATOR_INDEX: Index<Denominator> = to.Index<Denominator>(1)
+const NUMERATOR_INDEX: Ordinal<Numerator> = to.Ordinal<Numerator>(0)
+const DENOMINATOR_INDEX: Ordinal<Denominator> = to.Ordinal<Denominator>(1)
 
 const FIRST_FACTOR_NECESSARY_TO_CHECK_IF_COMMON: Integer = to.Integer(2)
 
@@ -133,18 +133,18 @@ const E: Base<any> = to.Base(Math.E)
 
 const GOOD_AMOUNT_OF_TIME_TO_SEE_WHAT_THE_SITUATION_IS_WHEN_HEADFULLY_DEBUGGING_TESTS: Ms = to.Ms(3000)
 
-const INCLUSIVE: Translation<Index> = to.Translation<Index>(1)
-const EXCLUSIVE: Translation<Index> = to.Translation<Index>(-1)
-const INCLUSIVE_TO_LEFT: Translation<Index> = to.Translation<Index>(-1)
-const EXCLUSIVE_TO_LEFT: Translation<Index> = to.Translation<Index>(1)
+const INCLUSIVE: Translation<Ordinal> = to.Translation<Ordinal>(1)
+const EXCLUSIVE: Translation<Ordinal> = to.Translation<Ordinal>(-1)
+const INCLUSIVE_TO_LEFT: Translation<Ordinal> = to.Translation<Ordinal>(-1)
+const EXCLUSIVE_TO_LEFT: Translation<Ordinal> = to.Translation<Ordinal>(1)
 
-const INITIAL: Index<any> = to.Index(0)
-const SKIP_FIRST_ELEMENT: Index<any> = to.Index(1)
+const INITIAL: Ordinal<any> = to.Ordinal(0)
+const SKIP_FIRST_ELEMENT: Ordinal<any> = to.Ordinal(1)
 
 const TRANSLATION_FROM_LENGTH_TO_FINAL_INDEX: Translation<Cardinal> = to.Translation<Cardinal>(-1)
-const EXAMPLE_ELEMENT_INDEX: Index<any> = to.Index(0)
+const EXAMPLE_ELEMENT_INDEX: Ordinal<any> = to.Ordinal(0)
 
-const NOT_FOUND: Index<any> = to.Index(-1)
+const NOT_FOUND: Ordinal<any> = to.Ordinal(-1)
 
 const SEMITONES_PER_OCTAVE: Cardinal = to.Cardinal(12)
 

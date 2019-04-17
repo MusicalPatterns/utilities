@@ -1,4 +1,4 @@
-import { Cycle, Index, Integer, Integerlike, NoOperation, Radians, Scalar, Space } from '../nominal'
+import { Cycle, Integer, Integerlike, NoOperation, Ordinal, Radians, Scalar, Space } from '../nominal'
 
 // tslint:disable-next-line no-magic-numbers
 type TwoDimensional = 2
@@ -19,7 +19,7 @@ type Coordinate<NumericType extends Number = Space, Dimensionality extends Numbe
             NumericType[]
 
 interface RotateParameters<NumericType extends Number = Number, Dimensionality extends Number = Number> {
-    axis?: Index,
+    axis?: Ordinal,
     coordinate: Coordinate<NumericType, Dimensionality>,
     fixedCoordinate?: Coordinate<NumericType, Dimensionality>,
     rotation: Radians,

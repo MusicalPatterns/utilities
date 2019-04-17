@@ -6,7 +6,7 @@ import { apply, Base, Frequency, from, Hz, OCTAVE, Power, Scalar, to } from '../
 import { ScientificPitches, ScientificPitchNoteName, ScientificPitchOctaveNumber } from './types'
 
 const SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP: {
-    [Index in ScientificPitchOctaveNumber]: Power<Base<Frequency>>
+    [Ordinal in ScientificPitchOctaveNumber]: Power<Base<Frequency>>
 } = {
     [ ScientificPitchOctaveNumber._NEGATIVE_1 ]: to.Power<Base<Frequency>>(negative(1)),
     [ ScientificPitchOctaveNumber._0 ]: to.Power<Base<Frequency>>(0),
@@ -22,7 +22,7 @@ const SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP: {
     [ ScientificPitchOctaveNumber._10 ]: to.Power<Base<Frequency>>(10),
 }
 
-const SCIENTIFIC_PITCH_NOTE_NAME_TO_ZEROTH_OCTAVE_FREQUENCY_MAP: { [Index in ScientificPitchNoteName]: Hz } = {
+const SCIENTIFIC_PITCH_NOTE_NAME_TO_ZEROTH_OCTAVE_FREQUENCY_MAP: { [Ordinal in ScientificPitchNoteName]: Hz } = {
     [ ScientificPitchNoteName.C ]: to.Hz(16.352),
     [ ScientificPitchNoteName.C_SHARP_D_FLAT ]: to.Hz(17.324),
     [ ScientificPitchNoteName.D ]: to.Hz(18.354),

@@ -3,7 +3,8 @@ type Omit<ObjectType, KeyType extends keyof ObjectType> = Pick<ObjectType, Exclu
 type Difference<ObjectType extends ObjectTypeWithPropertiesToSubtract, ObjectTypeWithPropertiesToSubtract> =
     Omit<ObjectType, keyof ObjectTypeWithPropertiesToSubtract>
 
-type KeyMap<ObjectWithKeys extends ObjectOf<unknown>, NewValueType> = { [Index in keyof ObjectWithKeys]: NewValueType }
+type KeyMap<ObjectWithKeys extends ObjectOf<unknown>, NewValueType> =
+    { [Ordinal in keyof ObjectWithKeys]: NewValueType }
 
 interface ObjectOf<ValueType> {
     [ index: string ]: ValueType

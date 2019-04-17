@@ -31,7 +31,7 @@ enum ScientificPitchOctaveNumber {
     _10 = '_10',
 }
 
-type ScientificPitches = { [Index in ScientificPitchNoteName]: ObjectOf<Hz> }
+type ScientificPitches = { [Ordinal in ScientificPitchNoteName]: ObjectOf<Hz> }
 
 export {
     ScientificPitchNoteName,

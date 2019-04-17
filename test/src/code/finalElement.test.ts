@@ -8,6 +8,6 @@ describe('final element', () => {
         expect(finalElement(array))
             .toBe(to.Scalar(5))
         expect(indexOfFinalElement(array))
-            .toBe(to.Index<Scalar>(2))
+            .toBe(to.Ordinal<Scalar>(2))
     })
 })

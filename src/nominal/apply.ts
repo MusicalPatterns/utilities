@@ -11,11 +11,11 @@ import {
     Cycle,
     Denominator,
     Fraction,
-    Index,
     Modulus,
     Multiple,
     NormalScalar,
     Numerator,
+    Ordinal,
     Power,
     Scalar,
     Translation,
@@ -45,16 +45,16 @@ const Translation: <TranslatedType>(
             const cellCount: Cardinal = totalElements(cycle)
 
             for (
-                let index: Index = to.Index(0);
+                let index: Ordinal = to.Ordinal(0);
                 index <= finalIndexFromElementsTotal(cellCount);
-                index = Translation(index, to.Translation<Index>(1))
+                index = Translation(index, to.Translation<Ordinal>(1))
             ) {
-                let cycledIndex: Index = Translation(
+                let cycledIndex: Ordinal = Translation(
                     index,
-                    to.Translation<Index>(-from.Translation(translation as unknown as Translation)),
+                    to.Translation<Ordinal>(-from.Translation(translation as unknown as Translation)),
                 )
-                cycledIndex = Modulus(cycledIndex, to.Modulus<Index>(from.Cardinal(cellCount)))
-                cycledCycle.push(cycle[ from.Index(cycledIndex) ])
+                cycledIndex = Modulus(cycledIndex, to.Modulus<Ordinal>(from.Cardinal(cellCount)))
+                cycledCycle.push(cycle[ from.Ordinal(cycledIndex) ])
             }
 
             return cycledCycle as unknown as TranslatedType
@@ -107,26 +107,26 @@ const Multiple: <OfType extends Number>(
     ): OfType =>
         value as unknown as number * from.Multiple(scalar as unknown as Multiple) as unknown as OfType
 
-const Index: <ElementType>(
+const Ordinal: <ElementType>(
     array: ElementType[] | Cycle<ElementType>,
-    index: Index<ElementType>,
+    index: Ordinal<ElementType>,
 ) => ElementType =
     <ElementType>(
         array: ElementType[] | Cycle<ElementType>,
-        index: Index<ElementType>,
+        index: Ordinal<ElementType>,
     ): ElementType => {
         if (isCycle(array)) {
-            const cycledIndex: Index<ElementType> = Modulus(
+            const cycledIndex: Ordinal<ElementType> = Modulus(
                 index,
-                to.Modulus<Index<ElementType>>(array.length),
+                to.Modulus<Ordinal<ElementType>>(array.length),
             )
 
-            return array[ from.Index(cycledIndex as unknown as Index) ]
+            return array[ from.Ordinal(cycledIndex as unknown as Ordinal) ]
         }
 
         indexCheck(index, array)
 
-        return array[ from.Index(index as unknown as Index) ]
+        return array[ from.Ordinal(index as unknown as Ordinal) ]
     }
 
 const Modulus: <OfType extends Number>(
@@ -164,7 +164,7 @@ export {
     Translation,
     Power,
     Scalar,
-    Index,
+    Ordinal,
     Modulus,
     Numerator,
     Denominator,

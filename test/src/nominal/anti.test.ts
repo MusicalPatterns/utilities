@@ -14,7 +14,7 @@
 //     DUMMY_VALUE_FOR_COMPUTING_NOMINAL_INTERFACE,
 //     from,
 //     Hz,
-//     Index,
+//     Ordinal,
 //     INITIAL,
 //     insteadOf,
 //     Ms,
@@ -155,22 +155,22 @@
 //                 const denominatorHz: Denominator<Hz> = 3 as any as Denominator<Hz>
 //             })
 //
-//             it('DOES NOT ALLOW these oddities for Index', () => {
-//                 const nestedIndexIndex: Index = to.Index(to.Index(3))
-//                 const indexWrongScalar: Scalar = to.Index(3)
+//             it('DOES NOT ALLOW these oddities for Ordinal', () => {
+//                 const nestedIndexIndex: Ordinal = to.Ordinal(to.Ordinal(3))
+//                 const indexWrongScalar: Scalar = to.Ordinal(3)
 //             })
 //
 //             it('DOES NOT ALLOW same as above but for special operation', () => {
-//                 const indexToIndexOfUnits: Index<Ms> = to.Index(2)
-//                 const asdgsdaggdsdgsdgdgsd: Index<Ms> = to.Index<number>(2)
+//                 const indexToIndexOfUnits: Ordinal<Ms> = to.Ordinal(2)
+//                 const asdgsdaggdsdgsdgdgsd: Ordinal<Ms> = to.Ordinal<number>(2)
 //
-//                 const asg: Index<Ms> = 2 as unknown as Index
-//                 const asgg: Index<Ms> = 2 as unknown as Index<number>
+//                 const asg: Ordinal<Ms> = 2 as unknown as Ordinal
+//                 const asgg: Ordinal<Ms> = 2 as unknown as Ordinal<number>
 //
-//                 const indexToIndexOfOperation: Index<Rotation> = to.Index(2)
+//                 const indexToIndexOfOperation: Ordinal<Rotation> = to.Ordinal(2)
 //
-//                 const thing: Index<Ms> = 2 as unknown as Index
-//                 const thing2: Index = 2 as unknown as Index<Ms>
+//                 const thing: Ordinal<Ms> = 2 as unknown as Ordinal
+//                 const thing2: Ordinal = 2 as unknown as Ordinal<Ms>
 //             })
 //         })
 //     })
@@ -196,7 +196,7 @@
 //                 from.Cardinal(3)
 //                 from.Numerator(3)
 //                 from.Denominator(3)
-//                 from.Index(3)
+//                 from.Ordinal(3)
 //                 from.Translation(3)
 //                 from.Multiple(3)
 //             })
@@ -272,8 +272,8 @@
 //     })
 //
 //     describe('instead of', () => {
-//         const wrongOf: Index<Translation> = insteadOf<Index, Scalar>(INITIAL)
-//         const noOf: Index = insteadOf<Index, Scalar>(INITIAL)
+//         const wrongOf: Ordinal<Translation> = insteadOf<Ordinal, Scalar>(INITIAL)
+//         const noOf: Ordinal = insteadOf<Ordinal, Scalar>(INITIAL)
 //         const fromFullOf: Scalar<Base> = insteadOf<Scalar, Rotation>(to.Scalar<Translation>(1))
 //         const doesntHoldOnToInstead: Translation<string> = insteadOf<Translation>(to.Translation<string>(1))
 //         const doesntAssignToWrongInstead: Translation<Scalar> = insteadOf<Translation>(to.Translation<string>(1))

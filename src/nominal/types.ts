@@ -50,7 +50,7 @@ type Fraction = [ Numerator, Denominator ]
 
 // Special Operations
 
-type Index<OfType = number> = OperationBrand<'Index', OfType>
+type Ordinal<OfType = number> = OperationBrand<'Ordinal', OfType>
 type Translation<OfType = number> = OperationBrand<'Translation', OfType>
 
 type Multiple<OfType extends Number = number> = Integerlike & OperationBrand<'Multiple', OfType>
@@ -89,7 +89,7 @@ type OperationNameFromOperation<OperationType> =
                         OperationType extends Modulus ? 'Modulus' :
                             OperationType extends Translation ? 'Translation' :
                                 OperationType extends Multiple ? 'Multiple' :
-                                    OperationType extends Index ? 'Index' :
+                                    OperationType extends Ordinal ? 'Ordinal' :
                                         ''
 
 type Block = number[] & { _BlockBrand: void }
@@ -135,7 +135,7 @@ export {
     Denominator,
     Modulus,
     Rotation,
-    Index,
+    Ordinal,
     NoUnits,
     NoOperation,
     Integer,

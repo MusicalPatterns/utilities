@@ -318,7 +318,7 @@ export {
     POSITIVE_INTEGERS,
     ZERO_AND_POSITIVE_INTEGERS,
     Multiple,
-    Index,
+    Ordinal,
     insteadOf,
     ofUnits,
     ofOperation,
