@@ -1,6 +1,6 @@
 // tslint:disable no-any no-unused-expression comment-format no-commented-code no-dead-store no-type-definitions-outside-types-modules
 
-// There should be 112 errors in this file.
+// There should be 114 errors in this file.
 
 // import {
 //     Base,
@@ -14,7 +14,6 @@
 //     DUMMY_VALUE_FOR_COMPUTING_NOMINAL_INTERFACE,
 //     from,
 //     Hz,
-//     Ordinal,
 //     INITIAL,
 //     insteadOf,
 //     Ms,
@@ -24,6 +23,7 @@
 //     Of,
 //     ofOperation,
 //     ofUnits,
+//     Ordinal,
 //     Rotation,
 //     Scalar,
 //     to,
@@ -281,9 +281,11 @@
 //
 //     describe('of from', () => {
 //         it(`DOES NOT ALLOW from the wrong units or operation`, () => {
-//             const ofFromWrongOperation: Of<Rotation> = ofOperation(to.Translation(3))
+//             const ofFromWrongOperation: Of<Rotation> = ofOperation<Translation>(to.Translation(3))
+//             const ofFromWrongUnits: Of<Hz> = ofUnits<Ms>(to.Ms(3))
 //
-//             const ofFromWrongUnits: Of<Hz> = ofUnits(to.Ms(3))
+//             const ofFromWrongOperationStraightToOperation: Scalar<Rotation> = to.Scalar(ofOperation<Translation>(to.Translation(3)))
+//             const ofFromWrongUnitsStraightToOperation: Scalar<Hz> = to.Scalar(ofUnits<Ms>(to.Ms(3)))
 //         })
 //     })
 //
@@ -330,7 +332,7 @@
 //         describe('of', () => {
 //             it('DOES NOT ALLOW the same things a normal Of, for Units does not allow', () => {
 //                 const ofNumeroToActual: Numero = customOf.Numero(3)
-//                 const ofNumerosToActual: Numeros = customOf.Numeros([ 3 ])
+//                 const ofNumerosToActual: Numeros = customOf.Numeros(3)
 //
 //                 const actualNumeroToOf: Of<Numero> = customTo.Numero(3)
 //                 const actualNumerosToOf: Of<Numeros> = customTo.Numeros([ 3 ])

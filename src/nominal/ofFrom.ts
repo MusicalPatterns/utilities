@@ -1,24 +1,24 @@
-import { Of, OperationBrand, UnitsBrand } from './types'
+import { Of, OperationBrand, OperationNameFromOperation, UnitsBrand, UnitsNameFromUnits } from './types'
 
 // tslint:disable-next-line max-line-length
-const ofOperation: <OperationName, ValueType extends OperationBrand<OperationName> = OperationBrand<OperationName>>(
+const ofOperation: <Operation, ValueType extends OperationBrand<OperationNameFromOperation<Operation>> = OperationBrand<OperationNameFromOperation<Operation>>>(
     value: ValueType,
-) => Of<OperationBrand<OperationName>> =
+) => Of<OperationBrand<OperationNameFromOperation<Operation>>> =
     // tslint:disable-next-line max-line-length
-    <OperationName, ValueType extends OperationBrand<OperationName> = OperationBrand<OperationName>>(
+    <Operation, ValueType extends OperationBrand<OperationNameFromOperation<Operation>> = OperationBrand<OperationNameFromOperation<Operation>>>(
         value: ValueType,
-    ): Of<OperationBrand<OperationName>> =>
-        value as unknown as Of<OperationBrand<OperationName>>
+    ): Of<OperationBrand<OperationNameFromOperation<Operation>>> =>
+        value as unknown as Of<OperationBrand<OperationNameFromOperation<Operation>>>
 
 // tslint:disable-next-line max-line-length
-const ofUnits: <UnitsName, ValueType extends UnitsBrand<UnitsName> = UnitsBrand<UnitsName>>(
+const ofUnits: <Units, ValueType extends UnitsBrand<UnitsNameFromUnits<Units>> = UnitsBrand<UnitsNameFromUnits<Units>>>(
     value: ValueType,
-) => Of<UnitsBrand<UnitsName>> =
+) => Of<UnitsBrand<UnitsNameFromUnits<Units>>> =
     // tslint:disable-next-line max-line-length
-    <UnitsName, ValueType extends UnitsBrand<UnitsName> = UnitsBrand<UnitsName>>(
+    <Units, ValueType extends UnitsBrand<UnitsNameFromUnits<Units>> = UnitsBrand<UnitsNameFromUnits<Units>>>(
         value: ValueType,
-    ): Of<UnitsBrand<UnitsName>> =>
-        value as unknown as Of<UnitsBrand<UnitsName>>
+    ): Of<UnitsBrand<UnitsNameFromUnits<Units>>> =>
+        value as unknown as Of<UnitsBrand<UnitsNameFromUnits<Units>>>
 
 export {
     ofOperation,

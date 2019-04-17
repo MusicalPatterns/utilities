@@ -14,7 +14,7 @@ const computePartialSumOfPowers: (base: Base, upperBound: Power) => number =
                 ),
                 to.Translation<Base>(negative(1)),
             ),
-            to.Scalar(ofOperation<'Base'>(reciprocal(apply.Translation(
+            to.Scalar(ofOperation<Base>(reciprocal(apply.Translation(
                 base,
                 to.Translation<Base>(negative(1)),
             )))),
