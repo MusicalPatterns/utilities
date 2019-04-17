@@ -65,25 +65,25 @@ const Amplitude: (amplitude: Amplitude) => number =
 
 // Operation
 
-const Scalar: <OfType extends Number = Number, OperationType extends Scalar<OfType> = Scalar<OfType>>(scalar: OperationType) => Of<OfType> =
-    <OfType extends Number = Number, OperationType extends Scalar<OfType> = Scalar<OfType>>(scalar: OperationType): Of<OfType> =>
+const Scalar: <OfType extends Number = number, OperationType extends Scalar<OfType> = Scalar<OfType>>(scalar: OperationType) => Of<OfType> =
+    <OfType extends Number = number, OperationType extends Scalar<OfType> = Scalar<OfType>>(scalar: OperationType): Of<OfType> =>
         scalar as unknown as Of<OfType>
-const NormalScalar: <OfType extends Number = Number, OperationType extends NormalScalar<OfType> = NormalScalar<OfType>>(normalScalar: OperationType) => Of<OfType> =
-    <OfType extends Number = Number, OperationType extends NormalScalar<OfType> = NormalScalar<OfType>>(normalScalar: OperationType): Of<OfType> =>
+const NormalScalar: <OfType extends Number = number, OperationType extends NormalScalar<OfType> = NormalScalar<OfType>>(normalScalar: OperationType) => Of<OfType> =
+    <OfType extends Number = number, OperationType extends NormalScalar<OfType> = NormalScalar<OfType>>(normalScalar: OperationType): Of<OfType> =>
         normalScalar as unknown as Of<OfType>
-const Rotation: <OfType extends Number = Number, OperationType extends Rotation<OfType> = Rotation<OfType>>(rotation: OperationType) => Of<OfType> =
-    <OfType extends Number = Number, OperationType extends Rotation<OfType> = Rotation<OfType>>(rotation: OperationType): Of<OfType> =>
+const Rotation: <OfType extends Number = number, OperationType extends Rotation<OfType> = Rotation<OfType>>(rotation: OperationType) => Of<OfType> =
+    <OfType extends Number = number, OperationType extends Rotation<OfType> = Rotation<OfType>>(rotation: OperationType): Of<OfType> =>
         rotation as unknown as Of<OfType>
 
-const Base: <OfType extends Number = Number, OperationType extends Base<OfType> = Base<OfType>>(base: OperationType) => Of<OfType> =
-    <OfType extends Number = Number, OperationType extends Base<OfType> = Base<OfType>>(base: OperationType): Of<OfType> =>
+const Base: <OfType extends Number = number, OperationType extends Base<OfType> = Base<OfType>>(base: OperationType) => Of<OfType> =
+    <OfType extends Number = number, OperationType extends Base<OfType> = Base<OfType>>(base: OperationType): Of<OfType> =>
         base as unknown as Of<OfType>
-const Power: <OfType extends Number = Number, OperationType extends Power<OfType> = Power<OfType>>(power: OperationType) => Of<OfType> =
-    <OfType extends Number = Number, OperationType extends Power<OfType> = Power<OfType>>(power: OperationType): Of<OfType> =>
+const Power: <OfType extends Number = number, OperationType extends Power<OfType> = Power<OfType>>(power: OperationType) => Of<OfType> =
+    <OfType extends Number = number, OperationType extends Power<OfType> = Power<OfType>>(power: OperationType): Of<OfType> =>
         power as unknown as Of<OfType>
 
-const Modulus: <OfType extends Number = Number, OperationType extends Modulus<OfType> = Modulus<OfType>>(modulus: OperationType) => Of<OfType> =
-    <OfType extends Number = Number, OperationType extends Modulus<OfType> = Modulus<OfType>>(modulus: OperationType): Of<OfType> =>
+const Modulus: <OfType extends Number = number, OperationType extends Modulus<OfType> = Modulus<OfType>>(modulus: OperationType) => Of<OfType> =
+    <OfType extends Number = number, OperationType extends Modulus<OfType> = Modulus<OfType>>(modulus: OperationType): Of<OfType> =>
         modulus as unknown as Of<OfType>
 
 // Special Units
@@ -107,15 +107,15 @@ const Fraction: (fraction: Fraction) => number =
 
 // Special Operations
 
-const Ordinal: <OfType = Number, OperationType extends Ordinal<OfType> = Ordinal<OfType>>(index: OperationType) => Of<OfType> =
+const Ordinal: <OfType = number, OperationType extends Ordinal<OfType> = Ordinal<OfType>>(index: OperationType) => Of<OfType> =
     <OfType = number, OperationType extends Ordinal<OfType> = Ordinal<OfType>>(index: OperationType): Of<OfType> =>
         index as unknown as Of<OfType>
-const Translation: <OfType = Number, OperationType extends Translation<OfType> = Translation<OfType>>(translation: OperationType) => Of<OfType> =
+const Translation: <OfType = number, OperationType extends Translation<OfType> = Translation<OfType>>(translation: OperationType) => Of<OfType> =
     <OfType = number, OperationType extends Translation<OfType> = Translation<OfType>>(translation: OperationType): Of<OfType> =>
         translation as unknown as Of<OfType>
 
-const Multiple: <OfType extends Number = Number, OperationType extends Multiple<OfType> = Multiple<OfType>>(multiple: OperationType) => Of<OfType> =
-    <OfType extends Number = Number, OperationType extends Multiple<OfType> = Multiple<OfType>>(multiple: OperationType): Of<OfType> =>
+const Multiple: <OfType extends Number = number, OperationType extends Multiple<OfType> = Multiple<OfType>>(multiple: OperationType) => Of<OfType> =
+    <OfType extends Number = number, OperationType extends Multiple<OfType> = Multiple<OfType>>(multiple: OperationType): Of<OfType> =>
         multiple as unknown as Of<OfType>
 
 // Other Stuff

@@ -6,7 +6,7 @@ const computePartialSumOfPowers: <NumericType extends Number>(
     upperBound: Power<NumericType>,
 ) => number =
     <NumericType extends Number>(base: Base<NumericType>, upperBound: Power<NumericType>): number =>
-        from.Base(apply.Scalar(
+        from.Base<NumericType>(apply.Scalar(
             apply.Translation(
                 apply.Power(
                     base,

@@ -43,6 +43,10 @@ describe('from', () => {
         }
     })
 
+    it('allows to and from into a plain operation', () => {
+        const num: Scalar = to.Scalar(from.Translation(to.Translation(3)))
+    })
+
     it('can work as part of a map', () => {
         const scalars: Scalar[] = [ to.Scalar(2) ]
         const numbers: number[] = scalars.map(from.Scalar)
