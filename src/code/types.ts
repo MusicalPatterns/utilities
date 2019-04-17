@@ -4,7 +4,7 @@ type Difference<ObjectType extends ObjectTypeWithPropertiesToSubtract, ObjectTyp
     Omit<ObjectType, keyof ObjectTypeWithPropertiesToSubtract>
 
 type KeyMap<ObjectWithKeys extends ObjectOf<unknown>, NewValueType> =
-    { [Ordinal in keyof ObjectWithKeys]: NewValueType }
+    { [Index in keyof ObjectWithKeys]: NewValueType }
 
 interface ObjectOf<ValueType> {
     [ index: string ]: ValueType

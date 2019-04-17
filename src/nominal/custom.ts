@@ -11,22 +11,22 @@ interface NominalInterfaceOptionObject {
 }
 
 type CustomFromMono<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> = {
-    [Ordinal in keyof NominalInterfaceOptionObjectType['number']]:
+    [Index in keyof NominalInterfaceOptionObjectType['number']]:
     (value: NominalInterfaceOptionObjectType['number'][Ordinal]) => number
 }
 type CustomFromPoly<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> = {
-    [Ordinal in keyof NominalInterfaceOptionObjectType['numericArray']]:
+    [Index in keyof NominalInterfaceOptionObjectType['numericArray']]:
     (value: NominalInterfaceOptionObjectType['numericArray'][Ordinal]) => number[]
 }
 type CustomFrom<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> =
     CustomFromMono<NominalInterfaceOptionObjectType> & CustomFromPoly<NominalInterfaceOptionObjectType>
 
 type CustomToMono<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> = {
-    [Ordinal in keyof NominalInterfaceOptionObjectType['number']]:
+    [Index in keyof NominalInterfaceOptionObjectType['number']]:
     <NumericType extends NoUnits>(value: NumericType) => NominalInterfaceOptionObjectType['number'][Ordinal]
 }
 type CustomToPoly<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> = {
-    [Ordinal in keyof NominalInterfaceOptionObjectType['numericArray']]:
+    [Index in keyof NominalInterfaceOptionObjectType['numericArray']]:
     <NumericElementType extends NoUnits>(
         value: NumericElementType[],
     ) => NominalInterfaceOptionObjectType['numericArray'][Ordinal]
@@ -35,11 +35,11 @@ type CustomTo<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObj
     CustomToMono<NominalInterfaceOptionObjectType> & CustomToPoly<NominalInterfaceOptionObjectType>
 
 type CustomOfMono<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> = {
-    [Ordinal in keyof NominalInterfaceOptionObjectType['number']]:
+    [Index in keyof NominalInterfaceOptionObjectType['number']]:
     <NumericType extends NoUnits>(value: NumericType) => Of<NominalInterfaceOptionObjectType['number'][Ordinal]>
 }
 type CustomOfPoly<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> = {
-    [Ordinal in keyof NominalInterfaceOptionObjectType['numericArray']]:
+    [Index in keyof NominalInterfaceOptionObjectType['numericArray']]:
     <NumericType extends NoUnits>(value: NumericType) => Of<NominalInterfaceOptionObjectType['numericArray'][Ordinal]>
 }
 type CustomOf<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> =
