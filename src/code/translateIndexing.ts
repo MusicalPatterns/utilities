@@ -1,12 +1,12 @@
-import { apply, Index, NEXT, PREVIOUS } from '../nominal'
+import { apply, DECREMENT, INCREMENT, Index } from '../nominal'
 
-const translateFromOneIndexedToZeroIndexed: (index: Index) => Index =
-    (index: Index): Index =>
-        apply.Translation(index, PREVIOUS)
+const translateFromOneIndexedToZeroIndexed: <IndexType>(index: Index<IndexType>) => Index<IndexType> =
+    <IndexType>(index: Index<IndexType>): Index<IndexType> =>
+        apply.Translation(index, DECREMENT)
 
-const translateFromZeroIndexedToOneIndexed: (index: Index) => Index =
-    (index: Index): Index =>
-        apply.Translation(index, NEXT)
+const translateFromZeroIndexedToOneIndexed: <IndexType>(index: Index<IndexType>) => Index<IndexType> =
+    <IndexType>(index: Index<IndexType>): Index<IndexType> =>
+        apply.Translation(index, INCREMENT)
 
 export {
     translateFromOneIndexedToZeroIndexed,
