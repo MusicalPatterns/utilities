@@ -320,8 +320,7 @@ export {
     Multiple,
     Ordinal,
     insteadOf,
-    ofUnits,
-    ofOperation,
+    ofFrom,
     of,
 } from './nominal'
 export {

@@ -136,6 +136,5 @@ export {
     CustomFrom,
     CustomOf,
     insteadOf,
-    ofOperation,
-    ofUnits,
+    ofFrom,
 } from './nominal/indexForTest'

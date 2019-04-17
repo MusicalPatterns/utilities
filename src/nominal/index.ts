@@ -22,7 +22,7 @@ export {
     isCycle,
 } from './typeGuards'
 export { insteadOf } from './insteadOf'
-export { ofOperation, ofUnits } from './ofFrom'
+export { ofFrom } from './ofFrom'
 
 export {
     TWO_THIRDS,

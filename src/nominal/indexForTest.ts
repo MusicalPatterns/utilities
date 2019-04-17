@@ -13,7 +13,7 @@ export {
 }
 
 export { insteadOf } from './insteadOf'
-export { ofOperation, ofUnits } from './ofFrom'
+export { ofFrom } from './ofFrom'
 
 export {
     computeNominalInterface,

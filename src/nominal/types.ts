@@ -67,22 +67,6 @@ type Integerlike = number & { _IntegerBrand: 'Integer' }
 
 // Other Stuff
 
-type UnitsNameFromUnits<UnitsType> =
-    UnitsType extends Hz ? 'Hz' :
-        UnitsType extends Ms ? 'Ms' :
-            UnitsType extends Radians ? 'Radians' :
-                UnitsType extends Cents ? 'Cents' :
-                    UnitsType extends Semitones ? 'Semitones' :
-                        UnitsType extends Meters ? 'Meters' :
-                            UnitsType extends Space ? 'Space' :
-                                UnitsType extends Time ? 'Time' :
-                                    UnitsType extends Frequency ? 'Frequency' :
-                                        UnitsType extends Amplitude ? 'Amplitude' :
-                                            UnitsType extends Cardinal ? 'Cardinal' :
-                                                UnitsType extends Numerator ? 'Numerator' :
-                                                    UnitsType extends Denominator ? 'Denominator' :
-                                                        ''
-
 type OperationNameFromOperation<OperationType> =
     OperationType extends Scalar ? 'Scalar' :
         OperationType extends NormalScalar ? 'NormalScalar' :
@@ -156,6 +140,5 @@ export {
     Multiple,
     Of,
     OperationNameFromOperation,
-    UnitsNameFromUnits,
     NoOf,
 }

@@ -1,4 +1,4 @@
-import { apply, Base, from, insteadOf, ofOperation, Power, to } from '../nominal'
+import { apply, Base, from, insteadOf, ofFrom, Power, to } from '../nominal'
 import { negative, reciprocal } from './typedOperations'
 
 const computePartialSumOfPowers: (base: Base, upperBound: Power) => number =
@@ -14,7 +14,7 @@ const computePartialSumOfPowers: (base: Base, upperBound: Power) => number =
                 ),
                 to.Translation<Base>(negative(1)),
             ),
-            to.Scalar(ofOperation<Base>(reciprocal(apply.Translation(
+            to.Scalar(ofFrom(reciprocal(apply.Translation(
                 base,
                 to.Translation<Base>(negative(1)),
             )))),

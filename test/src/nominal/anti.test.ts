@@ -1,6 +1,6 @@
 // tslint:disable no-any no-unused-expression comment-format no-commented-code no-dead-store no-type-definitions-outside-types-modules
 
-// There should be 114 errors in this file.
+// There should be 122 errors in this file.
 
 // import {
 //     Base,
@@ -21,8 +21,7 @@
 //     Numerator,
 //     of,
 //     Of,
-//     ofOperation,
-//     ofUnits,
+//     ofFrom,
 //     Ordinal,
 //     Rotation,
 //     Scalar,
@@ -281,11 +280,21 @@
 //
 //     describe('of from', () => {
 //         it(`DOES NOT ALLOW from the wrong units or operation`, () => {
-//             const ofFromWrongOperation: Of<Rotation> = ofOperation<Translation>(to.Translation(3))
-//             const ofFromWrongUnits: Of<Hz> = ofUnits<Ms>(to.Ms(3))
+//             const ofFromWrongOperation: Of<Rotation> = ofFrom(to.Translation(3))
+//             const ofFromWrongUnits: Of<Hz> = ofFrom(to.Ms(3))
 //
-//             const ofFromWrongOperationStraightToOperation: Scalar<Rotation> = to.Scalar(ofOperation<Translation>(to.Translation(3)))
-//             const ofFromWrongUnitsStraightToOperation: Scalar<Hz> = to.Scalar(ofUnits<Ms>(to.Ms(3)))
+//             const ofFromWrongOperationStraightToOperation: Scalar<Rotation> = to.Scalar(ofFrom(to.Translation(3)))
+//             const ofFromWrongUnitsStraightToOperation: Scalar<Hz> = to.Scalar(ofFrom(to.Ms(3)))
+//
+//             const ofFromOperationOfWrongOperation: Of<Scalar<Rotation>> = ofFrom(to.Scalar<Translation>(3))
+//             const ofFromOperationOfWrongUnits: Of<Scalar<Hz>> = ofFrom(to.Scalar<Ms>(3))
+//             const ofFromWrongOperationOfOperation: Of<Rotation<Translation>> = ofFrom(to.Scalar<Translation>(3))
+//             const ofFromWrongOperationOfUnits: Of<Rotation<Ms>> = ofFrom(to.Scalar<Ms>(3))
+//
+//             const ofFromOperationOfWrongOperationStraightToOperation: Rotation<Scalar<Rotation>> = to.Rotation(ofFrom(to.Scalar<Translation>(3)))
+//             const ofFromOperationOfWrongUnitsStraightToOperation: Rotation<Scalar<Hz>> = to.Rotation(ofFrom(to.Scalar<Ms>(3)))
+//             const ofFromWrongOperationOfOperationStraightToOperation: Rotation<Rotation<Translation>> = to.Rotation(ofFrom(to.Scalar<Translation>(3)))
+//             const ofFromWrongOperationOfUnitsStraightToOperation: Rotation<Rotation<Ms>> = to.Rotation(ofFrom(to.Scalar<Ms>(3)))
 //         })
 //     })
 //
