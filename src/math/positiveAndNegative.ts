@@ -1,9 +1,9 @@
-const isPositive: <NumericValue extends Number>(value: NumericValue) => boolean =
-    <NumericValue extends Number = Number>(value: NumericValue): boolean =>
+const isPositive: <NumericType extends Number>(value: NumericType) => boolean =
+    <NumericType extends Number = Number>(value: NumericType): boolean =>
         value as unknown as number > 0
 
-const isNegative: <NumericValue extends Number>(value: NumericValue) => boolean =
-    <NumericValue extends Number = Number>(value: NumericValue): boolean =>
+const isNegative: <NumericType extends Number>(value: NumericType) => boolean =
+    <NumericType extends Number = Number>(value: NumericType): boolean =>
         value as unknown as number < 0
 
 export {

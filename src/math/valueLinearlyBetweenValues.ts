@@ -1,21 +1,21 @@
 import { apply, from, NormalScalar, to } from '../nominal'
 import { negative } from './typedOperations'
 
-const valueLinearlyBetweenValues: <NumericValue extends number>(
-    startValue: NumericValue,
-    endValue: NumericValue,
-    progress: NormalScalar<NumericValue>,
-) => NumericValue =
-    <NumericValue extends number>(
-        startValue: NumericValue,
-        endValue: NumericValue,
-        progress: NormalScalar<NumericValue>,
-    ): NumericValue =>
+const valueLinearlyBetweenValues: <NumericType extends Number>(
+    startValue: NumericType,
+    endValue: NumericType,
+    progress: NormalScalar<NumericType>,
+) => NumericType =
+    <NumericType extends Number>(
+        startValue: NumericType,
+        endValue: NumericType,
+        progress: NormalScalar<NumericType>,
+    ): NumericType =>
         apply.Translation(
             startValue,
-            to.Translation(from.NormalScalar<NumericValue>(apply.Scalar(
+            to.Translation(from.NormalScalar<NumericType>(apply.Scalar(
                 progress,
-                to.Scalar<NormalScalar<NumericValue>>(apply.Translation(
+                to.Scalar<NormalScalar<NumericType>>(apply.Translation(
                     endValue as unknown as number,
                     to.Translation(negative(startValue as unknown as number)),
                 )),
