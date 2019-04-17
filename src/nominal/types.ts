@@ -78,7 +78,10 @@ type UnitsNameFromUnits<UnitsType> =
                                 UnitsType extends Time ? 'Time' :
                                     UnitsType extends Frequency ? 'Frequency' :
                                         UnitsType extends Amplitude ? 'Amplitude' :
-                                            ''
+                                            UnitsType extends Cardinal ? 'Cardinal' :
+                                                UnitsType extends Numerator ? 'Numerator' :
+                                                    UnitsType extends Denominator ? 'Denominator' :
+                                                        ''
 
 type OperationNameFromOperation<OperationType> =
     OperationType extends Scalar ? 'Scalar' :
