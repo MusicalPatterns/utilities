@@ -1,8 +1,11 @@
 import { apply, Base, from, insteadOf, ofFrom, Power, to } from '../nominal'
 import { negative, reciprocal } from './typedOperations'
 
-const computePartialSumOfPowers: (base: Base, upperBound: Power) => number =
-    (base: Base, upperBound: Power): number =>
+const computePartialSumOfPowers: <NumericType extends number>(
+    base: Base<NumericType>,
+    upperBound: Power<NumericType>,
+) => number =
+    <NumericType extends number>(base: Base<NumericType>, upperBound: Power<NumericType>): number =>
         from.Base(apply.Scalar(
             apply.Translation(
                 apply.Power(
