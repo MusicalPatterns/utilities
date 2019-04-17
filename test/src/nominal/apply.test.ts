@@ -1,6 +1,16 @@
 // tslint:disable no-dead-store no-unused-expression
 
-import { apply, Cycle, negative, ONE_HALF, Ordinal, Scalar, to, Translation } from '../../../src/indexForTest'
+import {
+    apply,
+    Cycle,
+    negative,
+    NormalScalar,
+    ONE_HALF,
+    Ordinal,
+    Scalar,
+    to,
+    Translation,
+} from '../../../src/indexForTest'
 
 describe('apply', () => {
     describe('Scalar', () => {
@@ -68,6 +78,17 @@ describe('apply', () => {
                 .toBe(-3)
             expect(apply.Modulus(-3, to.Modulus(5)))
                 .toBe(2)
+        })
+    })
+
+    describe('NormalScalar', () => {
+        it('checks the normalcy of the scalar, not the value being scaled', () => {
+            expect(apply.NormalScalar(3, to.NormalScalar(0.5)))
+                .toBe(1.5)
+
+            const notReallyNormalScalar: NormalScalar = apply.Scalar(to.NormalScalar(0.5), to.Scalar<NormalScalar>(3))
+            expect(() => apply.NormalScalar(0.5, notReallyNormalScalar))
+                .toThrowError('A NormalScalar must be between 0 and 1. It was 1.5.')
         })
     })
 })

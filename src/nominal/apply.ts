@@ -92,7 +92,7 @@ const NormalScalar: <OfType extends Number>(
         value: OfType,
         scalar: NormalScalar<OfType>,
     ): OfType => {
-        normalScalarCheck(value)
+        normalScalarCheck(scalar)
 
         return value as unknown as number * from.Scalar(scalar as unknown as Scalar) as unknown as OfType
     }
