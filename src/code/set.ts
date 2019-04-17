@@ -1,8 +1,8 @@
 import { Ordinal } from '../nominal'
 import { ObjectOf } from './types'
 
-const arraySet: <ElementType>(array: ElementType[], index: Ordinal, value: ElementType) => ElementType[] =
-    <ElementType>(array: ElementType[], index: Ordinal, value: ElementType): ElementType[] => {
+const arraySet: <ElementType>(array: ElementType[], index: Ordinal<ElementType>, value: ElementType) => ElementType[] =
+    <ElementType>(array: ElementType[], index: Ordinal<ElementType>, value: ElementType): ElementType[] => {
         array[ index as unknown as number ] = value
 
         return array

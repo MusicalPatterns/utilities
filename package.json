@@ -1,6 +1,6 @@
 {
   "name": "@musical-patterns/utilities",
-  "version": "1.0.466",
+  "version": "1.0.467",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
