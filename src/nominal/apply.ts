@@ -1,7 +1,8 @@
 // tslint:disable variable-name max-file-line-count
 
 import { finalIndexFromElementsTotal, length } from '../code'
-import { indexCheck, integerCheck, normalScalarCheck } from './checks'
+import { integerCheck } from '../math'
+import { indexCheck, normalScalarCheck } from './checks'
 import * as from from './from'
 import * as to from './to'
 import { isCycle } from './typeGuards'
@@ -31,9 +32,10 @@ const Base: <OfType extends Number>(
         value: OfType,
         base: Base<OfType>,
     ): OfType => {
-        integerCheck(base, 'Base')
+        const integerCheckedBase: Base<OfType> = integerCheck(base, 'Base')
 
-        return Math.log(value as unknown as number) / Math.log(base as unknown as number) as unknown as OfType
+        return Math.log(value as unknown as number) /
+        Math.log(integerCheckedBase as unknown as number) as unknown as OfType
     }
 
 const Logarithm: <OfType extends Number>(
@@ -87,9 +89,9 @@ const Power: <OfType extends Number>(
         base: OfType,
         power: Power<OfType>,
     ): OfType => {
-        integerCheck(power, 'Power')
+        const integerCheckedPower: Power<OfType> = integerCheck(power, 'Power')
 
-        return Math.pow(base as unknown as number, power as unknown as number) as unknown as OfType
+        return Math.pow(base as unknown as number, integerCheckedPower as unknown as number) as unknown as OfType
     }
 const Exponent: <OfType extends Number>(
     base: OfType,
@@ -132,9 +134,10 @@ const Multiple: <OfType extends Number>(
         value: OfType,
         multiple: Multiple<OfType>,
     ): OfType => {
-        integerCheck(multiple, 'Multiple')
+        const integerCheckedMultiple: Multiple<OfType> = integerCheck(multiple, 'Multiple')
 
-        return value as unknown as number * from.Multiple(multiple as unknown as Multiple) as unknown as OfType
+        return value as unknown as number *
+        from.Multiple(integerCheckedMultiple as unknown as Multiple) as unknown as OfType
     }
 
 const Ordinal: <ElementType>(

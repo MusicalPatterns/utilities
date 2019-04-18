@@ -1,6 +1,7 @@
 // tslint:disable variable-name max-file-line-count max-line-length
 
-import { integerCheck, normalScalarCheck } from './checks'
+import { integerCheck } from '../math'
+import { normalScalarCheck } from './checks'
 import {
     Amplitude,
     Base,
@@ -11,11 +12,13 @@ import {
     ContourPiece,
     ContourWhole,
     Cycle,
-    Denominator, Exponent,
+    Denominator,
+    Exponent,
     Fraction,
     Frequency,
     Hz,
-    Integer, Logarithm,
+    Integer,
+    Logarithm,
     Meters,
     Modulus,
     Ms,
@@ -76,23 +79,15 @@ const Integer: <NumericType extends NoUnits>(integer: NumericType) => Integer =
         integer as unknown as Integer
 
 const Cardinal: <NumericType extends NoUnits>(cardinal: NumericType) => Cardinal =
-    <NumericType extends NoUnits>(cardinal: NumericType): Cardinal => {
-        integerCheck(cardinal, 'Cardinal')
+    <NumericType extends NoUnits>(cardinal: NumericType): Cardinal =>
+        integerCheck(cardinal, 'Cardinal') as unknown as Cardinal
 
-        return cardinal as unknown as Cardinal
-    }
 const Numerator: <NumericType extends NoUnits>(numerator: NumericType) => Numerator =
-    <NumericType extends NoUnits>(numerator: NumericType): Numerator => {
-        integerCheck(numerator, 'Numerator')
-
-        return numerator as unknown as Numerator
-    }
+    <NumericType extends NoUnits>(numerator: NumericType): Numerator =>
+        integerCheck(numerator, 'Numerator') as unknown as Numerator
 const Denominator: <NumericType extends NoUnits>(denominator: NumericType) => Denominator =
-    <NumericType extends NoUnits>(denominator: NumericType): Denominator => {
-        integerCheck(denominator, 'Denominator')
-
-        return denominator as unknown as Denominator
-    }
+    <NumericType extends NoUnits>(denominator: NumericType): Denominator =>
+        integerCheck(denominator, 'Denominator') as unknown as Denominator
 
 const Fraction: (fraction: [ Integer | Numerator, Integer | Denominator ]) => Fraction =
     (fraction: [ Integer | Numerator, Integer | Denominator ]): Fraction =>
@@ -153,11 +148,8 @@ const Ordinal: {
     <IndexType = number>(scalar: number | Of<IndexType>): Ordinal<IndexType>,
     <IndexType extends NoOf = number>(scalar: IndexType): Ordinal,
 } =
-    <IndexType = number>(index: IndexType | number | Of<IndexType>): Ordinal<IndexType> => {
-        integerCheck(index as unknown as number, 'Ordinal')
-
-        return index as unknown as Ordinal<IndexType>
-    }
+    <IndexType = number>(index: IndexType | number | Of<IndexType>): Ordinal<IndexType> =>
+        integerCheck(index as unknown as number, 'Ordinal') as unknown as Ordinal<IndexType>
 const Translation: {
     <TranslationType extends NoOf = number>(scalar: TranslationType): Translation,
     <TranslationType = number>(scalar: number | Of<TranslationType>): Translation<TranslationType>,
@@ -171,31 +163,22 @@ const Multiple: {
     <NumericType extends Number = number>(multiple: number | Of<NumericType>): Multiple<NumericType>,
     <NumericType extends NoOf = number>(multiple: NumericType): Multiple,
 } =
-    <NumericType extends Number | NoOf = number>(multiple: NumericType | number | Of<NumericType>): Multiple<NumericType> => {
-        integerCheck(multiple as number, 'Multiple')
-
-        return multiple as unknown as Multiple<NumericType>
-    }
+    <NumericType extends Number | NoOf = number>(multiple: NumericType | number | Of<NumericType>): Multiple<NumericType> =>
+        integerCheck(multiple as number, 'Multiple') as unknown as Multiple<NumericType>
 const Base: {
     <NumericType extends NoOf = number>(base: NumericType): Base,
     <NumericType extends Number = number>(base: number | Of<NumericType>): Base<NumericType>,
     <NumericType extends NoOf = number>(base: NumericType): Base,
 } =
-    <NumericType extends Number | NoOf = number>(base: NumericType | number | Of<NumericType>): Base<NumericType> => {
-        integerCheck(base as number, 'Base')
-
-        return base as unknown as Base<NumericType>
-    }
+    <NumericType extends Number | NoOf = number>(base: NumericType | number | Of<NumericType>): Base<NumericType> =>
+        integerCheck(base as number, 'Base') as unknown as Base<NumericType>
 const Power: {
     <NumericType extends NoOf = number>(power: NumericType): Power,
     <NumericType extends Number = number>(power: number | Of<NumericType>): Power<NumericType>,
     <NumericType extends NoOf = number>(power: NumericType): Power,
 } =
-    <NumericType extends Number | NoOf = number>(power: NumericType | number | Of<NumericType>): Power<NumericType> => {
-        integerCheck(power as number, 'Power')
-
-        return power as unknown as Power<NumericType>
-    }
+    <NumericType extends Number | NoOf = number>(power: NumericType | number | Of<NumericType>): Power<NumericType> =>
+        integerCheck(power as number, 'Power') as unknown as Power<NumericType>
 
 // Other Stuff
 

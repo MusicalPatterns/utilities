@@ -1,12 +1,15 @@
 // tslint:disable no-dead-store no-unused-expression
 
 import {
-    apply, Base,
-    Cycle, Multiple,
+    apply,
+    Base,
+    Cycle,
+    Multiple,
     negative,
     NormalScalar,
     ONE_HALF,
-    Ordinal, Power,
+    Ordinal,
+    Power,
     Scalar,
     to,
     Translation,
@@ -101,6 +104,11 @@ describe('apply', () => {
             expect(() => apply.Multiple(1, notReallyMultiple))
                 .toThrowError('Numerals of type Multiple must be Integers. This numeral had value 1.5.')
         })
+
+        it('when given a Multiple that is really close to an integer, rounds it', () => {
+            expect(apply.Multiple(3, to.Multiple(2.00000000000003)))
+                .toBe(6)
+        })
     })
 
     describe('Base', () => {
@@ -112,6 +120,11 @@ describe('apply', () => {
             expect(() => apply.Base(1, notReallyBase))
                 .toThrowError('Numerals of type Base must be Integers. This numeral had value 1.5.')
         })
+
+        it('when given a Base that is really close to an integer, rounds it', () => {
+            expect(apply.Base(8, to.Base(2.00000000000003)))
+                .toBe(3)
+        })
     })
 
     describe('Power', () => {
@@ -122,6 +135,11 @@ describe('apply', () => {
             const notReallyPower: Power = 1.5 as unknown as Power
             expect(() => apply.Power(1, notReallyPower))
                 .toThrowError('Numerals of type Power must be Integers. This numeral had value 1.5.')
+        })
+
+        it('when given a Power that is really close to an integer, rounds it', () => {
+            expect(apply.Power(3, to.Power(2.00000000000003)))
+                .toBe(9)
         })
     })
 })

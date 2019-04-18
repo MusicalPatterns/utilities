@@ -17,8 +17,6 @@ export {
     clickElement,
     deleteCharacterFromInput,
     waitForHeadfulQaing,
-    VERY_HIGH_PRECISION,
-    VERY_LOW_PRECISION,
     HtmlValue,
     HtmlValueOrChecked,
 } from './browser'
@@ -324,6 +322,8 @@ export {
     of,
     Exponent,
     Logarithm,
+    VERY_HIGH_PRECISION,
+    VERY_LOW_PRECISION,
 } from './nominal'
 export {
     ActionForState,

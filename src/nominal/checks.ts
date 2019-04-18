@@ -1,5 +1,5 @@
 import * as from from './from'
-import { Integer, Ordinal } from './types'
+import { Ordinal } from './types'
 
 const indexCheck: <ElementType>(index: Ordinal<ElementType>, array: ElementType[]) => void =
     <ElementType>(index: Ordinal<ElementType>, array: ElementType[]): void => {
@@ -15,15 +15,7 @@ const normalScalarCheck: (value: unknown) => void =
         }
     }
 
-const integerCheck: (value: number | Number | Integer, type: string) => void =
-    (value: number | Number | Integer, type: string): void => {
-        if (Math.round(value as unknown as number) !== value as unknown as number) {
-            throw new Error(`Numerals of type ${type} must be Integers. This numeral had value ${value}.`)
-        }
-    }
-
 export {
     indexCheck,
     normalScalarCheck,
-    integerCheck,
 }

@@ -17,11 +17,6 @@ export { simulateDesktopViewport, simulateMobileViewport } from './setViewport'
 export { waitForHeadfulQaing } from './wait'
 
 export {
-    VERY_HIGH_PRECISION,
-    VERY_LOW_PRECISION,
-} from './constants'
-
-export {
     HtmlValueOrChecked,
     HtmlValue,
 } from './types'

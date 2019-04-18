@@ -172,6 +172,9 @@ const ONE_MINUTE: Ms = to.Ms(60000)
 const ONE_HOUR: Ms = to.Ms(3600000)
 const ONE_DAY: Ms = to.Ms(86400000)
 
+const VERY_HIGH_PRECISION: Integer = to.Integer(10)
+const VERY_LOW_PRECISION: Integer = to.Integer(1)
+
 export {
     TWO_THIRDS,
     TWO_FIFTHS,
@@ -288,4 +291,6 @@ export {
     ONE_MINUTE,
     ONE_HOUR,
     ONE_DAY,
+    VERY_HIGH_PRECISION,
+    VERY_LOW_PRECISION,
 }

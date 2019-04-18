@@ -117,6 +117,15 @@ describe('to', () => {
                 .toThrow(new Error('Numerals of type Denominator must be Integers. This numeral had value 4.3.'))
         })
 
+        it(`allows calling with numbers which are very close to integers, off only probably due to javascript floating point arithmetic issues, and then rounds them`, () => {
+            expect(to.Cardinal(9.000000000000004))
+                .toBe(9 as unknown as Cardinal)
+            expect(to.Cardinal(9.00000000004))
+                .toBe(9 as unknown as Cardinal)
+            expect(() => to.Cardinal(9.0000000004))
+                .toThrow(new Error('Numerals of type Cardinal must be Integers. This numeral had value 9.0000000004.'))
+        })
+
         it('allows setting things which are integers directly to other units', () => {
             const integer: Integer = to.Integer(3)
 
