@@ -25,10 +25,10 @@ interface RotateParameters<NumericType extends Number = Number, Dimensionality e
     rotation: Radians,
 }
 
-type NumericOperation<NumericType extends Number = Number> =
+type TwoToOneNumericOperation<NumericType extends Number = Number> =
     (firstValue: NumericType, secondValue: NumericType) => NumericType
 
-type IntegerOperation<IntegerType extends Integerlike = Integer> =
+type TwoToOneIntegerOperation<IntegerType extends Integerlike = Integer> =
     (firstValue: IntegerType, secondValue: IntegerType) => IntegerType
 
 interface Operands {
@@ -42,16 +42,32 @@ interface ManyToOneOperation {
     <NumericType extends NoOperation | number>(...values: NumericType[]): NumericType,
 }
 
+interface ManyToManyIntegerOperation {
+    <SharedIntegerType extends Integerlike = Integer>(...values: SharedIntegerType[]): SharedIntegerType[]
+    <OneIntegerType extends Integerlike = Integer, AnotherIntegerType extends Integerlike = Integer>(
+        ...values: Array<Integerlike | AnotherIntegerType>
+    ): Integer[]
+}
+
+interface ManyToOneIntegerOperation {
+    <SharedIntegerType extends Integerlike = Integer>(...values: SharedIntegerType[]): SharedIntegerType
+    <OneIntegerType extends Integerlike = Integer, AnotherIntegerType extends Integerlike = Integer>(
+        ...values: Array<Integerlike | AnotherIntegerType>
+    ): Integer
+}
+
 export {
     CycleMap,
     RotateParameters,
     RotationMatrix,
     Coordinate,
-    NumericOperation,
-    IntegerOperation,
+    TwoToOneNumericOperation,
+    TwoToOneIntegerOperation,
     Vector,
     TwoDimensional,
     ThreeDimensional,
     Operands,
     ManyToOneOperation,
+    ManyToManyIntegerOperation,
+    ManyToOneIntegerOperation,
 }

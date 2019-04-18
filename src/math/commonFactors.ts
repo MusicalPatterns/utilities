@@ -2,9 +2,10 @@ import { isSingleton } from '../code'
 import { apply, FIRST_FACTOR_NECESSARY_TO_CHECK_IF_COMMON, Integer, Integerlike, Translation } from '../nominal'
 import { dividesEvenly } from './dividesEvenly'
 import { max } from './typedOperations'
+import { ManyToManyIntegerOperation } from './types'
 
-const computeCommonFactors: <IntegerType extends Integerlike = Integer>(...values: IntegerType[]) => IntegerType[] =
-    <IntegerType extends Integerlike = Integer>(...values: IntegerType[]): IntegerType[] => {
+const computeCommonFactors: ManyToManyIntegerOperation =
+    <IntegerType extends Integerlike = Integer>(...values: IntegerType[]): Array<Integer | IntegerType> => {
         const commonFactors: IntegerType[] = [ 1 as unknown as IntegerType ]
 
         const maxValue: IntegerType = max(...values)
@@ -24,8 +25,12 @@ const computeCommonFactors: <IntegerType extends Integerlike = Integer>(...value
         return commonFactors
     }
 
-const areCoprime: <IntegerType extends Integerlike = Integer>(...values: IntegerType[]) => boolean =
-    <IntegerType extends Integerlike = Integer>(...values: IntegerType[]): boolean =>
+const areCoprime: <IntegerType extends Integerlike = Integer, OtherIntegerType extends Integerlike = Integer>(
+    ...values: Array<Integerlike | OtherIntegerType>
+) => boolean =
+    <IntegerType extends Integerlike = Integer, OtherIntegerType extends Integerlike = Integer>(
+        ...values: Array<Integerlike | OtherIntegerType>
+    ): boolean =>
         isSingleton(computeCommonFactors(...values))
 
 export {

@@ -74,8 +74,8 @@ export {
 } from './constants'
 export {
     Coordinate,
-    NumericOperation,
-    IntegerOperation,
+    TwoToOneNumericOperation,
+    TwoToOneIntegerOperation,
     TwoDimensional,
     ThreeDimensional,
 } from './types'

@@ -31,6 +31,13 @@ describe('common', () => {
             expect(computeGreatestCommonDivisor())
                 .toBe(to.Integer(1))
         })
+
+        it('returns the Integerlike type if shared; plain Integer otherwise', () => {
+            expect(computeGreatestCommonDivisor(to.Cardinal(9), to.Multiple(6)))
+                .toBe(to.Integer(3))
+            expect(computeGreatestCommonDivisor(to.Cardinal(9), to.Cardinal(6)))
+                .toBe(to.Cardinal(3))
+        })
     })
 
     describe('least multiple', () => {
@@ -68,6 +75,13 @@ describe('common', () => {
         it('works for very large numbers', () => {
             expect(computeLeastCommonMultiple(to.Integer(43999999560), to.Integer(43999999560), to.Integer(43999999560), to.Integer(43999999560), to.Integer(43999999560), to.Integer(43999999560)))
                 .toBe(to.Integer(43999999560))
+        })
+
+        it('returns the Integerlike type if shared; plain Integer otherwise', () => {
+            expect(computeLeastCommonMultiple(to.Cardinal(9), to.Multiple(6)))
+                .toBe(to.Integer(18))
+            expect(computeLeastCommonMultiple(to.Cardinal(9), to.Cardinal(6)))
+                .toBe(to.Cardinal(18))
         })
     })
 })

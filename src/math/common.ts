@@ -1,7 +1,7 @@
 import { allElementsEqual, isEmpty, isSingleton } from '../code'
 import { from, Integer, Integerlike, to, TWO } from '../nominal'
 import { absoluteValue, modulus, product, quotient } from './typedOperations'
-import { IntegerOperation } from './types'
+import { ManyToOneIntegerOperation, TwoToOneIntegerOperation } from './types'
 
 const computeLowestCommonMultipleOfTwoNumbers: <IntegerType extends Integerlike = Integer>(
     firstValue: IntegerType,
@@ -30,11 +30,11 @@ const computeGreatestCommonDivisorOfTwoNumbers: <IntegerType extends Integerlike
     }
 
 const recurseCommon: <IntegerType extends Integerlike = Integer>(
-    commonFunction: IntegerOperation<IntegerType>,
+    commonFunction: TwoToOneIntegerOperation<IntegerType>,
     ...integers: IntegerType[]
 ) => IntegerType =
     <IntegerType extends Integerlike = Integer>(
-        commonFunction: IntegerOperation<IntegerType>,
+        commonFunction: TwoToOneIntegerOperation<IntegerType>,
         ...integers: IntegerType[]
     ): IntegerType => {
         if (isSingleton(integers)) {
@@ -54,11 +54,11 @@ const recurseCommon: <IntegerType extends Integerlike = Integer>(
 
 const computeCommon: <IntegerType extends Integerlike = Integer>(
     integers: IntegerType[],
-    commonFunction: IntegerOperation<IntegerType>,
+    commonFunction: TwoToOneIntegerOperation<IntegerType>,
 ) => IntegerType =
     <IntegerType extends Integerlike = Integer>(
         integers: IntegerType[],
-        commonFunction: IntegerOperation<IntegerType>,
+        commonFunction: TwoToOneIntegerOperation<IntegerType>,
     ): IntegerType => {
         if (isEmpty(integers)) {
             return 1 as unknown as IntegerType
@@ -71,13 +71,11 @@ const computeCommon: <IntegerType extends Integerlike = Integer>(
         return recurseCommon(commonFunction, ...integers)
     }
 
-const computeLeastCommonMultiple:
-    <IntegerType extends Integerlike = Integer>(...integers: IntegerType[]) => IntegerType =
+const computeLeastCommonMultiple: ManyToOneIntegerOperation =
     <IntegerType extends Integerlike = Integer>(...integers: IntegerType[]): IntegerType =>
         computeCommon(integers, computeLowestCommonMultipleOfTwoNumbers)
 
-const computeGreatestCommonDivisor:
-    <IntegerType extends Integerlike = Integer>(...integers: IntegerType[]) => IntegerType =
+const computeGreatestCommonDivisor: ManyToOneIntegerOperation =
     <IntegerType extends Integerlike = Integer>(...integers: IntegerType[]): IntegerType =>
         computeCommon(integers, computeGreatestCommonDivisorOfTwoNumbers)
 
