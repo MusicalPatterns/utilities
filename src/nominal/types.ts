@@ -34,14 +34,14 @@ type OperationBrand<OperationName, OfType = number> =
     & { _OperationBrand: OperationName }
     & MaybeIntegerlike<OperationName>
 
-type Scalar<OfType extends Number = number> = OperationBrand<'Scalar', OfType>
-type NormalScalar<OfType extends Number = number> = OperationBrand<'NormalScalar', OfType>
-type Rotation<OfType extends Number = number> = OperationBrand<'Rotation', OfType>
+type Scalar<OfType extends NotIntegerlike = number> = OperationBrand<'Scalar', OfType>
+type NormalScalar<OfType extends NotIntegerlike = number> = OperationBrand<'NormalScalar', OfType>
+type Rotation<OfType extends NotIntegerlike = number> = OperationBrand<'Rotation', OfType>
 
-type Base<OfType extends Number = number> = OperationBrand<'Base', OfType>
-type Power<OfType extends Number = number> = OperationBrand<'Power', OfType>
+type Base<OfType extends NotIntegerlike = number> = OperationBrand<'Base', OfType>
+type Power<OfType extends NotIntegerlike = number> = OperationBrand<'Power', OfType>
 
-type Modulus<OfType extends Number = number> = OperationBrand<'Modulus', OfType>
+type Modulus<OfType extends NotIntegerlike = number> = OperationBrand<'Modulus', OfType>
 
 // Special Units
 
@@ -67,6 +67,7 @@ type Of<OfType> = number & { _OfBrand: OfType }
 
 type Integer = number & Integerlike
 type Integerlike = Number & { _IntegerBrand: 'Integer' }
+type NotIntegerlike = Number & { _IntegerBrand?: 'NotInteger' }
 
 // Other Stuff
 

@@ -12,6 +12,7 @@ import {
     Meters,
     Modulus,
     Ms,
+    Multiple,
     Numerator,
     Of,
     of,
@@ -125,8 +126,8 @@ describe('to', () => {
         it('allows setting things which are integers to operations, whether Integer is specified as the generic type or not', () => {
             const integer: Integer = to.Integer(3)
 
-            const scalar: Scalar = to.Scalar(integer)
-            const scalarInteger: Scalar<Integer> = to.Scalar(of.Integer(integer))
+            const scalarNotOfIntegersJustConstructedFromOne: Scalar = to.Scalar(integer)
+            const multipleOfIntegers: Multiple<Integer> = to.Multiple(of.Integer(integer))
         })
 
         it('allows using integers where you would use numbers', () => {

@@ -1,6 +1,6 @@
 // tslint:disable no-any no-unused-expression comment-format no-commented-code no-dead-store no-type-definitions-outside-types-modules
 
-// There should be 127 errors in this file.
+// There should be 129 errors in this file.
 
 // import {
 //     Base,
@@ -17,6 +17,7 @@
 //     INITIAL,
 //     insteadOf,
 //     Ms,
+//     Multiple,
 //     NominalInterface,
 //     Numerator,
 //     of,
@@ -134,6 +135,11 @@
 //
 //                 const never: Scalar = to.Scalar<Ms>(3)
 //                 const never2: Scalar = to.Scalar<Rotation>(3)
+//             })
+//
+//             it('DOES NOT ALLOW making an non-integer operation of an integer unit or operation', () => {
+//                 const nonIntegerOperationOfIntegerOperation: Scalar<Multiple> = to.Scalar<Multiple>(3)
+//                 const nonIntegerOperationOfIntegerUnit: Scalar<Numerator> = to.Scalar<Numerator>(3)
 //             })
 //         })
 //
