@@ -6,6 +6,7 @@ import {
     Denominator,
     Frequency,
     from,
+    Hz,
     INITIAL,
     Integer,
     OCTAVE,
@@ -14,15 +15,15 @@ import {
     ZERO_AND_POSITIVE_INTEGERS,
 } from '../nominal'
 
-const computeEqualDivisionScalars: (equalDivision: Denominator, window?: Base<Frequency>) => Array<Scalar<Frequency>> =
-    (equalDivision: Denominator, window: Base<Frequency> = OCTAVE): Array<Scalar<Frequency>> => {
+const computeEqualDivisionScalars: (equalDivision: Denominator, window?: Base<Frequency>) => Array<Scalar<Hz>> =
+    (equalDivision: Denominator, window: Base<Frequency> = OCTAVE): Array<Scalar<Hz>> => {
         const division: number = from.Denominator(reciprocal(equalDivision))
         const base: Base<Frequency> = apply.Power(
             window,
             to.Power<Base<Frequency>>(division),
         )
 
-        const logarithmicStep: Scalar<Frequency> = to.Scalar(from.Base<Frequency>(base))
+        const logarithmicStep: Scalar<Hz> = to.Scalar<Hz>(from.Base<Frequency>(base))
 
         return map(
             slice(
@@ -30,8 +31,8 @@ const computeEqualDivisionScalars: (equalDivision: Denominator, window?: Base<Fr
                 INITIAL,
                 to.Ordinal(from.Denominator(equalDivision)),
             ),
-            (integer: Integer): Scalar<Frequency> =>
-                apply.Power(logarithmicStep, to.Power<Scalar<Frequency>>(integer)),
+            (integer: Integer) =>
+                apply.Power(logarithmicStep, to.Power<Scalar<Hz>>(integer)),
         )
     }
 
