@@ -1,12 +1,12 @@
 // tslint:disable no-dead-store no-unused-expression
 
 import {
-    apply,
-    Cycle,
+    apply, Base,
+    Cycle, Multiple,
     negative,
     NormalScalar,
     ONE_HALF,
-    Ordinal,
+    Ordinal, Power,
     Scalar,
     to,
     Translation,
@@ -82,13 +82,46 @@ describe('apply', () => {
     })
 
     describe('NormalScalar', () => {
-        it('checks the normalcy of the scalar, not the value being scaled', () => {
+        it('checks the normalcy of the NormalScalar, and not the value', () => {
             expect(apply.NormalScalar(3, to.NormalScalar(0.5)))
                 .toBe(1.5)
 
             const notReallyNormalScalar: NormalScalar = apply.Scalar(to.NormalScalar(0.5), to.Scalar<NormalScalar>(3))
             expect(() => apply.NormalScalar(0.5, notReallyNormalScalar))
                 .toThrowError('A NormalScalar must be between 0 and 1. It was 1.5.')
+        })
+    })
+
+    describe('Multiple', () => {
+        it('checks the integerlike of the Multiple, and not the value', () => {
+            expect(apply.Multiple(3, to.Multiple(2)))
+                .toBe(6)
+
+            const notReallyMultiple: Multiple = 1.5 as unknown as Multiple
+            expect(() => apply.Multiple(1, notReallyMultiple))
+                .toThrowError('Numerals of type Multiple must be Integers. This numeral had value 1.5.')
+        })
+    })
+
+    describe('Base', () => {
+        it('checks the integerlike of the Base, and not the value', () => {
+            expect(apply.Base(3, to.Base(2)))
+                .toBeCloseTo(1.584962500721156)
+
+            const notReallyBase: Base = 1.5 as unknown as Base
+            expect(() => apply.Base(1, notReallyBase))
+                .toThrowError('Numerals of type Base must be Integers. This numeral had value 1.5.')
+        })
+    })
+
+    describe('Power', () => {
+        it('checks the integerlike of the Power, and not the value', () => {
+            expect(apply.Power(3, to.Power(2)))
+                .toBe(9)
+
+            const notReallyPower: Power = 1.5 as unknown as Power
+            expect(() => apply.Power(1, notReallyPower))
+                .toThrowError('Numerals of type Power must be Integers. This numeral had value 1.5.')
         })
     })
 })

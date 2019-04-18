@@ -1,7 +1,7 @@
 // tslint:disable variable-name max-file-line-count
 
 import { finalIndexFromElementsTotal, length } from '../code'
-import { indexCheck, normalScalarCheck } from './checks'
+import { indexCheck, integerCheck, normalScalarCheck } from './checks'
 import * as from from './from'
 import * as to from './to'
 import { isCycle } from './typeGuards'
@@ -30,8 +30,12 @@ const Base: <OfType extends Number>(
     <OfType extends Number>(
         value: OfType,
         base: Base<OfType>,
-    ): OfType =>
-        Math.log(value as unknown as number) / Math.log(base as unknown as number) as unknown as OfType
+    ): OfType => {
+        integerCheck(base, 'Base')
+
+        return Math.log(value as unknown as number) / Math.log(base as unknown as number) as unknown as OfType
+    }
+
 const Logarithm: <OfType extends Number>(
     value: OfType,
     logarithm: Logarithm<OfType>,
@@ -82,8 +86,11 @@ const Power: <OfType extends Number>(
     <OfType extends Number>(
         base: OfType,
         power: Power<OfType>,
-    ): OfType =>
-        Math.pow(base as unknown as number, power as unknown as number) as unknown as OfType
+    ): OfType => {
+        integerCheck(power, 'Power')
+
+        return Math.pow(base as unknown as number, power as unknown as number) as unknown as OfType
+    }
 const Exponent: <OfType extends Number>(
     base: OfType,
     exponent: Exponent<OfType>,
@@ -119,13 +126,16 @@ const NormalScalar: <OfType extends Number>(
 
 const Multiple: <OfType extends Number>(
     value: OfType,
-    scalar: Multiple<OfType>,
+    multiple: Multiple<OfType>,
 ) => OfType =
     <OfType extends Number>(
         value: OfType,
-        scalar: Multiple<OfType>,
-    ): OfType =>
-        value as unknown as number * from.Multiple(scalar as unknown as Multiple) as unknown as OfType
+        multiple: Multiple<OfType>,
+    ): OfType => {
+        integerCheck(multiple, 'Multiple')
+
+        return value as unknown as number * from.Multiple(multiple as unknown as Multiple) as unknown as OfType
+    }
 
 const Ordinal: <ElementType>(
     array: ElementType[] | Cycle<ElementType>,
