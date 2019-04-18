@@ -17,7 +17,7 @@ const indexJustBeyondFinalElement: <ElementType>(array: ElementType[]) => Ordina
     <ElementType>(array: ElementType[]): Ordinal<ElementType> =>
         to.Ordinal(array.length) as unknown as Ordinal<ElementType>
 
-const totalElements: <ElementType>(array: ElementType[]) => Cardinal =
+const length: <ElementType>(array: ElementType[]) => Cardinal =
     <ElementType>(array: ElementType[]): Cardinal =>
         to.Cardinal(array.length)
 
@@ -42,7 +42,7 @@ export {
     indexOfFinalElement,
     finalElement,
     indexJustBeyondFinalElement,
-    totalElements,
+    length,
     initialElement,
     finalIndexFromElementsTotal,
     indexJustBeyondFinalElementFromElementsTotal,

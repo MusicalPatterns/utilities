@@ -1,7 +1,7 @@
 // tslint:disable max-file-line-count
 
 import { apply, Cycle, from, NEXT, Ordinal, to, Translation } from '../nominal'
-import { indexJustBeyondFinalElement, totalElements } from './finalElement'
+import { indexJustBeyondFinalElement, length } from './finalElement'
 import { isUndefined } from './isUndefined'
 
 const slice: <ElementType>(
@@ -18,9 +18,9 @@ const slice: <ElementType>(
             return array.slice(from.Ordinal(initial as unknown as Ordinal))
         }
 
-        if (terminal > (to.Ordinal(from.Cardinal(totalElements(array))) as unknown as Ordinal<ElementType>)) {
+        if (terminal > (to.Ordinal(from.Cardinal(length(array))) as unknown as Ordinal<ElementType>)) {
             throw new Error(`You tried to slice up to index ${terminal} of an array with length \
-of only ${totalElements(array)}: ${array}`)
+of only ${length(array)}: ${array}`)
         }
 
         return array.slice(

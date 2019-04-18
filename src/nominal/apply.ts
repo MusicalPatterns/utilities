@@ -1,6 +1,6 @@
 // tslint:disable variable-name max-file-line-count
 
-import { finalIndexFromElementsTotal, totalElements } from '../code'
+import { finalIndexFromElementsTotal, length } from '../code'
 import { indexCheck, normalScalarCheck } from './checks'
 import * as from from './from'
 import * as to from './to'
@@ -42,7 +42,7 @@ const Translation: <TranslatedType>(
         if (isCycle(value)) {
             const cycle: Cycle<TranslatedType> = value as unknown as Cycle<TranslatedType>
             const cycledCycle: Cycle<TranslatedType> = to.Cycle([])
-            const cellCount: Cardinal = totalElements(cycle)
+            const cellCount: Cardinal = length(cycle)
 
             for (
                 let index: Ordinal = to.Ordinal(0);

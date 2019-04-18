@@ -16,7 +16,7 @@ export { noop } from './noop'
 export {
     finalElement,
     indexOfFinalElement,
-    totalElements,
+    length,
     indexJustBeyondFinalElement,
     initialElement,
     finalIndexFromElementsTotal,

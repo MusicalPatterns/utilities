@@ -61,7 +61,7 @@ export {
     keyExistsOnObject,
     ArrayOfLength,
     parseInteger,
-    totalElements,
+    length,
     indexJustBeyondFinalElement,
     cycleSlice,
     isEmpty,
