@@ -1,6 +1,6 @@
 // tslint:disable no-unused-expression no-dead-store
 
-import { Base, Fraction, from, Hz, Of, ONE_HALF, Scalar, to } from '../../../src/indexForTest'
+import { Fraction, from, Hz, Logarithm, Of, ONE_HALF, Scalar, to } from '../../../src/indexForTest'
 
 describe('from', () => {
     it('converts back to a plain number', () => {
@@ -31,8 +31,8 @@ describe('from', () => {
         const hzScalar: Scalar<Hz> = to.Scalar<Hz>(3)
         const ofHzFromHzScalar: Of<Hz> = from.Scalar(hzScalar)
 
-        const baseScalar: Scalar<Base> = to.Scalar<Base>(3)
-        const ofBaseFromBaseScalar: Of<Base> = from.Scalar(baseScalar)
+        const logarithmScalar: Scalar<Logarithm> = to.Scalar<Logarithm>(3)
+        const ofLogarithmFromLogarithmScalar: Of<Logarithm> = from.Scalar(logarithmScalar)
     })
 
     it('can assign to an object property without needing an intermediate variable', () => {

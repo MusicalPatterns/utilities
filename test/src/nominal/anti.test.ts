@@ -3,7 +3,6 @@
 // There should be 129 errors in this file.
 
 // import {
-//     Base,
 //     Cardinal,
 //     Cents,
 //     computeNominalInterface,
@@ -12,6 +11,7 @@
 //     CustomTo,
 //     Denominator,
 //     DUMMY_VALUE_FOR_COMPUTING_NOMINAL_INTERFACE,
+//     Exponent,
 //     from,
 //     Hz,
 //     INITIAL,
@@ -243,11 +243,11 @@
 //         })
 //
 //         it('DOES NOT ALLOW assigning allows Of types that are operations of operations when its wrong inner type', () => {
-//             const nestedOf: Of<Scalar<Rotation>> = of.Scalar<Base>(3)
+//             const nestedOf: Of<Scalar<Rotation>> = of.Scalar<Exponent>(3)
 //         })
 //
 //         it('DOES NOT ALLOW assigning allows Of types that are operations of operations when its wrong outer type', () => {
-//             const nestedOf: Of<Scalar<Rotation>> = of.Base<Rotation>(3)
+//             const nestedOf: Of<Scalar<Rotation>> = of.Exponent<Rotation>(3)
 //         })
 //
 //         it('DOES NOT ALLOW creating operations of units when its wrong units', () => {
@@ -255,7 +255,7 @@
 //         })
 //
 //         it('DOES NOT ALLOW creating operations of operations when its wrong operation', () => {
-//             const scalarOfRotation: Scalar<Rotation> = to.Scalar(of.Base(3))
+//             const scalarOfRotation: Scalar<Rotation> = to.Scalar(of.Exponent(3))
 //         })
 //
 //         it('DOES NOT ALLOW creating operations of operations of units when its wrong units', () => {
@@ -287,7 +287,7 @@
 //     describe('instead of', () => {
 //         const wrongOf: Ordinal<Translation> = insteadOf<Ordinal, Scalar>(INITIAL)
 //         const noOf: Ordinal = insteadOf<Ordinal, Scalar>(INITIAL)
-//         const fromFullOf: Scalar<Base> = insteadOf<Scalar, Rotation>(to.Scalar<Translation>(1))
+//         const fromFullOf: Scalar<Exponent> = insteadOf<Scalar, Rotation>(to.Scalar<Translation>(1))
 //         const doesntHoldOnToInstead: Translation<string> = insteadOf<Translation>(to.Translation<string>(1))
 //         const doesntAssignToWrongInstead: Translation<Scalar> = insteadOf<Translation>(to.Translation<string>(1))
 //     })

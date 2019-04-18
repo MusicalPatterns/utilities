@@ -139,4 +139,6 @@ export {
     ofFrom,
     NormalScalar,
     Multiple,
+    Exponent,
+    Logarithm,
 } from './nominal/indexForTest'

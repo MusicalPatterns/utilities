@@ -176,4 +176,6 @@ export {
     Multiple,
     Of,
     Integerlike,
+    Exponent,
+    Logarithm,
 } from './types'

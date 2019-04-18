@@ -8,9 +8,11 @@ import {
     Cents,
     Cycle,
     Denominator,
+    Exponent,
     Fraction,
     Frequency,
     Integer,
+    Logarithm,
     Ms,
     Multiple,
     Numerator,
@@ -80,8 +82,8 @@ const THREE_DIMENSIONAL: Cardinal = to.Cardinal(3)
 
 const SQUARED: Power<any> = to.Power(2)
 const CUBED: Power<any> = to.Power(3)
-const SQUARE_ROOT: Power<any> = to.Power(1 / 2)
-const CUBE_ROOT: Power<any> = to.Power(1 / 3)
+const SQUARE_ROOT: Exponent<any> = to.Exponent(1 / 2)
+const CUBE_ROOT: Exponent<any> = to.Exponent(1 / 3)
 
 const TWO: Integer = to.Integer(2)
 const THREE: Integer = to.Integer(3)
@@ -129,7 +131,7 @@ const DENOMINATOR_INDEX: Ordinal<Denominator> = to.Ordinal<Denominator>(1)
 const FIRST_FACTOR_NECESSARY_TO_CHECK_IF_COMMON: Integer = to.Integer(2)
 
 const PI: Radians = to.Radians(Math.PI)
-const E: Base<any> = to.Base(Math.E)
+const E: Logarithm<any> = to.Logarithm(Math.E)
 
 const GOOD_AMOUNT_OF_TIME_TO_SEE_WHAT_THE_SITUATION_IS_WHEN_HEADFULLY_DEBUGGING_TESTS: Ms = to.Ms(3000)
 
@@ -150,8 +152,8 @@ const SEMITONES_PER_OCTAVE: Cardinal = to.Cardinal(12)
 
 const OCTAVE: Base<Frequency> = to.Base<Frequency>(2)
 const TRITAVE: Base<Frequency> = to.Base<Frequency>(3)
-const SEMITONE: Base<Frequency> =
-    to.Base<Frequency>(Math.pow(from.Base<Frequency>(OCTAVE), (1 / from.Cardinal(SEMITONES_PER_OCTAVE))))
+const SEMITONE: Logarithm<Frequency> =
+    to.Logarithm<Frequency>(Math.pow(from.Base<Frequency>(OCTAVE), (1 / from.Cardinal(SEMITONES_PER_OCTAVE))))
 
 const CENTS_PER_SEMITONE: Cents = to.Cents(100)
 const CENTS_PER_OCTAVE: Cents = to.Cents(from.Cents(CENTS_PER_SEMITONE) * from.Cardinal(SEMITONES_PER_OCTAVE))

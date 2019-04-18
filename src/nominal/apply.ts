@@ -10,7 +10,9 @@ import {
     Cardinal,
     Cycle,
     Denominator,
+    Exponent,
     Fraction,
+    Logarithm,
     Modulus,
     Multiple,
     NormalScalar,
@@ -30,6 +32,15 @@ const Base: <OfType extends Number>(
         base: Base<OfType>,
     ): OfType =>
         Math.log(value as unknown as number) / Math.log(base as unknown as number) as unknown as OfType
+const Logarithm: <OfType extends Number>(
+    value: OfType,
+    logarithm: Logarithm<OfType>,
+) => OfType =
+    <OfType extends Number>(
+        value: OfType,
+        logarithm: Logarithm<OfType>,
+    ): OfType =>
+        Math.log(value as unknown as number) / Math.log(logarithm as unknown as number) as unknown as OfType
 
 const Translation: <TranslatedType>(
     value: TranslatedType,
@@ -73,6 +84,15 @@ const Power: <OfType extends Number>(
         power: Power<OfType>,
     ): OfType =>
         Math.pow(base as unknown as number, power as unknown as number) as unknown as OfType
+const Exponent: <OfType extends Number>(
+    base: OfType,
+    exponent: Exponent<OfType>,
+) => OfType =
+    <OfType extends Number>(
+        base: OfType,
+        exponent: Exponent<OfType>,
+    ): OfType =>
+        Math.pow(base as unknown as number, exponent as unknown as number) as unknown as OfType
 
 const Scalar: <OfType extends Number>(
     value: OfType,
@@ -170,4 +190,6 @@ export {
     Denominator,
     NormalScalar,
     Multiple,
+    Exponent,
+    Logarithm,
 }

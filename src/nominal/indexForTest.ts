@@ -69,4 +69,6 @@ export {
     Of,
     NormalScalar,
     Multiple,
+    Exponent,
+    Logarithm,
 } from './types'

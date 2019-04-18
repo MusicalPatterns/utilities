@@ -28,7 +28,7 @@ const distanceBetween: <NumericType extends Number>(
             0 as unknown as NumericType,
         )
 
-        return apply.Power(sumOfSquaresOfDimensionalDistances, SQUARE_ROOT)
+        return apply.Exponent(sumOfSquaresOfDimensionalDistances, SQUARE_ROOT)
     }
 
 export {

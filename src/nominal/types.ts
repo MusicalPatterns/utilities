@@ -23,6 +23,14 @@ type Time = UnitsBrand<'Time'>
 type Frequency = UnitsBrand<'Frequency'>
 type Amplitude = UnitsBrand<'Amplitude'>
 
+// Special Units
+
+type Cardinal = UnitsBrand<'Cardinal'>
+type Numerator = UnitsBrand<'Numerator'>
+type Denominator = UnitsBrand<'Denominator'>
+
+type Fraction = [ Numerator, Denominator ]
+
 // Operation
 
 type NoOperation = Number & { _OperationBrand?: 'NoOperation' }
@@ -35,23 +43,18 @@ type OperationBrand<OperationName, OfType = number> =
     & MaybeIntegerlike<OperationName>
 
 type Scalar<OfType extends NotIntegerlike = number> = OperationBrand<'Scalar', OfType>
-type NormalScalar<OfType extends NotIntegerlike = number> = OperationBrand<'NormalScalar', OfType>
 type Rotation<OfType extends NotIntegerlike = number> = OperationBrand<'Rotation', OfType>
-
-type Base<OfType extends NotIntegerlike = number> = OperationBrand<'Base', OfType>
-type Power<OfType extends NotIntegerlike = number> = OperationBrand<'Power', OfType>
+type Exponent<OfType extends NotIntegerlike = number> = OperationBrand<'Exponent', OfType>
+type Logarithm<OfType extends NotIntegerlike = number> = OperationBrand<'Logarithm', OfType>
 
 type Modulus<OfType extends NotIntegerlike = number> = OperationBrand<'Modulus', OfType>
 
-// Special Units
-
-type Cardinal = UnitsBrand<'Cardinal'>
-type Numerator = UnitsBrand<'Numerator'>
-type Denominator = UnitsBrand<'Denominator'>
-
-type Fraction = [ Numerator, Denominator ]
-
 // Special Operations
+
+type NormalScalar<OfType extends NotIntegerlike = number> = OperationBrand<'NormalScalar', OfType>
+
+type Base<OfType extends Number = number> = OperationBrand<'Base', OfType>
+type Power<OfType extends Number = number> = OperationBrand<'Power', OfType>
 
 type Ordinal<OfType = number> = OperationBrand<'Ordinal', OfType>
 type Translation<OfType = number> = OperationBrand<'Translation', OfType>
@@ -76,8 +79,10 @@ type MaybeIntegerlike<Name> =
         Name extends 'Numerator' ? Integerlike :
             Name extends 'Denominator' ? Integerlike :
                 Name extends 'Multiple' ? Integerlike :
-                    Name extends 'Ordinal' ? Integerlike :
-                        {}
+                    Name extends 'Power' ? Integerlike :
+                        Name extends 'Base' ? Integerlike :
+                            Name extends 'Ordinal' ? Integerlike :
+                                {}
 
 type OperationNameFromOperation<OperationType> =
     OperationType extends Scalar ? 'Scalar' :
@@ -153,4 +158,6 @@ export {
     OperationNameFromOperation,
     NoOf,
     Integerlike,
+    Exponent,
+    Logarithm,
 }

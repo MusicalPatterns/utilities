@@ -322,6 +322,8 @@ export {
     insteadOf,
     ofFrom,
     of,
+    Exponent,
+    Logarithm,
 } from './nominal'
 export {
     ActionForState,

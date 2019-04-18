@@ -11,11 +11,11 @@ import {
     ContourPiece,
     ContourWhole,
     Cycle,
-    Denominator,
+    Denominator, Exponent,
     Fraction,
     Frequency,
     Hz,
-    Integer,
+    Integer, Logarithm,
     Meters,
     Modulus,
     Ms,
@@ -69,54 +69,6 @@ const Amplitude: <NumericType extends NoUnits>(amplitude: NumericType) => Amplit
     <NumericType extends NoUnits>(amplitude: NumericType): Amplitude =>
         amplitude as unknown as Amplitude
 
-// Operation
-
-const Scalar: {
-    <NumericType extends NoOf = number>(scalar: NumericType): Scalar,
-    <NumericType extends Number = number>(scalar: number | Of<NumericType>): Scalar<NumericType>,
-    <NumericType extends NoOf = number>(scalar: NumericType): Scalar,
-} =
-    <NumericType extends Number | NoOf = number>(scalar: NumericType | number | Of<NumericType>): Scalar<NumericType> =>
-        scalar as unknown as Scalar<NumericType>
-const NormalScalar: {
-    <NumericType extends NoOf = number>(normalScalar: NumericType): NormalScalar,
-    <NumericType extends Number = number>(normalScalar: number | Of<NumericType>): NormalScalar<NumericType>,
-    <NumericType extends NoOf = number>(normalScalar: NumericType): NormalScalar,
-} =
-    <NumericType extends Number | NoOf = number>(normalScalar: NumericType | number | Of<NumericType>): NormalScalar<NumericType> => {
-        normalScalarCheck(normalScalar)
-
-        return normalScalar as unknown as NormalScalar<NumericType>
-    }
-const Rotation: {
-    <NumericType extends NoOf = number>(rotation: NumericType): Rotation,
-    <NumericType extends Number = number>(rotation: number | Of<NumericType>): Rotation<NumericType>,
-    <NumericType extends NoOf = number>(rotation: NumericType): Rotation,
-} =
-    <NumericType extends Number | NoOf = number>(rotation: NumericType | number | Of<NumericType>): Rotation<NumericType> =>
-        rotation as unknown as Rotation<NumericType>
-const Base: {
-    <NumericType extends NoOf = number>(base: NumericType): Base,
-    <NumericType extends Number = number>(base: number | Of<NumericType>): Base<NumericType>,
-    <NumericType extends NoOf = number>(base: NumericType): Base,
-} =
-    <NumericType extends Number | NoOf = number>(base: NumericType | number | Of<NumericType>): Base<NumericType> =>
-        base as unknown as Base<NumericType>
-const Power: {
-    <NumericType extends NoOf = number>(power: NumericType): Power,
-    <NumericType extends Number = number>(power: number | Of<NumericType>): Power<NumericType>,
-    <NumericType extends NoOf = number>(power: NumericType): Power,
-} =
-    <NumericType extends Number | NoOf = number>(power: NumericType | number | Of<NumericType>): Power<NumericType> =>
-        power as unknown as Power<NumericType>
-const Modulus: {
-    <NumericType extends NoOf = number>(modulus: NumericType): Modulus,
-    <NumericType extends Number = number>(modulus: number | Of<NumericType>): Modulus<NumericType>,
-    <NumericType extends NoOf = number>(modulus: NumericType): Modulus,
-} =
-    <NumericType extends Number | NoOf = number>(modulus: NumericType | number | Of<NumericType>): Modulus<NumericType> =>
-        modulus as unknown as Modulus<NumericType>
-
 // Special Units
 
 const Integer: <NumericType extends NoUnits>(integer: NumericType) => Integer =
@@ -145,6 +97,54 @@ const Denominator: <NumericType extends NoUnits>(denominator: NumericType) => De
 const Fraction: (fraction: [ Integer | Numerator, Integer | Denominator ]) => Fraction =
     (fraction: [ Integer | Numerator, Integer | Denominator ]): Fraction =>
         fraction as unknown as Fraction
+
+// Operation
+
+const Scalar: {
+    <NumericType extends NoOf = number>(scalar: NumericType): Scalar,
+    <NumericType extends Number = number>(scalar: number | Of<NumericType>): Scalar<NumericType>,
+    <NumericType extends NoOf = number>(scalar: NumericType): Scalar,
+} =
+    <NumericType extends Number | NoOf = number>(scalar: NumericType | number | Of<NumericType>): Scalar<NumericType> =>
+        scalar as unknown as Scalar<NumericType>
+const NormalScalar: {
+    <NumericType extends NoOf = number>(normalScalar: NumericType): NormalScalar,
+    <NumericType extends Number = number>(normalScalar: number | Of<NumericType>): NormalScalar<NumericType>,
+    <NumericType extends NoOf = number>(normalScalar: NumericType): NormalScalar,
+} =
+    <NumericType extends Number | NoOf = number>(normalScalar: NumericType | number | Of<NumericType>): NormalScalar<NumericType> => {
+        normalScalarCheck(normalScalar)
+
+        return normalScalar as unknown as NormalScalar<NumericType>
+    }
+const Rotation: {
+    <NumericType extends NoOf = number>(rotation: NumericType): Rotation,
+    <NumericType extends Number = number>(rotation: number | Of<NumericType>): Rotation<NumericType>,
+    <NumericType extends NoOf = number>(rotation: NumericType): Rotation,
+} =
+    <NumericType extends Number | NoOf = number>(rotation: NumericType | number | Of<NumericType>): Rotation<NumericType> =>
+        rotation as unknown as Rotation<NumericType>
+const Modulus: {
+    <NumericType extends NoOf = number>(modulus: NumericType): Modulus,
+    <NumericType extends Number = number>(modulus: number | Of<NumericType>): Modulus<NumericType>,
+    <NumericType extends NoOf = number>(modulus: NumericType): Modulus,
+} =
+    <NumericType extends Number | NoOf = number>(modulus: NumericType | number | Of<NumericType>): Modulus<NumericType> =>
+        modulus as unknown as Modulus<NumericType>
+const Exponent: {
+    <NumericType extends NoOf = number>(exponent: NumericType): Exponent,
+    <NumericType extends Number = number>(exponent: number | Of<NumericType>): Exponent<NumericType>,
+    <NumericType extends NoOf = number>(exponent: NumericType): Exponent,
+} =
+    <NumericType extends Number | NoOf = number>(exponent: NumericType | number | Of<NumericType>): Exponent<NumericType> =>
+        exponent as unknown as Exponent<NumericType>
+const Logarithm: {
+    <NumericType extends NoOf = number>(logarithm: NumericType): Logarithm,
+    <NumericType extends Number = number>(logarithm: number | Of<NumericType>): Logarithm<NumericType>,
+    <NumericType extends NoOf = number>(logarithm: NumericType): Logarithm,
+} =
+    <NumericType extends Number | NoOf = number>(logarithm: NumericType | number | Of<NumericType>): Logarithm<NumericType> =>
+        logarithm as unknown as Logarithm<NumericType>
 
 // Special Operations
 
@@ -175,6 +175,26 @@ const Multiple: {
         integerCheck(multiple as number, 'Multiple')
 
         return multiple as unknown as Multiple<NumericType>
+    }
+const Base: {
+    <NumericType extends NoOf = number>(base: NumericType): Base,
+    <NumericType extends Number = number>(base: number | Of<NumericType>): Base<NumericType>,
+    <NumericType extends NoOf = number>(base: NumericType): Base,
+} =
+    <NumericType extends Number | NoOf = number>(base: NumericType | number | Of<NumericType>): Base<NumericType> => {
+        integerCheck(base as number, 'Base')
+
+        return base as unknown as Base<NumericType>
+    }
+const Power: {
+    <NumericType extends NoOf = number>(power: NumericType): Power,
+    <NumericType extends Number = number>(power: number | Of<NumericType>): Power<NumericType>,
+    <NumericType extends NoOf = number>(power: NumericType): Power,
+} =
+    <NumericType extends Number | NoOf = number>(power: NumericType | number | Of<NumericType>): Power<NumericType> => {
+        integerCheck(power as number, 'Power')
+
+        return power as unknown as Power<NumericType>
     }
 
 // Other Stuff
@@ -231,4 +251,6 @@ export {
     Amplitude,
     NormalScalar,
     Multiple,
+    Exponent,
+    Logarithm,
 }
