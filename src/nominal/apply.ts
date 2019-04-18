@@ -1,8 +1,7 @@
 // tslint:disable variable-name max-file-line-count
 
 import { finalIndexFromElementsTotal, length } from '../code'
-import { integerCheck } from '../math'
-import { indexCheck, normalScalarCheck } from './checks'
+import { indexCheck, integerCheck, normalScalarCheck } from './checks'
 import * as from from './from'
 import * as to from './to'
 import { isCycle } from './typeGuards'

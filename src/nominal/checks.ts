@@ -15,7 +15,25 @@ const normalScalarCheck: (value: unknown) => void =
         }
     }
 
+const roundForIntegerCheck: (value: number) => number =
+    (value: number): number =>
+        // tslint:disable-next-line no-any prefer-template no-magic-numbers
+        +(Math.round(`${value}e+10` as unknown as number) + 'e-' + 10)
+
+const integerCheck: <NumericType extends Number>(value: NumericType, type: string) => NumericType =
+    <NumericType extends Number>(value: NumericType, type: string): NumericType => {
+        const roundedValue: number = Math.round(value as unknown as number)
+        const roundedValueToPrecisionWeCareAbout: number = roundForIntegerCheck(value as unknown as number)
+
+        if (roundedValue !== roundedValueToPrecisionWeCareAbout as unknown as number) {
+            throw new Error(`Numerals of type ${type} must be Integers. This numeral had value ${value}.`)
+        }
+
+        return roundedValue as unknown as NumericType
+    }
+
 export {
     indexCheck,
     normalScalarCheck,
+    integerCheck,
 }

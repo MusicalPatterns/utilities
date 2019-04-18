@@ -1,7 +1,6 @@
 // tslint:disable variable-name max-file-line-count max-line-length
 
-import { integerCheck } from '../math'
-import { normalScalarCheck } from './checks'
+import { integerCheck, normalScalarCheck } from './checks'
 import {
     Amplitude,
     Base,
