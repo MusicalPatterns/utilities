@@ -175,4 +175,5 @@ export {
     Ordinal,
     Multiple,
     Of,
+    Integerlike,
 } from './types'

@@ -1,4 +1,4 @@
-import { Cycle, Integer, NoOperation, Ordinal, Radians, Scalar, Space } from '../nominal'
+import { Cycle, Integer, Integerlike, NoOperation, Ordinal, Radians, Scalar, Space } from '../nominal'
 
 // tslint:disable-next-line no-magic-numbers
 type TwoDimensional = 2
@@ -28,7 +28,7 @@ interface RotateParameters<NumericType extends Number = Number, Dimensionality e
 type NumericOperation<NumericType extends Number = Number> =
     (firstValue: NumericType, secondValue: NumericType) => NumericType
 
-type IntegerOperation<IntegerType extends Integer = Integer> =
+type IntegerOperation<IntegerType extends Integerlike = Integer> =
     (firstValue: IntegerType, secondValue: IntegerType) => IntegerType
 
 interface Operands {
@@ -37,7 +37,7 @@ interface Operands {
 }
 
 interface ManyToOneOperation {
-    <IntegerType extends Integer>(...values: IntegerType[]): IntegerType,
+    <IntegerType extends Integerlike = Integer>(...values: IntegerType[]): IntegerType,
     (...values: number[]): number,
     <NumericType extends NoOperation | number>(...values: NumericType[]): NumericType,
 }

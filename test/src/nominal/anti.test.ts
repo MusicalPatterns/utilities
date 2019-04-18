@@ -1,6 +1,6 @@
 // tslint:disable no-any no-unused-expression comment-format no-commented-code no-dead-store no-type-definitions-outside-types-modules
 
-// There should be 122 errors in this file.
+// There should be 127 errors in this file.
 
 // import {
 //     Base,
@@ -170,6 +170,14 @@
 //
 //                 const thing: Ordinal<Ms> = 2 as unknown as Ordinal
 //                 const thing2: Ordinal = 2 as unknown as Ordinal<Ms>
+//             })
+//
+//             it('DOES NOT ALLOW assigning integerlike ones to plain numbers', () => {
+//                 const cardinalNumber: number = to.Cardinal(3)
+//                 const numeratorNumber: number = to.Numerator(3)
+//                 const denominatorNumber: number = to.Denominator(3)
+//                 const ordinalNumber: number = to.Ordinal(3)
+//                 const multipleNumber: number = to.Multiple(3)
 //             })
 //         })
 //     })
