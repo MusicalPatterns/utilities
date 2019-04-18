@@ -68,4 +68,5 @@ export {
     Ordinal,
     Of,
     NormalScalar,
+    Multiple,
 } from './types'

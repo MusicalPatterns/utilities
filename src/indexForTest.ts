@@ -138,4 +138,5 @@ export {
     insteadOf,
     ofFrom,
     NormalScalar,
+    Multiple,
 } from './nominal/indexForTest'
