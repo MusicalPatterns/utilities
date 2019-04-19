@@ -1,23 +1,23 @@
 import { allElementsEqual, isEmpty, isSingleton } from '../code'
-import { from, Integer, Integerlike, to, TWO } from '../nominal'
+import { from, Integer, Natural, to, TWO } from '../nominal'
 import { absoluteValue, modulus, product, quotient } from './typedOperations'
 import { ManyToOneIntegerOperation, TwoToOneIntegerOperation } from './types'
 
-const computeLowestCommonMultipleOfTwoNumbers: <IntegerType extends Integerlike = Integer>(
+const computeLowestCommonMultipleOfTwoNumbers: <IntegerType extends Natural = Integer>(
     firstValue: IntegerType,
     secondValue: IntegerType,
 ) => IntegerType =
-    <IntegerType extends Integerlike = Integer>(firstValue: IntegerType, secondValue: IntegerType): IntegerType =>
+    <IntegerType extends Natural = Integer>(firstValue: IntegerType, secondValue: IntegerType): IntegerType =>
         absoluteValue(quotient(
             product(firstValue, secondValue) as unknown as IntegerType,
             computeGreatestCommonDivisor(firstValue, secondValue),
         )) as unknown as IntegerType
 
-const computeGreatestCommonDivisorOfTwoNumbers: <IntegerType extends Integerlike = Integer>(
+const computeGreatestCommonDivisorOfTwoNumbers: <IntegerType extends Natural = Integer>(
     firstValue: IntegerType,
     secondValue: IntegerType,
 ) => IntegerType =
-    <IntegerType extends Integerlike = Integer>(firstValue: IntegerType, secondValue: IntegerType): IntegerType => {
+    <IntegerType extends Natural = Integer>(firstValue: IntegerType, secondValue: IntegerType): IntegerType => {
         let output: IntegerType = firstValue
         let remainder: IntegerType = secondValue
         while (remainder) {
@@ -29,11 +29,11 @@ const computeGreatestCommonDivisorOfTwoNumbers: <IntegerType extends Integerlike
         return output
     }
 
-const recurseCommon: <IntegerType extends Integerlike = Integer>(
+const recurseCommon: <IntegerType extends Natural = Integer>(
     commonFunction: TwoToOneIntegerOperation<IntegerType>,
     ...integers: IntegerType[]
 ) => IntegerType =
-    <IntegerType extends Integerlike = Integer>(
+    <IntegerType extends Natural = Integer>(
         commonFunction: TwoToOneIntegerOperation<IntegerType>,
         ...integers: IntegerType[]
     ): IntegerType => {
@@ -52,11 +52,11 @@ const recurseCommon: <IntegerType extends Integerlike = Integer>(
         return recurseCommon(commonFunction, result, ...integers.slice(from.Integer(TWO)))
     }
 
-const computeCommon: <IntegerType extends Integerlike = Integer>(
+const computeCommon: <IntegerType extends Natural = Integer>(
     integers: IntegerType[],
     commonFunction: TwoToOneIntegerOperation<IntegerType>,
 ) => IntegerType =
-    <IntegerType extends Integerlike = Integer>(
+    <IntegerType extends Natural = Integer>(
         integers: IntegerType[],
         commonFunction: TwoToOneIntegerOperation<IntegerType>,
     ): IntegerType => {
@@ -72,11 +72,11 @@ const computeCommon: <IntegerType extends Integerlike = Integer>(
     }
 
 const computeLeastCommonMultiple: ManyToOneIntegerOperation =
-    <IntegerType extends Integerlike = Integer>(...integers: IntegerType[]): IntegerType =>
+    <IntegerType extends Natural = Integer>(...integers: IntegerType[]): IntegerType =>
         computeCommon(integers, computeLowestCommonMultipleOfTwoNumbers)
 
 const computeGreatestCommonDivisor: ManyToOneIntegerOperation =
-    <IntegerType extends Integerlike = Integer>(...integers: IntegerType[]): IntegerType =>
+    <IntegerType extends Natural = Integer>(...integers: IntegerType[]): IntegerType =>
         computeCommon(integers, computeGreatestCommonDivisorOfTwoNumbers)
 
 export {

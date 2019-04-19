@@ -6,11 +6,14 @@ import {
     Cardinal,
     Cents,
     Cycle,
-    Denominator, Exponent,
+    Denominator,
+    Exponent,
     Fraction,
     Frequency,
     Hz,
-    Integer, Logarithm,
+    Integer,
+    IntegerModulus,
+    Logarithm,
     Meters,
     Modulus,
     Ms,
@@ -112,6 +115,9 @@ const Ordinal: <OfType = number>(ofIndex: number | OfType) => Of<Ordinal<OfType>
 const Multiple: <OfType extends Number = number>(ofMultiple: number | OfType) => Of<Multiple<OfType>> =
     <OfType extends Number = number>(ofMultiple: number | OfType): Of<Multiple<OfType>> =>
         ofMultiple as unknown as Of<Multiple<OfType>>
+const IntegerModulus: <OfType extends Number = number>(ofIntegerModulus: number | OfType) => Of<IntegerModulus<OfType>> =
+    <OfType extends Number = number>(ofIntegerModulus: number | OfType): Of<IntegerModulus<OfType>> =>
+        ofIntegerModulus as unknown as Of<IntegerModulus<OfType>>
 const Base: <OfType extends Number = number>(ofBase: number | OfType) => Of<Base<OfType>> =
     <OfType extends Number = number>(ofBase: number | OfType): Of<Base<OfType>> =>
         ofBase as unknown as Of<Base<OfType>>
@@ -157,4 +163,5 @@ export {
     string,
     Exponent,
     Logarithm,
+    IntegerModulus,
 }

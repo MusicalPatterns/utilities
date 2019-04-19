@@ -13,9 +13,9 @@ const valueLinearlyBetweenValues: <NumericType extends Number>(
     ): NumericType =>
         apply.Translation(
             startValue,
-            to.Translation(from.NormalScalar<NumericType>(apply.Scalar(
+            to.Translation(from.NormalScalar<NumericType>(apply.NormalScalar(
                 progress,
-                to.Scalar<NormalScalar<NumericType>>(apply.Translation(
+                to.NormalScalar<NormalScalar<NumericType>>(apply.Translation(
                     endValue as unknown as number,
                     to.Translation(negative(startValue as unknown as number)),
                 )),

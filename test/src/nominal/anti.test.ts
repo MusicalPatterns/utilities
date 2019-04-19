@@ -1,8 +1,9 @@
 // tslint:disable no-any no-unused-expression comment-format no-commented-code no-dead-store no-type-definitions-outside-types-modules
 
-// There should be 129 errors in this file.
+// There should be 143 errors in this file when the below is uncommented.
 
 // import {
+//     apply, Base,
 //     Cardinal,
 //     Cents,
 //     computeNominalInterface,
@@ -15,15 +16,16 @@
 //     from,
 //     Hz,
 //     INITIAL,
-//     insteadOf,
+//     insteadOf, Logarithm,
 //     Ms,
 //     Multiple,
 //     NominalInterface,
+//     NormalScalar,
 //     Numerator,
 //     of,
 //     Of,
 //     ofFrom,
-//     Ordinal,
+//     Ordinal, Power,
 //     Rotation,
 //     Scalar,
 //     to,
@@ -138,8 +140,11 @@
 //             })
 //
 //             it('DOES NOT ALLOW making an non-integer operation of an integer unit or operation', () => {
-//                 const nonIntegerOperationOfIntegerOperation: Scalar<Multiple> = to.Scalar<Multiple>(3)
-//                 const nonIntegerOperationOfIntegerUnit: Scalar<Numerator> = to.Scalar<Numerator>(3)
+//                 3 as unknown as Scalar<Multiple>
+//                 3 as unknown as Scalar<Numerator>
+//
+//                 to.Scalar<Multiple>(3)
+//                 to.Scalar<Numerator>(3)
 //             })
 //         })
 //
@@ -185,6 +190,23 @@
 //                 const ordinalNumber: number = to.Ordinal(3)
 //                 const multipleNumber: number = to.Multiple(3)
 //             })
+//
+//             it('DOES NOT ALLOW making operations of NormalScalars, besides NormalScalar of NormalScalar', () => {
+//                 to.Scalar<NormalScalar>(4)
+//                 to.Power<NormalScalar>(4)
+//                 to.Base<NormalScalar>(4)
+//                 to.Logarithm<NormalScalar>(4)
+//                 to.Exponent<NormalScalar>(4)
+//                 to.Multiple<NormalScalar>(4)
+//             })
+//
+//             it('DOES NOT ALLOW assigning less specific operations (normal, integer) to the more specific counterparts', () => {
+//                 const scalarToNormalScalar: NormalScalar = to.Scalar(0.5)
+//
+//                 const scalarToMultiple: Multiple = to.Scalar(5)
+//                 const logarithmToBase: Base = to.Logarithm(5)
+//                 const exponentToPower: Power = to.Exponent(5)
+//             })
 //         })
 //     })
 //
@@ -213,6 +235,12 @@
 //                 from.Translation(3)
 //                 from.Multiple(3)
 //             })
+//         })
+//     })
+//
+//     describe('apply', () => {
+//         it('DOES NOT ALLOW applying a Scalar to a Normal Scalar', () => {
+//             apply.Scalar(to.NormalScalar(0.5), 4 as unknown as Scalar<NormalScalar>)
 //         })
 //     })
 //

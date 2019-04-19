@@ -1,12 +1,12 @@
 import { reciprocal } from '../math'
 import {
     apply,
-    Base,
     Cents,
     CENTS_PER_OCTAVE,
     CENTS_PER_SEMITONE,
     Frequency,
     from,
+    Logarithm,
     OCTAVE,
     Scalar,
     Semitones,
@@ -16,9 +16,9 @@ import {
 
 const centsTranslationToPitchScalar: (centsTranslationToPitchScalar: Translation<Cents>) => Scalar<Frequency> =
     (cents: Translation<Cents>): Scalar<Frequency> =>
-        to.Scalar(from.Base<Frequency>(apply.Exponent(
+        to.Scalar(from.Logarithm<Frequency>(apply.Exponent(
             OCTAVE,
-            to.Exponent<Base<Frequency>>(from.Translation<Cents>(apply.Scalar(
+            to.Exponent<Logarithm<Frequency>>(from.Translation<Cents>(apply.Scalar(
                 cents,
                 to.Scalar<Translation<Cents>>(from.Cents(reciprocal(CENTS_PER_OCTAVE))),
             ))),

@@ -1,4 +1,4 @@
-import { Cycle, Integer, Integerlike, NoOperation, Ordinal, Radians, Scalar, Space } from '../nominal'
+import { Cycle, Integer, Natural, NoOperation, Ordinal, Radians, Scalar, Space } from '../nominal'
 
 // tslint:disable-next-line no-magic-numbers
 type TwoDimensional = 2
@@ -28,7 +28,7 @@ interface RotateParameters<NumericType extends Number = Number, Dimensionality e
 type TwoToOneNumericOperation<NumericType extends Number = Number> =
     (firstValue: NumericType, secondValue: NumericType) => NumericType
 
-type TwoToOneIntegerOperation<IntegerType extends Integerlike = Integer> =
+type TwoToOneIntegerOperation<IntegerType extends Natural = Integer> =
     (firstValue: IntegerType, secondValue: IntegerType) => IntegerType
 
 interface Operands {
@@ -37,22 +37,22 @@ interface Operands {
 }
 
 interface ManyToOneOperation {
-    <IntegerType extends Integerlike = Integer>(...values: IntegerType[]): IntegerType,
+    <IntegerType extends Natural = Integer>(...values: IntegerType[]): IntegerType,
     (...values: number[]): number,
     <NumericType extends NoOperation | number>(...values: NumericType[]): NumericType,
 }
 
 interface ManyToManyIntegerOperation {
-    <SharedIntegerType extends Integerlike = Integer>(...values: SharedIntegerType[]): SharedIntegerType[]
-    <OneIntegerType extends Integerlike = Integer, AnotherIntegerType extends Integerlike = Integer>(
-        ...values: Array<Integerlike | AnotherIntegerType>
+    <SharedIntegerType extends Natural = Integer>(...values: SharedIntegerType[]): SharedIntegerType[]
+    <OneIntegerType extends Natural = Integer, AnotherIntegerType extends Natural = Integer>(
+        ...values: Array<Natural | AnotherIntegerType>
     ): Integer[]
 }
 
 interface ManyToOneIntegerOperation {
-    <SharedIntegerType extends Integerlike = Integer>(...values: SharedIntegerType[]): SharedIntegerType
-    <OneIntegerType extends Integerlike = Integer, AnotherIntegerType extends Integerlike = Integer>(
-        ...values: Array<Integerlike | AnotherIntegerType>
+    <SharedIntegerType extends Natural = Integer>(...values: SharedIntegerType[]): SharedIntegerType
+    <OneIntegerType extends Natural = Integer, AnotherIntegerType extends Natural = Integer>(
+        ...values: Array<Natural | AnotherIntegerType>
     ): Integer
 }
 

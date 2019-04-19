@@ -177,7 +177,7 @@ export {
     Ordinal,
     Multiple,
     Of,
-    Integerlike,
+    Natural,
     Exponent,
     Logarithm,
 } from './types'

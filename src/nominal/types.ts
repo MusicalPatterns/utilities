@@ -9,7 +9,7 @@ interface NominalNumber {
 // Units
 
 type NoUnits = Number & { _UnitsBrand?: 'NoUnits' }
-type UnitsBrand<UnitsName> = NoOperation & { _UnitsBrand: UnitsName } & MaybeIntegerlike<UnitsName>
+type UnitsBrand<UnitsName> = NoOperation & { _UnitsBrand: UnitsName } & MaybeNatural<UnitsName>
 
 type Hz = UnitsBrand<'Hz'>
 type Ms = UnitsBrand<'Ms'>
@@ -40,26 +40,28 @@ type OperationOf<OfType> = Number & { _OperationOfBrand: OfType }
 type OperationBrand<OperationName, OfType = number> =
     OperationOf<OfType>
     & { _OperationBrand: OperationName }
-    & MaybeIntegerlike<OperationName>
+    & MaybeNatural<OperationName>
+    & MaybeNormal<OperationName>
 
-type Scalar<OfType extends NotIntegerlike = number> = OperationBrand<'Scalar', OfType>
-type Rotation<OfType extends NotIntegerlike = number> = OperationBrand<'Rotation', OfType>
-type Exponent<OfType extends NotIntegerlike = number> = OperationBrand<'Exponent', OfType>
-type Logarithm<OfType extends NotIntegerlike = number> = OperationBrand<'Logarithm', OfType>
+type Scalar<OfType extends NonNormal & Unnatural = number> = OperationBrand<'Scalar', OfType>
+type Rotation<OfType extends NonNormal & Unnatural = number> = OperationBrand<'Rotation', OfType>
+type Exponent<OfType extends NonNormal & Unnatural = number> = OperationBrand<'Exponent', OfType>
+type Logarithm<OfType extends NonNormal & Unnatural = number> = OperationBrand<'Logarithm', OfType>
 
-type Modulus<OfType extends NotIntegerlike = number> = OperationBrand<'Modulus', OfType>
+type Modulus<OfType extends NonNormal & Unnatural = number> = OperationBrand<'Modulus', OfType>
 
 // Special Operations
 
-type NormalScalar<OfType extends NotIntegerlike = number> = OperationBrand<'NormalScalar', OfType>
+type NormalScalar<OfType extends Unnatural = number> = OperationBrand<'NormalScalar' & 'Scalar', OfType>
 
-type Base<OfType extends Number = number> = OperationBrand<'Base', OfType>
-type Power<OfType extends Number = number> = OperationBrand<'Power', OfType>
+type Base<OfType extends NonNormal = number> = OperationBrand<'Base' & 'Logarithm', OfType>
+type Power<OfType extends NonNormal = number> = OperationBrand<'Power' & 'Exponent', OfType>
 
 type Ordinal<OfType = number> = OperationBrand<'Ordinal', OfType>
 type Translation<OfType = number> = OperationBrand<'Translation', OfType>
 
-type Multiple<OfType extends Number = number> = OperationBrand<'Multiple', OfType>
+type Multiple<OfType extends NonNormal = number> = OperationBrand<'Multiple' & 'Scalar', OfType>
+type IntegerModulus<OfType extends NonNormal = number> = OperationBrand<'IntegerModulus' & 'Modulus', OfType>
 
 // Of
 
@@ -68,21 +70,29 @@ type Of<OfType> = number & { _OfBrand: OfType }
 
 // Integer
 
-type Integer = number & Integerlike
-type Integerlike = Number & { _IntegerBrand: 'Integer' }
-type NotIntegerlike = Number & { _IntegerBrand?: 'NotInteger' }
+type Integer = number & Natural
+type Natural = Number & { _IntegerBrand: 'Integer' }
+type Unnatural = Number & { _IntegerBrand?: 'NotInteger' }
 
 // Other Stuff
 
-type MaybeIntegerlike<Name> =
-    Name extends 'Cardinal' ? Integerlike :
-        Name extends 'Numerator' ? Integerlike :
-            Name extends 'Denominator' ? Integerlike :
-                Name extends 'Multiple' ? Integerlike :
-                    Name extends 'Power' ? Integerlike :
-                        Name extends 'Base' ? Integerlike :
-                            Name extends 'Ordinal' ? Integerlike :
-                                {}
+type MaybeNatural<Name> =
+    Name extends 'Cardinal' ? Natural :
+        Name extends 'Numerator' ? Natural :
+            Name extends 'Denominator' ? Natural :
+                Name extends 'Multiple' ? Natural :
+                    Name extends 'IntegerModulus' ? Natural :
+                        Name extends 'Power' ? Natural :
+                            Name extends 'Base' ? Natural :
+                                Name extends 'Ordinal' ? Natural :
+                                    {}
+
+type MaybeNormal<Name> =
+    Name extends 'NormalScalar' ? Normal :
+        {}
+
+type Normal = Number & { _NormalBrand: 'Normal' }
+type NonNormal = Number & { _NormalBrand?: 'NonNormal' }
 
 type OperationNameFromOperation<OperationType> =
     OperationType extends Scalar ? 'Scalar' :
@@ -94,7 +104,10 @@ type OperationNameFromOperation<OperationType> =
                             OperationType extends Translation ? 'Translation' :
                                 OperationType extends Multiple ? 'Multiple' :
                                     OperationType extends Ordinal ? 'Ordinal' :
-                                        ''
+                                        OperationType extends Exponent ? 'Exponent' :
+                                            OperationType extends Logarithm ? 'Logarithm' :
+                                                OperationType extends IntegerModulus ? 'IntegerModulus' :
+                                                    ''
 
 type Block = number[] & { _BlockBrand: void }
 
@@ -157,7 +170,10 @@ export {
     Of,
     OperationNameFromOperation,
     NoOf,
-    Integerlike,
+    Natural,
+    Unnatural,
     Exponent,
     Logarithm,
+    IntegerModulus,
+    NonNormal,
 }

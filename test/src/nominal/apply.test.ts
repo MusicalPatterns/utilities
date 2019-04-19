@@ -3,7 +3,7 @@
 import {
     apply,
     Base,
-    Cycle,
+    Cycle, Exponent, Logarithm,
     Multiple,
     negative,
     NormalScalar,
@@ -89,9 +89,21 @@ describe('apply', () => {
             expect(apply.NormalScalar(3, to.NormalScalar(0.5)))
                 .toBe(1.5)
 
-            const notReallyNormalScalar: NormalScalar = apply.Scalar(to.NormalScalar(0.5), to.Scalar<NormalScalar>(3))
-            expect(() => apply.NormalScalar(0.5, notReallyNormalScalar))
-                .toThrowError('A NormalScalar must be between 0 and 1. It was 1.5.')
+            expect(() => apply.NormalScalar(0.5, 3 as unknown as NormalScalar))
+                .toThrowError('A NormalScalar must be between 0 and 1. It was 3.')
+        })
+
+        it('can be applied wherever a Scalar could be', () => {
+            expect(apply.Scalar(3, to.NormalScalar(0.5)))
+                .toBe(1.5)
+        })
+
+        it('when an operation of a Scalar is applied to a NormalScalar, it works, and vice versa', () => {
+            expect(apply.NormalScalar(to.NormalScalar(0.5), to.NormalScalar<Scalar>(0.5)))
+                .toBe(to.NormalScalar(0.25))
+
+            expect(apply.NormalScalar(to.Scalar(0.5), to.NormalScalar<NormalScalar>(0.5)))
+                .toBe(to.Scalar(0.25))
         })
     })
 
@@ -109,6 +121,19 @@ describe('apply', () => {
             expect(apply.Multiple(3, to.Multiple(2.00000000000003)))
                 .toBe(6)
         })
+
+        it('can be applied wherever a Scalar could be', () => {
+            expect(apply.Scalar(3, to.Multiple(5)))
+                .toBe(15)
+        })
+
+        it('when an operation of a Scalar is applied to a Multiple, it works, and vice versa', () => {
+            expect(apply.Translation(to.Multiple(5), to.Translation<Scalar>(3)))
+                .toBe(to.Multiple(8))
+
+            expect(apply.Translation(to.Scalar(5), to.Translation<Multiple>(3)))
+                .toBe(to.Scalar(8))
+        })
     })
 
     describe('Base', () => {
@@ -125,6 +150,19 @@ describe('apply', () => {
             expect(apply.Base(8, to.Base(2.00000000000003)))
                 .toBe(3)
         })
+
+        it('can be applied wherever a Logarithm could be', () => {
+            expect(apply.Logarithm(3, to.Base(2)))
+                .toBe(1.584962500721156)
+        })
+
+        it('when an operation of a Logarithm is applied to a Base, it works, and vice versa', () => {
+            expect(apply.Translation(to.Base(5), to.Translation<Logarithm>(3)))
+                .toBe(to.Base(8))
+
+            expect(apply.Translation(to.Logarithm(5), to.Translation<Base>(3)))
+                .toBe(to.Logarithm(8))
+        })
     })
 
     describe('Power', () => {
@@ -140,6 +178,19 @@ describe('apply', () => {
         it('when given a Power that is really close to an integer, rounds it', () => {
             expect(apply.Power(3, to.Power(2.00000000000003)))
                 .toBe(9)
+        })
+
+        it('can be applied wherever an Exponent could be', () => {
+            expect(apply.Exponent(3, to.Power(2)))
+                .toBe(9)
+        })
+
+        it('when an operation of a Exponent is applied to a Power, it works, and vice versa', () => {
+            expect(apply.Translation(to.Power(5), to.Translation<Exponent>(3)))
+                .toBe(to.Power(8))
+
+            expect(apply.Translation(to.Exponent(5), to.Translation<Power>(3)))
+                .toBe(to.Exponent(8))
         })
     })
 })

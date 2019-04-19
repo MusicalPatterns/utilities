@@ -7,11 +7,14 @@ import {
     Cardinal,
     Cents,
     Cycle,
-    Denominator, Exponent,
+    Denominator,
+    Exponent,
     Fraction,
     Frequency,
     Hz,
-    Integer, Logarithm,
+    Integer,
+    IntegerModulus,
+    Logarithm,
     Meters,
     Modulus,
     Ms,
@@ -117,7 +120,9 @@ const Translation: <OfType = number, OperationType extends Translation<OfType> =
 const Multiple: <OfType extends Number = number, OperationType extends Multiple<OfType> = Multiple<OfType>>(multiple: OperationType) => Of<OfType> =
     <OfType extends Number = number, OperationType extends Multiple<OfType> = Multiple<OfType>>(multiple: OperationType): Of<OfType> =>
         multiple as unknown as Of<OfType>
-
+const IntegerModulus: <OfType extends Number = number, OperationType extends IntegerModulus<OfType> = IntegerModulus<OfType>>(integerModulus: OperationType) => Of<OfType> =
+    <OfType extends Number = number, OperationType extends IntegerModulus<OfType> = IntegerModulus<OfType>>(integerModulus: OperationType): Of<OfType> =>
+        integerModulus as unknown as Of<OfType>
 const Base: <OfType extends Number = number, OperationType extends Base<OfType> = Base<OfType>>(base: OperationType) => Of<OfType> =
     <OfType extends Number = number, OperationType extends Base<OfType> = Base<OfType>>(base: OperationType): Of<OfType> =>
         base as unknown as Of<OfType>
@@ -167,4 +172,5 @@ export {
     Multiple,
     Exponent,
     Logarithm,
+    IntegerModulus,
 }

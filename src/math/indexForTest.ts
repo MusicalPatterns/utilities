@@ -40,7 +40,7 @@ export {
     goesQuadraticallyFromValueToValue,
 } from './quadratic'
 export { inBounds } from './inBounds'
-export { computePartialSumOfPowers } from './partialSumOfPowers'
+export { computePartialSumOfExponents } from './partialSumOfExponents'
 export { computeDeltas, computeIntervals } from './rateOfChange'
 
 export {

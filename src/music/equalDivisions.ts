@@ -9,6 +9,7 @@ import {
     Hz,
     INITIAL,
     Integer,
+    Logarithm,
     OCTAVE,
     Scalar,
     to,
@@ -17,13 +18,10 @@ import {
 
 const computeEqualDivisionScalars: (equalDivision: Denominator, window?: Base<Frequency>) => Array<Scalar<Hz>> =
     (equalDivision: Denominator, window: Base<Frequency> = OCTAVE): Array<Scalar<Hz>> => {
-        const division: number = from.Denominator(reciprocal(equalDivision))
-        const base: Base<Frequency> = apply.Exponent(
+        const logarithmicStep: Scalar<Hz> = to.Scalar<Hz>(from.Logarithm<Frequency>(apply.Exponent(
             window,
-            to.Exponent<Base<Frequency>>(division),
-        )
-
-        const logarithmicStep: Scalar<Hz> = to.Scalar<Hz>(from.Base<Frequency>(base))
+            to.Exponent<Logarithm<Frequency>>(from.Denominator(reciprocal(equalDivision))),
+        )))
 
         return map(
             slice(

@@ -17,11 +17,12 @@ import {
     Frequency,
     Hz,
     Integer,
+    IntegerModulus,
     Logarithm,
     Meters,
     Modulus,
     Ms,
-    Multiple,
+    Multiple, NonNormal,
     NoOf,
     NormalScalar,
     NoUnits,
@@ -35,7 +36,7 @@ import {
     Semitones,
     Space,
     Time,
-    Translation,
+    Translation, Unnatural,
 } from './types'
 
 // Units
@@ -96,51 +97,52 @@ const Fraction: (fraction: [ Integer | Numerator, Integer | Denominator ]) => Fr
 
 const Scalar: {
     <NumericType extends NoOf = number>(scalar: NumericType): Scalar,
-    <NumericType extends Number = number>(scalar: number | Of<NumericType>): Scalar<NumericType>,
+    <NumericType extends NonNormal & Unnatural = number>(scalar: number | Of<NumericType>): Scalar<NumericType>,
     <NumericType extends NoOf = number>(scalar: NumericType): Scalar,
 } =
-    <NumericType extends Number | NoOf = number>(scalar: NumericType | number | Of<NumericType>): Scalar<NumericType> =>
+    <NumericType extends Unnatural | NoOf = number>(scalar: NumericType | number | Of<NumericType>): Scalar<NumericType> =>
         scalar as unknown as Scalar<NumericType>
-const NormalScalar: {
-    <NumericType extends NoOf = number>(normalScalar: NumericType): NormalScalar,
-    <NumericType extends Number = number>(normalScalar: number | Of<NumericType>): NormalScalar<NumericType>,
-    <NumericType extends NoOf = number>(normalScalar: NumericType): NormalScalar,
-} =
-    <NumericType extends Number | NoOf = number>(normalScalar: NumericType | number | Of<NumericType>): NormalScalar<NumericType> => {
-        normalScalarCheck(normalScalar)
-
-        return normalScalar as unknown as NormalScalar<NumericType>
-    }
 const Rotation: {
     <NumericType extends NoOf = number>(rotation: NumericType): Rotation,
-    <NumericType extends Number = number>(rotation: number | Of<NumericType>): Rotation<NumericType>,
+    <NumericType extends NonNormal & Unnatural = number>(rotation: number | Of<NumericType>): Rotation<NumericType>,
     <NumericType extends NoOf = number>(rotation: NumericType): Rotation,
 } =
     <NumericType extends Number | NoOf = number>(rotation: NumericType | number | Of<NumericType>): Rotation<NumericType> =>
         rotation as unknown as Rotation<NumericType>
 const Modulus: {
     <NumericType extends NoOf = number>(modulus: NumericType): Modulus,
-    <NumericType extends Number = number>(modulus: number | Of<NumericType>): Modulus<NumericType>,
+    <NumericType extends NonNormal & Unnatural = number>(modulus: number | Of<NumericType>): Modulus<NumericType>,
     <NumericType extends NoOf = number>(modulus: NumericType): Modulus,
 } =
-    <NumericType extends Number | NoOf = number>(modulus: NumericType | number | Of<NumericType>): Modulus<NumericType> =>
+    <NumericType extends Unnatural | NoOf = number>(modulus: NumericType | number | Of<NumericType>): Modulus<NumericType> =>
         modulus as unknown as Modulus<NumericType>
 const Exponent: {
     <NumericType extends NoOf = number>(exponent: NumericType): Exponent,
-    <NumericType extends Number = number>(exponent: number | Of<NumericType>): Exponent<NumericType>,
+    <NumericType extends NonNormal & Unnatural = number>(exponent: number | Of<NumericType>): Exponent<NumericType>,
     <NumericType extends NoOf = number>(exponent: NumericType): Exponent,
 } =
-    <NumericType extends Number | NoOf = number>(exponent: NumericType | number | Of<NumericType>): Exponent<NumericType> =>
+    <NumericType extends Unnatural | NoOf = number>(exponent: NumericType | number | Of<NumericType>): Exponent<NumericType> =>
         exponent as unknown as Exponent<NumericType>
 const Logarithm: {
     <NumericType extends NoOf = number>(logarithm: NumericType): Logarithm,
-    <NumericType extends Number = number>(logarithm: number | Of<NumericType>): Logarithm<NumericType>,
+    <NumericType extends NonNormal & Unnatural = number>(logarithm: number | Of<NumericType>): Logarithm<NumericType>,
     <NumericType extends NoOf = number>(logarithm: NumericType): Logarithm,
 } =
-    <NumericType extends Number | NoOf = number>(logarithm: NumericType | number | Of<NumericType>): Logarithm<NumericType> =>
+    <NumericType extends Unnatural | NoOf = number>(logarithm: NumericType | number | Of<NumericType>): Logarithm<NumericType> =>
         logarithm as unknown as Logarithm<NumericType>
 
 // Special Operations
+
+const NormalScalar: {
+    <NumericType extends NoOf = number>(normalScalar: NumericType): NormalScalar,
+    <NumericType extends Unnatural = number>(normalScalar: number | Of<NumericType>): NormalScalar<NumericType>,
+    <NumericType extends NoOf = number>(normalScalar: NumericType): NormalScalar,
+} =
+    <NumericType extends Unnatural | NoOf = number>(normalScalar: NumericType | number | Of<NumericType>): NormalScalar<NumericType> => {
+        normalScalarCheck(normalScalar)
+
+        return normalScalar as unknown as NormalScalar<NumericType>
+    }
 
 const Ordinal: {
     <IndexType extends NoOf = number>(scalar: IndexType): Ordinal,
@@ -159,24 +161,31 @@ const Translation: {
 
 const Multiple: {
     <NumericType extends NoOf = number>(multiple: NumericType): Multiple,
-    <NumericType extends Number = number>(multiple: number | Of<NumericType>): Multiple<NumericType>,
+    <NumericType extends NonNormal = number>(multiple: number | Of<NumericType>): Multiple<NumericType>,
     <NumericType extends NoOf = number>(multiple: NumericType): Multiple,
 } =
-    <NumericType extends Number | NoOf = number>(multiple: NumericType | number | Of<NumericType>): Multiple<NumericType> =>
+    <NumericType extends Unnatural | NoOf = number>(multiple: NumericType | number | Of<NumericType>): Multiple<NumericType> =>
         integerCheck(multiple as number, 'Multiple') as unknown as Multiple<NumericType>
+const IntegerModulus: {
+    <NumericType extends NoOf = number>(integerModulus: NumericType): IntegerModulus,
+    <NumericType extends NonNormal = number>(integerModulus: number | Of<NumericType>): IntegerModulus<NumericType>,
+    <NumericType extends NoOf = number>(integerModulus: NumericType): IntegerModulus,
+} =
+    <NumericType extends Unnatural | NoOf = number>(integerModulus: NumericType | number | Of<NumericType>): IntegerModulus<NumericType> =>
+        integerCheck(integerModulus as number, 'IntegerModulus') as unknown as IntegerModulus<NumericType>
 const Base: {
     <NumericType extends NoOf = number>(base: NumericType): Base,
-    <NumericType extends Number = number>(base: number | Of<NumericType>): Base<NumericType>,
+    <NumericType extends NonNormal = number>(base: number | Of<NumericType>): Base<NumericType>,
     <NumericType extends NoOf = number>(base: NumericType): Base,
 } =
-    <NumericType extends Number | NoOf = number>(base: NumericType | number | Of<NumericType>): Base<NumericType> =>
+    <NumericType extends Unnatural | NoOf = number>(base: NumericType | number | Of<NumericType>): Base<NumericType> =>
         integerCheck(base as number, 'Base') as unknown as Base<NumericType>
 const Power: {
     <NumericType extends NoOf = number>(power: NumericType): Power,
-    <NumericType extends Number = number>(power: number | Of<NumericType>): Power<NumericType>,
+    <NumericType extends NonNormal = number>(power: number | Of<NumericType>): Power<NumericType>,
     <NumericType extends NoOf = number>(power: NumericType): Power,
 } =
-    <NumericType extends Number | NoOf = number>(power: NumericType | number | Of<NumericType>): Power<NumericType> =>
+    <NumericType extends Unnatural | NoOf = number>(power: NumericType | number | Of<NumericType>): Power<NumericType> =>
         integerCheck(power as number, 'Power') as unknown as Power<NumericType>
 
 // Other Stuff
@@ -235,4 +244,5 @@ export {
     Multiple,
     Exponent,
     Logarithm,
+    IntegerModulus,
 }

@@ -143,7 +143,7 @@ export {
     computeIntervals,
     isNegative,
     isPositive,
-    computePartialSumOfPowers,
+    computePartialSumOfExponents,
     goesMonotonically,
     goesMonotonicallyBetweenValueAndValue,
     goesMonotonicallyFromValueToValue,

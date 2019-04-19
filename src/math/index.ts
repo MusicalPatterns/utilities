@@ -23,7 +23,7 @@ export {
 } from './quadratic'
 export { inBounds } from './inBounds'
 export { allValuesAreTheSame, goesFromValueToValue } from './goes'
-export { computePartialSumOfPowers } from './partialSumOfPowers'
+export { computePartialSumOfExponents } from './partialSumOfExponents'
 export { computeGreatestCommonDivisor, computeLeastCommonMultiple } from './common'
 export { isNegative, isPositive } from './positiveAndNegative'
 export {

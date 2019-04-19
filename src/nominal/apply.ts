@@ -12,6 +12,7 @@ import {
     Denominator,
     Exponent,
     Fraction,
+    IntegerModulus,
     Logarithm,
     Modulus,
     Multiple,
@@ -69,7 +70,7 @@ const Translation: <TranslatedType>(
                     index,
                     to.Translation<Ordinal>(-from.Translation(translation as unknown as Translation)),
                 )
-                cycledIndex = Modulus(cycledIndex, to.Modulus<Ordinal>(from.Cardinal(cellCount)))
+                cycledIndex = IntegerModulus(cycledIndex, to.IntegerModulus<Ordinal>(from.Cardinal(cellCount)))
                 cycledCycle.push(cycle[ from.Ordinal(cycledIndex) ])
             }
 
@@ -148,9 +149,9 @@ const Ordinal: <ElementType>(
         index: Ordinal<ElementType>,
     ): ElementType => {
         if (isCycle(array)) {
-            const cycledIndex: Ordinal<ElementType> = Modulus(
+            const cycledIndex: Ordinal<ElementType> = IntegerModulus(
                 index,
-                to.Modulus<Ordinal<ElementType>>(array.length),
+                to.IntegerModulus<Ordinal<ElementType>>(array.length),
             )
 
             return array[ from.Ordinal(cycledIndex as unknown as Ordinal) ]
@@ -181,6 +182,28 @@ const Modulus: <OfType extends Number>(
 
         return result as unknown as OfType
     }
+const IntegerModulus: <OfType extends Number>(
+    value: OfType,
+    integerModulus: IntegerModulus<OfType>,
+) => OfType =
+    <OfType extends Number>(
+        value: OfType,
+        integerModulus: IntegerModulus<OfType>,
+    ): OfType => {
+        const integerCheckedIntegerModulus: IntegerModulus<OfType> = integerCheck(integerModulus, 'Base')
+
+        let result: number = value as unknown as number
+        const rawIntegerModulus: number = integerCheckedIntegerModulus as unknown as number
+
+        while (result < 0) {
+            result += rawIntegerModulus
+        }
+        while (result >= rawIntegerModulus) {
+            result -= rawIntegerModulus
+        }
+
+        return result as unknown as OfType
+    }
 
 const Numerator: (denominator: Denominator, numerator: Numerator) => Fraction =
     (denominator: Denominator, numerator: Numerator): Fraction =>
@@ -204,4 +227,5 @@ export {
     Multiple,
     Exponent,
     Logarithm,
+    IntegerModulus,
 }

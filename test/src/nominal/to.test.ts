@@ -5,10 +5,10 @@ import {
     Base,
     Cardinal,
     Cents,
-    Denominator,
+    Denominator, Exponent,
     Frequency,
     Hz,
-    Integer,
+    Integer, Logarithm,
     Meters,
     Modulus,
     Ms,
@@ -153,6 +153,14 @@ describe('to', () => {
         it('allows these things for Ordinal', () => {
             const index: Ordinal = to.Ordinal(3)
             const stringIndex: Ordinal<string> = to.Ordinal<string>(3)
+        })
+
+        it('allows assigning more specific operations (normal, integer) to the less specific counterparts', () => {
+            const scalarFromNormalScalar: Scalar = to.NormalScalar(0.5)
+
+            const scalarFromMultiple: Scalar = to.Multiple(5)
+            const logarithmFromBase: Logarithm = to.Base(5)
+            const exponentFromPower: Exponent = to.Power(5)
         })
     })
 })

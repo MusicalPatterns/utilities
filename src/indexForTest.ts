@@ -59,7 +59,7 @@ export {
     invertNormalScalar,
     computeDeltas,
     computeIntervals,
-    computePartialSumOfPowers,
+    computePartialSumOfExponents,
     goesMonotonically,
     goesMonotonicallyBetweenValueAndValue,
     goesMonotonicallyFromValueToValue,
