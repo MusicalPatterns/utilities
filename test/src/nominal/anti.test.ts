@@ -1,10 +1,10 @@
 // tslint:disable no-any no-unused-expression comment-format no-commented-code no-dead-store no-type-definitions-outside-types-modules
 
-// There should be 143 errors in this file when the below is uncommented.
+// There should be 140 errors in this file when the below is uncommented.
 
 // import {
-//     apply, Base,
-//     Cardinal,
+//     apply,
+//     Base,
 //     Cents,
 //     computeNominalInterface,
 //     CustomFrom,
@@ -16,7 +16,7 @@
 //     from,
 //     Hz,
 //     INITIAL,
-//     insteadOf, Logarithm,
+//     insteadOf,
 //     Ms,
 //     Multiple,
 //     NominalInterface,
@@ -25,7 +25,8 @@
 //     of,
 //     Of,
 //     ofFrom,
-//     Ordinal, Power,
+//     Ordinal,
+//     Power,
 //     Rotation,
 //     Scalar,
 //     to,
@@ -153,14 +154,12 @@
 //                 to.Fraction([ 4, 4 ])
 //             })
 //
-//             it('DOES NOT ALLOW making Cardinals or Ordinals if they are some other Units (not Integers)', () => {
-//                 to.Cardinal(to.Hz(3))
+//             it('DOES NOT ALLOW making special units if they are some other Units (not Integers)', () => {
 //                 to.Numerator(to.Hz(3))
 //                 to.Denominator(to.Hz(3))
 //             })
 //
-//             it('DOES NOT ALLOW making Cardinals or Ordinals generic of some other Units', () => {
-//                 const cardinalHz: Cardinal<Hz> = 3 as any as Cardinal<Hz>
+//             it('DOES NOT ALLOW making special units of some other Units', () => {
 //                 const numeratorHz: Numerator<Hz> = 3 as any as Numerator<Hz>
 //                 const denominatorHz: Denominator<Hz> = 3 as any as Denominator<Hz>
 //             })

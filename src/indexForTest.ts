@@ -142,4 +142,7 @@ export {
     Multiple,
     Exponent,
     Logarithm,
+    FIFTH,
+    SIXTH,
+    SEVENTH,
 } from './nominal/indexForTest'

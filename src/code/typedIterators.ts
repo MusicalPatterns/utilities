@@ -18,7 +18,7 @@ const slice: <ElementType>(
             return array.slice(from.Ordinal(initial as unknown as Ordinal))
         }
 
-        if (terminal > (to.Ordinal(from.Cardinal(length(array))) as unknown as Ordinal<ElementType>)) {
+        if (terminal > indexJustBeyondFinalElement(array)) {
             throw new Error(`You tried to slice up to index ${terminal} of an array with length \
 of only ${length(array)}: ${array}`)
         }

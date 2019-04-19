@@ -70,9 +70,6 @@ const Amplitude: (ofAmplitude: number) => Of<Amplitude> =
 const Integer: (ofInteger: number) => Of<Integer> =
     (ofInteger: number): Of<Integer> =>
         ofInteger as unknown as Of<Integer>
-const Cardinal: (ofCardinal: number) => Of<Cardinal> =
-    (ofCardinal: number): Of<Cardinal> =>
-        ofCardinal as unknown as Of<Cardinal>
 const Numerator: (ofNumerator: number) => Of<Numerator> =
     (ofNumerator: number): Of<Numerator> =>
         ofNumerator as unknown as Of<Numerator>
@@ -106,12 +103,16 @@ const Modulus: <OfType extends Number = number>(ofModulus: number | OfType) => O
 
 // Special Operations
 
-const Translation: <OfType extends Number = number>(ofTranslation: number | OfType) => Of<Translation<OfType>> =
-    <OfType extends Number = number>(ofTranslation: number | OfType): Of<Translation<OfType>> =>
-        ofTranslation as unknown as Of<Translation<OfType>>
 const Ordinal: <OfType = number>(ofIndex: number | OfType) => Of<Ordinal<OfType>> =
     <OfType = number>(ofIndex: number | OfType): Of<Ordinal<OfType>> =>
         ofIndex as unknown as Of<Ordinal<OfType>>
+
+const Cardinal: <OfType extends Number = number>(ofCardinal: number | OfType) => Of<Cardinal<OfType>> =
+    <OfType extends Number = number>(ofCardinal: number | OfType): Of<Cardinal<OfType>> =>
+        ofCardinal as unknown as Of<Cardinal<OfType>>
+const Translation: <OfType extends Number = number>(ofTranslation: number | OfType) => Of<Translation<OfType>> =
+    <OfType extends Number = number>(ofTranslation: number | OfType): Of<Translation<OfType>> =>
+        ofTranslation as unknown as Of<Translation<OfType>>
 const Multiple: <OfType extends Number = number>(ofMultiple: number | OfType) => Of<Multiple<OfType>> =
     <OfType extends Number = number>(ofMultiple: number | OfType): Of<Multiple<OfType>> =>
         ofMultiple as unknown as Of<Multiple<OfType>>

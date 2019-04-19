@@ -72,8 +72,6 @@ const Integer: (integer: Integer) => number =
     (integer: Integer): number =>
         integer as unknown as number
 
-const Cardinal: (cardinal: Cardinal) => number =
-    (cardinal: Cardinal): number => cardinal as unknown as number
 const Numerator: (numerator: Numerator) => number =
     (numerator: Numerator): number =>
         numerator as unknown as number
@@ -110,9 +108,12 @@ const Modulus: <OfType extends Number = number, OperationType extends Modulus<Of
 
 // Special Operations
 
-const Ordinal: <OfType = number, OperationType extends Ordinal<OfType> = Ordinal<OfType>>(index: OperationType) => Of<OfType> =
-    <OfType = number, OperationType extends Ordinal<OfType> = Ordinal<OfType>>(index: OperationType): Of<OfType> =>
-        index as unknown as Of<OfType>
+const Cardinal: <OfType = number, OperationType extends Cardinal<OfType> = Cardinal<OfType>>(cardinal: OperationType) => Of<OfType> =
+    <OfType = number, OperationType extends Cardinal<OfType> = Cardinal<OfType>>(cardinal: OperationType): Of<OfType> =>
+        cardinal as unknown as Of<OfType>
+const Ordinal: <OfType = number, OperationType extends Ordinal<OfType> = Ordinal<OfType>>(ordinal: OperationType) => Of<OfType> =
+    <OfType = number, OperationType extends Ordinal<OfType> = Ordinal<OfType>>(ordinal: OperationType): Of<OfType> =>
+        ordinal as unknown as Of<OfType>
 const Translation: <OfType = number, OperationType extends Translation<OfType> = Translation<OfType>>(translation: OperationType) => Of<OfType> =
     <OfType = number, OperationType extends Translation<OfType> = Translation<OfType>>(translation: OperationType): Of<OfType> =>
         translation as unknown as Of<OfType>

@@ -5,6 +5,8 @@ import {
     FOURTH,
     INITIAL,
     Scalar,
+    SEVENTH,
+    SIXTH,
     slice,
     stringSlice,
     THIRD,
@@ -34,7 +36,9 @@ describe('typed iterators', () => {
         it('throws when you exceed the bounds, because i lost a day of my life trying to figure out what was wrong with my continuous mode hafuhafu logic and all that was wrong was that ZERO_AND_POSITIVE_INTEGERS only went up to 256 and was silently not giving me any more integers', () => {
             const array: Scalar[] = [ 1, 2, 3, 4, 5, 6 ].map(to.Scalar)
 
-            expect(() => slice(array, INITIAL, EIGHTH))
+            expect(slice(array, INITIAL, SIXTH))
+                .toBeTruthy()
+            expect(() => slice(array, INITIAL, SEVENTH))
                 .toThrow()
         })
     })

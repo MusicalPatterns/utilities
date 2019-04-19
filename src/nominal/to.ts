@@ -22,7 +22,8 @@ import {
     Meters,
     Modulus,
     Ms,
-    Multiple, NonNormal,
+    Multiple,
+    NonNormal,
     NoOf,
     NormalScalar,
     NoUnits,
@@ -36,7 +37,8 @@ import {
     Semitones,
     Space,
     Time,
-    Translation, Unnatural,
+    Translation,
+    Unnatural,
 } from './types'
 
 // Units
@@ -77,10 +79,6 @@ const Amplitude: <NumericType extends NoUnits>(amplitude: NumericType) => Amplit
 const Integer: <NumericType extends NoUnits>(integer: NumericType) => Integer =
     <NumericType extends NoUnits>(integer: NumericType): Integer =>
         integer as unknown as Integer
-
-const Cardinal: <NumericType extends NoUnits>(cardinal: NumericType) => Cardinal =
-    <NumericType extends NoUnits>(cardinal: NumericType): Cardinal =>
-        integerCheck(cardinal, 'Cardinal') as unknown as Cardinal
 
 const Numerator: <NumericType extends NoUnits>(numerator: NumericType) => Numerator =
     <NumericType extends NoUnits>(numerator: NumericType): Numerator =>
@@ -133,6 +131,14 @@ const Logarithm: {
 
 // Special Operations
 
+const Cardinal: {
+    <CardinalType extends NoOf = number>(cardinal: CardinalType): Cardinal,
+    <CardinalType = number>(cardinal: number | Of<CardinalType>): Cardinal<CardinalType>,
+    <CardinalType extends NoOf = number>(cardinal: CardinalType): Cardinal,
+} =
+    <CardinalType = number>(cardinal: CardinalType | number | Of<CardinalType>): Cardinal<CardinalType> =>
+        integerCheck(cardinal as unknown as number, 'Cardinal') as unknown as Cardinal<CardinalType>
+
 const NormalScalar: {
     <NumericType extends NoOf = number>(normalScalar: NumericType): NormalScalar,
     <NumericType extends Unnatural = number>(normalScalar: number | Of<NumericType>): NormalScalar<NumericType>,
@@ -142,12 +148,12 @@ const NormalScalar: {
         normalCheck(normalScalar) as unknown as NormalScalar<NumericType>
 
 const Ordinal: {
-    <IndexType extends NoOf = number>(scalar: IndexType): Ordinal,
-    <IndexType = number>(scalar: number | Of<IndexType>): Ordinal<IndexType>,
-    <IndexType extends NoOf = number>(scalar: IndexType): Ordinal,
+    <OrdinalType extends NoOf = number>(scalar: OrdinalType): Ordinal,
+    <OrdinalType = number>(scalar: number | Of<OrdinalType>): Ordinal<OrdinalType>,
+    <OrdinalType extends NoOf = number>(scalar: OrdinalType): Ordinal,
 } =
-    <IndexType = number>(index: IndexType | number | Of<IndexType>): Ordinal<IndexType> =>
-        integerCheck(index as unknown as number, 'Ordinal') as unknown as Ordinal<IndexType>
+    <OrdinalType = number>(ordinal: OrdinalType | number | Of<OrdinalType>): Ordinal<OrdinalType> =>
+        integerCheck(ordinal as unknown as number, 'Ordinal') as unknown as Ordinal<OrdinalType>
 const Translation: {
     <TranslationType extends NoOf = number>(scalar: TranslationType): Translation,
     <TranslationType = number>(scalar: number | Of<TranslationType>): Translation<TranslationType>,

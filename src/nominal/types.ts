@@ -25,7 +25,6 @@ type Amplitude = UnitsBrand<'Amplitude'>
 
 // Special Units
 
-type Cardinal = UnitsBrand<'Cardinal'>
 type Numerator = UnitsBrand<'Numerator'>
 type Denominator = UnitsBrand<'Denominator'>
 
@@ -52,14 +51,14 @@ type Modulus<OfType extends NonNormal & Unnatural = number> = OperationBrand<'Mo
 
 // Special Operations
 
+type Ordinal<OfType = number> = OperationBrand<'Ordinal', OfType>
+type Translation<OfType = number> = OperationBrand<'Translation', OfType>
+type Cardinal<OfType = number> = OperationBrand<'Cardinal', OfType>
+
 type NormalScalar<OfType extends Unnatural = number> = OperationBrand<'NormalScalar' & 'Scalar', OfType>
 
 type Base<OfType extends NonNormal = number> = OperationBrand<'Base' & 'Logarithm', OfType>
 type Power<OfType extends NonNormal = number> = OperationBrand<'Power' & 'Exponent', OfType>
-
-type Ordinal<OfType = number> = OperationBrand<'Ordinal', OfType>
-type Translation<OfType = number> = OperationBrand<'Translation', OfType>
-
 type Multiple<OfType extends NonNormal = number> = OperationBrand<'Multiple' & 'Scalar', OfType>
 type IntegerModulus<OfType extends NonNormal = number> = OperationBrand<'IntegerModulus' & 'Modulus', OfType>
 
@@ -85,7 +84,8 @@ type MaybeNatural<Name> =
                         Name extends 'Power' ? Natural :
                             Name extends 'Base' ? Natural :
                                 Name extends 'Ordinal' ? Natural :
-                                    {}
+                                    Name extends 'Cardinal' ? Natural :
+                                        {}
 
 type MaybeNormal<Name> =
     Name extends 'NormalScalar' ? Normal :
@@ -104,10 +104,11 @@ type OperationNameFromOperation<OperationType> =
                             OperationType extends Translation ? 'Translation' :
                                 OperationType extends Multiple ? 'Multiple' :
                                     OperationType extends Ordinal ? 'Ordinal' :
-                                        OperationType extends Exponent ? 'Exponent' :
-                                            OperationType extends Logarithm ? 'Logarithm' :
-                                                OperationType extends IntegerModulus ? 'IntegerModulus' :
-                                                    ''
+                                        OperationType extends Cardinal ? 'Cardinal' :
+                                            OperationType extends Exponent ? 'Exponent' :
+                                                OperationType extends Logarithm ? 'Logarithm' :
+                                                    OperationType extends IntegerModulus ? 'IntegerModulus' :
+                                                        ''
 
 type Block = number[] & { _BlockBrand: void }
 

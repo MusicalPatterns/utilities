@@ -59,19 +59,22 @@ const Translation: <TranslatedType>(
         if (isCycle(value)) {
             const cycle: Cycle<TranslatedType> = value as unknown as Cycle<TranslatedType>
             const cycledCycle: Cycle<TranslatedType> = to.Cycle([])
-            const cellCount: Cardinal = length(cycle)
+            const cellCount: Cardinal<TranslatedType> = length(cycle)
 
             for (
-                let index: Ordinal = to.Ordinal(0);
+                let index: Ordinal<TranslatedType> = to.Ordinal<TranslatedType>(0);
                 index <= finalIndexFromElementsTotal(cellCount);
-                index = Translation(index, to.Translation<Ordinal>(1))
+                index = Translation(index, to.Translation<Ordinal<TranslatedType>>(1))
             ) {
-                let cycledIndex: Ordinal = Translation(
+                let cycledIndex: Ordinal<TranslatedType> = Translation(
                     index,
-                    to.Translation<Ordinal>(-from.Translation(translation as unknown as Translation)),
+                    to.Translation<Ordinal<TranslatedType>>(-from.Translation(translation as unknown as Translation)),
                 )
-                cycledIndex = IntegerModulus(cycledIndex, to.IntegerModulus<Ordinal>(from.Cardinal(cellCount)))
-                cycledCycle.push(cycle[ from.Ordinal(cycledIndex) ])
+                cycledIndex = IntegerModulus(
+                    cycledIndex,
+                    to.IntegerModulus<Ordinal<TranslatedType>>(from.Cardinal<TranslatedType>(cellCount)),
+                )
+                cycledCycle.push(cycle[ from.Ordinal<TranslatedType>(cycledIndex) ])
             }
 
             return cycledCycle as unknown as TranslatedType

@@ -21,6 +21,7 @@ import {
     Power,
     Radians,
     Scalar,
+    Semitones,
     Space,
     Translation,
 } from './types'
@@ -62,14 +63,14 @@ const EVERY_THIRD: Multiple<Ordinal<any>> = to.Multiple<Ordinal>(3)
 const EVERY_FOURTH: Multiple<Ordinal<any>> = to.Multiple<Ordinal>(4)
 const EVERY_FIFTH: Multiple<Ordinal<any>> = to.Multiple<Ordinal>(5)
 
-const ONCE: Cardinal = to.Cardinal(1)
-const TWICE: Cardinal = to.Cardinal(2)
-const THRICE: Cardinal = to.Cardinal(3)
-const FRICE: Cardinal = to.Cardinal(4)
-const FICE: Cardinal = to.Cardinal(5)
+const ONCE: Cardinal<any> = to.Cardinal(1)
+const TWICE: Cardinal<any> = to.Cardinal(2)
+const THRICE: Cardinal<any> = to.Cardinal(3)
+const FRICE: Cardinal<any> = to.Cardinal(4)
+const FICE: Cardinal<any> = to.Cardinal(5)
 
 const DEFAULT_PRECISION: Integer = to.Integer(2)
-const A_SUFFICIENT_COUNT_OF_NUMBERS: Cardinal = to.Cardinal(Math.pow(2, 8))
+const A_SUFFICIENT_COUNT_OF_NUMBERS: Cardinal<any> = to.Cardinal(Math.pow(2, 8))
 const ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS: Translation<Cycle> =
     to.Translation(-2 as Of<Cycle>)
 
@@ -77,8 +78,8 @@ const X_AXIS: Ordinal<any> = to.Ordinal(0)
 const Y_AXIS: Ordinal<any> = to.Ordinal(1)
 const Z_AXIS: Ordinal<any> = to.Ordinal(2)
 const ORIGIN: Space = to.Space(0)
-const TWO_DIMENSIONAL: Cardinal = to.Cardinal(2)
-const THREE_DIMENSIONAL: Cardinal = to.Cardinal(3)
+const TWO_DIMENSIONAL: Cardinal<any> = to.Cardinal(2)
+const THREE_DIMENSIONAL: Cardinal<any> = to.Cardinal(3)
 
 const SQUARED: Power<any> = to.Power(2)
 const CUBED: Power<any> = to.Power(3)
@@ -143,27 +144,30 @@ const EXCLUSIVE_TO_LEFT: Translation<Ordinal<any>> = to.Translation<Ordinal>(1)
 const INITIAL: Ordinal<any> = to.Ordinal(0)
 const SKIP_FIRST_ELEMENT: Ordinal<any> = to.Ordinal(1)
 
-const TRANSLATION_FROM_LENGTH_TO_FINAL_INDEX: Translation<Cardinal> = to.Translation<Cardinal>(-1)
+const TRANSLATION_FROM_LENGTH_TO_FINAL_INDEX: Translation<Cardinal<any>> = to.Translation<Cardinal>(-1)
 const EXAMPLE_ELEMENT_INDEX: Ordinal<any> = to.Ordinal(0)
 
 const NOT_FOUND: Ordinal<any> = to.Ordinal(-1)
 
-const SEMITONES_PER_OCTAVE: Cardinal = to.Cardinal(12)
+const SEMITONES_PER_OCTAVE: Cardinal<Semitones> = to.Cardinal<Semitones>(12)
 
 const OCTAVE: Base<Frequency> = to.Base<Frequency>(2)
 const TRITAVE: Base<Frequency> = to.Base<Frequency>(3)
-const SEMITONE: Logarithm<Frequency> =
-    to.Logarithm<Frequency>(Math.pow(from.Base<Frequency>(OCTAVE), (1 / from.Cardinal(SEMITONES_PER_OCTAVE))))
+const SEMITONE: Logarithm<Frequency> = to.Logarithm<Frequency>(Math.pow(
+    from.Base<Frequency>(OCTAVE),
+    (1 / from.Cardinal<Semitones>(SEMITONES_PER_OCTAVE)),
+))
 
 const CENTS_PER_SEMITONE: Cents = to.Cents(100)
-const CENTS_PER_OCTAVE: Cents = to.Cents(from.Cents(CENTS_PER_SEMITONE) * from.Cardinal(SEMITONES_PER_OCTAVE))
+const CENTS_PER_OCTAVE: Cents =
+    to.Cents(from.Cents(CENTS_PER_SEMITONE) * from.Cardinal<Semitones>(SEMITONES_PER_OCTAVE))
 
 const BEGINNING: Ms = to.Ms(0)
 const NO_DURATION: Ms = to.Ms(0)
 
 const MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS: Cardinal = to.Cardinal(10)
 
-const MILLISECONDS_PER_SECOND: Cardinal = to.Cardinal(1000)
+const MILLISECONDS_PER_SECOND: Cardinal<Ms> = to.Cardinal<Ms>(1000)
 const SECONDS_PER_MINUTE: Cardinal = to.Cardinal(60)
 
 const ONE_MILLISECOND: Ms = to.Ms(1)
