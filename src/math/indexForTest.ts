@@ -40,6 +40,7 @@ export {
     goesQuadraticallyFromValueToValue,
 } from './quadratic'
 export { inBounds } from './inBounds'
+export { valueLinearlyBetweenValues } from './valueLinearlyBetweenValues'
 export { computePartialSumOfExponents } from './partialSumOfExponents'
 export { computeDeltas, computeIntervals } from './rateOfChange'
 

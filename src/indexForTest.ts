@@ -73,6 +73,7 @@ export {
     difference,
     interval,
     quotient,
+    valueLinearlyBetweenValues,
 } from './math/indexForTest'
 export {
     centsTranslationToPitchScalar,
