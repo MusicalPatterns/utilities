@@ -20,6 +20,7 @@ const indexCheck: <ElementType>(index: Ordinal<ElementType>, array: ElementType[
     }
 
 const normalCheck: <NumericType extends Number>(value: NumericType) => number =
+    // tslint:disable-next-line cyclomatic-complexity
     <NumericType extends Number>(value: NumericType): number => {
         const roundedValue: number =
             unfortunatelyNecessaryReimplementationOfRoundForCheckToAvoidCircularDependencyHell(
@@ -29,7 +30,9 @@ const normalCheck: <NumericType extends Number>(value: NumericType) => number =
             throw new Error(`A NormalScalar must be between 0 and 1. It was ${value}.`)
         }
 
-        return roundedValue
+        return value as unknown as number > 1 || value as unknown as number < 0 ?
+            roundedValue > 1 ? 1 : roundedValue < 0 ? 0 : roundedValue :
+            value as unknown as number
     }
 
 const integerCheck: <NumericType extends Number>(value: NumericType, type: string) => NumericType =
