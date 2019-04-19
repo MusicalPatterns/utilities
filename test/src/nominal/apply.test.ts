@@ -105,6 +105,11 @@ describe('apply', () => {
             expect(apply.NormalScalar(to.Scalar(0.5), to.NormalScalar<NormalScalar>(0.5)))
                 .toBe(to.Scalar(0.25))
         })
+
+        it('rounds the value if it is close', () => {
+            expect(apply.NormalScalar(3, -2.220446049250313e-16 as unknown as NormalScalar))
+                .toBe(0)
+        })
     })
 
     describe('Multiple', () => {

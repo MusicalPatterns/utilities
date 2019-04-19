@@ -1,7 +1,7 @@
 // tslint:disable variable-name max-file-line-count
 
 import { finalIndexFromElementsTotal, length } from '../code'
-import { indexCheck, integerCheck, normalScalarCheck } from './checks'
+import { indexCheck, integerCheck, normalCheck } from './checks'
 import * as from from './from'
 import * as to from './to'
 import { isCycle } from './typeGuards'
@@ -115,16 +115,13 @@ const Scalar: <OfType extends Number>(
 
 const NormalScalar: <OfType extends Number>(
     value: OfType,
-    scalar: NormalScalar<OfType>,
+    normalScalar: NormalScalar<OfType>,
 ) => OfType =
     <OfType extends Number>(
         value: OfType,
-        scalar: NormalScalar<OfType>,
-    ): OfType => {
-        normalScalarCheck(scalar)
-
-        return value as unknown as number * from.Scalar(scalar as unknown as Scalar) as unknown as OfType
-    }
+        normalScalar: NormalScalar<OfType>,
+    ): OfType =>
+        value as unknown as number * from.Scalar(normalCheck(normalScalar) as unknown as Scalar) as unknown as OfType
 
 const Multiple: <OfType extends Number>(
     value: OfType,

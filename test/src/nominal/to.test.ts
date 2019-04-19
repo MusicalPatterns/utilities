@@ -12,7 +12,7 @@ import {
     Meters,
     Modulus,
     Ms,
-    Multiple,
+    Multiple, NormalScalar,
     Numerator,
     Of,
     of,
@@ -124,6 +124,15 @@ describe('to', () => {
                 .toBe(9 as unknown as Cardinal)
             expect(() => to.Cardinal(9.0000000004))
                 .toThrow(new Error('Numerals of type Cardinal must be Integers. This numeral had value 9.0000000004.'))
+        })
+
+        it(`that also works for NormalScalar`, () => {
+            expect(to.NormalScalar(1.000000000000004))
+                .toBe(1 as unknown as NormalScalar)
+            expect(to.NormalScalar(1.00000000004))
+                .toBe(1 as unknown as NormalScalar)
+            expect(() => to.NormalScalar(1.0000000004))
+                .toThrow(new Error('A NormalScalar must be between 0 and 1. It was 1.0000000004.'))
         })
 
         it('allows setting things which are integers directly to other units', () => {

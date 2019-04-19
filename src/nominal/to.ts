@@ -1,6 +1,6 @@
 // tslint:disable variable-name max-file-line-count max-line-length
 
-import { integerCheck, normalScalarCheck } from './checks'
+import { integerCheck, normalCheck } from './checks'
 import {
     Amplitude,
     Base,
@@ -138,11 +138,8 @@ const NormalScalar: {
     <NumericType extends Unnatural = number>(normalScalar: number | Of<NumericType>): NormalScalar<NumericType>,
     <NumericType extends NoOf = number>(normalScalar: NumericType): NormalScalar,
 } =
-    <NumericType extends Unnatural | NoOf = number>(normalScalar: NumericType | number | Of<NumericType>): NormalScalar<NumericType> => {
-        normalScalarCheck(normalScalar)
-
-        return normalScalar as unknown as NormalScalar<NumericType>
-    }
+    <NumericType extends Unnatural | NoOf = number>(normalScalar: NumericType | number | Of<NumericType>): NormalScalar<NumericType> =>
+        normalCheck(normalScalar) as unknown as NormalScalar<NumericType>
 
 const Ordinal: {
     <IndexType extends NoOf = number>(scalar: IndexType): Ordinal,
