@@ -79,7 +79,7 @@ type Denature<NumericType extends Number> = (
     NumericType extends Natural ?
         NumericType extends ({ _OperationBrand: string } | { _UnitsBrand: string }) ?
             NaturalToUnnatural<NumericType> & { _IntegerBrand: 'NotInteger' } :
-            Difference<NumericType, { _IntegerBrand: 'Integer' }> & { _IntegerBrand: 'NotInteger' } :
+            number & { _IntegerBrand: 'NotInteger' } :
         NumericType extends ({ _OperationBrand: string } | { _UnitsBrand: string }) ?
             NaturalToUnnatural<NumericType> :
             NumericType
@@ -99,11 +99,12 @@ type UnnaturalToNatural<NumericType extends { _OperationBrand: string }> =
 type NaturalToUnnatural<NumericType extends { _OperationBrand: string } | { _UnitsBrand: string }> =
     NumericType extends { _UnitsBrand: 'Numerator' } ? number :
         NumericType extends { _UnitsBrand: 'Denominator' } ? number :
-            NumericType extends { _OperationBrand: 'Multiple' & 'Scalar' } ? Difference<NumericType, { _OperationBrand: 'Multiple' & 'Scalar' }> & { _OperationBrand: 'Scalar' } :
-                NumericType extends { _OperationBrand: 'Power' & 'Exponent' } ? Difference<NumericType, { _OperationBrand: 'Power' & 'Exponent' }> & { _OperationBrand: 'Exponent' } :
-                    NumericType extends { _OperationBrand: 'Base' & 'Logarithm' } ? Difference<NumericType, { _OperationBrand: 'Base' & 'Logarithm' }> & { _OperationBrand: 'Logarithm' } :
-                        NumericType extends { _OperationBrand: 'IntegerModulus' & 'Modulus' } ? Difference<NumericType, { _OperationBrand: 'IntegerModulus' & 'Modulus' }> & { _OperationBrand: 'Modulus' } :
-                            NumericType
+            NumericType extends { _OperationBrand: 'Cardinal' } ? number :
+                NumericType extends { _OperationBrand: 'Multiple' & 'Scalar' } ? Difference<NumericType, { _OperationBrand: 'Multiple' & 'Scalar' }> & { _OperationBrand: 'Scalar' } :
+                    NumericType extends { _OperationBrand: 'Power' & 'Exponent' } ? Difference<NumericType, { _OperationBrand: 'Power' & 'Exponent' }> & { _OperationBrand: 'Exponent' } :
+                        NumericType extends { _OperationBrand: 'Base' & 'Logarithm' } ? Difference<NumericType, { _OperationBrand: 'Base' & 'Logarithm' }> & { _OperationBrand: 'Logarithm' } :
+                            NumericType extends { _OperationBrand: 'IntegerModulus' & 'Modulus' } ? Difference<NumericType, { _OperationBrand: 'IntegerModulus' & 'Modulus' }> & { _OperationBrand: 'Modulus' } :
+                                NumericType
 
 // Other Stuff
 

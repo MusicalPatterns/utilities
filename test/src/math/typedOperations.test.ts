@@ -112,6 +112,12 @@ describe('typed operations', () => {
 
     describe('reciprocal', () => {
         it('when given an integer, removes the integer type in the return value', () => {
+            const integer: number = reciprocal(to.Integer(3))
+            const numerator: number = reciprocal(to.Numerator(3))
+            const denominator: number = reciprocal(to.Denominator(3))
+
+            const cardinal: number = reciprocal(to.Cardinal(3))
+
             const scalar: Scalar = reciprocal(to.Scalar(3))
             const exponent: Exponent = reciprocal(to.Exponent(3))
             const logarithm: Logarithm = reciprocal(to.Logarithm(3))
@@ -154,22 +160,22 @@ describe('typed operations', () => {
 
     describe('modulus', () => {
         it('when given an integer type, removes the integer type in the return value', () => {
-            const numeratorDowngraded: Number = modulus(to.Numerator(3), to.Numerator(3))
-            const denominatorDowngraded: Number = modulus(to.Denominator(3), to.Denominator(3))
+            const numeratorDowngraded: number = modulus(to.Numerator(3), to.Numerator(3))
+            const denominatorDowngraded: number = modulus(to.Denominator(3), to.Denominator(3))
         })
     })
 
     describe('quotient', () => {
         it('when given an integer type, removes the integer type in the return value', () => {
-            const numeratorDowngraded: Number = quotient(to.Numerator(3), to.Numerator(3))
-            const denominatorDowngraded: Number = quotient(to.Denominator(3), to.Denominator(3))
+            const numeratorDowngraded: number = quotient(to.Numerator(3), to.Numerator(3))
+            const denominatorDowngraded: number = quotient(to.Denominator(3), to.Denominator(3))
         })
     })
 
     describe('interval', () => {
         it('when given an integer type, removes the integer type in the return value', () => {
-            const numeratorDowngraded: Number = interval(to.Numerator(3), to.Numerator(3))
-            const denominatorDowngraded: Number = interval(to.Denominator(3), to.Denominator(3))
+            const numeratorDowngraded: Scalar = interval(to.Numerator(3), to.Numerator(3))
+            const denominatorDowngraded: Scalar = interval(to.Denominator(3), to.Denominator(3))
         })
     })
 
