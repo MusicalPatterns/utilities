@@ -16,7 +16,7 @@ import {
 
 const centsTranslationToPitchScalar: (centsTranslationToPitchScalar: Translation<Cents>) => Scalar<Frequency> =
     (cents: Translation<Cents>): Scalar<Frequency> =>
-        to.Scalar(from.Logarithm<Frequency>(apply.Exponent(
+        to.Scalar<Frequency>(from.Logarithm(apply.Exponent(
             OCTAVE,
             to.Exponent<Logarithm<Frequency>>(from.Translation<Cents>(apply.Scalar(
                 cents,

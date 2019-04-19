@@ -145,7 +145,7 @@ const NormalScalar: {
     <NumericType extends NoOf = number>(normalScalar: NumericType): NormalScalar,
 } =
     <NumericType extends Unnatural | NoOf = number>(normalScalar: NumericType | number | Of<NumericType>): NormalScalar<NumericType> =>
-        normalCheck(normalScalar) as unknown as NormalScalar<NumericType>
+        normalCheck(normalScalar as unknown as number) as unknown as NormalScalar<NumericType>
 
 const Ordinal: {
     <OrdinalType extends NoOf = number>(scalar: OrdinalType): Ordinal,

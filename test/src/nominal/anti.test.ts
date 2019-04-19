@@ -1,12 +1,13 @@
 // tslint:disable
 
-// There should be 174 errors in this file when the below is uncommented.
+// There should be 177 errors in this file when the below is uncommented.
 
 // import {
 //     apply,
 //     Base,
 //     Cents,
-//     computeNominalInterface, cubeRoot,
+//     computeNominalInterface,
+//     cubeRoot,
 //     CustomFrom,
 //     CustomOf,
 //     CustomTo,
@@ -17,7 +18,10 @@
 //     Hz,
 //     INITIAL,
 //     insteadOf,
-//     Integer, IntegerModulus, interval, modulus,
+//     Integer,
+//     IntegerModulus,
+//     interval,
+//     modulus,
 //     Ms,
 //     Multiple,
 //     NominalInterface,
@@ -27,10 +31,12 @@
 //     Of,
 //     ofFrom,
 //     Ordinal,
-//     Power, quotient,
+//     Power,
+//     quotient,
 //     reciprocal,
 //     Rotation,
-//     Scalar, squareRoot,
+//     Scalar,
+//     squareRoot,
 //     to,
 //     Translation,
 // } from '../../../src/indexForTest'
@@ -310,6 +316,12 @@
 //
 //             const cantAssignToOperationOfOperationOfUnitsFromOperationOfOperationUsingTypeParam: Scalar<Scalar<Ms>> = to.Scalar<Scalar>(3)
 //             const cantAssignToOperationOfOperationOfOperationFromOperationOfOperationUsingTypeParam: Scalar<Scalar<Rotation>> = to.Scalar<Scalar>(3)
+//         })
+//
+//         it('DOES NOT ALLOW calling Of on something that is already Of', () => {
+//             const replaceUnitsWithOperation: Of<Scalar> = of.Scalar(of.Hz(3))
+//             const replaceOperationWithOperation: Of<Scalar> = of.Scalar(of.Rotation(3))
+//             const replaceOperationWithUnits: Of<Hz> = of.Hz(of.Scalar(3))
 //         })
 //     })
 //

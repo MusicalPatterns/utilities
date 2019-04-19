@@ -67,7 +67,7 @@ type IntegerModulus<OfType extends NonNormal = number> = OperationBrand<'Integer
 // Of
 
 type NoOf = number & { _OfBrand?: 'NoOf' }
-type Of<OfType> = number & { _OfBrand: OfType }
+type Of<OfType> = number | { _OfBrand: OfType }
 
 // Integer
 

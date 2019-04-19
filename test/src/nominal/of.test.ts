@@ -32,10 +32,4 @@ describe('of', () => {
     it('allows creating operations of operations of units', () => {
         const scalarOfScalarOfHz: Scalar<Scalar<Hz>> = to.Scalar(of.Scalar<Hz>(3))
     })
-
-    it('calling Of on something that is already Of replaces what it was of', () => {
-        const replaceUnitsWithOperation: Of<Scalar> = of.Scalar(of.Hz(3))
-        const replaceOperationWithOperation: Of<Scalar> = of.Scalar(of.Rotation(3))
-        const replaceOperationWithUnits: Of<Hz> = of.Hz(of.Scalar(3))
-    })
 })
