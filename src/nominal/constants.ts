@@ -118,12 +118,12 @@ const FRACTIONAL_IDENTITY: Fraction = to.Fraction([ to.Numerator(1), to.Denomina
 
 const NEXT: Translation<Ordinal<any>> = to.Translation<Ordinal>(1)
 const PREVIOUS: Translation<Ordinal<any>> = to.Translation<Ordinal>(-1)
-const UP_ONE: Translation<Cardinal> = to.Translation<Cardinal>(1)
-const DOWN_ONE: Translation<Cardinal> = to.Translation<Cardinal>(-1)
+const UP_ONE: Translation<Cardinal<any>> = to.Translation<Cardinal>(1)
+const DOWN_ONE: Translation<Cardinal<any>> = to.Translation<Cardinal>(-1)
 const INCREMENT: Translation<any> = to.Translation(1)
 const DECREMENT: Translation<any> = to.Translation(-1)
-const ONE_MORE: Translation<Cardinal> = to.Translation<Cardinal>(1)
-const ONE_FEWER: Translation<Cardinal> = to.Translation<Cardinal>(-1)
+const ONE_MORE: Translation<Cardinal<any>> = to.Translation<Cardinal>(1)
+const ONE_FEWER: Translation<Cardinal<any>> = to.Translation<Cardinal>(-1)
 const NO_TRANSLATION: Translation<any> = to.Translation(0)
 
 const NUMERATOR_INDEX: Ordinal<Numerator> = to.Ordinal<Numerator>(0)
