@@ -1,12 +1,12 @@
-// tslint:disable no-any no-unused-expression comment-format no-commented-code no-dead-store no-type-definitions-outside-types-modules
+// tslint:disable
 
-// There should be 140 errors in this file when the below is uncommented.
+// There should be 174 errors in this file when the below is uncommented.
 
 // import {
 //     apply,
 //     Base,
 //     Cents,
-//     computeNominalInterface,
+//     computeNominalInterface, cubeRoot,
 //     CustomFrom,
 //     CustomOf,
 //     CustomTo,
@@ -17,6 +17,7 @@
 //     Hz,
 //     INITIAL,
 //     insteadOf,
+//     Integer, IntegerModulus, interval, modulus,
 //     Ms,
 //     Multiple,
 //     NominalInterface,
@@ -26,9 +27,10 @@
 //     Of,
 //     ofFrom,
 //     Ordinal,
-//     Power,
+//     Power, quotient,
+//     reciprocal,
 //     Rotation,
-//     Scalar,
+//     Scalar, squareRoot,
 //     to,
 //     Translation,
 // } from '../../../src/indexForTest'
@@ -393,6 +395,76 @@
 //             it('DOES NOT ALLOW the same things a normal From, for Units does not allow', () => {
 //                 const numero: Numero = customFrom.Numero(customTo.Numero(3))
 //                 const numeros: Numeros = customFrom.Numeros(customTo.Numeros([ 3 ]))
+//             })
+//         })
+//     })
+//
+//     describe('typed operations', () => {
+//         describe('reciprocal', () => {
+//             it('when given an integer, removes the integer type in the return value', () => {
+//                 const integer: Integer = reciprocal(to.Integer(3))
+//                 const numerator: Numerator = reciprocal(to.Numerator(3))
+//                 const denominator: Denominator = reciprocal(to.Denominator(3))
+//
+//                 const multiple: Multiple = reciprocal(to.Multiple(3))
+//                 const base: Base = reciprocal(to.Base(3))
+//                 const power: Power = reciprocal(to.Power(3))
+//                 const integerModulus: IntegerModulus = reciprocal(to.IntegerModulus(3))
+//             })
+//         })
+//
+//         describe('modulus', () => {
+//             it('when given an integer, removes the integer type in the return value', () => {
+//                 const integer: Integer = modulus(to.Integer(3), to.Integer(3))
+//                 const numerator: Numerator = modulus(to.Numerator(3), to.Numerator(3))
+//                 const denominator: Denominator = modulus(to.Denominator(3), to.Denominator(3))
+//             })
+//         })
+//
+//         describe('cubeRoot', () => {
+//             it('when given an integer, removes the integer type in the return value', () => {
+//                 const integer: Integer = cubeRoot(to.Integer(3))
+//                 const numerator: Numerator = cubeRoot(to.Numerator(3))
+//                 const denominator: Denominator = cubeRoot(to.Denominator(3))
+//
+//                 const multiple: Multiple = cubeRoot(to.Multiple(3))
+//                 const base: Base = cubeRoot(to.Base(3))
+//                 const power: Power = cubeRoot(to.Power(3))
+//                 const integerModulus: IntegerModulus = cubeRoot(to.IntegerModulus(3))
+//             })
+//         })
+//
+//         describe('squareRoot', () => {
+//             it('when given an integer, removes the integer type in the return value', () => {
+//                 const integer: Integer = squareRoot(to.Integer(3))
+//                 const numerator: Numerator = squareRoot(to.Numerator(3))
+//                 const denominator: Denominator = squareRoot(to.Denominator(3))
+//
+//                 const multiple: Multiple = squareRoot(to.Multiple(3))
+//                 const base: Base = squareRoot(to.Base(3))
+//                 const power: Power = squareRoot(to.Power(3))
+//                 const integerModulus: IntegerModulus = squareRoot(to.IntegerModulus(3))
+//             })
+//         })
+//
+//         describe('interval', () => {
+//             it('when given an integer, removes the integer type in the return value', () => {
+//                 const integer: Integer = interval(to.Integer(3), to.Integer(3))
+//                 const numerator: Numerator = interval(to.Numerator(3), to.Numerator(3))
+//                 const denominator: Denominator = interval(to.Denominator(3), to.Denominator(3))
+//             })
+//         })
+//
+//         describe('quotient', () => {
+//             it('when given an integer, removes the integer type in the return value', () => {
+//                 const integer: Integer = quotient(to.Integer(3), to.Integer(3))
+//                 const numerator: Numerator = quotient(to.Numerator(3), to.Numerator(3))
+//                 const denominator: Denominator = quotient(to.Denominator(3), to.Denominator(3))
+//
+//                 const multiple: Multiple = quotient(to.Multiple(3), to.Multiple(3))
+//                 const base: Base = quotient(to.Base(3), to.Base(3))
+//                 const power: Power = quotient(to.Power(3), to.Power(3))
+//                 const integerModulus: IntegerModulus = quotient(to.IntegerModulus(3), to.IntegerModulus(3))
 //             })
 //         })
 //     })

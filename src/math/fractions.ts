@@ -41,8 +41,8 @@ const computeLowestTerms: (fraction: Fraction) => Fraction =
         )
 
         return to.Fraction([
-            quotient(numerator as unknown as Integer, gcd),
-            quotient(denominator as unknown as Integer, gcd),
+            to.Numerator(quotient(numerator as unknown as Integer, gcd)),
+            to.Denominator(quotient(denominator as unknown as Integer, gcd)),
         ])
     }
 
@@ -67,10 +67,10 @@ const computeCommonTerms: (...fractions: Fraction[]) => Fraction[] =
                 }
 
                 const termsMultiple: Multiple<Numerator> =
-                    to.Multiple<Numerator>(from.Denominator(quotient(
+                    to.Multiple<Numerator>(quotient(
                         lowestCommonDenominator,
                         denominator,
-                    )))
+                    ))
 
                 return to.Fraction([
                     apply.Multiple(getNumerator(fraction), termsMultiple),

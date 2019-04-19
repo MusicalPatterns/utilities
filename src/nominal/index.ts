@@ -180,4 +180,6 @@ export {
     Natural,
     Exponent,
     Logarithm,
+    Nature,
+    Denature,
 } from './types'

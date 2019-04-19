@@ -74,6 +74,12 @@ export {
     interval,
     quotient,
     valueLinearlyBetweenValues,
+    reciprocal,
+    modulus,
+    ceiling,
+    floor,
+    cubeRoot,
+    squareRoot,
 } from './math/indexForTest'
 export {
     centsTranslationToPitchScalar,
@@ -145,4 +151,5 @@ export {
     FIFTH,
     SIXTH,
     SEVENTH,
+    IntegerModulus,
 } from './nominal/indexForTest'

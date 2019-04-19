@@ -74,4 +74,5 @@ export {
     Multiple,
     Exponent,
     Logarithm,
+    IntegerModulus,
 } from './types'

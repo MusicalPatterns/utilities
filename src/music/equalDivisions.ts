@@ -20,7 +20,7 @@ const computeEqualDivisionScalars: (equalDivision: Denominator, window?: Base<Fr
     (equalDivision: Denominator, window: Base<Frequency> = OCTAVE): Array<Scalar<Hz>> => {
         const logarithmicStep: Scalar<Hz> = to.Scalar<Hz>(from.Logarithm<Frequency>(apply.Exponent(
             window,
-            to.Exponent<Logarithm<Frequency>>(from.Denominator(reciprocal(equalDivision))),
+            to.Exponent<Logarithm<Frequency>>(reciprocal(equalDivision)),
         )))
 
         return map(

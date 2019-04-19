@@ -3,9 +3,11 @@
 import { isEmpty, isUndefined } from '../code'
 import {
     ADDITIVE_IDENTITY,
+    Denature,
     Integer,
     MULTIPLICATIVE_IDENTITY,
     Natural,
+    Nature,
     NoOperation,
     Scalar,
     Translation,
@@ -70,33 +72,33 @@ const product: ManyToOneOperation =
 const quotient: <NumericType extends Number>(
     dividend: NumericType,
     divisor: NumericType,
-) => NumericType =
+) => Denature<NumericType> =
     <NumericType extends Number>(
         dividend: NumericType,
         divisor: NumericType,
-    ): NumericType =>
-        (dividend as unknown as number) / (divisor as unknown as number) as unknown as NumericType
+    ): Denature<NumericType> =>
+        (dividend as unknown as number) / (divisor as unknown as number) as unknown as Denature<NumericType>
 
 const interval: <NumericType extends NoOperation | number>(
     dividend: NumericType,
     divisor: NumericType,
-) => Scalar<NumericType> =
+) => Scalar<Denature<NumericType>> =
     <NumericType extends NoOperation | number>(
         dividend: NumericType,
         divisor: NumericType,
-    ): Scalar<NumericType> =>
-        (dividend as unknown as number) / (divisor as unknown as number) as unknown as Scalar<NumericType>
+    ): Scalar<Denature<NumericType>> =>
+        (dividend as unknown as number) / (divisor as unknown as number) as unknown as Scalar<Denature<NumericType>>
 
 const modulus: <NumericType extends NoOperation | number>(
     dividend: NumericType,
     divisor: NumericType,
-) => NumericType =
-    <NumericType extends NoOperation | number>(dividend: NumericType, divisor: NumericType): NumericType =>
-        (dividend as unknown as number) % (divisor as unknown as number) as unknown as NumericType
+) => Denature<NumericType> =
+    <NumericType extends NoOperation | number>(dividend: NumericType, divisor: NumericType): Denature<NumericType> =>
+        (dividend as unknown as number) % (divisor as unknown as number) as unknown as Denature<NumericType>
 
-const reciprocal: <NumericType extends Number>(value: NumericType) => NumericType =
-    <NumericType extends Number>(value: NumericType): NumericType =>
-        1 / (value as unknown as number) as unknown as NumericType
+const reciprocal: <NumericType extends Number>(value: NumericType) => Denature<NumericType> =
+    <NumericType extends Number>(value: NumericType): Denature<NumericType> =>
+        1 / (value as unknown as number) as unknown as Denature<NumericType>
 
 const negative: <NumericType extends Number>(value: NumericType) => NumericType =
     <NumericType extends Number>(value: NumericType): NumericType =>
@@ -122,25 +124,25 @@ const round: <NumericType extends Number, IntegerType extends Natural = Integer>
         return +(Math.round(`${value}e+${precision}` as unknown as number) + 'e-' + precision) as unknown as NumericType
     }
 
-const floor: <NumericType extends Number>(value: NumericType) => NumericType =
-    <NumericType extends Number>(value: NumericType): NumericType =>
-        Math.floor(value as unknown as number) as unknown as NumericType
+const floor: <NumericType extends Number>(value: NumericType) => Nature<NumericType> =
+    <NumericType extends Number>(value: NumericType): Nature<NumericType> =>
+        Math.floor(value as unknown as number) as unknown as Nature<NumericType>
 
-const ceiling: <NumericType extends Number>(value: NumericType) => NumericType =
-    <NumericType extends Number>(value: NumericType): NumericType =>
-        Math.ceil(value as unknown as number) as unknown as NumericType
+const ceiling: <NumericType extends Number>(value: NumericType) => Nature<NumericType> =
+    <NumericType extends Number>(value: NumericType): Nature<NumericType> =>
+        Math.ceil(value as unknown as number) as unknown as Nature<NumericType>
 
 const absoluteValue: <NumericType extends Number>(value: NumericType) => NumericType =
     <NumericType extends Number>(value: NumericType): NumericType =>
         Math.abs(value as unknown as number) as unknown as NumericType
 
-const squareRoot: <NumericType extends Number>(value: NumericType) => NumericType =
-    <NumericType extends Number>(value: NumericType): NumericType =>
-        Math.sqrt(value as unknown as number) as unknown as NumericType
+const squareRoot: <NumericType extends Number>(value: NumericType) => Denature<NumericType> =
+    <NumericType extends Number>(value: NumericType): Denature<NumericType> =>
+        Math.sqrt(value as unknown as number) as unknown as Denature<NumericType>
 
-const cubeRoot: <NumericType extends Number>(value: NumericType) => NumericType =
-    <NumericType extends Number>(value: NumericType): NumericType =>
-        Math.cbrt(value as unknown as number) as unknown as NumericType
+const cubeRoot: <NumericType extends Number>(value: NumericType) => Denature<NumericType> =
+    <NumericType extends Number>(value: NumericType): Denature<NumericType> =>
+        Math.cbrt(value as unknown as number) as unknown as Denature<NumericType>
 
 const max: <NumericType extends Number>(...values: NumericType[]) => NumericType =
     <NumericType extends Number>(...values: NumericType[]): NumericType =>

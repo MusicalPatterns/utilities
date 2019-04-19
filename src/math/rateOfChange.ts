@@ -1,6 +1,6 @@
 import { finalElement, initialElement, map, Maybe } from '../code'
 import { indexOfFinalElement, INITIAL, insteadOf, Ordinal, Scalar, slice, Translation } from '../indexForTest'
-import { apply, isCycle, NEXT } from '../nominal'
+import { apply, Denature, isCycle, NEXT } from '../nominal'
 import { delta, interval } from './typedOperations'
 
 const computeDeltas: <NumericElementType extends Number>(
@@ -36,13 +36,16 @@ const computeDeltas: <NumericElementType extends Number>(
 
 const computeIntervals: <NumericElementType extends Number>(
     array: NumericElementType[],
-) => Array<Maybe<Scalar<NumericElementType>>> =
+) => Array<Maybe<Scalar<Denature<NumericElementType>>>> =
     <NumericElementType extends Number>(
         array: NumericElementType[],
-    ): Array<Maybe<Scalar<NumericElementType>>> => {
-        const intervals: Array<Maybe<Scalar<NumericElementType>>> = map(
+    ): Array<Maybe<Scalar<Denature<NumericElementType>>>> => {
+        const intervals: Array<Maybe<Scalar<Denature<NumericElementType>>>> = map(
             slice(array, INITIAL as unknown as Ordinal<NumericElementType>, indexOfFinalElement(array)),
-            (value: NumericElementType, index: Ordinal<NumericElementType>): Maybe<Scalar<NumericElementType>> => {
+            (
+                value: NumericElementType,
+                index: Ordinal<NumericElementType>,
+            ): Maybe<Scalar<Denature<NumericElementType>>> => {
                 const nextValue: NumericElementType = apply.Ordinal(
                     array,
                     apply.Translation(
@@ -53,7 +56,7 @@ const computeIntervals: <NumericElementType extends Number>(
 
                 if (value as unknown as number === 0) {
                     if (nextValue as unknown as number === 0) {
-                        return 0 as unknown as Scalar<NumericElementType>
+                        return 0 as unknown as Scalar<Denature<NumericElementType>>
                     }
 
                     return undefined

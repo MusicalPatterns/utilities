@@ -1,5 +1,7 @@
 // tslint:disable max-file-line-count no-magic-numbers max-line-length
 
+import { Difference } from '../code'
+
 interface NominalNumber {
     _NominalBrand?: string,
     _OperationBrand?: string,
@@ -72,6 +74,36 @@ type Of<OfType> = number & { _OfBrand: OfType }
 type Integer = number & Natural
 type Natural = Number & { _IntegerBrand: 'Integer' }
 type Unnatural = Number & { _IntegerBrand?: 'NotInteger' }
+
+type Denature<NumericType extends Number> = (
+    NumericType extends Natural ?
+        NumericType extends ({ _OperationBrand: string } | { _UnitsBrand: string }) ?
+            NaturalToUnnatural<NumericType> & { _IntegerBrand: 'NotInteger' } :
+            Difference<NumericType, { _IntegerBrand: 'Integer' }> & { _IntegerBrand: 'NotInteger' } :
+        NumericType extends ({ _OperationBrand: string } | { _UnitsBrand: string }) ?
+            NaturalToUnnatural<NumericType> :
+            NumericType
+    )
+
+type Nature<NumericType extends Number> =
+    { _IntegerBrand: 'Integer' } &
+    (NumericType extends { _OperationBrand: string } ? UnnaturalToNatural<NumericType> : NumericType)
+
+type UnnaturalToNatural<NumericType extends { _OperationBrand: string }> =
+    NumericType extends { _OperationBrand: 'Scalar' } ? Difference<NumericType, { _OperationBrand: 'Scalar' }> & { _OperationBrand: 'Multiple' & 'Scalar' } :
+        NumericType extends { _OperationBrand: 'Exponent' } ? Difference<NumericType, { _OperationBrand: 'Exponent' }> & { _OperationBrand: 'Power' & 'Exponent' } :
+            NumericType extends { _OperationBrand: 'Logarithm' } ? Difference<NumericType, { _OperationBrand: 'Logarithm' }> & { _OperationBrand: 'Base' & 'Logarithm' } :
+                NumericType extends { _OperationBrand: 'Modulus' } ? Difference<NumericType, { _OperationBrand: 'Modulus' }> & { _OperationBrand: 'IntegerModulus' & 'Modulus' } :
+                    NumericType
+
+type NaturalToUnnatural<NumericType extends { _OperationBrand: string } | { _UnitsBrand: string }> =
+    NumericType extends { _UnitsBrand: 'Numerator' } ? number :
+        NumericType extends { _UnitsBrand: 'Denominator' } ? number :
+            NumericType extends { _OperationBrand: 'Multiple' & 'Scalar' } ? Difference<NumericType, { _OperationBrand: 'Multiple' & 'Scalar' }> & { _OperationBrand: 'Scalar' } :
+                NumericType extends { _OperationBrand: 'Power' & 'Exponent' } ? Difference<NumericType, { _OperationBrand: 'Power' & 'Exponent' }> & { _OperationBrand: 'Exponent' } :
+                    NumericType extends { _OperationBrand: 'Base' & 'Logarithm' } ? Difference<NumericType, { _OperationBrand: 'Base' & 'Logarithm' }> & { _OperationBrand: 'Logarithm' } :
+                        NumericType extends { _OperationBrand: 'IntegerModulus' & 'Modulus' } ? Difference<NumericType, { _OperationBrand: 'IntegerModulus' & 'Modulus' }> & { _OperationBrand: 'Modulus' } :
+                            NumericType
 
 // Other Stuff
 
@@ -177,4 +209,6 @@ export {
     Logarithm,
     IntegerModulus,
     NonNormal,
+    Denature,
+    Nature,
 }

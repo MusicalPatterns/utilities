@@ -1,4 +1,29 @@
-import { delta, difference, interval, Ms, product, quotient, round, sum, to } from '../../../src/indexForTest'
+// tslint:disable no-unused-expression no-dead-store no-duplicate-string
+
+import {
+    Base,
+    cubeRoot,
+    delta,
+    difference,
+    Exponent,
+    floor,
+    IntegerModulus,
+    interval,
+    Logarithm,
+    Modulus,
+    modulus,
+    Ms,
+    Multiple,
+    Power,
+    product,
+    quotient,
+    reciprocal,
+    round,
+    Scalar,
+    squareRoot,
+    sum,
+    to,
+} from '../../../src/indexForTest'
 
 describe('typed operations', () => {
     describe('round', () => {
@@ -82,6 +107,83 @@ describe('typed operations', () => {
                 .toBe(to.Scalar<Ms>(3))
             expect(quotient(to.Ms(6), to.Ms(2)))
                 .toBe(to.Ms(3))
+        })
+    })
+
+    describe('reciprocal', () => {
+        it('when given an integer, removes the integer type in the return value', () => {
+            const scalar: Scalar = reciprocal(to.Scalar(3))
+            const exponent: Exponent = reciprocal(to.Exponent(3))
+            const logarithm: Logarithm = reciprocal(to.Logarithm(3))
+            const mod: Modulus = reciprocal(to.Modulus(3))
+
+            const multiple: Scalar = reciprocal(to.Multiple(3))
+            const power: Exponent = reciprocal(to.Power(3))
+            const base: Logarithm = reciprocal(to.Base(3))
+            const integerModulus: Modulus = reciprocal(to.IntegerModulus(3))
+        })
+    })
+
+    describe('square root', () => {
+        it('when given an integer, removes the integer type in the return value', () => {
+            const scalar: Scalar = squareRoot(to.Scalar(3))
+            const exponent: Exponent = squareRoot(to.Exponent(3))
+            const logarithm: Logarithm = squareRoot(to.Logarithm(3))
+            const mod: Modulus = squareRoot(to.Modulus(3))
+
+            const multiple: Scalar = squareRoot(to.Multiple(3))
+            const power: Exponent = squareRoot(to.Power(3))
+            const base: Logarithm = squareRoot(to.Base(3))
+            const integerModulus: Modulus = squareRoot(to.IntegerModulus(3))
+        })
+    })
+
+    describe('cube root', () => {
+        it('when given an integer, removes the integer type in the return value', () => {
+            const scalar: Scalar = cubeRoot(to.Scalar(3))
+            const exponent: Exponent = cubeRoot(to.Exponent(3))
+            const logarithm: Logarithm = cubeRoot(to.Logarithm(3))
+            const mod: Modulus = cubeRoot(to.Modulus(3))
+
+            const multiple: Scalar = cubeRoot(to.Multiple(3))
+            const power: Exponent = cubeRoot(to.Power(3))
+            const base: Logarithm = cubeRoot(to.Base(3))
+            const integerModulus: Modulus = cubeRoot(to.IntegerModulus(3))
+        })
+    })
+
+    describe('modulus', () => {
+        it('when given an integer type, removes the integer type in the return value', () => {
+            const numeratorDowngraded: Number = modulus(to.Numerator(3), to.Numerator(3))
+            const denominatorDowngraded: Number = modulus(to.Denominator(3), to.Denominator(3))
+        })
+    })
+
+    describe('quotient', () => {
+        it('when given an integer type, removes the integer type in the return value', () => {
+            const numeratorDowngraded: Number = quotient(to.Numerator(3), to.Numerator(3))
+            const denominatorDowngraded: Number = quotient(to.Denominator(3), to.Denominator(3))
+        })
+    })
+
+    describe('interval', () => {
+        it('when given an integer type, removes the integer type in the return value', () => {
+            const numeratorDowngraded: Number = interval(to.Numerator(3), to.Numerator(3))
+            const denominatorDowngraded: Number = interval(to.Denominator(3), to.Denominator(3))
+        })
+    })
+
+    describe('floor and ceiling', () => {
+        it('you can assign the return value to the integer version of the input type if you want', () => {
+            const scalar: Scalar = floor(to.Scalar(1.3))
+            const exponent: Exponent = floor(to.Exponent(1.3))
+            const logarithm: Logarithm = floor(to.Logarithm(1.3))
+            const mod: Modulus = floor(to.Modulus(1.3))
+
+            const multiple: Multiple = floor(to.Scalar(1.3))
+            const power: Power = floor(to.Exponent(1.3))
+            const base: Base = floor(to.Logarithm(1.3))
+            const integerModulus: IntegerModulus = floor(to.Modulus(1.3))
         })
     })
 })
