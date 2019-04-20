@@ -195,8 +195,6 @@ export {
     Integer,
     Meters,
     Space,
-    NoOperation,
-    NoUnits,
     DUMMY_VALUE_FOR_COMPUTING_NOMINAL_INTERFACE,
     computeNominalInterface,
     NominalInterface,

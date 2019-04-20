@@ -98,7 +98,7 @@ describe('apply', () => {
                 .toBe(1.5)
         })
 
-        it('when an operation of a Scalar is applied to a NormalScalar, it works, and vice versa', () => {
+        it('when an use of a Scalar is applied to a NormalScalar, it works, and vice versa', () => {
             expect(apply.NormalScalar(to.NormalScalar(0.5), to.NormalScalar<Scalar>(0.5)))
                 .toBe(to.NormalScalar(0.25))
 
@@ -132,7 +132,7 @@ describe('apply', () => {
                 .toBe(15)
         })
 
-        it('when an operation of a Scalar is applied to a Multiple, it works, and vice versa', () => {
+        it('when an use of a Scalar is applied to a Multiple, it works, and vice versa', () => {
             expect(apply.Translation(to.Multiple(5), to.Translation<Scalar>(3)))
                 .toBe(to.Multiple(8))
 
@@ -161,7 +161,7 @@ describe('apply', () => {
                 .toBe(1.584962500721156)
         })
 
-        it('when an operation of a Logarithm is applied to a Base, it works, and vice versa', () => {
+        it('when an use of a Logarithm is applied to a Base, it works, and vice versa', () => {
             expect(apply.Translation(to.Base(5), to.Translation<Logarithm>(3)))
                 .toBe(to.Base(8))
 
@@ -190,7 +190,7 @@ describe('apply', () => {
                 .toBe(9)
         })
 
-        it('when an operation of a Exponent is applied to a Power, it works, and vice versa', () => {
+        it('when an use of a Exponent is applied to a Power, it works, and vice versa', () => {
             expect(apply.Translation(to.Power(5), to.Translation<Exponent>(3)))
                 .toBe(to.Power(8))
 

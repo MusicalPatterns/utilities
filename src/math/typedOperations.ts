@@ -8,7 +8,7 @@ import {
     MULTIPLICATIVE_IDENTITY,
     Natural,
     Nature,
-    NoOperation,
+    NoUse,
     Scalar,
     Translation,
 } from '../nominal'
@@ -16,7 +16,7 @@ import { VALUE_BELOW_WHICH_ROUNDING_IMPLEMENTATION_BREAKS } from './constants'
 import { ManyToOneOperation } from './types'
 
 const sum: ManyToOneOperation =
-    <NumericType extends NoOperation | number>(
+    <NumericType extends NoUse | number>(
         ...values: Array<number | NumericType>
     ): number | NumericType => {
         if (isEmpty(values)) {
@@ -42,18 +42,18 @@ const difference: <NumericType extends Number>(
     ): NumericType =>
         (minuend as unknown as number) - (subtrahend as unknown as number) as unknown as NumericType
 
-const delta: <NumericType extends NoOperation | number>(
+const delta: <NumericType extends NoUse | number>(
     minuend: NumericType,
     subtrahend: NumericType,
 ) => Translation<NumericType> =
-    <NumericType extends NoOperation | number>(
+    <NumericType extends NoUse | number>(
         minuend: NumericType,
         subtrahend: NumericType,
     ): Translation<NumericType> =>
         (minuend as unknown as number) - (subtrahend as unknown as number) as unknown as Translation<NumericType>
 
 const product: ManyToOneOperation =
-    <NumericType extends NoOperation | number>(
+    <NumericType extends NoUse | number>(
         ...values: Array<number | NumericType>
     ): number | NumericType => {
         if (isEmpty(values)) {
@@ -79,21 +79,21 @@ const quotient: <NumericType extends Number>(
     ): Denature<NumericType> =>
         (dividend as unknown as number) / (divisor as unknown as number) as unknown as Denature<NumericType>
 
-const interval: <NumericType extends NoOperation | number>(
+const interval: <NumericType extends NoUse | number>(
     dividend: NumericType,
     divisor: NumericType,
 ) => Scalar<Denature<NumericType>> =
-    <NumericType extends NoOperation | number>(
+    <NumericType extends NoUse | number>(
         dividend: NumericType,
         divisor: NumericType,
     ): Scalar<Denature<NumericType>> =>
         (dividend as unknown as number) / (divisor as unknown as number) as unknown as Scalar<Denature<NumericType>>
 
-const modulus: <NumericType extends NoOperation | number>(
+const modulus: <NumericType extends NoUse | number>(
     dividend: NumericType,
     divisor: NumericType,
 ) => Denature<NumericType> =
-    <NumericType extends NoOperation | number>(dividend: NumericType, divisor: NumericType): Denature<NumericType> =>
+    <NumericType extends NoUse | number>(dividend: NumericType, divisor: NumericType): Denature<NumericType> =>
         (dividend as unknown as number) % (divisor as unknown as number) as unknown as Denature<NumericType>
 
 const reciprocal: <NumericType extends Number>(value: NumericType) => Denature<NumericType> =

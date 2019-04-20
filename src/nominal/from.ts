@@ -82,7 +82,7 @@ const Fraction: (fraction: Fraction) => number =
     (fraction: Fraction): number =>
         Numerator(fraction[ 0 ]) * (1 / Denominator(fraction[ 1 ]))
 
-// Operation
+// Uses
 
 const Scalar: <OfType extends Number = Number>(scalar: Scalar<OfType>) => number =
     <OfType extends Number = Number>(scalar: Scalar<OfType>): number =>
@@ -100,7 +100,7 @@ const Modulus: <OfType extends Number = Number>(modulus: Modulus<OfType>) => num
     <OfType extends Number = Number>(modulus: Modulus<OfType>): number =>
         modulus as unknown as number
 
-// Special Operations
+// Special Uses
 
 const Cardinal: <OfType = number>(cardinal: Cardinal<OfType>) => number =
     <OfType = number>(cardinal: Cardinal<OfType>): number =>

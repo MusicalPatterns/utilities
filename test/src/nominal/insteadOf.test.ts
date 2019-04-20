@@ -11,7 +11,7 @@ import {
 } from '../../../src/indexForTest'
 
 describe('instead of', () => {
-    it('discards whatever an operation used to be Of and replaces it with what you specify instead', () => {
+    it('discards whatever an use used to be Of and replaces it with what you specify instead', () => {
         expect(insteadOf<Ordinal, Scalar>(INITIAL))
             .toBe(to.Ordinal<Scalar>(0))
 
@@ -25,7 +25,7 @@ describe('instead of', () => {
             .toBe(to.Translation(1))
     })
 
-    it('should work for special operations that enforce being integers', () => {
+    it('should work for special uses that enforce being integers', () => {
         expect(insteadOf<Multiple>(to.Multiple<Cardinal>(3)))
             .toBe(to.Multiple(3))
     })

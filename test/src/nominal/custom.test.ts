@@ -56,8 +56,8 @@ describe('custom nominals', () => {
             const numero: Of<Numero> = customOf.Numero(3)
             const numeros: Of<Numeros> = customOf.Numeros(3)
 
-            const operationOfNumero: Translation<Numero> = to.Translation(customOf.Numero(3))
-            const operationOfNumeros: Translation<Numeros> = to.Translation(customOf.Numeros(3))
+            const useOfNumero: Translation<Numero> = to.Translation(customOf.Numero(3))
+            const useOfNumeros: Translation<Numeros> = to.Translation(customOf.Numeros(3))
         })
     })
 

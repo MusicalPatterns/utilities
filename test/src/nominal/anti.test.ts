@@ -76,24 +76,24 @@
 //                 const msCentsFromMs: Ms<Cents> = 3 as any
 //             })
 //
-//             it('DOES NOT ALLOW units of operations', () => {
+//             it('DOES NOT ALLOW units of uses', () => {
 //                 const centsOfScalar: Cents<Scalar> = 3 as any
 //             })
 //         })
 //
-//         describe('operations', () => {
-//             it('DOES NOT ALLOW direct conversion from one operation into another, whether directly or mediated by an explicit variable', () => {
+//         describe('uses', () => {
+//             it('DOES NOT ALLOW direct conversion from one use into another, whether directly or mediated by an explicit variable', () => {
 //                 const intermediateVariableRotation: Rotation = to.Rotation(3)
 //                 const scalarFromExplicitRotationVariable: Scalar = to.Scalar(intermediateVariableRotation)
 //
 //                 const scalarFromRotationDirectly: Scalar = to.Scalar(to.Rotation(3))
 //             })
 //
-//             it('DOES NOT ALLOW assignment to operations from raw numbers (which is not using `to`, but why we need `to`)', () => {
+//             it('DOES NOT ALLOW assignment to uses from raw numbers (which is not using `to`, but why we need `to`)', () => {
 //                 const rotationFromRaw: Rotation = 3
 //             })
 //
-//             it('DOES NOT ALLOW assignment to operations by as\'ing (which is not using `to`, but why we need `to`)', () => {
+//             it('DOES NOT ALLOW assignment to uses by as\'ing (which is not using `to`, but why we need `to`)', () => {
 //                 3 as Rotation
 //             })
 //
@@ -101,21 +101,21 @@
 //                 const rotationToRaw: number = to.Rotation(3)
 //             })
 //
-//             it('DOES NOT ALLOW assignment to the wrong operation', () => {
+//             it('DOES NOT ALLOW assignment to the wrong use', () => {
 //                 const rotationToScalar: Scalar = to.Rotation(3)
 //             })
 //
-//             it('DOES NOT allow nesting of operations', () => {
+//             it('DOES NOT allow nesting of uses', () => {
 //                 to.Rotation(to.Scalar(3))
 //             })
 //         })
 //
-//         describe('units and operations', () => {
-//             it('DOES NOT ALLOW creating an operation out of a unit', () => {
+//         describe('units and uses', () => {
+//             it('DOES NOT ALLOW creating an use out of a unit', () => {
 //                 to.Scalar(to.Hz(3))
 //             })
 //
-//             it('DOES NOT ALLOW assigning an operation to a unit', () => {
+//             it('DOES NOT ALLOW assigning an use to a unit', () => {
 //                 const hzScalar: Hz = to.Scalar(3)
 //             })
 //
@@ -132,14 +132,14 @@
 //                 const msScalar: Rotation<Hz> = to.Scalar<Hz>(3)
 //             })
 //
-//             it('DOES NOT ALLOW assigning a mere operation to a operation Of something', () => {
+//             it('DOES NOT ALLOW assigning a mere use to a use Of something', () => {
 //                 const scalarToScalarOfUnits: Scalar<Ms> = to.Scalar(2)
 //                 const asdgsdaggdsdgsdgdgsd: Scalar<Ms> = to.Scalar<number>(2)
 //
 //                 const asg: Scalar<Ms> = 2 as unknown as Scalar
 //                 const asgg: Scalar<Ms> = 2 as unknown as Scalar<number>
 //
-//                 const scalarToScalarOfOperation: Scalar<Rotation> = to.Scalar(2)
+//                 const scalarToScalarOfUse: Scalar<Rotation> = to.Scalar(2)
 //
 //                 const thing: Scalar<Ms> = 2 as unknown as Scalar
 //                 const thing2: Scalar = 2 as unknown as Scalar<Ms>
@@ -148,7 +148,7 @@
 //                 const never2: Scalar = to.Scalar<Rotation>(3)
 //             })
 //
-//             it('DOES NOT ALLOW making an non-integer operation of an integer unit or operation', () => {
+//             it('DOES NOT ALLOW making an non-integer use of an integer unit or use', () => {
 //                 3 as unknown as Scalar<Multiple>
 //                 3 as unknown as Scalar<Numerator>
 //
@@ -157,7 +157,7 @@
 //             })
 //         })
 //
-//         describe('special units/operation', () => {
+//         describe('special units/uses', () => {
 //             it('DOES NOT ALLOW creating fractions out of mere numbers', () => {
 //                 to.Fraction([ 4, 4 ])
 //             })
@@ -177,14 +177,14 @@
 //                 const indexWrongScalar: Scalar = to.Ordinal(3)
 //             })
 //
-//             it('DOES NOT ALLOW same as above but for special operation', () => {
+//             it('DOES NOT ALLOW same as above but for special uses', () => {
 //                 const indexToIndexOfUnits: Ordinal<Ms> = to.Ordinal(2)
 //                 const asdgsdaggdsdgsdgdgsd: Ordinal<Ms> = to.Ordinal<number>(2)
 //
 //                 const asg: Ordinal<Ms> = 2 as unknown as Ordinal
 //                 const asgg: Ordinal<Ms> = 2 as unknown as Ordinal<number>
 //
-//                 const indexToIndexOfOperation: Ordinal<Rotation> = to.Ordinal(2)
+//                 const indexToIndexOfUse: Ordinal<Rotation> = to.Ordinal(2)
 //
 //                 const thing: Ordinal<Ms> = 2 as unknown as Ordinal
 //                 const thing2: Ordinal = 2 as unknown as Ordinal<Ms>
@@ -198,7 +198,7 @@
 //                 const multipleNumber: number = to.Multiple(3)
 //             })
 //
-//             it('DOES NOT ALLOW making operations of NormalScalars, besides NormalScalar of NormalScalar', () => {
+//             it('DOES NOT ALLOW making uses of NormalScalars, besides NormalScalar of NormalScalar', () => {
 //                 to.Scalar<NormalScalar>(4)
 //                 to.Power<NormalScalar>(4)
 //                 to.Base<NormalScalar>(4)
@@ -207,7 +207,7 @@
 //                 to.Multiple<NormalScalar>(4)
 //             })
 //
-//             it('DOES NOT ALLOW assigning less specific operations (normal, integer) to the more specific counterparts', () => {
+//             it('DOES NOT ALLOW assigning less specific uses (normal, integer) to the more specific counterparts', () => {
 //                 const scalarToNormalScalar: NormalScalar = to.Scalar(0.5)
 //
 //                 const scalarToMultiple: Multiple = to.Scalar(5)
@@ -223,7 +223,7 @@
 //             from.Scalar(3)
 //         })
 //
-//         it('DOES NOT ALLOW taking the wrong units or operation', () => {
+//         it('DOES NOT ALLOW taking the wrong units or uses', () => {
 //             from.Hz(to.Ms(3))
 //             from.Scalar(to.Rotation(3))
 //         })
@@ -233,7 +233,7 @@
 //             from.Scalar(to.Hz(3))
 //         })
 //
-//         describe('special units/operations', () => {
+//         describe('special units/uses', () => {
 //             it('DOES NOT ALLOW taking plain numbers', () => {
 //                 from.Cardinal(3)
 //                 from.Numerator(3)
@@ -254,74 +254,74 @@
 //     describe('of', () => {
 //         it('DOES NOT ALLOW assigning an Of to the actual thing', () => {
 //             const isNotActuallyUnits: Hz = of.Hz(3)
-//             const isNotActuallyOperation: Scalar = of.Scalar(3)
+//             const isNotActuallyUse: Scalar = of.Scalar(3)
 //         })
 //
 //         it('DOES NOT ALLOW assigning an Of to an Of of the wrong type', () => {
 //             const ofWrongUnits: Of<Ms> = of.Hz(3)
-//             const ofWrongOperation: Of<Rotation> = of.Scalar(3)
+//             const ofWrongUse: Of<Rotation> = of.Scalar(3)
 //         })
 //
-//         it('DOES NOT ALLOW assigning Of types that are operations of units when its wrong types', () => {
+//         it('DOES NOT ALLOW assigning Of types that are uses of units when its wrong types', () => {
 //             const wrongUnits: Of<Scalar<Hz>> = of.Scalar<Ms>(3)
-//             const wrongOperation: Of<Rotation<Hz>> = of.Scalar<Hz>(3)
+//             const wrongUse: Of<Rotation<Hz>> = of.Scalar<Hz>(3)
 //         })
 //
-//         it('DOES NOT ALLOW assigning allows Of types that are operations of operations when its switched types', () => {
+//         it('DOES NOT ALLOW assigning allows Of types that are uses of uses when its switched types', () => {
 //             const nestedOf: Of<Rotation<Scalar>> = of.Scalar<Rotation>(3)
 //         })
 //
-//         it('DOES NOT ALLOW assigning allows Of types that are operations of operations when its double type of itself to itself', () => {
+//         it('DOES NOT ALLOW assigning allows Of types that are uses of uses when its double type of itself to itself', () => {
 //             const nestedOf: Of<Scalar> = of.Scalar<Scalar>(3)
-//             const nestedOfOtherOperation: Of<Scalar> = of.Scalar<Rotation>(3)
-//             const nestedOfOtherOperationFirst: Of<Scalar> = of.Rotation<Scalar>(3)
+//             const nestedOfOtherUse: Of<Scalar> = of.Scalar<Rotation>(3)
+//             const nestedOfOtherUseFirst: Of<Scalar> = of.Rotation<Scalar>(3)
 //         })
 //
-//         it('DOES NOT ALLOW assigning allows Of types that are operations of operations when its wrong inner type', () => {
+//         it('DOES NOT ALLOW assigning allows Of types that are uses of uses when its wrong inner type', () => {
 //             const nestedOf: Of<Scalar<Rotation>> = of.Scalar<Exponent>(3)
 //         })
 //
-//         it('DOES NOT ALLOW assigning allows Of types that are operations of operations when its wrong outer type', () => {
+//         it('DOES NOT ALLOW assigning allows Of types that are uses of uses when its wrong outer type', () => {
 //             const nestedOf: Of<Scalar<Rotation>> = of.Exponent<Rotation>(3)
 //         })
 //
-//         it('DOES NOT ALLOW creating operations of units when its wrong units', () => {
+//         it('DOES NOT ALLOW creating uses of units when its wrong units', () => {
 //             const scalarOfHz: Scalar<Ms> = to.Scalar(of.Hz(3))
 //         })
 //
-//         it('DOES NOT ALLOW creating operations of operations when its wrong operation', () => {
+//         it('DOES NOT ALLOW creating uses of uses when its wrong use', () => {
 //             const scalarOfRotation: Scalar<Rotation> = to.Scalar(of.Exponent(3))
 //         })
 //
-//         it('DOES NOT ALLOW creating operations of operations of units when its wrong units', () => {
+//         it('DOES NOT ALLOW creating uses of uses of units when its wrong units', () => {
 //             const scalarOfScalarOfHz: Scalar<Scalar<Hz>> = to.Scalar(of.Scalar<Ms>(3))
 //         })
 //
-//         it('DOES NOT ALLOW creating operations of operations of units when its wrong operation', () => {
+//         it('DOES NOT ALLOW creating uses of uses of units when its wrong use', () => {
 //             const scalarOfScalarOfHz: Scalar<Scalar<Hz>> = to.Scalar(of.Rotation<Hz>(3))
 //         })
 //
-//         it('DOES NOT ALLOW assigning an Of of an operation to an Of of an operation of units or operation', () => {
+//         it('DOES NOT ALLOW assigning an Of of an use to an Of of an use of units or use', () => {
 //             const cantAssignAsResultOfAsingUnits: Of<Scalar<Ms>> = 3 as unknown as Of<Scalar>
-//             const cantAssignAsResultOfAsingOperation: Of<Scalar<Rotation>> = 3 as unknown as Of<Scalar>
+//             const cantAssignAsResultOfAsingUse: Of<Scalar<Rotation>> = 3 as unknown as Of<Scalar>
 //
 //             const cantAssignNonNestedToNestedUnits: Of<Scalar<Ms>> = of.Scalar<number>(3)
-//             const cantAssignNonNestedToNestedOperation: Of<Scalar<Rotation>> = of.Scalar<number>(3)
+//             const cantAssignNonNestedToNestedUse: Of<Scalar<Rotation>> = of.Scalar<number>(3)
 //
 //             const cantAssignNonNestedToNestedUnitsWithoutExplicitParameter: Of<Scalar<Ms>> = of.Scalar(3)
-//             const cantAssignNonNestedToNestedOperationWithoutExplicitParameter: Of<Scalar<Rotation>> = of.Scalar(3)
+//             const cantAssignNonNestedToNestedUseWithoutExplicitParameter: Of<Scalar<Rotation>> = of.Scalar(3)
 //
-//             const cantAssignToOperationOfOperationOfUnitsFromOperationOfOperation: Scalar<Scalar<Ms>> = to.Scalar(of.Scalar(3))
-//             const cantAssignToOperationOfOperationOfOperationFromOperationOfOperation: Scalar<Scalar<Rotation>> = to.Scalar(of.Scalar(3))
+//             const cantAssignToUseOfUseOfUnitsFromUseOfUse: Scalar<Scalar<Ms>> = to.Scalar(of.Scalar(3))
+//             const cantAssignToUseOfUseOfUseFromUseOfUse: Scalar<Scalar<Rotation>> = to.Scalar(of.Scalar(3))
 //
-//             const cantAssignToOperationOfOperationOfUnitsFromOperationOfOperationUsingTypeParam: Scalar<Scalar<Ms>> = to.Scalar<Scalar>(3)
-//             const cantAssignToOperationOfOperationOfOperationFromOperationOfOperationUsingTypeParam: Scalar<Scalar<Rotation>> = to.Scalar<Scalar>(3)
+//             const cantAssignToUseOfUseOfUnitsFromUseOfUseUsingTypeParam: Scalar<Scalar<Ms>> = to.Scalar<Scalar>(3)
+//             const cantAssignToUseOfUseOfUseFromUseOfUseUsingTypeParam: Scalar<Scalar<Rotation>> = to.Scalar<Scalar>(3)
 //         })
 //
 //         it('DOES NOT ALLOW calling Of on something that is already Of', () => {
-//             const replaceUnitsWithOperation: Of<Scalar> = of.Scalar(of.Hz(3))
-//             const replaceOperationWithOperation: Of<Scalar> = of.Scalar(of.Rotation(3))
-//             const replaceOperationWithUnits: Of<Hz> = of.Hz(of.Scalar(3))
+//             const replaceUnitsWithUse: Of<Scalar> = of.Scalar(of.Hz(3))
+//             const replaceUseWithUse: Of<Scalar> = of.Scalar(of.Rotation(3))
+//             const replaceUseWithUnits: Of<Hz> = of.Hz(of.Scalar(3))
 //         })
 //     })
 //
@@ -334,22 +334,22 @@
 //     })
 //
 //     describe('of from', () => {
-//         it(`DOES NOT ALLOW from the wrong units or operation`, () => {
-//             const ofFromWrongOperation: Of<Rotation> = ofFrom(to.Translation(3))
+//         it(`DOES NOT ALLOW from the wrong units or use`, () => {
+//             const ofFromWrongUse: Of<Rotation> = ofFrom(to.Translation(3))
 //             const ofFromWrongUnits: Of<Hz> = ofFrom(to.Ms(3))
 //
-//             const ofFromWrongOperationStraightToOperation: Scalar<Rotation> = to.Scalar(ofFrom(to.Translation(3)))
-//             const ofFromWrongUnitsStraightToOperation: Scalar<Hz> = to.Scalar(ofFrom(to.Ms(3)))
+//             const ofFromWrongUseStraightToUse: Scalar<Rotation> = to.Scalar(ofFrom(to.Translation(3)))
+//             const ofFromWrongUnitsStraightToUse: Scalar<Hz> = to.Scalar(ofFrom(to.Ms(3)))
 //
-//             const ofFromOperationOfWrongOperation: Of<Scalar<Rotation>> = ofFrom(to.Scalar<Translation>(3))
-//             const ofFromOperationOfWrongUnits: Of<Scalar<Hz>> = ofFrom(to.Scalar<Ms>(3))
-//             const ofFromWrongOperationOfOperation: Of<Rotation<Translation>> = ofFrom(to.Scalar<Translation>(3))
-//             const ofFromWrongOperationOfUnits: Of<Rotation<Ms>> = ofFrom(to.Scalar<Ms>(3))
+//             const ofFromUseOfWrongUse: Of<Scalar<Rotation>> = ofFrom(to.Scalar<Translation>(3))
+//             const ofFromUseOfWrongUnits: Of<Scalar<Hz>> = ofFrom(to.Scalar<Ms>(3))
+//             const ofFromWrongUseOfUse: Of<Rotation<Translation>> = ofFrom(to.Scalar<Translation>(3))
+//             const ofFromWrongUseOfUnits: Of<Rotation<Ms>> = ofFrom(to.Scalar<Ms>(3))
 //
-//             const ofFromOperationOfWrongOperationStraightToOperation: Rotation<Scalar<Rotation>> = to.Rotation(ofFrom(to.Scalar<Translation>(3)))
-//             const ofFromOperationOfWrongUnitsStraightToOperation: Rotation<Scalar<Hz>> = to.Rotation(ofFrom(to.Scalar<Ms>(3)))
-//             const ofFromWrongOperationOfOperationStraightToOperation: Rotation<Rotation<Translation>> = to.Rotation(ofFrom(to.Scalar<Translation>(3)))
-//             const ofFromWrongOperationOfUnitsStraightToOperation: Rotation<Rotation<Ms>> = to.Rotation(ofFrom(to.Scalar<Ms>(3)))
+//             const ofFromUseOfWrongUseStraightToUse: Rotation<Scalar<Rotation>> = to.Rotation(ofFrom(to.Scalar<Translation>(3)))
+//             const ofFromUseOfWrongUnitsStraightToUse: Rotation<Scalar<Hz>> = to.Rotation(ofFrom(to.Scalar<Ms>(3)))
+//             const ofFromWrongUseOfUseStraightToUse: Rotation<Rotation<Translation>> = to.Rotation(ofFrom(to.Scalar<Translation>(3)))
+//             const ofFromWrongUseOfUnitsStraightToUse: Rotation<Rotation<Ms>> = to.Rotation(ofFrom(to.Scalar<Ms>(3)))
 //         })
 //     })
 //
@@ -411,7 +411,7 @@
 //         })
 //     })
 //
-//     describe('typed operations', () => {
+//     describe('typed uses', () => {
 //         describe('reciprocal', () => {
 //             it('when given an integer, removes the integer type in the return value', () => {
 //                 const integer: Integer = reciprocal(to.Integer(3))

@@ -52,8 +52,8 @@ describe('to', () => {
         })
     })
 
-    describe('operations', () => {
-        it('allows converting raw numbers into numbers for certain operations', () => {
+    describe('uses', () => {
+        it('allows converting raw numbers into numbers for certain uses', () => {
             const scalar: Scalar = to.Scalar(3)
             const rotation: Rotation = to.Rotation(3)
 
@@ -63,7 +63,7 @@ describe('to', () => {
             const modulus: Modulus = to.Modulus(3)
         })
 
-        it('allows comparing things of the same operation but with different values', () => {
+        it('allows comparing things of the same use but with different values', () => {
             expect(to.Rotation(3.5))
                 .not
                 .toBe(to.Rotation(4))
@@ -76,8 +76,8 @@ describe('to', () => {
         })
     })
 
-    describe('units and operations', () => {
-        it('allows attributing an operation to something already Of units', () => {
+    describe('units and uses', () => {
+        it('allows attributing an use to something already Of units', () => {
             const ofHz: Of<Hz> = of.Hz(3)
             const hzScalar: Scalar<Hz> = to.Scalar(ofHz)
         })
@@ -89,14 +89,14 @@ describe('to', () => {
         })
 
         it('should allow generic numeric types (which extend Number)', () => {
-            const genericOperation: <NumericType extends Number>(argument: NumericType) => void =
+            const genericUse: <NumericType extends Number>(argument: NumericType) => void =
                 <NumericType extends Number>(argument: NumericType): void => {
                     const numericScalar: Scalar<NumericType> = to.Scalar<NumericType>(3)
                 }
         })
     })
 
-    describe('special units/operation', () => {
+    describe('special units/use', () => {
         it('allows making Cardinals or Ordinals if they are Integers, and does not require you to specify Integer as the generic parameter', () => {
             const integer: Integer = to.Integer(3)
 
@@ -144,7 +144,7 @@ describe('to', () => {
             const ms: Ms = to.Ms(integer)
         })
 
-        it('allows setting things which are integers to operations, whether Integer is specified as the generic type or not', () => {
+        it('allows setting things which are integers to uses, whether Integer is specified as the generic type or not', () => {
             const integer: Integer = to.Integer(3)
 
             const scalarNotOfIntegersJustConstructedFromOne: Scalar = to.Scalar(integer)
@@ -167,7 +167,7 @@ describe('to', () => {
             const stringIndex: Ordinal<string> = to.Ordinal<string>(3)
         })
 
-        it('allows assigning more specific operations (normal, integer) to the less specific counterparts', () => {
+        it('allows assigning more specific uses (normal, integer) to the less specific counterparts', () => {
             const scalarFromNormalScalar: Scalar = to.NormalScalar(0.5)
 
             const scalarFromMultiple: Scalar = to.Multiple(5)

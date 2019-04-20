@@ -80,7 +80,7 @@ const Fraction: (ofFraction: number) => Of<Fraction> =
     (ofFraction: number): Of<Fraction> =>
         ofFraction as unknown as Of<Fraction>
 
-// Operations
+// Uses
 
 const Scalar: <OfType extends Number = number>(ofScalar: number | OfType) => Of<Scalar<OfType>> =
     <OfType extends Number = number>(ofScalar: number | OfType): Of<Scalar<OfType>> =>
@@ -101,7 +101,7 @@ const Modulus: <OfType extends Number = number>(ofModulus: number | OfType) => O
     <OfType extends Number = number>(ofModulus: number | OfType): Of<Modulus<OfType>> =>
         ofModulus as unknown as Of<Modulus<OfType>>
 
-// Special Operations
+// Special Uses
 
 const Ordinal: <OfType = number>(ofIndex: number | OfType) => Of<Ordinal<OfType>> =
     <OfType = number>(ofIndex: number | OfType): Of<Ordinal<OfType>> =>

@@ -1,4 +1,4 @@
-import { Cycle, Integer, Natural, NoOperation, Ordinal, Radians, Scalar, Space } from '../nominal'
+import { Cycle, Integer, Natural, NoUse, Ordinal, Radians, Scalar, Space } from '../nominal'
 
 // tslint:disable-next-line no-magic-numbers
 type TwoDimensional = 2
@@ -39,7 +39,7 @@ interface Operands {
 interface ManyToOneOperation {
     <IntegerType extends Natural = Integer>(...values: IntegerType[]): IntegerType,
     (...values: number[]): number,
-    <NumericType extends NoOperation | number>(...values: NumericType[]): NumericType,
+    <NumericType extends NoUse | number>(...values: NumericType[]): NumericType,
 }
 
 interface ManyToManyIntegerOperation {

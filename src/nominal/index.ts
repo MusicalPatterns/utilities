@@ -167,7 +167,7 @@ export {
     Integer,
     Meters,
     Space,
-    NoOperation,
+    NoUse,
     NoUnits,
     Time,
     Frequency,

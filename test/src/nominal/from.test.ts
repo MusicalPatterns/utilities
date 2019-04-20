@@ -27,7 +27,7 @@ describe('from', () => {
         from.Scalar(ONE_HALF)
     })
 
-    it('can downgrade operation while preserving type', () => {
+    it('can downgrade use while preserving type', () => {
         const hzScalar: Scalar<Hz> = to.Scalar<Hz>(3)
         const ofHzFromHzScalar: Of<Hz> = from.Scalar(hzScalar)
 
@@ -43,7 +43,7 @@ describe('from', () => {
         }
     })
 
-    it('allows to and from into a plain operation', () => {
+    it('allows to and from into a plain use', () => {
         const num: Scalar = to.Scalar(from.Translation(to.Translation(3)))
     })
 
@@ -55,7 +55,7 @@ describe('from', () => {
         const ofHzs: Array<Of<Hz>> = hzScalars.map((hzScalar: Scalar<Hz>) => from.Scalar(hzScalar))
     })
 
-    describe('special units/operations', () => {
+    describe('special units/uses', () => {
         it('works', () => {
             const fromCardinal: number = from.Cardinal(to.Cardinal(3))
             from.Cardinal(to.Cardinal(3)) * 3
