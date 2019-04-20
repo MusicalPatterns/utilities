@@ -1,7 +1,6 @@
 // tslint:disable object-literal-sort-keys max-file-line-count
 import {
     allValuesAreTheSame,
-    use,
     deepEqual,
     forEach,
     goesMonotonically,
@@ -17,6 +16,7 @@ import {
     isLessThanOrEqualTo,
     isUndefined,
     Ordinal,
+    use,
 } from '@musical-patterns/utilities'
 import CustomEqualityTester = jasmine.CustomEqualityTester
 import CustomMatcher = jasmine.CustomMatcher
