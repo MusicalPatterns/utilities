@@ -143,6 +143,9 @@ type OperationNameFromOperation<OperationType> =
                                                     OperationType extends IntegerModulus ? 'IntegerModulus' :
                                                         ''
 
+type NaturalOperationOfable = NonNormal & NoOf
+type UnnaturalOperationOfable = NaturalOperationOfable & Unnatural
+
 type Block = number[] & { _BlockBrand: void }
 
 type Cycle<ElementType = number> = ElementType[] & { _CycleBrand: boolean }
@@ -212,4 +215,6 @@ export {
     NonNormal,
     Denature,
     Nature,
+    NaturalOperationOfable,
+    UnnaturalOperationOfable,
 }
