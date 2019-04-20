@@ -1,12 +1,12 @@
-import { apply, DECREMENT, INCREMENT, Ordinal } from '../nominal'
+import { DECREMENT, INCREMENT, Ordinal, use } from '../nominal'
 
 const translateFromOneIndexedToZeroIndexed: <IndexType>(index: Ordinal<IndexType>) => Ordinal<IndexType> =
     <IndexType>(index: Ordinal<IndexType>): Ordinal<IndexType> =>
-        apply.Translation(index, DECREMENT)
+        use.Translation(index, DECREMENT)
 
 const translateFromZeroIndexedToOneIndexed: <IndexType>(index: Ordinal<IndexType>) => Ordinal<IndexType> =
     <IndexType>(index: Ordinal<IndexType>): Ordinal<IndexType> =>
-        apply.Translation(index, INCREMENT)
+        use.Translation(index, INCREMENT)
 
 export {
     translateFromOneIndexedToZeroIndexed,

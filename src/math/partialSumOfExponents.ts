@@ -1,4 +1,4 @@
-import { apply, Exponent, from, insteadOf, Logarithm, ofFrom, to } from '../nominal'
+import { as, Exponent, insteadOf, Logarithm, notAs, ofNotAs, use } from '../nominal'
 import { negative, reciprocal } from './typedOperations'
 
 const computePartialSumOfExponents: <NumericType extends Number>(
@@ -6,20 +6,20 @@ const computePartialSumOfExponents: <NumericType extends Number>(
     upperBound: Exponent<NumericType>,
 ) => number =
     <NumericType extends Number>(logarithm: Logarithm<NumericType>, upperBound: Exponent<NumericType>): number =>
-        from.Logarithm<NumericType>(apply.Scalar(
-            apply.Translation(
-                apply.Exponent(
+        notAs.Logarithm<NumericType>(use.Scalar(
+            use.Translation(
+                use.Exponent(
                     logarithm,
-                    insteadOf<Exponent, Logarithm<NumericType>>(apply.Translation(
+                    insteadOf<Exponent, Logarithm<NumericType>>(use.Translation(
                         upperBound,
-                        to.Translation<Exponent<NumericType>>(1),
+                        as.Translation<Exponent<NumericType>>(1),
                     )),
                 ),
-                to.Translation<Logarithm<NumericType>>(negative(1)),
+                as.Translation<Logarithm<NumericType>>(negative(1)),
             ),
-            to.Scalar(ofFrom(reciprocal(apply.Translation(
+            as.Scalar(ofNotAs(reciprocal(use.Translation(
                 logarithm,
-                to.Translation<Logarithm<NumericType>>(negative(1)),
+                as.Translation<Logarithm<NumericType>>(negative(1)),
             )))),
         ))
 

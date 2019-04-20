@@ -1,9 +1,9 @@
 // tslint:disable no-any no-unused-expression comment-format no-commented-code no-dead-store
 
-import { Hz, of, Of, Rotation, Scalar, to } from '../../../src/indexForTest'
+import { as, Hz, Of, of, Rotation, Scalar } from '../../../src/indexForTest'
 
-describe('of', () => {
-    it('allows assigning an Of to an Of of the right kind', () => {
+describe('of not as', () => {
+    it('allows assigning an Of as an Of of the right kind', () => {
         const ofAsOfUnits: Of<Hz> = of.Hz(3)
         const ofAsOfUse: Of<Scalar> = of.Scalar(3)
     })
@@ -22,14 +22,14 @@ describe('of', () => {
     })
 
     it('allows creating uses of units', () => {
-        const scalarOfHz: Scalar<Hz> = to.Scalar(of.Hz(3))
+        const scalarOfHz: Scalar<Hz> = as.Scalar(of.Hz(3))
     })
 
     it('allows creating uses of uses', () => {
-        const scalarOfRotation: Scalar<Rotation> = to.Scalar(of.Rotation(3))
+        const scalarOfRotation: Scalar<Rotation> = as.Scalar(of.Rotation(3))
     })
 
     it('allows creating uses of uses of units', () => {
-        const scalarOfScalarOfHz: Scalar<Scalar<Hz>> = to.Scalar(of.Scalar<Hz>(3))
+        const scalarOfScalarOfHz: Scalar<Scalar<Hz>> = as.Scalar(of.Scalar<Hz>(3))
     })
 })

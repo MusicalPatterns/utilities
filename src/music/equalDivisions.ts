@@ -1,35 +1,35 @@
 import { map, slice } from '../code'
 import { reciprocal } from '../math'
 import {
-    apply,
+    as,
     Denominator,
     Frequency,
-    from,
     Hz,
     INITIAL,
     Integer,
     Logarithm,
+    notAs,
     OCTAVE,
     Scalar,
-    to,
+    use,
     ZERO_AND_POSITIVE_INTEGERS,
 } from '../nominal'
 
 const computeEqualDivisionScalars: (equalDivision: Denominator, window?: Logarithm<Frequency>) => Array<Scalar<Hz>> =
     (equalDivision: Denominator, window: Logarithm<Frequency> = OCTAVE): Array<Scalar<Hz>> => {
-        const logarithmicStep: Scalar<Hz> = to.Scalar<Hz>(from.Logarithm<Frequency>(apply.Exponent(
+        const logarithmicStep: Scalar<Hz> = as.Scalar<Hz>(notAs.Logarithm<Frequency>(use.Exponent(
             window,
-            to.Exponent<Logarithm<Frequency>>(reciprocal(equalDivision)),
+            as.Exponent<Logarithm<Frequency>>(reciprocal(equalDivision)),
         )))
 
         return map(
             slice(
                 ZERO_AND_POSITIVE_INTEGERS,
                 INITIAL,
-                to.Ordinal(from.Denominator(equalDivision)),
+                as.Ordinal(notAs.Denominator(equalDivision)),
             ),
             (integer: Integer) =>
-                apply.Power(logarithmicStep, to.Power<Scalar<Hz>>(integer)),
+                use.Power(logarithmicStep, as.Power<Scalar<Hz>>(integer)),
         )
     }
 

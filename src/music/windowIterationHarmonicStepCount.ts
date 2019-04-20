@@ -1,16 +1,16 @@
 import { negative } from '../math'
-import { apply, Base, Cardinal, DECREMENT, Frequency, from, insteadOf, Ordinal, to } from '../nominal'
+import { as, Base, Cardinal, DECREMENT, Frequency, insteadOf, notAs, Ordinal, use } from '../nominal'
 
 const windowIterationHarmonicStepCount: (window: Base<Frequency>, iteration: Ordinal<Base<Frequency>>) => Cardinal =
     (window: Base<Frequency>, iteration: Ordinal<Base<Frequency>>): Cardinal =>
-        insteadOf<Cardinal>(to.Cardinal(from.Base<Frequency>(apply.Translation(
-            apply.Power(
+        insteadOf<Cardinal>(as.Cardinal(notAs.Base<Frequency>(use.Translation(
+            use.Power(
                 window,
-                to.Power<Base<Frequency>>(from.Ordinal(iteration)),
+                as.Power<Base<Frequency>>(notAs.Ordinal(iteration)),
             ),
-            to.Translation<Base<Frequency>>(from.Base<Frequency>(negative(apply.Power(
+            as.Translation<Base<Frequency>>(notAs.Base<Frequency>(negative(use.Power(
                 window,
-                to.Power<Base<Frequency>>(from.Ordinal(apply.Translation(
+                as.Power<Base<Frequency>>(notAs.Ordinal(use.Translation(
                     iteration,
                     DECREMENT,
                 )))),

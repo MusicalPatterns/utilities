@@ -1,87 +1,87 @@
-import { computeGreatestCommonDivisor, computeLeastCommonMultiple, to } from '../../../src/indexForTest'
+import { as, computeGreatestCommonDivisor, computeLeastCommonMultiple } from '../../../src/indexForTest'
 
 describe('common', () => {
     describe('greatest divisor', () => {
         it('works', () => {
-            expect(computeGreatestCommonDivisor(to.Integer(16), to.Integer(24)))
-                .toBe(to.Integer(8))
+            expect(computeGreatestCommonDivisor(as.Integer(16), as.Integer(24)))
+                .toBe(as.Integer(8))
         })
 
         it('works for co-prime numbers', () => {
-            expect(computeGreatestCommonDivisor(to.Integer(5), to.Integer(8)))
-                .toBe(to.Integer(1))
+            expect(computeGreatestCommonDivisor(as.Integer(5), as.Integer(8)))
+                .toBe(as.Integer(1))
         })
 
         it('works when one number is itself the GCD', () => {
-            expect(computeGreatestCommonDivisor(to.Integer(3), to.Integer(6)))
-                .toBe(to.Integer(3))
+            expect(computeGreatestCommonDivisor(as.Integer(3), as.Integer(6)))
+                .toBe(as.Integer(3))
         })
 
         it('works for more than two numbers', () => {
-            expect(computeGreatestCommonDivisor(to.Integer(12), to.Integer(16), to.Integer(20)))
-                .toBe(to.Integer(4))
+            expect(computeGreatestCommonDivisor(as.Integer(12), as.Integer(16), as.Integer(20)))
+                .toBe(as.Integer(4))
         })
 
         it('works for one number', () => {
-            expect(computeGreatestCommonDivisor(to.Integer(7)))
-                .toBe(to.Integer(7))
+            expect(computeGreatestCommonDivisor(as.Integer(7)))
+                .toBe(as.Integer(7))
         })
 
         it('works for zero numbers', () => {
             expect(computeGreatestCommonDivisor())
-                .toBe(to.Integer(1))
+                .toBe(as.Integer(1))
         })
 
         it('returns the Natural type if shared; plain Integer otherwise', () => {
-            expect(computeGreatestCommonDivisor(to.Cardinal(9), to.Multiple(6)))
-                .toBe(to.Integer(3))
-            expect(computeGreatestCommonDivisor(to.Cardinal(9), to.Cardinal(6)))
-                .toBe(to.Cardinal(3))
+            expect(computeGreatestCommonDivisor(as.Cardinal(9), as.Multiple(6)))
+                .toBe(as.Integer(3))
+            expect(computeGreatestCommonDivisor(as.Cardinal(9), as.Cardinal(6)))
+                .toBe(as.Cardinal(3))
         })
     })
 
     describe('least multiple', () => {
         it('works', () => {
-            expect(computeLeastCommonMultiple(to.Integer(16), to.Integer(24)))
-                .toBe(to.Integer(48))
+            expect(computeLeastCommonMultiple(as.Integer(16), as.Integer(24)))
+                .toBe(as.Integer(48))
         })
 
         it('works for co-prime numbers', () => {
-            expect(computeLeastCommonMultiple(to.Integer(5), to.Integer(8)))
-                .toBe(to.Integer(40))
+            expect(computeLeastCommonMultiple(as.Integer(5), as.Integer(8)))
+                .toBe(as.Integer(40))
 
         })
 
         it('works when one number is itself the LCM', () => {
-            expect(computeLeastCommonMultiple(to.Integer(3), to.Integer(6)))
-                .toBe(to.Integer(6))
+            expect(computeLeastCommonMultiple(as.Integer(3), as.Integer(6)))
+                .toBe(as.Integer(6))
         })
 
         it('works for more than two numbers', () => {
-            expect(computeLeastCommonMultiple(to.Integer(12), to.Integer(16), to.Integer(20)))
-                .toBe(to.Integer(240))
+            expect(computeLeastCommonMultiple(as.Integer(12), as.Integer(16), as.Integer(20)))
+                .toBe(as.Integer(240))
         })
 
         it('works for one number', () => {
-            expect(computeLeastCommonMultiple(to.Integer(7)))
-                .toBe(to.Integer(7))
+            expect(computeLeastCommonMultiple(as.Integer(7)))
+                .toBe(as.Integer(7))
         })
 
         it('works for zero numbers', () => {
             expect(computeLeastCommonMultiple())
-                .toBe(to.Integer(1))
+                .toBe(as.Integer(1))
         })
 
         it('works for very large numbers', () => {
-            expect(computeLeastCommonMultiple(to.Integer(43999999560), to.Integer(43999999560), to.Integer(43999999560), to.Integer(43999999560), to.Integer(43999999560), to.Integer(43999999560)))
-                .toBe(to.Integer(43999999560))
+            expect(computeLeastCommonMultiple(as.Integer(43999999560), as.Integer(43999999560), as.Integer(43999999560), as.Integer(43999999560), as.Integer(43999999560), as.Integer(43999999560)))
+                .toBe(as.Integer(43999999560))
         })
 
         it('returns the Natural type if shared; plain Integer otherwise', () => {
-            expect(computeLeastCommonMultiple(to.Cardinal(9), to.Multiple(6)))
-                .toBe(to.Integer(18))
-            expect(computeLeastCommonMultiple(to.Cardinal(9), to.Cardinal(6)))
-                .toBe(to.Cardinal(18))
+            expect(computeLeastCommonMultiple(as.Cardinal(9), as.Multiple(6)))
+                .toBe(as.Integer(18))
+            expect(computeLeastCommonMultiple(as.Cardinal(9), as.Cardinal(6)))
+                .toBe(as.Cardinal(18))
         })
     })
 })

@@ -1,9 +1,9 @@
 // tslint:disable variable-name max-file-line-count
 
 import { finalIndexFromElementsTotal, length } from '../code'
+import * as as from './as'
 import { indexCheck, integerCheck, normalCheck } from './checks'
-import * as from from './from'
-import * as to from './to'
+import * as notAs from './notAs'
 import { isCycle } from './typeGuards'
 import {
     Base,
@@ -58,30 +58,30 @@ const Translation: <TranslatedType>(
     ): TranslatedType => {
         if (isCycle(value)) {
             const cycle: Cycle<TranslatedType> = value as unknown as Cycle<TranslatedType>
-            const cycledCycle: Cycle<TranslatedType> = to.Cycle([])
+            const cycledCycle: Cycle<TranslatedType> = as.Cycle([])
             const cellCount: Cardinal<TranslatedType> = length(cycle)
 
             for (
-                let index: Ordinal<TranslatedType> = to.Ordinal<TranslatedType>(0);
+                let index: Ordinal<TranslatedType> = as.Ordinal<TranslatedType>(0);
                 index <= finalIndexFromElementsTotal(cellCount);
-                index = Translation(index, to.Translation<Ordinal<TranslatedType>>(1))
+                index = Translation(index, as.Translation<Ordinal<TranslatedType>>(1))
             ) {
                 let cycledIndex: Ordinal<TranslatedType> = Translation(
                     index,
-                    to.Translation<Ordinal<TranslatedType>>(-from.Translation(translation as unknown as Translation)),
+                    as.Translation<Ordinal<TranslatedType>>(-notAs.Translation(translation as unknown as Translation)),
                 )
                 cycledIndex = IntegerModulus(
                     cycledIndex,
-                    to.IntegerModulus<Ordinal<TranslatedType>>(from.Cardinal<TranslatedType>(cellCount)),
+                    as.IntegerModulus<Ordinal<TranslatedType>>(notAs.Cardinal<TranslatedType>(cellCount)),
                 )
-                cycledCycle.push(cycle[ from.Ordinal<TranslatedType>(cycledIndex) ])
+                cycledCycle.push(cycle[ notAs.Ordinal<TranslatedType>(cycledIndex) ])
             }
 
             return cycledCycle as unknown as TranslatedType
         }
 
         return value as unknown as number +
-        from.Translation(translation as unknown as Translation) as unknown as TranslatedType
+        notAs.Translation(translation as unknown as Translation) as unknown as TranslatedType
     }
 
 const Power: <OfType extends Number>(
@@ -114,7 +114,7 @@ const Scalar: <OfType extends Number>(
         value: OfType,
         scalar: Scalar<OfType>,
     ): OfType =>
-        value as unknown as number * from.Scalar(scalar as unknown as Scalar) as unknown as OfType
+        value as unknown as number * notAs.Scalar(scalar as unknown as Scalar) as unknown as OfType
 
 const NormalScalar: <OfType extends Number>(
     value: OfType,
@@ -124,7 +124,7 @@ const NormalScalar: <OfType extends Number>(
         value: OfType,
         normalScalar: NormalScalar<OfType>,
     ): OfType =>
-        value as unknown as number * from.Scalar(normalCheck(normalScalar) as unknown as Scalar) as unknown as OfType
+        value as unknown as number * notAs.Scalar(normalCheck(normalScalar) as unknown as Scalar) as unknown as OfType
 
 const Multiple: <OfType extends Number>(
     value: OfType,
@@ -137,7 +137,7 @@ const Multiple: <OfType extends Number>(
         const integerCheckedMultiple: Multiple<OfType> = integerCheck(multiple, 'Multiple')
 
         return value as unknown as number *
-        from.Multiple(integerCheckedMultiple as unknown as Multiple) as unknown as OfType
+        notAs.Multiple(integerCheckedMultiple as unknown as Multiple) as unknown as OfType
     }
 
 const Ordinal: <ElementType>(
@@ -151,15 +151,15 @@ const Ordinal: <ElementType>(
         if (isCycle(array)) {
             const cycledIndex: Ordinal<ElementType> = IntegerModulus(
                 index,
-                to.IntegerModulus<Ordinal<ElementType>>(array.length),
+                as.IntegerModulus<Ordinal<ElementType>>(array.length),
             )
 
-            return array[ from.Ordinal(cycledIndex as unknown as Ordinal) ]
+            return array[ notAs.Ordinal(cycledIndex as unknown as Ordinal) ]
         }
 
         indexCheck(index, array)
 
-        return array[ from.Ordinal(index as unknown as Ordinal) ]
+        return array[ notAs.Ordinal(index as unknown as Ordinal) ]
     }
 
 const Modulus: <OfType extends Number>(

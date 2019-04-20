@@ -20,7 +20,7 @@ import {
     Ms,
     Multiple,
     NormalScalar,
-    Numerator, Of,
+    Numerator,
     Ordinal,
     Power,
     Radians,

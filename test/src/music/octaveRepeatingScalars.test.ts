@@ -1,4 +1,4 @@
-import { computeOctaveRepeatingScalars, Hz, Scalar, to } from '../../../src/indexForTest'
+import { as, computeOctaveRepeatingScalars, Hz, Scalar } from '../../../src/indexForTest'
 
 describe('octave repeating scalars', () => {
     it('given scalars, will provide 10 octaves worth of them repeating', () => {
@@ -7,7 +7,7 @@ describe('octave repeating scalars', () => {
             4 / 3,
             15 / 8,
         ]
-            .map((scalar: number) => to.Scalar<Hz>(scalar))
+            .map((scalar: number) => as.Scalar<Hz>(scalar))
 
         const actualScalars: Array<Scalar<Hz>> = computeOctaveRepeatingScalars(scalars)
         expect(actualScalars)
@@ -44,7 +44,7 @@ describe('octave repeating scalars', () => {
                     512 * 4 / 3,
                     512 * 15 / 8,
                 ]
-                    .map((scalar: number) => to.Scalar<Hz>(scalar)),
+                    .map((scalar: number) => as.Scalar<Hz>(scalar)),
             )
     })
 })

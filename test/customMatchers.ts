@@ -1,7 +1,6 @@
 // tslint:disable object-literal-sort-keys max-file-line-count
 import {
     allValuesAreTheSame,
-    apply,
     deepEqual,
     forEach,
     goesMonotonically,
@@ -17,6 +16,7 @@ import {
     isLessThanOrEqualTo,
     isUndefined,
     Ordinal,
+    use,
 } from '../src/indexForTest'
 import CustomEqualityTester = jasmine.CustomEqualityTester
 import CustomMatcher = jasmine.CustomMatcher
@@ -166,7 +166,7 @@ const customMatchers: CustomMatcherFactories = {
                 )
 
                 forEach(expected, (expectedElement: NumericElementType, index: Ordinal<NumericElementType>): void => {
-                    const actualElement: NumericElementType = apply.Ordinal(actual, index)
+                    const actualElement: NumericElementType = use.Ordinal(actual, index)
 
                     testIsCloseTo(actualElement, expectedElement, precision, negate, message)
                 })
@@ -183,7 +183,7 @@ const customMatchers: CustomMatcherFactories = {
         ): CustomMatcherResult =>
             doAssertions(() => {
                 forEach(expected, (expectedElement: NumericElementType, index: Ordinal<NumericElementType>): void => {
-                    const actualElement: NumericElementType = apply.Ordinal(actual, index)
+                    const actualElement: NumericElementType = use.Ordinal(actual, index)
 
                     testIsCloseTo(actualElement, expectedElement, precision, negate, message)
                 })

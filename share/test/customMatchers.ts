@@ -1,7 +1,7 @@
 // tslint:disable object-literal-sort-keys max-file-line-count
 import {
     allValuesAreTheSame,
-    apply,
+    use,
     deepEqual,
     forEach,
     goesMonotonically,
@@ -166,7 +166,7 @@ const customMatchers: CustomMatcherFactories = {
                 )
 
                 forEach(expected, (expectedElement: NumericElementType, index: Ordinal<NumericElementType>): void => {
-                    const actualElement: NumericElementType = apply.Ordinal(actual, index)
+                    const actualElement: NumericElementType = use.Ordinal(actual, index)
 
                     testIsCloseTo(actualElement, expectedElement, precision, negate, message)
                 })
@@ -183,7 +183,7 @@ const customMatchers: CustomMatcherFactories = {
         ): CustomMatcherResult =>
             doAssertions(() => {
                 forEach(expected, (expectedElement: NumericElementType, index: Ordinal<NumericElementType>): void => {
-                    const actualElement: NumericElementType = apply.Ordinal(actual, index)
+                    const actualElement: NumericElementType = use.Ordinal(actual, index)
 
                     testIsCloseTo(actualElement, expectedElement, precision, negate, message)
                 })

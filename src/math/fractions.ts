@@ -1,4 +1,5 @@
 import {
+    as,
     computeGreatestCommonDivisor,
     computeLeastCommonMultiple,
     Denominator,
@@ -6,18 +7,17 @@ import {
     Integer,
     Numerator,
     product,
-    to,
 } from '../indexForTest'
 import { quotient } from '../math'
-import { apply, DENOMINATOR_INDEX, FRACTIONAL_IDENTITY, from, Multiple, NUMERATOR_INDEX } from '../nominal'
+import { DENOMINATOR_INDEX, FRACTIONAL_IDENTITY, Multiple, NUMERATOR_INDEX, use } from '../nominal'
 
 const getNumerator: (fraction: Fraction) => Numerator =
     (fraction: Fraction): Numerator =>
-        apply.Ordinal(fraction, NUMERATOR_INDEX) as Numerator
+        use.Ordinal(fraction, NUMERATOR_INDEX) as Numerator
 
 const getDenominator: (fraction: Fraction) => Denominator =
     (fraction: Fraction): Denominator =>
-        apply.Ordinal(fraction, DENOMINATOR_INDEX) as Denominator
+        use.Ordinal(fraction, DENOMINATOR_INDEX) as Denominator
 
 const multiplyFractions: (...fractions: Fraction[]) => Fraction =
     (...fractions: Fraction[]): Fraction => {
@@ -27,7 +27,7 @@ const multiplyFractions: (...fractions: Fraction[]) => Fraction =
             multiplyFractions(...fractions) :
             FRACTIONAL_IDENTITY
 
-        return to.Fraction([
+        return as.Fraction([
             product(getNumerator(nextMultipliedFraction), getNumerator(previousFraction)),
             product(getDenominator(nextMultipliedFraction), getDenominator(previousFraction)),
         ])
@@ -40,9 +40,9 @@ const computeLowestTerms: (fraction: Fraction) => Fraction =
             denominator as unknown as Integer,
         )
 
-        return to.Fraction([
-            to.Numerator(quotient(numerator as unknown as Integer, gcd)),
-            to.Denominator(quotient(denominator as unknown as Integer, gcd)),
+        return as.Fraction([
+            as.Numerator(quotient(numerator as unknown as Integer, gcd)),
+            as.Denominator(quotient(denominator as unknown as Integer, gcd)),
         ])
     }
 
@@ -51,7 +51,7 @@ const computeLowestCommonDenominator: (...fractions: Fraction[]) => Denominator 
         const fractionsInLowestTerms: Fraction[] = fractions.map(computeLowestTerms)
         const denominators: Denominator[] = fractionsInLowestTerms.map(getDenominator)
 
-        return to.Denominator(computeLeastCommonMultiple(...denominators as unknown as Integer[]))
+        return as.Denominator(computeLeastCommonMultiple(...denominators as unknown as Integer[]))
     }
 
 const computeCommonTerms: (...fractions: Fraction[]) => Fraction[] =
@@ -67,13 +67,13 @@ const computeCommonTerms: (...fractions: Fraction[]) => Fraction[] =
                 }
 
                 const termsMultiple: Multiple<Numerator> =
-                    to.Multiple<Numerator>(quotient(
+                    as.Multiple<Numerator>(quotient(
                         lowestCommonDenominator,
                         denominator,
                     ))
 
-                return to.Fraction([
-                    apply.Multiple(getNumerator(fraction), termsMultiple),
+                return as.Fraction([
+                    use.Multiple(getNumerator(fraction), termsMultiple),
                     lowestCommonDenominator,
                 ])
             })

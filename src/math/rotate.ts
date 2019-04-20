@@ -2,18 +2,18 @@
 
 import { indexJustBeyondFinalElement, map, Maybe, reduce, slice } from '../code'
 import {
-    apply,
+    as,
     Cycle,
-    from,
     INITIAL,
     insteadOf,
+    notAs,
     Ordinal,
     Radians,
     ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS,
     Scalar,
-    to,
     Translation,
     TWO_DIMENSIONAL,
+    use,
     Z_AXIS,
 } from '../nominal'
 import { cosine, sine } from './trigonometry'
@@ -29,7 +29,7 @@ const defaultFixedCoordinateToOriginOfDimensionalityOfCoordinate:
         fixedCoordinate: Maybe<Coordinate<NumericType, Dimensionality>>,
         coordinate: Coordinate<NumericType, Dimensionality>,
     ): Coordinate<NumericType, Dimensionality> => (
-        fixedCoordinate || coordinate.length === from.Cardinal(TWO_DIMENSIONAL) ?
+        fixedCoordinate || coordinate.length === notAs.Cardinal(TWO_DIMENSIONAL) ?
             [ 0, 0 ] :
             [ 0, 0, 0 ]
     ) as unknown as Coordinate<NumericType, Dimensionality>
@@ -42,7 +42,7 @@ const computeCycleMapForScalingRotationMatrixToDimensionalityOfCoordinate:
         coordinate: Coordinate<NumericType, Dimensionality>,
     ): CycleMap =>
         <VectorOrMatrix>(rotationVectorOrMatrix: Cycle<VectorOrMatrix>): Cycle<VectorOrMatrix> =>
-            to.Cycle(slice(
+            as.Cycle(slice(
                 rotationVectorOrMatrix,
                 INITIAL,
                 indexJustBeyondFinalElement(coordinate),
@@ -51,14 +51,14 @@ const computeCycleMapForScalingRotationMatrixToDimensionalityOfCoordinate:
 const computeCycleMapForCyclingRotationMatrixForAxis: (axis: Ordinal) => CycleMap =
     (axis: Ordinal): CycleMap =>
         <VectorOrMatrix>(rotationVectorOrMatrix: Cycle<VectorOrMatrix>): Cycle<VectorOrMatrix> => {
-            const translation: Translation<Cycle<VectorOrMatrix>> = apply.Translation(
+            const translation: Translation<Cycle<VectorOrMatrix>> = use.Translation(
                 insteadOf<Translation, Cycle<VectorOrMatrix>>(
                     ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS,
                 ),
-                insteadOf<Translation, Translation<Cycle<VectorOrMatrix>>>(to.Translation(from.Ordinal(axis))),
+                insteadOf<Translation, Translation<Cycle<VectorOrMatrix>>>(as.Translation(notAs.Ordinal(axis))),
             )
 
-            return apply.Translation(rotationVectorOrMatrix, translation)
+            return use.Translation(rotationVectorOrMatrix, translation)
         }
 
 const mapAcrossBothDimensions: <NumericType extends Number>(
@@ -69,7 +69,7 @@ const mapAcrossBothDimensions: <NumericType extends Number>(
         rotationMatrix: RotationMatrix<NumericType>,
         cycleMap: CycleMap,
     ): RotationMatrix<NumericType> =>
-        cycleMap(to.Cycle(rotationMatrix.map(cycleMap)))
+        cycleMap(as.Cycle(rotationMatrix.map(cycleMap)))
 
 const scaleRotationMatrixToDimensionalityOfCoordinate:
     <NumericType extends Number, Dimensionality extends number>(
@@ -108,34 +108,34 @@ const rotate: <NumericType extends Number, Dimensionality extends number>(rotate
                 coordinate,
             )
 
-        const sin: Scalar<NumericType> = to.Scalar<NumericType>(sine(rotation))
-        const cos: Scalar<NumericType> = to.Scalar<NumericType>(cosine(rotation))
+        const sin: Scalar<NumericType> = as.Scalar<NumericType>(sine(rotation))
+        const cos: Scalar<NumericType> = as.Scalar<NumericType>(cosine(rotation))
 
         const relative: NumericType[] = map(
             coordinate,
             (coordinateElement: NumericType, index: Ordinal<NumericType>): NumericType => {
                 const rawFixedCoordinateElement: NumericType =
-                    apply.Ordinal(fixedCoordinate, index)
+                    use.Ordinal(fixedCoordinate, index)
 
                 return difference<NumericType>(coordinateElement, rawFixedCoordinateElement)
             },
         )
 
-        const standardRotationMatrix: RotationMatrix<NumericType> = to.Cycle([
-            to.Cycle([
+        const standardRotationMatrix: RotationMatrix<NumericType> = as.Cycle([
+            as.Cycle([
                 cos,
-                apply.Scalar(sin, to.Scalar<Scalar<NumericType>>(negative(1))),
-                to.Scalar<NumericType>(0),
+                use.Scalar(sin, as.Scalar<Scalar<NumericType>>(negative(1))),
+                as.Scalar<NumericType>(0),
             ]),
-            to.Cycle([
+            as.Cycle([
                 sin,
                 cos,
-                to.Scalar<NumericType>(0),
+                as.Scalar<NumericType>(0),
             ]),
-            to.Cycle([
-                to.Scalar<NumericType>(0),
-                to.Scalar<NumericType>(0),
-                to.Scalar<NumericType>(1),
+            as.Cycle([
+                as.Scalar<NumericType>(0),
+                as.Scalar<NumericType>(0),
+                as.Scalar<NumericType>(1),
             ]),
         ])
 
@@ -154,8 +154,8 @@ const rotate: <NumericType extends Number, Dimensionality extends number>(rotate
                 ): NumericType =>
                     sum(
                         coordinateElement,
-                        apply.Scalar(
-                            apply.Ordinal(relative, insteadOf<Ordinal, NumericType>(index)),
+                        use.Scalar(
+                            use.Ordinal(relative, insteadOf<Ordinal, NumericType>(index)),
                             rotationScalar,
                         ),
                     ),

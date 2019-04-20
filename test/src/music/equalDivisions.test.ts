@@ -1,8 +1,8 @@
-import { computeEqualDivisionScalars, to, TRITAVE } from '../../../src/indexForTest'
+import { as, computeEqualDivisionScalars, TRITAVE } from '../../../src/indexForTest'
 
 describe('equal divisions', () => {
     it('divides the window (octave) into equal divisions', () => {
-        expect(computeEqualDivisionScalars(to.Denominator(12)))
+        expect(computeEqualDivisionScalars(as.Denominator(12)))
             .toBeCloseToArray(
                 [
                     1,
@@ -17,10 +17,10 @@ describe('equal divisions', () => {
                     1.68179283051,
                     1.78179743628,
                     1.88774862536,
-                ].map(to.Scalar),
+                ].map(as.Scalar),
             )
 
-        expect(computeEqualDivisionScalars(to.Denominator(5)))
+        expect(computeEqualDivisionScalars(as.Denominator(5)))
             .toBeCloseToArray(
                 [
                     1,
@@ -28,12 +28,12 @@ describe('equal divisions', () => {
                     1.31950791077,
                     1.51571656651,
                     1.74110112659,
-                ].map(to.Scalar),
+                ].map(as.Scalar),
             )
     })
 
     it('supports other windows besides the octave', () => {
-        expect(computeEqualDivisionScalars(to.Denominator(13), TRITAVE))
+        expect(computeEqualDivisionScalars(as.Denominator(13), TRITAVE))
             .toBeCloseToArray(
                 [
                     1,
@@ -49,7 +49,7 @@ describe('equal divisions', () => {
                     2.32817890443,
                     2.53348294341,
                     2.75689115313,
-                ].map(to.Scalar),
+                ].map(as.Scalar),
             )
     })
 })

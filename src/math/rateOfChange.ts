@@ -1,6 +1,6 @@
 import { finalElement, initialElement, map, Maybe } from '../code'
 import { indexOfFinalElement, INITIAL, insteadOf, Ordinal, Scalar, slice, Translation } from '../indexForTest'
-import { apply, Denature, isCycle, NEXT } from '../nominal'
+import { Denature, isCycle, NEXT, use } from '../nominal'
 import { delta, interval } from './typedOperations'
 
 const computeDeltas: <NumericElementType extends Number>(
@@ -12,9 +12,9 @@ const computeDeltas: <NumericElementType extends Number>(
         const deltas: Array<Translation<NumericElementType>> = map(
             slice(array, INITIAL as unknown as Ordinal<NumericElementType>, indexOfFinalElement(array)),
             (value: NumericElementType, index: Ordinal<NumericElementType>) => {
-                const nextValue: NumericElementType = apply.Ordinal(
+                const nextValue: NumericElementType = use.Ordinal(
                     array,
-                    apply.Translation(
+                    use.Translation(
                         index,
                         insteadOf<Translation, Ordinal<NumericElementType>>(NEXT),
                     ),
@@ -46,9 +46,9 @@ const computeIntervals: <NumericElementType extends Number>(
                 value: NumericElementType,
                 index: Ordinal<NumericElementType>,
             ): Maybe<Scalar<Denature<NumericElementType>>> => {
-                const nextValue: NumericElementType = apply.Ordinal(
+                const nextValue: NumericElementType = use.Ordinal(
                     array,
-                    apply.Translation(
+                    use.Translation(
                         index,
                         insteadOf<Translation, Ordinal<NumericElementType>>(NEXT),
                     ),

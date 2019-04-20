@@ -1,4 +1,4 @@
-import { apply, ONE_FOURTH, ONE_HALF, SQUARED, to } from '../nominal'
+import { as, ONE_FOURTH, ONE_HALF, SQUARED, use } from '../nominal'
 import { difference, floor, product, quotient, squareRoot, sum } from './typedOperations'
 
 const factorial: (value: number) => number =
@@ -23,16 +23,16 @@ const combinationCount: (setSize: number, choose: number) => number =
 
 const triangularNumber: (value: number) => number =
     (value: number): number =>
-        product(value, apply.Scalar(sum(value, 1), ONE_HALF))
+        product(value, use.Scalar(sum(value, 1), ONE_HALF))
 
 const triangularRoot: (value: number) => number =
     (value: number): number =>
         // tslint:disable-next-line no-magic-numbers
-        difference(apply.Scalar<number>(squareRoot(sum(product(value, 8), 1)), ONE_HALF), 0.5)
+        difference(use.Scalar<number>(squareRoot(sum(product(value, 8), 1)), ONE_HALF), 0.5)
 
 const quarterSquareNumber: (value: number) => number =
     (value: number): number =>
-        floor(apply.Scalar(apply.Power(value, SQUARED), ONE_FOURTH))
+        floor(use.Scalar(use.Power(value, SQUARED), ONE_FOURTH))
 
 const trapezoidalNumber: (trapezoidalNumberParameters: { height: number, start: number }) => number =
     ({ height, start }: { height: number, start: number }): number =>
@@ -43,7 +43,7 @@ const termialRoot: (termialRootParameters: { rangeDelta: number, rangeStart: num
         // tslint:disable-next-line no-magic-numbers
         const valueC: number = product(rangeStart, 2)
         // tslint:disable-next-line no-magic-numbers
-        const valueA: number = apply.Power(difference(valueC, rangeDelta), to.Power(2))
+        const valueA: number = use.Power(difference(valueC, rangeDelta), as.Power(2))
         // tslint:disable-next-line no-magic-numbers
         const valueB: number = product(rangeDelta, value, 8)
         // tslint:disable-next-line no-magic-numbers

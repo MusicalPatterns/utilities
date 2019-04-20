@@ -1,6 +1,6 @@
 // tslint:disable max-file-line-count
 
-import { apply, Cycle, from, NEXT, Ordinal, to, Translation } from '../nominal'
+import { as, Cycle, NEXT, notAs, Ordinal, Translation, use } from '../nominal'
 import { indexJustBeyondFinalElement, length } from './finalElement'
 import { isUndefined } from './isUndefined'
 
@@ -15,7 +15,7 @@ const slice: <ElementType>(
         terminal?: Ordinal<ElementType>,
     ): ElementType[] => {
         if (isUndefined(terminal)) {
-            return array.slice(from.Ordinal(initial as unknown as Ordinal))
+            return array.slice(notAs.Ordinal(initial as unknown as Ordinal))
         }
 
         if (terminal > indexJustBeyondFinalElement(array)) {
@@ -24,23 +24,23 @@ of only ${length(array)}: ${array}`)
         }
 
         return array.slice(
-            from.Ordinal(initial as unknown as Ordinal),
-            from.Ordinal(terminal as unknown as Ordinal),
+            notAs.Ordinal(initial as unknown as Ordinal),
+            notAs.Ordinal(terminal as unknown as Ordinal),
         )
     }
 
 const stringSlice: (str: string, initial: Ordinal<string>, terminal?: Ordinal<string>) => string =
     (str: string, initial: Ordinal<string>, terminal?: Ordinal<string>): string => {
         if (isUndefined(terminal)) {
-            return str.slice(from.Ordinal(initial as unknown as Ordinal))
+            return str.slice(notAs.Ordinal(initial as unknown as Ordinal))
         }
 
-        if (terminal > to.Ordinal<string>(str.length)) {
+        if (terminal > as.Ordinal<string>(str.length)) {
             throw new Error(`You tried to slice up to index ${terminal} of a string with length \
 of only ${str.length}: ${str}`)
         }
 
-        return str.slice(from.Ordinal(initial as unknown as Ordinal), from.Ordinal(terminal as unknown as Ordinal))
+        return str.slice(notAs.Ordinal(initial as unknown as Ordinal), notAs.Ordinal(terminal as unknown as Ordinal))
     }
 
 const cycleSlice: <ElementType>(
@@ -61,9 +61,9 @@ const cycleSlice: <ElementType>(
         for (
             let index: Ordinal<ElementType> = initial;
             index < terminalForSlice;
-            index = apply.Translation(index, NEXT as unknown as Translation<Ordinal<ElementType>>)
+            index = use.Translation(index, NEXT as unknown as Translation<Ordinal<ElementType>>)
         ) {
-            resultantSlice.push(apply.Ordinal(cycle, index))
+            resultantSlice.push(use.Ordinal(cycle, index))
         }
 
         return resultantSlice

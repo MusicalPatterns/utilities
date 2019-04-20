@@ -3,18 +3,17 @@
 // There should be 177 errors in this file when the below is uncommented.
 
 // import {
-//     apply,
+//     as,
 //     Base,
 //     Cents,
 //     computeNominalInterface,
 //     cubeRoot,
-//     CustomFrom,
+//     CustomAs,
+//     CustomNotAs,
 //     CustomOf,
-//     CustomTo,
 //     Denominator,
 //     DUMMY_VALUE_FOR_COMPUTING_NOMINAL_INTERFACE,
 //     Exponent,
-//     from,
 //     Hz,
 //     INITIAL,
 //     insteadOf,
@@ -26,10 +25,11 @@
 //     Multiple,
 //     NominalInterface,
 //     NormalScalar,
+//     notAs,
 //     Numerator,
 //     of,
 //     Of,
-//     ofFrom,
+//     ofNotAs,
 //     Ordinal,
 //     Power,
 //     quotient,
@@ -37,38 +37,38 @@
 //     Rotation,
 //     Scalar,
 //     squareRoot,
-//     to,
 //     Translation,
+//     use,
 // } from '../../../src/indexForTest'
 //
 // describe('anti test', () => {
-//     describe('to', () => {
+//     describe('as', () => {
 //         describe('units', () => {
-//             it('DOES NOT ALLOW assignment to units from raw numbers (which is not using `to`, but why we need `to`)', () => {
+//             it('DOES NOT ALLOW assignment as units from raw numbers (which is not using `as`, but why we need `as`)', () => {
 //                 const hzFromRaw: Hz = 3
 //             })
 //
-//             it('DOES NOT ALLOW assignment to units by as\'ing (which is not using `to`, but why we need `to`)', () => {
+//             it('DOES NOT ALLOW assignment as units by as\'ing (which is not using `as`, but why we need `as`)', () => {
 //                 3 as Hz
 //             })
 //
-//             it('DOES NOT ALLOW assignment to raw numbers', () => {
-//                 const hzToRaw: number = to.Hz(3)
+//             it('DOES NOT ALLOW assignment as raw numbers', () => {
+//                 const hzToRaw: number = as.Hz(3)
 //             })
 //
-//             it('DOES NOT ALLOW assignment to the wrong unit', () => {
-//                 const hzToMs: Ms = to.Hz(3)
+//             it('DOES NOT ALLOW assignment as the wrong unit', () => {
+//                 const hzToMs: Ms = as.Hz(3)
 //             })
 //
-//             it('DOES NOT ALLOW re-assignment to the same unit', () => {
-//                 to.Hz(to.Hz(3))
+//             it('DOES NOT ALLOW re-assignment as the same unit', () => {
+//                 as.Hz(as.Hz(3))
 //             })
 //
 //             it('DOES NOT ALLOW direct conversion from one unit into another, whether directly or intermediated by an explicit varible', () => {
-//                 const intermediaryVariableMs: Ms = to.Ms(3)
-//                 const centsFromExplicitMsVariable: Cents = to.Cents(intermediaryVariableMs)
+//                 const intermediaryVariableMs: Ms = as.Ms(3)
+//                 const centsFromExplicitMsVariable: Cents = as.Cents(intermediaryVariableMs)
 //
-//                 const centsFromToMsDirectly: Cents = to.Cents(to.Ms(3))
+//                 const centsFromToMsDirectly: Cents = as.Cents(as.Ms(3))
 //             })
 //
 //             it('DOES NOT ALLOW unholy hybrids of units', () => {
@@ -83,88 +83,88 @@
 //
 //         describe('uses', () => {
 //             it('DOES NOT ALLOW direct conversion from one use into another, whether directly or mediated by an explicit variable', () => {
-//                 const intermediateVariableRotation: Rotation = to.Rotation(3)
-//                 const scalarFromExplicitRotationVariable: Scalar = to.Scalar(intermediateVariableRotation)
+//                 const intermediateVariableRotation: Rotation = as.Rotation(3)
+//                 const scalarFromExplicitRotationVariable: Scalar = as.Scalar(intermediateVariableRotation)
 //
-//                 const scalarFromRotationDirectly: Scalar = to.Scalar(to.Rotation(3))
+//                 const scalarFromRotationDirectly: Scalar = as.Scalar(as.Rotation(3))
 //             })
 //
-//             it('DOES NOT ALLOW assignment to uses from raw numbers (which is not using `to`, but why we need `to`)', () => {
+//             it('DOES NOT ALLOW assignment as uses from raw numbers (which is not using `as`, but why we need `as`)', () => {
 //                 const rotationFromRaw: Rotation = 3
 //             })
 //
-//             it('DOES NOT ALLOW assignment to uses by as\'ing (which is not using `to`, but why we need `to`)', () => {
+//             it('DOES NOT ALLOW assignment as uses by as\'ing (which is not using `as`, but why we need `as`)', () => {
 //                 3 as Rotation
 //             })
 //
-//             it('DOES NOT ALLOW assignment to raw numbers', () => {
-//                 const rotationToRaw: number = to.Rotation(3)
+//             it('DOES NOT ALLOW assignment as raw numbers', () => {
+//                 const rotationToRaw: number = as.Rotation(3)
 //             })
 //
-//             it('DOES NOT ALLOW assignment to the wrong use', () => {
-//                 const rotationToScalar: Scalar = to.Rotation(3)
+//             it('DOES NOT ALLOW assignment as the wrong use', () => {
+//                 const rotationToScalar: Scalar = as.Rotation(3)
 //             })
 //
 //             it('DOES NOT allow nesting of uses', () => {
-//                 to.Rotation(to.Scalar(3))
+//                 as.Rotation(as.Scalar(3))
 //             })
 //         })
 //
 //         describe('units and uses', () => {
-//             it('DOES NOT ALLOW creating an use out of a unit', () => {
-//                 to.Scalar(to.Hz(3))
+//             it('DOES NOT ALLOW creating a use out of a unit', () => {
+//                 as.Scalar(as.Hz(3))
 //             })
 //
-//             it('DOES NOT ALLOW assigning an use to a unit', () => {
-//                 const hzScalar: Hz = to.Scalar(3)
+//             it('DOES NOT ALLOW assigning a use as a unit', () => {
+//                 const hzScalar: Hz = as.Scalar(3)
 //             })
 //
-//             it('DOES NOT ALLOW assigning something with both units and type to either the wrong units or the wrong type', () => {
-//                 const scalarHzAsWrongHz: Rotation<Hz> = to.Hz(to.Scalar(3))
-//                 const scalarHzAsScalarWrong: Scalar<Cents> = to.Hz(to.Scalar(3))
-//                 const scalarHzAsWrongWrong: Rotation<Cents> = to.Hz(to.Scalar(3))
+//             it('DOES NOT ALLOW assigning something with both units and type as either the wrong units or the wrong type', () => {
+//                 const scalarHzAsWrongHz: Rotation<Hz> = as.Hz(as.Scalar(3))
+//                 const scalarHzAsScalarWrong: Scalar<Cents> = as.Hz(as.Scalar(3))
+//                 const scalarHzAsWrongWrong: Rotation<Cents> = as.Hz(as.Scalar(3))
 //             })
 //
 //             it('DOES NOT ALLOW choosing the wrong type parameter', () => {
-//                 const rotationScalar: Scalar<Translation> = to.Scalar<Rotation>(3)
-//                 const scalarScalar: Translation<Rotation> = to.Scalar<Rotation>(3)
-//                 const hzScalar: Scalar<Ms> = to.Scalar<Hz>(3)
-//                 const msScalar: Rotation<Hz> = to.Scalar<Hz>(3)
+//                 const rotationScalar: Scalar<Translation> = as.Scalar<Rotation>(3)
+//                 const scalarScalar: Translation<Rotation> = as.Scalar<Rotation>(3)
+//                 const hzScalar: Scalar<Ms> = as.Scalar<Hz>(3)
+//                 const msScalar: Rotation<Hz> = as.Scalar<Hz>(3)
 //             })
 //
-//             it('DOES NOT ALLOW assigning a mere use to a use Of something', () => {
-//                 const scalarToScalarOfUnits: Scalar<Ms> = to.Scalar(2)
-//                 const asdgsdaggdsdgsdgdgsd: Scalar<Ms> = to.Scalar<number>(2)
+//             it('DOES NOT ALLOW assigning a mere use as a use Of something', () => {
+//                 const scalarToScalarOfUnits: Scalar<Ms> = as.Scalar(2)
+//                 const asdgsdaggdsdgsdgdgsd: Scalar<Ms> = as.Scalar<number>(2)
 //
 //                 const asg: Scalar<Ms> = 2 as unknown as Scalar
 //                 const asgg: Scalar<Ms> = 2 as unknown as Scalar<number>
 //
-//                 const scalarToScalarOfUse: Scalar<Rotation> = to.Scalar(2)
+//                 const scalarToScalarOfUse: Scalar<Rotation> = as.Scalar(2)
 //
 //                 const thing: Scalar<Ms> = 2 as unknown as Scalar
 //                 const thing2: Scalar = 2 as unknown as Scalar<Ms>
 //
-//                 const never: Scalar = to.Scalar<Ms>(3)
-//                 const never2: Scalar = to.Scalar<Rotation>(3)
+//                 const never: Scalar = as.Scalar<Ms>(3)
+//                 const never2: Scalar = as.Scalar<Rotation>(3)
 //             })
 //
 //             it('DOES NOT ALLOW making an non-integer use of an integer unit or use', () => {
 //                 3 as unknown as Scalar<Multiple>
 //                 3 as unknown as Scalar<Numerator>
 //
-//                 to.Scalar<Multiple>(3)
-//                 to.Scalar<Numerator>(3)
+//                 as.Scalar<Multiple>(3)
+//                 as.Scalar<Numerator>(3)
 //             })
 //         })
 //
 //         describe('special units/uses', () => {
 //             it('DOES NOT ALLOW creating fractions out of mere numbers', () => {
-//                 to.Fraction([ 4, 4 ])
+//                 as.Fraction([ 4, 4 ])
 //             })
 //
 //             it('DOES NOT ALLOW making special units if they are some other Units (not Integers)', () => {
-//                 to.Numerator(to.Hz(3))
-//                 to.Denominator(to.Hz(3))
+//                 as.Numerator(as.Hz(3))
+//                 as.Denominator(as.Hz(3))
 //             })
 //
 //             it('DOES NOT ALLOW making special units of some other Units', () => {
@@ -173,91 +173,91 @@
 //             })
 //
 //             it('DOES NOT ALLOW these oddities for Ordinal', () => {
-//                 const nestedIndexIndex: Ordinal = to.Ordinal(to.Ordinal(3))
-//                 const indexWrongScalar: Scalar = to.Ordinal(3)
+//                 const nestedIndexIndex: Ordinal = as.Ordinal(as.Ordinal(3))
+//                 const indexWrongScalar: Scalar = as.Ordinal(3)
 //             })
 //
 //             it('DOES NOT ALLOW same as above but for special uses', () => {
-//                 const indexToIndexOfUnits: Ordinal<Ms> = to.Ordinal(2)
-//                 const asdgsdaggdsdgsdgdgsd: Ordinal<Ms> = to.Ordinal<number>(2)
+//                 const indexToIndexOfUnits: Ordinal<Ms> = as.Ordinal(2)
+//                 const asdgsdaggdsdgsdgdgsd: Ordinal<Ms> = as.Ordinal<number>(2)
 //
 //                 const asg: Ordinal<Ms> = 2 as unknown as Ordinal
 //                 const asgg: Ordinal<Ms> = 2 as unknown as Ordinal<number>
 //
-//                 const indexToIndexOfUse: Ordinal<Rotation> = to.Ordinal(2)
+//                 const indexToIndexOfUse: Ordinal<Rotation> = as.Ordinal(2)
 //
 //                 const thing: Ordinal<Ms> = 2 as unknown as Ordinal
 //                 const thing2: Ordinal = 2 as unknown as Ordinal<Ms>
 //             })
 //
-//             it('DOES NOT ALLOW assigning integerlike ones to plain numbers', () => {
-//                 const cardinalNumber: number = to.Cardinal(3)
-//                 const numeratorNumber: number = to.Numerator(3)
-//                 const denominatorNumber: number = to.Denominator(3)
-//                 const ordinalNumber: number = to.Ordinal(3)
-//                 const multipleNumber: number = to.Multiple(3)
+//             it('DOES NOT ALLOW assigning integerlike ones as plain numbers', () => {
+//                 const cardinalNumber: number = as.Cardinal(3)
+//                 const numeratorNumber: number = as.Numerator(3)
+//                 const denominatorNumber: number = as.Denominator(3)
+//                 const ordinalNumber: number = as.Ordinal(3)
+//                 const multipleNumber: number = as.Multiple(3)
 //             })
 //
 //             it('DOES NOT ALLOW making uses of NormalScalars, besides NormalScalar of NormalScalar', () => {
-//                 to.Scalar<NormalScalar>(4)
-//                 to.Power<NormalScalar>(4)
-//                 to.Base<NormalScalar>(4)
-//                 to.Logarithm<NormalScalar>(4)
-//                 to.Exponent<NormalScalar>(4)
-//                 to.Multiple<NormalScalar>(4)
+//                 as.Scalar<NormalScalar>(4)
+//                 as.Power<NormalScalar>(4)
+//                 as.Base<NormalScalar>(4)
+//                 as.Logarithm<NormalScalar>(4)
+//                 as.Exponent<NormalScalar>(4)
+//                 as.Multiple<NormalScalar>(4)
 //             })
 //
-//             it('DOES NOT ALLOW assigning less specific uses (normal, integer) to the more specific counterparts', () => {
-//                 const scalarToNormalScalar: NormalScalar = to.Scalar(0.5)
+//             it('DOES NOT ALLOW assigning less specific uses (normal, integer) as the more specific counterparts', () => {
+//                 const scalarToNormalScalar: NormalScalar = as.Scalar(0.5)
 //
-//                 const scalarToMultiple: Multiple = to.Scalar(5)
-//                 const logarithmToBase: Base = to.Logarithm(5)
-//                 const exponentToPower: Power = to.Exponent(5)
+//                 const scalarToMultiple: Multiple = as.Scalar(5)
+//                 const logarithmToBase: Base = as.Logarithm(5)
+//                 const exponentToPower: Power = as.Exponent(5)
 //             })
 //         })
 //     })
 //
-//     describe('from', () => {
+//     describe('notAs', () => {
 //         it('DOES NOT ALLOW taking a plain number', () => {
-//             from.Hz(3)
-//             from.Scalar(3)
+//             notAs.Hz(3)
+//             notAs.Scalar(3)
 //         })
 //
 //         it('DOES NOT ALLOW taking the wrong units or uses', () => {
-//             from.Hz(to.Ms(3))
-//             from.Scalar(to.Rotation(3))
+//             notAs.Hz(as.Ms(3))
+//             notAs.Scalar(as.Rotation(3))
 //         })
 //
 //         it('DOES NOT ALLOW taking the wrong type of nominal', () => {
-//             from.Hz(to.Scalar(3))
-//             from.Scalar(to.Hz(3))
+//             notAs.Hz(as.Scalar(3))
+//             notAs.Scalar(as.Hz(3))
 //         })
 //
 //         describe('special units/uses', () => {
 //             it('DOES NOT ALLOW taking plain numbers', () => {
-//                 from.Cardinal(3)
-//                 from.Numerator(3)
-//                 from.Denominator(3)
-//                 from.Ordinal(3)
-//                 from.Translation(3)
-//                 from.Multiple(3)
+//                 notAs.Cardinal(3)
+//                 notAs.Numerator(3)
+//                 notAs.Denominator(3)
+//                 notAs.Ordinal(3)
+//                 notAs.Translation(3)
+//                 notAs.Multiple(3)
 //             })
 //         })
 //     })
 //
-//     describe('apply', () => {
-//         it('DOES NOT ALLOW applying a Scalar to a Normal Scalar', () => {
-//             apply.Scalar(to.NormalScalar(0.5), 4 as unknown as Scalar<NormalScalar>)
+//     describe('use', () => {
+//         it('DOES NOT ALLOW using a Scalar as a Normal Scalar', () => {
+//             use.Scalar(as.NormalScalar(0.5), 4 as unknown as Scalar<NormalScalar>)
 //         })
 //     })
 //
 //     describe('of', () => {
-//         it('DOES NOT ALLOW assigning an Of to the actual thing', () => {
+//         it('DOES NOT ALLOW assigning an Of as the actual thing', () => {
 //             const isNotActuallyUnits: Hz = of.Hz(3)
 //             const isNotActuallyUse: Scalar = of.Scalar(3)
 //         })
 //
-//         it('DOES NOT ALLOW assigning an Of to an Of of the wrong type', () => {
+//         it('DOES NOT ALLOW assigning an Of as an Of of the wrong type', () => {
 //             const ofWrongUnits: Of<Ms> = of.Hz(3)
 //             const ofWrongUse: Of<Rotation> = of.Scalar(3)
 //         })
@@ -271,7 +271,7 @@
 //             const nestedOf: Of<Rotation<Scalar>> = of.Scalar<Rotation>(3)
 //         })
 //
-//         it('DOES NOT ALLOW assigning allows Of types that are uses of uses when its double type of itself to itself', () => {
+//         it('DOES NOT ALLOW assigning allows Of types that are uses of uses when its double type of itself as itself', () => {
 //             const nestedOf: Of<Scalar> = of.Scalar<Scalar>(3)
 //             const nestedOfOtherUse: Of<Scalar> = of.Scalar<Rotation>(3)
 //             const nestedOfOtherUseFirst: Of<Scalar> = of.Rotation<Scalar>(3)
@@ -286,22 +286,22 @@
 //         })
 //
 //         it('DOES NOT ALLOW creating uses of units when its wrong units', () => {
-//             const scalarOfHz: Scalar<Ms> = to.Scalar(of.Hz(3))
+//             const scalarOfHz: Scalar<Ms> = as.Scalar(of.Hz(3))
 //         })
 //
 //         it('DOES NOT ALLOW creating uses of uses when its wrong use', () => {
-//             const scalarOfRotation: Scalar<Rotation> = to.Scalar(of.Exponent(3))
+//             const scalarOfRotation: Scalar<Rotation> = as.Scalar(of.Exponent(3))
 //         })
 //
 //         it('DOES NOT ALLOW creating uses of uses of units when its wrong units', () => {
-//             const scalarOfScalarOfHz: Scalar<Scalar<Hz>> = to.Scalar(of.Scalar<Ms>(3))
+//             const scalarOfScalarOfHz: Scalar<Scalar<Hz>> = as.Scalar(of.Scalar<Ms>(3))
 //         })
 //
 //         it('DOES NOT ALLOW creating uses of uses of units when its wrong use', () => {
-//             const scalarOfScalarOfHz: Scalar<Scalar<Hz>> = to.Scalar(of.Rotation<Hz>(3))
+//             const scalarOfScalarOfHz: Scalar<Scalar<Hz>> = as.Scalar(of.Rotation<Hz>(3))
 //         })
 //
-//         it('DOES NOT ALLOW assigning an Of of an use to an Of of an use of units or use', () => {
+//         it('DOES NOT ALLOW assigning an Of of a use as an Of of a use of units or use', () => {
 //             const cantAssignAsResultOfAsingUnits: Of<Scalar<Ms>> = 3 as unknown as Of<Scalar>
 //             const cantAssignAsResultOfAsingUse: Of<Scalar<Rotation>> = 3 as unknown as Of<Scalar>
 //
@@ -311,11 +311,11 @@
 //             const cantAssignNonNestedToNestedUnitsWithoutExplicitParameter: Of<Scalar<Ms>> = of.Scalar(3)
 //             const cantAssignNonNestedToNestedUseWithoutExplicitParameter: Of<Scalar<Rotation>> = of.Scalar(3)
 //
-//             const cantAssignToUseOfUseOfUnitsFromUseOfUse: Scalar<Scalar<Ms>> = to.Scalar(of.Scalar(3))
-//             const cantAssignToUseOfUseOfUseFromUseOfUse: Scalar<Scalar<Rotation>> = to.Scalar(of.Scalar(3))
+//             const cantAssignToUseOfUseOfUnitsFromUseOfUse: Scalar<Scalar<Ms>> = as.Scalar(of.Scalar(3))
+//             const cantAssignToUseOfUseOfUseFromUseOfUse: Scalar<Scalar<Rotation>> = as.Scalar(of.Scalar(3))
 //
-//             const cantAssignToUseOfUseOfUnitsFromUseOfUseUsingTypeParam: Scalar<Scalar<Ms>> = to.Scalar<Scalar>(3)
-//             const cantAssignToUseOfUseOfUseFromUseOfUseUsingTypeParam: Scalar<Scalar<Rotation>> = to.Scalar<Scalar>(3)
+//             const cantAssignToUseOfUseOfUnitsFromUseOfUseUsingTypeParam: Scalar<Scalar<Ms>> = as.Scalar<Scalar>(3)
+//             const cantAssignToUseOfUseOfUseFromUseOfUseUsingTypeParam: Scalar<Scalar<Rotation>> = as.Scalar<Scalar>(3)
 //         })
 //
 //         it('DOES NOT ALLOW calling Of on something that is already Of', () => {
@@ -328,28 +328,28 @@
 //     describe('instead of', () => {
 //         const wrongOf: Ordinal<Translation> = insteadOf<Ordinal, Scalar>(INITIAL)
 //         const noOf: Ordinal = insteadOf<Ordinal, Scalar>(INITIAL)
-//         const fromFullOf: Scalar<Exponent> = insteadOf<Scalar, Rotation>(to.Scalar<Translation>(1))
-//         const doesntHoldOnToInstead: Translation<string> = insteadOf<Translation>(to.Translation<string>(1))
-//         const doesntAssignToWrongInstead: Translation<Scalar> = insteadOf<Translation>(to.Translation<string>(1))
+//         const fromFullOf: Scalar<Exponent> = insteadOf<Scalar, Rotation>(as.Scalar<Translation>(1))
+//         const doesntHoldOnToInstead: Translation<string> = insteadOf<Translation>(as.Translation<string>(1))
+//         const doesntAssignToWrongInstead: Translation<Scalar> = insteadOf<Translation>(as.Translation<string>(1))
 //     })
 //
-//     describe('of from', () => {
+//     describe('ofNotAs', () => {
 //         it(`DOES NOT ALLOW from the wrong units or use`, () => {
-//             const ofFromWrongUse: Of<Rotation> = ofFrom(to.Translation(3))
-//             const ofFromWrongUnits: Of<Hz> = ofFrom(to.Ms(3))
+//             const ofFromWrongUse: Of<Rotation> = ofNotAs(as.Translation(3))
+//             const ofFromWrongUnits: Of<Hz> = ofNotAs(as.Ms(3))
 //
-//             const ofFromWrongUseStraightToUse: Scalar<Rotation> = to.Scalar(ofFrom(to.Translation(3)))
-//             const ofFromWrongUnitsStraightToUse: Scalar<Hz> = to.Scalar(ofFrom(to.Ms(3)))
+//             const ofFromWrongUseStraightToUse: Scalar<Rotation> = as.Scalar(ofNotAs(as.Translation(3)))
+//             const ofFromWrongUnitsStraightToUse: Scalar<Hz> = as.Scalar(ofNotAs(as.Ms(3)))
 //
-//             const ofFromUseOfWrongUse: Of<Scalar<Rotation>> = ofFrom(to.Scalar<Translation>(3))
-//             const ofFromUseOfWrongUnits: Of<Scalar<Hz>> = ofFrom(to.Scalar<Ms>(3))
-//             const ofFromWrongUseOfUse: Of<Rotation<Translation>> = ofFrom(to.Scalar<Translation>(3))
-//             const ofFromWrongUseOfUnits: Of<Rotation<Ms>> = ofFrom(to.Scalar<Ms>(3))
+//             const ofFromUseOfWrongUse: Of<Scalar<Rotation>> = ofNotAs(as.Scalar<Translation>(3))
+//             const ofFromUseOfWrongUnits: Of<Scalar<Hz>> = ofNotAs(as.Scalar<Ms>(3))
+//             const ofFromWrongUseOfUse: Of<Rotation<Translation>> = ofNotAs(as.Scalar<Translation>(3))
+//             const ofFromWrongUseOfUnits: Of<Rotation<Ms>> = ofNotAs(as.Scalar<Ms>(3))
 //
-//             const ofFromUseOfWrongUseStraightToUse: Rotation<Scalar<Rotation>> = to.Rotation(ofFrom(to.Scalar<Translation>(3)))
-//             const ofFromUseOfWrongUnitsStraightToUse: Rotation<Scalar<Hz>> = to.Rotation(ofFrom(to.Scalar<Ms>(3)))
-//             const ofFromWrongUseOfUseStraightToUse: Rotation<Rotation<Translation>> = to.Rotation(ofFrom(to.Scalar<Translation>(3)))
-//             const ofFromWrongUseOfUnitsStraightToUse: Rotation<Rotation<Ms>> = to.Rotation(ofFrom(to.Scalar<Ms>(3)))
+//             const ofFromUseOfWrongUseStraightToUse: Rotation<Scalar<Rotation>> = as.Rotation(ofNotAs(as.Scalar<Translation>(3)))
+//             const ofFromUseOfWrongUnitsStraightToUse: Rotation<Scalar<Hz>> = as.Rotation(ofNotAs(as.Scalar<Ms>(3)))
+//             const ofFromWrongUseOfUseStraightToUse: Rotation<Rotation<Translation>> = as.Rotation(ofNotAs(as.Scalar<Translation>(3)))
+//             const ofFromWrongUseOfUnitsStraightToUse: Rotation<Rotation<Ms>> = as.Rotation(ofNotAs(as.Scalar<Ms>(3)))
 //         })
 //     })
 //
@@ -357,8 +357,8 @@
 //         type Numero = Number & { _NominalBrand: 'Numero' }
 //         type Numeros = Number[] & { _NominalBrand: 'Numeros' }
 //
-//         let customTo: CustomTo<TestNominalInterfaceOptionObject>
-//         let customFrom: CustomFrom<TestNominalInterfaceOptionObject>
+//         let customAs: CustomAs<TestNominalInterfaceOptionObject>
+//         let customNotAs: CustomNotAs<TestNominalInterfaceOptionObject>
 //         let customOf: CustomOf<TestNominalInterfaceOptionObject>
 //
 //         interface TestNominalInterfaceOptionObject {
@@ -377,19 +377,19 @@
 //             }
 //             const nominalInterface: NominalInterface<TestNominalInterfaceOptionObject> =
 //                 computeNominalInterface(nominalInterfaceOptionsObject)
-//             customTo = nominalInterface.to
-//             customFrom = nominalInterface.from
+//             customAs = nominalInterface.as
+//             customNotAs = nominalInterface.notAs
 //             customOf = nominalInterface.of
 //         })
 //
-//         describe('to', () => {
-//             it('DOES NOT ALLOW the same things a normal To, for Units does not allow', () => {
-//                 const numeroToRaw: number = customTo.Numero(3)
-//                 const numerosToRaw: number[] = customTo.Numeros([ 3 ])
+//         describe('as', () => {
+//             it('DOES NOT ALLOW the same things a normal As, for Units does not allow', () => {
+//                 const numeroToRaw: number = customAs.Numero(3)
+//                 const numerosToRaw: number[] = customAs.Numeros([ 3 ])
 //                 const rawToNumero: Numero = 3
 //                 const rawToNumeros: Numeros = [ 3 ]
-//                 const numerosToNumero: Numero = customTo.Numeros([ 3 ])
-//                 const numeroToNumeros: Numeros = customTo.Numero(3)
+//                 const numerosToNumero: Numero = customAs.Numeros([ 3 ])
+//                 const numeroToNumeros: Numeros = customAs.Numero(3)
 //             })
 //         })
 //
@@ -398,15 +398,15 @@
 //                 const ofNumeroToActual: Numero = customOf.Numero(3)
 //                 const ofNumerosToActual: Numeros = customOf.Numeros(3)
 //
-//                 const actualNumeroToOf: Of<Numero> = customTo.Numero(3)
-//                 const actualNumerosToOf: Of<Numeros> = customTo.Numeros([ 3 ])
+//                 const actualNumeroToOf: Of<Numero> = customAs.Numero(3)
+//                 const actualNumerosToOf: Of<Numeros> = customAs.Numeros([ 3 ])
 //             })
 //         })
 //
-//         describe('from', () => {
-//             it('DOES NOT ALLOW the same things a normal From, for Units does not allow', () => {
-//                 const numero: Numero = customFrom.Numero(customTo.Numero(3))
-//                 const numeros: Numeros = customFrom.Numeros(customTo.Numeros([ 3 ]))
+//         describe('notAs', () => {
+//             it('DOES NOT ALLOW the same things a normal NotAs, for Units does not allow', () => {
+//                 const numero: Numero = customNotAs.Numero(customAs.Numero(3))
+//                 const numeros: Numeros = customNotAs.Numeros(customAs.Numeros([ 3 ]))
 //             })
 //         })
 //     })
@@ -414,69 +414,69 @@
 //     describe('typed uses', () => {
 //         describe('reciprocal', () => {
 //             it('when given an integer, removes the integer type in the return value', () => {
-//                 const integer: Integer = reciprocal(to.Integer(3))
-//                 const numerator: Numerator = reciprocal(to.Numerator(3))
-//                 const denominator: Denominator = reciprocal(to.Denominator(3))
+//                 const integer: Integer = reciprocal(as.Integer(3))
+//                 const numerator: Numerator = reciprocal(as.Numerator(3))
+//                 const denominator: Denominator = reciprocal(as.Denominator(3))
 //
-//                 const multiple: Multiple = reciprocal(to.Multiple(3))
-//                 const base: Base = reciprocal(to.Base(3))
-//                 const power: Power = reciprocal(to.Power(3))
-//                 const integerModulus: IntegerModulus = reciprocal(to.IntegerModulus(3))
+//                 const multiple: Multiple = reciprocal(as.Multiple(3))
+//                 const base: Base = reciprocal(as.Base(3))
+//                 const power: Power = reciprocal(as.Power(3))
+//                 const integerModulus: IntegerModulus = reciprocal(as.IntegerModulus(3))
 //             })
 //         })
 //
 //         describe('modulus', () => {
 //             it('when given an integer, removes the integer type in the return value', () => {
-//                 const integer: Integer = modulus(to.Integer(3), to.Integer(3))
-//                 const numerator: Numerator = modulus(to.Numerator(3), to.Numerator(3))
-//                 const denominator: Denominator = modulus(to.Denominator(3), to.Denominator(3))
+//                 const integer: Integer = modulus(as.Integer(3), as.Integer(3))
+//                 const numerator: Numerator = modulus(as.Numerator(3), as.Numerator(3))
+//                 const denominator: Denominator = modulus(as.Denominator(3), as.Denominator(3))
 //             })
 //         })
 //
 //         describe('cubeRoot', () => {
 //             it('when given an integer, removes the integer type in the return value', () => {
-//                 const integer: Integer = cubeRoot(to.Integer(3))
-//                 const numerator: Numerator = cubeRoot(to.Numerator(3))
-//                 const denominator: Denominator = cubeRoot(to.Denominator(3))
+//                 const integer: Integer = cubeRoot(as.Integer(3))
+//                 const numerator: Numerator = cubeRoot(as.Numerator(3))
+//                 const denominator: Denominator = cubeRoot(as.Denominator(3))
 //
-//                 const multiple: Multiple = cubeRoot(to.Multiple(3))
-//                 const base: Base = cubeRoot(to.Base(3))
-//                 const power: Power = cubeRoot(to.Power(3))
-//                 const integerModulus: IntegerModulus = cubeRoot(to.IntegerModulus(3))
+//                 const multiple: Multiple = cubeRoot(as.Multiple(3))
+//                 const base: Base = cubeRoot(as.Base(3))
+//                 const power: Power = cubeRoot(as.Power(3))
+//                 const integerModulus: IntegerModulus = cubeRoot(as.IntegerModulus(3))
 //             })
 //         })
 //
 //         describe('squareRoot', () => {
 //             it('when given an integer, removes the integer type in the return value', () => {
-//                 const integer: Integer = squareRoot(to.Integer(3))
-//                 const numerator: Numerator = squareRoot(to.Numerator(3))
-//                 const denominator: Denominator = squareRoot(to.Denominator(3))
+//                 const integer: Integer = squareRoot(as.Integer(3))
+//                 const numerator: Numerator = squareRoot(as.Numerator(3))
+//                 const denominator: Denominator = squareRoot(as.Denominator(3))
 //
-//                 const multiple: Multiple = squareRoot(to.Multiple(3))
-//                 const base: Base = squareRoot(to.Base(3))
-//                 const power: Power = squareRoot(to.Power(3))
-//                 const integerModulus: IntegerModulus = squareRoot(to.IntegerModulus(3))
+//                 const multiple: Multiple = squareRoot(as.Multiple(3))
+//                 const base: Base = squareRoot(as.Base(3))
+//                 const power: Power = squareRoot(as.Power(3))
+//                 const integerModulus: IntegerModulus = squareRoot(as.IntegerModulus(3))
 //             })
 //         })
 //
 //         describe('interval', () => {
 //             it('when given an integer, removes the integer type in the return value', () => {
-//                 const integer: Integer = interval(to.Integer(3), to.Integer(3))
-//                 const numerator: Numerator = interval(to.Numerator(3), to.Numerator(3))
-//                 const denominator: Denominator = interval(to.Denominator(3), to.Denominator(3))
+//                 const integer: Integer = interval(as.Integer(3), as.Integer(3))
+//                 const numerator: Numerator = interval(as.Numerator(3), as.Numerator(3))
+//                 const denominator: Denominator = interval(as.Denominator(3), as.Denominator(3))
 //             })
 //         })
 //
 //         describe('quotient', () => {
 //             it('when given an integer, removes the integer type in the return value', () => {
-//                 const integer: Integer = quotient(to.Integer(3), to.Integer(3))
-//                 const numerator: Numerator = quotient(to.Numerator(3), to.Numerator(3))
-//                 const denominator: Denominator = quotient(to.Denominator(3), to.Denominator(3))
+//                 const integer: Integer = quotient(as.Integer(3), as.Integer(3))
+//                 const numerator: Numerator = quotient(as.Numerator(3), as.Numerator(3))
+//                 const denominator: Denominator = quotient(as.Denominator(3), as.Denominator(3))
 //
-//                 const multiple: Multiple = quotient(to.Multiple(3), to.Multiple(3))
-//                 const base: Base = quotient(to.Base(3), to.Base(3))
-//                 const power: Power = quotient(to.Power(3), to.Power(3))
-//                 const integerModulus: IntegerModulus = quotient(to.IntegerModulus(3), to.IntegerModulus(3))
+//                 const multiple: Multiple = quotient(as.Multiple(3), as.Multiple(3))
+//                 const base: Base = quotient(as.Base(3), as.Base(3))
+//                 const power: Power = quotient(as.Power(3), as.Power(3))
+//                 const integerModulus: IntegerModulus = quotient(as.IntegerModulus(3), as.IntegerModulus(3))
 //             })
 //         })
 //     })

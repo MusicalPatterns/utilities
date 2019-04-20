@@ -1,7 +1,7 @@
 // tslint:disable max-file-line-count bool-param-default
 
 import { initialElement, isGreaterThanOrEqualTo, isLessThanOrEqualTo, isUndefined, Maybe } from '../code'
-import { from, SKIP_FIRST_ELEMENT } from '../nominal'
+import { notAs, SKIP_FIRST_ELEMENT } from '../nominal'
 import { beginValueIsCorrect, goesFromValueToValue } from './goes'
 import { inBounds } from './inBounds'
 
@@ -26,7 +26,7 @@ const goesMonotonically: <NumericElementType extends Number>(
         let previousValue: NumericElementType = initialElement(array)
         let result: boolean = true
 
-        array.slice(from.Ordinal(SKIP_FIRST_ELEMENT))
+        array.slice(notAs.Ordinal(SKIP_FIRST_ELEMENT))
             .forEach((value: NumericElementType) => {
                 if (isUndefined(isIncreasing)) {
                     isIncreasing = value > previousValue

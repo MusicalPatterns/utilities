@@ -1,4 +1,4 @@
-import { apply, Cardinal, INITIAL, NEXT, Ordinal } from '../nominal'
+import { Cardinal, INITIAL, NEXT, Ordinal, use } from '../nominal'
 import { finalIndexFromElementsTotal } from './finalElement'
 
 const repeat: <ElementType>(array: ElementType[], count: Cardinal) => ElementType[] =
@@ -7,7 +7,7 @@ const repeat: <ElementType>(array: ElementType[], count: Cardinal) => ElementTyp
         for (
             let index: Ordinal = INITIAL;
             index <= finalIndexFromElementsTotal(count);
-            index = apply.Translation(index, NEXT)
+            index = use.Translation(index, NEXT)
         ) {
             repeatedArray = repeatedArray.concat(array)
         }

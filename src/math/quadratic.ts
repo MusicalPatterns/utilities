@@ -1,7 +1,7 @@
 // tslint:disable bool-param-default
 
 import { isUndefined, Maybe } from '../code'
-import { apply, EXAMPLE_ELEMENT_INDEX, from, MULTIPLICATIVE_IDENTITY, Scalar, Translation } from '../nominal'
+import { EXAMPLE_ELEMENT_INDEX, MULTIPLICATIVE_IDENTITY, notAs, Scalar, Translation, use } from '../nominal'
 import { allValuesAreTheSame, beginValueIsCorrect } from './goes'
 import { goesMonotonicallyBetweenValueAndValue, goesMonotonicallyFromValueToValue } from './monotonic'
 import { computeDeltas, computeIntervals } from './rateOfChange'
@@ -22,10 +22,10 @@ const goesQuadratically: <NumericElementType extends Number>(
 
         const deltas: Array<Translation<NumericElementType>> = computeDeltas(array)
         const deltaIntervals: Array<Maybe<Scalar>> = computeIntervals(
-            deltas.map((delta: Translation<NumericElementType>) => from.Translation(delta)),
+            deltas.map((delta: Translation<NumericElementType>) => notAs.Translation(delta)),
         )
 
-        const exampleInterval: Maybe<Scalar> = apply.Ordinal(
+        const exampleInterval: Maybe<Scalar> = use.Ordinal(
             deltaIntervals,
             EXAMPLE_ELEMENT_INDEX,
         )

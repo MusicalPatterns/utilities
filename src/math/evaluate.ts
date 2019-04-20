@@ -2,17 +2,17 @@
 
 import { HtmlValue } from '../browser'
 import { stringSlice } from '../code'
-import { apply, EXCLUSIVE_TO_LEFT, from, INITIAL, insteadOf, Ordinal, to, Translation } from '../nominal'
+import { as, EXCLUSIVE_TO_LEFT, INITIAL, insteadOf, notAs, Ordinal, Translation, use } from '../nominal'
 import { Operands } from './types'
 
 const splitOperands: (expression: string, operatorIndex: Ordinal<string>) => Operands =
     (expression: string, operatorIndex: Ordinal<string>): Operands => {
         const lhs: number =
-            evaluateString(stringSlice(expression, to.Ordinal<string>(from.Ordinal(INITIAL)), operatorIndex))
+            evaluateString(stringSlice(expression, as.Ordinal<string>(notAs.Ordinal(INITIAL)), operatorIndex))
         const rhs: number = evaluateString(
             stringSlice(
                 expression,
-                apply.Translation(
+                use.Translation(
                     operatorIndex,
                     insteadOf<Translation, Ordinal<string>>(EXCLUSIVE_TO_LEFT),
                 ),
@@ -24,7 +24,7 @@ const splitOperands: (expression: string, operatorIndex: Ordinal<string>) => Ope
 
 const evaluateExponent: (expression: string) => number =
     (expression: string): number => {
-        const finalIndexOfExponentiationSign: Ordinal<string> = to.Ordinal<string>(expression.lastIndexOf('^'))
+        const finalIndexOfExponentiationSign: Ordinal<string> = as.Ordinal<string>(expression.lastIndexOf('^'))
         const { lhs, rhs } = splitOperands(expression, finalIndexOfExponentiationSign)
 
         return Math.pow(lhs, rhs)
@@ -32,9 +32,9 @@ const evaluateExponent: (expression: string) => number =
 
 const evaluateGeometricOperation: (expression: string) => number =
     (expression: string): number => {
-        const finalIndexOfMultiplicationSign: Ordinal<string> = to.Ordinal<string>(expression.lastIndexOf('*'))
-        const finalIndexOfDivisionSign: Ordinal<string> = to.Ordinal<string>(expression.lastIndexOf('/'))
-        const finalIndexOfModulusSign: Ordinal<string> = to.Ordinal<string>(expression.lastIndexOf('%'))
+        const finalIndexOfMultiplicationSign: Ordinal<string> = as.Ordinal<string>(expression.lastIndexOf('*'))
+        const finalIndexOfDivisionSign: Ordinal<string> = as.Ordinal<string>(expression.lastIndexOf('/'))
+        const finalIndexOfModulusSign: Ordinal<string> = as.Ordinal<string>(expression.lastIndexOf('%'))
 
         let operands: Operands
         if (finalIndexOfMultiplicationSign > finalIndexOfDivisionSign &&
@@ -55,8 +55,8 @@ const evaluateGeometricOperation: (expression: string) => number =
 
 const evaluateArithmeticOperation: (expression: string) => number =
     (expression: string): number => {
-        const finalIndexOfAdditionSign: Ordinal<string> = to.Ordinal<string>(expression.lastIndexOf('+'))
-        const finalIndexOfSubtractionSign: Ordinal<string> = to.Ordinal<string>(expression.lastIndexOf('-'))
+        const finalIndexOfAdditionSign: Ordinal<string> = as.Ordinal<string>(expression.lastIndexOf('+'))
+        const finalIndexOfSubtractionSign: Ordinal<string> = as.Ordinal<string>(expression.lastIndexOf('-'))
 
         let operands: Operands
         if (finalIndexOfAdditionSign > finalIndexOfSubtractionSign) {
@@ -71,25 +71,25 @@ const evaluateArithmeticOperation: (expression: string) => number =
 
 const evaluateParenthetical: (expression: string) => number =
     (expression: string): number => {
-        const beginParantheticalIndex: Ordinal<string> = to.Ordinal<string>(expression.lastIndexOf('('))
-        const endIndex: Ordinal<string> = to.Ordinal<string>(expression.length)
-        const endParantheticalIndex: Ordinal<string> = apply.Translation(
+        const beginParantheticalIndex: Ordinal<string> = as.Ordinal<string>(expression.lastIndexOf('('))
+        const endIndex: Ordinal<string> = as.Ordinal<string>(expression.length)
+        const endParantheticalIndex: Ordinal<string> = use.Translation(
             beginParantheticalIndex,
-            to.Translation<Ordinal<string>>(
+            as.Translation<Ordinal<string>>(
                 stringSlice(expression, beginParantheticalIndex, endIndex)
                     .indexOf(')'),
             ),
         )
 
-        const partBefore: string = stringSlice(expression, to.Ordinal<string>(0), beginParantheticalIndex)
+        const partBefore: string = stringSlice(expression, as.Ordinal<string>(0), beginParantheticalIndex)
         const parenthetical: string = stringSlice(
             expression,
-            apply.Translation(beginParantheticalIndex, to.Translation<Ordinal<string>>(1)),
+            use.Translation(beginParantheticalIndex, as.Translation<Ordinal<string>>(1)),
             endParantheticalIndex,
         )
         const partAfter: string = stringSlice(
             expression,
-            apply.Translation(endParantheticalIndex, to.Translation<Ordinal<string>>(1)),
+            use.Translation(endParantheticalIndex, as.Translation<Ordinal<string>>(1)),
             endIndex,
         )
 

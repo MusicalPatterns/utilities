@@ -1,19 +1,19 @@
 // tslint:disable no-dead-store
 
-import { Ms, Of, ofFrom, Rotation, Scalar, to, Translation } from '../../../src/indexForTest'
+import { as, Ms, Of, ofNotAs, Rotation, Scalar, Translation } from '../../../src/indexForTest'
 
-describe('of from', () => {
-    it(`is shorthand for From'ing from a type then Of'ing right back into it`, () => {
-        const ofFromUse: Of<Translation> = ofFrom(to.Translation(3))
-        const ofFromUnits: Of<Ms> = ofFrom(to.Ms(3))
+describe('of notAs', () => {
+    it(`is shorthand for NotAs'ing out of a type then Of'ing right back into it`, () => {
+        const ofFromUse: Of<Translation> = ofNotAs(as.Translation(3))
+        const ofFromUnits: Of<Ms> = ofNotAs(as.Ms(3))
 
-        const ofFromUseStraightToUse: Scalar<Translation> = to.Scalar(ofFrom(to.Translation(3)))
-        const ofFromUnitsStraightToUse: Scalar<Ms> = to.Scalar(ofFrom(to.Ms(3)))
+        const ofFromUseStraightToUse: Scalar<Translation> = as.Scalar(ofNotAs(as.Translation(3)))
+        const ofFromUnitsStraightToUse: Scalar<Ms> = as.Scalar(ofNotAs(as.Ms(3)))
 
-        const ofFromUseOfUse: Of<Scalar<Translation>> = ofFrom(to.Scalar<Translation>(3))
-        const ofFromUseOfUnits: Of<Scalar<Ms>> = ofFrom(to.Scalar<Ms>(3))
+        const ofFromUseOfUse: Of<Scalar<Translation>> = ofNotAs(as.Scalar<Translation>(3))
+        const ofFromUseOfUnits: Of<Scalar<Ms>> = ofNotAs(as.Scalar<Ms>(3))
 
-        const ofFromUseOfUseStraightToUse: Rotation<Scalar<Translation>> = to.Rotation(ofFrom(to.Scalar<Translation>(3)))
-        const ofFromUseOfUnitsStraightToUse: Rotation<Scalar<Ms>> = to.Rotation(ofFrom(to.Scalar<Ms>(3)))
+        const ofFromUseOfUseStraightToUse: Rotation<Scalar<Translation>> = as.Rotation(ofNotAs(as.Scalar<Translation>(3)))
+        const ofFromUseOfUnitsStraightToUse: Rotation<Scalar<Ms>> = as.Rotation(ofNotAs(as.Scalar<Ms>(3)))
     })
 })
