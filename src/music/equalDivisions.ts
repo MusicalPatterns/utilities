@@ -26,7 +26,7 @@ const computeEqualDivisionScalars: (equalDivision: Denominator, window?: Logarit
             slice(
                 ZERO_AND_POSITIVE_INTEGERS,
                 INITIAL,
-                as.Ordinal(notAs.Denominator(equalDivision)),
+                as.Ordinal<Integer[]>(notAs.Denominator(equalDivision)),
             ),
             (integer: Integer) =>
                 use.Power(logarithmicStep, as.Power<Scalar<Hz>>(integer)),

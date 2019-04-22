@@ -8,31 +8,40 @@ interface NominalNumber {
     _UseBrand?: string,
 }
 
-// Units
+// Units Utilities
 
 type NoUnits = Number & { _UnitsBrand?: 'NoUnits' }
 type UnitsBrand<UnitsName> = NoUse & { _UnitsBrand: UnitsName } & MaybeNatural<UnitsName>
 
+// Concrete Units
+
 type Hz = UnitsBrand<'Hz'>
 type Ms = UnitsBrand<'Ms'>
-type Radians = UnitsBrand<'Radians'>
-type Cents = UnitsBrand<'Cents'>
-type Semitones = UnitsBrand<'Semitones'>
 type Meters = UnitsBrand<'Meters'>
 
-type Space = UnitsBrand<'Space'>
-type Time = UnitsBrand<'Time'>
+// Abstract Units
+
 type Frequency = UnitsBrand<'Frequency'>
+type Time = UnitsBrand<'Time'>
+type Space = UnitsBrand<'Space'>
+
+// Other Units
+
+type Radians = UnitsBrand<'Radians'>
+
+type Cents = UnitsBrand<'Cents'>
+type Semitones = UnitsBrand<'Semitones'>
+
 type Amplitude = UnitsBrand<'Amplitude'>
 
-// Special Units
+// Natural Units
 
 type Numerator = UnitsBrand<'Numerator'>
 type Denominator = UnitsBrand<'Denominator'>
 
 type Fraction = [ Numerator, Denominator ]
 
-// Uses
+// Uses Utilities
 
 type NoUse = Number & { _UseBrand?: 'NoUse' }
 
@@ -44,32 +53,47 @@ type UseBrand<UseName, OfType = number> =
     & MaybeNatural<UseName>
     & MaybeNormal<UseName>
 
-type Scalar<OfType extends NonNormal & Unnatural = number> = UseBrand<'Scalar', OfType>
-type Rotation<OfType extends NonNormal & Unnatural = number> = UseBrand<'Rotation', OfType>
-type Exponent<OfType extends NonNormal & Unnatural = number> = UseBrand<'Exponent', OfType>
-type Logarithm<OfType extends NonNormal & Unnatural = number> = UseBrand<'Logarithm', OfType>
+type NoOf = number & { _OfBrand?: 'NoOf' }
 
-type Modulus<OfType extends NonNormal & Unnatural = number> = UseBrand<'Modulus', OfType>
+type Of<OfType> = number | { _OfBrand: OfType }
 
-// Special Uses
+// Unnatural Transformation Uses
 
-type Ordinal<OfType = number> = UseBrand<'Ordinal', OfType>
-type Translation<OfType = number> = UseBrand<'Translation', OfType>
-type Cardinal<OfType = number> = UseBrand<'Cardinal', OfType>
+type Scalar<OfType extends UnnaturalUseOfableActive = number> = UseBrand<'Scalar', OfType>
+type Translation<OfType extends UnnaturalUseOfableActive = number> = UseBrand<'Translation', OfType>
+type Rotation<OfType extends UnnaturalUseOfableActive = number> = UseBrand<'Rotation', OfType>
+
+// Unnatural Non-Transformation Uses
+
+type Exponent<OfType extends UnnaturalUseOfableActive = number> = UseBrand<'Exponent', OfType>
+type Logarithm<OfType extends UnnaturalUseOfableActive = number> = UseBrand<'Logarithm', OfType>
+type Modulus<OfType extends UnnaturalUseOfableActive = number> = UseBrand<'Modulus', OfType>
+
+// Unnatural Fixed Uses
+
+type Point<OfType extends UnnaturalUseOfableActive = number> = UseBrand<'Point', OfType>
+
+// Natural Transformation Uses (with overloads for arrays)
+
+type Multiple<OfType extends NaturalUseOfableWithArrayOverloadActive = number> = UseBrand<'Multiple' & 'Scalar', OfType>
+type Cardinal<OfType extends NaturalUseOfableWithArrayOverloadActive = number> = UseBrand<'Cardinal' & 'Translation', OfType>
+type Transposition<OfType extends NaturalUseOfableWithArrayOverloadActive = number> = UseBrand<'Transposition' & 'Rotation', OfType>
+
+// Natural Non-Transformation Uses
+
+type Power<OfType extends NaturalUseOfableActive = number> = UseBrand<'Power' & 'Exponent', OfType>
+type Base<OfType extends NaturalUseOfableActive = number> = UseBrand<'Base' & 'Logarithm', OfType>
+type IntegerModulus<OfType extends NaturalUseOfableActive = number> = UseBrand<'IntegerModulus' & 'Modulus', OfType>
+
+// Natural Fixed Uses (only used for arrays)
+
+type Ordinal<OfType = number> = UseBrand<'Ordinal' & 'Point', OfType>
+
+// Normalized Uses
 
 type NormalScalar<OfType extends Unnatural = number> = UseBrand<'NormalScalar' & 'Scalar', OfType>
 
-type Base<OfType extends NonNormal = number> = UseBrand<'Base' & 'Logarithm', OfType>
-type Power<OfType extends NonNormal = number> = UseBrand<'Power' & 'Exponent', OfType>
-type Multiple<OfType extends NonNormal = number> = UseBrand<'Multiple' & 'Scalar', OfType>
-type IntegerModulus<OfType extends NonNormal = number> = UseBrand<'IntegerModulus' & 'Modulus', OfType>
-
-// Of
-
-type NoOf = number & { _OfBrand?: 'NoOf' }
-type Of<OfType> = number | { _OfBrand: OfType }
-
-// Integer
+// Naturalness
 
 type Integer = number & Natural
 type Natural = Number & { _IntegerBrand: 'Integer' }
@@ -91,34 +115,47 @@ type Nature<NumericType extends Number> =
 
 type UnnaturalToNatural<NumericType extends { _UseBrand: string }> =
     NumericType extends { _UseBrand: 'Scalar' } ? Difference<NumericType, { _UseBrand: 'Scalar' }> & { _UseBrand: 'Multiple' & 'Scalar' } :
-        NumericType extends { _UseBrand: 'Exponent' } ? Difference<NumericType, { _UseBrand: 'Exponent' }> & { _UseBrand: 'Power' & 'Exponent' } :
-            NumericType extends { _UseBrand: 'Logarithm' } ? Difference<NumericType, { _UseBrand: 'Logarithm' }> & { _UseBrand: 'Base' & 'Logarithm' } :
-                NumericType extends { _UseBrand: 'Modulus' } ? Difference<NumericType, { _UseBrand: 'Modulus' }> & { _UseBrand: 'IntegerModulus' & 'Modulus' } :
-                    NumericType
+        NumericType extends { _UseBrand: 'Translation' } ? Difference<NumericType, { _UseBrand: 'Translation' }> & { _UseBrand: 'Cardinal' & 'Translation' } :
+            NumericType extends { _UseBrand: 'Rotation' } ? Difference<NumericType, { _UseBrand: 'Rotation' }> & { _UseBrand: 'Transposition' & 'Rotation' } :
+                NumericType extends { _UseBrand: 'Exponent' } ? Difference<NumericType, { _UseBrand: 'Exponent' }> & { _UseBrand: 'Power' & 'Exponent' } :
+                    NumericType extends { _UseBrand: 'Logarithm' } ? Difference<NumericType, { _UseBrand: 'Logarithm' }> & { _UseBrand: 'Base' & 'Logarithm' } :
+                        NumericType extends { _UseBrand: 'Modulus' } ? Difference<NumericType, { _UseBrand: 'Modulus' }> & { _UseBrand: 'IntegerModulus' & 'Modulus' } :
+                            NumericType extends { _UseBrand: 'Point' } ? Difference<NumericType, { _UseBrand: 'Point' }> & { _UseBrand: 'Ordinal' & 'Point' } :
+                                NumericType
 
 type NaturalToUnnatural<NumericType extends { _UseBrand: string } | { _UnitsBrand: string }> =
     NumericType extends { _UnitsBrand: 'Numerator' } ? number :
         NumericType extends { _UnitsBrand: 'Denominator' } ? number :
-            NumericType extends { _UseBrand: 'Cardinal' } ? number :
-                NumericType extends { _UseBrand: 'Multiple' & 'Scalar' } ? Difference<NumericType, { _UseBrand: 'Multiple' & 'Scalar' }> & { _UseBrand: 'Scalar' } :
-                    NumericType extends { _UseBrand: 'Power' & 'Exponent' } ? Difference<NumericType, { _UseBrand: 'Power' & 'Exponent' }> & { _UseBrand: 'Exponent' } :
-                        NumericType extends { _UseBrand: 'Base' & 'Logarithm' } ? Difference<NumericType, { _UseBrand: 'Base' & 'Logarithm' }> & { _UseBrand: 'Logarithm' } :
-                            NumericType extends { _UseBrand: 'IntegerModulus' & 'Modulus' } ? Difference<NumericType, { _UseBrand: 'IntegerModulus' & 'Modulus' }> & { _UseBrand: 'Modulus' } :
-                                NumericType
-
-// Other Stuff
+            NumericType extends { _UseBrand: 'Multiple' & 'Scalar' } ? Difference<NumericType, { _UseBrand: 'Multiple' & 'Scalar' }> & { _UseBrand: 'Scalar' } :
+                NumericType extends { _UseBrand: 'Cardinal' & 'Translation' } ? Difference<NumericType, { _UseBrand: 'Cardinal' & 'Translation' }> & { _UseBrand: 'Translation' } :
+                    NumericType extends { _UseBrand: 'Transposition' & 'Rotation' } ? Difference<NumericType, { _UseBrand: 'Transposition' & 'Rotation' }> & { _UseBrand: 'Rotation' } :
+                        NumericType extends { _UseBrand: 'Power' & 'Exponent' } ? Difference<NumericType, { _UseBrand: 'Power' & 'Exponent' }> & { _UseBrand: 'Exponent' } :
+                            NumericType extends { _UseBrand: 'Base' & 'Logarithm' } ? Difference<NumericType, { _UseBrand: 'Base' & 'Logarithm' }> & { _UseBrand: 'Logarithm' } :
+                                NumericType extends { _UseBrand: 'IntegerModulus' & 'Modulus' } ? Difference<NumericType, { _UseBrand: 'IntegerModulus' & 'Modulus' }> & { _UseBrand: 'Modulus' } :
+                                    NumericType extends { _UseBrand: 'Ordinal' & 'Point' } ? Difference<NumericType, { _UseBrand: 'Ordinal' & 'Point' }> & { _UseBrand: 'Point' } :
+                                        NumericType
 
 type MaybeNatural<Name> =
-    Name extends 'Cardinal' ? Natural :
-        Name extends 'Numerator' ? Natural :
-            Name extends 'Denominator' ? Natural :
-                Name extends 'Multiple' ? Natural :
-                    Name extends 'IntegerModulus' ? Natural :
-                        Name extends 'Power' ? Natural :
-                            Name extends 'Base' ? Natural :
-                                Name extends 'Ordinal' ? Natural :
-                                    Name extends 'Cardinal' ? Natural :
+    Name extends 'Multiple' ? Natural :
+        Name extends 'Cardinal' ? Natural :
+            Name extends 'Transposition' ? Natural :
+                Name extends 'Power' ? Natural :
+                    Name extends 'Base' ? Natural :
+                        Name extends 'IntegerModulus' ? Natural :
+                            Name extends 'Ordinal' ? Natural :
+                                Name extends 'Numerator' ? Natural :
+                                    Name extends 'Denominator' ? Natural :
                                         {}
+
+type NaturalUseOfable = (NonNormal & NoOf)
+type NaturalUseOfableActive = (NonNormal)
+type UnnaturalUseOfable = (NonNormal & NoOf) & Unnatural
+type UnnaturalUseOfableActive = (NonNormal) & Unnatural
+type ArrayOverload = unknown[] | Cycle<unknown>
+type NaturalUseOfableWithArrayOverload = (NonNormal & NoOf) | ArrayOverload
+type NaturalUseOfableWithArrayOverloadActive = (NonNormal) | ArrayOverload
+
+// Normalcy
 
 type MaybeNormal<Name> =
     Name extends 'NormalScalar' ? Normal :
@@ -128,27 +165,30 @@ type Normal = Number & { _NormalBrand: 'Normal' }
 type NonNormal = Number & { _NormalBrand?: 'NonNormal' }
 
 type UseNameFromUse<Use> =
-    Use extends Scalar ? 'Scalar' :
-        Use extends NormalScalar ? 'NormalScalar' :
-            Use extends Rotation ? 'Rotation' :
-                Use extends Base ? 'Base' :
-                    Use extends Power ? 'Power' :
-                        Use extends Modulus ? 'Modulus' :
-                            Use extends Translation ? 'Translation' :
-                                Use extends Multiple ? 'Multiple' :
-                                    Use extends Ordinal ? 'Ordinal' :
-                                        Use extends Cardinal ? 'Cardinal' :
-                                            Use extends Exponent ? 'Exponent' :
-                                                Use extends Logarithm ? 'Logarithm' :
-                                                    Use extends IntegerModulus ? 'IntegerModulus' :
-                                                        ''
+    Use extends Multiple ? 'Multiple' & 'Scalar' :
+        Use extends Cardinal ? 'Cardinal' & 'Translation' :
+            Use extends Transposition ? 'Transposition' & 'Rotation' :
+                Use extends Power ? 'Power' & 'Exponent' :
+                    Use extends Base ? 'Base' & 'Logarithm' :
+                        Use extends IntegerModulus ? 'IntegerModulus' & 'Modulus' :
+                            Use extends Ordinal ? 'Ordinal' & 'Point' :
+                                Use extends NormalScalar ? 'NormalScalar' & 'Scalar' :
+                                    Use extends Scalar ? 'Scalar' :
+                                        Use extends Translation ? 'Translation' :
+                                            Use extends Rotation ? 'Rotation' :
+                                                Use extends Exponent ? 'Exponent' :
+                                                    Use extends Logarithm ? 'Logarithm' :
+                                                        Use extends Modulus ? 'Modulus' :
+                                                            Use extends Point ? 'Point' :
+                                                                ''
 
-type NaturalUseOfable = NonNormal & NoOf
-type UnnaturalUseOfable = NaturalUseOfable & Unnatural
-
-type Block = number[] & { _BlockBrand: void }
+// Cycle
 
 type Cycle<ElementType = number> = ElementType[] & { _CycleBrand: boolean }
+
+// Blocks & Contours
+
+type Block = number[] & { _BlockBrand: void }
 
 type ContourElement<ContourType> = [ number, ...number[] ] &
     { length: ContourType } & (
@@ -217,4 +257,11 @@ export {
     Nature,
     NaturalUseOfable,
     UnnaturalUseOfable,
+    Transposition,
+    Point,
+    NaturalUseOfableActive,
+    UnnaturalUseOfableActive,
+    NaturalUseOfableWithArrayOverload,
+    NaturalUseOfableWithArrayOverloadActive,
+    ArrayOverload,
 }

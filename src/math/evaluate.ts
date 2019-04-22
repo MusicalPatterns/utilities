@@ -2,7 +2,7 @@
 
 import { HtmlValue } from '../browser'
 import { stringSlice } from '../code'
-import { as, EXCLUSIVE_TO_LEFT, INITIAL, insteadOf, notAs, Ordinal, Translation, use } from '../nominal'
+import { as, Cardinal, EXCLUSIVE_TO_LEFT, INITIAL, insteadOf, notAs, Ordinal, use } from '../nominal'
 import { Operands } from './types'
 
 const splitOperands: (expression: string, operatorIndex: Ordinal<string>) => Operands =
@@ -12,9 +12,9 @@ const splitOperands: (expression: string, operatorIndex: Ordinal<string>) => Ope
         const rhs: number = evaluateString(
             stringSlice(
                 expression,
-                use.Translation(
+                use.Cardinal(
                     operatorIndex,
-                    insteadOf<Translation, Ordinal<string>>(EXCLUSIVE_TO_LEFT),
+                    insteadOf<Cardinal, Ordinal<string>>(EXCLUSIVE_TO_LEFT),
                 ),
             ),
         )
@@ -73,9 +73,9 @@ const evaluateParenthetical: (expression: string) => number =
     (expression: string): number => {
         const beginParantheticalIndex: Ordinal<string> = as.Ordinal<string>(expression.lastIndexOf('('))
         const endIndex: Ordinal<string> = as.Ordinal<string>(expression.length)
-        const endParantheticalIndex: Ordinal<string> = use.Translation(
+        const endParantheticalIndex: Ordinal<string> = use.Cardinal(
             beginParantheticalIndex,
-            as.Translation<Ordinal<string>>(
+            as.Cardinal<Ordinal<string>>(
                 stringSlice(expression, beginParantheticalIndex, endIndex)
                     .indexOf(')'),
             ),
@@ -84,12 +84,12 @@ const evaluateParenthetical: (expression: string) => number =
         const partBefore: string = stringSlice(expression, as.Ordinal<string>(0), beginParantheticalIndex)
         const parenthetical: string = stringSlice(
             expression,
-            use.Translation(beginParantheticalIndex, as.Translation<Ordinal<string>>(1)),
+            use.Cardinal(beginParantheticalIndex, as.Cardinal<Ordinal<string>>(1)),
             endParantheticalIndex,
         )
         const partAfter: string = stringSlice(
             expression,
-            use.Translation(endParantheticalIndex, as.Translation<Ordinal<string>>(1)),
+            use.Cardinal(endParantheticalIndex, as.Cardinal<Ordinal<string>>(1)),
             endIndex,
         )
 

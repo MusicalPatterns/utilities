@@ -7,7 +7,6 @@ import {
     Cardinal,
     Cents,
     Cycle,
-    Denominator,
     Exponent,
     Fraction,
     Frequency,
@@ -15,7 +14,6 @@ import {
     Logarithm,
     Ms,
     Multiple,
-    Numerator,
     Of,
     Ordinal,
     Power,
@@ -71,8 +69,8 @@ const FICE: Cardinal<any> = as.Cardinal(5)
 
 const DEFAULT_PRECISION: Integer = as.Integer(2)
 const A_SUFFICIENT_COUNT_OF_NUMBERS: Cardinal<any> = as.Cardinal(Math.pow(2, 8))
-const ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS: Translation<Cycle> =
-    as.Translation(-2 as Of<Cycle>)
+const ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS: Cardinal<Cycle> =
+    as.Cardinal(-2 as Of<Cycle>)
 
 const X_AXIS: Ordinal<any> = as.Ordinal(0)
 const Y_AXIS: Ordinal<any> = as.Ordinal(1)
@@ -116,18 +114,18 @@ const ADDITIVE_IDENTITY: Translation<any> = as.Translation(0)
 const MULTIPLICATIVE_IDENTITY: Scalar<any> = as.Scalar(1)
 const FRACTIONAL_IDENTITY: Fraction = as.Fraction([ as.Numerator(1), as.Denominator(1) ])
 
-const NEXT: Translation<Ordinal<any>> = as.Translation<Ordinal>(1)
-const PREVIOUS: Translation<Ordinal<any>> = as.Translation<Ordinal>(-1)
-const UP_ONE: Translation<Cardinal<any>> = as.Translation<Cardinal>(1)
-const DOWN_ONE: Translation<Cardinal<any>> = as.Translation<Cardinal>(-1)
-const INCREMENT: Translation<any> = as.Translation(1)
-const DECREMENT: Translation<any> = as.Translation(-1)
-const ONE_MORE: Translation<Cardinal<any>> = as.Translation<Cardinal>(1)
-const ONE_FEWER: Translation<Cardinal<any>> = as.Translation<Cardinal>(-1)
-const NO_TRANSLATION: Translation<any> = as.Translation(0)
+const NEXT: Cardinal<Ordinal<any>> = as.Cardinal<Ordinal>(1)
+const PREVIOUS: Cardinal<Ordinal<any>> = as.Cardinal<Ordinal>(-1)
+const UP_ONE: Cardinal<Cardinal<any>> = as.Cardinal<Cardinal>(1)
+const DOWN_ONE: Cardinal<Cardinal<any>> = as.Cardinal<Cardinal>(-1)
+const INCREMENT: Cardinal<any> = as.Cardinal(1)
+const DECREMENT: Cardinal<any> = as.Cardinal(-1)
+const ONE_MORE: Cardinal<Cardinal<any>> = as.Cardinal<Cardinal>(1)
+const ONE_FEWER: Cardinal<Cardinal<any>> = as.Cardinal<Cardinal>(-1)
+const NO_SHIFT: Cardinal<any> = as.Cardinal(0)
 
-const NUMERATOR_INDEX: Ordinal<Numerator> = as.Ordinal<Numerator>(0)
-const DENOMINATOR_INDEX: Ordinal<Denominator> = as.Ordinal<Denominator>(1)
+const NUMERATOR_INDEX: Ordinal<Fraction> = as.Ordinal<Fraction>(0)
+const DENOMINATOR_INDEX: Ordinal<Fraction> = as.Ordinal<Fraction>(1)
 
 const FIRST_FACTOR_NECESSARY_TO_CHECK_IF_COMMON: Integer = as.Integer(2)
 
@@ -136,15 +134,15 @@ const E: Logarithm<any> = as.Logarithm(Math.E)
 
 const GOOD_AMOUNT_OF_TIME_TO_SEE_WHAT_THE_SITUATION_IS_WHEN_HEADFULLY_DEBUGGING_TESTS: Ms = as.Ms(3000)
 
-const INCLUSIVE: Translation<Ordinal<any>> = as.Translation<Ordinal>(1)
-const EXCLUSIVE: Translation<Ordinal<any>> = as.Translation<Ordinal>(-1)
-const INCLUSIVE_TO_LEFT: Translation<Ordinal<any>> = as.Translation<Ordinal>(-1)
-const EXCLUSIVE_TO_LEFT: Translation<Ordinal<any>> = as.Translation<Ordinal>(1)
+const INCLUSIVE: Cardinal<Ordinal<any>> = as.Cardinal<Ordinal>(1)
+const EXCLUSIVE: Cardinal<Ordinal<any>> = as.Cardinal<Ordinal>(-1)
+const INCLUSIVE_TO_LEFT: Cardinal<Ordinal<any>> = as.Cardinal<Ordinal>(-1)
+const EXCLUSIVE_TO_LEFT: Cardinal<Ordinal<any>> = as.Cardinal<Ordinal>(1)
 
 const INITIAL: Ordinal<any> = as.Ordinal(0)
 const SKIP_FIRST_ELEMENT: Ordinal<any> = as.Ordinal(1)
 
-const TRANSLATION_FROM_LENGTH_TO_FINAL_INDEX: Translation<Cardinal<any>> = as.Translation<Cardinal>(-1)
+const COUNT_FROM_LENGTH_TO_FINAL_INDEX: Cardinal<any> = as.Cardinal(-1)
 const EXAMPLE_ELEMENT_INDEX: Ordinal<any> = as.Ordinal(0)
 
 const NOT_FOUND: Ordinal<any> = as.Ordinal(-1)
@@ -194,7 +192,7 @@ export {
     PREVIOUS,
     UP_ONE,
     DOWN_ONE,
-    NO_TRANSLATION,
+    NO_SHIFT,
     INCREMENT,
     DECREMENT,
     NUMERATOR_INDEX,
@@ -277,7 +275,7 @@ export {
     SKIP_FIRST_ELEMENT,
     INCLUSIVE_TO_LEFT,
     EXCLUSIVE_TO_LEFT,
-    TRANSLATION_FROM_LENGTH_TO_FINAL_INDEX,
+    COUNT_FROM_LENGTH_TO_FINAL_INDEX,
     EXAMPLE_ELEMENT_INDEX,
     NOT_FOUND,
     OCTAVE,

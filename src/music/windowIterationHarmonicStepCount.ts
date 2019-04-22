@@ -3,14 +3,14 @@ import { as, Base, Cardinal, DECREMENT, Frequency, insteadOf, notAs, Ordinal, us
 
 const windowIterationHarmonicStepCount: (window: Base<Frequency>, iteration: Ordinal<Base<Frequency>>) => Cardinal =
     (window: Base<Frequency>, iteration: Ordinal<Base<Frequency>>): Cardinal =>
-        insteadOf<Cardinal>(as.Cardinal(notAs.Base<Frequency>(use.Translation(
+        insteadOf<Cardinal>(as.Cardinal(notAs.Base<Frequency>(use.Cardinal(
             use.Power(
                 window,
                 as.Power<Base<Frequency>>(notAs.Ordinal(iteration)),
             ),
-            as.Translation<Base<Frequency>>(notAs.Base<Frequency>(negative(use.Power(
+            as.Cardinal<Base<Frequency>>(notAs.Base<Frequency>(negative(use.Power(
                 window,
-                as.Power<Base<Frequency>>(notAs.Ordinal(use.Translation(
+                as.Power<Base<Frequency>>(notAs.Ordinal(use.Cardinal(
                     iteration,
                     DECREMENT,
                 )))),

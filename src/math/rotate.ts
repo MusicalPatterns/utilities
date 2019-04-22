@@ -3,6 +3,7 @@
 import { indexJustBeyondFinalElement, map, Maybe, reduce, slice } from '../code'
 import {
     as,
+    Cardinal,
     Cycle,
     INITIAL,
     insteadOf,
@@ -45,20 +46,20 @@ const computeCycleMapForScalingRotationMatrixToDimensionalityOfCoordinate:
             as.Cycle(slice(
                 rotationVectorOrMatrix,
                 INITIAL,
-                indexJustBeyondFinalElement(coordinate),
+                insteadOf<Ordinal, Cycle<VectorOrMatrix>>(indexJustBeyondFinalElement(coordinate)),
             ))
 
 const computeCycleMapForCyclingRotationMatrixForAxis: (axis: Ordinal) => CycleMap =
     (axis: Ordinal): CycleMap =>
         <VectorOrMatrix>(rotationVectorOrMatrix: Cycle<VectorOrMatrix>): Cycle<VectorOrMatrix> => {
-            const translation: Translation<Cycle<VectorOrMatrix>> = use.Translation(
-                insteadOf<Translation, Cycle<VectorOrMatrix>>(
+            const cycling: Cardinal<Cycle<VectorOrMatrix>> = use.Cardinal(
+                insteadOf<Cardinal, Cycle<VectorOrMatrix>>(
                     ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS,
                 ),
-                insteadOf<Translation, Translation<Cycle<VectorOrMatrix>>>(as.Translation(notAs.Ordinal(axis))),
+                insteadOf<Cardinal, Cardinal<Cycle<VectorOrMatrix>>>(as.Cardinal(notAs.Ordinal(axis))),
             )
 
-            return use.Translation(rotationVectorOrMatrix, translation)
+            return use.Cardinal(rotationVectorOrMatrix, cycling)
         }
 
 const mapAcrossBothDimensions: <NumericType extends Number>(
@@ -113,7 +114,7 @@ const rotate: <NumericType extends Number, Dimensionality extends number>(rotate
 
         const relative: NumericType[] = map(
             coordinate,
-            (coordinateElement: NumericType, index: Ordinal<NumericType>): NumericType => {
+            (coordinateElement: NumericType, index: Ordinal<NumericType[]>): NumericType => {
                 const rawFixedCoordinateElement: NumericType =
                     use.Ordinal(fixedCoordinate, index)
 
@@ -150,12 +151,12 @@ const rotate: <NumericType extends Number, Dimensionality extends number>(rotate
                 (
                     coordinateElement: NumericType,
                     rotationScalar: Scalar<NumericType>,
-                    index: Ordinal<Scalar<NumericType>>,
+                    index: Ordinal<Array<Scalar<NumericType>>>,
                 ): NumericType =>
                     sum(
                         coordinateElement,
                         use.Scalar(
-                            use.Ordinal(relative, insteadOf<Ordinal, NumericType>(index)),
+                            use.Ordinal(relative, insteadOf<Ordinal, NumericType[]>(index)),
                             rotationScalar,
                         ),
                     ),

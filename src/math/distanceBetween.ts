@@ -13,7 +13,7 @@ const distanceBetween: <NumericType extends Number>(
     ): NumericType => {
         const sumOfSquaresOfDimensionalDistances: NumericType = reduce(
             pointA,
-            (accumulator: NumericType, pointAElement: NumericType, index: Ordinal<NumericType>) => {
+            (accumulator: NumericType, pointAElement: NumericType, index: Ordinal<NumericType[]>) => {
                 const pointBElement: NumericType =
                     use.Ordinal(pointB, index)
                 const dimensionalDistance: NumericType =

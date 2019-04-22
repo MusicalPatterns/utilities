@@ -1,12 +1,12 @@
-import { as, NormalScalar, ofNotAs, use } from '../nominal'
+import { as, NormalScalar, notAs, use } from '../nominal'
 import { negative } from './typedOperations'
 
 const invertNormalScalar: (normalScalar: NormalScalar) => NormalScalar =
     (normalScalar: NormalScalar): NormalScalar =>
-        use.Translation(
-            as.NormalScalar(1),
-            as.Translation(ofNotAs(negative(normalScalar))),
-        )
+        as.NormalScalar(use.Translation(
+            1,
+            as.Translation(notAs.NormalScalar(negative(normalScalar))),
+        ))
 
 export {
     invertNormalScalar,

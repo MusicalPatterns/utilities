@@ -19,10 +19,12 @@ import {
     product,
     quotient,
     reciprocal,
+    Rotation,
     round,
     Scalar,
     squareRoot,
     sum,
+    Translation,
 } from '../../../src/indexForTest'
 
 describe('typed operations', () => {
@@ -112,21 +114,24 @@ describe('typed operations', () => {
 
     describe('reciprocal', () => {
         it('when given an integer, removes the integer type in the return value', () => {
-            const integer: number = reciprocal(as.Integer(3))
             const numerator: number = reciprocal(as.Numerator(3))
             const denominator: number = reciprocal(as.Denominator(3))
 
-            const cardinal: number = reciprocal(as.Cardinal(3))
-
             const scalar: Scalar = reciprocal(as.Scalar(3))
+            const translation: Translation = reciprocal(as.Translation(3))
+            const rotation: Rotation = reciprocal(as.Rotation(3))
             const exponent: Exponent = reciprocal(as.Exponent(3))
             const logarithm: Logarithm = reciprocal(as.Logarithm(3))
             const mod: Modulus = reciprocal(as.Modulus(3))
 
             const multiple: Scalar = reciprocal(as.Multiple(3))
+            const cardinal: Translation = reciprocal(as.Cardinal(3))
+            const transposition: Rotation = reciprocal(as.Transposition(3))
             const power: Exponent = reciprocal(as.Power(3))
             const base: Logarithm = reciprocal(as.Base(3))
             const integerModulus: Modulus = reciprocal(as.IntegerModulus(3))
+
+            const integer: number = reciprocal(as.Integer(3))
         })
     })
 

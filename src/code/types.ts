@@ -1,3 +1,5 @@
+import { Cycle, Ordinal } from '../nominal'
+
 type Omit<ObjectType, KeyType extends keyof ObjectType> = Pick<ObjectType, Exclude<keyof ObjectType, KeyType>>
 
 type Difference<ObjectType extends ObjectTypeWithPropertiesToSubtract, ObjectTypeWithPropertiesToSubtract> =
@@ -14,6 +16,11 @@ type Maybe<Type> = Type | undefined
 
 type ArrayOfLength<Length extends Number, NumericType = number> = [ NumericType, ...NumericType[] ] & { length: Length }
 
+interface IndexOf {
+    <ElementType>(array: Cycle<ElementType>): Ordinal<Cycle<ElementType>>
+    <ElementType>(array: ElementType[]): Ordinal<ElementType[]>
+}
+
 export {
     Omit,
     Difference,
@@ -21,4 +28,5 @@ export {
     ObjectOf,
     Maybe,
     ArrayOfLength,
+    IndexOf,
 }

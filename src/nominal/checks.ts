@@ -12,27 +12,29 @@ const unfortunatelyNecessaryReimplementationOfRoundForCheckToAvoidCircularDepend
         return +(Math.round(`${value}e+10` as unknown as number) + 'e-' + 10)
     }
 
-const indexCheck: <ElementType>(index: Ordinal<ElementType>, array: ElementType[]) => void =
-    <ElementType>(index: Ordinal<ElementType>, array: ElementType[]): void => {
+const indexCheck: <ElementType>(index: Ordinal<ElementType[]>, array: ElementType[]) => void =
+    <ElementType>(index: Ordinal<ElementType[]>, array: ElementType[]): void => {
         if (notAs.Ordinal(index as unknown as Ordinal) > array.length - 1) {
             throw new Error(`Ordinal ${index} exceeds available indices of array of length ${array.length}`)
         }
     }
 
-const normalCheck: <NumericType extends Number>(value: NumericType) => number =
+const normalCheck: <NumericType extends Number>(value: NumericType, type: string) => NumericType =
     // tslint:disable-next-line cyclomatic-complexity
-    <NumericType extends Number>(value: NumericType): number => {
+    <NumericType extends Number>(value: NumericType, type: string): NumericType => {
         const roundedValue: number =
             unfortunatelyNecessaryReimplementationOfRoundForCheckToAvoidCircularDependencyHell(
                 value as unknown as number,
             )
         if (roundedValue > 1 || roundedValue < 0) {
-            throw new Error(`A NormalScalar must be between 0 and 1. It was ${value}.`)
+            throw new Error(
+                `Numerals of type ${type} must be normalized (between 0 and 1). This numeral had value ${value}.`,
+            )
         }
 
         return value as unknown as number > 1 || value as unknown as number < 0 ?
-            roundedValue > 1 ? 1 : roundedValue < 0 ? 0 : roundedValue :
-            value as unknown as number
+            (roundedValue > 1 ? 1 : roundedValue < 0 ? 0 : roundedValue) as unknown as NumericType :
+            value as unknown as NumericType
     }
 
 const integerCheck: <NumericType extends Number>(value: NumericType, type: string) => NumericType =
@@ -44,7 +46,7 @@ const integerCheck: <NumericType extends Number>(value: NumericType, type: strin
             )
 
         if (roundedValue !== roundedValueToPrecisionWeCareAbout as unknown as number) {
-            throw new Error(`Numerals of type ${type} must be Integers. This numeral had value ${value}.`)
+            throw new Error(`Numerals of type ${type} must be integers. This numeral had value ${value}.`)
         }
 
         return roundedValue as unknown as NumericType

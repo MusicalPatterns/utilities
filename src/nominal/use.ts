@@ -1,6 +1,6 @@
-// tslint:disable variable-name max-file-line-count
+// tslint:disable variable-name max-file-line-count max-line-length arrow-return-shorthand
 
-import { finalIndexFromElementsTotal, length } from '../code'
+import { finalIndexFromElementsTotal } from '../code'
 import * as as from './as'
 import { indexCheck, integerCheck, normalCheck } from './checks'
 import * as notAs from './notAs'
@@ -16,160 +16,54 @@ import {
     Logarithm,
     Modulus,
     Multiple,
+    NaturalUseOfableWithArrayOverloadActive,
     NormalScalar,
     Numerator,
     Ordinal,
     Power,
+    Rotation,
     Scalar,
     Translation,
+    Transposition,
 } from './types'
 
-const Base: <OfType extends Number>(
-    value: OfType,
-    base: Base<OfType>,
-) => OfType =
-    <OfType extends Number>(
-        value: OfType,
-        base: Base<OfType>,
-    ): OfType => {
-        const integerCheckedBase: Base<OfType> = integerCheck(base, 'Base')
+// Natural Units
 
-        return Math.log(value as unknown as number) /
-        Math.log(integerCheckedBase as unknown as number) as unknown as OfType
-    }
+const Numerator: (denominator: Denominator, numerator: Numerator) => Fraction =
+    (denominator: Denominator, numerator: Numerator): Fraction =>
+        [ numerator, denominator ]
+const Denominator: (numerator: Numerator, denominator: Denominator) => Fraction =
+    (numerator: Numerator, denominator: Denominator): Fraction =>
+        [ numerator, denominator ]
 
-const Logarithm: <OfType extends Number>(
-    value: OfType,
-    logarithm: Logarithm<OfType>,
-) => OfType =
-    <OfType extends Number>(
-        value: OfType,
-        logarithm: Logarithm<OfType>,
-    ): OfType =>
-        Math.log(value as unknown as number) / Math.log(logarithm as unknown as number) as unknown as OfType
+// Unnatural Transformation Uses
 
-const Translation: <TranslatedType>(
-    value: TranslatedType,
-    translation: Translation<TranslatedType>,
-) => TranslatedType =
-    <TranslatedType>(
-        value: TranslatedType,
-        translation: Translation<TranslatedType>,
-    ): TranslatedType => {
-        if (isCycle(value)) {
-            const cycle: Cycle<TranslatedType> = value as unknown as Cycle<TranslatedType>
-            const cycledCycle: Cycle<TranslatedType> = as.Cycle([])
-            const cellCount: Cardinal<TranslatedType> = length(cycle)
+const Scalar: <OfType extends Number>(value: OfType, scalar: Scalar<OfType>) => OfType =
+    <OfType extends Number>(value: OfType, scalar: Scalar<OfType>): OfType =>
+        // If is array or cycle, apply to every member
+        value as unknown as number * (scalar as unknown as number) as unknown as OfType
+const Translation: <OfType extends Number>(value: OfType, translation: Translation<OfType>) => OfType =
+    <OfType extends Number>(value: OfType, translation: Translation<OfType>): OfType =>
+        // If is array or cycle, apply to every member
+        value as unknown as number + (translation as unknown as number) as unknown as OfType
+const Rotation: <OfType extends Number>(value: OfType, rotation: Rotation<OfType>) => OfType =
+    <OfType extends Number>(value: OfType, rotation: Rotation<OfType>): OfType =>
+        // If is array or cycle, apply to every member
+        value as unknown as OfType
 
-            for (
-                let index: Ordinal<TranslatedType> = as.Ordinal<TranslatedType>(0);
-                index <= finalIndexFromElementsTotal(cellCount);
-                index = Translation(index, as.Translation<Ordinal<TranslatedType>>(1))
-            ) {
-                let cycledIndex: Ordinal<TranslatedType> = Translation(
-                    index,
-                    as.Translation<Ordinal<TranslatedType>>(-notAs.Translation(translation as unknown as Translation)),
-                )
-                cycledIndex = IntegerModulus(
-                    cycledIndex,
-                    as.IntegerModulus<Ordinal<TranslatedType>>(notAs.Cardinal<TranslatedType>(cellCount)),
-                )
-                cycledCycle.push(cycle[ notAs.Ordinal<TranslatedType>(cycledIndex) ])
-            }
+// Unnatural Non-Transformation Uses
 
-            return cycledCycle as unknown as TranslatedType
-        }
-
-        return value as unknown as number +
-        notAs.Translation(translation as unknown as Translation) as unknown as TranslatedType
-    }
-
-const Power: <OfType extends Number>(
-    base: OfType,
-    power: Power<OfType>,
-) => OfType =
-    <OfType extends Number>(
-        base: OfType,
-        power: Power<OfType>,
-    ): OfType => {
-        const integerCheckedPower: Power<OfType> = integerCheck(power, 'Power')
-
-        return Math.pow(base as unknown as number, integerCheckedPower as unknown as number) as unknown as OfType
-    }
-const Exponent: <OfType extends Number>(
-    base: OfType,
-    exponent: Exponent<OfType>,
-) => OfType =
-    <OfType extends Number>(
-        base: OfType,
-        exponent: Exponent<OfType>,
-    ): OfType =>
+const Exponent: <OfType extends Number>(base: OfType, exponent: Exponent<OfType>) => OfType =
+    <OfType extends Number>(base: OfType, exponent: Exponent<OfType>): OfType =>
+        // If is array or cycle, apply to every member
         Math.pow(base as unknown as number, exponent as unknown as number) as unknown as OfType
-
-const Scalar: <OfType extends Number>(
-    value: OfType,
-    scalar: Scalar<OfType>,
-) => OfType =
-    <OfType extends Number>(
-        value: OfType,
-        scalar: Scalar<OfType>,
-    ): OfType =>
-        value as unknown as number * notAs.Scalar(scalar as unknown as Scalar) as unknown as OfType
-
-const NormalScalar: <OfType extends Number>(
-    value: OfType,
-    normalScalar: NormalScalar<OfType>,
-) => OfType =
-    <OfType extends Number>(
-        value: OfType,
-        normalScalar: NormalScalar<OfType>,
-    ): OfType =>
-        value as unknown as number * notAs.Scalar(normalCheck(normalScalar) as unknown as Scalar) as unknown as OfType
-
-const Multiple: <OfType extends Number>(
-    value: OfType,
-    multiple: Multiple<OfType>,
-) => OfType =
-    <OfType extends Number>(
-        value: OfType,
-        multiple: Multiple<OfType>,
-    ): OfType => {
-        const integerCheckedMultiple: Multiple<OfType> = integerCheck(multiple, 'Multiple')
-
-        return value as unknown as number *
-        notAs.Multiple(integerCheckedMultiple as unknown as Multiple) as unknown as OfType
-    }
-
-const Ordinal: <ElementType>(
-    array: ElementType[] | Cycle<ElementType>,
-    index: Ordinal<ElementType>,
-) => ElementType =
-    <ElementType>(
-        array: ElementType[] | Cycle<ElementType>,
-        index: Ordinal<ElementType>,
-    ): ElementType => {
-        if (isCycle(array)) {
-            const cycledIndex: Ordinal<ElementType> = IntegerModulus(
-                index,
-                as.IntegerModulus<Ordinal<ElementType>>(array.length),
-            )
-
-            return array[ notAs.Ordinal(cycledIndex as unknown as Ordinal) ]
-        }
-
-        indexCheck(index, array)
-
-        return array[ notAs.Ordinal(index as unknown as Ordinal) ]
-    }
-
-const Modulus: <OfType extends Number>(
-    value: OfType,
-    modulus: Modulus<OfType>,
-) => OfType =
-    <OfType extends Number>(
-        value: OfType,
-        modulus: Modulus<OfType>,
-    ): OfType => {
+const Logarithm: <OfType extends Number>(value: OfType, logarithm: Logarithm<OfType>) => OfType =
+    <OfType extends Number>(value: OfType, logarithm: Logarithm<OfType>): OfType =>
+        // If is array or cycle, apply to every member
+        Math.log(value as unknown as number) / Math.log(logarithm as unknown as number) as unknown as OfType
+const Modulus: <OfType extends Number>(value: OfType, modulus: Modulus<OfType>) => OfType =
+    <OfType extends Number>(value: OfType, modulus: Modulus<OfType>): OfType => {
+        // If is array or cycle, apply to every member
         let result: number = value as unknown as number
         const rawModulus: number = modulus as unknown as number
 
@@ -182,36 +76,102 @@ const Modulus: <OfType extends Number>(
 
         return result as unknown as OfType
     }
-const IntegerModulus: <OfType extends Number>(
-    value: OfType,
-    integerModulus: IntegerModulus<OfType>,
-) => OfType =
-    <OfType extends Number>(
-        value: OfType,
-        integerModulus: IntegerModulus<OfType>,
-    ): OfType => {
-        const integerCheckedIntegerModulus: IntegerModulus<OfType> = integerCheck(integerModulus, 'Base')
 
-        let result: number = value as unknown as number
-        const rawIntegerModulus: number = integerCheckedIntegerModulus as unknown as number
+// Natural Transformation Uses (with overloads for arrays)
 
-        while (result < 0) {
-            result += rawIntegerModulus
+const Multiple: <OfType extends NaturalUseOfableWithArrayOverloadActive>(value: OfType, multiple: Multiple<OfType>) => OfType =
+    <OfType extends NaturalUseOfableWithArrayOverloadActive>(value: OfType, multiple: Multiple<OfType>): OfType => {
+        // If is array or cycle, return special array overload here
+
+        return Scalar(
+            value as unknown as number,
+            integerCheck(multiple, 'Multiple') as unknown as Scalar,
+        ) as unknown as OfType
+    }
+const Cardinal:
+    <OfType extends NaturalUseOfableWithArrayOverloadActive>(value: OfType, cardinal: Cardinal<OfType>) => OfType =
+    <OfType extends NaturalUseOfableWithArrayOverloadActive>(value: OfType, cardinal: Cardinal<OfType>): OfType => {
+        if (isCycle(value)) {
+            const cycle: Cycle<OfType> = value as unknown as Cycle<OfType>
+            const cycledCycle: Cycle<OfType> = as.Cycle([])
+            const cellCount: Cardinal<Cycle<OfType>> = as.Cardinal<Cycle<OfType>>(cycle.length)
+
+            for (
+                let index: Ordinal<Cycle<OfType>> = as.Ordinal<Cycle<OfType>>(0);
+                index <= finalIndexFromElementsTotal(cellCount);
+                index = Cardinal(index, as.Cardinal<Ordinal<Cycle<OfType>>>(1))
+            ) {
+                let cycledIndex: Ordinal<Cycle<OfType>> = Cardinal(
+                    index,
+                    as.Cardinal<Ordinal<Cycle<OfType>>>(-notAs.Cardinal(cardinal as unknown as Cardinal)),
+                )
+                cycledIndex = IntegerModulus(
+                    cycledIndex,
+                    as.IntegerModulus<Ordinal<Cycle<OfType>>>(notAs.Cardinal<Cycle<OfType>>(cellCount)),
+                )
+                cycledCycle.push(cycle[ notAs.Ordinal<Cycle<OfType>>(cycledIndex) ])
+            }
+
+            return cycledCycle as unknown as OfType
         }
-        while (result >= rawIntegerModulus) {
-            result -= rawIntegerModulus
-        }
 
-        return result as unknown as OfType
+        return Translation(
+            value as unknown as number,
+            integerCheck(cardinal, 'Cardinal') as unknown as Translation,
+        ) as unknown as OfType
+    }
+const Transposition: <OfType extends NaturalUseOfableWithArrayOverloadActive>(value: OfType, transposition: Transposition<OfType>) => OfType =
+    <OfType extends NaturalUseOfableWithArrayOverloadActive>(value: OfType, transposition: Transposition<OfType>): OfType => {
+        // If is array or cycle, return special array overload here
+
+        return Rotation(
+            value as unknown as number,
+            integerCheck(transposition, 'Transposition') as unknown as Rotation,
+        ) as unknown as OfType
     }
 
-const Numerator: (denominator: Denominator, numerator: Numerator) => Fraction =
-    (denominator: Denominator, numerator: Numerator): Fraction =>
-        [ numerator, denominator ]
+// Natural Non-Transformation Uses
 
-const Denominator: (numerator: Numerator, denominator: Denominator) => Fraction =
-    (numerator: Numerator, denominator: Denominator): Fraction =>
-        [ numerator, denominator ]
+const Power: <OfType extends Number>(value: OfType, power: Power<OfType>) => OfType =
+    <OfType extends Number>(value: OfType, power: Power<OfType>): OfType =>
+        Exponent(value, integerCheck(power, 'Power'))
+const Base: <OfType extends Number>(value: OfType, base: Base<OfType>) => OfType =
+    <OfType extends Number>(value: OfType, base: Base<OfType>): OfType =>
+        Logarithm(value, integerCheck(base, 'Base'))
+const IntegerModulus: <OfType extends Number>(value: OfType, integerModulus: IntegerModulus<OfType>) => OfType =
+    <OfType extends Number>(value: OfType, integerModulus: IntegerModulus<OfType>): OfType =>
+        Modulus(value, integerCheck(integerModulus, 'Base'))
+
+// Natural Fixed Uses (only used for arrays)
+
+const Ordinal: <ElementType>(
+    array: ElementType[] | Cycle<ElementType>,
+    index: Ordinal<ElementType[] | Cycle<ElementType>>,
+) => ElementType =
+    <ElementType>(
+        array: ElementType[] | Cycle<ElementType>,
+        index: Ordinal<ElementType[] | Cycle<ElementType>>,
+    ): ElementType => {
+        if (isCycle(array)) {
+            const cycleIndex: Ordinal<Cycle<ElementType>> = index as Ordinal<Cycle<ElementType>>
+            const cycledIndex: Ordinal<Cycle<ElementType>> = IntegerModulus(
+                cycleIndex,
+                as.IntegerModulus<Ordinal<Cycle<ElementType>>>(array.length),
+            )
+
+            return array[ notAs.Ordinal(cycledIndex as unknown as Ordinal) ]
+        }
+
+        indexCheck(index, array)
+
+        return array[ notAs.Ordinal(index as unknown as Ordinal) ]
+    }
+
+// Normalized Uses
+
+const NormalScalar: <OfType extends Number>(value: OfType, normalScalar: NormalScalar<OfType>) => OfType =
+    <OfType extends Number>(value: OfType, normalScalar: NormalScalar<OfType>): OfType =>
+        Scalar(value, normalCheck(normalScalar, 'NormalScalar'))
 
 export {
     Cardinal,
@@ -228,4 +188,5 @@ export {
     Exponent,
     Logarithm,
     IntegerModulus,
+    Transposition,
 }

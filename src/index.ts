@@ -210,7 +210,7 @@ export {
     EXCLUSIVE,
     INCLUSIVE_TO_LEFT,
     EXCLUSIVE_TO_LEFT,
-    TRANSLATION_FROM_LENGTH_TO_FINAL_INDEX,
+    COUNT_FROM_LENGTH_TO_FINAL_INDEX,
     EXAMPLE_ELEMENT_INDEX,
     MILLISECONDS_PER_SECOND,
     SECONDS_PER_MINUTE,
@@ -266,7 +266,7 @@ export {
     PREVIOUS,
     UP_ONE,
     DOWN_ONE,
-    NO_TRANSLATION,
+    NO_SHIFT,
     INCREMENT,
     DECREMENT,
     NUMERATOR_INDEX,
@@ -322,6 +322,8 @@ export {
     Logarithm,
     VERY_HIGH_PRECISION,
     VERY_LOW_PRECISION,
+    Transposition,
+    Point,
 } from './nominal'
 export {
     ActionForState,

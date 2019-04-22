@@ -13,7 +13,7 @@ describe('regular samplings', () => {
         })
 
         it('can take an optional starting with parameter', () => {
-            expect(everyNthElement(array, as.Multiple(2), as.Ordinal<Hz>(5)))
+            expect(everyNthElement(array, as.Multiple(2), as.Ordinal<Hz[]>(5)))
                 .toEqual([ 4, 2, 0 ].map(as.Hz))
         })
     })

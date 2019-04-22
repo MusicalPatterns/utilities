@@ -1,18 +1,18 @@
 // tslint:disable max-file-line-count
 
-import { as, Cycle, NEXT, notAs, Ordinal, Translation, use } from '../nominal'
+import { as, Cycle, INCREMENT, NEXT, notAs, Ordinal, Translation, use } from '../nominal'
 import { indexJustBeyondFinalElement, length } from './finalElement'
 import { isUndefined } from './isUndefined'
 
 const slice: <ElementType>(
     array: ElementType[],
-    initial: Ordinal<ElementType>,
-    terminal?: Ordinal<ElementType>,
+    initial: Ordinal<ElementType[]>,
+    terminal?: Ordinal<ElementType[]>,
 ) => ElementType[] =
     <ElementType>(
         array: ElementType[],
-        initial: Ordinal<ElementType>,
-        terminal?: Ordinal<ElementType>,
+        initial: Ordinal<ElementType[]>,
+        terminal?: Ordinal<ElementType[]>,
     ): ElementType[] => {
         if (isUndefined(terminal)) {
             return array.slice(notAs.Ordinal(initial as unknown as Ordinal))
@@ -45,23 +45,23 @@ of only ${str.length}: ${str}`)
 
 const cycleSlice: <ElementType>(
     cycle: Cycle<ElementType>,
-    initial: Ordinal<ElementType>,
-    terminal?: Ordinal<ElementType>,
+    initial: Ordinal<Cycle<ElementType>>,
+    terminal?: Ordinal<Cycle<ElementType>>,
 ) => ElementType[] =
     <ElementType>(
         cycle: Cycle<ElementType>,
-        initial: Ordinal<ElementType>,
-        terminal?: Ordinal<ElementType>,
+        initial: Ordinal<Cycle<ElementType>>,
+        terminal?: Ordinal<Cycle<ElementType>>,
     ): ElementType[] => {
-        const terminalForSlice: Ordinal<ElementType> =
+        const terminalForSlice: Ordinal<Cycle<ElementType>> =
             isUndefined(terminal) ? indexJustBeyondFinalElement(cycle) : terminal
 
         const resultantSlice: ElementType[] = []
 
         for (
-            let index: Ordinal<ElementType> = initial;
+            let index: Ordinal<Cycle<ElementType>> = initial;
             index < terminalForSlice;
-            index = use.Translation(index, NEXT as unknown as Translation<Ordinal<ElementType>>)
+            index = use.Cardinal(index, INCREMENT)
         ) {
             resultantSlice.push(use.Ordinal(cycle, index))
         }
@@ -71,11 +71,11 @@ const cycleSlice: <ElementType>(
 
 const forEach: <ElementType>(
     array: ElementType[],
-    callback: (element: ElementType, index: Ordinal<ElementType>, self: ElementType[]) => void,
+    callback: (element: ElementType, index: Ordinal<ElementType[]>, self: ElementType[]) => void,
 ) => void =
     <ElementType>(
         array: ElementType[],
-        callback: (element: ElementType, index: Ordinal<ElementType>, self: ElementType[],
+        callback: (element: ElementType, index: Ordinal<ElementType[]>, self: ElementType[],
         ) => void): void => {
         // @ts-ignore
         array.forEach(callback)
@@ -83,11 +83,11 @@ const forEach: <ElementType>(
 
 const map: <ElementType, MappedElementType>(
     array: ElementType[],
-    callback: (element: ElementType, index: Ordinal<ElementType>, self: ElementType[]) => MappedElementType,
+    callback: (element: ElementType, index: Ordinal<ElementType[]>, self: ElementType[]) => MappedElementType,
 ) => MappedElementType[] =
     <ElementType, MappedElementType>(
         array: ElementType[],
-        callback: (element: ElementType, index: Ordinal<ElementType>, self: ElementType[],
+        callback: (element: ElementType, index: Ordinal<ElementType[]>, self: ElementType[],
         ) => MappedElementType): MappedElementType[] =>
         // @ts-ignore
         array.map(callback)
@@ -97,7 +97,7 @@ const reduce: <ElementType, ReducedType>(
     callback: (
         accumulator: ReducedType,
         element: ElementType,
-        index: Ordinal<ElementType>,
+        index: Ordinal<ElementType[]>,
         self: ElementType[],
     ) => ReducedType,
     accumulator: Partial<ReducedType>,
@@ -107,7 +107,7 @@ const reduce: <ElementType, ReducedType>(
         callback: (
             accumulator: ReducedType,
             element: ElementType,
-            index: Ordinal<ElementType>,
+            index: Ordinal<ElementType[]>,
             self: ElementType[],
         ) => ReducedType,
         accumulator: Partial<ReducedType>,
@@ -117,33 +117,33 @@ const reduce: <ElementType, ReducedType>(
 
 const filter: <ElementType>(
     array: ElementType[],
-    callback: (element: ElementType, index: Ordinal<ElementType>, self: ElementType[]) => boolean,
+    callback: (element: ElementType, index: Ordinal<ElementType[]>, self: ElementType[]) => boolean,
 ) => ElementType[] =
     <ElementType>(
         array: ElementType[],
-        callback: (element: ElementType, index: Ordinal<ElementType>, self: ElementType[],
+        callback: (element: ElementType, index: Ordinal<ElementType[]>, self: ElementType[],
         ) => boolean): ElementType[] =>
         // @ts-ignore
         array.filter(callback)
 
 const every: <ElementType>(
     array: ElementType[],
-    callback: (element: ElementType, index: Ordinal<ElementType>, self: ElementType[]) => boolean,
+    callback: (element: ElementType, index: Ordinal<ElementType[]>, self: ElementType[]) => boolean,
 ) => boolean =
     <ElementType>(
         array: ElementType[],
-        callback: (element: ElementType, index: Ordinal<ElementType>, self: ElementType[]) => boolean,
+        callback: (element: ElementType, index: Ordinal<ElementType[]>, self: ElementType[]) => boolean,
     ): boolean =>
         // @ts-ignore
         array.every(callback)
 
 const findIndex: <ElementType>(
     array: ElementType[],
-    callback: (element: ElementType, index: Ordinal<ElementType>, self: ElementType[]) => boolean,
+    callback: (element: ElementType, index: Ordinal<ElementType[]>, self: ElementType[]) => boolean,
 ) => Ordinal<ElementType> =
     <ElementType>(
         array: ElementType[],
-        callback: (element: ElementType, index: Ordinal<ElementType>, self: ElementType[]) => boolean,
+        callback: (element: ElementType, index: Ordinal<ElementType[]>, self: ElementType[]) => boolean,
     ): Ordinal<ElementType> =>
         // @ts-ignore
         array.findIndex(callback)

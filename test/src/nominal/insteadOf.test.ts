@@ -1,3 +1,5 @@
+// tslint:disable no-unused-variable no-dead-store
+
 import {
     as,
     Cardinal,
@@ -18,15 +20,15 @@ describe('instead of', () => {
         expect(insteadOf<Scalar, Rotation>(as.Scalar<Translation>(1)))
             .toBe(as.Scalar<Rotation>(1))
 
-        expect(insteadOf<Translation, Rotation>(as.Translation<string>(1)))
-            .toBe(as.Translation<Rotation>(1))
+        expect(insteadOf<Ordinal, Rotation>(as.Ordinal<string>(1)))
+            .toBe(as.Ordinal<Rotation>(1))
 
-        expect(insteadOf<Translation>(as.Translation<string>(1)))
-            .toBe(as.Translation(1))
+        expect(insteadOf<Ordinal>(as.Ordinal<string>(1)))
+            .toBe(as.Ordinal(1))
     })
 
     it('should work for special uses that enforce being integers', () => {
-        expect(insteadOf<Multiple>(as.Multiple<Cardinal>(3)))
-            .toBe(as.Multiple(3))
+        const multiple: Multiple = insteadOf<Multiple>(as.Multiple<Cardinal>(3))
+        const ordinalMultiple: Multiple<Ordinal> = insteadOf<Multiple, Ordinal>(as.Multiple<Cardinal>(3))
     })
 })

@@ -165,7 +165,7 @@ const customMatchers: CustomMatcherFactories = {
                         message,
                 )
 
-                forEach(expected, (expectedElement: NumericElementType, index: Ordinal<NumericElementType>): void => {
+                forEach(expected, (expectedElement: NumericElementType, index: Ordinal<NumericElementType[]>): void => {
                     const actualElement: NumericElementType = use.Ordinal(actual, index)
 
                     testIsCloseTo(actualElement, expectedElement, precision, negate, message)
@@ -182,7 +182,7 @@ const customMatchers: CustomMatcherFactories = {
             message?: string,
         ): CustomMatcherResult =>
             doAssertions(() => {
-                forEach(expected, (expectedElement: NumericElementType, index: Ordinal<NumericElementType>): void => {
+                forEach(expected, (expectedElement: NumericElementType, index: Ordinal<NumericElementType[]>): void => {
                     const actualElement: NumericElementType = use.Ordinal(actual, index)
 
                     testIsCloseTo(actualElement, expectedElement, precision, negate, message)

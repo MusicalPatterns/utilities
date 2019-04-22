@@ -9,7 +9,7 @@ import {
     DUMMY_VALUE_FOR_COMPUTING_NOMINAL_INTERFACE,
     NominalInterface,
     Of,
-    Translation,
+    Ordinal,
 } from '../../../src/indexForTest'
 
 describe('custom nominals', () => {
@@ -46,8 +46,8 @@ describe('custom nominals', () => {
             const numero: Numero = customAs.Numero(3)
             const numeros: Numeros = customAs.Numeros([ 3 ])
 
-            const numeroTranslation: Translation<Numero> = as.Translation<Numero>(3)
-            const numerosTranslation: Translation<Numeros> = as.Translation<Numeros>(3)
+            const numeroOrdinal: Ordinal<Numero> = as.Ordinal<Numero>(3)
+            const numerosOrdinal: Ordinal<Numeros> = as.Ordinal<Numeros>(3)
         })
     })
 
@@ -56,8 +56,8 @@ describe('custom nominals', () => {
             const numero: Of<Numero> = customOf.Numero(3)
             const numeros: Of<Numeros> = customOf.Numeros(3)
 
-            const useOfNumero: Translation<Numero> = as.Translation(customOf.Numero(3))
-            const useOfNumeros: Translation<Numeros> = as.Translation(customOf.Numeros(3))
+            const useOfNumero: Ordinal<Numero> = as.Ordinal(customOf.Numero(3))
+            const useOfNumeros: Ordinal<Numeros> = as.Ordinal(customOf.Numeros(3))
         })
     })
 

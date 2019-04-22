@@ -14,6 +14,6 @@ describe('invert normal scalar', () => {
             .toBeCloseToTyped(as.NormalScalar(0))
 
         expect(() => invertNormalScalar(as.NormalScalar(2)))
-            .toThrowError('A NormalScalar must be between 0 and 1. It was 2.')
+            .toThrowError('Numerals of type NormalScalar must be normalized (between 0 and 1). This numeral had value 2.')
     })
 })

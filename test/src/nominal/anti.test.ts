@@ -329,8 +329,8 @@
 //         const wrongOf: Ordinal<Translation> = insteadOf<Ordinal, Scalar>(INITIAL)
 //         const noOf: Ordinal = insteadOf<Ordinal, Scalar>(INITIAL)
 //         const fromFullOf: Scalar<Exponent> = insteadOf<Scalar, Rotation>(as.Scalar<Translation>(1))
-//         const doesntHoldOnToInstead: Translation<string> = insteadOf<Translation>(as.Translation<string>(1))
-//         const doesntAssignToWrongInstead: Translation<Scalar> = insteadOf<Translation>(as.Translation<string>(1))
+//         const doesntHoldOnToInstead: Ordinal<string> = insteadOf<Ordinal>(as.Ordinal<string>(1))
+//         const doesntAssignToWrongInstead: Ordinal<Scalar> = insteadOf<Ordinal>(as.Ordinal<string>(1))
 //     })
 //
 //     describe('ofNotAs', () => {
