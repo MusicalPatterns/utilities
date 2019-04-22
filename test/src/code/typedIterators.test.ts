@@ -3,6 +3,7 @@ import {
     Cycle,
     cycleSlice,
     EIGHTH,
+    findIndex,
     FOURTH,
     INITIAL,
     Scalar,
@@ -43,12 +44,21 @@ describe('typed iterators', () => {
         })
     })
 
-    it('cycle slice returns a slice which wraps around (but the returned value is not a cycle)\'', () => {
-        const cycle: Cycle = as.Cycle([ 1, 2, 3, 4, 5, 6 ])
+    describe('cycle slice', () => {
+        it('returns a slice which wraps around (but the returned value is not a cycle)\'', () => {
+            const cycle: Cycle = as.Cycle([ 1, 2, 3, 4, 5, 6 ])
 
-        const actualElements: number[] = cycleSlice(cycle, FOURTH, EIGHTH)
+            const actualElements: number[] = cycleSlice(cycle, FOURTH, EIGHTH)
 
-        expect(actualElements)
-            .toEqual([ 5, 6, 1, 2 ])
+            expect(actualElements)
+                .toEqual([ 5, 6, 1, 2 ])
+        })
+    })
+
+    describe('find index', () => {
+        it('returns the index of the first matching element', () => {
+            expect(findIndex([ 7, 4, 7, 23, 8, 3 ], (element: number) => element === 8))
+                .toBe(as.Ordinal<number[]>(4))
+        })
     })
 })

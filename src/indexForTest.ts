@@ -22,6 +22,7 @@ export {
     cycleSlice,
     arraysHaveNoCommonValues,
     everyNthElement,
+    findIndex,
     isGreaterThanOrEqualTo,
     isLessThanOrEqualTo,
     forEach,
