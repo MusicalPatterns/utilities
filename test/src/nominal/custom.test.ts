@@ -2,6 +2,7 @@
 
 import {
     as,
+    Cardinal,
     computeNominalInterface,
     CustomAs,
     CustomNotAs,
@@ -9,7 +10,6 @@ import {
     DUMMY_VALUE_FOR_COMPUTING_NOMINAL_INTERFACE,
     NominalInterface,
     Of,
-    Ordinal,
 } from '../../../src/indexForTest'
 
 describe('custom nominals', () => {
@@ -46,8 +46,8 @@ describe('custom nominals', () => {
             const numero: Numero = customAs.Numero(3)
             const numeros: Numeros = customAs.Numeros([ 3 ])
 
-            const numeroOrdinal: Ordinal<Numero> = as.Ordinal<Numero>(3)
-            const numerosOrdinal: Ordinal<Numeros> = as.Ordinal<Numeros>(3)
+            const numeroCardinal: Cardinal<Numero> = as.Cardinal<Numero>(3)
+            const numerosCardinal: Cardinal<Numeros> = as.Cardinal<Numeros>(3)
         })
     })
 
@@ -56,8 +56,8 @@ describe('custom nominals', () => {
             const numero: Of<Numero> = customOf.Numero(3)
             const numeros: Of<Numeros> = customOf.Numeros(3)
 
-            const useOfNumero: Ordinal<Numero> = as.Ordinal(customOf.Numero(3))
-            const useOfNumeros: Ordinal<Numeros> = as.Ordinal(customOf.Numeros(3))
+            const useOfNumero: Cardinal<Numero> = as.Cardinal(customOf.Numero(3))
+            const useOfNumeros: Cardinal<Numeros> = as.Cardinal(customOf.Numeros(3))
         })
     })
 

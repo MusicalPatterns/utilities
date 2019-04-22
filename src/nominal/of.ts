@@ -2,6 +2,7 @@
 
 import {
     Amplitude,
+    ArrayOverload,
     Base,
     Cardinal,
     Cents,
@@ -144,8 +145,8 @@ const IntegerModulus: <OfType extends Number = number>(ofIntegerModulus: number 
 
 // Natural Fixed Uses (only used for arrays)
 
-const Ordinal: <OfType = number>(ofIndex: number | OfType) => Of<Ordinal<OfType>> =
-    <OfType = number>(ofIndex: number | OfType): Of<Ordinal<OfType>> =>
+const Ordinal: <OfType extends ArrayOverload = number[]>(ofIndex: number | OfType) => Of<Ordinal<OfType>> =
+    <OfType extends ArrayOverload = number[]>(ofIndex: number | OfType): Of<Ordinal<OfType>> =>
         ofIndex as unknown as Of<Ordinal<OfType>>
 
 // Normalized Uses

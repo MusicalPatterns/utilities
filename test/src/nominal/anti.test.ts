@@ -1,6 +1,6 @@
 // tslint:disable
 
-// There should be 177 errors in this file when the below is uncommented.
+// There should be 174 errors in this file when the below is uncommented.
 
 // import {
 //     as,
@@ -19,7 +19,6 @@
 //     insteadOf,
 //     Integer,
 //     IntegerModulus,
-//     interval,
 //     modulus,
 //     Ms,
 //     Multiple,
@@ -178,16 +177,16 @@
 //             })
 //
 //             it('DOES NOT ALLOW same as above but for special uses', () => {
-//                 const indexToIndexOfUnits: Ordinal<Ms> = as.Ordinal(2)
-//                 const asdgsdaggdsdgsdgdgsd: Ordinal<Ms> = as.Ordinal<number>(2)
+//                 const indexToIndexOfUnits: Ordinal<Ms[]> = as.Ordinal(2)
+//                 const asdgsdaggdsdgsdgdgsd: Ordinal<Ms[]> = as.Ordinal<number[]>(2)
 //
-//                 const asg: Ordinal<Ms> = 2 as unknown as Ordinal
-//                 const asgg: Ordinal<Ms> = 2 as unknown as Ordinal<number>
+//                 const asg: Ordinal<Ms[]> = 2 as unknown as Ordinal
+//                 const asgg: Ordinal<Ms[]> = 2 as unknown as Ordinal<number[]>
 //
-//                 const indexToIndexOfUse: Ordinal<Rotation> = as.Ordinal(2)
+//                 const indexToIndexOfUse: Ordinal<Rotation[]> = as.Ordinal(2)
 //
-//                 const thing: Ordinal<Ms> = 2 as unknown as Ordinal
-//                 const thing2: Ordinal = 2 as unknown as Ordinal<Ms>
+//                 const thing: Ordinal<Ms[]> = 2 as unknown as Ordinal
+//                 const thing2: Ordinal = 2 as unknown as Ordinal<Ms[]>
 //             })
 //
 //             it('DOES NOT ALLOW assigning integerlike ones as plain numbers', () => {
@@ -326,11 +325,11 @@
 //     })
 //
 //     describe('instead of', () => {
-//         const wrongOf: Ordinal<Translation> = insteadOf<Ordinal, Scalar>(INITIAL)
+//         const wrongOf: Ordinal<Translation[]> = insteadOf<Ordinal, Scalar>(INITIAL)
 //         const noOf: Ordinal = insteadOf<Ordinal, Scalar>(INITIAL)
 //         const fromFullOf: Scalar<Exponent> = insteadOf<Scalar, Rotation>(as.Scalar<Translation>(1))
 //         const doesntHoldOnToInstead: Ordinal<string> = insteadOf<Ordinal>(as.Ordinal<string>(1))
-//         const doesntAssignToWrongInstead: Ordinal<Scalar> = insteadOf<Ordinal>(as.Ordinal<string>(1))
+//         const doesntAssignToWrongInstead: Ordinal<Scalar[]> = insteadOf<Ordinal>(as.Ordinal<string>(1))
 //     })
 //
 //     describe('ofNotAs', () => {
@@ -456,14 +455,6 @@
 //                 const base: Base = squareRoot(as.Base(3))
 //                 const power: Power = squareRoot(as.Power(3))
 //                 const integerModulus: IntegerModulus = squareRoot(as.IntegerModulus(3))
-//             })
-//         })
-//
-//         describe('interval', () => {
-//             it('when given an integer, removes the integer type in the return value', () => {
-//                 const integer: Integer = interval(as.Integer(3), as.Integer(3))
-//                 const numerator: Numerator = interval(as.Numerator(3), as.Numerator(3))
-//                 const denominator: Denominator = interval(as.Denominator(3), as.Denominator(3))
 //             })
 //         })
 //

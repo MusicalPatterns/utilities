@@ -1,6 +1,6 @@
 // tslint:disable max-file-line-count
 
-import { as, Cycle, INCREMENT, NEXT, notAs, Ordinal, Translation, use } from '../nominal'
+import { as, Cycle, INCREMENT, notAs, Ordinal, use } from '../nominal'
 import { indexJustBeyondFinalElement, length } from './finalElement'
 import { isUndefined } from './isUndefined'
 

@@ -3,6 +3,7 @@
 import * as as from './as'
 import * as notAs from './notAs'
 import {
+    ArrayOverloadAny,
     Base,
     Cardinal,
     Cents,
@@ -56,10 +57,10 @@ const HEPTUPLE: Multiple = as.Multiple(7)
 const OCTUPLE: Multiple = as.Multiple(8)
 const NONTUPLE: Multiple = as.Multiple(9)
 
-const EVERY_OTHER: Multiple<Ordinal<any>> = as.Multiple<Ordinal>(2)
-const EVERY_THIRD: Multiple<Ordinal<any>> = as.Multiple<Ordinal>(3)
-const EVERY_FOURTH: Multiple<Ordinal<any>> = as.Multiple<Ordinal>(4)
-const EVERY_FIFTH: Multiple<Ordinal<any>> = as.Multiple<Ordinal>(5)
+const EVERY_OTHER: Multiple<Ordinal<ArrayOverloadAny>> = as.Multiple<Ordinal<ArrayOverloadAny>>(2)
+const EVERY_THIRD: Multiple<Ordinal<ArrayOverloadAny>> = as.Multiple<Ordinal<ArrayOverloadAny>>(3)
+const EVERY_FOURTH: Multiple<Ordinal<ArrayOverloadAny>> = as.Multiple<Ordinal<ArrayOverloadAny>>(4)
+const EVERY_FIFTH: Multiple<Ordinal<ArrayOverloadAny>> = as.Multiple<Ordinal<ArrayOverloadAny>>(5)
 
 const ONCE: Cardinal<any> = as.Cardinal(1)
 const TWICE: Cardinal<any> = as.Cardinal(2)
@@ -72,12 +73,12 @@ const A_SUFFICIENT_COUNT_OF_NUMBERS: Cardinal<any> = as.Cardinal(Math.pow(2, 8))
 const ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS: Cardinal<Cycle> =
     as.Cardinal(-2 as Of<Cycle>)
 
-const X_AXIS: Ordinal<any> = as.Ordinal(0)
-const Y_AXIS: Ordinal<any> = as.Ordinal(1)
-const Z_AXIS: Ordinal<any> = as.Ordinal(2)
+const X_AXIS: Ordinal<ArrayOverloadAny> = as.Ordinal<ArrayOverloadAny>(0)
+const Y_AXIS: Ordinal<ArrayOverloadAny> = as.Ordinal<ArrayOverloadAny>(1)
+const Z_AXIS: Ordinal<ArrayOverloadAny> = as.Ordinal<ArrayOverloadAny>(2)
 const ORIGIN: Space = as.Space(0)
-const TWO_DIMENSIONAL: Cardinal<any> = as.Cardinal(2)
-const THREE_DIMENSIONAL: Cardinal<any> = as.Cardinal(3)
+const TWO_DIMENSIONAL: Cardinal<ArrayOverloadAny> = as.Cardinal<ArrayOverloadAny>(2)
+const THREE_DIMENSIONAL: Cardinal<ArrayOverloadAny> = as.Cardinal<ArrayOverloadAny>(3)
 
 const SQUARED: Power<any> = as.Power(2)
 const CUBED: Power<any> = as.Power(3)
@@ -96,33 +97,33 @@ const TEN: Integer = as.Integer(10)
 
 const NEGATIVE: Scalar<any> = as.Scalar(-1)
 
-const ZEROTH: Ordinal<any> = as.Ordinal(0)
-const FIRST: Ordinal<any> = as.Ordinal(1)
-const SECOND: Ordinal<any> = as.Ordinal(2)
-const THIRD: Ordinal<any> = as.Ordinal(3)
-const FOURTH: Ordinal<any> = as.Ordinal(4)
-const FIFTH: Ordinal<any> = as.Ordinal(5)
-const SIXTH: Ordinal<any> = as.Ordinal(6)
-const SEVENTH: Ordinal<any> = as.Ordinal(7)
-const EIGHTH: Ordinal<any> = as.Ordinal(8)
-const NINTH: Ordinal<any> = as.Ordinal(9)
-const TENTH: Ordinal<any> = as.Ordinal(10)
-const ELEVENTH: Ordinal<any> = as.Ordinal(11)
-const TWELFTH: Ordinal<any> = as.Ordinal(12)
+const ZEROTH: Ordinal<ArrayOverloadAny> = as.Ordinal<ArrayOverloadAny>(0)
+const FIRST: Ordinal<ArrayOverloadAny> = as.Ordinal<ArrayOverloadAny>(1)
+const SECOND: Ordinal<ArrayOverloadAny> = as.Ordinal<ArrayOverloadAny>(2)
+const THIRD: Ordinal<ArrayOverloadAny> = as.Ordinal<ArrayOverloadAny>(3)
+const FOURTH: Ordinal<ArrayOverloadAny> = as.Ordinal<ArrayOverloadAny>(4)
+const FIFTH: Ordinal<ArrayOverloadAny> = as.Ordinal<ArrayOverloadAny>(5)
+const SIXTH: Ordinal<ArrayOverloadAny> = as.Ordinal<ArrayOverloadAny>(6)
+const SEVENTH: Ordinal<ArrayOverloadAny> = as.Ordinal<ArrayOverloadAny>(7)
+const EIGHTH: Ordinal<ArrayOverloadAny> = as.Ordinal<ArrayOverloadAny>(8)
+const NINTH: Ordinal<ArrayOverloadAny> = as.Ordinal<ArrayOverloadAny>(9)
+const TENTH: Ordinal<ArrayOverloadAny> = as.Ordinal<ArrayOverloadAny>(10)
+const ELEVENTH: Ordinal<ArrayOverloadAny> = as.Ordinal<ArrayOverloadAny>(11)
+const TWELFTH: Ordinal<ArrayOverloadAny> = as.Ordinal<ArrayOverloadAny>(12)
 
 const ADDITIVE_IDENTITY: Translation<any> = as.Translation(0)
 const MULTIPLICATIVE_IDENTITY: Scalar<any> = as.Scalar(1)
 const FRACTIONAL_IDENTITY: Fraction = as.Fraction([ as.Numerator(1), as.Denominator(1) ])
 
-const NEXT: Cardinal<Ordinal<any>> = as.Cardinal<Ordinal>(1)
-const PREVIOUS: Cardinal<Ordinal<any>> = as.Cardinal<Ordinal>(-1)
-const UP_ONE: Cardinal<Cardinal<any>> = as.Cardinal<Cardinal>(1)
-const DOWN_ONE: Cardinal<Cardinal<any>> = as.Cardinal<Cardinal>(-1)
-const INCREMENT: Cardinal<any> = as.Cardinal(1)
-const DECREMENT: Cardinal<any> = as.Cardinal(-1)
-const ONE_MORE: Cardinal<Cardinal<any>> = as.Cardinal<Cardinal>(1)
-const ONE_FEWER: Cardinal<Cardinal<any>> = as.Cardinal<Cardinal>(-1)
-const NO_SHIFT: Cardinal<any> = as.Cardinal(0)
+const NEXT: Cardinal<Ordinal<ArrayOverloadAny>> = as.Cardinal<Ordinal<ArrayOverloadAny>>(1)
+const PREVIOUS: Cardinal<Ordinal<ArrayOverloadAny>> = as.Cardinal<Ordinal<ArrayOverloadAny>>(-1)
+const UP_ONE: Cardinal<Cardinal<any>> = as.Cardinal<Cardinal<any>>(1)
+const DOWN_ONE: Cardinal<Cardinal<any>> = as.Cardinal<Cardinal<any>>(-1)
+const INCREMENT: Cardinal<any> = as.Cardinal<any>(1)
+const DECREMENT: Cardinal<any> = as.Cardinal<any>(-1)
+const ONE_MORE: Cardinal<Cardinal<ArrayOverloadAny>> = as.Cardinal<Cardinal<ArrayOverloadAny>>(1)
+const ONE_FEWER: Cardinal<Cardinal<ArrayOverloadAny>> = as.Cardinal<Cardinal<ArrayOverloadAny>>(-1)
+const NO_SHIFT: Cardinal<any> = as.Cardinal<any>(0)
 
 const NUMERATOR_INDEX: Ordinal<Fraction> = as.Ordinal<Fraction>(0)
 const DENOMINATOR_INDEX: Ordinal<Fraction> = as.Ordinal<Fraction>(1)
@@ -134,18 +135,18 @@ const E: Logarithm<any> = as.Logarithm(Math.E)
 
 const GOOD_AMOUNT_OF_TIME_TO_SEE_WHAT_THE_SITUATION_IS_WHEN_HEADFULLY_DEBUGGING_TESTS: Ms = as.Ms(3000)
 
-const INCLUSIVE: Cardinal<Ordinal<any>> = as.Cardinal<Ordinal>(1)
-const EXCLUSIVE: Cardinal<Ordinal<any>> = as.Cardinal<Ordinal>(-1)
-const INCLUSIVE_TO_LEFT: Cardinal<Ordinal<any>> = as.Cardinal<Ordinal>(-1)
-const EXCLUSIVE_TO_LEFT: Cardinal<Ordinal<any>> = as.Cardinal<Ordinal>(1)
+const INCLUSIVE: Cardinal<Ordinal<ArrayOverloadAny>> = as.Cardinal<Ordinal<ArrayOverloadAny>>(1)
+const EXCLUSIVE: Cardinal<Ordinal<ArrayOverloadAny>> = as.Cardinal<Ordinal<ArrayOverloadAny>>(-1)
+const INCLUSIVE_TO_LEFT: Cardinal<Ordinal<ArrayOverloadAny>> = as.Cardinal<Ordinal<ArrayOverloadAny>>(-1)
+const EXCLUSIVE_TO_LEFT: Cardinal<Ordinal<ArrayOverloadAny>> = as.Cardinal<Ordinal<ArrayOverloadAny>>(1)
 
-const INITIAL: Ordinal<any> = as.Ordinal(0)
-const SKIP_FIRST_ELEMENT: Ordinal<any> = as.Ordinal(1)
+const INITIAL: Ordinal<ArrayOverloadAny> = as.Ordinal<ArrayOverloadAny>(0)
+const SKIP_FIRST_ELEMENT: Ordinal<ArrayOverloadAny> = as.Ordinal<ArrayOverloadAny>(1)
 
-const COUNT_FROM_LENGTH_TO_FINAL_INDEX: Cardinal<any> = as.Cardinal(-1)
-const EXAMPLE_ELEMENT_INDEX: Ordinal<any> = as.Ordinal(0)
+const COUNT_FROM_LENGTH_TO_FINAL_INDEX: Cardinal<any> = as.Cardinal<any>(-1)
+const EXAMPLE_ELEMENT_INDEX: Ordinal<ArrayOverloadAny> = as.Ordinal<ArrayOverloadAny>(0)
 
-const NOT_FOUND: Ordinal<any> = as.Ordinal(-1)
+const NOT_FOUND: Ordinal<ArrayOverloadAny> = as.Ordinal<ArrayOverloadAny>(-1)
 
 const SEMITONES_PER_OCTAVE: Cardinal<Semitones> = as.Cardinal<Semitones>(12)
 

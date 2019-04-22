@@ -87,7 +87,7 @@ type IntegerModulus<OfType extends NaturalUseOfableActive = number> = UseBrand<'
 
 // Natural Fixed Uses (only used for arrays)
 
-type Ordinal<OfType = number> = UseBrand<'Ordinal' & 'Point', OfType>
+type Ordinal<OfType extends { _OfBrand?: 'NoOf' } & ArrayOverload = number[]> = UseBrand<'Ordinal' & 'Point', OfType>
 
 // Normalized Uses
 
@@ -151,9 +151,11 @@ type NaturalUseOfable = (NonNormal & NoOf)
 type NaturalUseOfableActive = (NonNormal)
 type UnnaturalUseOfable = (NonNormal & NoOf) & Unnatural
 type UnnaturalUseOfableActive = (NonNormal) & Unnatural
-type ArrayOverload = unknown[] | Cycle<unknown>
+type ArrayOverload = unknown[] | Cycle<unknown> | string
 type NaturalUseOfableWithArrayOverload = (NonNormal & NoOf) | ArrayOverload
 type NaturalUseOfableWithArrayOverloadActive = (NonNormal) | ArrayOverload
+// tslint:disable-next-line no-any
+type ArrayOverloadAny = any[] & Cycle<any> & string
 
 // Normalcy
 
@@ -264,4 +266,5 @@ export {
     NaturalUseOfableWithArrayOverload,
     NaturalUseOfableWithArrayOverloadActive,
     ArrayOverload,
+    ArrayOverloadAny,
 }

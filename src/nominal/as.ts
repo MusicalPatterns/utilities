@@ -2,7 +2,7 @@
 
 import { integerCheck, normalCheck } from './checks'
 import {
-    Amplitude,
+    Amplitude, ArrayOverload,
     Base,
     Block,
     Cardinal,
@@ -212,11 +212,11 @@ const IntegerModulus: {
 
 const Ordinal: {
     <OfType extends NoOf = number>(ordinal: OfType): Ordinal,
-    <OfType = number>(ordinal: number | Of<OfType>): Ordinal<OfType>,
+    <OfType extends ArrayOverload = number[]>(ordinal: number | Of<OfType>): Ordinal<OfType>,
     <OfType extends NoOf = number>(ordinal: OfType): Ordinal,
 } =
-    <OfType = number>(ordinal: OfType | number | Of<OfType>): Ordinal<OfType> =>
-        integerCheck(ordinal as unknown as number, 'Ordinal') as unknown as Ordinal<OfType>
+    <OfType = number>(ordinal: OfType | number | Of<OfType>): Ordinal<OfType[]> =>
+        integerCheck(ordinal as unknown as number, 'Ordinal') as unknown as Ordinal<OfType[]>
 
 // Normalized Uses
 

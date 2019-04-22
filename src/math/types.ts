@@ -12,7 +12,8 @@ import {
     Point,
     Radians,
     Scalar,
-    Space, Translation,
+    Space,
+    Translation,
 } from '../nominal'
 
 // tslint:disable-next-line no-magic-numbers

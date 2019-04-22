@@ -6,6 +6,7 @@ import {
     Base,
     Cardinal,
     Cents,
+    Cycle,
     Denominator,
     Exponent,
     Frequency,
@@ -17,6 +18,7 @@ import {
     Ms,
     Multiple,
     NormalScalar,
+    notAs,
     Numerator,
     Of,
     of,
@@ -165,6 +167,7 @@ describe('as', () => {
         it('allows these things for Ordinal', () => {
             const index: Ordinal = as.Ordinal(3)
             const stringIndex: Ordinal<string> = as.Ordinal<string>(3)
+            const stringsIndex: Ordinal<string[]> = as.Ordinal<string[]>(3)
         })
 
         it('allows assigning more specific uses (normal, integer) as the less specific counterparts', () => {
@@ -173,6 +176,11 @@ describe('as', () => {
             const scalarFromMultiple: Scalar = as.Multiple(5)
             const logarithmFromBase: Logarithm = as.Base(5)
             const exponentFromPower: Exponent = as.Power(5)
+        })
+
+        it('this works for Ordinal', () => {
+            const jim: Ordinal<Cycle<Scalar>> = as.Ordinal<Cycle<Scalar>>(3)
+            const never: number = notAs.Ordinal<Cycle<Scalar>>(jim)
         })
     })
 })

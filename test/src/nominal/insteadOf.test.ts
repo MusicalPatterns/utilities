@@ -3,9 +3,9 @@
 import {
     as,
     Cardinal,
-    INITIAL,
     insteadOf,
     Multiple,
+    NO_SHIFT,
     Ordinal,
     Rotation,
     Scalar,
@@ -14,17 +14,17 @@ import {
 
 describe('instead of', () => {
     it('discards whatever a use used to be Of and replaces it with what you specify instead', () => {
-        expect(insteadOf<Ordinal, Scalar>(INITIAL))
-            .toBe(as.Ordinal<Scalar>(0))
+        expect(insteadOf<Translation, Scalar>(NO_SHIFT))
+            .toBe(as.Translation<Scalar>(0))
 
         expect(insteadOf<Scalar, Rotation>(as.Scalar<Translation>(1)))
             .toBe(as.Scalar<Rotation>(1))
 
-        expect(insteadOf<Ordinal, Rotation>(as.Ordinal<string>(1)))
-            .toBe(as.Ordinal<Rotation>(1))
+        expect(insteadOf<Translation, Rotation>(as.Translation<Scalar>(1)))
+            .toBe(as.Translation<Rotation>(1))
 
-        expect(insteadOf<Ordinal>(as.Ordinal<string>(1)))
-            .toBe(as.Ordinal(1))
+        expect(insteadOf<Translation>(as.Translation<Scalar>(1)))
+            .toBe(as.Translation(1))
     })
 
     it('should work for special uses that enforce being integers', () => {

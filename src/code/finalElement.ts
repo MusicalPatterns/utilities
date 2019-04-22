@@ -1,5 +1,5 @@
 import { negative } from '../math'
-import { as, Cardinal, COUNT_FROM_LENGTH_TO_FINAL_INDEX, Cycle, notAs, Ordinal, Translation, use } from '../nominal'
+import { as, Cardinal, COUNT_FROM_LENGTH_TO_FINAL_INDEX, Cycle, notAs, Ordinal, use } from '../nominal'
 import { isEmpty } from './isEmpty'
 import { IndexOf } from './types'
 

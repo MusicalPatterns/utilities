@@ -1,7 +1,7 @@
 // tslint:disable variable-name max-file-line-count max-line-length
 
 import {
-    Amplitude,
+    Amplitude, ArrayOverload,
     Base,
     Block,
     Cardinal,
@@ -145,8 +145,8 @@ const IntegerModulus: <OfType extends Number = number>(integerModulus: IntegerMo
 
 // Natural Fixed Uses (only used for arrays)
 
-const Ordinal: <OfType = number>(ordinal: Ordinal<OfType>) => number =
-    <OfType = number>(ordinal: Ordinal<OfType>): number =>
+const Ordinal: <OfType extends ArrayOverload = number[]>(ordinal: Ordinal<OfType>) => number =
+    <OfType extends ArrayOverload = number[]>(ordinal: Ordinal<OfType>): number =>
         ordinal as unknown as number
 
 // Normalized Uses

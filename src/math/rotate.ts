@@ -12,7 +12,6 @@ import {
     Radians,
     ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS,
     Scalar,
-    Translation,
     TWO_DIMENSIONAL,
     use,
     Z_AXIS,

@@ -43,6 +43,7 @@ export {
     FIFTH,
     SIXTH,
     SEVENTH,
+    NO_SHIFT,
 } from './constants'
 
 export {

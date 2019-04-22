@@ -152,4 +152,5 @@ export {
     SEVENTH,
     IntegerModulus,
     Point,
+    NO_SHIFT,
 } from './nominal/indexForTest'

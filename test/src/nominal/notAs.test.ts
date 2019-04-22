@@ -1,6 +1,6 @@
 // tslint:disable no-unused-expression no-dead-store
 
-import { as, Fraction, Hz, Logarithm, notAs, Of, ONE_HALF, Scalar } from '../../../src/indexForTest'
+import { as, Fraction, Hz, Logarithm, Ms, notAs, Of, ONE_HALF, Rotation, Scalar } from '../../../src/indexForTest'
 
 describe('notAs', () => {
     it('converts back as a plain number', () => {
@@ -55,6 +55,12 @@ describe('notAs', () => {
         const ofHzs: Array<Of<Hz>> = hzScalars.map((hzScalar: Scalar<Hz>) => notAs.Scalar(hzScalar))
     })
 
+    it('allows assigning to the wrong Of, because you can just make any number an Of', () => {
+        const never1: Of<Ms> = notAs.Hz(as.Hz(3))
+        const never2: Of<Rotation> = notAs.Scalar(as.Scalar(3))
+        const never3: Of<Rotation<Hz>> = notAs.Rotation<Ms>(as.Rotation<Ms>(3))
+    })
+
     describe('special units/uses', () => {
         it('works', () => {
             const fromCardinal: number = notAs.Cardinal(as.Cardinal(3))
@@ -75,7 +81,7 @@ describe('notAs', () => {
 
         it('works for Ordinal', () => {
             const three: number = notAs.Ordinal(as.Ordinal(3))
-            const threeScalar: Of<Scalar> = notAs.Ordinal(as.Ordinal<Scalar>(3))
+            const threeScalar: Of<Scalar[]> = notAs.Ordinal(as.Ordinal<Scalar[]>(3))
         })
     })
 })

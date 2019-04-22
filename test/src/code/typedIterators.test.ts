@@ -58,7 +58,7 @@ describe('typed iterators', () => {
     describe('find index', () => {
         it('returns the index of the first matching element', () => {
             expect(findIndex([ 7, 4, 7, 23, 8, 3 ], (element: number) => element === 8))
-                .toBe(as.Ordinal<number[]>(4))
+                .toBe(as.Ordinal(4))
         })
     })
 })

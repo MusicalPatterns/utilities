@@ -1,5 +1,5 @@
 import { isSingleton } from '../code'
-import { Cardinal, FIRST_FACTOR_NECESSARY_TO_CHECK_IF_COMMON, Integer, Natural, Translation, use } from '../nominal'
+import { Cardinal, FIRST_FACTOR_NECESSARY_TO_CHECK_IF_COMMON, Integer, Natural, use } from '../nominal'
 import { dividesEvenly } from './dividesEvenly'
 import { max } from './typedOperations'
 import { ManyToManyIntegerOperation } from './types'
