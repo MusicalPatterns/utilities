@@ -69,9 +69,7 @@ export {
     inBounds,
     allValuesAreTheSame,
     isCloseTo,
-    delta,
     difference,
-    interval,
     quotient,
     valueLinearlyBetweenValues,
     reciprocal,
@@ -152,4 +150,5 @@ export {
     SIXTH,
     SEVENTH,
     IntegerModulus,
+    Point,
 } from './nominal/indexForTest'

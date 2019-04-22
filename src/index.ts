@@ -153,8 +153,6 @@ export {
     goesQuadratically,
     goesQuadraticallyBetweenValueAndValue,
     goesQuadraticallyFromValueToValue,
-    delta,
-    interval,
 } from './math'
 export {
     centsTranslationToPitchScalar,

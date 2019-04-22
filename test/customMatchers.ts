@@ -16,6 +16,7 @@ import {
     isLessThanOrEqualTo,
     isUndefined,
     Ordinal,
+    Point,
     use,
 } from '../src/indexForTest'
 import CustomEqualityTester = jasmine.CustomEqualityTester
@@ -256,8 +257,8 @@ const customMatchers: CustomMatcherFactories = {
     }),
     toGoMonotonically: (util: MatchersUtil, customEqualityTesters: CustomEqualityTester[]): CustomMatcher => ({
         compare: <NumericElementType extends Number>(
-            array: NumericElementType[],
-            expectedBeginValue?: NumericElementType,
+            array: Array<Point<NumericElementType>>,
+            expectedBeginValue?: Point<NumericElementType>,
             precision?: number,
             message?: string,
         ): CustomMatcherResult =>
@@ -273,9 +274,9 @@ const customMatchers: CustomMatcherFactories = {
     }),
     toGoMonotonicallyBetweenValueAndValue: (util: MatchersUtil, customEqualityTesters: CustomEqualityTester[]): CustomMatcher => ({
         compare: <NumericElementType extends Number>(
-            array: NumericElementType[],
-            expectedBeginValue: NumericElementType,
-            expectedEndValue: NumericElementType,
+            array: Array<Point<NumericElementType>>,
+            expectedBeginValue: Point<NumericElementType>,
+            expectedEndValue: Point<NumericElementType>,
             precision?: number,
             message?: string,
         ): CustomMatcherResult =>
@@ -290,9 +291,9 @@ const customMatchers: CustomMatcherFactories = {
     }),
     toGoMonotonicallyFromValueToValue: (util: MatchersUtil, customEqualityTesters: CustomEqualityTester[]): CustomMatcher => ({
         compare: <NumericElementType extends Number>(
-            array: NumericElementType[],
-            expectedBeginValue: NumericElementType,
-            expectedEndValue: NumericElementType,
+            array: Array<Point<NumericElementType>>,
+            expectedBeginValue: Point<NumericElementType>,
+            expectedEndValue: Point<NumericElementType>,
             precision?: number,
             message?: string,
         ): CustomMatcherResult =>
@@ -307,8 +308,8 @@ const customMatchers: CustomMatcherFactories = {
     }),
     toGoQuadratically: (util: MatchersUtil, customEqualityTesters: CustomEqualityTester[]): CustomMatcher => ({
         compare: <NumericElementType extends Number>(
-            array: NumericElementType[],
-            expectedBeginValue?: NumericElementType,
+            array: Array<Point<NumericElementType>>,
+            expectedBeginValue?: Point<NumericElementType>,
             precision?: number,
             message?: string,
         ): CustomMatcherResult =>
@@ -324,9 +325,9 @@ const customMatchers: CustomMatcherFactories = {
     }),
     toGoQuadraticallyBetweenValueAndValue: (util: MatchersUtil, customEqualityTesters: CustomEqualityTester[]): CustomMatcher => ({
         compare: <NumericElementType extends Number>(
-            array: NumericElementType[],
-            expectedBeginValue: NumericElementType,
-            expectedEndValue: NumericElementType,
+            array: Array<Point<NumericElementType>>,
+            expectedBeginValue: Point<NumericElementType>,
+            expectedEndValue: Point<NumericElementType>,
             precision?: number,
             message?: string,
         ): CustomMatcherResult =>
@@ -341,9 +342,9 @@ const customMatchers: CustomMatcherFactories = {
     }),
     toGoQuadraticallyFromValueToValue: (util: MatchersUtil, customEqualityTesters: CustomEqualityTester[]): CustomMatcher => ({
         compare: <NumericElementType extends Number>(
-            array: NumericElementType[],
-            expectedBeginValue: NumericElementType,
-            expectedEndValue: NumericElementType,
+            array: Array<Point<NumericElementType>>,
+            expectedBeginValue: Point<NumericElementType>,
+            expectedEndValue: Point<NumericElementType>,
             precision?: number,
             message?: string,
         ): CustomMatcherResult =>

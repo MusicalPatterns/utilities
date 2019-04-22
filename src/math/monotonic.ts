@@ -1,19 +1,19 @@
 // tslint:disable max-file-line-count bool-param-default
 
 import { initialElement, isGreaterThanOrEqualTo, isLessThanOrEqualTo, isUndefined, Maybe } from '../code'
-import { notAs, SKIP_FIRST_ELEMENT } from '../nominal'
+import { notAs, Point, SKIP_FIRST_ELEMENT } from '../nominal'
 import { beginValueIsCorrect, goesFromValueToValue } from './goes'
 import { inBounds } from './inBounds'
 
 const goesMonotonically: <NumericElementType extends Number>(
-    array: NumericElementType[],
-    expectedBeginValue?: NumericElementType,
+    array: Array<Point<NumericElementType>>,
+    expectedBeginValue?: Point<NumericElementType>,
     isIncreasingOverride?: boolean,
     precision?: number,
 ) => boolean =
     <NumericElementType extends Number>(
-        array: NumericElementType[],
-        expectedBeginValue?: NumericElementType,
+        array: Array<Point<NumericElementType>>,
+        expectedBeginValue?: Point<NumericElementType>,
         isIncreasingOverride?: boolean,
         precision?: number,
     ): boolean => {
@@ -23,11 +23,11 @@ const goesMonotonically: <NumericElementType extends Number>(
 
         let isIncreasing: Maybe<boolean> = isIncreasingOverride
 
-        let previousValue: NumericElementType = initialElement(array)
+        let previousValue: Point<NumericElementType> = initialElement(array)
         let result: boolean = true
 
         array.slice(notAs.Ordinal(SKIP_FIRST_ELEMENT))
-            .forEach((value: NumericElementType) => {
+            .forEach((value: Point<NumericElementType>) => {
                 if (isUndefined(isIncreasing)) {
                     isIncreasing = value > previousValue
                 }
@@ -49,21 +49,21 @@ const goesMonotonically: <NumericElementType extends Number>(
     }
 
 const goesMonotonicallyBetweenValueAndValue: <NumericElementType extends Number>(
-    array: NumericElementType[],
-    expectedBeginBound: NumericElementType,
-    expectedEndBound: NumericElementType,
+    array: Array<Point<NumericElementType>>,
+    expectedBeginBound: Point<NumericElementType>,
+    expectedEndBound: Point<NumericElementType>,
     precision?: number,
 ) => boolean =
     <NumericElementType extends Number>(
-        array: NumericElementType[],
-        expectedBeginBound: NumericElementType,
-        expectedEndBound: NumericElementType,
+        array: Array<Point<NumericElementType>>,
+        expectedBeginBound: Point<NumericElementType>,
+        expectedEndBound: Point<NumericElementType>,
         precision?: number,
     ): boolean => {
         const isIncreasing: boolean = expectedEndBound > expectedBeginBound
 
-        const lowerBound: NumericElementType = isIncreasing ? expectedBeginBound : expectedEndBound
-        const upperBound: NumericElementType = isIncreasing ? expectedEndBound : expectedBeginBound
+        const lowerBound: Point<NumericElementType> = isIncreasing ? expectedBeginBound : expectedEndBound
+        const upperBound: Point<NumericElementType> = isIncreasing ? expectedEndBound : expectedBeginBound
 
         if (!inBounds(array, lowerBound, upperBound, precision)) {
             return false
@@ -73,15 +73,15 @@ const goesMonotonicallyBetweenValueAndValue: <NumericElementType extends Number>
     }
 
 const goesMonotonicallyFromValueToValue: <NumericElementType extends Number>(
-    array: NumericElementType[],
-    expectedBeginValue: NumericElementType,
-    expectedEndValue: NumericElementType,
+    array: Array<Point<NumericElementType>>,
+    expectedBeginValue: Point<NumericElementType>,
+    expectedEndValue: Point<NumericElementType>,
     precision?: number,
 ) => boolean =
     <NumericElementType extends Number>(
-        array: NumericElementType[],
-        expectedBeginValue: NumericElementType,
-        expectedEndValue: NumericElementType,
+        array: Array<Point<NumericElementType>>,
+        expectedBeginValue: Point<NumericElementType>,
+        expectedEndValue: Point<NumericElementType>,
         precision?: number,
     ): boolean => {
         const isIncreasing: boolean = expectedEndValue > expectedBeginValue

@@ -1,19 +1,19 @@
 // tslint:disable bool-param-default
 
 import { isUndefined, Maybe } from '../code'
-import { EXAMPLE_ELEMENT_INDEX, MULTIPLICATIVE_IDENTITY, notAs, Scalar, Translation, use } from '../nominal'
+import { as, EXAMPLE_ELEMENT_INDEX, MULTIPLICATIVE_IDENTITY, notAs, Point, Scalar, Translation, use } from '../nominal'
 import { allValuesAreTheSame, beginValueIsCorrect } from './goes'
 import { goesMonotonicallyBetweenValueAndValue, goesMonotonicallyFromValueToValue } from './monotonic'
 import { computeDeltas, computeIntervals } from './rateOfChange'
 
 const goesQuadratically: <NumericElementType extends Number>(
-    array: NumericElementType[],
-    expectedBeginValue?: NumericElementType,
+    array: Array<Point<NumericElementType>>,
+    expectedBeginValue?: Point<NumericElementType>,
     precision?: number,
 ) => boolean =
     <NumericElementType extends Number>(
-        array: NumericElementType[],
-        expectedBeginValue?: NumericElementType,
+        array: Array<Point<NumericElementType>>,
+        expectedBeginValue?: Point<NumericElementType>,
         precision?: number,
     ): boolean => {
         if (!isUndefined(expectedBeginValue) && !beginValueIsCorrect(array, expectedBeginValue, precision)) {
@@ -22,7 +22,7 @@ const goesQuadratically: <NumericElementType extends Number>(
 
         const deltas: Array<Translation<NumericElementType>> = computeDeltas(array)
         const deltaIntervals: Array<Maybe<Scalar>> = computeIntervals(
-            deltas.map((delta: Translation<NumericElementType>) => notAs.Translation(delta)),
+            deltas.map((delta: Translation<NumericElementType>) => as.Point(notAs.Translation(delta))),
         )
 
         const exampleInterval: Maybe<Scalar> = use.Ordinal(
@@ -38,15 +38,15 @@ const goesQuadratically: <NumericElementType extends Number>(
     }
 
 const goesQuadraticallyBetweenValueAndValue: <NumericElementType extends Number>(
-    array: NumericElementType[],
-    expectedBeginBound: NumericElementType,
-    expectedEndBound: NumericElementType,
+    array: Array<Point<NumericElementType>>,
+    expectedBeginBound: Point<NumericElementType>,
+    expectedEndBound: Point<NumericElementType>,
     precision?: number,
 ) => boolean =
     <NumericElementType extends Number>(
-        array: NumericElementType[],
-        expectedBeginBound: NumericElementType,
-        expectedEndBound: NumericElementType,
+        array: Array<Point<NumericElementType>>,
+        expectedBeginBound: Point<NumericElementType>,
+        expectedEndBound: Point<NumericElementType>,
         precision?: number,
     ): boolean => {
         if (!goesMonotonicallyBetweenValueAndValue(array, expectedBeginBound, expectedEndBound, precision)) {
@@ -57,15 +57,15 @@ const goesQuadraticallyBetweenValueAndValue: <NumericElementType extends Number>
     }
 
 const goesQuadraticallyFromValueToValue: <NumericElementType extends Number>(
-    array: NumericElementType[],
-    expectedBeginValue: NumericElementType,
-    expectedEndValue: NumericElementType,
+    array: Array<Point<NumericElementType>>,
+    expectedBeginValue: Point<NumericElementType>,
+    expectedEndValue: Point<NumericElementType>,
     precision?: number,
 ) => boolean =
     <NumericElementType extends Number>(
-        array: NumericElementType[],
-        expectedBeginValue: NumericElementType,
-        expectedEndValue: NumericElementType,
+        array: Array<Point<NumericElementType>>,
+        expectedBeginValue: Point<NumericElementType>,
+        expectedEndValue: Point<NumericElementType>,
         precision?: number,
     ): boolean => {
         if (!goesMonotonicallyFromValueToValue(array, expectedBeginValue, expectedEndValue, precision)) {

@@ -1,19 +1,9 @@
 // tslint:disable max-file-line-count
 
 import { isEmpty, isUndefined } from '../code'
-import {
-    ADDITIVE_IDENTITY,
-    Denature,
-    Integer,
-    MULTIPLICATIVE_IDENTITY,
-    Natural,
-    Nature,
-    NoUse,
-    Scalar,
-    Translation,
-} from '../nominal'
+import { ADDITIVE_IDENTITY, Denature, Integer, MULTIPLICATIVE_IDENTITY, Natural, Nature, NoUse } from '../nominal'
 import { VALUE_BELOW_WHICH_ROUNDING_IMPLEMENTATION_BREAKS } from './constants'
-import { ManyToOneOperation } from './types'
+import { DifferenceOperation, ManyToOneOperation, QuotientOperation } from './types'
 
 const sum: ManyToOneOperation =
     <NumericType extends NoUse | number>(
@@ -32,30 +22,12 @@ const sum: ManyToOneOperation =
         return (nextSum as unknown as number) + (previousValue as unknown as number) as unknown as NumericType
     }
 
-const difference: <NumericType extends Number>(
-    minuend: NumericType,
-    subtrahend: NumericType,
-) => NumericType =
-    <NumericType extends Number>(
-        minuend: NumericType,
-        subtrahend: NumericType,
-    ): NumericType =>
+const difference: DifferenceOperation =
+    <NumericType extends Number>(minuend: NumericType, subtrahend: NumericType): NumericType =>
         (minuend as unknown as number) - (subtrahend as unknown as number) as unknown as NumericType
 
-const delta: <NumericType extends NoUse | number>(
-    minuend: NumericType,
-    subtrahend: NumericType,
-) => Translation<NumericType> =
-    <NumericType extends NoUse | number>(
-        minuend: NumericType,
-        subtrahend: NumericType,
-    ): Translation<NumericType> =>
-        (minuend as unknown as number) - (subtrahend as unknown as number) as unknown as Translation<NumericType>
-
 const product: ManyToOneOperation =
-    <NumericType extends NoUse | number>(
-        ...values: Array<number | NumericType>
-    ): number | NumericType => {
+    <NumericType extends NoUse | number>(...values: Array<number | NumericType>): number | NumericType => {
         if (isEmpty(values)) {
             return MULTIPLICATIVE_IDENTITY as unknown as NumericType
         }
@@ -69,25 +41,9 @@ const product: ManyToOneOperation =
         return (nextProduct as unknown as number) * (previousValue as unknown as number) as unknown as NumericType
     }
 
-const quotient: <NumericType extends Number>(
-    dividend: NumericType,
-    divisor: NumericType,
-) => Denature<NumericType> =
-    <NumericType extends Number>(
-        dividend: NumericType,
-        divisor: NumericType,
-    ): Denature<NumericType> =>
-        (dividend as unknown as number) / (divisor as unknown as number) as unknown as Denature<NumericType>
-
-const interval: <NumericType extends NoUse | number>(
-    dividend: NumericType,
-    divisor: NumericType,
-) => Scalar<Denature<NumericType>> =
-    <NumericType extends NoUse | number>(
-        dividend: NumericType,
-        divisor: NumericType,
-    ): Scalar<Denature<NumericType>> =>
-        (dividend as unknown as number) / (divisor as unknown as number) as unknown as Scalar<Denature<NumericType>>
+const quotient: QuotientOperation =
+    <NumericType extends Number>(dividend: NumericType, divisor: NumericType): NumericType =>
+        (dividend as unknown as number) / (divisor as unknown as number) as unknown as NumericType
 
 const modulus: <NumericType extends NoUse | number>(
     dividend: NumericType,
@@ -168,6 +124,4 @@ export {
     cubeRoot,
     max,
     min,
-    delta,
-    interval,
 }

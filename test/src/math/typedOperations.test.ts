@@ -4,12 +4,10 @@ import {
     as,
     Base,
     cubeRoot,
-    delta,
     difference,
     Exponent,
     floor,
     IntegerModulus,
-    interval,
     Logarithm,
     Modulus,
     modulus,
@@ -94,24 +92,6 @@ describe('typed operations', () => {
         })
     })
 
-    describe('delta vs difference', () => {
-        it('delta returns a Translation type Of the Units; difference simply dumbly subtracts if types match and returns of the same Units', () => {
-            expect(delta(as.Ms(4), as.Ms(1)))
-                .toBe(as.Translation<Ms>(3))
-            expect(difference(as.Ms(4), as.Ms(1)))
-                .toBe(as.Ms(3))
-        })
-    })
-
-    describe('interval vs quotient', () => {
-        it('interval returns a Scalar type Of the Units; quotient simply dumbly divides if types match and returns of the same Units', () => {
-            expect(interval(as.Ms(6), as.Ms(2)))
-                .toBe(as.Scalar<Ms>(3))
-            expect(quotient(as.Ms(6), as.Ms(2)))
-                .toBe(as.Ms(3))
-        })
-    })
-
     describe('reciprocal', () => {
         it('when given an integer, removes the integer type in the return value', () => {
             const numerator: number = reciprocal(as.Numerator(3))
@@ -170,17 +150,42 @@ describe('typed operations', () => {
         })
     })
 
-    describe('quotient', () => {
-        it('when given an integer type, removes the integer type in the return value', () => {
-            const numeratorDowngraded: number = quotient(as.Numerator(3), as.Numerator(3))
-            const denominatorDowngraded: number = quotient(as.Denominator(3), as.Denominator(3))
+    describe('difference', () => {
+        it('dumbly subtracts if types match and are not as Points, and returns of the same Units', () => {
+            expect(difference(as.Ms(4), as.Ms(1)))
+                .toBe(as.Ms(3))
+        })
+
+        it('returns a Translation type Of the Units if they are given as Points', () => {
+            expect(difference(as.Point<Ms>(4), as.Point<Ms>(1)))
+                .toBe(as.Translation<Ms>(3))
+        })
+
+        it('returns a Cardinal type Of the Units if they are given as Ordinals', () => {
+            expect(difference(as.Ordinal<Ms[]>(4), as.Ordinal<Ms[]>(1)))
+                .toBe(as.Cardinal<Ms[]>(3))
         })
     })
 
-    describe('interval', () => {
-        it('when given an integer type, removes the integer type in the return value', () => {
-            const numeratorDowngraded: Scalar = interval(as.Numerator(3), as.Numerator(3))
-            const denominatorDowngraded: Scalar = interval(as.Denominator(3), as.Denominator(3))
+    describe('quotient', () => {
+        it('dumbly divides if types match and are not as Points, and returns of the same Units', () => {
+            expect(quotient(as.Ms(6), as.Ms(2)))
+                .toBe(as.Ms(3))
+        })
+
+        it('returns a Scalar type Of the Units if they are given as Points', () => {
+            expect(quotient(as.Point<Ms>(6), as.Point<Ms>(2)))
+                .toBe(as.Scalar<Ms>(3))
+        })
+
+        it('returns a Multiple type Of the Units if they are given as Ordinals', () => {
+            expect(quotient(as.Ordinal<Ms[]>(6), as.Ordinal<Ms[]>(2)))
+                .toBe(as.Multiple<Ms[]>(3))
+        })
+
+        it('when given an integer type, removes the integer type in the return value, because division is not closed on integers (by contrast, subtraction is, which is why we do not have an equivalent test above for `difference`)', () => {
+            const numeratorDowngraded: number = quotient(as.Numerator(3), as.Numerator(3))
+            const denominatorDowngraded: number = quotient(as.Denominator(3), as.Denominator(3))
         })
     })
 
