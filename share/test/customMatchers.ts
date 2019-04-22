@@ -19,7 +19,6 @@ import {
     Point,
     use,
 } from '@musical-patterns/utilities'
-import { Point } from '../../src/nominal'
 import CustomEqualityTester = jasmine.CustomEqualityTester
 import CustomMatcher = jasmine.CustomMatcher
 import CustomMatcherFactories = jasmine.CustomMatcherFactories
