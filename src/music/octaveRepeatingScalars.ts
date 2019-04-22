@@ -19,7 +19,7 @@ const computeOctaveRepeatingScalars: (scalars: Array<Scalar<Hz>>) => Array<Scala
         for (
             let index: Ordinal<Base<Frequency>> = INITIAL;
             notAs.Ordinal<Base<Frequency>>(index) < notAs.Cardinal(MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS);
-            index = use.Translation(index, INCREMENT)
+            index = use.Cardinal(index, INCREMENT)
         ) {
             const nextOctave: Base<Frequency> = use.Power(OCTAVE, as.Power<Base<Frequency>>(notAs.Ordinal(index)))
             octaveRepeatingScalars = octaveRepeatingScalars.concat(

@@ -1,4 +1,4 @@
-import { as, DECIMAL, DEFAULT_PRECISION, ONE_HALF, use } from '../nominal'
+import { as, DECIMAL, DEFAULT_PRECISION, INCREMENT, ONE_HALF, use } from '../nominal'
 import { absoluteValue, difference, negative, product, quotient, round } from './typedOperations'
 
 const isCloseTo: <NumericType extends Number>(
@@ -13,7 +13,7 @@ const isCloseTo: <NumericType extends Number>(
     ): boolean => {
         const precision: number = manualPrecision || DEFAULT_PRECISION
 
-        const pow: number = use.Power(DECIMAL, as.Power(use.Translation(precision, as.Translation(1))))
+        const pow: number = use.Power(DECIMAL, as.Power(use.Cardinal(precision, INCREMENT)))
         const delta: NumericType = absoluteValue(difference(actual, expected))
         const maxDelta: number = use.Scalar(use.Power(DECIMAL, as.Power(negative(precision))), ONE_HALF)
 

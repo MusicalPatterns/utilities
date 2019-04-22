@@ -7,19 +7,19 @@ const computePartialSumOfExponents: <NumericType extends Number>(
 ) => number =
     <NumericType extends Number>(logarithm: Logarithm<NumericType>, upperBound: Exponent<NumericType>): number =>
         notAs.Logarithm<NumericType>(use.Scalar(
-            use.Translation(
+            use.Cardinal(
                 use.Exponent(
                     logarithm,
-                    insteadOf<Exponent, Logarithm<NumericType>>(use.Translation(
+                    insteadOf<Exponent, Logarithm<NumericType>>(use.Cardinal(
                         upperBound,
-                        as.Translation<Exponent<NumericType>>(1),
+                        as.Cardinal<Exponent<NumericType>>(1),
                     )),
                 ),
-                as.Translation<Logarithm<NumericType>>(negative(1)),
+                as.Cardinal<Logarithm<NumericType>>(negative(1)),
             ),
-            as.Scalar(ofNotAs(reciprocal(use.Translation(
+            as.Scalar(ofNotAs(reciprocal(use.Cardinal(
                 logarithm,
-                as.Translation<Logarithm<NumericType>>(negative(1)),
+                as.Cardinal<Logarithm<NumericType>>(negative(1)),
             )))),
         ))
 

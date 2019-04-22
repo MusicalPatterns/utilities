@@ -8,7 +8,7 @@ const repeatCall:
         for (
             let index: Ordinal<Array<() => ElementType[]>> = INITIAL;
             index <= finalIndexFromElementsTotal(count);
-            index = use.Translation(index, NEXT)
+            index = use.Cardinal(index, NEXT)
         ) {
             repeatedArrayFunction = repeatedArrayFunction.concat(arrayFunction())
         }

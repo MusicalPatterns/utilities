@@ -7,7 +7,7 @@ const repeat: <ElementType>(array: ElementType[], count: Cardinal<ElementType[]>
         for (
             let index: Ordinal<ElementType[]> = INITIAL;
             index <= finalIndexFromElementsTotal(count);
-            index = use.Translation(index, NEXT)
+            index = use.Cardinal(index, NEXT)
         ) {
             repeatedArray = repeatedArray.concat(array)
         }
