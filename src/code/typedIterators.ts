@@ -1,6 +1,6 @@
 // tslint:disable max-file-line-count
 
-import { as, Cycle, INCREMENT, notAs, Ordinal, use } from '../nominal'
+import { ArrayOverload, as, Cycle, INCREMENT, notAs, Ordinal, use } from '../nominal'
 import { indexJustBeyondFinalElement, length } from './finalElement'
 import { isUndefined } from './isUndefined'
 
@@ -137,14 +137,14 @@ const every: <ElementType>(
         // @ts-ignore
         array.every(callback)
 
-const findIndex: <ElementType>(
-    array: ElementType[],
-    callback: (element: ElementType, index: Ordinal<ElementType[]>, self: ElementType[]) => boolean,
-) => Ordinal<ElementType[]> =
-    <ElementType>(
-        array: ElementType[],
-        callback: (element: ElementType, index: Ordinal<ElementType[]>, self: ElementType[]) => boolean,
-    ): Ordinal<ElementType[]> =>
+const findIndex: <ElementType, ArrayType extends ArrayOverload & ElementType[]>(
+    array: ArrayOverload,
+    callback: (element: ElementType, index: Ordinal<ArrayOverload>, self: ArrayOverload) => boolean,
+) => Ordinal<ArrayOverload> =
+    <ElementType, ArrayType extends ArrayOverload & ElementType[]>(
+        array: ArrayOverload,
+        callback: (element: ElementType, index: Ordinal<ArrayOverload>, self: ArrayOverload) => boolean,
+    ): Ordinal<ArrayOverload> =>
         // @ts-ignore
         array.findIndex(callback)
 

@@ -1,5 +1,5 @@
 import { negative } from '../math'
-import { as, Cardinal, COUNT_FROM_LENGTH_TO_FINAL_INDEX, Cycle, notAs, Ordinal, use } from '../nominal'
+import { ArrayOverload, as, Cardinal, COUNT_FROM_LENGTH_TO_FINAL_INDEX, Cycle, notAs, Ordinal, use } from '../nominal'
 import { isEmpty } from './isEmpty'
 import { IndexOf } from './types'
 
@@ -18,9 +18,9 @@ const indexJustBeyondFinalElement: IndexOf =
     <ElementType>(array: ElementType[]): Ordinal<ElementType[]> & Ordinal<Cycle<ElementType>> =>
         as.Ordinal(array.length) as unknown as Ordinal<ElementType[]> & Ordinal<Cycle<ElementType>>
 
-const length: <ElementType>(array: ElementType[]) => Cardinal<ElementType[]> =
-    <ElementType>(array: ElementType[]): Cardinal<ElementType[]> =>
-        as.Cardinal<ElementType[]>(array.length)
+const length: <ArrayType extends ArrayOverload>(array: ArrayType) => Cardinal<ArrayType> =
+    <ArrayType extends ArrayOverload>(array: ArrayType): Cardinal<ArrayType> =>
+        as.Cardinal<ArrayType>(array.length)
 
 const initialElement: <ElementType>(array: ElementType[]) => ElementType =
     <ElementType>(array: ElementType[]): ElementType => {
@@ -31,14 +31,15 @@ const initialElement: <ElementType>(array: ElementType[]) => ElementType =
         return use.Ordinal(array, 0 as unknown as Ordinal<ElementType[]>)
     }
 
-const finalIndexFromElementsTotal: <ElementType>(elementsTotal: Cardinal<ElementType[]>) => Ordinal<ElementType[]> =
-    <ElementType>(elementsTotal: Cardinal<ElementType[]>): Ordinal<ElementType[]> =>
-        as.Ordinal<ElementType[]>(notAs.Cardinal(use.Cardinal(elementsTotal, COUNT_FROM_LENGTH_TO_FINAL_INDEX)))
+const finalIndexFromElementsTotal:
+    <ArrayType extends ArrayOverload>(elementsTotal: Cardinal<ArrayType>) => Ordinal<ArrayType> =
+    <ArrayType extends ArrayOverload>(elementsTotal: Cardinal<ArrayType>): Ordinal<ArrayType> =>
+        as.Ordinal<ArrayType>(notAs.Cardinal(use.Cardinal(elementsTotal, COUNT_FROM_LENGTH_TO_FINAL_INDEX)))
 
 const indexJustBeyondFinalElementFromElementsTotal:
-    <ElementType>(elementsTotal: Cardinal<ElementType[]>) => Ordinal<ElementType[]> =
-    <ElementType>(elementsTotal: Cardinal<ElementType[]>): Ordinal<ElementType[]> =>
-        as.Ordinal<ElementType[]>(notAs.Cardinal(elementsTotal))
+    <ArrayType extends ArrayOverload>(elementsTotal: Cardinal<ArrayType>) => Ordinal<ArrayType> =
+    <ArrayType extends ArrayOverload>(elementsTotal: Cardinal<ArrayType>): Ordinal<ArrayType> =>
+        as.Ordinal<ArrayType>(notAs.Cardinal(elementsTotal))
 
 export {
     indexOfFinalElement,

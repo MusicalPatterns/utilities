@@ -184,4 +184,5 @@ export {
     Denature,
     Transposition,
     Point,
+    ArrayOverload,
 } from './types'
