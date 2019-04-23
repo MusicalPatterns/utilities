@@ -12,6 +12,7 @@ import {
     NormalScalar,
     ONE_HALF,
     Ordinal,
+    Point,
     Power,
     Scalar,
     Translation,
@@ -41,7 +42,7 @@ describe('use', () => {
         })
 
         it('should be able to scale a point of the same units', () => {
-            use.Scalar(as.Point<Hz>(3), as.Scalar<Hz>(4))
+            const scaledPoint: Point<Hz> = use.Scalar(as.Point<Hz>(3), as.Scalar<Hz>(4))
         })
     })
 
