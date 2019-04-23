@@ -1,6 +1,6 @@
 // tslint:disable
 
-// There should be 174 errors in this file when the below is uncommented.
+// There should be 212 errors in this file when the below is uncommented.
 
 // import {
 //     as,
@@ -12,6 +12,7 @@
 //     CustomNotAs,
 //     CustomOf,
 //     Denominator,
+//     difference,
 //     DUMMY_VALUE_FOR_COMPUTING_NOMINAL_INTERFACE,
 //     Exponent,
 //     Hz,
@@ -31,11 +32,13 @@
 //     ofNotAs,
 //     Ordinal,
 //     Power,
+//     product,
 //     quotient,
 //     reciprocal,
 //     Rotation,
 //     Scalar,
 //     squareRoot,
+//     sum,
 //     Translation,
 //     use,
 // } from '../../../src/indexForTest'
@@ -411,6 +414,88 @@
 //     })
 //
 //     describe('typed uses', () => {
+//         describe('sum', () => {
+//             it('does not work for most Uses', () => {
+//                 sum(as.Scalar(3), as.Scalar(4))
+//                 sum(as.Rotation(3), as.Rotation(4))
+//                 sum(as.Exponent(3), as.Exponent(4))
+//                 sum(as.Logarithm(3), as.Logarithm(4))
+//                 sum(as.Modulus(3), as.Modulus(4))
+//
+//                 sum(as.Multiple(3), as.Multiple(4))
+//                 sum(as.Transposition(3), as.Transposition(4))
+//                 sum(as.Power(3), as.Power(4))
+//                 sum(as.Base(3), as.Base(4))
+//                 sum(as.IntegerModulus(3), as.IntegerModulus(4))
+//
+//                 sum(as.NormalScalar(0.3), as.NormalScalar(0.4))
+//             })
+//         })
+//
+//         describe('product', () => {
+//             it('does not work for most Uses', () => {
+//                 product(as.Translation(3), as.Translation(4))
+//                 product(as.Rotation(3), as.Rotation(4))
+//                 product(as.Exponent(3), as.Exponent(4))
+//                 product(as.Logarithm(3), as.Logarithm(4))
+//                 product(as.Modulus(3), as.Modulus(4))
+//
+//                 product(as.Cardinal(3), as.Cardinal(4))
+//                 product(as.Transposition(3), as.Transposition(4))
+//                 product(as.Power(3), as.Power(4))
+//                 product(as.Base(3), as.Base(4))
+//                 product(as.IntegerModulus(3), as.IntegerModulus(4))
+//             })
+//         })
+//
+//         describe('difference', () => {
+//             it('does not work for most Uses', () => {
+//                 difference(as.Scalar(3), as.Scalar(4))
+//                 difference(as.Rotation(3), as.Rotation(4))
+//                 difference(as.Exponent(3), as.Exponent(4))
+//                 difference(as.Logarithm(3), as.Logarithm(4))
+//                 difference(as.Modulus(3), as.Modulus(4))
+//
+//                 difference(as.Multiple(3), as.Multiple(4))
+//                 difference(as.Transposition(3), as.Transposition(4))
+//                 difference(as.Power(3), as.Power(4))
+//                 difference(as.Base(3), as.Base(4))
+//                 difference(as.IntegerModulus(3), as.IntegerModulus(4))
+//
+//                 difference(as.NormalScalar(0.3), as.NormalScalar(0.4))
+//             })
+//         })
+//
+//         describe('quotient', () => {
+//             it('does not work for most Uses', () => {
+//                 quotient(as.Translation(3), as.Translation(4))
+//                 quotient(as.Rotation(3), as.Rotation(4))
+//                 quotient(as.Exponent(3), as.Exponent(4))
+//                 quotient(as.Logarithm(3), as.Logarithm(4))
+//                 quotient(as.Modulus(3), as.Modulus(4))
+//
+//                 quotient(as.Cardinal(3), as.Cardinal(4))
+//                 quotient(as.Transposition(3), as.Transposition(4))
+//                 quotient(as.Power(3), as.Power(4))
+//                 quotient(as.Base(3), as.Base(4))
+//                 quotient(as.IntegerModulus(3), as.IntegerModulus(4))
+//             })
+//
+//             it('when given an integer, removes the integer type in the return value', () => {
+//                 const integer: Integer = quotient(as.Integer(3), as.Integer(3))
+//                 const numerator: Numerator = quotient(as.Numerator(3), as.Numerator(3))
+//                 const denominator: Denominator = quotient(as.Denominator(3), as.Denominator(3))
+//             })
+//         })
+//
+//         describe('modulus', () => {
+//             it('when given an integer, removes the integer type in the return value', () => {
+//                 const integer: Integer = modulus(as.Integer(3), as.Integer(3))
+//                 const numerator: Numerator = modulus(as.Numerator(3), as.Numerator(3))
+//                 const denominator: Denominator = modulus(as.Denominator(3), as.Denominator(3))
+//             })
+//         })
+//
 //         describe('reciprocal', () => {
 //             it('when given an integer, removes the integer type in the return value', () => {
 //                 const integer: Integer = reciprocal(as.Integer(3))
@@ -421,14 +506,6 @@
 //                 const base: Base = reciprocal(as.Base(3))
 //                 const power: Power = reciprocal(as.Power(3))
 //                 const integerModulus: IntegerModulus = reciprocal(as.IntegerModulus(3))
-//             })
-//         })
-//
-//         describe('modulus', () => {
-//             it('when given an integer, removes the integer type in the return value', () => {
-//                 const integer: Integer = modulus(as.Integer(3), as.Integer(3))
-//                 const numerator: Numerator = modulus(as.Numerator(3), as.Numerator(3))
-//                 const denominator: Denominator = modulus(as.Denominator(3), as.Denominator(3))
 //             })
 //         })
 //
@@ -455,19 +532,6 @@
 //                 const base: Base = squareRoot(as.Base(3))
 //                 const power: Power = squareRoot(as.Power(3))
 //                 const integerModulus: IntegerModulus = squareRoot(as.IntegerModulus(3))
-//             })
-//         })
-//
-//         describe('quotient', () => {
-//             it('when given an integer, removes the integer type in the return value', () => {
-//                 const integer: Integer = quotient(as.Integer(3), as.Integer(3))
-//                 const numerator: Numerator = quotient(as.Numerator(3), as.Numerator(3))
-//                 const denominator: Denominator = quotient(as.Denominator(3), as.Denominator(3))
-//
-//                 const multiple: Multiple = quotient(as.Multiple(3), as.Multiple(3))
-//                 const base: Base = quotient(as.Base(3), as.Base(3))
-//                 const power: Power = quotient(as.Power(3), as.Power(3))
-//                 const integerModulus: IntegerModulus = quotient(as.IntegerModulus(3), as.IntegerModulus(3))
 //             })
 //         })
 //     })

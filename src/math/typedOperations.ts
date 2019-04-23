@@ -3,10 +3,10 @@
 import { isEmpty, isUndefined } from '../code'
 import { ADDITIVE_IDENTITY, Denature, Integer, MULTIPLICATIVE_IDENTITY, Natural, Nature, NoUse } from '../nominal'
 import { VALUE_BELOW_WHICH_ROUNDING_IMPLEMENTATION_BREAKS } from './constants'
-import { DifferenceOperation, ManyToOneOperation, QuotientOperation } from './types'
+import { DifferenceOperation, ProductOperation, QuotientOperation, SumOperation } from './types'
 
-const sum: ManyToOneOperation =
-    <NumericType extends NoUse | number>(
+const sum: SumOperation =
+    <NumericType extends NoUse | number | Number & { _OperationType: 'Translation' }>(
         ...values: Array<number | NumericType>
     ): number | NumericType => {
         if (isEmpty(values)) {
@@ -26,7 +26,7 @@ const difference: DifferenceOperation =
     <NumericType extends Number>(minuend: NumericType, subtrahend: NumericType): NumericType =>
         (minuend as unknown as number) - (subtrahend as unknown as number) as unknown as NumericType
 
-const product: ManyToOneOperation =
+const product: ProductOperation =
     <NumericType extends NoUse | number>(...values: Array<number | NumericType>): number | NumericType => {
         if (isEmpty(values)) {
             return MULTIPLICATIVE_IDENTITY as unknown as NumericType

@@ -52,10 +52,20 @@ interface Operands {
     rhs: number,
 }
 
-interface ManyToOneOperation {
-    <IntegerType extends Natural = Integer>(...values: IntegerType[]): IntegerType,
+interface SumOperation {
+    <IntegerType extends NoUse & Natural = Integer>(...values: IntegerType[]): IntegerType,
     (...values: number[]): number,
     <NumericType extends NoUse | number>(...values: NumericType[]): NumericType,
+    <NumericType extends Number & { _UseBrand: 'Translation' }>(...values: NumericType[]): NumericType,
+    <NumericType extends Number & { _UseBrand: 'Point' }>(...values: NumericType[]): NumericType,
+}
+
+interface ProductOperation {
+    <IntegerType extends NoUse & Natural = Integer>(...values: IntegerType[]): IntegerType,
+    (...values: number[]): number,
+    <NumericType extends NoUse | number>(...values: NumericType[]): NumericType,
+    <NumericType extends Number & { _UseBrand: 'Scalar' }>(...values: NumericType[]): NumericType,
+    <NumericType extends Number & { _UseBrand: 'Point' }>(...values: NumericType[]): NumericType,
 }
 
 interface ManyToManyIntegerOperation {
@@ -85,7 +95,14 @@ interface QuotientOperation {
         dividend: Point<NumericType>,
         divisor: Point<NumericType>,
     ): Scalar<Denature<NumericType>>,
-    <NumericType extends Number>(dividend: NumericType, divisor: NumericType): Denature<NumericType>,
+    <NumericType extends NoUse | number>(
+        dividend: NumericType,
+        divisor: NumericType,
+    ): Denature<NumericType>,
+    <NumericType extends Number & { _UseBrand: 'Scalar' }>(
+        dividend: NumericType,
+        divisor: NumericType,
+    ): Denature<NumericType>,
 }
 
 interface DifferenceOperation {
@@ -101,7 +118,14 @@ interface DifferenceOperation {
         minuend: Point<NumericType>,
         subtrahend: Point<NumericType>,
     ): Translation<Denature<NumericType>>,
-    <NumericType extends Number>(minuend: NumericType, subtrahend: NumericType): NumericType
+    <NumericType extends NoUse | number>(
+        minuend: NumericType,
+        subtrahend: NumericType,
+    ): NumericType,
+    <NumericType extends Number & { _UseBrand: 'Translation' }>(
+        dividend: NumericType,
+        divisor: NumericType,
+    ): Denature<NumericType>,
 }
 
 export {
@@ -115,7 +139,8 @@ export {
     TwoDimensional,
     ThreeDimensional,
     Operands,
-    ManyToOneOperation,
+    SumOperation,
+    ProductOperation,
     ManyToManyIntegerOperation,
     ManyToOneIntegerOperation,
     QuotientOperation,

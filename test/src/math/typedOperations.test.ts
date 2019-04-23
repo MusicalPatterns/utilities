@@ -26,28 +26,6 @@ import {
 } from '../../../src/indexForTest'
 
 describe('typed operations', () => {
-    describe('round', () => {
-        it('when not given a precision, assumes 0', () => {
-            expect(round(as.Scalar(3.5)))
-                .toBe(as.Scalar(4))
-        })
-
-        it('when given a precision, uses it', () => {
-            expect(round(as.Scalar(3.524387), as.Integer(4)))
-                .toBe(as.Scalar(3.5244))
-        })
-
-        it('does not poop out on tiny numbers when the precision is set', () => {
-            expect(round(1 / 1000001, as.Integer(4)))
-                .toBe(0)
-        })
-
-        it('works for negative numbers when the precision is set', () => {
-            expect(round(as.Scalar(-1.111111111), as.Integer(4)))
-                .toBe(as.Scalar(-1.1111))
-        })
-    })
-
     describe('sum', () => {
         it('works for 1 value', () => {
             expect(sum(3))
@@ -67,6 +45,13 @@ describe('typed operations', () => {
         it('works for 0 values', () => {
             expect(sum())
                 .toBe(as.Integer(0))
+        })
+
+        it('works for Uses which relate to addition/subtraction', () => {
+            sum(as.Translation(3), as.Translation(4))
+            sum(as.Point(3), as.Point(4))
+            sum(as.Cardinal(3), as.Cardinal(4))
+            sum(as.Ordinal(3), as.Ordinal(4))
         })
     })
 
@@ -90,6 +75,14 @@ describe('typed operations', () => {
             expect(product())
                 .toBe(as.Integer(1))
         })
+
+        it('works for Uses which relate to multiplication/division', () => {
+            product(as.Scalar(3), as.Scalar(4))
+            product(as.Point(3), as.Point(4))
+            product(as.Multiple(3), as.Multiple(4))
+            product(as.Ordinal(3), as.Ordinal(4))
+            product(as.NormalScalar(0.3), as.NormalScalar(0.4))
+        })
     })
 
     describe('reciprocal', () => {
@@ -112,6 +105,67 @@ describe('typed operations', () => {
             const integerModulus: Modulus = reciprocal(as.IntegerModulus(3))
 
             const integer: number = reciprocal(as.Integer(3))
+        })
+    })
+
+    describe('difference', () => {
+        it('dumbly subtracts if types match and are not as Points, and returns of the same Units', () => {
+            expect(difference(as.Ms(4), as.Ms(1)))
+                .toBe(as.Ms(3))
+        })
+
+        it('returns a Translation type Of the Units if they are given as Points', () => {
+            expect(difference(as.Point<Ms>(4), as.Point<Ms>(1)))
+                .toBe(as.Translation<Ms>(3))
+        })
+
+        it('returns a Cardinal type Of the Units if they are given as Ordinals', () => {
+            expect(difference(as.Ordinal<Ms[]>(4), as.Ordinal<Ms[]>(1)))
+                .toBe(as.Cardinal<Ms[]>(3))
+        })
+
+        it('works for Uses that are related to addition/subtraction', () => {
+            difference(as.Translation(3), as.Translation(4))
+            difference(as.Point(3), as.Point(4))
+            difference(as.Cardinal(3), as.Cardinal(4))
+            difference(as.Ordinal(3), as.Ordinal(4))
+        })
+    })
+
+    describe('quotient', () => {
+        it('dumbly divides if types match and are not as Points, and returns of the same Units', () => {
+            expect(quotient(as.Ms(6), as.Ms(2)))
+                .toBe(as.Ms(3))
+        })
+
+        it('returns a Scalar type Of the Units if they are given as Points', () => {
+            expect(quotient(as.Point<Ms>(6), as.Point<Ms>(2)))
+                .toBe(as.Scalar<Ms>(3))
+        })
+
+        it('returns a Multiple type Of the Units if they are given as Ordinals', () => {
+            expect(quotient(as.Ordinal<Ms[]>(6), as.Ordinal<Ms[]>(2)))
+                .toBe(as.Multiple<Ms[]>(3))
+        })
+
+        it('when given an integer type, removes the integer type in the return value, because division is not closed on integers (by contrast, subtraction is, which is why we do not have an equivalent test above for `difference`)', () => {
+            const numeratorDowngraded: number = quotient(as.Numerator(3), as.Numerator(3))
+            const denominatorDowngraded: number = quotient(as.Denominator(3), as.Denominator(3))
+        })
+
+        it('works for Uses which relate to multiplication/division', () => {
+            quotient(as.Scalar(3), as.Scalar(4))
+            quotient(as.Point(3), as.Point(4))
+            quotient(as.Multiple(3), as.Multiple(4))
+            quotient(as.Ordinal(3), as.Ordinal(4))
+            quotient(as.NormalScalar(0.3), as.NormalScalar(0.4))
+        })
+    })
+
+    describe('modulus', () => {
+        it('when given an integer type, removes the integer type in the return value', () => {
+            const numeratorDowngraded: number = modulus(as.Numerator(3), as.Numerator(3))
+            const denominatorDowngraded: number = modulus(as.Denominator(3), as.Denominator(3))
         })
     })
 
@@ -143,52 +197,6 @@ describe('typed operations', () => {
         })
     })
 
-    describe('modulus', () => {
-        it('when given an integer type, removes the integer type in the return value', () => {
-            const numeratorDowngraded: number = modulus(as.Numerator(3), as.Numerator(3))
-            const denominatorDowngraded: number = modulus(as.Denominator(3), as.Denominator(3))
-        })
-    })
-
-    describe('difference', () => {
-        it('dumbly subtracts if types match and are not as Points, and returns of the same Units', () => {
-            expect(difference(as.Ms(4), as.Ms(1)))
-                .toBe(as.Ms(3))
-        })
-
-        it('returns a Translation type Of the Units if they are given as Points', () => {
-            expect(difference(as.Point<Ms>(4), as.Point<Ms>(1)))
-                .toBe(as.Translation<Ms>(3))
-        })
-
-        it('returns a Cardinal type Of the Units if they are given as Ordinals', () => {
-            expect(difference(as.Ordinal<Ms[]>(4), as.Ordinal<Ms[]>(1)))
-                .toBe(as.Cardinal<Ms[]>(3))
-        })
-    })
-
-    describe('quotient', () => {
-        it('dumbly divides if types match and are not as Points, and returns of the same Units', () => {
-            expect(quotient(as.Ms(6), as.Ms(2)))
-                .toBe(as.Ms(3))
-        })
-
-        it('returns a Scalar type Of the Units if they are given as Points', () => {
-            expect(quotient(as.Point<Ms>(6), as.Point<Ms>(2)))
-                .toBe(as.Scalar<Ms>(3))
-        })
-
-        it('returns a Multiple type Of the Units if they are given as Ordinals', () => {
-            expect(quotient(as.Ordinal<Ms[]>(6), as.Ordinal<Ms[]>(2)))
-                .toBe(as.Multiple<Ms[]>(3))
-        })
-
-        it('when given an integer type, removes the integer type in the return value, because division is not closed on integers (by contrast, subtraction is, which is why we do not have an equivalent test above for `difference`)', () => {
-            const numeratorDowngraded: number = quotient(as.Numerator(3), as.Numerator(3))
-            const denominatorDowngraded: number = quotient(as.Denominator(3), as.Denominator(3))
-        })
-    })
-
     describe('floor and ceiling', () => {
         it('you can assign the return value as the integer version of the input type if you want', () => {
             const scalar: Scalar = floor(as.Scalar(1.3))
@@ -200,6 +208,28 @@ describe('typed operations', () => {
             const power: Power = floor(as.Exponent(1.3))
             const base: Base = floor(as.Logarithm(1.3))
             const integerModulus: IntegerModulus = floor(as.Modulus(1.3))
+        })
+    })
+
+    describe('round', () => {
+        it('when not given a precision, assumes 0', () => {
+            expect(round(as.Scalar(3.5)))
+                .toBe(as.Scalar(4))
+        })
+
+        it('when given a precision, uses it', () => {
+            expect(round(as.Scalar(3.524387), as.Integer(4)))
+                .toBe(as.Scalar(3.5244))
+        })
+
+        it('does not poop out on tiny numbers when the precision is set', () => {
+            expect(round(1 / 1000001, as.Integer(4)))
+                .toBe(0)
+        })
+
+        it('works for negative numbers when the precision is set', () => {
+            expect(round(as.Scalar(-1.111111111), as.Integer(4)))
+                .toBe(as.Scalar(-1.1111))
         })
     })
 })
