@@ -130,13 +130,13 @@ const every: <ElementType, ArrayType extends ArrayOverload & ElementType[]>(
         array.every(callback)
 
 const findIndex: <ElementType, ArrayType extends ArrayOverload & ElementType[]>(
-    array: ArrayOverload,
-    callback: (element: ElementType, index: Ordinal<ArrayOverload>, self: ArrayOverload) => boolean,
-) => Ordinal<ArrayOverload> =
+    array: ArrayType,
+    callback: (element: ElementType, index: Ordinal<ArrayType>, self: ArrayType) => boolean,
+) => Ordinal<ArrayType> =
     <ElementType, ArrayType extends ArrayOverload & ElementType[]>(
-        array: ArrayOverload,
-        callback: (element: ElementType, index: Ordinal<ArrayOverload>, self: ArrayOverload) => boolean,
-    ): Ordinal<ArrayOverload> =>
+        array: ArrayType,
+        callback: (element: ElementType, index: Ordinal<ArrayType>, self: ArrayType) => boolean,
+    ): Ordinal<ArrayType> =>
         // @ts-ignore
         array.findIndex(callback)
 
