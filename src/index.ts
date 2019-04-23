@@ -80,7 +80,6 @@ export {
     arraySet,
     every,
     findIndex,
-    stringSlice,
 } from './code'
 export {
     absoluteRatio,

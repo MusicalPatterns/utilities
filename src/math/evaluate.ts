@@ -1,16 +1,16 @@
 // tslint:disable max-file-line-count
 
 import { HtmlValue } from '../browser'
-import { stringSlice } from '../code'
+import { slice } from '../code'
 import { as, Cardinal, EXCLUSIVE_TO_LEFT, INITIAL, insteadOf, notAs, Ordinal, use } from '../nominal'
 import { Operands } from './types'
 
 const splitOperands: (expression: string, operatorIndex: Ordinal<string>) => Operands =
     (expression: string, operatorIndex: Ordinal<string>): Operands => {
         const lhs: number =
-            evaluateString(stringSlice(expression, as.Ordinal<string>(notAs.Ordinal(INITIAL)), operatorIndex))
+            evaluateString(slice(expression, as.Ordinal<string>(notAs.Ordinal(INITIAL)), operatorIndex))
         const rhs: number = evaluateString(
-            stringSlice(
+            slice(
                 expression,
                 use.Cardinal(
                     operatorIndex,
@@ -76,18 +76,18 @@ const evaluateParenthetical: (expression: string) => number =
         const endParantheticalIndex: Ordinal<string> = use.Cardinal(
             beginParantheticalIndex,
             as.Cardinal<Ordinal<string>>(
-                stringSlice(expression, beginParantheticalIndex, endIndex)
+                slice(expression, beginParantheticalIndex, endIndex)
                     .indexOf(')'),
             ),
         )
 
-        const partBefore: string = stringSlice(expression, as.Ordinal<string>(0), beginParantheticalIndex)
-        const parenthetical: string = stringSlice(
+        const partBefore: string = slice(expression, as.Ordinal<string>(0), beginParantheticalIndex)
+        const parenthetical: string = slice(
             expression,
             use.Cardinal(beginParantheticalIndex, as.Cardinal<Ordinal<string>>(1)),
             endParantheticalIndex,
         )
-        const partAfter: string = stringSlice(
+        const partAfter: string = slice(
             expression,
             use.Cardinal(endParantheticalIndex, as.Cardinal<Ordinal<string>>(1)),
             endIndex,

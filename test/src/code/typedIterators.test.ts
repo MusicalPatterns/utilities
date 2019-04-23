@@ -10,7 +10,6 @@ import {
     SEVENTH,
     SIXTH,
     slice,
-    stringSlice,
     THIRD,
 } from '../../../src/indexForTest'
 
@@ -28,7 +27,7 @@ describe('typed iterators', () => {
         it('works for strings', () => {
             const str: string = '123456'
 
-            const actualStr: string = stringSlice(str, INITIAL, THIRD)
+            const actualStr: string = slice(str, INITIAL, THIRD)
 
             expect(actualStr)
                 .toEqual('123')

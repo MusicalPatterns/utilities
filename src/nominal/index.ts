@@ -185,4 +185,5 @@ export {
     Transposition,
     Point,
     ArrayOverload,
+    ArrayOverloadAny,
 } from './types'

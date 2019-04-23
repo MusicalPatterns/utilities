@@ -42,8 +42,8 @@ describe('use', () => {
 
     describe('Translation', () => {
         it('when applies to a number, translates it (sums)', () => {
-            expect(use.Translation(as.Scalar(4), as.Translation<Scalar>(1)))
-                .toBe(as.Scalar(5))
+            expect(use.Translation(as.Scalar(4.2), as.Translation<Scalar>(1.2)))
+                .toBe(as.Scalar(5.4))
         })
     })
 

@@ -1,4 +1,4 @@
-import { Cycle, Ordinal } from '../nominal'
+import { ArrayOverload, Cycle, Ordinal } from '../nominal'
 
 type Omit<ObjectType, KeyType extends keyof ObjectType> = Pick<ObjectType, Exclude<keyof ObjectType, KeyType>>
 
@@ -18,7 +18,7 @@ type ArrayOfLength<Length extends Number, NumericType = number> = [ NumericType,
 
 interface IndexOf {
     <ElementType>(array: Cycle<ElementType>): Ordinal<Cycle<ElementType>>
-    <ElementType>(array: ElementType[]): Ordinal<ElementType[]>
+    <ElementType, ArrayType extends ArrayOverload & ElementType[]>(array: ArrayType): Ordinal<ArrayType>
 }
 
 export {
