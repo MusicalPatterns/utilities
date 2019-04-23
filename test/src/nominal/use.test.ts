@@ -5,6 +5,7 @@ import {
     Base,
     Cycle,
     Exponent,
+    Hz,
     Logarithm,
     Multiple,
     negative,
@@ -37,6 +38,10 @@ describe('use', () => {
     describe('Scalar', () => {
         it('should be able to scale a plain number', () => {
             const scaledNumber: number = use.Scalar(1, ONE_HALF)
+        })
+
+        it('should be able to scale a point of the same units', () => {
+            use.Scalar(as.Point<Hz>(3), as.Scalar<Hz>(4))
         })
     })
 
