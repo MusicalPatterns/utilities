@@ -87,8 +87,9 @@ export {
     SCIENTIFIC_PITCHES,
     ScientificPitchNoteName,
     ScientificPitchOctaveNumber,
-    computeEqualDivisionScalars,
-    computeOctaveRepeatingScalars,
+    computeEqualDivisionPitches,
+    computeOctaveRepeatingPitches,
+    Pitch,
 } from './music/indexForTest'
 export {
     use,

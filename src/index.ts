@@ -162,10 +162,11 @@ export {
     ScientificPitchOctaveNumber,
     ScientificPitchNoteName,
     ScientificPitches,
-    computeEqualDivisionScalars,
-    computeOctaveRepeatingScalars,
+    computeEqualDivisionPitches,
+    computeOctaveRepeatingPitches,
     semitonesToCents,
     Duration,
+    Pitch,
 } from './music'
 export {
     Base,

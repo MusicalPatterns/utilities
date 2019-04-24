@@ -1,8 +1,8 @@
 export { centsTranslationToPitchScalar, semitonesToCents } from './conversions'
 export { windowIterationHarmonicStepCount } from './windowIterationHarmonicStepCount'
 export { octaveReduce, windowReduce } from './windowReduce'
-export { computeEqualDivisionScalars } from './equalDivisions'
-export { computeOctaveRepeatingScalars } from './octaveRepeatingScalars'
+export { computeEqualDivisionPitches } from './equalDivisionPitches'
+export { computeOctaveRepeatingPitches } from './octaveRepeatingPitches'
 export { SCIENTIFIC_PITCHES } from './scientificPitch'
 
 export {
@@ -10,4 +10,5 @@ export {
     ScientificPitchOctaveNumber,
     ScientificPitches,
     Duration,
+    Pitch,
 } from './types'

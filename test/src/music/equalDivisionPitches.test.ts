@@ -1,8 +1,8 @@
-import { as, computeEqualDivisionScalars, TRITAVE } from '../../../src/indexForTest'
+import { as, computeEqualDivisionPitches, TRITAVE } from '../../../src/indexForTest'
 
-describe('equal divisions', () => {
+describe('equal division pitches', () => {
     it('divides the window (octave) into equal divisions', () => {
-        expect(computeEqualDivisionScalars(as.Denominator(12)))
+        expect(computeEqualDivisionPitches(as.Denominator(12)))
             .toBeCloseToArray(
                 [
                     1,
@@ -20,7 +20,7 @@ describe('equal divisions', () => {
                 ].map(as.Scalar),
             )
 
-        expect(computeEqualDivisionScalars(as.Denominator(5)))
+        expect(computeEqualDivisionPitches(as.Denominator(5)))
             .toBeCloseToArray(
                 [
                     1,
@@ -33,7 +33,7 @@ describe('equal divisions', () => {
     })
 
     it('supports other windows besides the octave', () => {
-        expect(computeEqualDivisionScalars(as.Denominator(13), TRITAVE))
+        expect(computeEqualDivisionPitches(as.Denominator(13), TRITAVE))
             .toBeCloseToArray(
                 [
                     1,
