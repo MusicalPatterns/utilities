@@ -10,7 +10,6 @@ import {
     Logarithm,
     notAs,
     OCTAVE,
-    Point,
     use,
     ZERO_AND_POSITIVE_INTEGERS,
 } from '../nominal'
@@ -18,7 +17,7 @@ import { Pitch } from './types'
 
 const computeEqualDivisionPitches: (equalDivision: Denominator, window?: Logarithm<Frequency>) => Pitch[] =
     (equalDivision: Denominator, window: Logarithm<Frequency> = OCTAVE): Pitch[] => {
-        const equallyDividedPitchStep: Pitch = as.Scalar<Point<Hz>>(notAs.Logarithm<Frequency>(use.Exponent(
+        const equallyDividedPitchStep: Pitch = as.Point<Hz>(notAs.Logarithm<Frequency>(use.Exponent(
             window,
             as.Exponent<Logarithm<Frequency>>(reciprocal(equalDivision)),
         )))

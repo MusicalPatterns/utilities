@@ -1,5 +1,5 @@
 import { ObjectOf } from '../code'
-import { Hz, Ms, Point, Scalar, Translation } from '../nominal'
+import { Hz, Ms, Point, Translation } from '../nominal'
 
 enum ScientificPitchNoteName {
     C = 'C',
@@ -35,7 +35,7 @@ type ScientificPitches = { [Index in ScientificPitchNoteName]: ObjectOf<Point<Hz
 
 type Duration = Translation<Point<Ms>>
 
-type Pitch = Scalar<Point<Hz>>
+type Pitch = Point<Hz>
 
 export {
     ScientificPitchNoteName,
