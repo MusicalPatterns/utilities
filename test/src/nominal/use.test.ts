@@ -40,10 +40,6 @@ describe('use', () => {
         it('should be able to scale a plain number', () => {
             const scaledNumber: number = use.Scalar(1, ONE_HALF)
         })
-
-        it('should be able to scale a point of the same units', () => {
-            const scaledPoint: Point<Hz> = use.Scalar(as.Point<Hz>(3), as.Scalar<Hz>(4))
-        })
     })
 
     describe('Translation', () => {
@@ -199,13 +195,13 @@ describe('use', () => {
             expect(use.Ordinal(myCycle, as.Ordinal<Cycle<string>>(0)))
                 .toBe('a')
 
-            expect(() => use.Ordinal(myArray, as.Ordinal<Cycle<string>>(4)))
+            expect(() => use.Ordinal(myArray, as.Ordinal<string[]>(4)))
                 .toThrowError(`Ordinal 4 exceeds available indices of array of length 3`)
-            expect(use.Ordinal(myArray, as.Ordinal<Cycle<string>>(negative(1))))
+            expect(use.Ordinal(myArray, as.Ordinal<string[]>(negative(1))))
                 .toBeUndefined()
-            expect(use.Ordinal(myArray, as.Ordinal<Cycle<string>>(1)))
+            expect(use.Ordinal(myArray, as.Ordinal<string[]>(1)))
                 .toBe('e')
-            expect(use.Ordinal(myArray, as.Ordinal<Cycle<string>>(0)))
+            expect(use.Ordinal(myArray, as.Ordinal<string[]>(0)))
                 .toBe('d')
         })
     })
