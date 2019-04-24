@@ -16,11 +16,6 @@ type Maybe<Type> = Type | undefined
 
 type ArrayOfLength<Length extends Number, NumericType = number> = [ NumericType, ...NumericType[] ] & { length: Length }
 
-interface IndexOf {
-    <ElementType>(array: Cycle<ElementType>): Ordinal<Cycle<ElementType>>
-    <ElementType, ArrayType extends ArrayOverload & ElementType[]>(array: ArrayType): Ordinal<ArrayType>
-}
-
 export {
     Omit,
     Difference,
@@ -28,5 +23,4 @@ export {
     ObjectOf,
     Maybe,
     ArrayOfLength,
-    IndexOf,
 }

@@ -10,7 +10,7 @@ import {
     notAs,
     Ordinal,
     Radians,
-    ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS,
+    ROTATION_VECTOR_OR_MATRIX_BASIS_TRANSLATION_FOR_CYCLING_FOR_AXIS,
     Scalar,
     TWO_DIMENSIONAL,
     use,
@@ -53,7 +53,7 @@ const computeCycleMapForCyclingRotationMatrixForAxis: (axis: Ordinal) => CycleMa
         <VectorOrMatrix>(rotationVectorOrMatrix: Cycle<VectorOrMatrix>): Cycle<VectorOrMatrix> => {
             const cycling: Cardinal<Cycle<VectorOrMatrix>> = use.Cardinal(
                 insteadOf<Cardinal, Cycle<VectorOrMatrix>>(
-                    ROTATION_VECTOR_OR_MATRIX_BASE_TRANSLATION_FOR_CYCLING_FOR_AXIS,
+                    ROTATION_VECTOR_OR_MATRIX_BASIS_TRANSLATION_FOR_CYCLING_FOR_AXIS,
                 ),
                 insteadOf<Cardinal, Cardinal<Cycle<VectorOrMatrix>>>(as.Cardinal(notAs.Ordinal(axis))),
             )
