@@ -155,8 +155,8 @@ const IntegerModulus: <OfType extends NonNormal>(value: OfType, integerModulus: 
 // Natural Fixed Uses (only used for arrays)
 
 const Ordinal: {
-    <ElementType>(array: ElementType[], index: Ordinal<ElementType[]>): ElementType,
     <ElementType>(array: Cycle<ElementType>, index: Ordinal<Cycle<ElementType>>): ElementType,
+    <ElementType>(array: ElementType[], index: Ordinal<ElementType[]>): ElementType,
 } =
     <ElementType>(array: ElementType[], index: Ordinal<ElementType[]>): ElementType => {
         if (isCycle(array)) {
