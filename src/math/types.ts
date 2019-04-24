@@ -94,7 +94,7 @@ interface QuotientOperation {
     <NumericType extends NoUse | number>(
         dividend: Point<NumericType>,
         divisor: Point<NumericType>,
-    ): Scalar<Denature<NumericType>>,
+    ): Scalar<Point<Denature<NumericType>>>,
     <NumericType extends NoUse | number>(
         dividend: NumericType,
         divisor: NumericType,
@@ -117,7 +117,7 @@ interface DifferenceOperation {
     <NumericType extends NoUse | number>(
         minuend: Point<NumericType>,
         subtrahend: Point<NumericType>,
-    ): Translation<Denature<NumericType>>,
+    ): Translation<Point<Denature<NumericType>>>,
     <NumericType extends NoUse | number>(
         minuend: NumericType,
         subtrahend: NumericType,

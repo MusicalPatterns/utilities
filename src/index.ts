@@ -165,6 +165,7 @@ export {
     computeEqualDivisionScalars,
     computeOctaveRepeatingScalars,
     semitonesToCents,
+    Duration,
 } from './music'
 export {
     Base,

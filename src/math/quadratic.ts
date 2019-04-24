@@ -20,9 +20,9 @@ const goesQuadratically: <NumericElementType extends Number>(
             return false
         }
 
-        const deltas: Array<Translation<NumericElementType>> = computeDeltas(array)
-        const deltaIntervals: Array<Maybe<Scalar>> = computeIntervals(
-            deltas.map((delta: Translation<NumericElementType>) => as.Point(notAs.Translation(delta))),
+        const deltas: Array<Translation<Point<NumericElementType>>> = computeDeltas(array)
+        const deltaIntervals: Array<Maybe<Scalar<Point>>> = computeIntervals(
+            deltas.map((delta: Translation<Point<NumericElementType>>) => as.Point(notAs.Translation(delta))),
         )
 
         const exampleInterval: Maybe<Scalar> = use.Ordinal(
@@ -33,7 +33,7 @@ const goesQuadratically: <NumericElementType extends Number>(
             return false
         }
 
-        return allValuesAreTheSame(deltaIntervals as Scalar[], undefined, precision) &&
+        return allValuesAreTheSame(deltaIntervals as Array<Scalar<Point>>, undefined, precision) &&
             exampleInterval !== MULTIPLICATIVE_IDENTITY
     }
 

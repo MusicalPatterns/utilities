@@ -9,4 +9,5 @@ export {
     ScientificPitchNoteName,
     ScientificPitchOctaveNumber,
     ScientificPitches,
+    Duration,
 } from './types'

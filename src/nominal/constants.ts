@@ -134,8 +134,8 @@ const FIRST_FACTOR_NECESSARY_TO_CHECK_IF_COMMON: Integer = as.Integer(2)
 const PI: Radians = as.Radians(Math.PI)
 const E: Logarithm<any> = as.Logarithm(Math.E)
 
-const GOOD_AMOUNT_OF_TIME_TO_SEE_WHAT_THE_SITUATION_IS_WHEN_HEADFULLY_DEBUGGING_TESTS: Translation<Ms> =
-    as.Translation<Ms>(3000)
+const GOOD_AMOUNT_OF_TIME_TO_SEE_WHAT_THE_SITUATION_IS_WHEN_HEADFULLY_DEBUGGING_TESTS: Translation<Point<Ms>> =
+    as.Translation<Point<Ms>>(3000)
 
 const INCLUSIVE: Cardinal<Ordinal<ArrayOverloadAny>> = as.Cardinal<Ordinal<ArrayOverloadAny>>(1)
 const EXCLUSIVE: Cardinal<Ordinal<ArrayOverloadAny>> = as.Cardinal<Ordinal<ArrayOverloadAny>>(-1)
@@ -164,18 +164,18 @@ const CENTS_PER_OCTAVE: Cents =
     as.Cents(notAs.Cents(CENTS_PER_SEMITONE) * notAs.Cardinal<Semitones>(SEMITONES_PER_OCTAVE))
 
 const BEGINNING: Point<Ms> = as.Point<Ms>(0)
-const NO_DURATION: Translation<Ms> = as.Translation<Ms>(0)
+const NO_DURATION: Translation<Point<Ms>> = as.Translation<Point<Ms>>(0)
 
 const MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS: Cardinal = as.Cardinal(10)
 
 const MILLISECONDS_PER_SECOND: Cardinal<Ms> = as.Cardinal<Ms>(1000)
 const SECONDS_PER_MINUTE: Cardinal = as.Cardinal(60)
 
-const ONE_MILLISECOND: Translation<Ms> = as.Translation<Ms>(1)
-const ONE_SECOND: Translation<Ms> = as.Translation<Ms>(1000)
-const ONE_MINUTE: Translation<Ms> = as.Translation<Ms>(60000)
-const ONE_HOUR: Translation<Ms> = as.Translation<Ms>(3600000)
-const ONE_DAY: Translation<Ms> = as.Translation<Ms>(86400000)
+const ONE_MILLISECOND: Translation<Point<Ms>> = as.Translation<Point<Ms>>(1)
+const ONE_SECOND: Translation<Point<Ms>> = as.Translation<Point<Ms>>(1000)
+const ONE_MINUTE: Translation<Point<Ms>> = as.Translation<Point<Ms>>(60000)
+const ONE_HOUR: Translation<Point<Ms>> = as.Translation<Point<Ms>>(3600000)
+const ONE_DAY: Translation<Point<Ms>> = as.Translation<Point<Ms>>(86400000)
 
 const VERY_HIGH_PRECISION: Integer = as.Integer(10)
 const VERY_LOW_PRECISION: Integer = as.Integer(1)

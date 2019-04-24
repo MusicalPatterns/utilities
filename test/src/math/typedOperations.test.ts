@@ -13,6 +13,7 @@ import {
     modulus,
     Ms,
     Multiple,
+    Point,
     Power,
     product,
     quotient,
@@ -116,7 +117,7 @@ describe('typed operations', () => {
 
         it('returns a Translation type Of the Units if they are given as Points', () => {
             expect(difference(as.Point<Ms>(4), as.Point<Ms>(1)))
-                .toBe(as.Translation<Ms>(3))
+                .toBe(as.Translation<Point<Ms>>(3))
         })
 
         it('returns a Cardinal type Of the Units if they are given as Ordinals', () => {
@@ -140,7 +141,7 @@ describe('typed operations', () => {
 
         it('returns a Scalar type Of the Units if they are given as Points', () => {
             expect(quotient(as.Point<Ms>(6), as.Point<Ms>(2)))
-                .toBe(as.Scalar<Ms>(3))
+                .toBe(as.Scalar<Point<Ms>>(3))
         })
 
         it('returns a Multiple type Of the Units if they are given as Ordinals', () => {
