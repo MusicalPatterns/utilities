@@ -31,7 +31,7 @@ enum ScientificPitchOctaveNumber {
     _10 = '_10',
 }
 
-type ScientificPitches = { [Index in ScientificPitchNoteName]: ObjectOf<Hz> }
+type ScientificPitches = { [Index in ScientificPitchNoteName]: ObjectOf<Point<Hz>> }
 
 type Duration = Translation<Point<Ms>>
 
