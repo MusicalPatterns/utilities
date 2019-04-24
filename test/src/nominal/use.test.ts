@@ -1,4 +1,4 @@
-// tslint:disable no-dead-store no-unused-expression
+// tslint:disable no-dead-store no-unused-expression no-duplicate-string
 
 import {
     as,
@@ -135,6 +135,11 @@ describe('use', () => {
             expect(use.Multiple(as.Logarithm(5), as.Multiple<Base>(3)))
                 .toBe(as.Logarithm(15))
         })
+
+        it('works on Ordinals', () => {
+            expect(use.Base(as.Ordinal(8), as.Base<Ordinal>(2)))
+                .toBe(as.Ordinal(3))
+        })
     })
 
     describe('Power', () => {
@@ -163,6 +168,18 @@ describe('use', () => {
 
             expect(use.Multiple(as.Exponent(5), as.Multiple<Power>(3)))
                 .toBe(as.Exponent(15))
+        })
+
+        it('works on Ordinals', () => {
+            expect(use.Power(as.Ordinal(2), as.Power<Ordinal>(3)))
+                .toBe(as.Ordinal(8))
+        })
+    })
+
+    describe('IntegerModulus', () => {
+        it('works on Ordinals', () => {
+            expect(use.IntegerModulus(as.Ordinal(8), as.IntegerModulus<Ordinal>(3)))
+                .toBe(as.Ordinal(2))
         })
     })
 

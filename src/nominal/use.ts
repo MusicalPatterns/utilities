@@ -168,18 +168,21 @@ const Transposition: {
 // Natural Non-Transformation Uses
 
 const Power: {
+    <OfType extends { _OfBrand?: 'NoOf' } & ArrayOverload>(value: Ordinal<OfType>, power: Power<Ordinal<OfType>>): Ordinal<OfType>,
     <OfType extends NonNormal>(value: Point<OfType>, power: Power<OfType>): Point<OfType>,
     <OfType extends NonNormal>(value: OfType, power: Power<OfType>): OfType,
 } =
     <OfType extends Number>(value: OfType, power: Power<OfType>): OfType =>
         Exponent(value, integerCheck(power, 'Power'))
 const Base: {
+    <OfType extends { _OfBrand?: 'NoOf' } & ArrayOverload>(value: Ordinal<OfType>, base: Base<Ordinal<OfType>>): Ordinal<OfType>,
     <OfType extends NonNormal>(value: Point<OfType>, base: Base<OfType>): Point<OfType>,
     <OfType extends NonNormal>(value: OfType, base: Base<OfType>): OfType,
 } =
     <OfType extends Number>(value: OfType, base: Base<OfType>): OfType =>
         Logarithm(value, integerCheck(base, 'Base'))
 const IntegerModulus: {
+    <OfType extends { _OfBrand?: 'NoOf' } & ArrayOverload>(value: Ordinal<OfType>, integerModulus: IntegerModulus<Ordinal<OfType>>): Ordinal<OfType>,
     <OfType extends NonNormal>(value: Point<OfType>, integerModulus: IntegerModulus<OfType>): Point<OfType>,
     <OfType extends NonNormal>(value: OfType, integerModulus: IntegerModulus<OfType>): OfType,
 } =
