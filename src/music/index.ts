@@ -11,4 +11,5 @@ export {
     ScientificPitches,
     Duration,
     Pitch,
+    Position,
 } from './types'

@@ -167,6 +167,7 @@ export {
     semitonesToCents,
     Duration,
     Pitch,
+    Position,
 } from './music'
 export {
     Base,
