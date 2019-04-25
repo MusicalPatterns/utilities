@@ -3,8 +3,8 @@
 export { centsTranslationToPitchScalar } from './conversions'
 export { windowIterationHarmonicStepCount } from './windowIterationHarmonicStepCount'
 export { octaveReduce, windowReduce } from './windowReduce'
-export { computeEqualDivisionPitches } from './equalDivisionPitches'
-export { computeOctaveRepeatingPitches } from './octaveRepeatingPitches'
+export { computeEqualDivisionPitchScalars } from './equalDivisionPitchScalars'
+export { computeOctaveRepeatingPitchScalars } from './octaveRepeatingPitchScalars'
 export { SCIENTIFIC_PITCHES } from './scientificPitch'
 
 export {

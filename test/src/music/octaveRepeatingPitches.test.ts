@@ -1,16 +1,16 @@
-import { as, computeOctaveRepeatingPitches, Hz, Pitch } from '../../../src/indexForTest'
+import { as, computeOctaveRepeatingPitchScalars, Hz, Pitch, Scalar } from '../../../src/indexForTest'
 
-describe('octave repeating pitches', () => {
+describe('octave repeating pitch scalars', () => {
     it('given scalars, will provide 10 octaves worth of them repeating', () => {
-        const pitches: Pitch[] = [
+        const pitchScalars: Array<Scalar<Pitch>> = [
             1,
             4 / 3,
             15 / 8,
         ]
-            .map((pitch: number) => as.Point<Hz>(pitch))
+            .map((pitch: number) => as.Scalar<Pitch>(pitch))
 
-        const actualPitches: Pitch[] = computeOctaveRepeatingPitches(pitches)
-        expect(actualPitches)
+        const actualPitchScalars: Array<Scalar<Pitch>> = computeOctaveRepeatingPitchScalars(pitchScalars)
+        expect(actualPitchScalars)
             .toEqual(
                 [
                     1 * 1,
@@ -44,7 +44,7 @@ describe('octave repeating pitches', () => {
                     512 * 4 / 3,
                     512 * 15 / 8,
                 ]
-                    .map((pitch: number) => as.Point<Hz>(pitch)),
+                    .map((expected: number) => as.Scalar<Pitch>(expected)),
             )
     })
 })

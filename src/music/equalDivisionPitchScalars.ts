@@ -4,20 +4,21 @@ import {
     as,
     Denominator,
     Frequency,
-    Hz,
     INITIAL,
     Integer,
     Logarithm,
     notAs,
     OCTAVE,
+    Scalar,
     use,
     ZERO_AND_POSITIVE_INTEGERS,
 } from '../nominal'
 import { Pitch } from './types'
 
-const computeEqualDivisionPitches: (equalDivision: Denominator, window?: Logarithm<Frequency>) => Pitch[] =
-    (equalDivision: Denominator, window: Logarithm<Frequency> = OCTAVE): Pitch[] => {
-        const equallyDividedPitchStep: Pitch = as.Point<Hz>(notAs.Logarithm<Frequency>(use.Exponent(
+const computeEqualDivisionPitchScalars:
+    (equalDivision: Denominator, window?: Logarithm<Frequency>) => Array<Scalar<Pitch>> =
+    (equalDivision: Denominator, window: Logarithm<Frequency> = OCTAVE): Array<Scalar<Pitch>> => {
+        const equallyDividedPitchStep: Scalar<Pitch> = as.Scalar<Pitch>(notAs.Logarithm<Frequency>(use.Exponent(
             window,
             as.Exponent<Logarithm<Frequency>>(reciprocal(equalDivision)),
         )))
@@ -30,10 +31,10 @@ const computeEqualDivisionPitches: (equalDivision: Denominator, window?: Logarit
 
         return map(
             integerForEachStep,
-            (integer: Integer) => use.Power(equallyDividedPitchStep, as.Power<Pitch>(integer)),
+            (integer: Integer) => use.Power(equallyDividedPitchStep, as.Power<Scalar<Pitch>>(integer)),
         )
     }
 
 export {
-    computeEqualDivisionPitches,
+    computeEqualDivisionPitchScalars,
 }

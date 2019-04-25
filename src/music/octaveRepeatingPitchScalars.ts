@@ -7,33 +7,33 @@ import {
     MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS,
     notAs,
     OCTAVE,
-    Ordinal,
+    Ordinal, Scalar,
     use,
 } from '../nominal'
 import { Pitch } from './types'
 
-const computeOctaveRepeatingPitches: (scalars: Pitch[]) => Pitch[] =
-    (scalars: Pitch[]): Pitch[] => {
-        let octaveRepeatingScalars: Pitch[] = []
+const computeOctaveRepeatingPitchScalars: (scalars: Array<Scalar<Pitch>>) => Array<Scalar<Pitch>> =
+    (scalars: Array<Scalar<Pitch>>): Array<Scalar<Pitch>> => {
+        let octaveRepeatingPitchScalars: Array<Scalar<Pitch>> = []
         for (
             let index: Ordinal<Array<Base<Frequency>>> = INITIAL;
             notAs.Ordinal<Array<Base<Frequency>>>(index) < notAs.Cardinal(MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS);
             index = use.Cardinal(index, INCREMENT)
         ) {
             const nextOctave: Base<Frequency> = use.Power(OCTAVE, as.Power<Base<Frequency>>(notAs.Ordinal(index)))
-            octaveRepeatingScalars = octaveRepeatingScalars.concat(
-                scalars.map((scalar: Pitch): Pitch =>
+            octaveRepeatingPitchScalars = octaveRepeatingPitchScalars.concat(
+                scalars.map((scalar: Scalar<Pitch>) =>
                     use.Scalar(
                         scalar,
-                        as.Scalar<Pitch>(notAs.Base<Frequency>(nextOctave)),
+                        as.Scalar<Scalar<Pitch>>(notAs.Base<Frequency>(nextOctave)),
                     ),
                 ),
             )
         }
 
-        return octaveRepeatingScalars
+        return octaveRepeatingPitchScalars
     }
 
 export {
-    computeOctaveRepeatingPitches,
+    computeOctaveRepeatingPitchScalars,
 }
