@@ -1,6 +1,6 @@
 // tslint:disable
 
-// There should be 212 errors in this file when the below is uncommented.
+// There should be 221 errors in this file when the below is uncommented.
 
 // import {
 //     as,
@@ -40,8 +40,9 @@
 //     squareRoot,
 //     sum,
 //     Translation,
-//     use,
+//     use, Cardinal, Logarithm, Modulus,
 // } from '../../../src/indexForTest'
+// import { Arc, Delta, Interval } from '../../../src/nominal'
 //
 // describe('anti test', () => {
 //     describe('as', () => {
@@ -250,6 +251,20 @@
 //     describe('use', () => {
 //         it('DOES NOT ALLOW using a Scalar as a Unit Scalar', () => {
 //             use.Scalar(as.UnitScalar(0.5), 4 as unknown as Scalar<UnitScalar>)
+//         })
+//
+//         it('DOES NOT ALLOW using unnatural Uses on natural numbers', () => {
+//             use.Scalar(as.Ordinal(3), 4 as unknown as Scalar<Number & { _TestBrand: 'Test' }>)
+//             use.Translation(as.Ordinal(3), 4 as unknown as Translation<Number & { _TestBrand: 'Test' }>)
+//             use.Rotation(as.Ordinal(3), 4 as unknown as Rotation<Number & { _TestBrand: 'Test' }>)
+//
+//             use.Exponent(as.Ordinal(3), 4 as unknown as Exponent<Number & { _TestBrand: 'Test' }>)
+//             use.Logarithm(as.Ordinal(3), 4 as unknown as Logarithm<Number & { _TestBrand: 'Test' }>)
+//             use.Modulus(as.Ordinal(3), 4 as unknown as Modulus<Number & { _TestBrand: 'Test' }>)
+//
+//             use.Interval(as.Ordinal(3), 4 as unknown as Interval<Number & { _TestBrand: 'Test' }>)
+//             use.Delta(as.Ordinal(3), 4 as unknown as Delta<Number & { _TestBrand: 'Test' }>)
+//             use.Arc(as.Ordinal(3), 4 as unknown as Arc<Number & { _TestBrand: 'Test' }>)
 //         })
 //     })
 //
