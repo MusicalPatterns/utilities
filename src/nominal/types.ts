@@ -53,6 +53,24 @@ type UseBrand<UseName, OfType = number> =
     & MaybeNatural<UseName>
     & MaybeUnit<UseName>
 
+type UseNameFromUse<Use> =
+    Use extends Multiple ? 'Multiple' & 'Scalar' :
+        Use extends Cardinal ? 'Cardinal' & 'Translation' :
+            Use extends Transposition ? 'Transposition' & 'Rotation' :
+                Use extends Power ? 'Power' & 'Exponent' :
+                    Use extends Base ? 'Base' & 'Logarithm' :
+                        Use extends IntegerModulus ? 'IntegerModulus' & 'Modulus' :
+                            Use extends Ordinal ? 'Ordinal' & 'Point' :
+                                Use extends UnitScalar ? 'UnitScalar' & 'Scalar' :
+                                    Use extends Scalar ? 'Scalar' :
+                                        Use extends Translation ? 'Translation' :
+                                            Use extends Rotation ? 'Rotation' :
+                                                Use extends Exponent ? 'Exponent' :
+                                                    Use extends Logarithm ? 'Logarithm' :
+                                                        Use extends Modulus ? 'Modulus' :
+                                                            Use extends Point ? 'Point' :
+                                                                ''
+
 type NoOf = number & { _OfBrand?: 'NoOf' }
 
 type Of<OfType> = number | { _OfBrand: OfType }
@@ -73,6 +91,12 @@ type Modulus<OfType extends UnnaturalUseOfableActive = number> = UseBrand<'Modul
 
 type Point<OfType extends UnnaturalUseOfableActive = number> = UseBrand<'Point', OfType>
 
+// Unnatural Compounds
+
+type Interval<OfType extends UnnaturalUseOfableActive = number> = Scalar<Point<OfType>>
+type Delta<OfType extends UnnaturalUseOfableActive = number> = Translation<Point<OfType>>
+type Arc<OfType extends UnnaturalUseOfableActive = number> = Rotation<Point<OfType>>
+
 // Natural Transformation Uses (with overloads for arrays)
 
 type Multiple<OfType extends NaturalUseOfableWithArrayOverloadActive = number> = UseBrand<'Multiple' & 'Scalar', OfType>
@@ -88,6 +112,12 @@ type IntegerModulus<OfType extends NaturalUseOfableActive = number> = UseBrand<'
 // Natural Fixed Uses (only used for arrays)
 
 type Ordinal<OfType extends { _OfBrand?: 'NoOf' } & ArrayOverload = number[]> = UseBrand<'Ordinal' & 'Point', OfType>
+
+// Natural Compounds
+
+type Factor<OfType extends { _OfBrand?: 'NoOf' } & ArrayOverload = number[]> = Multiple<Ordinal<OfType>>
+type Transition<OfType extends { _OfBrand?: 'NoOf' } & ArrayOverload = number[]> = Cardinal<Ordinal<OfType>>
+type Turn<OfType extends { _OfBrand?: 'NoOf' } & ArrayOverload = number[]> = Transposition<Ordinal<OfType>>
 
 // Unit Uses
 
@@ -165,24 +195,6 @@ type MaybeUnit<Name> =
 
 type Unit = Number & { _UnitBrand: 'Unit' }
 type NonUnit = Number & { _UnitBrand?: 'NonUnit' }
-
-type UseNameFromUse<Use> =
-    Use extends Multiple ? 'Multiple' & 'Scalar' :
-        Use extends Cardinal ? 'Cardinal' & 'Translation' :
-            Use extends Transposition ? 'Transposition' & 'Rotation' :
-                Use extends Power ? 'Power' & 'Exponent' :
-                    Use extends Base ? 'Base' & 'Logarithm' :
-                        Use extends IntegerModulus ? 'IntegerModulus' & 'Modulus' :
-                            Use extends Ordinal ? 'Ordinal' & 'Point' :
-                                Use extends UnitScalar ? 'UnitScalar' & 'Scalar' :
-                                    Use extends Scalar ? 'Scalar' :
-                                        Use extends Translation ? 'Translation' :
-                                            Use extends Rotation ? 'Rotation' :
-                                                Use extends Exponent ? 'Exponent' :
-                                                    Use extends Logarithm ? 'Logarithm' :
-                                                        Use extends Modulus ? 'Modulus' :
-                                                            Use extends Point ? 'Point' :
-                                                                ''
 
 // Cycle
 
@@ -267,4 +279,10 @@ export {
     NaturalUseOfableWithArrayOverloadActive,
     ArrayOverload,
     ArrayOverloadAny,
+    Interval,
+    Delta,
+    Arc,
+    Factor,
+    Transition,
+    Turn,
 }

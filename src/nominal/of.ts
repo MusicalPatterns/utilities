@@ -1,19 +1,23 @@
 // tslint:disable variable-name max-file-line-count max-line-length
 
 import {
+    Arc,
     ArrayOverload,
     Base,
     Cardinal,
     Cents,
     Cycle,
+    Delta,
     Denominator,
     Exponent,
+    Factor,
     Fraction,
     Frequency,
     Gain,
     Hz,
     Integer,
     IntegerModulus,
+    Interval,
     Logarithm,
     Meters,
     Modulus,
@@ -30,8 +34,10 @@ import {
     Semitones,
     Space,
     Time,
+    Transition,
     Translation,
     Transposition,
+    Turn,
     UnitScalar,
 } from './types'
 
@@ -119,6 +125,18 @@ const Point: <OfType extends Number = number>(ofPoint: number | OfType) => Of<Po
     <OfType extends Number = number>(ofPoint: number | OfType): Of<Point<OfType>> =>
         ofPoint as unknown as Of<Point<OfType>>
 
+// Unnatural Compounds
+
+const Interval: <OfType extends Number = number>(ofInterval: number | OfType) => Of<Interval<OfType>> =
+    <OfType extends Number = number>(ofInterval: number | OfType): Of<Interval<OfType>> =>
+        ofInterval as unknown as Of<Interval<OfType>>
+const Delta: <OfType extends Number = number>(ofDelta: number | OfType) => Of<Delta<OfType>> =
+    <OfType extends Number = number>(ofDelta: number | OfType): Of<Delta<OfType>> =>
+        ofDelta as unknown as Of<Delta<OfType>>
+const Arc: <OfType extends Number = number>(ofArc: number | OfType) => Of<Arc<OfType>> =
+    <OfType extends Number = number>(ofArc: number | OfType): Of<Arc<OfType>> =>
+        ofArc as unknown as Of<Arc<OfType>>
+
 // Natural Transformation Uses (with overloads for arrays)
 
 const Multiple: <OfType extends Number = number>(ofMultiple: number | OfType) => Of<Multiple<OfType>> =
@@ -145,9 +163,21 @@ const IntegerModulus: <OfType extends Number = number>(ofIntegerModulus: number 
 
 // Natural Fixed Uses (only used for arrays)
 
-const Ordinal: <OfType extends ArrayOverload = number[]>(ofIndex: number | OfType) => Of<Ordinal<OfType>> =
-    <OfType extends ArrayOverload = number[]>(ofIndex: number | OfType): Of<Ordinal<OfType>> =>
-        ofIndex as unknown as Of<Ordinal<OfType>>
+const Ordinal: <OfType extends ArrayOverload = number[]>(ofOrdinal: number | OfType) => Of<Ordinal<OfType>> =
+    <OfType extends ArrayOverload = number[]>(ofOrdinal: number | OfType): Of<Ordinal<OfType>> =>
+        ofOrdinal as unknown as Of<Ordinal<OfType>>
+
+// Natural Compounds
+
+const Factor: <OfType extends ArrayOverload = number[]>(ofFactor: number | OfType) => Of<Factor<OfType>> =
+    <OfType extends ArrayOverload = number[]>(ofFactor: number | OfType): Of<Factor<OfType>> =>
+        ofFactor as unknown as Of<Factor<OfType>>
+const Transition: <OfType extends ArrayOverload = number[]>(ofTransition: number | OfType) => Of<Transition<OfType>> =
+    <OfType extends ArrayOverload = number[]>(ofTransition: number | OfType): Of<Transition<OfType>> =>
+        ofTransition as unknown as Of<Transition<OfType>>
+const Turn: <OfType extends ArrayOverload = number[]>(ofTurn: number | OfType) => Of<Turn<OfType>> =
+    <OfType extends ArrayOverload = number[]>(ofTurn: number | OfType): Of<Turn<OfType>> =>
+        ofTurn as unknown as Of<Turn<OfType>>
 
 // Unit Uses
 
@@ -205,4 +235,10 @@ export {
     IntegerModulus,
     Transposition,
     Point,
+    Interval,
+    Delta,
+    Arc,
+    Factor,
+    Transition,
+    Turn,
 }

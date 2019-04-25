@@ -75,7 +75,7 @@ const evaluateParenthetical: (expression: string) => number =
         const endIndex: Ordinal<string> = as.Ordinal<string>(expression.length)
         const endParantheticalIndex: Ordinal<string> = use.Cardinal(
             beginParantheticalIndex,
-            as.Cardinal<Ordinal<string>>(
+            as.Transition<string>(
                 slice(expression, beginParantheticalIndex, endIndex)
                     .indexOf(')'),
             ),
@@ -84,12 +84,12 @@ const evaluateParenthetical: (expression: string) => number =
         const partBefore: string = slice(expression, as.Ordinal<string>(0), beginParantheticalIndex)
         const parenthetical: string = slice(
             expression,
-            use.Cardinal(beginParantheticalIndex, as.Cardinal<Ordinal<string>>(1)),
+            use.Cardinal(beginParantheticalIndex, as.Transition<string>(1)),
             endParantheticalIndex,
         )
         const partAfter: string = slice(
             expression,
-            use.Cardinal(endParantheticalIndex, as.Cardinal<Ordinal<string>>(1)),
+            use.Cardinal(endParantheticalIndex, as.Transition<string>(1)),
             endIndex,
         )
 

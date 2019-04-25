@@ -1,34 +1,25 @@
-import { finalElement, initialElement, map, Maybe } from '../code'
-import {
-    difference,
-    indexOfFinalElement,
-    INITIAL,
-    Ordinal,
-    quotient,
-    Scalar,
-    slice,
-    Translation,
-} from '../indexForTest'
-import { Denature, INCREMENT, isCycle, Point, use } from '../nominal'
+import { finalElement, indexOfFinalElement, initialElement, map, Maybe, slice } from '../code'
+import { Delta, Denature, INCREMENT, INITIAL, Interval, isCycle, Ordinal, Point, Scalar, use } from '../nominal'
+import { difference, quotient } from './typedOperations'
 
 const computeDeltas: <NumericElementType extends Number>(
     array: Array<Point<NumericElementType>>,
-) => Array<Translation<Point<NumericElementType>>> =
+) => Array<Delta<NumericElementType>> =
     <NumericElementType extends Number>(
         array: Array<Point<NumericElementType>>,
-    ): Array<Translation<Point<NumericElementType>>> => {
-        const deltas: Array<Translation<Point<NumericElementType>>> = map(
+    ): Array<Delta<NumericElementType>> => {
+        const deltas: Array<Delta<NumericElementType>> = map(
             slice(array, INITIAL, indexOfFinalElement(array)),
             (
                 value: Point<NumericElementType>,
                 index: Ordinal<Array<Point<NumericElementType>>>,
-            ): Translation<Point<NumericElementType>> => {
+            ): Delta<NumericElementType> => {
                 const nextValue: Point<NumericElementType> = use.Ordinal(
                     array,
                     use.Cardinal(index, INCREMENT),
                 )
 
-                return difference(nextValue, value) as Translation<Point<NumericElementType>>
+                return difference(nextValue, value) as Delta<NumericElementType>
             },
         )
 
@@ -36,7 +27,7 @@ const computeDeltas: <NumericElementType extends Number>(
             deltas.push(difference(
                 initialElement(array) as Point<NumericElementType>,
                 finalElement(array) as Point<NumericElementType>,
-            ) as Translation<Point<NumericElementType>>)
+            ) as Delta<NumericElementType>)
         }
 
         return deltas
@@ -44,16 +35,16 @@ const computeDeltas: <NumericElementType extends Number>(
 
 const computeIntervals: <NumericElementType extends Number>(
     array: Array<Point<NumericElementType>>,
-) => Array<Maybe<Scalar<Point<Denature<NumericElementType>>>>> =
+) => Array<Maybe<Interval<Denature<NumericElementType>>>> =
     <NumericElementType extends Number>(
         array: Array<Point<NumericElementType>>,
-    ): Array<Maybe<Scalar<Point<Denature<NumericElementType>>>>> => {
-        const intervals: Array<Maybe<Scalar<Point<Denature<NumericElementType>>>>> = map(
+    ): Array<Maybe<Interval<Denature<NumericElementType>>>> => {
+        const intervals: Array<Maybe<Interval<Denature<NumericElementType>>>> = map(
             slice(array, INITIAL, indexOfFinalElement(array)),
             (
                 value: Point<NumericElementType>,
                 index: Ordinal<Array<Point<NumericElementType>>>,
-            ): Maybe<Scalar<Point<Denature<NumericElementType>>>> => {
+            ): Maybe<Interval<Denature<NumericElementType>>> => {
                 const nextValue: Point<NumericElementType> = use.Ordinal(
                     array,
                     use.Cardinal(index, INCREMENT),
@@ -75,7 +66,7 @@ const computeIntervals: <NumericElementType extends Number>(
             intervals.push(quotient(
                 initialElement(array) as Point<NumericElementType>,
                 finalElement(array) as Point<NumericElementType>,
-            ) as Maybe<Scalar<Point<Denature<NumericElementType>>>>)
+            ) as Maybe<Interval<Denature<NumericElementType>>>)
         }
 
         return intervals

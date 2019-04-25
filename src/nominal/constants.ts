@@ -8,7 +8,9 @@ import {
     Cardinal,
     Cents,
     Cycle,
+    Delta,
     Exponent,
+    Factor,
     Fraction,
     Frequency,
     Integer,
@@ -23,6 +25,7 @@ import {
     Scalar,
     Semitones,
     Space,
+    Transition,
     Translation,
 } from './types'
 
@@ -58,10 +61,10 @@ const HEPTUPLE: Multiple = as.Multiple(7)
 const OCTUPLE: Multiple = as.Multiple(8)
 const NONTUPLE: Multiple = as.Multiple(9)
 
-const EVERY_OTHER: Multiple<Ordinal<ArrayOverloadAny>> = as.Multiple<Ordinal<ArrayOverloadAny>>(2)
-const EVERY_THIRD: Multiple<Ordinal<ArrayOverloadAny>> = as.Multiple<Ordinal<ArrayOverloadAny>>(3)
-const EVERY_FOURTH: Multiple<Ordinal<ArrayOverloadAny>> = as.Multiple<Ordinal<ArrayOverloadAny>>(4)
-const EVERY_FIFTH: Multiple<Ordinal<ArrayOverloadAny>> = as.Multiple<Ordinal<ArrayOverloadAny>>(5)
+const EVERY_OTHER: Factor<ArrayOverloadAny> = as.Factor<ArrayOverloadAny>(2)
+const EVERY_THIRD: Factor<ArrayOverloadAny> = as.Factor<ArrayOverloadAny>(3)
+const EVERY_FOURTH: Factor<ArrayOverloadAny> = as.Factor<ArrayOverloadAny>(4)
+const EVERY_FIFTH: Factor<ArrayOverloadAny> = as.Factor<ArrayOverloadAny>(5)
 
 const ONCE: Cardinal<any> = as.Cardinal(1)
 const TWICE: Cardinal<any> = as.Cardinal(2)
@@ -116,8 +119,8 @@ const ADDITIVE_IDENTITY: Translation<any> = as.Translation(0)
 const MULTIPLICATIVE_IDENTITY: Scalar<any> = as.Scalar(1)
 const FRACTIONAL_IDENTITY: Fraction = as.Fraction([ as.Numerator(1), as.Denominator(1) ])
 
-const NEXT: Cardinal<Ordinal<ArrayOverloadAny>> = as.Cardinal<Ordinal<ArrayOverloadAny>>(1)
-const PREVIOUS: Cardinal<Ordinal<ArrayOverloadAny>> = as.Cardinal<Ordinal<ArrayOverloadAny>>(-1)
+const NEXT: Transition<ArrayOverloadAny> = as.Transition<ArrayOverloadAny>(1)
+const PREVIOUS: Transition<ArrayOverloadAny> = as.Transition<ArrayOverloadAny>(-1)
 const UP_ONE: Cardinal<Cardinal<any>> = as.Cardinal<Cardinal<any>>(1)
 const DOWN_ONE: Cardinal<Cardinal<any>> = as.Cardinal<Cardinal<any>>(-1)
 const INCREMENT: Cardinal<any> = as.Cardinal<any>(1)
@@ -134,13 +137,13 @@ const FIRST_FACTOR_NECESSARY_TO_CHECK_IF_COMMON: Integer = as.Integer(2)
 const PI: Radians = as.Radians(Math.PI)
 const E: Logarithm<any> = as.Logarithm(Math.E)
 
-const GOOD_AMOUNT_OF_TIME_TO_SEE_WHAT_THE_SITUATION_IS_WHEN_HEADFULLY_DEBUGGING_TESTS: Translation<Point<Ms>> =
-    as.Translation<Point<Ms>>(3000)
+const GOOD_AMOUNT_OF_TIME_TO_SEE_WHAT_THE_SITUATION_IS_WHEN_HEADFULLY_DEBUGGING_TESTS: Delta<Ms> =
+    as.Delta<Ms>(3000)
 
-const INCLUSIVE: Cardinal<Ordinal<ArrayOverloadAny>> = as.Cardinal<Ordinal<ArrayOverloadAny>>(1)
-const EXCLUSIVE: Cardinal<Ordinal<ArrayOverloadAny>> = as.Cardinal<Ordinal<ArrayOverloadAny>>(-1)
-const INCLUSIVE_TO_LEFT: Cardinal<Ordinal<ArrayOverloadAny>> = as.Cardinal<Ordinal<ArrayOverloadAny>>(-1)
-const EXCLUSIVE_TO_LEFT: Cardinal<Ordinal<ArrayOverloadAny>> = as.Cardinal<Ordinal<ArrayOverloadAny>>(1)
+const INCLUSIVE: Transition<ArrayOverloadAny> = as.Transition<ArrayOverloadAny>(1)
+const EXCLUSIVE: Transition<ArrayOverloadAny> = as.Transition<ArrayOverloadAny>(-1)
+const INCLUSIVE_TO_LEFT: Transition<ArrayOverloadAny> = as.Transition<ArrayOverloadAny>(-1)
+const EXCLUSIVE_TO_LEFT: Transition<ArrayOverloadAny> = as.Transition<ArrayOverloadAny>(1)
 
 const INITIAL: Ordinal<ArrayOverloadAny> = as.Ordinal<ArrayOverloadAny>(0)
 const SKIP_FIRST_ELEMENT: Ordinal<ArrayOverloadAny> = as.Ordinal<ArrayOverloadAny>(1)
@@ -164,18 +167,18 @@ const CENTS_PER_OCTAVE: Cents =
     as.Cents(notAs.Cents(CENTS_PER_SEMITONE) * notAs.Cardinal<Semitones>(SEMITONES_PER_OCTAVE))
 
 const BEGINNING: Point<Ms> = as.Point<Ms>(0)
-const NO_DURATION: Translation<Point<Ms>> = as.Translation<Point<Ms>>(0)
+const NO_DURATION: Delta<Ms> = as.Delta<Ms>(0)
 
 const MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS: Cardinal = as.Cardinal(10)
 
 const MILLISECONDS_PER_SECOND: Cardinal<Ms> = as.Cardinal<Ms>(1000)
 const SECONDS_PER_MINUTE: Cardinal = as.Cardinal(60)
 
-const ONE_MILLISECOND: Translation<Point<Ms>> = as.Translation<Point<Ms>>(1)
-const ONE_SECOND: Translation<Point<Ms>> = as.Translation<Point<Ms>>(1000)
-const ONE_MINUTE: Translation<Point<Ms>> = as.Translation<Point<Ms>>(60000)
-const ONE_HOUR: Translation<Point<Ms>> = as.Translation<Point<Ms>>(3600000)
-const ONE_DAY: Translation<Point<Ms>> = as.Translation<Point<Ms>>(86400000)
+const ONE_MILLISECOND: Delta<Ms> = as.Delta<Ms>(1)
+const ONE_SECOND: Delta<Ms> = as.Delta<Ms>(1000)
+const ONE_MINUTE: Delta<Ms> = as.Delta<Ms>(60000)
+const ONE_HOUR: Delta<Ms> = as.Delta<Ms>(3600000)
+const ONE_DAY: Delta<Ms> = as.Delta<Ms>(86400000)
 
 const VERY_HIGH_PRECISION: Integer = as.Integer(10)
 const VERY_LOW_PRECISION: Integer = as.Integer(1)

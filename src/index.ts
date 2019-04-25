@@ -324,6 +324,12 @@ export {
     VERY_LOW_PRECISION,
     Transposition,
     Point,
+    Interval,
+    Delta,
+    Arc,
+    Factor,
+    Transition,
+    Turn,
 } from './nominal'
 export {
     ActionForState,

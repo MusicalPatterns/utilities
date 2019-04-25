@@ -106,11 +106,11 @@ const Cardinal: {
             for (
                 let index: Ordinal<Cycle<OfType>> = as.Ordinal<Cycle<OfType>>(0);
                 index <= finalIndexFromElementsTotal(cellCount);
-                index = Cardinal(index, as.Cardinal<Ordinal<Cycle<OfType>>>(1))
+                index = Cardinal(index, as.Transition<Cycle<OfType>>(1))
             ) {
                 let cycledIndex: Ordinal<Cycle<OfType>> = Cardinal(
                     index,
-                    as.Cardinal<Ordinal<Cycle<OfType>>>(-notAs.Cardinal(cardinal as unknown as Cardinal)),
+                    as.Transition<Cycle<OfType>>(-notAs.Cardinal(cardinal as unknown as Cardinal)),
                 )
                 cycledIndex = IntegerModulus(
                     cycledIndex,

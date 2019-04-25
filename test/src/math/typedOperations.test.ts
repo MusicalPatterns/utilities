@@ -115,14 +115,14 @@ describe('typed operations', () => {
                 .toBe(as.Ms(3))
         })
 
-        it('returns a Translation type Of the Units if they are given as Points', () => {
+        it('returns a Delta type Of the Units if they are given as Points', () => {
             expect(difference(as.Point<Ms>(4), as.Point<Ms>(1)))
-                .toBe(as.Translation<Point<Ms>>(3))
+                .toBe(as.Delta<Ms>(3))
         })
 
-        it('returns a Cardinal type Of the Units if they are given as Ordinals', () => {
+        it('returns a Transition type Of the Units if they are given as Ordinals', () => {
             expect(difference(as.Ordinal<Ms[]>(4), as.Ordinal<Ms[]>(1)))
-                .toBe(as.Cardinal<Ms[]>(3))
+                .toBe(as.Transition<Ms[]>(3))
         })
 
         it('works for Uses that are related to addition/subtraction', () => {
@@ -141,12 +141,12 @@ describe('typed operations', () => {
 
         it('returns a Scalar type Of the Units if they are given as Points', () => {
             expect(quotient(as.Point<Ms>(6), as.Point<Ms>(2)))
-                .toBe(as.Scalar<Point<Ms>>(3))
+                .toBe(as.Interval<Ms>(3))
         })
 
         it('returns a Multiple type Of the Units if they are given as Ordinals', () => {
             expect(quotient(as.Ordinal<Ms[]>(6), as.Ordinal<Ms[]>(2)))
-                .toBe(as.Multiple<Ms[]>(3))
+                .toBe(as.Factor<Ms[]>(3))
         })
 
         it('when given an integer type, removes the integer type in the return value, because division is not closed on integers (by contrast, subtraction is, which is why we do not have an equivalent test above for `difference`)', () => {

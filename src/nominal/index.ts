@@ -186,4 +186,10 @@ export {
     Point,
     ArrayOverload,
     ArrayOverloadAny,
+    Interval,
+    Delta,
+    Arc,
+    Factor,
+    Transition,
+    Turn,
 } from './types'

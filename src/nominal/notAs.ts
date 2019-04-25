@@ -1,20 +1,24 @@
 // tslint:disable variable-name max-file-line-count max-line-length
 
 import {
+    Arc,
     ArrayOverload,
     Base,
     Block,
     Cardinal,
     Cents,
     Cycle,
+    Delta,
     Denominator,
     Exponent,
+    Factor,
     Fraction,
     Frequency,
     Gain,
     Hz,
     Integer,
     IntegerModulus,
+    Interval,
     Logarithm,
     Meters,
     Modulus,
@@ -31,8 +35,10 @@ import {
     Semitones,
     Space,
     Time,
+    Transition,
     Translation,
     Transposition,
+    Turn,
     UnitScalar,
 } from './types'
 
@@ -120,6 +126,18 @@ const Point: <OfType extends Number = Number>(point: Point<OfType>) => number =
     <OfType extends Number = Number>(point: Point<OfType>): number =>
         point as unknown as number
 
+// Unnatural Compounds
+
+const Interval: <OfType extends Number = Number>(interval: Interval<OfType>) => number =
+    <OfType extends Number = Number>(interval: Interval<OfType>): number =>
+        interval as unknown as number
+const Delta: <OfType extends Number = Number>(delta: Delta<OfType>) => number =
+    <OfType extends Number = Number>(delta: Delta<OfType>): number =>
+        delta as unknown as number
+const Arc: <OfType extends Number = Number>(arc: Arc<OfType>) => number =
+    <OfType extends Number = Number>(arc: Arc<OfType>): number =>
+        arc as unknown as number
+
 // Natural Transformation Uses (with overloads for arrays)
 
 const Multiple: <OfType extends NaturalUseOfableWithArrayOverloadActive = number>(multiple: Multiple<OfType>) => number =
@@ -149,6 +167,18 @@ const IntegerModulus: <OfType extends Number = number>(integerModulus: IntegerMo
 const Ordinal: <OfType extends ArrayOverload = number[]>(ordinal: Ordinal<OfType>) => number =
     <OfType extends ArrayOverload = number[]>(ordinal: Ordinal<OfType>): number =>
         ordinal as unknown as number
+
+// Natural Compounds
+
+const Factor: <OfType extends ArrayOverload = number[]>(factor: Factor<OfType>) => number =
+    <OfType extends ArrayOverload = number[]>(factor: Factor<OfType>): number =>
+        factor as unknown as number
+const Transition: <OfType extends ArrayOverload = number[]>(transition: Transition<OfType>) => number =
+    <OfType extends ArrayOverload = number[]>(transition: Transition<OfType>): number =>
+        transition as unknown as number
+const Turn: <OfType extends ArrayOverload = number[]>(turn: Turn<OfType>) => number =
+    <OfType extends ArrayOverload = number[]>(turn: Turn<OfType>): number =>
+        turn as unknown as number
 
 // Unit Uses
 
@@ -209,4 +239,10 @@ export {
     IntegerModulus,
     Transposition,
     Point,
+    Interval,
+    Delta,
+    Arc,
+    Factor,
+    Transition,
+    Turn,
 }

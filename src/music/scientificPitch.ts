@@ -2,8 +2,8 @@
 
 import { keys, ObjectOf, reduce } from '../code'
 import { negative } from '../math'
-import { as, Base, Frequency, Hz, notAs, OCTAVE, Point, Power, Scalar, use } from '../nominal'
-import { ScientificPitches, ScientificPitchNoteName, ScientificPitchOctaveNumber } from './types'
+import { as, Base, Frequency, Hz, notAs, OCTAVE, Power, Scalar, use } from '../nominal'
+import { Pitch, ScientificPitches, ScientificPitchNoteName, ScientificPitchOctaveNumber } from './types'
 
 const SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP: {
     [Index in ScientificPitchOctaveNumber]: Power<Base<Frequency>>
@@ -22,7 +22,7 @@ const SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP: {
     [ ScientificPitchOctaveNumber._10 ]: as.Power<Base<Frequency>>(10),
 }
 
-const SCIENTIFIC_PITCH_NOTE_NAME_TO_ZEROTH_OCTAVE_FREQUENCY_MAP: { [Index in ScientificPitchNoteName]: Point<Hz> } = {
+const SCIENTIFIC_PITCH_NOTE_NAME_TO_ZEROTH_OCTAVE_FREQUENCY_MAP: { [Index in ScientificPitchNoteName]: Pitch } = {
     [ ScientificPitchNoteName.C ]: as.Point<Hz>(16.352),
     [ ScientificPitchNoteName.C_SHARP_D_FLAT ]: as.Point<Hz>(17.324),
     [ ScientificPitchNoteName.D ]: as.Point<Hz>(18.354),
@@ -37,10 +37,10 @@ const SCIENTIFIC_PITCH_NOTE_NAME_TO_ZEROTH_OCTAVE_FREQUENCY_MAP: { [Index in Sci
     [ ScientificPitchNoteName.B ]: as.Point<Hz>(30.868),
 }
 
-const scientificPitch: (noteName: ScientificPitchNoteName, octaveNumber: ScientificPitchOctaveNumber) => Point<Hz> =
-    (noteName: ScientificPitchNoteName, octaveNumber: ScientificPitchOctaveNumber): Point<Hz> => {
-        const octaveScalar: Scalar<Point<Hz>> =
-            as.Scalar<Point<Hz>>(notAs.Base<Frequency>(use.Power(
+const scientificPitch: (noteName: ScientificPitchNoteName, octaveNumber: ScientificPitchOctaveNumber) => Pitch =
+    (noteName: ScientificPitchNoteName, octaveNumber: ScientificPitchOctaveNumber): Pitch => {
+        const octaveScalar: Scalar<Pitch> =
+            as.Scalar<Pitch>(notAs.Base<Frequency>(use.Power(
                 OCTAVE,
                 SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP[ octaveNumber ],
             )))
@@ -66,12 +66,12 @@ const scientificPitchesInitialAccumulator: ScientificPitches = {
 const SCIENTIFIC_PITCHES: ScientificPitches = keys(SCIENTIFIC_PITCH_NOTE_NAME_TO_ZEROTH_OCTAVE_FREQUENCY_MAP)
     .reduce(
         (pitchesAccumulator: ScientificPitches, noteName: ScientificPitchNoteName): ScientificPitches => {
-            const frequencies: ObjectOf<Point<Hz>> = reduce(
+            const frequencies: ObjectOf<Pitch> = reduce(
                 keys(SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP),
                 (
-                    frequenciesAccumulator: ObjectOf<Point<Hz>>,
+                    frequenciesAccumulator: ObjectOf<Pitch>,
                     octaveNumber: ScientificPitchOctaveNumber,
-                ): ObjectOf<Point<Hz>> => ({
+                ): ObjectOf<Pitch> => ({
                     ...frequenciesAccumulator,
                     [ octaveNumber ]: scientificPitch(noteName, octaveNumber),
                 }),

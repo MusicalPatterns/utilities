@@ -2,6 +2,7 @@
 
 import { integerCheck, unitCheck } from './checks'
 import {
+    Arc,
     ArrayOverload,
     Base,
     Block,
@@ -11,14 +12,17 @@ import {
     ContourPiece,
     ContourWhole,
     Cycle,
+    Delta,
     Denominator,
     Exponent,
+    Factor,
     Fraction,
     Frequency,
     Gain,
     Hz,
     Integer,
     IntegerModulus,
+    Interval,
     Logarithm,
     Meters,
     Modulus,
@@ -41,8 +45,10 @@ import {
     Semitones,
     Space,
     Time,
+    Transition,
     Translation,
     Transposition,
+    Turn,
     UnitScalar,
     Unnatural,
     UnnaturalUseOfable,
@@ -161,6 +167,30 @@ const Point: {
     <OfType extends Unnatural | NoOf = number>(point: OfType | number | Of<OfType>): Point<OfType> =>
         point as unknown as Point<OfType>
 
+// Unnatural Compounds
+
+const Interval: {
+    <OfType extends UnnaturalUseOfable = number>(interval: OfType): Interval,
+    <OfType extends UnnaturalUseOfableActive = number>(interval: number | Of<OfType>): Interval<OfType>,
+    <OfType extends UnnaturalUseOfable = number>(interval: OfType): Interval,
+} =
+    <OfType extends Unnatural | NoOf = number>(interval: OfType | number | Of<OfType>): Interval<OfType> =>
+        interval as unknown as Interval<OfType>
+const Delta: {
+    <OfType extends UnnaturalUseOfable = number>(delta: OfType): Delta,
+    <OfType extends UnnaturalUseOfableActive = number>(delta: number | Of<OfType>): Delta<OfType>,
+    <OfType extends UnnaturalUseOfable = number>(delta: OfType): Delta,
+} =
+    <OfType extends Unnatural | NoOf = number>(delta: OfType | number | Of<OfType>): Delta<OfType> =>
+        delta as unknown as Delta<OfType>
+const Arc: {
+    <OfType extends UnnaturalUseOfable = number>(arc: OfType): Arc,
+    <OfType extends UnnaturalUseOfableActive = number>(arc: number | Of<OfType>): Arc<OfType>,
+    <OfType extends UnnaturalUseOfable = number>(arc: OfType): Arc,
+} =
+    <OfType extends Unnatural | NoOf = number>(arc: OfType | number | Of<OfType>): Arc<OfType> =>
+        arc as unknown as Arc<OfType>
+
 // Natural Transformation Uses (with overloads for arrays)
 
 const Multiple: {
@@ -218,6 +248,30 @@ const Ordinal: {
 } =
     <OfType = number>(ordinal: OfType | number | Of<OfType>): Ordinal<OfType[]> =>
         integerCheck(ordinal as unknown as number, 'Ordinal') as unknown as Ordinal<OfType[]>
+
+// Natural Compounds
+
+const Factor: {
+    <OfType extends NoOf = number>(factor: OfType): Factor,
+    <OfType extends ArrayOverload = number[]>(factor: number | Of<OfType>): Factor<OfType>,
+    <OfType extends NoOf = number>(factor: OfType): Factor,
+} =
+    <OfType = number>(factor: OfType | number | Of<OfType>): Factor<OfType[]> =>
+        integerCheck(factor as unknown as number, 'Factor') as unknown as Factor<OfType[]>
+const Transition: {
+    <OfType extends NoOf = number>(transition: OfType): Transition,
+    <OfType extends ArrayOverload = number[]>(transition: number | Of<OfType>): Transition<OfType>,
+    <OfType extends NoOf = number>(transition: OfType): Transition,
+} =
+    <OfType = number>(transition: OfType | number | Of<OfType>): Transition<OfType[]> =>
+        integerCheck(transition as unknown as number, 'Transition') as unknown as Transition<OfType[]>
+const Turn: {
+    <OfType extends NoOf = number>(turn: OfType): Turn,
+    <OfType extends ArrayOverload = number[]>(turn: number | Of<OfType>): Turn<OfType>,
+    <OfType extends NoOf = number>(turn: OfType): Turn,
+} =
+    <OfType = number>(turn: OfType | number | Of<OfType>): Turn<OfType[]> =>
+        integerCheck(turn as unknown as number, 'Turn') as unknown as Turn<OfType[]>
 
 // Unit Uses
 
@@ -296,4 +350,10 @@ export {
     IntegerModulus,
     Transposition,
     Point,
+    Interval,
+    Delta,
+    Arc,
+    Factor,
+    Transition,
+    Turn,
 }

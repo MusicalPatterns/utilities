@@ -1,15 +1,16 @@
+import { computeGreatestCommonDivisor, computeLeastCommonMultiple, product, quotient } from '../math'
 import {
     as,
-    computeGreatestCommonDivisor,
-    computeLeastCommonMultiple,
     Denominator,
+    DENOMINATOR_INDEX,
     Fraction,
+    FRACTIONAL_IDENTITY,
     Integer,
+    Multiple,
     Numerator,
-    product,
-} from '../indexForTest'
-import { quotient } from '../math'
-import { DENOMINATOR_INDEX, FRACTIONAL_IDENTITY, Multiple, NUMERATOR_INDEX, use } from '../nominal'
+    NUMERATOR_INDEX,
+    use,
+} from '../nominal'
 
 const getNumerator: (fraction: Fraction) => Numerator =
     (fraction: Fraction): Numerator =>

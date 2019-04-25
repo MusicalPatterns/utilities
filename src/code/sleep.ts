@@ -1,9 +1,9 @@
-import { Ms, notAs, Point, Translation } from '../nominal'
+import { Delta, Ms, notAs } from '../nominal'
 
-const sleep: (ms: Translation<Point<Ms>>) => Promise<void> =
-    async (ms: Translation<Point<Ms>>): Promise<void> =>
+const sleep: (ms: Delta<Ms>) => Promise<void> =
+    async (ms: Delta<Ms>): Promise<void> =>
         new Promise((resolve: VoidFunction): void => {
-            setTimeout(resolve, notAs.Translation(ms))
+            setTimeout(resolve, notAs.Delta(ms))
         })
 
 export {

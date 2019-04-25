@@ -1,4 +1,4 @@
-import { as, computeDeltas, computeIntervals, Hz, Point } from '../../../src/indexForTest'
+import { as, computeDeltas, computeIntervals, Hz, Pitch } from '../../../src/indexForTest'
 
 describe('deltas', () => {
     describe('deltas', () => {
@@ -12,7 +12,7 @@ describe('deltas', () => {
                         353,
                         -354,
                         5,
-                    ].map((expected: number) => as.Translation<Point<Hz>>(expected)),
+                    ].map((expected: number) => as.Translation<Pitch>(expected)),
                 )
         })
 
@@ -27,7 +27,7 @@ describe('deltas', () => {
                         -354,
                         5,
                         -4,
-                    ].map((expected: number) => as.Translation<Point<Hz>>(expected)),
+                    ].map((expected: number) => as.Translation<Pitch>(expected)),
                 )
         })
     })
@@ -43,7 +43,7 @@ describe('deltas', () => {
                         357 / 4,
                         3 / 357,
                         8 / 3,
-                    ].map((expected: number) => as.Scalar<Point<Hz>>(expected)),
+                    ].map((expected: number) => as.Scalar<Pitch>(expected)),
                 )
         })
 
@@ -58,21 +58,21 @@ describe('deltas', () => {
                         3 / 357,
                         8 / 3,
                         1 / 2,
-                    ].map((expected: number) => as.Scalar<Point<Hz>>(expected)),
+                    ].map((expected: number) => as.Scalar<Pitch>(expected)),
                 )
         })
 
         it('gives an interval of 0 to zeroes, but NaN from zeroes', () => {
             expect(computeIntervals([ 5, 5, 5, 0, 0, 0, 5, 5, 5 ].map(as.Point)))
                 .toEqual([
-                    as.Scalar<Point>(1),
-                    as.Scalar<Point>(1),
-                    as.Scalar<Point>(0),
-                    as.Scalar<Point>(0),
-                    as.Scalar<Point>(0),
+                    as.Interval(1),
+                    as.Interval(1),
+                    as.Interval(0),
+                    as.Interval(0),
+                    as.Interval(0),
                     undefined,
-                    as.Scalar<Point>(1),
-                    as.Scalar<Point>(1),
+                    as.Interval(1),
+                    as.Interval(1),
                 ])
         })
     })

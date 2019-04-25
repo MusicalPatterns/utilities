@@ -1,11 +1,12 @@
 // tslint:disable max-file-line-count
 
 import {
-    Cardinal,
     Cycle,
+    Delta,
     Denature,
+    Factor,
     Integer,
-    Multiple,
+    Interval,
     Natural,
     NoUse,
     Ordinal,
@@ -13,6 +14,7 @@ import {
     Radians,
     Scalar,
     Space,
+    Transition,
     Translation,
 } from '../nominal'
 
@@ -86,15 +88,15 @@ interface QuotientOperation {
     <ElementType>(
         dividend: Cycle<ElementType>,
         divisor: Cycle<ElementType>,
-    ): Multiple<Cycle<ElementType>>,
+    ): Factor<Cycle<ElementType>>,
     <ElementType>(
         dividend: Ordinal<ElementType[]>,
         divisor: Ordinal<ElementType[]>,
-    ): Multiple<ElementType[]>,
+    ): Factor<ElementType[]>,
     <NumericType extends NoUse | number>(
         dividend: Point<NumericType>,
         divisor: Point<NumericType>,
-    ): Scalar<Point<Denature<NumericType>>>,
+    ): Interval<Denature<NumericType>>,
     <NumericType extends NoUse | number>(
         dividend: NumericType,
         divisor: NumericType,
@@ -109,15 +111,15 @@ interface DifferenceOperation {
     <ElementType>(
         minuend: Cycle<ElementType>,
         subtrahend: Cycle<ElementType>,
-    ): Cardinal<Cycle<ElementType>>,
+    ): Transition<Cycle<ElementType>>,
     <ElementType>(
         minuend: Ordinal<ElementType[]>,
         subtrahend: Ordinal<ElementType[]>,
-    ): Cardinal<ElementType[]>,
+    ): Transition<ElementType[]>,
     <NumericType extends NoUse | number>(
         minuend: Point<NumericType>,
         subtrahend: Point<NumericType>,
-    ): Translation<Point<Denature<NumericType>>>,
+    ): Delta<Denature<NumericType>>,
     <NumericType extends NoUse | number>(
         minuend: NumericType,
         subtrahend: NumericType,

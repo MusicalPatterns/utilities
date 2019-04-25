@@ -1,7 +1,17 @@
 // tslint:disable bool-param-default
 
 import { isUndefined, Maybe } from '../code'
-import { as, EXAMPLE_ELEMENT_INDEX, MULTIPLICATIVE_IDENTITY, notAs, Point, Scalar, Translation, use } from '../nominal'
+import {
+    as,
+    Delta,
+    EXAMPLE_ELEMENT_INDEX,
+    Interval,
+    MULTIPLICATIVE_IDENTITY,
+    notAs,
+    Point,
+    Scalar,
+    use,
+} from '../nominal'
 import { allValuesAreTheSame, beginValueIsCorrect } from './goes'
 import { goesMonotonicallyBetweenValueAndValue, goesMonotonicallyFromValueToValue } from './monotonic'
 import { computeDeltas, computeIntervals } from './rateOfChange'
@@ -20,9 +30,9 @@ const goesQuadratically: <NumericElementType extends Number>(
             return false
         }
 
-        const deltas: Array<Translation<Point<NumericElementType>>> = computeDeltas(array)
-        const deltaIntervals: Array<Maybe<Scalar<Point>>> = computeIntervals(
-            deltas.map((delta: Translation<Point<NumericElementType>>) => as.Point(notAs.Translation(delta))),
+        const deltas: Array<Delta<NumericElementType>> = computeDeltas(array)
+        const deltaIntervals: Array<Maybe<Interval>> = computeIntervals(
+            deltas.map((delta: Delta<NumericElementType>) => as.Point(notAs.Translation(delta))),
         )
 
         const exampleInterval: Maybe<Scalar> = use.Ordinal(
@@ -33,7 +43,7 @@ const goesQuadratically: <NumericElementType extends Number>(
             return false
         }
 
-        return allValuesAreTheSame(deltaIntervals as Array<Scalar<Point>>, undefined, precision) &&
+        return allValuesAreTheSame(deltaIntervals as Interval[], undefined, precision) &&
             exampleInterval !== MULTIPLICATIVE_IDENTITY
     }
 
