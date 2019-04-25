@@ -11,7 +11,7 @@ interface NominalNumber {
 // Units Utilities
 
 type NoUnits = Number & { _UnitsBrand?: 'NoUnits' }
-type UnitsBrand<UnitsName> = NoUse & { _UnitsBrand: UnitsName } & MaybeNatural<UnitsName>
+type UnitsBrand<UnitsName> = NoUse & { _UnitsBrand: UnitsName } & MaybeWhole<UnitsName>
 
 // Concrete Units
 
@@ -34,7 +34,7 @@ type Semitones = UnitsBrand<'Semitones'>
 
 type Gain = UnitsBrand<'Gain'>
 
-// Natural Units
+// Whole Units
 
 type Numerator = UnitsBrand<'Numerator'>
 type Denominator = UnitsBrand<'Denominator'>
@@ -50,7 +50,7 @@ type UseOf<OfType> = Number & { _UseOfBrand: OfType }
 type UseBrand<UseName, OfType = number> =
     UseOf<OfType>
     & { _UseBrand: UseName }
-    & MaybeNatural<UseName>
+    & MaybeWhole<UseName>
     & MaybeUnit<UseName>
 
 type UseNameFromUse<Use> =
@@ -75,45 +75,45 @@ type NoOf = number & { _OfBrand?: 'NoOf' }
 
 type Of<OfType> = number | { _OfBrand: OfType }
 
-// Unnatural Transformation Uses
+// Unwhole Transformation Uses
 
-type Scalar<OfType extends UnnaturalUseOfableActive = number> = UseBrand<'Scalar', OfType>
-type Translation<OfType extends UnnaturalUseOfableActive = number> = UseBrand<'Translation', OfType>
-type Rotation<OfType extends UnnaturalUseOfableActive = number> = UseBrand<'Rotation', OfType>
+type Scalar<OfType extends UnwholeUseOfableActive = number> = UseBrand<'Scalar', OfType>
+type Translation<OfType extends UnwholeUseOfableActive = number> = UseBrand<'Translation', OfType>
+type Rotation<OfType extends UnwholeUseOfableActive = number> = UseBrand<'Rotation', OfType>
 
-// Unnatural Non-Transformation Uses
+// Unwhole Non-Transformation Uses
 
-type Exponent<OfType extends UnnaturalUseOfableActive = number> = UseBrand<'Exponent', OfType>
-type Logarithm<OfType extends UnnaturalUseOfableActive = number> = UseBrand<'Logarithm', OfType>
-type Modulus<OfType extends UnnaturalUseOfableActive = number> = UseBrand<'Modulus', OfType>
+type Exponent<OfType extends UnwholeUseOfableActive = number> = UseBrand<'Exponent', OfType>
+type Logarithm<OfType extends UnwholeUseOfableActive = number> = UseBrand<'Logarithm', OfType>
+type Modulus<OfType extends UnwholeUseOfableActive = number> = UseBrand<'Modulus', OfType>
 
-// Unnatural Fixed Uses
+// Unwhole Fixed Uses
 
-type Point<OfType extends UnnaturalUseOfableActive = number> = UseBrand<'Point', OfType>
+type Point<OfType extends UnwholeUseOfableActive = number> = UseBrand<'Point', OfType>
 
-// Unnatural Compound Uses
+// Unwhole Compound Uses
 
-type Interval<OfType extends UnnaturalUseOfableActive = number> = Scalar<Point<OfType>>
-type Delta<OfType extends UnnaturalUseOfableActive = number> = Translation<Point<OfType>>
-type Arc<OfType extends UnnaturalUseOfableActive = number> = Rotation<Point<OfType>>
+type Interval<OfType extends UnwholeUseOfableActive = number> = Scalar<Point<OfType>>
+type Delta<OfType extends UnwholeUseOfableActive = number> = Translation<Point<OfType>>
+type Arc<OfType extends UnwholeUseOfableActive = number> = Rotation<Point<OfType>>
 
-// Natural Transformation Uses (with overloads for arrays)
+// Whole Transformation Uses (with overloads for arrays)
 
-type Multiple<OfType extends NaturalUseOfableWithArrayOverloadActive = number> = UseBrand<'Multiple' & 'Scalar', OfType>
-type Cardinal<OfType extends NaturalUseOfableWithArrayOverloadActive = number> = UseBrand<'Cardinal' & 'Translation', OfType>
-type Transposition<OfType extends NaturalUseOfableWithArrayOverloadActive = number> = UseBrand<'Transposition' & 'Rotation', OfType>
+type Multiple<OfType extends WholeUseOfableWithArrayOverloadActive = number> = UseBrand<'Multiple' & 'Scalar', OfType>
+type Cardinal<OfType extends WholeUseOfableWithArrayOverloadActive = number> = UseBrand<'Cardinal' & 'Translation', OfType>
+type Transposition<OfType extends WholeUseOfableWithArrayOverloadActive = number> = UseBrand<'Transposition' & 'Rotation', OfType>
 
-// Natural Non-Transformation Uses
+// Whole Non-Transformation Uses
 
-type Power<OfType extends NaturalUseOfableActive = number> = UseBrand<'Power' & 'Exponent', OfType>
-type Base<OfType extends NaturalUseOfableActive = number> = UseBrand<'Base' & 'Logarithm', OfType>
-type IntegerModulus<OfType extends NaturalUseOfableActive = number> = UseBrand<'IntegerModulus' & 'Modulus', OfType>
+type Power<OfType extends WholeUseOfableActive = number> = UseBrand<'Power' & 'Exponent', OfType>
+type Base<OfType extends WholeUseOfableActive = number> = UseBrand<'Base' & 'Logarithm', OfType>
+type IntegerModulus<OfType extends WholeUseOfableActive = number> = UseBrand<'IntegerModulus' & 'Modulus', OfType>
 
-// Natural Fixed Uses (only used for arrays)
+// Whole Fixed Uses (only used for arrays)
 
 type Ordinal<OfType extends { _OfBrand?: 'NoOf' } & ArrayOverload = number[]> = UseBrand<'Ordinal' & 'Point', OfType>
 
-// Natural Compound Uses
+// Whole Compound Uses
 
 type Factor<OfType extends { _OfBrand?: 'NoOf' } & ArrayOverload = number[]> = Multiple<Ordinal<OfType>>
 type Transition<OfType extends { _OfBrand?: 'NoOf' } & ArrayOverload = number[]> = Cardinal<Ordinal<OfType>>
@@ -121,29 +121,29 @@ type Turn<OfType extends { _OfBrand?: 'NoOf' } & ArrayOverload = number[]> = Tra
 
 // Unit Uses
 
-type UnitScalar<OfType extends Unnatural = number> = UseBrand<'UnitScalar' & 'Scalar', OfType>
+type UnitScalar<OfType extends Unwhole = number> = UseBrand<'UnitScalar' & 'Scalar', OfType>
 
-// Naturalness
+// Wholeness
 
-type Integer = number & Natural
-type Natural = Number & { _IntegerBrand: 'Integer' }
-type Unnatural = Number & { _IntegerBrand?: 'NotInteger' }
+type Integer = number & Whole
+type Whole = Number & { _IntegerBrand: 'Integer' }
+type Unwhole = Number & { _IntegerBrand?: 'NotInteger' }
 
-type Denature<NumericType extends Number> = (
-    NumericType extends Natural ?
+type UnwholeVersion<NumericType extends Number> = (
+    NumericType extends Whole ?
         NumericType extends ({ _UseBrand: string } | { _UnitsBrand: string }) ?
-            NaturalToUnnatural<NumericType> & { _IntegerBrand: 'NotInteger' } :
+            WholeToUnwhole<NumericType> & { _IntegerBrand: 'NotInteger' } :
             number & { _IntegerBrand: 'NotInteger' } :
         NumericType extends ({ _UseBrand: string } | { _UnitsBrand: string }) ?
-            NaturalToUnnatural<NumericType> :
+            WholeToUnwhole<NumericType> :
             NumericType
     )
 
-type Nature<NumericType extends Number> =
+type WholeVersion<NumericType extends Number> =
     { _IntegerBrand: 'Integer' } &
-    (NumericType extends { _UseBrand: string } ? UnnaturalToNatural<NumericType> : NumericType)
+    (NumericType extends { _UseBrand: string } ? UnwholeToWhole<NumericType> : NumericType)
 
-type UnnaturalToNatural<NumericType extends { _UseBrand: string }> =
+type UnwholeToWhole<NumericType extends { _UseBrand: string }> =
     NumericType extends { _UseBrand: 'Scalar' } ? Difference<NumericType, { _UseBrand: 'Scalar' }> & { _UseBrand: 'Multiple' & 'Scalar' } :
         NumericType extends { _UseBrand: 'Translation' } ? Difference<NumericType, { _UseBrand: 'Translation' }> & { _UseBrand: 'Cardinal' & 'Translation' } :
             NumericType extends { _UseBrand: 'Rotation' } ? Difference<NumericType, { _UseBrand: 'Rotation' }> & { _UseBrand: 'Transposition' & 'Rotation' } :
@@ -153,7 +153,7 @@ type UnnaturalToNatural<NumericType extends { _UseBrand: string }> =
                             NumericType extends { _UseBrand: 'Point' } ? Difference<NumericType, { _UseBrand: 'Point' }> & { _UseBrand: 'Ordinal' & 'Point' } :
                                 NumericType
 
-type NaturalToUnnatural<NumericType extends { _UseBrand: string } | { _UnitsBrand: string }> =
+type WholeToUnwhole<NumericType extends { _UseBrand: string } | { _UnitsBrand: string }> =
     NumericType extends { _UnitsBrand: 'Numerator' } ? number :
         NumericType extends { _UnitsBrand: 'Denominator' } ? number :
             NumericType extends { _UseBrand: 'Multiple' & 'Scalar' } ? Difference<NumericType, { _UseBrand: 'Multiple' & 'Scalar' }> & { _UseBrand: 'Scalar' } :
@@ -165,25 +165,25 @@ type NaturalToUnnatural<NumericType extends { _UseBrand: string } | { _UnitsBran
                                     NumericType extends { _UseBrand: 'Ordinal' & 'Point' } ? Difference<NumericType, { _UseBrand: 'Ordinal' & 'Point' }> & { _UseBrand: 'Point' } :
                                         NumericType
 
-type MaybeNatural<Name> =
-    Name extends 'Multiple' ? Natural :
-        Name extends 'Cardinal' ? Natural :
-            Name extends 'Transposition' ? Natural :
-                Name extends 'Power' ? Natural :
-                    Name extends 'Base' ? Natural :
-                        Name extends 'IntegerModulus' ? Natural :
-                            Name extends 'Ordinal' ? Natural :
-                                Name extends 'Numerator' ? Natural :
-                                    Name extends 'Denominator' ? Natural :
+type MaybeWhole<Name> =
+    Name extends 'Multiple' ? Whole :
+        Name extends 'Cardinal' ? Whole :
+            Name extends 'Transposition' ? Whole :
+                Name extends 'Power' ? Whole :
+                    Name extends 'Base' ? Whole :
+                        Name extends 'IntegerModulus' ? Whole :
+                            Name extends 'Ordinal' ? Whole :
+                                Name extends 'Numerator' ? Whole :
+                                    Name extends 'Denominator' ? Whole :
                                         {}
 
-type NaturalUseOfable = (NonUnit & NoOf)
-type NaturalUseOfableActive = (NonUnit)
-type UnnaturalUseOfable = (NonUnit & NoOf) & Unnatural
-type UnnaturalUseOfableActive = (NonUnit) & Unnatural
+type WholeUseOfable = (NonUnit & NoOf)
+type WholeUseOfableActive = (NonUnit)
+type UnwholeUseOfable = (NonUnit & NoOf) & Unwhole
+type UnwholeUseOfableActive = (NonUnit) & Unwhole
 type ArrayOverload = unknown[] | Cycle<unknown> | string
-type NaturalUseOfableWithArrayOverload = (NonUnit & NoOf) | ArrayOverload
-type NaturalUseOfableWithArrayOverloadActive = (NonUnit) | ArrayOverload
+type WholeUseOfableWithArrayOverload = (NonUnit & NoOf) | ArrayOverload
+type WholeUseOfableWithArrayOverloadActive = (NonUnit) | ArrayOverload
 // tslint:disable-next-line no-any
 type ArrayOverloadAny = any[] & Cycle<any> & string
 
@@ -261,22 +261,22 @@ export {
     Of,
     UseNameFromUse,
     NoOf,
-    Natural,
-    Unnatural,
+    Whole,
+    Unwhole,
     Exponent,
     Logarithm,
     IntegerModulus,
     NonUnit,
-    Denature,
-    Nature,
-    NaturalUseOfable,
-    UnnaturalUseOfable,
+    UnwholeVersion,
+    WholeVersion,
+    WholeUseOfable,
+    UnwholeUseOfable,
     Transposition,
     Point,
-    NaturalUseOfableActive,
-    UnnaturalUseOfableActive,
-    NaturalUseOfableWithArrayOverload,
-    NaturalUseOfableWithArrayOverloadActive,
+    WholeUseOfableActive,
+    UnwholeUseOfableActive,
+    WholeUseOfableWithArrayOverload,
+    WholeUseOfableWithArrayOverloadActive,
     ArrayOverload,
     ArrayOverloadAny,
     Interval,

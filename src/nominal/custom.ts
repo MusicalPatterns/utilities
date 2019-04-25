@@ -23,7 +23,6 @@ type CustomAsPoly<NominalInterfaceOptionObjectType extends NominalInterfaceOptio
 type CustomAs<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> =
     CustomAsMono<NominalInterfaceOptionObjectType> & CustomAsPoly<NominalInterfaceOptionObjectType>
 
-
 interface NominalInterface<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> {
     as: CustomAs<NominalInterfaceOptionObjectType>,
 }

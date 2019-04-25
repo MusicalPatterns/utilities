@@ -28,10 +28,6 @@ import {
     Modulus,
     Ms,
     Multiple,
-    NaturalUseOfable,
-    NaturalUseOfableActive,
-    NaturalUseOfableWithArrayOverload,
-    NaturalUseOfableWithArrayOverloadActive,
     NoOf,
     NoUnits,
     Numerator,
@@ -50,9 +46,13 @@ import {
     Transposition,
     Turn,
     UnitScalar,
-    Unnatural,
-    UnnaturalUseOfable,
-    UnnaturalUseOfableActive,
+    Unwhole,
+    UnwholeUseOfable,
+    UnwholeUseOfableActive,
+    WholeUseOfable,
+    WholeUseOfableActive,
+    WholeUseOfableWithArrayOverload,
+    WholeUseOfableWithArrayOverloadActive,
 } from './types'
 
 // Removal
@@ -102,7 +102,7 @@ const Gain: <NumericType extends NoUnits>(gain: NumericType) => Gain =
     <NumericType extends NoUnits>(gain: NumericType): Gain =>
         gain as unknown as Gain
 
-// Natural Units
+// Whole Units
 
 const Numerator: <NumericType extends NoUnits>(numerator: NumericType) => Numerator =
     <NumericType extends NoUnits>(numerator: NumericType): Numerator =>
@@ -115,137 +115,137 @@ const Fraction: (fraction: [ Integer | Numerator, Integer | Denominator ]) => Fr
     (fraction: [ Integer | Numerator, Integer | Denominator ]): Fraction =>
         fraction as unknown as Fraction
 
-// Unnatural Transformation Uses
+// Unwhole Transformation Uses
 
 const Scalar: {
-    <OfType extends UnnaturalUseOfable = number>(scalar: OfType): Scalar,
-    <OfType extends UnnaturalUseOfableActive = number>(scalar: number | Of<OfType>): Scalar<OfType>,
-    <OfType extends UnnaturalUseOfable = number>(scalar: OfType): Scalar,
+    <OfType extends UnwholeUseOfable = number>(scalar: OfType): Scalar,
+    <OfType extends UnwholeUseOfableActive = number>(scalar: number | Of<OfType>): Scalar<OfType>,
+    <OfType extends UnwholeUseOfable = number>(scalar: OfType): Scalar,
 } =
-    <OfType extends Unnatural | NoOf = number>(scalar: OfType | number | Of<OfType>): Scalar<OfType> =>
+    <OfType extends Unwhole | NoOf = number>(scalar: OfType | number | Of<OfType>): Scalar<OfType> =>
         scalar as unknown as Scalar<OfType>
 const Translation: {
-    <OfType extends UnnaturalUseOfable = number>(translation: OfType): Translation,
-    <OfType extends UnnaturalUseOfableActive = number>(translation: number | Of<OfType>): Translation<OfType>,
-    <OfType extends UnnaturalUseOfable = number>(translation: OfType): Translation,
+    <OfType extends UnwholeUseOfable = number>(translation: OfType): Translation,
+    <OfType extends UnwholeUseOfableActive = number>(translation: number | Of<OfType>): Translation<OfType>,
+    <OfType extends UnwholeUseOfable = number>(translation: OfType): Translation,
 } =
-    <OfType extends Unnatural | NoOf = number>(translation: OfType | number | Of<OfType>): Translation<OfType> =>
+    <OfType extends Unwhole | NoOf = number>(translation: OfType | number | Of<OfType>): Translation<OfType> =>
         translation as unknown as Translation<OfType>
 const Rotation: {
-    <OfType extends UnnaturalUseOfable = number>(rotation: OfType): Rotation,
-    <OfType extends UnnaturalUseOfableActive = number>(rotation: number | Of<OfType>): Rotation<OfType>,
-    <OfType extends UnnaturalUseOfable = number>(rotation: OfType): Rotation,
+    <OfType extends UnwholeUseOfable = number>(rotation: OfType): Rotation,
+    <OfType extends UnwholeUseOfableActive = number>(rotation: number | Of<OfType>): Rotation<OfType>,
+    <OfType extends UnwholeUseOfable = number>(rotation: OfType): Rotation,
 } =
     <OfType extends Number | NoOf = number>(rotation: OfType | number | Of<OfType>): Rotation<OfType> =>
         rotation as unknown as Rotation<OfType>
 
-// Unnatural Non-Transformation Uses
+// Unwhole Non-Transformation Uses
 
 const Exponent: {
-    <OfType extends UnnaturalUseOfable = number>(exponent: OfType): Exponent,
-    <OfType extends UnnaturalUseOfableActive = number>(exponent: number | Of<OfType>): Exponent<OfType>,
-    <OfType extends UnnaturalUseOfable = number>(exponent: OfType): Exponent,
+    <OfType extends UnwholeUseOfable = number>(exponent: OfType): Exponent,
+    <OfType extends UnwholeUseOfableActive = number>(exponent: number | Of<OfType>): Exponent<OfType>,
+    <OfType extends UnwholeUseOfable = number>(exponent: OfType): Exponent,
 } =
-    <OfType extends Unnatural | NoOf = number>(exponent: OfType | number | Of<OfType>): Exponent<OfType> =>
+    <OfType extends Unwhole | NoOf = number>(exponent: OfType | number | Of<OfType>): Exponent<OfType> =>
         exponent as unknown as Exponent<OfType>
 const Logarithm: {
-    <OfType extends UnnaturalUseOfable = number>(logarithm: OfType): Logarithm,
-    <OfType extends UnnaturalUseOfableActive = number>(logarithm: number | Of<OfType>): Logarithm<OfType>,
-    <OfType extends UnnaturalUseOfable = number>(logarithm: OfType): Logarithm,
+    <OfType extends UnwholeUseOfable = number>(logarithm: OfType): Logarithm,
+    <OfType extends UnwholeUseOfableActive = number>(logarithm: number | Of<OfType>): Logarithm<OfType>,
+    <OfType extends UnwholeUseOfable = number>(logarithm: OfType): Logarithm,
 } =
-    <OfType extends Unnatural | NoOf = number>(logarithm: OfType | number | Of<OfType>): Logarithm<OfType> =>
+    <OfType extends Unwhole | NoOf = number>(logarithm: OfType | number | Of<OfType>): Logarithm<OfType> =>
         logarithm as unknown as Logarithm<OfType>
 const Modulus: {
-    <OfType extends UnnaturalUseOfable = number>(modulus: OfType): Modulus,
-    <OfType extends UnnaturalUseOfableActive = number>(modulus: number | Of<OfType>): Modulus<OfType>,
-    <OfType extends UnnaturalUseOfable = number>(modulus: OfType): Modulus,
+    <OfType extends UnwholeUseOfable = number>(modulus: OfType): Modulus,
+    <OfType extends UnwholeUseOfableActive = number>(modulus: number | Of<OfType>): Modulus<OfType>,
+    <OfType extends UnwholeUseOfable = number>(modulus: OfType): Modulus,
 } =
-    <OfType extends Unnatural | NoOf = number>(modulus: OfType | number | Of<OfType>): Modulus<OfType> =>
+    <OfType extends Unwhole | NoOf = number>(modulus: OfType | number | Of<OfType>): Modulus<OfType> =>
         modulus as unknown as Modulus<OfType>
 
-// Unnatural Fixed Uses
+// Unwhole Fixed Uses
 
 const Point: {
-    <OfType extends UnnaturalUseOfable = number>(point: OfType): Point,
-    <OfType extends UnnaturalUseOfableActive = number>(point: number | Of<OfType>): Point<OfType>,
-    <OfType extends UnnaturalUseOfable = number>(point: OfType): Point,
+    <OfType extends UnwholeUseOfable = number>(point: OfType): Point,
+    <OfType extends UnwholeUseOfableActive = number>(point: number | Of<OfType>): Point<OfType>,
+    <OfType extends UnwholeUseOfable = number>(point: OfType): Point,
 } =
-    <OfType extends Unnatural | NoOf = number>(point: OfType | number | Of<OfType>): Point<OfType> =>
+    <OfType extends Unwhole | NoOf = number>(point: OfType | number | Of<OfType>): Point<OfType> =>
         point as unknown as Point<OfType>
 
-// Unnatural Compound Uses
+// Unwhole Compound Uses
 
 const Interval: {
-    <OfType extends UnnaturalUseOfable = number>(interval: OfType): Interval,
-    <OfType extends UnnaturalUseOfableActive = number>(interval: number | Of<OfType>): Interval<OfType>,
-    <OfType extends UnnaturalUseOfable = number>(interval: OfType): Interval,
+    <OfType extends UnwholeUseOfable = number>(interval: OfType): Interval,
+    <OfType extends UnwholeUseOfableActive = number>(interval: number | Of<OfType>): Interval<OfType>,
+    <OfType extends UnwholeUseOfable = number>(interval: OfType): Interval,
 } =
-    <OfType extends Unnatural | NoOf = number>(interval: OfType | number | Of<OfType>): Interval<OfType> =>
+    <OfType extends Unwhole | NoOf = number>(interval: OfType | number | Of<OfType>): Interval<OfType> =>
         interval as unknown as Interval<OfType>
 const Delta: {
-    <OfType extends UnnaturalUseOfable = number>(delta: OfType): Delta,
-    <OfType extends UnnaturalUseOfableActive = number>(delta: number | Of<OfType>): Delta<OfType>,
-    <OfType extends UnnaturalUseOfable = number>(delta: OfType): Delta,
+    <OfType extends UnwholeUseOfable = number>(delta: OfType): Delta,
+    <OfType extends UnwholeUseOfableActive = number>(delta: number | Of<OfType>): Delta<OfType>,
+    <OfType extends UnwholeUseOfable = number>(delta: OfType): Delta,
 } =
-    <OfType extends Unnatural | NoOf = number>(delta: OfType | number | Of<OfType>): Delta<OfType> =>
+    <OfType extends Unwhole | NoOf = number>(delta: OfType | number | Of<OfType>): Delta<OfType> =>
         delta as unknown as Delta<OfType>
 const Arc: {
-    <OfType extends UnnaturalUseOfable = number>(arc: OfType): Arc,
-    <OfType extends UnnaturalUseOfableActive = number>(arc: number | Of<OfType>): Arc<OfType>,
-    <OfType extends UnnaturalUseOfable = number>(arc: OfType): Arc,
+    <OfType extends UnwholeUseOfable = number>(arc: OfType): Arc,
+    <OfType extends UnwholeUseOfableActive = number>(arc: number | Of<OfType>): Arc<OfType>,
+    <OfType extends UnwholeUseOfable = number>(arc: OfType): Arc,
 } =
-    <OfType extends Unnatural | NoOf = number>(arc: OfType | number | Of<OfType>): Arc<OfType> =>
+    <OfType extends Unwhole | NoOf = number>(arc: OfType | number | Of<OfType>): Arc<OfType> =>
         arc as unknown as Arc<OfType>
 
-// Natural Transformation Uses (with overloads for arrays)
+// Whole Transformation Uses (with overloads for arrays)
 
 const Multiple: {
-    <OfType extends NaturalUseOfableWithArrayOverload = number>(ordinal: OfType): Multiple,
-    <OfType extends NaturalUseOfableWithArrayOverloadActive = number>(ordinal: number | Of<OfType>): Multiple<OfType>,
-    <OfType extends NaturalUseOfableWithArrayOverload = number>(ordinal: OfType): Multiple,
+    <OfType extends WholeUseOfableWithArrayOverload = number>(ordinal: OfType): Multiple,
+    <OfType extends WholeUseOfableWithArrayOverloadActive = number>(ordinal: number | Of<OfType>): Multiple<OfType>,
+    <OfType extends WholeUseOfableWithArrayOverload = number>(ordinal: OfType): Multiple,
 } =
-    <OfType extends Unnatural | NoOf = number>(multiple: OfType | number | Of<OfType>): Multiple<OfType> =>
+    <OfType extends Unwhole | NoOf = number>(multiple: OfType | number | Of<OfType>): Multiple<OfType> =>
         integerCheck(multiple as number, 'Multiple') as unknown as Multiple<OfType>
 const Cardinal: {
-    <OfType extends NaturalUseOfableWithArrayOverload = number>(cardinal: OfType): Cardinal,
-    <OfType extends NaturalUseOfableWithArrayOverloadActive = number>(cardinal: number | Of<OfType>): Cardinal<OfType>,
-    <OfType extends NaturalUseOfableWithArrayOverload = number>(cardinal: OfType): Cardinal,
+    <OfType extends WholeUseOfableWithArrayOverload = number>(cardinal: OfType): Cardinal,
+    <OfType extends WholeUseOfableWithArrayOverloadActive = number>(cardinal: number | Of<OfType>): Cardinal<OfType>,
+    <OfType extends WholeUseOfableWithArrayOverload = number>(cardinal: OfType): Cardinal,
 } =
-    <OfType extends Unnatural | NoOf = number>(cardinal: OfType | number | Of<OfType>): Cardinal<OfType> =>
+    <OfType extends Unwhole | NoOf = number>(cardinal: OfType | number | Of<OfType>): Cardinal<OfType> =>
         integerCheck(cardinal as unknown as number, 'Cardinal') as unknown as Cardinal<OfType>
 const Transposition: {
-    <OfType extends NaturalUseOfableWithArrayOverload = number>(ordinal: OfType): Transposition,
-    <OfType extends NaturalUseOfableWithArrayOverloadActive = number>(ordinal: number | Of<OfType>): Transposition<OfType>,
-    <OfType extends NaturalUseOfableWithArrayOverload = number>(ordinal: OfType): Transposition,
+    <OfType extends WholeUseOfableWithArrayOverload = number>(ordinal: OfType): Transposition,
+    <OfType extends WholeUseOfableWithArrayOverloadActive = number>(ordinal: number | Of<OfType>): Transposition<OfType>,
+    <OfType extends WholeUseOfableWithArrayOverload = number>(ordinal: OfType): Transposition,
 } =
-    <OfType extends Unnatural | NoOf = number>(transposition: OfType | number | Of<OfType>): Transposition<OfType> =>
+    <OfType extends Unwhole | NoOf = number>(transposition: OfType | number | Of<OfType>): Transposition<OfType> =>
         integerCheck(transposition as number, 'Transposition') as unknown as Transposition<OfType>
 
-// Natural Non-Transformation Uses
+// Whole Non-Transformation Uses
 
 const Power: {
-    <OfType extends NaturalUseOfable = number>(power: OfType): Power,
-    <OfType extends NaturalUseOfableActive = number>(power: number | Of<OfType>): Power<OfType>,
-    <OfType extends NaturalUseOfable = number>(power: OfType): Power,
+    <OfType extends WholeUseOfable = number>(power: OfType): Power,
+    <OfType extends WholeUseOfableActive = number>(power: number | Of<OfType>): Power<OfType>,
+    <OfType extends WholeUseOfable = number>(power: OfType): Power,
 } =
-    <OfType extends Unnatural | NoOf = number>(power: OfType | number | Of<OfType>): Power<OfType> =>
+    <OfType extends Unwhole | NoOf = number>(power: OfType | number | Of<OfType>): Power<OfType> =>
         integerCheck(power as number, 'Power') as unknown as Power<OfType>
 const Base: {
-    <OfType extends NaturalUseOfable = number>(base: OfType): Base,
-    <OfType extends NaturalUseOfableActive = number>(base: number | Of<OfType>): Base<OfType>,
-    <OfType extends NaturalUseOfable = number>(base: OfType): Base,
+    <OfType extends WholeUseOfable = number>(base: OfType): Base,
+    <OfType extends WholeUseOfableActive = number>(base: number | Of<OfType>): Base<OfType>,
+    <OfType extends WholeUseOfable = number>(base: OfType): Base,
 } =
-    <OfType extends Unnatural | NoOf = number>(base: OfType | number | Of<OfType>): Base<OfType> =>
+    <OfType extends Unwhole | NoOf = number>(base: OfType | number | Of<OfType>): Base<OfType> =>
         integerCheck(base as number, 'Base') as unknown as Base<OfType>
 const IntegerModulus: {
-    <OfType extends NaturalUseOfable = number>(integerModulus: OfType): IntegerModulus,
-    <OfType extends NaturalUseOfableActive = number>(integerModulus: number | Of<OfType>): IntegerModulus<OfType>,
-    <OfType extends NaturalUseOfable = number>(integerModulus: OfType): IntegerModulus,
+    <OfType extends WholeUseOfable = number>(integerModulus: OfType): IntegerModulus,
+    <OfType extends WholeUseOfableActive = number>(integerModulus: number | Of<OfType>): IntegerModulus<OfType>,
+    <OfType extends WholeUseOfable = number>(integerModulus: OfType): IntegerModulus,
 } =
-    <OfType extends Unnatural | NoOf = number>(integerModulus: OfType | number | Of<OfType>): IntegerModulus<OfType> =>
+    <OfType extends Unwhole | NoOf = number>(integerModulus: OfType | number | Of<OfType>): IntegerModulus<OfType> =>
         integerCheck(integerModulus as number, 'IntegerModulus') as unknown as IntegerModulus<OfType>
 
-// Natural Fixed Uses (only used for arrays)
+// Whole Fixed Uses (only used for arrays)
 
 const Ordinal: {
     <OfType extends NoOf = number>(ordinal: OfType): Ordinal,
@@ -255,7 +255,7 @@ const Ordinal: {
     <OfType = number>(ordinal: OfType | number | Of<OfType>): Ordinal<OfType[]> =>
         integerCheck(ordinal as unknown as number, 'Ordinal') as unknown as Ordinal<OfType[]>
 
-// Natural Compound Uses
+// Whole Compound Uses
 
 const Factor: {
     <OfType extends NoOf = number>(factor: OfType): Factor,
@@ -282,14 +282,14 @@ const Turn: {
 // Unit Uses
 
 const UnitScalar: {
-    <OfType extends Unnatural & NoOf = number>(unitScalar: OfType): UnitScalar,
-    <OfType extends Unnatural = number>(unitScalar: number | Of<OfType>): UnitScalar<OfType>,
-    <OfType extends Unnatural & NoOf = number>(unitScalar: OfType): UnitScalar,
+    <OfType extends Unwhole & NoOf = number>(unitScalar: OfType): UnitScalar,
+    <OfType extends Unwhole = number>(unitScalar: number | Of<OfType>): UnitScalar<OfType>,
+    <OfType extends Unwhole & NoOf = number>(unitScalar: OfType): UnitScalar,
 } =
-    <OfType extends Unnatural | NoOf = number>(unitScalar: OfType | number | Of<OfType>): UnitScalar<OfType> =>
+    <OfType extends Unwhole | NoOf = number>(unitScalar: OfType | number | Of<OfType>): UnitScalar<OfType> =>
         unitCheck(unitScalar as unknown as number, 'UnitScalar') as unknown as UnitScalar<OfType>
 
-// Naturalness
+// Wholeness
 
 const Integer: <OfType extends NoUnits>(integer: OfType) => Integer =
     <OfType extends NoUnits>(integer: OfType): Integer =>

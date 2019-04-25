@@ -3,11 +3,9 @@
 import {
     Cycle,
     Delta,
-    Denature,
     Factor,
     Integer,
     Interval,
-    Natural,
     NoUse,
     Ordinal,
     Point,
@@ -16,6 +14,8 @@ import {
     Space,
     Transition,
     Translation,
+    UnwholeVersion,
+    Whole,
 } from '../nominal'
 
 // tslint:disable-next-line no-magic-numbers
@@ -46,7 +46,7 @@ interface RotateParameters<NumericType extends Number = Number, Dimensionality e
 type TwoToOneNumericOperation<NumericType extends Number = Number> =
     (firstValue: NumericType, secondValue: NumericType) => NumericType
 
-type TwoToOneIntegerOperation<IntegerType extends Natural = Integer> =
+type TwoToOneIntegerOperation<IntegerType extends Whole = Integer> =
     (firstValue: IntegerType, secondValue: IntegerType) => IntegerType
 
 interface Operands {
@@ -55,7 +55,7 @@ interface Operands {
 }
 
 interface SumOperation {
-    <IntegerType extends NoUse & Natural = Integer>(...values: IntegerType[]): IntegerType,
+    <IntegerType extends NoUse & Whole = Integer>(...values: IntegerType[]): IntegerType,
     (...values: number[]): number,
     <NumericType extends NoUse | number>(...values: NumericType[]): NumericType,
     <NumericType extends Number & { _UseBrand: 'Translation' }>(...values: NumericType[]): NumericType,
@@ -63,7 +63,7 @@ interface SumOperation {
 }
 
 interface ProductOperation {
-    <IntegerType extends NoUse & Natural = Integer>(...values: IntegerType[]): IntegerType,
+    <IntegerType extends NoUse & Whole = Integer>(...values: IntegerType[]): IntegerType,
     (...values: number[]): number,
     <NumericType extends NoUse | number>(...values: NumericType[]): NumericType,
     <NumericType extends Number & { _UseBrand: 'Scalar' }>(...values: NumericType[]): NumericType,
@@ -71,16 +71,16 @@ interface ProductOperation {
 }
 
 interface ManyToManyIntegerOperation {
-    <SharedIntegerType extends Natural = Integer>(...values: SharedIntegerType[]): SharedIntegerType[]
-    <OneIntegerType extends Natural = Integer, AnotherIntegerType extends Natural = Integer>(
-        ...values: Array<Natural | AnotherIntegerType>
+    <SharedIntegerType extends Whole = Integer>(...values: SharedIntegerType[]): SharedIntegerType[]
+    <OneIntegerType extends Whole = Integer, AnotherIntegerType extends Whole = Integer>(
+        ...values: Array<Whole | AnotherIntegerType>
     ): Integer[]
 }
 
 interface ManyToOneIntegerOperation {
-    <SharedIntegerType extends Natural = Integer>(...values: SharedIntegerType[]): SharedIntegerType
-    <OneIntegerType extends Natural = Integer, AnotherIntegerType extends Natural = Integer>(
-        ...values: Array<Natural | AnotherIntegerType>
+    <SharedIntegerType extends Whole = Integer>(...values: SharedIntegerType[]): SharedIntegerType
+    <OneIntegerType extends Whole = Integer, AnotherIntegerType extends Whole = Integer>(
+        ...values: Array<Whole | AnotherIntegerType>
     ): Integer
 }
 
@@ -96,15 +96,15 @@ interface QuotientOperation {
     <NumericType extends NoUse | number>(
         dividend: Point<NumericType>,
         divisor: Point<NumericType>,
-    ): Interval<Denature<NumericType>>,
+    ): Interval<UnwholeVersion<NumericType>>,
     <NumericType extends NoUse | number>(
         dividend: NumericType,
         divisor: NumericType,
-    ): Denature<NumericType>,
+    ): UnwholeVersion<NumericType>,
     <NumericType extends Number & { _UseBrand: 'Scalar' }>(
         dividend: NumericType,
         divisor: NumericType,
-    ): Denature<NumericType>,
+    ): UnwholeVersion<NumericType>,
 }
 
 interface DifferenceOperation {
@@ -119,7 +119,7 @@ interface DifferenceOperation {
     <NumericType extends NoUse | number>(
         minuend: Point<NumericType>,
         subtrahend: Point<NumericType>,
-    ): Delta<Denature<NumericType>>,
+    ): Delta<UnwholeVersion<NumericType>>,
     <NumericType extends NoUse | number>(
         minuend: NumericType,
         subtrahend: NumericType,
@@ -127,7 +127,7 @@ interface DifferenceOperation {
     <NumericType extends Number & { _UseBrand: 'Translation' }>(
         dividend: NumericType,
         divisor: NumericType,
-    ): Denature<NumericType>,
+    ): UnwholeVersion<NumericType>,
 }
 
 export {

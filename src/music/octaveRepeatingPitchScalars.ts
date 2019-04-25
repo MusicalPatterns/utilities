@@ -6,7 +6,8 @@ import {
     INITIAL,
     MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS,
     OCTAVE,
-    Ordinal, Scalar,
+    Ordinal,
+    Scalar,
     use,
 } from '../nominal'
 import { Pitch } from './types'

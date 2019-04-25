@@ -5,13 +5,11 @@ import {
     Base,
     Cycle,
     Exponent,
-    Hz,
     Logarithm,
     Multiple,
     negative,
     ONE_HALF,
     Ordinal,
-    Point,
     Power,
     Scalar,
     Translation,
@@ -20,7 +18,7 @@ import {
 } from '../../../src/indexForTest'
 
 describe('use', () => {
-    // Natural Units
+    // Whole Units
 
     describe('Fractions, Numerators, and Denominators', () => {
         it('using a Numerator to a Denominator gives a Fraction', () => {
@@ -34,7 +32,7 @@ describe('use', () => {
         })
     })
 
-    // Unnatural Transformation Uses
+    // Unwhole Transformation Uses
 
     describe('Scalar', () => {
         it('should be able to scale a plain number', () => {
@@ -49,7 +47,7 @@ describe('use', () => {
         })
     })
 
-    // Unnatural Non-Transformation Uses
+    // Unwhole Non-Transformation Uses
 
     describe('Modulus', () => {
         it('addresses the bug in JavaScript where negative numbers give negative results', () => {
@@ -60,7 +58,7 @@ describe('use', () => {
         })
     })
 
-    // Natural Transformation Uses (with overloads for arrays)
+    // Whole Transformation Uses (with overloads for arrays)
 
     describe('Multiple', () => {
         it('checks the integerlike of the Multiple, and not the value', () => {
@@ -102,7 +100,7 @@ describe('use', () => {
         })
     })
 
-    // Natural Non-Transformation Uses
+    // Whole Non-Transformation Uses
 
     describe('Base', () => {
         it('checks the integerlike of the Base, and not the value', () => {
@@ -179,7 +177,7 @@ describe('use', () => {
         })
     })
 
-    // Natural Fixed Uses (only used for arrays)
+    // Whole Fixed Uses (only used for arrays)
 
     describe('Ordinal', () => {
         it('when the array is cyclical, wraps the index, whether negative or beyond its length', () => {

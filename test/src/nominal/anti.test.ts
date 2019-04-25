@@ -223,7 +223,7 @@
 //             use.Scalar(as.UnitScalar(0.5), 4 as unknown as Scalar<UnitScalar>)
 //         })
 //
-//         it('DOES NOT ALLOW using unnatural Uses on natural numbers', () => {
+//         it('DOES NOT ALLOW using Unwhole Uses on Whole numbers', () => {
 //             use.Scalar(as.Ordinal(3), 4 as unknown as Scalar<Number & { _TestBrand: 'Test' }>)
 //             use.Translation(as.Ordinal(3), 4 as unknown as Translation<Number & { _TestBrand: 'Test' }>)
 //             use.Rotation(as.Ordinal(3), 4 as unknown as Rotation<Number & { _TestBrand: 'Test' }>)

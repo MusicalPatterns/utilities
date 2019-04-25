@@ -13,7 +13,6 @@ import {
     modulus,
     Ms,
     Multiple,
-    Point,
     Power,
     product,
     quotient,

@@ -1,5 +1,3 @@
-import { ArrayOverload, Cycle, Ordinal } from '../nominal'
-
 type Omit<ObjectType, KeyType extends keyof ObjectType> = Pick<ObjectType, Exclude<keyof ObjectType, KeyType>>
 
 type Difference<ObjectType extends ObjectTypeWithPropertiesToSubtract, ObjectTypeWithPropertiesToSubtract> =

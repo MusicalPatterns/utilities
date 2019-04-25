@@ -1,16 +1,7 @@
 // tslint:disable bool-param-default
 
 import { isUndefined, Maybe } from '../code'
-import {
-    as,
-    Delta,
-    EXAMPLE_ELEMENT_INDEX,
-    Interval,
-    MULTIPLICATIVE_IDENTITY,
-    Point,
-    Scalar,
-    use,
-} from '../nominal'
+import { as, Delta, EXAMPLE_ELEMENT_INDEX, Interval, MULTIPLICATIVE_IDENTITY, Point, Scalar, use } from '../nominal'
 import { allValuesAreTheSame, beginValueIsCorrect } from './goes'
 import { goesMonotonicallyBetweenValueAndValue, goesMonotonicallyFromValueToValue } from './monotonic'
 import { computeDeltas, computeIntervals } from './rateOfChange'

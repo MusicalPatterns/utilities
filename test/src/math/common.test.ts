@@ -32,7 +32,7 @@ describe('common', () => {
                 .toBe(as.Integer(1))
         })
 
-        it('returns the Natural type if shared; plain Integer otherwise', () => {
+        it('returns the Whole type if shared; plain Integer otherwise', () => {
             expect(computeGreatestCommonDivisor(as.Cardinal(9), as.Multiple(6)))
                 .toBe(as.Integer(3))
             expect(computeGreatestCommonDivisor(as.Cardinal(9), as.Cardinal(6)))
@@ -77,7 +77,7 @@ describe('common', () => {
                 .toBe(as.Integer(43999999560))
         })
 
-        it('returns the Natural type if shared; plain Integer otherwise', () => {
+        it('returns the Whole type if shared; plain Integer otherwise', () => {
             expect(computeLeastCommonMultiple(as.Cardinal(9), as.Multiple(6)))
                 .toBe(as.Integer(18))
             expect(computeLeastCommonMultiple(as.Cardinal(9), as.Cardinal(6)))

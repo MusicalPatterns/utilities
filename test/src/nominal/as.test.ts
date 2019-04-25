@@ -17,7 +17,6 @@ import {
     Modulus,
     Ms,
     Numerator,
-    Of,
     Ordinal,
     Power,
     Radians,
@@ -138,8 +137,8 @@ describe('as', () => {
             const ms: Ms = as.Ms(integer)
         })
 
-        it('allows setting things which are integers as unnatural uses if it is not explicitly tried to be as as the Of', () => {
-            const acceptIntegerWithoutAskingForItToBeTheOfWorksForUnnatural: Scalar = as.Scalar(as.Integer(3))
+        it('allows setting things which are integers as Unwhole uses if it is not explicitly tried to be as as the Of', () => {
+            const acceptIntegerWithoutAskingForItToBeTheOfWorksForUnwhole: Scalar = as.Scalar(as.Integer(3))
         })
 
         it('allows using integers where you would use numbers', () => {

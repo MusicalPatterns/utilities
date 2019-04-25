@@ -1,4 +1,4 @@
-import { as, computeOctaveRepeatingPitchScalars, Hz, Pitch, Scalar } from '../../../src/indexForTest'
+import { as, computeOctaveRepeatingPitchScalars, Pitch, Scalar } from '../../../src/indexForTest'
 
 describe('octave repeating pitch scalars', () => {
     it('given scalars, will provide 10 octaves worth of them repeating', () => {
