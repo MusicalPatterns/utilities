@@ -1,8 +1,9 @@
 // tslint:disable variable-name max-file-line-count max-line-length
 
-import { integerCheck, normalCheck } from './checks'
+import { integerCheck, unitCheck } from './checks'
 import {
-    Amplitude, ArrayOverload,
+    Amplitude,
+    ArrayOverload,
     Base,
     Block,
     Cardinal,
@@ -28,7 +29,6 @@ import {
     NaturalUseOfableWithArrayOverload,
     NaturalUseOfableWithArrayOverloadActive,
     NoOf,
-    NormalScalar,
     NoUnits,
     Numerator,
     Of,
@@ -43,6 +43,7 @@ import {
     Time,
     Translation,
     Transposition,
+    UnitScalar,
     Unnatural,
     UnnaturalUseOfable,
     UnnaturalUseOfableActive,
@@ -218,15 +219,15 @@ const Ordinal: {
     <OfType = number>(ordinal: OfType | number | Of<OfType>): Ordinal<OfType[]> =>
         integerCheck(ordinal as unknown as number, 'Ordinal') as unknown as Ordinal<OfType[]>
 
-// Normalized Uses
+// Unit Uses
 
-const NormalScalar: {
-    <OfType extends Unnatural & NoOf = number>(normalScalar: OfType): NormalScalar,
-    <OfType extends Unnatural = number>(normalScalar: number | Of<OfType>): NormalScalar<OfType>,
-    <OfType extends Unnatural & NoOf = number>(normalScalar: OfType): NormalScalar,
+const UnitScalar: {
+    <OfType extends Unnatural & NoOf = number>(unitScalar: OfType): UnitScalar,
+    <OfType extends Unnatural = number>(unitScalar: number | Of<OfType>): UnitScalar<OfType>,
+    <OfType extends Unnatural & NoOf = number>(unitScalar: OfType): UnitScalar,
 } =
-    <OfType extends Unnatural | NoOf = number>(normalScalar: OfType | number | Of<OfType>): NormalScalar<OfType> =>
-        normalCheck(normalScalar as unknown as number, 'NormalScalar') as unknown as NormalScalar<OfType>
+    <OfType extends Unnatural | NoOf = number>(unitScalar: OfType | number | Of<OfType>): UnitScalar<OfType> =>
+        unitCheck(unitScalar as unknown as number, 'UnitScalar') as unknown as UnitScalar<OfType>
 
 // Naturalness
 
@@ -288,7 +289,7 @@ export {
     Time,
     Frequency,
     Amplitude,
-    NormalScalar,
+    UnitScalar,
     Multiple,
     Exponent,
     Logarithm,

@@ -51,7 +51,7 @@ type UseBrand<UseName, OfType = number> =
     UseOf<OfType>
     & { _UseBrand: UseName }
     & MaybeNatural<UseName>
-    & MaybeNormal<UseName>
+    & MaybeUnit<UseName>
 
 type NoOf = number & { _OfBrand?: 'NoOf' }
 
@@ -89,9 +89,9 @@ type IntegerModulus<OfType extends NaturalUseOfableActive = number> = UseBrand<'
 
 type Ordinal<OfType extends { _OfBrand?: 'NoOf' } & ArrayOverload = number[]> = UseBrand<'Ordinal' & 'Point', OfType>
 
-// Normalized Uses
+// Unit Uses
 
-type NormalScalar<OfType extends Unnatural = number> = UseBrand<'NormalScalar' & 'Scalar', OfType>
+type UnitScalar<OfType extends Unnatural = number> = UseBrand<'UnitScalar' & 'Scalar', OfType>
 
 // Naturalness
 
@@ -147,24 +147,24 @@ type MaybeNatural<Name> =
                                     Name extends 'Denominator' ? Natural :
                                         {}
 
-type NaturalUseOfable = (NonNormal & NoOf)
-type NaturalUseOfableActive = (NonNormal)
-type UnnaturalUseOfable = (NonNormal & NoOf) & Unnatural
-type UnnaturalUseOfableActive = (NonNormal) & Unnatural
+type NaturalUseOfable = (NonUnit & NoOf)
+type NaturalUseOfableActive = (NonUnit)
+type UnnaturalUseOfable = (NonUnit & NoOf) & Unnatural
+type UnnaturalUseOfableActive = (NonUnit) & Unnatural
 type ArrayOverload = unknown[] | Cycle<unknown> | string
-type NaturalUseOfableWithArrayOverload = (NonNormal & NoOf) | ArrayOverload
-type NaturalUseOfableWithArrayOverloadActive = (NonNormal) | ArrayOverload
+type NaturalUseOfableWithArrayOverload = (NonUnit & NoOf) | ArrayOverload
+type NaturalUseOfableWithArrayOverloadActive = (NonUnit) | ArrayOverload
 // tslint:disable-next-line no-any
 type ArrayOverloadAny = any[] & Cycle<any> & string
 
-// Normalcy
+// Unit
 
-type MaybeNormal<Name> =
-    Name extends 'NormalScalar' ? Normal :
+type MaybeUnit<Name> =
+    Name extends 'UnitScalar' ? Unit :
         {}
 
-type Normal = Number & { _NormalBrand: 'Normal' }
-type NonNormal = Number & { _NormalBrand?: 'NonNormal' }
+type Unit = Number & { _UnitBrand: 'Unit' }
+type NonUnit = Number & { _UnitBrand?: 'NonUnit' }
 
 type UseNameFromUse<Use> =
     Use extends Multiple ? 'Multiple' & 'Scalar' :
@@ -174,7 +174,7 @@ type UseNameFromUse<Use> =
                     Use extends Base ? 'Base' & 'Logarithm' :
                         Use extends IntegerModulus ? 'IntegerModulus' & 'Modulus' :
                             Use extends Ordinal ? 'Ordinal' & 'Point' :
-                                Use extends NormalScalar ? 'NormalScalar' & 'Scalar' :
+                                Use extends UnitScalar ? 'UnitScalar' & 'Scalar' :
                                     Use extends Scalar ? 'Scalar' :
                                         Use extends Translation ? 'Translation' :
                                             Use extends Rotation ? 'Rotation' :
@@ -241,7 +241,7 @@ export {
     Frequency,
     Amplitude,
     NominalNumber,
-    NormalScalar,
+    UnitScalar,
     UseBrand,
     UseOf,
     UnitsBrand,
@@ -254,7 +254,7 @@ export {
     Exponent,
     Logarithm,
     IntegerModulus,
-    NonNormal,
+    NonUnit,
     Denature,
     Nature,
     NaturalUseOfable,

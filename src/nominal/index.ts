@@ -173,7 +173,7 @@ export {
     Frequency,
     Amplitude,
     NominalNumber,
-    NormalScalar,
+    UnitScalar,
     Ordinal,
     Multiple,
     Of,

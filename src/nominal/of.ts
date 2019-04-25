@@ -19,7 +19,6 @@ import {
     Modulus,
     Ms,
     Multiple,
-    NormalScalar,
     Numerator,
     Of,
     Ordinal,
@@ -33,6 +32,7 @@ import {
     Time,
     Translation,
     Transposition,
+    UnitScalar,
 } from './types'
 
 // Concrete Units
@@ -149,11 +149,11 @@ const Ordinal: <OfType extends ArrayOverload = number[]>(ofIndex: number | OfTyp
     <OfType extends ArrayOverload = number[]>(ofIndex: number | OfType): Of<Ordinal<OfType>> =>
         ofIndex as unknown as Of<Ordinal<OfType>>
 
-// Normalized Uses
+// Unit Uses
 
-const NormalScalar: <OfType extends Number = number>(ofNormalScalar: number | OfType) => Of<NormalScalar<OfType>> =
-    <OfType extends Number = number>(ofNormalScalar: number | OfType): Of<NormalScalar<OfType>> =>
-        ofNormalScalar as unknown as Of<NormalScalar<OfType>>
+const UnitScalar: <OfType extends Number = number>(ofUnitScalar: number | OfType) => Of<UnitScalar<OfType>> =
+    <OfType extends Number = number>(ofUnitScalar: number | OfType): Of<UnitScalar<OfType>> =>
+        ofUnitScalar as unknown as Of<UnitScalar<OfType>>
 
 // Naturalness
 
@@ -185,7 +185,7 @@ export {
     Frequency,
     Amplitude,
     Scalar,
-    NormalScalar,
+    UnitScalar,
     Rotation,
     Base,
     Power,

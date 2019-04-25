@@ -8,7 +8,7 @@ export { rotate } from './rotate'
 export { dividesEvenly } from './dividesEvenly'
 export { powerSet } from './powerSet'
 export { computeDeltas, computeIntervals } from './rateOfChange'
-export { invertNormalScalar } from './invertNormalScalar'
+export { invertUnitScalar } from './invertUnitScalar'
 export { evaluate } from './evaluate'
 export { valueLinearlyBetweenValues } from './valueLinearlyBetweenValues'
 export {

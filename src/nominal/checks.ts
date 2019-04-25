@@ -19,7 +19,7 @@ const indexCheck: <ElementType>(index: Ordinal<ElementType[]>, array: ElementTyp
         }
     }
 
-const normalCheck: <NumericType extends Number>(value: NumericType, type: string) => NumericType =
+const unitCheck: <NumericType extends Number>(value: NumericType, type: string) => NumericType =
     // tslint:disable-next-line cyclomatic-complexity
     <NumericType extends Number>(value: NumericType, type: string): NumericType => {
         const roundedValue: number =
@@ -28,7 +28,7 @@ const normalCheck: <NumericType extends Number>(value: NumericType, type: string
             )
         if (roundedValue > 1 || roundedValue < 0) {
             throw new Error(
-                `Numerals of type ${type} must be normalized (between 0 and 1). This numeral had value ${value}.`,
+                `Numerals of type ${type} must be between 0 and 1. This numeral had value ${value}.`,
             )
         }
 
@@ -54,6 +54,6 @@ const integerCheck: <NumericType extends Number>(value: NumericType, type: strin
 
 export {
     indexCheck,
-    normalCheck,
+    unitCheck,
     integerCheck,
 }

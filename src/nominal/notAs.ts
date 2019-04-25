@@ -20,7 +20,6 @@ import {
     Ms,
     Multiple,
     NaturalUseOfableWithArrayOverloadActive,
-    NormalScalar,
     Numerator,
     Ordinal,
     Point,
@@ -33,6 +32,7 @@ import {
     Time,
     Translation,
     Transposition,
+    UnitScalar,
 } from './types'
 
 // Concrete Units
@@ -149,11 +149,11 @@ const Ordinal: <OfType extends ArrayOverload = number[]>(ordinal: Ordinal<OfType
     <OfType extends ArrayOverload = number[]>(ordinal: Ordinal<OfType>): number =>
         ordinal as unknown as number
 
-// Normalized Uses
+// Unit Uses
 
-const NormalScalar: <OfType extends Number = number>(normalScalar: NormalScalar<OfType>) => number =
-    <OfType extends Number = number>(normalScalar: NormalScalar<OfType>): number =>
-        normalScalar as unknown as number
+const UnitScalar: <OfType extends Number = number>(unitScalar: UnitScalar<OfType>) => number =
+    <OfType extends Number = number>(unitScalar: UnitScalar<OfType>): number =>
+        unitScalar as unknown as number
 
 // Naturalness
 
@@ -199,7 +199,7 @@ export {
     Time,
     Frequency,
     Amplitude,
-    NormalScalar,
+    UnitScalar,
     Rotation,
     Ordinal,
     Multiple,

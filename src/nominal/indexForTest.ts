@@ -71,7 +71,7 @@ export {
     Amplitude,
     Ordinal,
     Of,
-    NormalScalar,
+    UnitScalar,
     Multiple,
     Exponent,
     Logarithm,

@@ -2,7 +2,7 @@
 
 import { finalIndexFromElementsTotal } from '../code'
 import * as as from './as'
-import { indexCheck, integerCheck, normalCheck } from './checks'
+import { indexCheck, integerCheck, unitCheck } from './checks'
 import * as notAs from './notAs'
 import { isCycle } from './typeGuards'
 import {
@@ -18,8 +18,7 @@ import {
     Modulus,
     Multiple,
     NaturalUseOfableWithArrayOverloadActive,
-    NonNormal,
-    NormalScalar,
+    NonUnit,
     Numerator,
     Ordinal,
     Power,
@@ -27,6 +26,7 @@ import {
     Scalar,
     Translation,
     Transposition,
+    UnitScalar,
 } from './types'
 
 // Natural Units
@@ -82,7 +82,7 @@ const Modulus: <OfType extends Number>(value: OfType, modulus: Modulus<OfType>) 
 // Natural Transformation Uses (with overloads for arrays)
 
 const Multiple: {
-    <OfType extends NonNormal>(value: OfType, multiple: Multiple<OfType>): OfType,
+    <OfType extends NonUnit>(value: OfType, multiple: Multiple<OfType>): OfType,
     <OfType extends ArrayOverload>(value: OfType, multiple: Multiple<OfType>): OfType,
 } =
     <OfType extends NaturalUseOfableWithArrayOverloadActive>(value: OfType, multiple: Multiple<OfType>): OfType => {
@@ -94,7 +94,7 @@ const Multiple: {
         ) as unknown as OfType
     }
 const Cardinal: {
-    <OfType extends NonNormal>(value: OfType, cardinal: Cardinal<OfType>): OfType,
+    <OfType extends NonUnit>(value: OfType, cardinal: Cardinal<OfType>): OfType,
     <OfType extends ArrayOverload>(value: OfType, cardinal: Cardinal<OfType>): OfType,
 } =
     <OfType extends NaturalUseOfableWithArrayOverloadActive>(value: OfType, cardinal: Cardinal<OfType>): OfType => {
@@ -128,7 +128,7 @@ const Cardinal: {
         ) as unknown as OfType
     }
 const Transposition: {
-    <OfType extends NonNormal>(value: OfType, transposition: Transposition<OfType>): OfType,
+    <OfType extends NonUnit>(value: OfType, transposition: Transposition<OfType>): OfType,
     <OfType extends ArrayOverload>(value: OfType, transposition: Transposition<OfType>): OfType,
 } =
     <OfType extends NaturalUseOfableWithArrayOverloadActive>(value: OfType, transposition: Transposition<OfType>): OfType => {
@@ -142,13 +142,13 @@ const Transposition: {
 
 // Natural Non-Transformation Uses
 
-const Power: <OfType extends NonNormal>(value: OfType, power: Power<OfType>) => OfType =
+const Power: <OfType extends NonUnit>(value: OfType, power: Power<OfType>) => OfType =
     <OfType extends Number>(value: OfType, power: Power<OfType>): OfType =>
         Exponent(value, integerCheck(power, 'Power'))
-const Base: <OfType extends NonNormal>(value: OfType, base: Base<OfType>) => OfType =
+const Base: <OfType extends NonUnit>(value: OfType, base: Base<OfType>) => OfType =
     <OfType extends Number>(value: OfType, base: Base<OfType>): OfType =>
         Logarithm(value, integerCheck(base, 'Base'))
-const IntegerModulus: <OfType extends NonNormal>(value: OfType, integerModulus: IntegerModulus<OfType>) => OfType =
+const IntegerModulus: <OfType extends NonUnit>(value: OfType, integerModulus: IntegerModulus<OfType>) => OfType =
     <OfType extends Number>(value: OfType, integerModulus: IntegerModulus<OfType>): OfType =>
         Modulus(value, integerCheck(integerModulus, 'Base'))
 
@@ -174,11 +174,11 @@ const Ordinal: {
         return array[ notAs.Ordinal(index as unknown as Ordinal) ]
     }
 
-// Normalized Uses
+// Unit Uses
 
-const NormalScalar: <OfType extends Number>(value: OfType, normalScalar: NormalScalar<OfType>) => OfType =
-    <OfType extends Number>(value: OfType, normalScalar: NormalScalar<OfType>): OfType =>
-        Scalar(value, normalCheck(normalScalar, 'NormalScalar'))
+const UnitScalar: <OfType extends Number>(value: OfType, unitScalar: UnitScalar<OfType>) => OfType =
+    <OfType extends Number>(value: OfType, unitScalar: UnitScalar<OfType>): OfType =>
+        Scalar(value, unitCheck(unitScalar, 'UnitScalar'))
 
 export {
     Cardinal,
@@ -190,7 +190,7 @@ export {
     Modulus,
     Numerator,
     Denominator,
-    NormalScalar,
+    UnitScalar,
     Multiple,
     Exponent,
     Logarithm,

@@ -9,13 +9,13 @@ import {
     Logarithm,
     Multiple,
     negative,
-    NormalScalar,
     ONE_HALF,
     Ordinal,
     Point,
     Power,
     Scalar,
     Translation,
+    UnitScalar,
     use,
 } from '../../../src/indexForTest'
 
@@ -206,32 +206,32 @@ describe('use', () => {
         })
     })
 
-    // Normal Uses
+    // Unit Uses
 
-    describe('NormalScalar', () => {
-        it('checks the normalcy of the NormalScalar, and not the value', () => {
-            expect(use.NormalScalar(3, as.NormalScalar(0.5)))
+    describe('UnitScalar', () => {
+        it('checks the unit-ness of the UnitScalar, and not the value', () => {
+            expect(use.UnitScalar(3, as.UnitScalar(0.5)))
                 .toBe(1.5)
 
-            expect(() => use.NormalScalar(0.5, 3 as unknown as NormalScalar))
-                .toThrowError('Numerals of type NormalScalar must be normalized (between 0 and 1). This numeral had value 3.')
+            expect(() => use.UnitScalar(0.5, 3 as unknown as UnitScalar))
+                .toThrowError('Numerals of type UnitScalar must be between 0 and 1. This numeral had value 3.')
         })
 
         it('can be applied wherever a Scalar could be', () => {
-            expect(use.Scalar(3, as.NormalScalar(0.5)))
+            expect(use.Scalar(3, as.UnitScalar(0.5)))
                 .toBe(1.5)
         })
 
-        it('when a use of a Scalar is applied as a NormalScalar, it works, and vice versa', () => {
-            expect(use.NormalScalar(as.NormalScalar(0.5), as.NormalScalar<Scalar>(0.5)))
-                .toBe(as.NormalScalar(0.25))
+        it('when a use of a Scalar is applied as a UnitScalar, it works, and vice versa', () => {
+            expect(use.UnitScalar(as.UnitScalar(0.5), as.UnitScalar<Scalar>(0.5)))
+                .toBe(as.UnitScalar(0.25))
 
-            expect(use.NormalScalar(as.Scalar(0.5), as.NormalScalar<NormalScalar>(0.5)))
+            expect(use.UnitScalar(as.Scalar(0.5), as.UnitScalar<UnitScalar>(0.5)))
                 .toBe(as.Scalar(0.25))
         })
 
         it('rounds the value if it is close', () => {
-            expect(use.NormalScalar(3, -2.220446049250313e-16 as unknown as NormalScalar))
+            expect(use.UnitScalar(3, -2.220446049250313e-16 as unknown as UnitScalar))
                 .toBe(0)
         })
     })
