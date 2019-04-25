@@ -1,6 +1,6 @@
 // tslint:disable
 
-// There should be 221 errors in this file when the below is uncommented.
+// There should be 174 errors in this file when the below is uncommented.
 
 // import {
 //     as,
@@ -9,8 +9,6 @@
 //     computeNominalInterface,
 //     cubeRoot,
 //     CustomAs,
-//     CustomNotAs,
-//     CustomOf,
 //     Denominator,
 //     difference,
 //     DUMMY_VALUE_FOR_COMPUTING_NOMINAL_INTERFACE,
@@ -20,14 +18,13 @@
 //     insteadOf,
 //     Integer,
 //     IntegerModulus,
+//     Logarithm,
 //     modulus,
+//     Modulus,
 //     Ms,
 //     Multiple,
 //     NominalInterface,
-//     UnitScalar,
-//     notAs,
 //     Numerator,
-//     of,
 //     Of,
 //     ofNotAs,
 //     Ordinal,
@@ -40,7 +37,8 @@
 //     squareRoot,
 //     sum,
 //     Translation,
-//     use, Cardinal, Logarithm, Modulus,
+//     UnitScalar,
+//     use,
 // } from '../../../src/indexForTest'
 // import { Arc, Delta, Interval } from '../../../src/nominal'
 //
@@ -220,34 +218,6 @@
 //         })
 //     })
 //
-//     describe('notAs', () => {
-//         it('DOES NOT ALLOW taking a plain number', () => {
-//             notAs.Hz(3)
-//             notAs.Scalar(3)
-//         })
-//
-//         it('DOES NOT ALLOW taking the wrong units or uses', () => {
-//             notAs.Hz(as.Ms(3))
-//             notAs.Scalar(as.Rotation(3))
-//         })
-//
-//         it('DOES NOT ALLOW taking the wrong type of nominal', () => {
-//             notAs.Hz(as.Scalar(3))
-//             notAs.Scalar(as.Hz(3))
-//         })
-//
-//         describe('special units/uses', () => {
-//             it('DOES NOT ALLOW taking plain numbers', () => {
-//                 notAs.Cardinal(3)
-//                 notAs.Numerator(3)
-//                 notAs.Denominator(3)
-//                 notAs.Ordinal(3)
-//                 notAs.Translation(3)
-//                 notAs.Multiple(3)
-//             })
-//         })
-//     })
-//
 //     describe('use', () => {
 //         it('DOES NOT ALLOW using a Scalar as a Unit Scalar', () => {
 //             use.Scalar(as.UnitScalar(0.5), 4 as unknown as Scalar<UnitScalar>)
@@ -265,80 +235,6 @@
 //             use.Interval(as.Ordinal(3), 4 as unknown as Interval<Number & { _TestBrand: 'Test' }>)
 //             use.Delta(as.Ordinal(3), 4 as unknown as Delta<Number & { _TestBrand: 'Test' }>)
 //             use.Arc(as.Ordinal(3), 4 as unknown as Arc<Number & { _TestBrand: 'Test' }>)
-//         })
-//     })
-//
-//     describe('of', () => {
-//         it('DOES NOT ALLOW assigning an Of as the actual thing', () => {
-//             const isNotActuallyUnits: Hz = of.Hz(3)
-//             const isNotActuallyUse: Scalar = of.Scalar(3)
-//         })
-//
-//         it('DOES NOT ALLOW assigning an Of as an Of of the wrong type', () => {
-//             const ofWrongUnits: Of<Ms> = of.Hz(3)
-//             const ofWrongUse: Of<Rotation> = of.Scalar(3)
-//         })
-//
-//         it('DOES NOT ALLOW assigning Of types that are uses of units when its wrong types', () => {
-//             const wrongUnits: Of<Scalar<Hz>> = of.Scalar<Ms>(3)
-//             const wrongUse: Of<Rotation<Hz>> = of.Scalar<Hz>(3)
-//         })
-//
-//         it('DOES NOT ALLOW assigning allows Of types that are uses of uses when its switched types', () => {
-//             const nestedOf: Of<Rotation<Scalar>> = of.Scalar<Rotation>(3)
-//         })
-//
-//         it('DOES NOT ALLOW assigning allows Of types that are uses of uses when its double type of itself as itself', () => {
-//             const nestedOf: Of<Scalar> = of.Scalar<Scalar>(3)
-//             const nestedOfOtherUse: Of<Scalar> = of.Scalar<Rotation>(3)
-//             const nestedOfOtherUseFirst: Of<Scalar> = of.Rotation<Scalar>(3)
-//         })
-//
-//         it('DOES NOT ALLOW assigning allows Of types that are uses of uses when its wrong inner type', () => {
-//             const nestedOf: Of<Scalar<Rotation>> = of.Scalar<Exponent>(3)
-//         })
-//
-//         it('DOES NOT ALLOW assigning allows Of types that are uses of uses when its wrong outer type', () => {
-//             const nestedOf: Of<Scalar<Rotation>> = of.Exponent<Rotation>(3)
-//         })
-//
-//         it('DOES NOT ALLOW creating uses of units when its wrong units', () => {
-//             const scalarOfHz: Scalar<Ms> = as.Scalar(of.Hz(3))
-//         })
-//
-//         it('DOES NOT ALLOW creating uses of uses when its wrong use', () => {
-//             const scalarOfRotation: Scalar<Rotation> = as.Scalar(of.Exponent(3))
-//         })
-//
-//         it('DOES NOT ALLOW creating uses of uses of units when its wrong units', () => {
-//             const scalarOfScalarOfHz: Scalar<Scalar<Hz>> = as.Scalar(of.Scalar<Ms>(3))
-//         })
-//
-//         it('DOES NOT ALLOW creating uses of uses of units when its wrong use', () => {
-//             const scalarOfScalarOfHz: Scalar<Scalar<Hz>> = as.Scalar(of.Rotation<Hz>(3))
-//         })
-//
-//         it('DOES NOT ALLOW assigning an Of of a use as an Of of a use of units or use', () => {
-//             const cantAssignAsResultOfAsingUnits: Of<Scalar<Ms>> = 3 as unknown as Of<Scalar>
-//             const cantAssignAsResultOfAsingUse: Of<Scalar<Rotation>> = 3 as unknown as Of<Scalar>
-//
-//             const cantAssignNonNestedToNestedUnits: Of<Scalar<Ms>> = of.Scalar<number>(3)
-//             const cantAssignNonNestedToNestedUse: Of<Scalar<Rotation>> = of.Scalar<number>(3)
-//
-//             const cantAssignNonNestedToNestedUnitsWithoutExplicitParameter: Of<Scalar<Ms>> = of.Scalar(3)
-//             const cantAssignNonNestedToNestedUseWithoutExplicitParameter: Of<Scalar<Rotation>> = of.Scalar(3)
-//
-//             const cantAssignToUseOfUseOfUnitsFromUseOfUse: Scalar<Scalar<Ms>> = as.Scalar(of.Scalar(3))
-//             const cantAssignToUseOfUseOfUseFromUseOfUse: Scalar<Scalar<Rotation>> = as.Scalar(of.Scalar(3))
-//
-//             const cantAssignToUseOfUseOfUnitsFromUseOfUseUsingTypeParam: Scalar<Scalar<Ms>> = as.Scalar<Scalar>(3)
-//             const cantAssignToUseOfUseOfUseFromUseOfUseUsingTypeParam: Scalar<Scalar<Rotation>> = as.Scalar<Scalar>(3)
-//         })
-//
-//         it('DOES NOT ALLOW calling Of on something that is already Of', () => {
-//             const replaceUnitsWithUse: Of<Scalar> = of.Scalar(of.Hz(3))
-//             const replaceUseWithUse: Of<Scalar> = of.Scalar(of.Rotation(3))
-//             const replaceUseWithUnits: Of<Hz> = of.Hz(of.Scalar(3))
 //         })
 //     })
 //
@@ -375,8 +271,6 @@
 //         type Numeros = Number[] & { _NominalBrand: 'Numeros' }
 //
 //         let customAs: CustomAs<TestNominalInterfaceOptionObject>
-//         let customNotAs: CustomNotAs<TestNominalInterfaceOptionObject>
-//         let customOf: CustomOf<TestNominalInterfaceOptionObject>
 //
 //         interface TestNominalInterfaceOptionObject {
 //             number: { Numero: Numero },
@@ -395,36 +289,15 @@
 //             const nominalInterface: NominalInterface<TestNominalInterfaceOptionObject> =
 //                 computeNominalInterface(nominalInterfaceOptionsObject)
 //             customAs = nominalInterface.as
-//             customNotAs = nominalInterface.notAs
-//             customOf = nominalInterface.of
 //         })
 //
-//         describe('as', () => {
-//             it('DOES NOT ALLOW the same things a normal As, for Units does not allow', () => {
-//                 const numeroToRaw: number = customAs.Numero(3)
-//                 const numerosToRaw: number[] = customAs.Numeros([ 3 ])
-//                 const rawToNumero: Numero = 3
-//                 const rawToNumeros: Numeros = [ 3 ]
-//                 const numerosToNumero: Numero = customAs.Numeros([ 3 ])
-//                 const numeroToNumeros: Numeros = customAs.Numero(3)
-//             })
-//         })
-//
-//         describe('of', () => {
-//             it('DOES NOT ALLOW the same things a normal Of, for Units does not allow', () => {
-//                 const ofNumeroToActual: Numero = customOf.Numero(3)
-//                 const ofNumerosToActual: Numeros = customOf.Numeros(3)
-//
-//                 const actualNumeroToOf: Of<Numero> = customAs.Numero(3)
-//                 const actualNumerosToOf: Of<Numeros> = customAs.Numeros([ 3 ])
-//             })
-//         })
-//
-//         describe('notAs', () => {
-//             it('DOES NOT ALLOW the same things a normal NotAs, for Units does not allow', () => {
-//                 const numero: Numero = customNotAs.Numero(customAs.Numero(3))
-//                 const numeros: Numeros = customNotAs.Numeros(customAs.Numeros([ 3 ]))
-//             })
+//         it('DOES NOT ALLOW the same things a normal As, for Units does not allow', () => {
+//             const numeroToRaw: number = customAs.Numero(3)
+//             const numerosToRaw: number[] = customAs.Numeros([ 3 ])
+//             const rawToNumero: Numero = 3
+//             const rawToNumeros: Numeros = [ 3 ]
+//             const numerosToNumero: Numero = customAs.Numeros([ 3 ])
+//             const numeroToNumeros: Numeros = customAs.Numero(3)
 //         })
 //     })
 //

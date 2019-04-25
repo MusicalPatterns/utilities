@@ -7,7 +7,6 @@ import {
     EXAMPLE_ELEMENT_INDEX,
     Interval,
     MULTIPLICATIVE_IDENTITY,
-    notAs,
     Point,
     Scalar,
     use,
@@ -32,7 +31,7 @@ const goesQuadratically: <NumericElementType extends Number>(
 
         const deltas: Array<Delta<NumericElementType>> = computeDeltas(array)
         const deltaIntervals: Array<Maybe<Interval>> = computeIntervals(
-            deltas.map((delta: Delta<NumericElementType>) => as.Point(notAs.Translation(delta))),
+            deltas.map((delta: Delta<NumericElementType>) => as.Point(as.number(delta))),
         )
 
         const exampleInterval: Maybe<Scalar> = use.Ordinal(

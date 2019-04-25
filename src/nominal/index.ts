@@ -1,15 +1,11 @@
 // tslint:disable max-file-line-count
 
 import * as as from './as'
-import * as notAs from './notAs'
-import * as of from './of'
 import * as use from './use'
 
 export {
     use,
-    notAs,
     as,
-    of,
 }
 
 export {

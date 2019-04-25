@@ -1,16 +1,16 @@
-import { notAs, Radians } from '../nominal'
+import { as, Radians } from '../nominal'
 
 const sine: (radians: Radians) => number =
     (radians: Radians): number =>
-        Math.sin(notAs.Radians(radians))
+        Math.sin(as.number(radians))
 
 const cosine: (radians: Radians) => number =
     (radians: Radians): number =>
-        Math.cos(notAs.Radians(radians))
+        Math.cos(as.number(radians))
 
 const tangent: (radians: Radians) => number =
     (radians: Radians): number =>
-        Math.tan(notAs.Radians(radians))
+        Math.tan(as.number(radians))
 
 export {
     sine,

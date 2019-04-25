@@ -1,5 +1,5 @@
 import { negative } from '../math'
-import { ArrayOverload, as, Cardinal, COUNT_FROM_LENGTH_TO_FINAL_INDEX, Cycle, notAs, Ordinal, use } from '../nominal'
+import { ArrayOverload, as, Cardinal, COUNT_FROM_LENGTH_TO_FINAL_INDEX, Cycle, Ordinal, use } from '../nominal'
 import { isEmpty } from './isEmpty'
 
 const finalElement: <ElementType>(array: ElementType[]) => ElementType =
@@ -43,12 +43,12 @@ const initialElement: <ElementType>(array: ElementType[]) => ElementType =
 const finalIndexFromElementsTotal:
     <ArrayType extends ArrayOverload>(elementsTotal: Cardinal<ArrayType>) => Ordinal<ArrayType> =
     <ArrayType extends ArrayOverload>(elementsTotal: Cardinal<ArrayType>): Ordinal<ArrayType> =>
-        as.Ordinal<ArrayType>(notAs.Cardinal(use.Cardinal(elementsTotal, COUNT_FROM_LENGTH_TO_FINAL_INDEX)))
+        as.Ordinal<ArrayType>(as.number(use.Cardinal(elementsTotal, COUNT_FROM_LENGTH_TO_FINAL_INDEX)))
 
 const indexJustBeyondFinalElementFromElementsTotal:
     <ArrayType extends ArrayOverload>(elementsTotal: Cardinal<ArrayType>) => Ordinal<ArrayType> =
     <ArrayType extends ArrayOverload>(elementsTotal: Cardinal<ArrayType>): Ordinal<ArrayType> =>
-        as.Ordinal<ArrayType>(notAs.Cardinal(elementsTotal))
+        as.Ordinal<ArrayType>(as.number(elementsTotal))
 
 export {
     indexOfFinalElement,

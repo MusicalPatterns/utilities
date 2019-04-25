@@ -7,7 +7,6 @@ import {
     Cycle,
     INITIAL,
     insteadOf,
-    notAs,
     Ordinal,
     Radians,
     ROTATION_VECTOR_OR_MATRIX_BASIS_TRANSLATION_FOR_CYCLING_FOR_AXIS,
@@ -29,7 +28,7 @@ const defaultFixedCoordinateToOriginOfDimensionalityOfCoordinate:
         fixedCoordinate: Maybe<Coordinate<NumericType, Dimensionality>>,
         coordinate: Coordinate<NumericType, Dimensionality>,
     ): Coordinate<NumericType, Dimensionality> => (
-        fixedCoordinate || coordinate.length === notAs.Cardinal(TWO_DIMENSIONAL) ?
+        fixedCoordinate || coordinate.length === as.number(TWO_DIMENSIONAL) ?
             [ 0, 0 ] :
             [ 0, 0, 0 ]
     ) as unknown as Coordinate<NumericType, Dimensionality>
@@ -55,7 +54,7 @@ const computeCycleMapForCyclingRotationMatrixForAxis: (axis: Ordinal) => CycleMa
                 insteadOf<Cardinal, Cycle<VectorOrMatrix>>(
                     ROTATION_VECTOR_OR_MATRIX_BASIS_TRANSLATION_FOR_CYCLING_FOR_AXIS,
                 ),
-                insteadOf<Cardinal, Cardinal<Cycle<VectorOrMatrix>>>(as.Cardinal(notAs.Ordinal(axis))),
+                insteadOf<Cardinal, Cardinal<Cycle<VectorOrMatrix>>>(as.Cardinal(as.number(axis))),
             )
 
             return use.Cardinal(rotationVectorOrMatrix, cycling)

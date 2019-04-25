@@ -5,7 +5,6 @@ import {
     INCREMENT,
     INITIAL,
     MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS,
-    notAs,
     OCTAVE,
     Ordinal, Scalar,
     use,
@@ -17,15 +16,15 @@ const computeOctaveRepeatingPitchScalars: (scalars: Array<Scalar<Pitch>>) => Arr
         let octaveRepeatingPitchScalars: Array<Scalar<Pitch>> = []
         for (
             let index: Ordinal<Array<Base<Frequency>>> = INITIAL;
-            notAs.Ordinal<Array<Base<Frequency>>>(index) < notAs.Cardinal(MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS);
+            as.number(index) < as.number(MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS);
             index = use.Cardinal(index, INCREMENT)
         ) {
-            const nextOctave: Base<Frequency> = use.Power(OCTAVE, as.Power<Base<Frequency>>(notAs.Ordinal(index)))
+            const nextOctave: Base<Frequency> = use.Power(OCTAVE, as.Power<Base<Frequency>>(as.number(index)))
             octaveRepeatingPitchScalars = octaveRepeatingPitchScalars.concat(
                 scalars.map((scalar: Scalar<Pitch>) =>
                     use.Scalar(
                         scalar,
-                        as.Scalar<Scalar<Pitch>>(notAs.Base<Frequency>(nextOctave)),
+                        as.Scalar<Scalar<Pitch>>(as.number(nextOctave)),
                     ),
                 ),
             )

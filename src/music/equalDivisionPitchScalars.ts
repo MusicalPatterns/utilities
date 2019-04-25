@@ -7,7 +7,6 @@ import {
     INITIAL,
     Integer,
     Logarithm,
-    notAs,
     OCTAVE,
     Scalar,
     use,
@@ -18,7 +17,7 @@ import { Pitch } from './types'
 const computeEqualDivisionPitchScalars:
     (equalDivision: Denominator, window?: Logarithm<Frequency>) => Array<Scalar<Pitch>> =
     (equalDivision: Denominator, window: Logarithm<Frequency> = OCTAVE): Array<Scalar<Pitch>> => {
-        const equallyDividedPitchStep: Scalar<Pitch> = as.Scalar<Pitch>(notAs.Logarithm<Frequency>(use.Exponent(
+        const equallyDividedPitchStep: Scalar<Pitch> = as.Scalar<Pitch>(as.number(use.Exponent(
             window,
             as.Exponent<Logarithm<Frequency>>(reciprocal(equalDivision)),
         )))
@@ -26,7 +25,7 @@ const computeEqualDivisionPitchScalars:
         const integerForEachStep: Integer[] = slice(
             ZERO_AND_POSITIVE_INTEGERS,
             INITIAL,
-            as.Ordinal<Integer[]>(notAs.Denominator(equalDivision)),
+            as.Ordinal<Integer[]>(as.number(equalDivision)),
         )
 
         return map(

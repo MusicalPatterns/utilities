@@ -1,7 +1,7 @@
 // tslint:disable max-file-line-count bool-param-default
 
 import { initialElement, isGreaterThanOrEqualTo, isLessThanOrEqualTo, isUndefined, Maybe } from '../code'
-import { notAs, Point, SKIP_FIRST_ELEMENT } from '../nominal'
+import { as, Point, SKIP_FIRST_ELEMENT } from '../nominal'
 import { beginValueIsCorrect, goesFromValueToValue } from './goes'
 import { inBounds } from './inBounds'
 
@@ -26,7 +26,7 @@ const goesMonotonically: <NumericElementType extends Number>(
         let previousValue: Point<NumericElementType> = initialElement(array)
         let result: boolean = true
 
-        array.slice(notAs.Ordinal(SKIP_FIRST_ELEMENT))
+        array.slice(as.number(SKIP_FIRST_ELEMENT))
             .forEach((value: Point<NumericElementType>) => {
                 if (isUndefined(isIncreasing)) {
                     isIncreasing = value > previousValue

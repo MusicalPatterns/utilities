@@ -16,11 +16,8 @@ import {
     Meters,
     Modulus,
     Ms,
-    Multiple,
-    notAs,
     Numerator,
     Of,
-    of,
     Ordinal,
     Power,
     Radians,
@@ -79,11 +76,6 @@ describe('as', () => {
     })
 
     describe('units and uses', () => {
-        it('allows attributing a use as something already Of units', () => {
-            const ofHz: Of<Hz> = of.Hz(3)
-            const hzScalar: Scalar<Hz> = as.Scalar(ofHz)
-        })
-
         it('allows choosing the Of as a type parameter', () => {
             const rotationScalar: Scalar<Rotation> = as.Scalar<Rotation>(3)
             const scalarScalar: Scalar<Scalar> = as.Scalar<Scalar>(3)
@@ -146,11 +138,8 @@ describe('as', () => {
             const ms: Ms = as.Ms(integer)
         })
 
-        it('allows setting things which are integers as uses, whether Integer is specified as the generic type or not', () => {
-            const integer: Integer = as.Integer(3)
-
-            const scalarNotOfIntegersJustConstructedFromOne: Scalar = as.Scalar(integer)
-            const multipleOfIntegers: Multiple<Integer> = as.Multiple(of.Integer(integer))
+        it('allows setting things which are integers as unnatural uses if it is not explicitly tried to be as as the Of', () => {
+            const acceptIntegerWithoutAskingForItToBeTheOfWorksForUnnatural: Scalar = as.Scalar(as.Integer(3))
         })
 
         it('allows using integers where you would use numbers', () => {
@@ -180,7 +169,18 @@ describe('as', () => {
 
         it('this works for Ordinal', () => {
             const jim: Ordinal<Cycle<Scalar>> = as.Ordinal<Cycle<Scalar>>(3)
-            const never: number = notAs.Ordinal<Cycle<Scalar>>(jim)
+            const never: number = as.number(jim)
+        })
+    })
+
+    describe('nothing', () => {
+        it('removes the type', () => {
+            const removed1: number = as.number(as.Scalar(1))
+            const removed2: number = as.number(as.Cardinal(1))
+            const removed3: number = as.number(as.UnitScalar(1))
+            const removed4: number = as.number(as.Ordinal(1))
+            const removed5: number = as.number(as.Scalar<Rotation>(1))
+            const removed6: number = as.number(as.Scalar<Hz>(1))
         })
     })
 })

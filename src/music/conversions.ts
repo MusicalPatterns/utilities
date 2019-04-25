@@ -6,7 +6,6 @@ import {
     CENTS_PER_SEMITONE,
     Frequency,
     Logarithm,
-    notAs,
     OCTAVE,
     Scalar,
     Semitones,
@@ -16,17 +15,17 @@ import {
 
 const centsTranslationToPitchScalar: (centsTranslationToPitchScalar: Translation<Cents>) => Scalar<Frequency> =
     (cents: Translation<Cents>): Scalar<Frequency> =>
-        as.Scalar<Frequency>(notAs.Logarithm(use.Exponent(
+        as.Scalar<Frequency>(as.number(use.Exponent(
             OCTAVE,
-            as.Exponent<Logarithm<Frequency>>(notAs.Translation<Cents>(use.Scalar(
+            as.Exponent<Logarithm<Frequency>>(as.number(use.Scalar(
                 cents,
-                as.Scalar<Translation<Cents>>(notAs.Cents(reciprocal(CENTS_PER_OCTAVE))),
+                as.Scalar<Translation<Cents>>(as.number(reciprocal(CENTS_PER_OCTAVE))),
             ))),
         )))
 
 const semitonesToCents: (semitones: Semitones) => Cents =
     (semitones: Semitones): Cents =>
-        use.Scalar(CENTS_PER_SEMITONE, as.Scalar<Cents>(notAs.Semitones(semitones)))
+        use.Scalar(CENTS_PER_SEMITONE, as.Scalar<Cents>(as.number(semitones)))
 
 export {
     centsTranslationToPitchScalar,

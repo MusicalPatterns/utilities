@@ -1,15 +1,11 @@
 // tslint:disable no-reaching-imports
 
 import * as as from './as'
-import * as notAs from './notAs'
-import * as of from './of'
 import * as use from './use'
 
 export {
     use,
-    notAs,
     as,
-    of,
 }
 
 export { insteadOf } from './insteadOf'
@@ -21,8 +17,6 @@ export {
     NominalInterface,
     NominalInterfaceOptionObject,
     CustomAs,
-    CustomNotAs,
-    CustomOf,
 } from './custom'
 
 export {

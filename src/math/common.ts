@@ -1,5 +1,5 @@
 import { allElementsEqual, isEmpty, isSingleton } from '../code'
-import { as, Integer, Natural, notAs, TWO } from '../nominal'
+import { as, Integer, Natural, TWO } from '../nominal'
 import { absoluteValue, modulus, product, quotient } from './typedOperations'
 import { ManyToOneIntegerOperation, TwoToOneIntegerOperation } from './types'
 
@@ -49,7 +49,7 @@ const recurseCommon: <IntegerType extends Natural = Integer>(
             return result
         }
 
-        return recurseCommon(commonFunction, result, ...integers.slice(notAs.Integer(TWO)))
+        return recurseCommon(commonFunction, result, ...integers.slice(TWO))
     }
 
 const computeCommon: <IntegerType extends Natural = Integer>(

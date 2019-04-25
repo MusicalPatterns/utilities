@@ -1,4 +1,3 @@
-import * as notAs from './notAs'
 import { Ordinal } from './types'
 
 const unfortunatelyNecessaryReimplementationOfRoundForCheckToAvoidCircularDependencyHell: (value: number) => number =
@@ -14,7 +13,7 @@ const unfortunatelyNecessaryReimplementationOfRoundForCheckToAvoidCircularDepend
 
 const ordinalCheck: <ElementType>(index: Ordinal<ElementType[]>, array: ElementType[]) => void =
     <ElementType>(index: Ordinal<ElementType[]>, array: ElementType[]): void => {
-        if (notAs.Ordinal(index as unknown as Ordinal) > array.length - 1) {
+        if (index as unknown as number > array.length - 1) {
             throw new Error(`Ordinal ${index} exceeds available indices of array of length ${array.length}`)
         }
     }

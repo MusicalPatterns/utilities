@@ -3,7 +3,6 @@
 import { finalIndexFromElementsTotal } from '../code'
 import * as as from './as'
 import { integerCheck, ordinalCheck, unitCheck } from './checks'
-import * as notAs from './notAs'
 import { isCycle } from './typeGuards'
 import {
     Arc,
@@ -128,13 +127,13 @@ const Cardinal: {
             ) {
                 let cycledIndex: Ordinal<Cycle<OfType>> = Cardinal(
                     index,
-                    as.Transition<Cycle<OfType>>(-notAs.Cardinal(cardinal as unknown as Cardinal)),
+                    as.Transition<Cycle<OfType>>(-as.number(cardinal as unknown as Cardinal)),
                 )
                 cycledIndex = IntegerModulus(
                     cycledIndex,
-                    as.IntegerModulus<Ordinal<Cycle<OfType>>>(notAs.Cardinal<Cycle<OfType>>(cellCount)),
+                    as.IntegerModulus<Ordinal<Cycle<OfType>>>(as.number(cellCount)),
                 )
-                cycledCycle.push(cycle[ notAs.Ordinal<Cycle<OfType>>(cycledIndex) ])
+                cycledCycle.push(cycle[ as.number(cycledIndex) ])
             }
 
             return cycledCycle as unknown as OfType
@@ -184,12 +183,12 @@ const Ordinal: {
                 as.IntegerModulus<Ordinal<Cycle<ElementType>>>(array.length),
             )
 
-            return array[ notAs.Ordinal(cycledOrdinal as unknown as Ordinal) ]
+            return array[ as.number(cycledOrdinal as unknown as Ordinal) ]
         }
 
         ordinalCheck(ordinal, array)
 
-        return array[ notAs.Ordinal(ordinal as unknown as Ordinal) ]
+        return array[ as.number(ordinal as unknown as Ordinal) ]
     }
 
 // Natural Compound Uses

@@ -2,13 +2,13 @@
 
 import { HtmlValue } from '../browser'
 import { slice } from '../code'
-import { as, Cardinal, EXCLUSIVE_TO_LEFT, INITIAL, insteadOf, notAs, Ordinal, use } from '../nominal'
+import { as, Cardinal, EXCLUSIVE_TO_LEFT, INITIAL, insteadOf, Ordinal, use } from '../nominal'
 import { Operands } from './types'
 
 const splitOperands: (expression: string, operatorIndex: Ordinal<string>) => Operands =
     (expression: string, operatorIndex: Ordinal<string>): Operands => {
         const lhs: number =
-            evaluateString(slice(expression, as.Ordinal<string>(notAs.Ordinal(INITIAL)), operatorIndex))
+            evaluateString(slice(expression, INITIAL, operatorIndex))
         const rhs: number = evaluateString(
             slice(
                 expression,

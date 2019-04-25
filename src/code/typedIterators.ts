@@ -1,6 +1,6 @@
 // tslint:disable max-file-line-count
 
-import { ArrayOverload, ArrayOverloadAny, as, Cycle, INCREMENT, notAs, Ordinal, use } from '../nominal'
+import { ArrayOverload, ArrayOverloadAny, as, Cycle, INCREMENT, Ordinal, use } from '../nominal'
 import { indexJustBeyondFinalElement, length } from './finalElement'
 import { isUndefined } from './isUndefined'
 
@@ -15,7 +15,7 @@ const slice: <ArrayType extends ArrayOverload>(
         terminal?: Ordinal<ArrayType>,
     ): ArrayType => {
         if (isUndefined(terminal)) {
-            return array.slice(notAs.Ordinal(initial as unknown as Ordinal)) as ArrayType
+            return array.slice(as.number(initial as unknown as Ordinal)) as ArrayType
         }
 
         if (terminal > indexJustBeyondFinalElement(array as unknown as ArrayOverloadAny)) {
@@ -24,8 +24,8 @@ of only ${length(array)}: ${array}`)
         }
 
         return array.slice(
-            notAs.Ordinal(initial as unknown as Ordinal),
-            notAs.Ordinal(terminal as unknown as Ordinal),
+            as.number(initial as unknown as Ordinal),
+            as.number(terminal as unknown as Ordinal),
         ) as ArrayType
     }
 

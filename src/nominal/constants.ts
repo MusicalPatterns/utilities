@@ -1,7 +1,6 @@
 // tslint:disable no-magic-numbers max-file-line-count no-any
 
 import * as as from './as'
-import * as notAs from './notAs'
 import {
     ArrayOverloadAny,
     Base,
@@ -158,13 +157,13 @@ const SEMITONES_PER_OCTAVE: Cardinal<Semitones> = as.Cardinal<Semitones>(12)
 const OCTAVE: Base<Frequency> = as.Base<Frequency>(2)
 const TRITAVE: Base<Frequency> = as.Base<Frequency>(3)
 const SEMITONE: Logarithm<Frequency> = as.Logarithm<Frequency>(Math.pow(
-    notAs.Base<Frequency>(OCTAVE),
-    (1 / notAs.Cardinal<Semitones>(SEMITONES_PER_OCTAVE)),
+    as.number(OCTAVE),
+    (1 / as.number(SEMITONES_PER_OCTAVE)),
 ))
 
 const CENTS_PER_SEMITONE: Cents = as.Cents(100)
 const CENTS_PER_OCTAVE: Cents =
-    as.Cents(notAs.Cents(CENTS_PER_SEMITONE) * notAs.Cardinal<Semitones>(SEMITONES_PER_OCTAVE))
+    as.Cents(as.number(CENTS_PER_SEMITONE) * as.number(SEMITONES_PER_OCTAVE))
 
 const BEGINNING: Point<Ms> = as.Point<Ms>(0)
 const NO_DURATION: Delta<Ms> = as.Delta<Ms>(0)

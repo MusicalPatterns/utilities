@@ -55,6 +55,12 @@ import {
     UnnaturalUseOfableActive,
 } from './types'
 
+// Removal
+
+const number: <NumericType extends Number>(nothing: NumericType) => number =
+    <NumericType extends Number>(nothing: NumericType): number =>
+        nothing as unknown as number
+
 // Concrete Units
 
 const Hz: <NumericType extends NoUnits>(hz: NumericType) => Hz =
@@ -356,4 +362,5 @@ export {
     Factor,
     Transition,
     Turn,
+    number,
 }
