@@ -125,7 +125,7 @@ const Point: <OfType extends Number = number>(ofPoint: number | OfType) => Of<Po
     <OfType extends Number = number>(ofPoint: number | OfType): Of<Point<OfType>> =>
         ofPoint as unknown as Of<Point<OfType>>
 
-// Unnatural Compounds
+// Unnatural Compound Uses
 
 const Interval: <OfType extends Number = number>(ofInterval: number | OfType) => Of<Interval<OfType>> =
     <OfType extends Number = number>(ofInterval: number | OfType): Of<Interval<OfType>> =>
@@ -167,7 +167,7 @@ const Ordinal: <OfType extends ArrayOverload = number[]>(ofOrdinal: number | OfT
     <OfType extends ArrayOverload = number[]>(ofOrdinal: number | OfType): Of<Ordinal<OfType>> =>
         ofOrdinal as unknown as Of<Ordinal<OfType>>
 
-// Natural Compounds
+// Natural Compound Uses
 
 const Factor: <OfType extends ArrayOverload = number[]>(ofFactor: number | OfType) => Of<Factor<OfType>> =
     <OfType extends ArrayOverload = number[]>(ofFactor: number | OfType): Of<Factor<OfType>> =>

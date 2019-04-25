@@ -12,7 +12,7 @@ const unfortunatelyNecessaryReimplementationOfRoundForCheckToAvoidCircularDepend
         return +(Math.round(`${value}e+10` as unknown as number) + 'e-' + 10)
     }
 
-const indexCheck: <ElementType>(index: Ordinal<ElementType[]>, array: ElementType[]) => void =
+const ordinalCheck: <ElementType>(index: Ordinal<ElementType[]>, array: ElementType[]) => void =
     <ElementType>(index: Ordinal<ElementType[]>, array: ElementType[]): void => {
         if (notAs.Ordinal(index as unknown as Ordinal) > array.length - 1) {
             throw new Error(`Ordinal ${index} exceeds available indices of array of length ${array.length}`)
@@ -53,7 +53,7 @@ const integerCheck: <NumericType extends Number>(value: NumericType, type: strin
     }
 
 export {
-    indexCheck,
+    ordinalCheck,
     unitCheck,
     integerCheck,
 }

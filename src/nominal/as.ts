@@ -167,7 +167,7 @@ const Point: {
     <OfType extends Unnatural | NoOf = number>(point: OfType | number | Of<OfType>): Point<OfType> =>
         point as unknown as Point<OfType>
 
-// Unnatural Compounds
+// Unnatural Compound Uses
 
 const Interval: {
     <OfType extends UnnaturalUseOfable = number>(interval: OfType): Interval,
@@ -249,7 +249,7 @@ const Ordinal: {
     <OfType = number>(ordinal: OfType | number | Of<OfType>): Ordinal<OfType[]> =>
         integerCheck(ordinal as unknown as number, 'Ordinal') as unknown as Ordinal<OfType[]>
 
-// Natural Compounds
+// Natural Compound Uses
 
 const Factor: {
     <OfType extends NoOf = number>(factor: OfType): Factor,

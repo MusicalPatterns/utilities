@@ -91,7 +91,7 @@ type Modulus<OfType extends UnnaturalUseOfableActive = number> = UseBrand<'Modul
 
 type Point<OfType extends UnnaturalUseOfableActive = number> = UseBrand<'Point', OfType>
 
-// Unnatural Compounds
+// Unnatural Compound Uses
 
 type Interval<OfType extends UnnaturalUseOfableActive = number> = Scalar<Point<OfType>>
 type Delta<OfType extends UnnaturalUseOfableActive = number> = Translation<Point<OfType>>
@@ -113,7 +113,7 @@ type IntegerModulus<OfType extends NaturalUseOfableActive = number> = UseBrand<'
 
 type Ordinal<OfType extends { _OfBrand?: 'NoOf' } & ArrayOverload = number[]> = UseBrand<'Ordinal' & 'Point', OfType>
 
-// Natural Compounds
+// Natural Compound Uses
 
 type Factor<OfType extends { _OfBrand?: 'NoOf' } & ArrayOverload = number[]> = Multiple<Ordinal<OfType>>
 type Transition<OfType extends { _OfBrand?: 'NoOf' } & ArrayOverload = number[]> = Cardinal<Ordinal<OfType>>

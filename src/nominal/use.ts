@@ -2,18 +2,22 @@
 
 import { finalIndexFromElementsTotal } from '../code'
 import * as as from './as'
-import { indexCheck, integerCheck, unitCheck } from './checks'
+import { integerCheck, ordinalCheck, unitCheck } from './checks'
 import * as notAs from './notAs'
 import { isCycle } from './typeGuards'
 import {
+    Arc,
     ArrayOverload,
     Base,
     Cardinal,
     Cycle,
+    Delta,
     Denominator,
     Exponent,
+    Factor,
     Fraction,
     IntegerModulus,
+    Interval,
     Logarithm,
     Modulus,
     Multiple,
@@ -24,8 +28,10 @@ import {
     Power,
     Rotation,
     Scalar,
+    Transition,
     Translation,
     Transposition,
+    Turn,
     UnitScalar,
 } from './types'
 
@@ -78,6 +84,18 @@ const Modulus: <OfType extends Number>(value: OfType, modulus: Modulus<OfType>) 
 
         return result as unknown as OfType
     }
+
+// Unnatural Compound Uses
+
+const Interval: <OfType extends Number>(value: OfType, interval: Interval<OfType>) => OfType =
+    <OfType extends Number>(value: OfType, interval: Interval<OfType>): OfType =>
+        Scalar(value as unknown as number, interval as unknown as Scalar) as unknown as OfType
+const Delta: <OfType extends Number>(value: OfType, delta: Delta<OfType>) => OfType =
+    <OfType extends Number>(value: OfType, delta: Delta<OfType>): OfType =>
+        Translation(value as unknown as number, delta as unknown as Translation) as unknown as OfType
+const Arc: <OfType extends Number>(value: OfType, arc: Arc<OfType>) => OfType =
+    <OfType extends Number>(value: OfType, arc: Arc<OfType>): OfType =>
+        Rotation(value as unknown as number, arc as unknown as Rotation) as unknown as OfType
 
 // Natural Transformation Uses (with overloads for arrays)
 
@@ -155,24 +173,63 @@ const IntegerModulus: <OfType extends NonUnit>(value: OfType, integerModulus: In
 // Natural Fixed Uses (only used for arrays)
 
 const Ordinal: {
-    <ElementType>(array: Cycle<ElementType>, index: Ordinal<Cycle<ElementType>>): ElementType,
-    <ElementType>(array: ElementType[], index: Ordinal<ElementType[]>): ElementType,
+    <ElementType>(array: Cycle<ElementType>, ordinal: Ordinal<Cycle<ElementType>>): ElementType,
+    <ElementType>(array: ElementType[], ordinal: Ordinal<ElementType[]>): ElementType,
 } =
-    <ElementType>(array: ElementType[], index: Ordinal<ElementType[]>): ElementType => {
+    <ElementType>(array: ElementType[], ordinal: Ordinal<ElementType[]>): ElementType => {
         if (isCycle(array)) {
-            const cycleIndex: Ordinal<Cycle<ElementType>> = index as Ordinal<Cycle<ElementType>>
-            const cycledIndex: Ordinal<Cycle<ElementType>> = IntegerModulus(
-                cycleIndex,
+            const cycleOrdinal: Ordinal<Cycle<ElementType>> = ordinal as Ordinal<Cycle<ElementType>>
+            const cycledOrdinal: Ordinal<Cycle<ElementType>> = IntegerModulus(
+                cycleOrdinal,
                 as.IntegerModulus<Ordinal<Cycle<ElementType>>>(array.length),
             )
 
-            return array[ notAs.Ordinal(cycledIndex as unknown as Ordinal) ]
+            return array[ notAs.Ordinal(cycledOrdinal as unknown as Ordinal) ]
         }
 
-        indexCheck(index, array)
+        ordinalCheck(ordinal, array)
 
-        return array[ notAs.Ordinal(index as unknown as Ordinal) ]
+        return array[ notAs.Ordinal(ordinal as unknown as Ordinal) ]
     }
+
+// Natural Compound Uses
+
+const Factor: {
+    <ElementType>(ordinal: Ordinal<Cycle<ElementType>>, factor: Factor<Cycle<ElementType>>): Ordinal<Cycle<ElementType>>,
+    <ElementType>(ordinal: Ordinal<ElementType[]>, factor: Factor<ElementType[]>): Ordinal<ElementType[]>,
+} =
+    <ElementType>(
+        ordinal: Ordinal<ElementType[]> | Ordinal<Cycle<ElementType>>,
+        factor: Factor<ElementType[]> | Factor<Cycle<ElementType>>,
+    ): Ordinal<ElementType[]> & Ordinal<Cycle<ElementType>> =>
+        Multiple(
+            ordinal as unknown as number,
+            factor as unknown as Multiple,
+        ) as unknown as Ordinal<ElementType[]> & Ordinal<Cycle<ElementType>>
+const Transition: {
+    <ElementType>(ordinal: Ordinal<Cycle<ElementType>>, transition: Transition<Cycle<ElementType>>): Ordinal<Cycle<ElementType>>,
+    <ElementType>(ordinal: Ordinal<ElementType[]>, transition: Transition<ElementType[]>): Ordinal<ElementType[]>,
+} =
+    <ElementType>(
+        ordinal: Ordinal<ElementType[]> | Ordinal<Cycle<ElementType>>,
+        transition: Transition<ElementType[]> | Transition<Cycle<ElementType>>,
+    ): Ordinal<ElementType[]> & Ordinal<Cycle<ElementType>> =>
+        Cardinal(
+            ordinal as unknown as number,
+            transition as unknown as Cardinal,
+        ) as unknown as Ordinal<ElementType[]> & Ordinal<Cycle<ElementType>>
+const Turn: {
+    <ElementType>(ordinal: Ordinal<Cycle<ElementType>>, factor: Turn<Cycle<ElementType>>): Ordinal<Cycle<ElementType>>,
+    <ElementType>(ordinal: Ordinal<ElementType[]>, factor: Turn<ElementType[]>): Ordinal<ElementType[]>,
+} =
+    <ElementType>(
+        ordinal: Ordinal<ElementType[]> | Ordinal<Cycle<ElementType>>,
+        factor: Turn<ElementType[]> | Turn<Cycle<ElementType>>,
+    ): Ordinal<ElementType[]> & Ordinal<Cycle<ElementType>> =>
+        Transposition(
+            ordinal as unknown as number,
+            factor as unknown as Transposition,
+        ) as unknown as Ordinal<ElementType[]> & Ordinal<Cycle<ElementType>>
 
 // Unit Uses
 
@@ -196,4 +253,10 @@ export {
     Logarithm,
     IntegerModulus,
     Transposition,
+    Interval,
+    Delta,
+    Arc,
+    Factor,
+    Transition,
+    Turn,
 }
