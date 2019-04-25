@@ -2,7 +2,6 @@
 
 import { integerCheck, unitCheck } from './checks'
 import {
-    Amplitude,
     ArrayOverload,
     Base,
     Block,
@@ -16,6 +15,7 @@ import {
     Exponent,
     Fraction,
     Frequency,
+    Gain,
     Hz,
     Integer,
     IntegerModulus,
@@ -86,9 +86,9 @@ const Semitones: <NumericType extends NoUnits>(semitones: NumericType) => Semito
     <NumericType extends NoUnits>(semitones: NumericType): Semitones =>
         semitones as unknown as Semitones
 
-const Amplitude: <NumericType extends NoUnits>(amplitude: NumericType) => Amplitude =
-    <NumericType extends NoUnits>(amplitude: NumericType): Amplitude =>
-        amplitude as unknown as Amplitude
+const Gain: <NumericType extends NoUnits>(gain: NumericType) => Gain =
+    <NumericType extends NoUnits>(gain: NumericType): Gain =>
+        gain as unknown as Gain
 
 // Natural Units
 
@@ -288,7 +288,7 @@ export {
     Space,
     Time,
     Frequency,
-    Amplitude,
+    Gain,
     UnitScalar,
     Multiple,
     Exponent,

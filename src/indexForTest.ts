@@ -116,7 +116,7 @@ export {
     Space,
     Time,
     Frequency,
-    Amplitude,
+    Gain,
     OCTAVE,
     TRITAVE,
     INITIAL,

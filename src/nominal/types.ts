@@ -32,7 +32,7 @@ type Radians = UnitsBrand<'Radians'>
 type Cents = UnitsBrand<'Cents'>
 type Semitones = UnitsBrand<'Semitones'>
 
-type Amplitude = UnitsBrand<'Amplitude'>
+type Gain = UnitsBrand<'Gain'>
 
 // Natural Units
 
@@ -239,7 +239,7 @@ export {
     Space,
     Time,
     Frequency,
-    Amplitude,
+    Gain,
     NominalNumber,
     UnitScalar,
     UseBrand,

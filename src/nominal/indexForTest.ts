@@ -68,7 +68,7 @@ export {
     Space,
     Time,
     Frequency,
-    Amplitude,
+    Gain,
     Ordinal,
     Of,
     UnitScalar,

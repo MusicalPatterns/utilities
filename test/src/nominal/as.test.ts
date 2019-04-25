@@ -1,7 +1,6 @@
 // tslint:disable no-unused-expression no-dead-store
 
 import {
-    Amplitude,
     as,
     Base,
     Cardinal,
@@ -10,6 +9,7 @@ import {
     Denominator,
     Exponent,
     Frequency,
+    Gain,
     Hz,
     Integer,
     Logarithm,
@@ -44,7 +44,7 @@ describe('as', () => {
             const space: Space = as.Space(3)
             const time: Time = as.Time(3)
             const frequency: Frequency = as.Frequency(3)
-            const amplitude: Amplitude = as.Amplitude(3)
+            const gain: Gain = as.Gain(3)
         })
 
         it('allows comparing things in the same units but with different values', () => {

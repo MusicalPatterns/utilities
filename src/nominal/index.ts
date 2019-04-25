@@ -171,7 +171,7 @@ export {
     NoUnits,
     Time,
     Frequency,
-    Amplitude,
+    Gain,
     NominalNumber,
     UnitScalar,
     Ordinal,

@@ -200,7 +200,7 @@ export {
     NominalInterface,
     Time,
     Frequency,
-    Amplitude,
+    Gain,
     NominalNumber,
     UnitScalar,
     NOT_FOUND,

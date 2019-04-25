@@ -1,7 +1,7 @@
 // tslint:disable variable-name max-file-line-count max-line-length
 
 import {
-    Amplitude, ArrayOverload,
+    ArrayOverload,
     Base,
     Block,
     Cardinal,
@@ -11,6 +11,7 @@ import {
     Exponent,
     Fraction,
     Frequency,
+    Gain,
     Hz,
     Integer,
     IntegerModulus,
@@ -72,9 +73,9 @@ const Semitones: (semitones: Semitones) => number =
     (semitones: Semitones): number =>
         semitones as unknown as number
 
-const Amplitude: (amplitude: Amplitude) => number =
-    (amplitude: Amplitude): number =>
-        amplitude as unknown as number
+const Gain: (gain: Gain) => number =
+    (gain: Gain): number =>
+        gain as unknown as number
 
 // Natural Units
 
@@ -198,7 +199,7 @@ export {
     Space,
     Time,
     Frequency,
-    Amplitude,
+    Gain,
     UnitScalar,
     Rotation,
     Ordinal,

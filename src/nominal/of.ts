@@ -1,7 +1,6 @@
 // tslint:disable variable-name max-file-line-count max-line-length
 
 import {
-    Amplitude,
     ArrayOverload,
     Base,
     Cardinal,
@@ -11,6 +10,7 @@ import {
     Exponent,
     Fraction,
     Frequency,
+    Gain,
     Hz,
     Integer,
     IntegerModulus,
@@ -72,9 +72,9 @@ const Semitones: (ofSemitones: number) => Of<Semitones> =
     (ofSemitones: number): Of<Semitones> =>
         ofSemitones as unknown as Of<Semitones>
 
-const Amplitude: (ofAmplitude: number) => Of<Amplitude> =
-    (ofAmplitude: number): Of<Amplitude> =>
-        ofAmplitude as unknown as Of<Amplitude>
+const Gain: (ofGain: number) => Of<Gain> =
+    (ofGain: number): Of<Gain> =>
+        ofGain as unknown as Of<Gain>
 
 // Natural Units
 
@@ -183,7 +183,7 @@ export {
     Space,
     Time,
     Frequency,
-    Amplitude,
+    Gain,
     Scalar,
     UnitScalar,
     Rotation,
