@@ -80,6 +80,10 @@ const computeCommonTerms: (...fractions: Fraction[]) => Fraction[] =
             })
     }
 
+const resolve: (fraction: Fraction) => number =
+    (fraction: Fraction): number =>
+        as.number(fraction[ 0 ]) * (1 / as.number(fraction[ 1 ]))
+
 export {
     multiplyFractions,
     getNumerator,
@@ -87,4 +91,5 @@ export {
     computeLowestTerms,
     computeCommonTerms,
     computeLowestCommonDenominator,
+    resolve,
 }

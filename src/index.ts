@@ -152,6 +152,7 @@ export {
     goesQuadratically,
     goesQuadraticallyBetweenValueAndValue,
     goesQuadraticallyFromValueToValue,
+    resolve,
 } from './math'
 export {
     centsTranslationToPitchScalar,
