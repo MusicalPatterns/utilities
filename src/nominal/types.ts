@@ -77,47 +77,47 @@ type Of<OfType> = number | { _OfBrand: OfType }
 
 // Unwhole Transformation Uses
 
-type Scalar<OfType extends UnwholeUseOfableActive = number> = UseBrand<'Scalar', OfType>
-type Translation<OfType extends UnwholeUseOfableActive = number> = UseBrand<'Translation', OfType>
-type Rotation<OfType extends UnwholeUseOfableActive = number> = UseBrand<'Rotation', OfType>
+type Scalar<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = UseBrand<'Scalar', OfType>
+type Translation<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = UseBrand<'Translation', OfType>
+type Rotation<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = UseBrand<'Rotation', OfType>
 
 // Unwhole Non-Transformation Uses
 
-type Exponent<OfType extends UnwholeUseOfableActive = number> = UseBrand<'Exponent', OfType>
-type Logarithm<OfType extends UnwholeUseOfableActive = number> = UseBrand<'Logarithm', OfType>
-type Modulus<OfType extends UnwholeUseOfableActive = number> = UseBrand<'Modulus', OfType>
+type Exponent<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = UseBrand<'Exponent', OfType>
+type Logarithm<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = UseBrand<'Logarithm', OfType>
+type Modulus<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = UseBrand<'Modulus', OfType>
 
 // Unwhole Fixed Uses
 
-type Point<OfType extends UnwholeUseOfableActive = number> = UseBrand<'Point', OfType>
+type Point<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = UseBrand<'Point', OfType>
 
 // Unwhole Compound Uses
 
-type Interval<OfType extends UnwholeUseOfableActive = number> = Scalar<Point<OfType>>
-type Delta<OfType extends UnwholeUseOfableActive = number> = Translation<Point<OfType>>
-type Arc<OfType extends UnwholeUseOfableActive = number> = Rotation<Point<OfType>>
+type Interval<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = Scalar<Point<OfType>>
+type Delta<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = Translation<Point<OfType>>
+type Arc<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = Rotation<Point<OfType>>
 
 // Whole Transformation Uses (with overloads for arrays)
 
-type Multiple<OfType extends WholeUseOfableWithArrayOverloadActive = number> = UseBrand<'Multiple' & 'Scalar', OfType>
-type Cardinal<OfType extends WholeUseOfableWithArrayOverloadActive = number> = UseBrand<'Cardinal' & 'Translation', OfType>
-type Transposition<OfType extends WholeUseOfableWithArrayOverloadActive = number> = UseBrand<'Transposition' & 'Rotation', OfType>
+type Multiple<OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType = number> = UseBrand<'Multiple' & 'Scalar', OfType>
+type Cardinal<OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType = number> = UseBrand<'Cardinal' & 'Translation', OfType>
+type Transposition<OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType = number> = UseBrand<'Transposition' & 'Rotation', OfType>
 
 // Whole Non-Transformation Uses
 
-type Power<OfType extends WholeUseOfableActive = number> = UseBrand<'Power' & 'Exponent', OfType>
-type Base<OfType extends WholeUseOfableActive = number> = UseBrand<'Base' & 'Logarithm', OfType>
-type IntegerModulus<OfType extends WholeUseOfableActive = number> = UseBrand<'IntegerModulus' & 'Modulus', OfType>
+type Power<OfType extends CanBeAsAWholeUseOfSomeType = number> = UseBrand<'Power' & 'Exponent', OfType>
+type Base<OfType extends CanBeAsAWholeUseOfSomeType = number> = UseBrand<'Base' & 'Logarithm', OfType>
+type IntegerModulus<OfType extends CanBeAsAWholeUseOfSomeType = number> = UseBrand<'IntegerModulus' & 'Modulus', OfType>
 
 // Whole Fixed Uses (only used for arrays)
 
-type Ordinal<OfType extends { _OfBrand?: 'NoOf' } & ArrayOverload = number[]> = UseBrand<'Ordinal' & 'Point', OfType>
+type Ordinal<OfType extends { _OfBrand?: 'NoOf' } & ArrayedType = number[]> = UseBrand<'Ordinal' & 'Point', OfType>
 
 // Whole Compound Uses
 
-type Factor<OfType extends { _OfBrand?: 'NoOf' } & ArrayOverload = number[]> = Multiple<Ordinal<OfType>>
-type Transition<OfType extends { _OfBrand?: 'NoOf' } & ArrayOverload = number[]> = Cardinal<Ordinal<OfType>>
-type Turn<OfType extends { _OfBrand?: 'NoOf' } & ArrayOverload = number[]> = Transposition<Ordinal<OfType>>
+type Factor<OfType extends { _OfBrand?: 'NoOf' } & ArrayedType = number[]> = Multiple<Ordinal<OfType>>
+type Transition<OfType extends { _OfBrand?: 'NoOf' } & ArrayedType = number[]> = Cardinal<Ordinal<OfType>>
+type Turn<OfType extends { _OfBrand?: 'NoOf' } & ArrayedType = number[]> = Transposition<Ordinal<OfType>>
 
 // Unit Uses
 
@@ -177,15 +177,15 @@ type MaybeWhole<Name> =
                                     Name extends 'Denominator' ? Whole :
                                         {}
 
-type WholeUseOfable = (NonUnit & NoOf)
-type WholeUseOfableActive = (NonUnit)
-type UnwholeUseOfable = (NonUnit & NoOf) & Unwhole
-type UnwholeUseOfableActive = (NonUnit) & Unwhole
-type ArrayOverload = unknown[] | Cycle<unknown> | string
-type WholeUseOfableWithArrayOverload = (NonUnit & NoOf) | ArrayOverload
-type WholeUseOfableWithArrayOverloadActive = (NonUnit) | ArrayOverload
+type CanBeAsAWholeUseOfSomeType = NonUnit
+type CanBeAsAWholeUseOfNoType = CanBeAsAWholeUseOfSomeType & NoOf
+type CanBeAsAnUnwholeUseOfSomeType = CanBeAsAWholeUseOfSomeType & Unwhole
+type CanBeAsAnUnwholeUseOfNoType = CanBeAsAWholeUseOfNoType & Unwhole
+type ArrayedType = unknown[] | Cycle<unknown> | string
+type CanBeAsAWholeUseWithAnArrayOverloadOfSomeType = CanBeAsAWholeUseOfSomeType | ArrayedType
+type CanBeAsAWholeUseWithAnArrayOverloadOfNoType = CanBeAsAWholeUseOfNoType | ArrayedType
 // tslint:disable-next-line no-any
-type ArrayOverloadAny = any[] & Cycle<any> & string
+type AnyArrayedType = any[] & Cycle<any> & string
 
 // Unit
 
@@ -269,16 +269,16 @@ export {
     NonUnit,
     UnwholeVersion,
     WholeVersion,
-    WholeUseOfable,
-    UnwholeUseOfable,
+    CanBeAsAWholeUseOfNoType,
+    CanBeAsAnUnwholeUseOfNoType,
     Transposition,
     Point,
-    WholeUseOfableActive,
-    UnwholeUseOfableActive,
-    WholeUseOfableWithArrayOverload,
-    WholeUseOfableWithArrayOverloadActive,
-    ArrayOverload,
-    ArrayOverloadAny,
+    CanBeAsAWholeUseOfSomeType,
+    CanBeAsAnUnwholeUseOfSomeType,
+    CanBeAsAWholeUseWithAnArrayOverloadOfNoType,
+    CanBeAsAWholeUseWithAnArrayOverloadOfSomeType,
+    ArrayedType,
+    AnyArrayedType,
     Interval,
     Delta,
     Arc,

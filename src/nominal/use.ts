@@ -6,8 +6,9 @@ import { integerCheck, ordinalCheck, unitCheck } from './checks'
 import { isCycle } from './typeGuards'
 import {
     Arc,
-    ArrayOverload,
+    ArrayedType,
     Base,
+    CanBeAsAWholeUseWithAnArrayOverloadOfSomeType,
     Cardinal,
     Cycle,
     Delta,
@@ -32,7 +33,6 @@ import {
     Turn,
     UnitScalar,
     Unwhole,
-    WholeUseOfableWithArrayOverloadActive,
 } from './types'
 
 // Whole Units
@@ -101,9 +101,9 @@ const Arc: <OfType extends Unwhole>(value: OfType, arc: Arc<OfType>) => OfType =
 
 const Multiple: {
     <OfType extends NonUnit>(value: OfType, multiple: Multiple<OfType>): OfType,
-    <OfType extends ArrayOverload>(value: OfType, multiple: Multiple<OfType>): OfType,
+    <OfType extends ArrayedType>(value: OfType, multiple: Multiple<OfType>): OfType,
 } =
-    <OfType extends WholeUseOfableWithArrayOverloadActive>(value: OfType, multiple: Multiple<OfType>): OfType => {
+    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType>(value: OfType, multiple: Multiple<OfType>): OfType => {
         // If is array or cycle, return special array overload here
 
         return Scalar(
@@ -113,9 +113,9 @@ const Multiple: {
     }
 const Cardinal: {
     <OfType extends NonUnit>(value: OfType, cardinal: Cardinal<OfType>): OfType,
-    <OfType extends ArrayOverload>(value: OfType, cardinal: Cardinal<OfType>): OfType,
+    <OfType extends ArrayedType>(value: OfType, cardinal: Cardinal<OfType>): OfType,
 } =
-    <OfType extends WholeUseOfableWithArrayOverloadActive>(value: OfType, cardinal: Cardinal<OfType>): OfType => {
+    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType>(value: OfType, cardinal: Cardinal<OfType>): OfType => {
         if (isCycle(value)) {
             const cycle: Cycle<OfType> = value as unknown as Cycle<OfType>
             const cycledCycle: Cycle<OfType> = as.Cycle([])
@@ -147,9 +147,9 @@ const Cardinal: {
     }
 const Transposition: {
     <OfType extends NonUnit>(value: OfType, transposition: Transposition<OfType>): OfType,
-    <OfType extends ArrayOverload>(value: OfType, transposition: Transposition<OfType>): OfType,
+    <OfType extends ArrayedType>(value: OfType, transposition: Transposition<OfType>): OfType,
 } =
-    <OfType extends WholeUseOfableWithArrayOverloadActive>(value: OfType, transposition: Transposition<OfType>): OfType => {
+    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType>(value: OfType, transposition: Transposition<OfType>): OfType => {
         // If is array or cycle, return special array overload here
 
         return Rotation(

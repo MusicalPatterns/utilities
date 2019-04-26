@@ -1,15 +1,15 @@
 // tslint:disable max-file-line-count
 
-import { ArrayOverload, ArrayOverloadAny, as, Cycle, INCREMENT, Ordinal, use } from '../nominal'
+import { AnyArrayedType, ArrayedType, as, Cycle, INCREMENT, Ordinal, use } from '../nominal'
 import { indexJustBeyondFinalElement, length } from './finalElement'
 import { isUndefined } from './isUndefined'
 
-const slice: <ArrayType extends ArrayOverload>(
+const slice: <ArrayType extends ArrayedType>(
     array: ArrayType,
     initial: Ordinal<ArrayType>,
     terminal?: Ordinal<ArrayType>,
 ) => ArrayType =
-    <ArrayType extends ArrayOverload>(
+    <ArrayType extends ArrayedType>(
         array: ArrayType,
         initial: Ordinal<ArrayType>,
         terminal?: Ordinal<ArrayType>,
@@ -18,7 +18,7 @@ const slice: <ArrayType extends ArrayOverload>(
             return array.slice(as.number(initial as unknown as Ordinal)) as ArrayType
         }
 
-        if (terminal > indexJustBeyondFinalElement(array as unknown as ArrayOverloadAny)) {
+        if (terminal > indexJustBeyondFinalElement(array as unknown as AnyArrayedType)) {
             throw new Error(`You tried to slice up to index ${terminal} of an array with length \
 of only ${length(array)}: ${array}`)
         }
@@ -55,11 +55,11 @@ const cycleSlice: <ElementType>(
         return resultantSlice
     }
 
-const forEach: <ElementType, ArrayType extends ArrayOverload & ElementType[] = ElementType[]>(
+const forEach: <ElementType, ArrayType extends ArrayedType & ElementType[] = ElementType[]>(
     array: ElementType[],
     callback: (element: ElementType, index: Ordinal<ArrayType>, self: ArrayType) => void,
 ) => void =
-    <ElementType, ArrayType extends ArrayOverload & ElementType[] = ElementType[]>(
+    <ElementType, ArrayType extends ArrayedType & ElementType[] = ElementType[]>(
         array: ElementType[],
         callback: (element: ElementType, index: Ordinal<ArrayType>, self: ArrayType,
         ) => void): void => {
@@ -70,21 +70,21 @@ const forEach: <ElementType, ArrayType extends ArrayOverload & ElementType[] = E
 const map: <MappedElementType,
     MappedArrayType extends MappedElementType[],
     ElementType,
-    ArrayType extends ArrayOverload & ElementType[] = ElementType[]>(
+    ArrayType extends ArrayedType & ElementType[] = ElementType[]>(
     array: ElementType[],
     callback: (element: ElementType, index: Ordinal<ArrayType>, self: ArrayType) => MappedElementType,
 ) => MappedArrayType =
     <MappedElementType,
         MappedArrayType extends MappedElementType[],
         ElementType,
-        ArrayType extends ArrayOverload & ElementType[] = ElementType[]>(
+        ArrayType extends ArrayedType & ElementType[] = ElementType[]>(
         array: ElementType[],
         callback: (element: ElementType, index: Ordinal<ArrayType>, self: ArrayType,
         ) => MappedElementType): MappedArrayType =>
         // @ts-ignore
         array.map(callback)
 
-const reduce: <ReducedType, ElementType, ArrayType extends ArrayOverload & ElementType[] = ElementType[]>(
+const reduce: <ReducedType, ElementType, ArrayType extends ArrayedType & ElementType[] = ElementType[]>(
     array: ElementType[],
     callback: (
         accumulator: ReducedType,
@@ -94,7 +94,7 @@ const reduce: <ReducedType, ElementType, ArrayType extends ArrayOverload & Eleme
     ) => ReducedType,
     accumulator: Partial<ReducedType>,
 ) => ReducedType =
-    <ReducedType, ElementType, ArrayType extends ArrayOverload & ElementType[] = ElementType[]>(
+    <ReducedType, ElementType, ArrayType extends ArrayedType & ElementType[] = ElementType[]>(
         array: ElementType[],
         callback: (
             accumulator: ReducedType,
@@ -107,33 +107,33 @@ const reduce: <ReducedType, ElementType, ArrayType extends ArrayOverload & Eleme
         // @ts-ignore
         array.reduce(callback, accumulator)
 
-const filter: <ElementType, ArrayType extends ArrayOverload & ElementType[] = ElementType[]>(
+const filter: <ElementType, ArrayType extends ArrayedType & ElementType[] = ElementType[]>(
     array: ArrayType,
     callback: (element: ElementType, index: Ordinal<ArrayType>, self: ArrayType) => boolean,
 ) => ArrayType =
-    <ElementType, ArrayType extends ArrayOverload & ElementType[] = ElementType[]>(
+    <ElementType, ArrayType extends ArrayedType & ElementType[] = ElementType[]>(
         array: ArrayType,
         callback: (element: ElementType, index: Ordinal<ArrayType>, self: ArrayType,
         ) => boolean): ArrayType =>
         // @ts-ignore
         array.filter(callback)
 
-const every: <ElementType, ArrayType extends ArrayOverload & ElementType[] = ElementType[]>(
+const every: <ElementType, ArrayType extends ArrayedType & ElementType[] = ElementType[]>(
     array: ArrayType,
     callback: (element: ElementType, index: Ordinal<ArrayType>, self: ArrayType) => boolean,
 ) => boolean =
-    <ElementType, ArrayType extends ArrayOverload & ElementType[] = ElementType[]>(
+    <ElementType, ArrayType extends ArrayedType & ElementType[] = ElementType[]>(
         array: ArrayType,
         callback: (element: ElementType, index: Ordinal<ArrayType>, self: ArrayType) => boolean,
     ): boolean =>
         // @ts-ignore
         array.every(callback)
 
-const findIndex: <ElementType, ArrayType extends ArrayOverload & ElementType[] = ElementType[]>(
+const findIndex: <ElementType, ArrayType extends ArrayedType & ElementType[] = ElementType[]>(
     array: ArrayType,
     callback: (element: ElementType, index: Ordinal<ArrayType>, self: ArrayType) => boolean,
 ) => Ordinal<ArrayType> =
-    <ElementType, ArrayType extends ArrayOverload & ElementType[] = ElementType[]>(
+    <ElementType, ArrayType extends ArrayedType & ElementType[] = ElementType[]>(
         array: ArrayType,
         callback: (element: ElementType, index: Ordinal<ArrayType>, self: ArrayType) => boolean,
     ): Ordinal<ArrayType> =>
