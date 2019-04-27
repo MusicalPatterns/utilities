@@ -149,4 +149,11 @@ export {
     IntegerModulus,
     Point,
     NO_SHIFT,
+    Interval,
+    Delta,
+    Arc,
+    Factor,
+    Transition,
+    Turn,
+    Transposition,
 } from './nominal/indexForTest'

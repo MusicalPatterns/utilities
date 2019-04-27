@@ -112,8 +112,11 @@ const Denominator: <NumericType extends NoUnits>(denominator: NumericType) => De
         integerCheck(denominator, 'Denominator') as unknown as Denominator
 
 const Fraction: (fraction: [ Integer | Numerator, Integer | Denominator ]) => Fraction =
-    (fraction: [ Integer | Numerator, Integer | Denominator ]): Fraction =>
-        fraction as unknown as Fraction
+    ([ numerator, denominator ]: [ Integer | Numerator, Integer | Denominator ]): Fraction =>
+        [
+            integerCheck(numerator, 'Numerator'),
+            integerCheck(denominator, 'Denominator'),
+        ] as unknown as Fraction
 
 // Unwhole Transformation Uses
 

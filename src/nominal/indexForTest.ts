@@ -71,4 +71,11 @@ export {
     Logarithm,
     Point,
     IntegerModulus,
+    Interval,
+    Delta,
+    Arc,
+    Factor,
+    Transition,
+    Turn,
+    Transposition,
 } from './types'
