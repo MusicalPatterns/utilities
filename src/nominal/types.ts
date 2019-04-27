@@ -59,7 +59,7 @@ type UseNameFromUse<Use> =
             Use extends Transposition ? 'Transposition' & 'Rotation' :
                 Use extends Power ? 'Power' & 'Exponent' :
                     Use extends Base ? 'Base' & 'Logarithm' :
-                        Use extends IntegerModulus ? 'IntegerModulus' & 'Modulus' :
+                        Use extends Remaindee ? 'Remaindee' & 'Modulus' :
                             Use extends Ordinal ? 'Ordinal' & 'Point' :
                                 Use extends NormalScalar ? 'NormalScalar' & 'Scalar' :
                                     Use extends Scalar ? 'Scalar' :
@@ -107,7 +107,7 @@ type Transposition<OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType 
 
 type Power<OfType extends CanBeAsAWholeUseOfSomeType = number> = UseBrand<'Power' & 'Exponent', OfType>
 type Base<OfType extends CanBeAsAWholeUseOfSomeType = number> = UseBrand<'Base' & 'Logarithm', OfType>
-type IntegerModulus<OfType extends CanBeAsAWholeUseOfSomeType = number> = UseBrand<'IntegerModulus' & 'Modulus', OfType>
+type Remaindee<OfType extends CanBeAsAWholeUseOfSomeType = number> = UseBrand<'Remaindee' & 'Modulus', OfType>
 
 // Whole Fixed Uses (only used for arrays)
 
@@ -149,7 +149,7 @@ type UnwholeToWhole<NumericType extends { _UseBrand: string }> =
             NumericType extends { _UseBrand: 'Rotation' } ? Difference<NumericType, { _UseBrand: 'Rotation' }> & { _UseBrand: 'Transposition' & 'Rotation' } :
                 NumericType extends { _UseBrand: 'Exponent' } ? Difference<NumericType, { _UseBrand: 'Exponent' }> & { _UseBrand: 'Power' & 'Exponent' } :
                     NumericType extends { _UseBrand: 'Logarithm' } ? Difference<NumericType, { _UseBrand: 'Logarithm' }> & { _UseBrand: 'Base' & 'Logarithm' } :
-                        NumericType extends { _UseBrand: 'Modulus' } ? Difference<NumericType, { _UseBrand: 'Modulus' }> & { _UseBrand: 'IntegerModulus' & 'Modulus' } :
+                        NumericType extends { _UseBrand: 'Modulus' } ? Difference<NumericType, { _UseBrand: 'Modulus' }> & { _UseBrand: 'Remaindee' & 'Modulus' } :
                             NumericType extends { _UseBrand: 'Point' } ? Difference<NumericType, { _UseBrand: 'Point' }> & { _UseBrand: 'Ordinal' & 'Point' } :
                                 NumericType
 
@@ -161,7 +161,7 @@ type WholeToUnwhole<NumericType extends { _UseBrand: string } | { _UnitsBrand: s
                     NumericType extends { _UseBrand: 'Transposition' & 'Rotation' } ? Difference<NumericType, { _UseBrand: 'Transposition' & 'Rotation' }> & { _UseBrand: 'Rotation' } :
                         NumericType extends { _UseBrand: 'Power' & 'Exponent' } ? Difference<NumericType, { _UseBrand: 'Power' & 'Exponent' }> & { _UseBrand: 'Exponent' } :
                             NumericType extends { _UseBrand: 'Base' & 'Logarithm' } ? Difference<NumericType, { _UseBrand: 'Base' & 'Logarithm' }> & { _UseBrand: 'Logarithm' } :
-                                NumericType extends { _UseBrand: 'IntegerModulus' & 'Modulus' } ? Difference<NumericType, { _UseBrand: 'IntegerModulus' & 'Modulus' }> & { _UseBrand: 'Modulus' } :
+                                NumericType extends { _UseBrand: 'Remaindee' & 'Modulus' } ? Difference<NumericType, { _UseBrand: 'Remaindee' & 'Modulus' }> & { _UseBrand: 'Modulus' } :
                                     NumericType extends { _UseBrand: 'Ordinal' & 'Point' } ? Difference<NumericType, { _UseBrand: 'Ordinal' & 'Point' }> & { _UseBrand: 'Point' } :
                                         NumericType
 
@@ -171,7 +171,7 @@ type MaybeWhole<Name> =
             Name extends 'Transposition' ? Whole :
                 Name extends 'Power' ? Whole :
                     Name extends 'Base' ? Whole :
-                        Name extends 'IntegerModulus' ? Whole :
+                        Name extends 'Remaindee' ? Whole :
                             Name extends 'Ordinal' ? Whole :
                                 Name extends 'Numerator' ? Whole :
                                     Name extends 'Denominator' ? Whole :
@@ -265,7 +265,7 @@ export {
     Unwhole,
     Exponent,
     Logarithm,
-    IntegerModulus,
+    Remaindee,
     NonNormal,
     UnwholeVersion,
     WholeVersion,

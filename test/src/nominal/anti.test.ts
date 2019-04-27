@@ -17,7 +17,7 @@
 //     INITIAL,
 //     insteadOf,
 //     Integer,
-//     IntegerModulus,
+//     Remaindee,
 //     Logarithm,
 //     modulus,
 //     Modulus,
@@ -314,7 +314,7 @@
 //                 sum(as.Transposition(3), as.Transposition(4))
 //                 sum(as.Power(3), as.Power(4))
 //                 sum(as.Base(3), as.Base(4))
-//                 sum(as.IntegerModulus(3), as.IntegerModulus(4))
+//                 sum(as.Remaindee(3), as.Remaindee(4))
 //
 //                 sum(as.NormalScalar(0.3), as.NormalScalar(0.4))
 //             })
@@ -332,7 +332,7 @@
 //                 product(as.Transposition(3), as.Transposition(4))
 //                 product(as.Power(3), as.Power(4))
 //                 product(as.Base(3), as.Base(4))
-//                 product(as.IntegerModulus(3), as.IntegerModulus(4))
+//                 product(as.Remaindee(3), as.Remaindee(4))
 //             })
 //         })
 //
@@ -348,7 +348,7 @@
 //                 difference(as.Transposition(3), as.Transposition(4))
 //                 difference(as.Power(3), as.Power(4))
 //                 difference(as.Base(3), as.Base(4))
-//                 difference(as.IntegerModulus(3), as.IntegerModulus(4))
+//                 difference(as.Remaindee(3), as.Remaindee(4))
 //
 //                 difference(as.NormalScalar(0.3), as.NormalScalar(0.4))
 //             })
@@ -366,7 +366,7 @@
 //                 quotient(as.Transposition(3), as.Transposition(4))
 //                 quotient(as.Power(3), as.Power(4))
 //                 quotient(as.Base(3), as.Base(4))
-//                 quotient(as.IntegerModulus(3), as.IntegerModulus(4))
+//                 quotient(as.Remaindee(3), as.Remaindee(4))
 //             })
 //
 //             it('when given an integer, removes the integer type in the return value', () => {
@@ -393,7 +393,7 @@
 //                 const multiple: Multiple = reciprocal(as.Multiple(3))
 //                 const base: Base = reciprocal(as.Base(3))
 //                 const power: Power = reciprocal(as.Power(3))
-//                 const integerModulus: IntegerModulus = reciprocal(as.IntegerModulus(3))
+//                 const integerModulus: Remaindee = reciprocal(as.Remaindee(3))
 //             })
 //         })
 //
@@ -406,7 +406,7 @@
 //                 const multiple: Multiple = cubeRoot(as.Multiple(3))
 //                 const base: Base = cubeRoot(as.Base(3))
 //                 const power: Power = cubeRoot(as.Power(3))
-//                 const integerModulus: IntegerModulus = cubeRoot(as.IntegerModulus(3))
+//                 const integerModulus: Remaindee = cubeRoot(as.Remaindee(3))
 //             })
 //         })
 //
@@ -419,7 +419,7 @@
 //                 const multiple: Multiple = squareRoot(as.Multiple(3))
 //                 const base: Base = squareRoot(as.Base(3))
 //                 const power: Power = squareRoot(as.Power(3))
-//                 const integerModulus: IntegerModulus = squareRoot(as.IntegerModulus(3))
+//                 const integerModulus: Remaindee = squareRoot(as.Remaindee(3))
 //             })
 //         })
 //     })

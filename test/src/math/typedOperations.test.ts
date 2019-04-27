@@ -7,7 +7,6 @@ import {
     difference,
     Exponent,
     floor,
-    IntegerModulus,
     Logarithm,
     Modulus,
     modulus,
@@ -17,6 +16,7 @@ import {
     product,
     quotient,
     reciprocal,
+    Remaindee,
     Rotation,
     round,
     Scalar,
@@ -102,7 +102,7 @@ describe('typed operations', () => {
             const transposition: Rotation = reciprocal(as.Transposition(3))
             const power: Exponent = reciprocal(as.Power(3))
             const base: Logarithm = reciprocal(as.Base(3))
-            const integerModulus: Modulus = reciprocal(as.IntegerModulus(3))
+            const integerModulus: Modulus = reciprocal(as.Remaindee(3))
 
             const integer: number = reciprocal(as.Integer(3))
         })
@@ -179,7 +179,7 @@ describe('typed operations', () => {
             const multiple: Scalar = squareRoot(as.Multiple(3))
             const power: Exponent = squareRoot(as.Power(3))
             const base: Logarithm = squareRoot(as.Base(3))
-            const integerModulus: Modulus = squareRoot(as.IntegerModulus(3))
+            const integerModulus: Modulus = squareRoot(as.Remaindee(3))
         })
     })
 
@@ -193,7 +193,7 @@ describe('typed operations', () => {
             const multiple: Scalar = cubeRoot(as.Multiple(3))
             const power: Exponent = cubeRoot(as.Power(3))
             const base: Logarithm = cubeRoot(as.Base(3))
-            const integerModulus: Modulus = cubeRoot(as.IntegerModulus(3))
+            const integerModulus: Modulus = cubeRoot(as.Remaindee(3))
         })
     })
 
@@ -207,7 +207,7 @@ describe('typed operations', () => {
             const multiple: Multiple = floor(as.Scalar(1.3))
             const power: Power = floor(as.Exponent(1.3))
             const base: Base = floor(as.Logarithm(1.3))
-            const integerModulus: IntegerModulus = floor(as.Modulus(1.3))
+            const integerModulus: Remaindee = floor(as.Modulus(1.3))
         })
     })
 

@@ -146,7 +146,7 @@ export {
     FIFTH,
     SIXTH,
     SEVENTH,
-    IntegerModulus,
+    Remaindee,
     Point,
     NO_SHIFT,
     Interval,

@@ -70,7 +70,7 @@ export {
     Exponent,
     Logarithm,
     Point,
-    IntegerModulus,
+    Remaindee,
     Interval,
     Delta,
     Arc,

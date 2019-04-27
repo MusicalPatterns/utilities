@@ -16,7 +16,6 @@ import {
     Gain,
     Hz,
     Integer,
-    IntegerModulus,
     Interval,
     Logarithm,
     Meters,
@@ -29,6 +28,7 @@ import {
     Point,
     Power,
     Radians,
+    Remaindee,
     Rotation,
     Scalar,
     Semitones,
@@ -586,7 +586,7 @@ describe('as', () => {
                 it('allows casting numbers', () => {
                     const asPower: Power = as.Power(3)
                     const asBase: Base = as.Base(3)
-                    const asIntegerModulus: IntegerModulus = as.IntegerModulus(3)
+                    const asIntegerModulus: Remaindee = as.Remaindee(3)
                 })
 
                 it('allows comparing values', () => {
@@ -596,15 +596,15 @@ describe('as', () => {
                     expect(as.Base(3))
                         .not
                         .toBe(as.Base(4))
-                    expect(as.IntegerModulus(3))
+                    expect(as.Remaindee(3))
                         .not
-                        .toBe(as.IntegerModulus(4))
+                        .toBe(as.Remaindee(4))
                 })
 
                 it('allows passing as the callback to an iterator', () => {
                     const arrayOfPower: Power[] = [ 3, 4, 5 ].map(as.Power)
                     const arrayOfBase: Base[] = [ 3, 4, 5 ].map(as.Base)
-                    const arrayOfIntegerModulus: IntegerModulus[] = [ 3, 4, 5 ].map(as.IntegerModulus)
+                    const arrayOfIntegerModulus: Remaindee[] = [ 3, 4, 5 ].map(as.Remaindee)
                 })
 
                 it('allows casting from generic numeric types (ones that extend Number)', () => {
@@ -612,7 +612,7 @@ describe('as', () => {
                         <NumericType extends Number>(argument: NumericType): void => {
                             const ofGenericPower: Power<NumericType> = as.Power<NumericType>(3)
                             const ofGenericBase: Base<NumericType> = as.Base<NumericType>(3)
-                            const ofGenericIntegerModulus: IntegerModulus<NumericType> = as.IntegerModulus<NumericType>(3)
+                            const ofGenericIntegerModulus: Remaindee<NumericType> = as.Remaindee<NumericType>(3)
                         }
                 })
 
@@ -628,7 +628,7 @@ describe('as', () => {
                 it('allows assigning to the unwhole version, since it is less specific', () => {
                     const unwholeFromPower: Exponent = as.Power(5)
                     const unwholeFromBase: Logarithm = as.Base(5)
-                    const unwholeFromIntegerModulus: Modulus = as.IntegerModulus(5)
+                    const unwholeFromIntegerModulus: Modulus = as.Remaindee(5)
                 })
 
                 it('allows being a use of another whole use', () => {

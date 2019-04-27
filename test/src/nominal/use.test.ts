@@ -170,9 +170,9 @@ describe('use', () => {
         })
     })
 
-    describe('IntegerModulus', () => {
+    describe('Remaindee', () => {
         it('works on Ordinals', () => {
-            expect(use.IntegerModulus(as.Ordinal(8), as.IntegerModulus<Ordinal>(3)))
+            expect(use.Remaindee(as.Ordinal(8), as.Remaindee<Ordinal>(3)))
                 .toBe(as.Ordinal(2))
         })
     })

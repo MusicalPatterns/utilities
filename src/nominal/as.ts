@@ -27,7 +27,6 @@ import {
     Gain,
     Hz,
     Integer,
-    IntegerModulus,
     Interval,
     Logarithm,
     Meters,
@@ -43,6 +42,7 @@ import {
     Point,
     Power,
     Radians,
+    Remaindee,
     Rotation,
     Scalar,
     Semitones,
@@ -240,13 +240,13 @@ const Base: {
 } =
     <OfType extends Unwhole | NoOf = number>(base: OfType | number | Of<OfType>): Base<OfType> =>
         integerCheck(base as number, 'Base') as unknown as Base<OfType>
-const IntegerModulus: {
-    <OfType extends CanBeAsAWholeUseOfNoType = number>(integerModulus: OfType): IntegerModulus,
-    <OfType extends CanBeAsAWholeUseOfSomeType = number>(integerModulus: number | Of<OfType>): IntegerModulus<OfType>,
-    <OfType extends CanBeAsAWholeUseOfNoType = number>(integerModulus: OfType): IntegerModulus,
+const Remaindee: {
+    <OfType extends CanBeAsAWholeUseOfNoType = number>(integerModulus: OfType): Remaindee,
+    <OfType extends CanBeAsAWholeUseOfSomeType = number>(integerModulus: number | Of<OfType>): Remaindee<OfType>,
+    <OfType extends CanBeAsAWholeUseOfNoType = number>(integerModulus: OfType): Remaindee,
 } =
-    <OfType extends Unwhole | NoOf = number>(integerModulus: OfType | number | Of<OfType>): IntegerModulus<OfType> =>
-        integerCheck(integerModulus as number, 'IntegerModulus') as unknown as IntegerModulus<OfType>
+    <OfType extends Unwhole | NoOf = number>(integerModulus: OfType | number | Of<OfType>): Remaindee<OfType> =>
+        integerCheck(integerModulus as number, 'Remaindee') as unknown as Remaindee<OfType>
 
 // Whole Fixed Uses (only used for arrays)
 
@@ -356,7 +356,7 @@ export {
     Multiple,
     Exponent,
     Logarithm,
-    IntegerModulus,
+    Remaindee,
     Transposition,
     Point,
     Interval,

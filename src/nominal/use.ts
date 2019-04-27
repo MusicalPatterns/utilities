@@ -16,7 +16,6 @@ import {
     Exponent,
     Factor,
     Fraction,
-    IntegerModulus,
     Interval,
     Logarithm,
     Modulus,
@@ -26,6 +25,7 @@ import {
     Numerator,
     Ordinal,
     Power,
+    Remaindee,
     Rotation,
     Scalar,
     Transition,
@@ -130,9 +130,9 @@ const Cardinal: {
                     index,
                     as.Transition<Cycle<OfType>>(-as.number(cardinal as unknown as Cardinal)),
                 )
-                cycledIndex = IntegerModulus(
+                cycledIndex = Remaindee(
                     cycledIndex,
-                    as.IntegerModulus<Ordinal<Cycle<OfType>>>(as.number(cellCount)),
+                    as.Remaindee<Ordinal<Cycle<OfType>>>(as.number(cellCount)),
                 )
                 cycledCycle.push(cycle[ as.number(cycledIndex) ])
             }
@@ -166,8 +166,8 @@ const Power: <OfType extends NonNormal>(value: OfType, power: Power<OfType>) => 
 const Base: <OfType extends NonNormal>(value: OfType, base: Base<OfType>) => OfType =
     <OfType extends Number>(value: OfType, base: Base<OfType>): OfType =>
         Logarithm(value, integerCheck(base, 'Base'))
-const IntegerModulus: <OfType extends NonNormal>(value: OfType, integerModulus: IntegerModulus<OfType>) => OfType =
-    <OfType extends Number>(value: OfType, integerModulus: IntegerModulus<OfType>): OfType =>
+const Remaindee: <OfType extends NonNormal>(value: OfType, integerModulus: Remaindee<OfType>) => OfType =
+    <OfType extends Number>(value: OfType, integerModulus: Remaindee<OfType>): OfType =>
         Modulus(value, integerCheck(integerModulus, 'Base'))
 
 // Whole Fixed Uses (only used for arrays)
@@ -179,9 +179,9 @@ const Ordinal: {
     <ElementType>(array: ElementType[], ordinal: Ordinal<ElementType[]>): ElementType => {
         if (isCycle(array)) {
             const cycleOrdinal: Ordinal<Cycle<ElementType>> = ordinal as Ordinal<Cycle<ElementType>>
-            const cycledOrdinal: Ordinal<Cycle<ElementType>> = IntegerModulus(
+            const cycledOrdinal: Ordinal<Cycle<ElementType>> = Remaindee(
                 cycleOrdinal,
-                as.IntegerModulus<Ordinal<Cycle<ElementType>>>(array.length),
+                as.Remaindee<Ordinal<Cycle<ElementType>>>(array.length),
             )
 
             return array[ as.number(cycledOrdinal as unknown as Ordinal) ]
@@ -252,7 +252,7 @@ export {
     Rotation,
     Exponent,
     Logarithm,
-    IntegerModulus,
+    Remaindee,
     Transposition,
     Interval,
     Delta,
