@@ -9,7 +9,7 @@
     "url": "https://github.com/MusicalPatterns/utilities.git"
   },
   "devDependencies": {
-    "@musical-patterns/cli": "^1.0.556",
+    "@musical-patterns/cli": "^1.0.558",
     "puppeteer": "^1.12.2"
   },
   "dependencies": {
