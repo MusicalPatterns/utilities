@@ -40,7 +40,7 @@ export {
     quarterSquareNumber,
 } from './specialNumbers'
 export { computeCommonFactors, areCoprime } from './commonFactors'
-export { invertUnitScalar } from './invertUnitScalar'
+export { invertNormalScalar } from './invertNormalScalar'
 export { allValuesAreTheSame } from './goes'
 export {
     goesMonotonically,

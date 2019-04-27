@@ -37,7 +37,7 @@
 //     squareRoot,
 //     sum,
 //     Translation,
-//     UnitScalar,
+//     NormalScalar,
 //     use,
 // } from '../../../src/indexForTest'
 // import { Arc, Delta, Interval } from '../../../src/nominal'
@@ -199,17 +199,17 @@
 //                 const multipleNumber: number = as.Multiple(3)
 //             })
 //
-//             it('DOES NOT ALLOW making uses of UnitScalars, besides UnitScalar of UnitScalar', () => {
-//                 as.Scalar<UnitScalar>(4)
-//                 as.Power<UnitScalar>(4)
-//                 as.Base<UnitScalar>(4)
-//                 as.Logarithm<UnitScalar>(4)
-//                 as.Exponent<UnitScalar>(4)
-//                 as.Multiple<UnitScalar>(4)
+//             it('DOES NOT ALLOW making uses of NormalScalars, besides NormalScalar of NormalScalar', () => {
+//                 as.Scalar<NormalScalar>(4)
+//                 as.Power<NormalScalar>(4)
+//                 as.Base<NormalScalar>(4)
+//                 as.Logarithm<NormalScalar>(4)
+//                 as.Exponent<NormalScalar>(4)
+//                 as.Multiple<NormalScalar>(4)
 //             })
 //
 //             it('DOES NOT ALLOW assigning less specific uses (unit, integer) as the more specific counterparts', () => {
-//                 const scalarToUnitScalar: UnitScalar = as.Scalar(0.5)
+//                 const scalarToNormalScalar: NormalScalar = as.Scalar(0.5)
 //
 //                 const scalarToMultiple: Multiple = as.Scalar(5)
 //                 const logarithmToBase: Base = as.Logarithm(5)
@@ -219,8 +219,8 @@
 //     })
 //
 //     describe('use', () => {
-//         it('DOES NOT ALLOW using a Scalar as a Unit Scalar', () => {
-//             use.Scalar(as.UnitScalar(0.5), 4 as unknown as Scalar<UnitScalar>)
+//         it('DOES NOT ALLOW using a Scalar as a Normal Scalar', () => {
+//             use.Scalar(as.NormalScalar(0.5), 4 as unknown as Scalar<NormalScalar>)
 //         })
 //
 //         it('DOES NOT ALLOW using Unwhole Uses on Whole numbers', () => {
@@ -316,7 +316,7 @@
 //                 sum(as.Base(3), as.Base(4))
 //                 sum(as.IntegerModulus(3), as.IntegerModulus(4))
 //
-//                 sum(as.UnitScalar(0.3), as.UnitScalar(0.4))
+//                 sum(as.NormalScalar(0.3), as.NormalScalar(0.4))
 //             })
 //         })
 //
@@ -350,7 +350,7 @@
 //                 difference(as.Base(3), as.Base(4))
 //                 difference(as.IntegerModulus(3), as.IntegerModulus(4))
 //
-//                 difference(as.UnitScalar(0.3), as.UnitScalar(0.4))
+//                 difference(as.NormalScalar(0.3), as.NormalScalar(0.4))
 //             })
 //         })
 //

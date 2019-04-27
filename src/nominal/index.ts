@@ -169,7 +169,7 @@ export {
     Frequency,
     Gain,
     NominalNumber,
-    UnitScalar,
+    NormalScalar,
     Ordinal,
     Multiple,
     Of,

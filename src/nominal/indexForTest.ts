@@ -65,7 +65,7 @@ export {
     Gain,
     Ordinal,
     Of,
-    UnitScalar,
+    NormalScalar,
     Multiple,
     Exponent,
     Logarithm,

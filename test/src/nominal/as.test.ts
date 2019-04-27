@@ -16,6 +16,7 @@ import {
     Meters,
     Modulus,
     Ms,
+    NormalScalar,
     Numerator,
     Ordinal,
     Power,
@@ -25,7 +26,6 @@ import {
     Semitones,
     Space,
     Time,
-    UnitScalar,
 } from '../../../src/indexForTest'
 
 describe('as', () => {
@@ -122,13 +122,13 @@ describe('as', () => {
                 .toThrow(new Error('Numerals of type Cardinal must be integers. This numeral had value 9.0000000004.'))
         })
 
-        it(`that also works for UnitScalar`, () => {
-            expect(as.UnitScalar(1.000000000000004))
-                .toBe(1 as unknown as UnitScalar)
-            expect(as.UnitScalar(1.00000000004))
-                .toBe(1 as unknown as UnitScalar)
-            expect(() => as.UnitScalar(1.0000000004))
-                .toThrow(new Error('Numerals of type UnitScalar must be between 0 and 1. This numeral had value 1.0000000004.'))
+        it(`that also works for NormalScalar`, () => {
+            expect(as.NormalScalar(1.000000000000004))
+                .toBe(1 as unknown as NormalScalar)
+            expect(as.NormalScalar(1.00000000004))
+                .toBe(1 as unknown as NormalScalar)
+            expect(() => as.NormalScalar(1.0000000004))
+                .toThrow(new Error('Numerals of type NormalScalar must be between 0 and 1. This numeral had value 1.0000000004.'))
         })
 
         it('allows setting things which are integers directly as other units', () => {
@@ -158,8 +158,8 @@ describe('as', () => {
             const stringsIndex: Ordinal<string[]> = as.Ordinal<string[]>(3)
         })
 
-        it('allows assigning more specific uses (unit, integer) as the less specific counterparts', () => {
-            const scalarFromUnitScalar: Scalar = as.UnitScalar(0.5)
+        it('allows assigning more specific uses (normal, integer) as the less specific counterparts', () => {
+            const scalarFromNormalScalar: Scalar = as.NormalScalar(0.5)
 
             const scalarFromMultiple: Scalar = as.Multiple(5)
             const logarithmFromBase: Logarithm = as.Base(5)
@@ -176,7 +176,7 @@ describe('as', () => {
         it('removes the type', () => {
             const removed1: number = as.number(as.Scalar(1))
             const removed2: number = as.number(as.Cardinal(1))
-            const removed3: number = as.number(as.UnitScalar(1))
+            const removed3: number = as.number(as.NormalScalar(1))
             const removed4: number = as.number(as.Ordinal(1))
             const removed5: number = as.number(as.Scalar<Rotation>(1))
             const removed6: number = as.number(as.Scalar<Hz>(1))

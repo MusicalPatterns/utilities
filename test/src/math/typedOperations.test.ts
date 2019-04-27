@@ -81,7 +81,7 @@ describe('typed operations', () => {
             product(as.Point(3), as.Point(4))
             product(as.Multiple(3), as.Multiple(4))
             product(as.Ordinal(3), as.Ordinal(4))
-            product(as.UnitScalar(0.3), as.UnitScalar(0.4))
+            product(as.NormalScalar(0.3), as.NormalScalar(0.4))
         })
     })
 
@@ -158,7 +158,7 @@ describe('typed operations', () => {
             quotient(as.Point(3), as.Point(4))
             quotient(as.Multiple(3), as.Multiple(4))
             quotient(as.Ordinal(3), as.Ordinal(4))
-            quotient(as.UnitScalar(0.3), as.UnitScalar(0.4))
+            quotient(as.NormalScalar(0.3), as.NormalScalar(0.4))
         })
     })
 

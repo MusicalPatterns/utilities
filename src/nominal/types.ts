@@ -51,7 +51,7 @@ type UseBrand<UseName, OfType = number> =
     UseOf<OfType>
     & { _UseBrand: UseName }
     & MaybeWhole<UseName>
-    & MaybeUnit<UseName>
+    & MaybeNormal<UseName>
 
 type UseNameFromUse<Use> =
     Use extends Multiple ? 'Multiple' & 'Scalar' :
@@ -61,7 +61,7 @@ type UseNameFromUse<Use> =
                     Use extends Base ? 'Base' & 'Logarithm' :
                         Use extends IntegerModulus ? 'IntegerModulus' & 'Modulus' :
                             Use extends Ordinal ? 'Ordinal' & 'Point' :
-                                Use extends UnitScalar ? 'UnitScalar' & 'Scalar' :
+                                Use extends NormalScalar ? 'NormalScalar' & 'Scalar' :
                                     Use extends Scalar ? 'Scalar' :
                                         Use extends Translation ? 'Translation' :
                                             Use extends Rotation ? 'Rotation' :
@@ -119,9 +119,9 @@ type Factor<OfType extends { _OfBrand?: 'NoOf' } & ArrayedType = number[]> = Mul
 type Transition<OfType extends { _OfBrand?: 'NoOf' } & ArrayedType = number[]> = Cardinal<Ordinal<OfType>>
 type Turn<OfType extends { _OfBrand?: 'NoOf' } & ArrayedType = number[]> = Transposition<Ordinal<OfType>>
 
-// Unit Uses
+// Normal Uses
 
-type UnitScalar<OfType extends Unwhole = number> = UseBrand<'UnitScalar' & 'Scalar', OfType>
+type NormalScalar<OfType extends Unwhole = number> = UseBrand<'NormalScalar' & 'Scalar', OfType>
 
 // Wholeness
 
@@ -177,7 +177,7 @@ type MaybeWhole<Name> =
                                     Name extends 'Denominator' ? Whole :
                                         {}
 
-type CanBeAsAWholeUseOfSomeType = NonUnit
+type CanBeAsAWholeUseOfSomeType = NonNormal
 type CanBeAsAWholeUseOfNoType = CanBeAsAWholeUseOfSomeType & NoOf
 type CanBeAsAnUnwholeUseOfSomeType = CanBeAsAWholeUseOfSomeType & Unwhole
 type CanBeAsAnUnwholeUseOfNoType = CanBeAsAWholeUseOfNoType & Unwhole
@@ -187,14 +187,14 @@ type CanBeAsAWholeUseWithAnArrayOverloadOfNoType = CanBeAsAWholeUseOfNoType | Ar
 // tslint:disable-next-line no-any
 type AnyArrayedType = any[] & Cycle<any> & string
 
-// Unit
+// Normal
 
-type MaybeUnit<Name> =
-    Name extends 'UnitScalar' ? Unit :
+type MaybeNormal<Name> =
+    Name extends 'NormalScalar' ? Normal :
         {}
 
-type Unit = Number & { _UnitBrand: 'Unit' }
-type NonUnit = Number & { _UnitBrand?: 'NonUnit' }
+type Normal = Number & { _NormalBrand: 'Normal' }
+type NonNormal = Number & { _NormalBrand?: 'NonNormal' }
 
 // Cycle
 
@@ -253,7 +253,7 @@ export {
     Frequency,
     Gain,
     NominalNumber,
-    UnitScalar,
+    NormalScalar,
     UseBrand,
     UseOf,
     UnitsBrand,
@@ -266,7 +266,7 @@ export {
     Exponent,
     Logarithm,
     IntegerModulus,
-    NonUnit,
+    NonNormal,
     UnwholeVersion,
     WholeVersion,
     CanBeAsAWholeUseOfNoType,

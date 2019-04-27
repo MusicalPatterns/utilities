@@ -2,7 +2,7 @@
 
 import { finalIndexFromElementsTotal } from '../code'
 import * as as from './as'
-import { integerCheck, ordinalCheck, unitCheck } from './checks'
+import { integerCheck, normalCheck, ordinalCheck } from './checks'
 import { isCycle } from './typeGuards'
 import {
     Arc,
@@ -21,7 +21,8 @@ import {
     Logarithm,
     Modulus,
     Multiple,
-    NonUnit,
+    NonNormal,
+    NormalScalar,
     Numerator,
     Ordinal,
     Power,
@@ -31,7 +32,6 @@ import {
     Translation,
     Transposition,
     Turn,
-    UnitScalar,
     Unwhole,
 } from './types'
 
@@ -100,7 +100,7 @@ const Arc: <OfType extends Unwhole>(value: OfType, arc: Arc<OfType>) => OfType =
 // Whole Transformation Uses (with overloads for arrays)
 
 const Multiple: {
-    <OfType extends NonUnit>(value: OfType, multiple: Multiple<OfType>): OfType,
+    <OfType extends NonNormal>(value: OfType, multiple: Multiple<OfType>): OfType,
     <OfType extends ArrayedType>(value: OfType, multiple: Multiple<OfType>): OfType,
 } =
     <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType>(value: OfType, multiple: Multiple<OfType>): OfType => {
@@ -112,7 +112,7 @@ const Multiple: {
         ) as unknown as OfType
     }
 const Cardinal: {
-    <OfType extends NonUnit>(value: OfType, cardinal: Cardinal<OfType>): OfType,
+    <OfType extends NonNormal>(value: OfType, cardinal: Cardinal<OfType>): OfType,
     <OfType extends ArrayedType>(value: OfType, cardinal: Cardinal<OfType>): OfType,
 } =
     <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType>(value: OfType, cardinal: Cardinal<OfType>): OfType => {
@@ -146,7 +146,7 @@ const Cardinal: {
         ) as unknown as OfType
     }
 const Transposition: {
-    <OfType extends NonUnit>(value: OfType, transposition: Transposition<OfType>): OfType,
+    <OfType extends NonNormal>(value: OfType, transposition: Transposition<OfType>): OfType,
     <OfType extends ArrayedType>(value: OfType, transposition: Transposition<OfType>): OfType,
 } =
     <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType>(value: OfType, transposition: Transposition<OfType>): OfType => {
@@ -160,13 +160,13 @@ const Transposition: {
 
 // Whole Non-Transformation Uses
 
-const Power: <OfType extends NonUnit>(value: OfType, power: Power<OfType>) => OfType =
+const Power: <OfType extends NonNormal>(value: OfType, power: Power<OfType>) => OfType =
     <OfType extends Number>(value: OfType, power: Power<OfType>): OfType =>
         Exponent(value, integerCheck(power, 'Power'))
-const Base: <OfType extends NonUnit>(value: OfType, base: Base<OfType>) => OfType =
+const Base: <OfType extends NonNormal>(value: OfType, base: Base<OfType>) => OfType =
     <OfType extends Number>(value: OfType, base: Base<OfType>): OfType =>
         Logarithm(value, integerCheck(base, 'Base'))
-const IntegerModulus: <OfType extends NonUnit>(value: OfType, integerModulus: IntegerModulus<OfType>) => OfType =
+const IntegerModulus: <OfType extends NonNormal>(value: OfType, integerModulus: IntegerModulus<OfType>) => OfType =
     <OfType extends Number>(value: OfType, integerModulus: IntegerModulus<OfType>): OfType =>
         Modulus(value, integerCheck(integerModulus, 'Base'))
 
@@ -231,11 +231,11 @@ const Turn: {
             factor as unknown as Transposition,
         ) as unknown as Ordinal<ElementType[]> & Ordinal<Cycle<ElementType>>
 
-// Unit Uses
+// Normal Uses
 
-const UnitScalar: <OfType extends Number>(value: OfType, unitScalar: UnitScalar<OfType>) => OfType =
-    <OfType extends Number>(value: OfType, unitScalar: UnitScalar<OfType>): OfType =>
-        Scalar(value, unitCheck(unitScalar, 'UnitScalar'))
+const NormalScalar: <OfType extends Number>(value: OfType, normalScalar: NormalScalar<OfType>) => OfType =
+    <OfType extends Number>(value: OfType, normalScalar: NormalScalar<OfType>): OfType =>
+        Scalar(value, normalCheck(normalScalar, 'NormalScalar'))
 
 export {
     Cardinal,
@@ -247,7 +247,7 @@ export {
     Modulus,
     Numerator,
     Denominator,
-    UnitScalar,
+    NormalScalar,
     Multiple,
     Rotation,
     Exponent,

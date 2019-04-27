@@ -18,7 +18,7 @@ const ordinalCheck: <ElementType>(index: Ordinal<ElementType[]>, array: ElementT
         }
     }
 
-const unitCheck: <NumericType extends Number>(value: NumericType, type: string) => NumericType =
+const normalCheck: <NumericType extends Number>(value: NumericType, type: string) => NumericType =
     // tslint:disable-next-line cyclomatic-complexity
     <NumericType extends Number>(value: NumericType, type: string): NumericType => {
         const roundedValue: number =
@@ -53,6 +53,6 @@ const integerCheck: <NumericType extends Number>(value: NumericType, type: strin
 
 export {
     ordinalCheck,
-    unitCheck,
+    normalCheck,
     integerCheck,
 }

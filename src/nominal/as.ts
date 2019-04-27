@@ -1,6 +1,6 @@
 // tslint:disable variable-name max-file-line-count max-line-length
 
-import { integerCheck, unitCheck } from './checks'
+import { integerCheck, normalCheck } from './checks'
 import {
     Arc,
     ArrayedType,
@@ -35,6 +35,7 @@ import {
     Ms,
     Multiple,
     NoOf,
+    NormalScalar,
     NoUnits,
     Numerator,
     Of,
@@ -51,7 +52,6 @@ import {
     Translation,
     Transposition,
     Turn,
-    UnitScalar,
     Unwhole,
 } from './types'
 
@@ -279,15 +279,15 @@ const Turn: {
     <OfType = number>(turn: OfType | number | Of<OfType>): Turn<OfType[]> =>
         integerCheck(turn as unknown as number, 'Turn') as unknown as Turn<OfType[]>
 
-// Unit Uses
+// Normal Uses
 
-const UnitScalar: {
-    <OfType extends Unwhole & NoOf = number>(unitScalar: OfType): UnitScalar,
-    <OfType extends Unwhole = number>(unitScalar: number | Of<OfType>): UnitScalar<OfType>,
-    <OfType extends Unwhole & NoOf = number>(unitScalar: OfType): UnitScalar,
+const NormalScalar: {
+    <OfType extends Unwhole & NoOf = number>(normalScalar: OfType): NormalScalar,
+    <OfType extends Unwhole = number>(normalScalar: number | Of<OfType>): NormalScalar<OfType>,
+    <OfType extends Unwhole & NoOf = number>(normalScalar: OfType): NormalScalar,
 } =
-    <OfType extends Unwhole | NoOf = number>(unitScalar: OfType | number | Of<OfType>): UnitScalar<OfType> =>
-        unitCheck(unitScalar as unknown as number, 'UnitScalar') as unknown as UnitScalar<OfType>
+    <OfType extends Unwhole | NoOf = number>(normalScalar: OfType | number | Of<OfType>): NormalScalar<OfType> =>
+        normalCheck(normalScalar as unknown as number, 'NormalScalar') as unknown as NormalScalar<OfType>
 
 // Wholeness
 
@@ -349,7 +349,7 @@ export {
     Time,
     Frequency,
     Gain,
-    UnitScalar,
+    NormalScalar,
     Multiple,
     Exponent,
     Logarithm,
