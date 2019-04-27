@@ -12,7 +12,7 @@ interface NominalInterfaceOptionObject {
 
 type CustomAsMono<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> = {
     [Index in keyof NominalInterfaceOptionObjectType['number']]:
-    <NumericType extends NoUnits>(value: NumericType) => NominalInterfaceOptionObjectType['number'][Index]
+    <NumericType extends NoUnits>(numeral: NumericType) => NominalInterfaceOptionObjectType['number'][Index]
 }
 type CustomAsPoly<NominalInterfaceOptionObjectType extends NominalInterfaceOptionObject = NominalInterfaceOptionObject> = {
     [Index in keyof NominalInterfaceOptionObjectType['numericArray']]:
@@ -40,7 +40,7 @@ const computeNominalInterface: <NominalInterfaceOptionObjectType extends Nominal
                     accumulator: CustomAsMono<NominalInterfaceOptionObjectType>, typeName: string,
                 ): CustomAsMono<NominalInterfaceOptionObjectType> => ({
                     ...accumulator,
-                    [ typeName ]: <NumericType extends NoUnits>(value: NumericType): unknown => value,
+                    [ typeName ]: <NumericType extends NoUnits>(numeral: NumericType): unknown => numeral,
                 }),
                 {},
             ),

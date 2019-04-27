@@ -3,7 +3,7 @@ import { as, computeDeltas, computeIntervals, Hz, Pitch } from '../../../src/ind
 describe('deltas', () => {
     describe('deltas', () => {
         it('gives you an array of all the deltas (additive)', () => {
-            expect(computeDeltas([ 4, 7, 9, 4, 357, 3, 8 ].map((value: number) => as.Point<Hz>(value))))
+            expect(computeDeltas([ 4, 7, 9, 4, 357, 3, 8 ].map((numeral: number) => as.Point<Hz>(numeral))))
                 .toEqual(
                     [
                         3,
@@ -17,7 +17,7 @@ describe('deltas', () => {
         })
 
         it('works for cycles, giving the delta back around from the end to the beginning', () => {
-            expect(computeDeltas(as.Cycle([ 4, 7, 9, 4, 357, 3, 8 ].map((value: number) => as.Point<Hz>(value)))))
+            expect(computeDeltas(as.Cycle([ 4, 7, 9, 4, 357, 3, 8 ].map((numeral: number) => as.Point<Hz>(numeral)))))
                 .toEqual(
                     [
                         3,
@@ -34,7 +34,7 @@ describe('deltas', () => {
 
     describe('intervals', () => {
         it('gives you an array of all the intervals (multiplicative)', () => {
-            expect(computeIntervals([ 4, 7, 9, 4, 357, 3, 8 ].map((value: number) => as.Point<Hz>(value))))
+            expect(computeIntervals([ 4, 7, 9, 4, 357, 3, 8 ].map((numeral: number) => as.Point<Hz>(numeral))))
                 .toEqual(
                     [
                         7 / 4,
@@ -48,7 +48,7 @@ describe('deltas', () => {
         })
 
         it('works for cycles, giving the delta back around from the end to the beginning', () => {
-            expect(computeIntervals(as.Cycle([ 4, 7, 9, 4, 357, 3, 8 ].map((value: number) => as.Point<Hz>(value)))))
+            expect(computeIntervals(as.Cycle([ 4, 7, 9, 4, 357, 3, 8 ].map((numeral: number) => as.Point<Hz>(numeral)))))
                 .toEqual(
                     [
                         7 / 4,

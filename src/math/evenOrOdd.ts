@@ -1,13 +1,13 @@
 import { TWO } from '../nominal'
 import { dividesEvenly } from './dividesEvenly'
 
-const isEven: <NumericType extends Number>(value: NumericType) => boolean =
-    <NumericType extends Number>(value: NumericType): boolean =>
-        dividesEvenly(value, TWO)
+const isEven: <NumericType extends Number>(numeral: NumericType) => boolean =
+    <NumericType extends Number>(numeral: NumericType): boolean =>
+        dividesEvenly(numeral, TWO)
 
-const isOdd: <NumericType extends Number>(value: NumericType) => boolean =
-    <NumericType extends Number>(value: NumericType): boolean =>
-        !isEven(value)
+const isOdd: <NumericType extends Number>(numeral: NumericType) => boolean =
+    <NumericType extends Number>(numeral: NumericType): boolean =>
+        !isEven(numeral)
 
 export {
     isEven,

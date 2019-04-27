@@ -15,17 +15,17 @@ import { DifferenceOperation, ProductOperation, QuotientOperation, SumOperation 
 
 const sum: SumOperation =
     <NumericType extends NoUse | number | Number & { _OperationType: 'Translation' }>(
-        ...values: Array<number | NumericType>
+        ...numerals: Array<number | NumericType>
     ): number | NumericType => {
-        if (isEmpty(values)) {
+        if (isEmpty(numerals)) {
             return ADDITIVE_IDENTITY as unknown as NumericType
         }
 
-        const previousValue: NumericType = values.pop() as NumericType
+        const previousValue: NumericType = numerals.pop() as NumericType
 
-        const nextSum: number | NumericType = isEmpty(values) ?
+        const nextSum: number | NumericType = isEmpty(numerals) ?
             ADDITIVE_IDENTITY as unknown as NumericType :
-            sum(...values)
+            sum(...numerals)
 
         return (nextSum as unknown as number) + (previousValue as unknown as number) as unknown as NumericType
     }
@@ -35,16 +35,16 @@ const difference: DifferenceOperation =
         (minuend as unknown as number) - (subtrahend as unknown as number) as unknown as NumericType
 
 const product: ProductOperation =
-    <NumericType extends NoUse | number>(...values: Array<number | NumericType>): number | NumericType => {
-        if (isEmpty(values)) {
+    <NumericType extends NoUse | number>(...numerals: Array<number | NumericType>): number | NumericType => {
+        if (isEmpty(numerals)) {
             return MULTIPLICATIVE_IDENTITY as unknown as NumericType
         }
 
-        const previousValue: NumericType = values.pop() as NumericType
+        const previousValue: NumericType = numerals.pop() as NumericType
 
-        const nextProduct: number | NumericType = isEmpty(values) ?
+        const nextProduct: number | NumericType = isEmpty(numerals) ?
             MULTIPLICATIVE_IDENTITY as unknown as NumericType :
-            product(...values)
+            product(...numerals)
 
         return (nextProduct as unknown as number) * (previousValue as unknown as number) as unknown as NumericType
     }
@@ -60,61 +60,61 @@ const modulus: <NumericType extends NoUse | number>(
     <NumericType extends NoUse | number>(dividend: NumericType, divisor: NumericType): UnwholeVersion<NumericType> =>
         (dividend as unknown as number) % (divisor as unknown as number) as unknown as UnwholeVersion<NumericType>
 
-const reciprocal: <NumericType extends Number>(value: NumericType) => UnwholeVersion<NumericType> =
-    <NumericType extends Number>(value: NumericType): UnwholeVersion<NumericType> =>
-        1 / (value as unknown as number) as unknown as UnwholeVersion<NumericType>
+const reciprocal: <NumericType extends Number>(numeral: NumericType) => UnwholeVersion<NumericType> =
+    <NumericType extends Number>(numeral: NumericType): UnwholeVersion<NumericType> =>
+        1 / (numeral as unknown as number) as unknown as UnwholeVersion<NumericType>
 
-const negative: <NumericType extends Number>(value: NumericType) => NumericType =
-    <NumericType extends Number>(value: NumericType): NumericType =>
-        -(value as unknown as number) as unknown as NumericType
+const negative: <NumericType extends Number>(numeral: NumericType) => NumericType =
+    <NumericType extends Number>(numeral: NumericType): NumericType =>
+        -(numeral as unknown as number) as unknown as NumericType
 
 const round: <NumericType extends Number, IntegerType extends Whole = Integer>(
-    value: NumericType,
+    numeral: NumericType,
     precision?: IntegerType,
 ) => NumericType =
     <NumericType extends Number, IntegerType extends Whole = Integer>(
-        value: NumericType,
+        numeral: NumericType,
         precision?: IntegerType,
     ): NumericType => {
         if (isUndefined(precision)) {
-            return Math.round(value as unknown as number) as unknown as NumericType
+            return Math.round(numeral as unknown as number) as unknown as NumericType
         }
 
-        if (absoluteValue(value) < (VALUE_BELOW_WHICH_ROUNDING_IMPLEMENTATION_BREAKS as unknown as NumericType)) {
+        if (absoluteValue(numeral) < (VALUE_BELOW_WHICH_ROUNDING_IMPLEMENTATION_BREAKS as unknown as NumericType)) {
             return 0 as unknown as NumericType
         }
 
-        // tslint:disable-next-line no-any prefer-template
-        return +(Math.round(`${value}e+${precision}` as unknown as number) + 'e-' + precision) as unknown as NumericType
+        // tslint:disable-next-line no-any prefer-template max-line-length
+        return +(Math.round(`${numeral}e+${precision}` as unknown as number) + 'e-' + precision) as unknown as NumericType
     }
 
-const floor: <NumericType extends Number>(value: NumericType) => WholeVersion<NumericType> =
-    <NumericType extends Number>(value: NumericType): WholeVersion<NumericType> =>
-        Math.floor(value as unknown as number) as unknown as WholeVersion<NumericType>
+const floor: <NumericType extends Number>(numeral: NumericType) => WholeVersion<NumericType> =
+    <NumericType extends Number>(numeral: NumericType): WholeVersion<NumericType> =>
+        Math.floor(numeral as unknown as number) as unknown as WholeVersion<NumericType>
 
-const ceiling: <NumericType extends Number>(value: NumericType) => WholeVersion<NumericType> =
-    <NumericType extends Number>(value: NumericType): WholeVersion<NumericType> =>
-        Math.ceil(value as unknown as number) as unknown as WholeVersion<NumericType>
+const ceiling: <NumericType extends Number>(numeral: NumericType) => WholeVersion<NumericType> =
+    <NumericType extends Number>(numeral: NumericType): WholeVersion<NumericType> =>
+        Math.ceil(numeral as unknown as number) as unknown as WholeVersion<NumericType>
 
-const absoluteValue: <NumericType extends Number>(value: NumericType) => NumericType =
-    <NumericType extends Number>(value: NumericType): NumericType =>
-        Math.abs(value as unknown as number) as unknown as NumericType
+const absoluteValue: <NumericType extends Number>(numeral: NumericType) => NumericType =
+    <NumericType extends Number>(numeral: NumericType): NumericType =>
+        Math.abs(numeral as unknown as number) as unknown as NumericType
 
-const squareRoot: <NumericType extends Number>(value: NumericType) => UnwholeVersion<NumericType> =
-    <NumericType extends Number>(value: NumericType): UnwholeVersion<NumericType> =>
-        Math.sqrt(value as unknown as number) as unknown as UnwholeVersion<NumericType>
+const squareRoot: <NumericType extends Number>(numeral: NumericType) => UnwholeVersion<NumericType> =
+    <NumericType extends Number>(numeral: NumericType): UnwholeVersion<NumericType> =>
+        Math.sqrt(numeral as unknown as number) as unknown as UnwholeVersion<NumericType>
 
-const cubeRoot: <NumericType extends Number>(value: NumericType) => UnwholeVersion<NumericType> =
-    <NumericType extends Number>(value: NumericType): UnwholeVersion<NumericType> =>
-        Math.cbrt(value as unknown as number) as unknown as UnwholeVersion<NumericType>
+const cubeRoot: <NumericType extends Number>(numeral: NumericType) => UnwholeVersion<NumericType> =
+    <NumericType extends Number>(numeral: NumericType): UnwholeVersion<NumericType> =>
+        Math.cbrt(numeral as unknown as number) as unknown as UnwholeVersion<NumericType>
 
-const max: <NumericType extends Number>(...values: NumericType[]) => NumericType =
-    <NumericType extends Number>(...values: NumericType[]): NumericType =>
-        Math.max(...values as unknown as number[]) as unknown as NumericType
+const max: <NumericType extends Number>(...numerals: NumericType[]) => NumericType =
+    <NumericType extends Number>(...numerals: NumericType[]): NumericType =>
+        Math.max(...numerals as unknown as number[]) as unknown as NumericType
 
-const min: <NumericType extends Number>(...values: NumericType[]) => NumericType =
-    <NumericType extends Number>(...values: NumericType[]): NumericType =>
-        Math.min(...values as unknown as number[]) as unknown as NumericType
+const min: <NumericType extends Number>(...numerals: NumericType[]) => NumericType =
+    <NumericType extends Number>(...numerals: NumericType[]): NumericType =>
+        Math.min(...numerals as unknown as number[]) as unknown as NumericType
 
 export {
     sum,

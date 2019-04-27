@@ -1,9 +1,9 @@
 import { as, ONE_FOURTH, ONE_HALF, SQUARED, use } from '../nominal'
 import { difference, floor, product, quotient, squareRoot, sum } from './typedOperations'
 
-const factorial: (value: number) => number =
-    (value: number): number =>
-        value === 0 ? 1 : value * factorial(value - 1)
+const factorial: (numeral: number) => number =
+    (numeral: number): number =>
+        numeral === 0 ? 1 : numeral * factorial(numeral - 1)
 
 const combinationCount: (setSize: number, choose: number) => number =
     (setSize: number, choose: number): number => {
@@ -21,18 +21,18 @@ const combinationCount: (setSize: number, choose: number) => number =
         )
     }
 
-const triangularNumber: (value: number) => number =
-    (value: number): number =>
-        product(value, use.Scalar(sum(value, 1), ONE_HALF))
+const triangularNumber: (numeral: number) => number =
+    (numeral: number): number =>
+        product(numeral, use.Scalar(sum(numeral, 1), ONE_HALF))
 
-const triangularRoot: (value: number) => number =
-    (value: number): number =>
+const triangularRoot: (numeral: number) => number =
+    (numeral: number): number =>
         // tslint:disable-next-line no-magic-numbers
-        difference(use.Scalar<number>(squareRoot(sum(product(value, 8), 1)), ONE_HALF), 0.5)
+        difference(use.Scalar<number>(squareRoot(sum(product(numeral, 8), 1)), ONE_HALF), 0.5)
 
-const quarterSquareNumber: (value: number) => number =
-    (value: number): number =>
-        floor(use.Scalar(use.Power(value, SQUARED), ONE_FOURTH))
+const quarterSquareNumber: (numeral: number) => number =
+    (numeral: number): number =>
+        floor(use.Scalar(use.Power(numeral, SQUARED), ONE_FOURTH))
 
 const trapezoidalNumber: (trapezoidalNumberParameters: { height: number, start: number }) => number =
     ({ height, start }: { height: number, start: number }): number =>

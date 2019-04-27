@@ -1,14 +1,14 @@
 import { Ordinal } from './types'
 
-const unfortunatelyNecessaryReimplementationOfRoundForCheckToAvoidCircularDependencyHell: (value: number) => number =
-    (value: number): number => {
+const unfortunatelyNecessaryReimplementationOfRoundForCheckToAvoidCircularDependencyHell: (numeral: number) => number =
+    (numeral: number): number => {
         // tslint:disable-next-line no-magic-numbers
-        if (Math.abs(value) < 1 / 1000000) {
+        if (Math.abs(numeral) < 1 / 1000000) {
             return 0
         }
 
         // tslint:disable-next-line no-any prefer-template no-magic-numbers
-        return +(Math.round(`${value}e+10` as unknown as number) + 'e-' + 10)
+        return +(Math.round(`${numeral}e+10` as unknown as number) + 'e-' + 10)
     }
 
 const ordinalCheck: <ElementType>(index: Ordinal<ElementType[]>, array: ElementType[]) => void =
@@ -18,34 +18,34 @@ const ordinalCheck: <ElementType>(index: Ordinal<ElementType[]>, array: ElementT
         }
     }
 
-const normalCheck: <NumericType extends Number>(value: NumericType, type: string) => NumericType =
+const normalCheck: <NumericType extends Number>(numeral: NumericType, type: string) => NumericType =
     // tslint:disable-next-line cyclomatic-complexity
-    <NumericType extends Number>(value: NumericType, type: string): NumericType => {
+    <NumericType extends Number>(numeral: NumericType, type: string): NumericType => {
         const roundedValue: number =
             unfortunatelyNecessaryReimplementationOfRoundForCheckToAvoidCircularDependencyHell(
-                value as unknown as number,
+                numeral as unknown as number,
             )
         if (roundedValue > 1 || roundedValue < 0) {
             throw new Error(
-                `Numerals of type ${type} must be between 0 and 1. This numeral had value ${value}.`,
+                `Numerals of type ${type} must be between 0 and 1. This numeral was ${numeral}.`,
             )
         }
 
-        return value as unknown as number > 1 || value as unknown as number < 0 ?
+        return numeral as unknown as number > 1 || numeral as unknown as number < 0 ?
             (roundedValue > 1 ? 1 : roundedValue < 0 ? 0 : roundedValue) as unknown as NumericType :
-            value as unknown as NumericType
+            numeral as unknown as NumericType
     }
 
-const integerCheck: <NumericType extends Number>(value: NumericType, type: string) => NumericType =
-    <NumericType extends Number>(value: NumericType, type: string): NumericType => {
-        const roundedValue: number = Math.round(value as unknown as number)
+const integerCheck: <NumericType extends Number>(numeral: NumericType, type: string) => NumericType =
+    <NumericType extends Number>(numeral: NumericType, type: string): NumericType => {
+        const roundedValue: number = Math.round(numeral as unknown as number)
         const roundedValueToPrecisionWeCareAbout: number =
             unfortunatelyNecessaryReimplementationOfRoundForCheckToAvoidCircularDependencyHell(
-                value as unknown as number,
+                numeral as unknown as number,
             )
 
         if (roundedValue !== roundedValueToPrecisionWeCareAbout as unknown as number) {
-            throw new Error(`Numerals of type ${type} must be integers. This numeral had value ${value}.`)
+            throw new Error(`Numerals of type ${type} must be integers. This numeral was ${numeral}.`)
         }
 
         return roundedValue as unknown as NumericType

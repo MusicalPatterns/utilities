@@ -106,11 +106,11 @@ describe('as', () => {
 
         it(`allows calling with numbers which aren't integers, but throws`, () => {
             expect(() => as.Cardinal(4.3))
-                .toThrow(new Error('Numerals of type Cardinal must be integers. This numeral had value 4.3.'))
+                .toThrow(new Error('Numerals of type Cardinal must be integers. This numeral was 4.3.'))
             expect(() => as.Numerator(4.3))
-                .toThrow(new Error('Numerals of type Numerator must be integers. This numeral had value 4.3.'))
+                .toThrow(new Error('Numerals of type Numerator must be integers. This numeral was 4.3.'))
             expect(() => as.Denominator(4.3))
-                .toThrow(new Error('Numerals of type Denominator must be integers. This numeral had value 4.3.'))
+                .toThrow(new Error('Numerals of type Denominator must be integers. This numeral was 4.3.'))
         })
 
         it(`allows calling with numbers which are very close to integers, off only probably due to javascript floating point arithmetic issues, and then rounds them`, () => {
@@ -119,7 +119,7 @@ describe('as', () => {
             expect(as.Cardinal(9.00000000004))
                 .toBe(9 as unknown as Cardinal)
             expect(() => as.Cardinal(9.0000000004))
-                .toThrow(new Error('Numerals of type Cardinal must be integers. This numeral had value 9.0000000004.'))
+                .toThrow(new Error('Numerals of type Cardinal must be integers. This numeral was 9.0000000004.'))
         })
 
         it(`that also works for NormalScalar`, () => {
@@ -128,7 +128,7 @@ describe('as', () => {
             expect(as.NormalScalar(1.00000000004))
                 .toBe(1 as unknown as NormalScalar)
             expect(() => as.NormalScalar(1.0000000004))
-                .toThrow(new Error('Numerals of type NormalScalar must be between 0 and 1. This numeral had value 1.0000000004.'))
+                .toThrow(new Error('Numerals of type NormalScalar must be between 0 and 1. This numeral was 1.0000000004.'))
         })
 
         it('allows setting things which are integers directly as other units', () => {

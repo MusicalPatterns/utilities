@@ -67,7 +67,7 @@ describe('use', () => {
 
             const notReallyMultiple: Multiple = 1.5 as unknown as Multiple
             expect(() => use.Multiple(1, notReallyMultiple))
-                .toThrowError('Numerals of type Multiple must be integers. This numeral had value 1.5.')
+                .toThrowError('Numerals of type Multiple must be integers. This numeral was 1.5.')
         })
 
         it('when given a Multiple that is really close to an integer, rounds it', () => {
@@ -109,7 +109,7 @@ describe('use', () => {
 
             const notReallyBase: Base = 1.5 as unknown as Base
             expect(() => use.Base(1, notReallyBase))
-                .toThrowError('Numerals of type Base must be integers. This numeral had value 1.5.')
+                .toThrowError('Numerals of type Base must be integers. This numeral was 1.5.')
         })
 
         it('when given a Base that is really close to an integer, rounds it', () => {
@@ -143,7 +143,7 @@ describe('use', () => {
 
             const notReallyPower: Power = 1.5 as unknown as Power
             expect(() => use.Power(1, notReallyPower))
-                .toThrowError('Numerals of type Power must be integers. This numeral had value 1.5.')
+                .toThrowError('Numerals of type Power must be integers. This numeral was 1.5.')
         })
 
         it('when given a Power that is really close to an integer, rounds it', () => {
@@ -212,7 +212,7 @@ describe('use', () => {
                 .toBe(1.5)
 
             expect(() => use.NormalScalar(0.5, 3 as unknown as NormalScalar))
-                .toThrowError('Numerals of type NormalScalar must be between 0 and 1. This numeral had value 3.')
+                .toThrowError('Numerals of type NormalScalar must be between 0 and 1. This numeral was 3.')
         })
 
         it('can be applied wherever a Scalar could be', () => {
