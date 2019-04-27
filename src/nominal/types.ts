@@ -89,7 +89,7 @@ type Modulus<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = UseBrand<'
 
 // Unwhole Fixed Uses
 
-type Point<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = UseBrand<'Point', OfType>
+type Point<OfType extends CanBeAsAnUnwholeUseOfSomeType & NoUse = number> = UseBrand<'Point', OfType>
 
 // Unwhole Compound Uses
 

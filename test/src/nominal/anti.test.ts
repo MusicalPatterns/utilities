@@ -1,6 +1,6 @@
 // tslint:disable
 
-// There should be 174 errors in this file when the below is uncommented.
+// There should be 176 errors in this file when the below is uncommented.
 
 // import {
 //     as,
@@ -38,7 +38,7 @@
 //     sum,
 //     Translation,
 //     NormalScalar,
-//     use,
+//     use, Point,
 // } from '../../../src/indexForTest'
 // import { Arc, Delta, Interval } from '../../../src/nominal'
 //
@@ -214,6 +214,11 @@
 //                 const scalarToMultiple: Multiple = as.Scalar(5)
 //                 const logarithmToBase: Base = as.Logarithm(5)
 //                 const exponentToPower: Power = as.Exponent(5)
+//             })
+//
+//             it('DOES NOT ALLOW being a use of another use', () => {
+//                 3 as unknown as Point<Scalar>
+//                 as.Point<Point>(3)
 //             })
 //         })
 //     })

@@ -35,7 +35,7 @@ import {
     Multiple,
     NoOf,
     NormalScalar,
-    NoUnits,
+    NoUnits, NoUse,
     Numerator,
     Of,
     Ordinal,
@@ -169,9 +169,9 @@ const Modulus: {
 // Unwhole Fixed Uses
 
 const Point: {
-    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(point: OfType): Point,
-    <OfType extends CanBeAsAnUnwholeUseOfSomeType = number>(point: number | Of<OfType>): Point<OfType>,
-    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(point: OfType): Point,
+    <OfType extends CanBeAsAnUnwholeUseOfNoType & NoUse = number>(point: OfType): Point,
+    <OfType extends CanBeAsAnUnwholeUseOfSomeType & NoUse = number>(point: number | Of<OfType>): Point<OfType>,
+    <OfType extends CanBeAsAnUnwholeUseOfNoType & NoUse = number>(point: OfType): Point,
 } =
     <OfType extends Unwhole | NoOf = number>(point: OfType | number | Of<OfType>): Point<OfType> =>
         point as unknown as Point<OfType>
