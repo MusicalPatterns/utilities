@@ -12,6 +12,7 @@ export { keyExistsOnObject } from './keyExistsOnObject'
 export { arraysHaveNoCommonValues } from './noCommonValues'
 export { everyNthElement } from './regularSamplings'
 export { finalElement, indexOfFinalElement } from './finalElement'
+export { range } from './range'
 export { camelCaseToConstantCase, constantCaseToUpperCase, camelCaseToLowerCase, camelCaseToUpperCase } from './case'
 
 export {

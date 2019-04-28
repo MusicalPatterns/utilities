@@ -46,8 +46,8 @@ interface RotateParameters<NumericType extends Number = Number, Dimensionality e
 type TwoToOneNumericOperation<NumericType extends Number = Number> =
     (firstValue: NumericType, secondValue: NumericType) => NumericType
 
-type TwoToOneIntegerOperation<IntegerType extends Whole = Integer> =
-    (firstValue: IntegerType, secondValue: IntegerType) => IntegerType
+type TwoToOneIntegerOperation<WholeType extends Whole = Integer> =
+    (firstValue: WholeType, secondValue: WholeType) => WholeType
 
 interface Operands {
     lhs: number,
@@ -55,7 +55,7 @@ interface Operands {
 }
 
 interface SumOperation {
-    <IntegerType extends NoUse & Whole = Integer>(...values: IntegerType[]): IntegerType,
+    <WholeType extends NoUse & Whole = Integer>(...values: WholeType[]): WholeType,
     (...values: number[]): number,
     <NumericType extends NoUse | number>(...values: NumericType[]): NumericType,
     <NumericType extends Number & { _UseBrand: 'Translation' }>(...values: NumericType[]): NumericType,
@@ -63,7 +63,7 @@ interface SumOperation {
 }
 
 interface ProductOperation {
-    <IntegerType extends NoUse & Whole = Integer>(...values: IntegerType[]): IntegerType,
+    <WholeType extends NoUse & Whole = Integer>(...values: WholeType[]): WholeType,
     (...values: number[]): number,
     <NumericType extends NoUse | number>(...values: NumericType[]): NumericType,
     <NumericType extends Number & { _UseBrand: 'Scalar' }>(...values: NumericType[]): NumericType,
@@ -71,16 +71,16 @@ interface ProductOperation {
 }
 
 interface ManyToManyIntegerOperation {
-    <SharedIntegerType extends Whole = Integer>(...values: SharedIntegerType[]): SharedIntegerType[]
-    <OneIntegerType extends Whole = Integer, AnotherIntegerType extends Whole = Integer>(
-        ...values: Array<Whole | AnotherIntegerType>
+    <SharedWholeType extends Whole = Integer>(...values: SharedWholeType[]): SharedWholeType[]
+    <OneWholeType extends Whole = Integer, AnotherWholeType extends Whole = Integer>(
+        ...values: Array<Whole | AnotherWholeType>
     ): Integer[]
 }
 
 interface ManyToOneIntegerOperation {
-    <SharedIntegerType extends Whole = Integer>(...values: SharedIntegerType[]): SharedIntegerType
-    <OneIntegerType extends Whole = Integer, AnotherIntegerType extends Whole = Integer>(
-        ...values: Array<Whole | AnotherIntegerType>
+    <SharedWholeType extends Whole = Integer>(...values: SharedWholeType[]): SharedWholeType
+    <OneWholeType extends Whole = Integer, AnotherWholeType extends Whole = Integer>(
+        ...values: Array<Whole | AnotherWholeType>
     ): Integer
 }
 

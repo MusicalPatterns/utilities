@@ -5,17 +5,17 @@ import { max } from './typedOperations'
 import { ManyToManyIntegerOperation } from './types'
 
 const computeCommonFactors: ManyToManyIntegerOperation =
-    <IntegerType extends Whole = Integer>(...values: IntegerType[]): Array<Integer | IntegerType> => {
-        const commonFactors: IntegerType[] = [ 1 as unknown as IntegerType ]
+    <WholeType extends Whole = Integer>(...values: WholeType[]): Array<Integer | WholeType> => {
+        const commonFactors: WholeType[] = [ 1 as unknown as WholeType ]
 
-        const maxValue: IntegerType = max(...values)
+        const maxValue: WholeType = max(...values)
 
         for (
-            let candidateFactor: IntegerType = FIRST_FACTOR_NECESSARY_TO_CHECK_IF_COMMON as unknown as IntegerType;
+            let candidateFactor: WholeType = FIRST_FACTOR_NECESSARY_TO_CHECK_IF_COMMON as unknown as WholeType;
             candidateFactor <= maxValue;
-            candidateFactor = use.Cardinal(candidateFactor, 1 as unknown as Cardinal<IntegerType>)
+            candidateFactor = use.Cardinal(candidateFactor, 1 as unknown as Cardinal<WholeType>)
         ) {
-            const isCommon: boolean = values.every((value: IntegerType) =>
+            const isCommon: boolean = values.every((value: WholeType) =>
                 dividesEvenly(value, candidateFactor))
             if (isCommon) {
                 commonFactors.push(candidateFactor)
@@ -25,11 +25,11 @@ const computeCommonFactors: ManyToManyIntegerOperation =
         return commonFactors
     }
 
-const areCoprime: <IntegerType extends Whole = Integer, OtherIntegerType extends Whole = Integer>(
-    ...values: Array<Whole | OtherIntegerType>
+const areCoprime: <WholeType extends Whole = Integer, OtherWholeType extends Whole = Integer>(
+    ...values: Array<Whole | OtherWholeType>
 ) => boolean =
-    <IntegerType extends Whole = Integer, OtherIntegerType extends Whole = Integer>(
-        ...values: Array<Whole | OtherIntegerType>
+    <WholeType extends Whole = Integer, OtherWholeType extends Whole = Integer>(
+        ...values: Array<Whole | OtherWholeType>
     ): boolean =>
         isSingleton(computeCommonFactors(...values))
 

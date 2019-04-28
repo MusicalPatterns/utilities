@@ -3,48 +3,48 @@ import { as, Integer, TWO, Whole } from '../nominal'
 import { absoluteValue, modulus, product, quotient } from './typedOperations'
 import { ManyToOneIntegerOperation, TwoToOneIntegerOperation } from './types'
 
-const computeLowestCommonMultipleOfTwoNumbers: <IntegerType extends Whole = Integer>(
-    firstValue: IntegerType,
-    secondValue: IntegerType,
-) => IntegerType =
-    <IntegerType extends Whole = Integer>(firstValue: IntegerType, secondValue: IntegerType): IntegerType =>
+const computeLowestCommonMultipleOfTwoNumbers: <WholeType extends Whole = Integer>(
+    firstValue: WholeType,
+    secondValue: WholeType,
+) => WholeType =
+    <WholeType extends Whole = Integer>(firstValue: WholeType, secondValue: WholeType): WholeType =>
         absoluteValue(quotient(
-            product(firstValue, secondValue) as unknown as IntegerType,
+            product(firstValue, secondValue) as unknown as WholeType,
             computeGreatestCommonDivisor(firstValue, secondValue),
-        )) as unknown as IntegerType
+        )) as unknown as WholeType
 
-const computeGreatestCommonDivisorOfTwoNumbers: <IntegerType extends Whole = Integer>(
-    firstValue: IntegerType,
-    secondValue: IntegerType,
-) => IntegerType =
-    <IntegerType extends Whole = Integer>(firstValue: IntegerType, secondValue: IntegerType): IntegerType => {
-        let output: IntegerType = firstValue
-        let remainder: IntegerType = secondValue
+const computeGreatestCommonDivisorOfTwoNumbers: <WholeType extends Whole = Integer>(
+    firstValue: WholeType,
+    secondValue: WholeType,
+) => WholeType =
+    <WholeType extends Whole = Integer>(firstValue: WholeType, secondValue: WholeType): WholeType => {
+        let output: WholeType = firstValue
+        let remainder: WholeType = secondValue
         while (remainder) {
-            const previousRemainder: IntegerType = remainder
-            remainder = modulus(output, remainder) as unknown as IntegerType
+            const previousRemainder: WholeType = remainder
+            remainder = modulus(output, remainder) as unknown as WholeType
             output = previousRemainder
         }
 
         return output
     }
 
-const recurseCommon: <IntegerType extends Whole = Integer>(
-    commonFunction: TwoToOneIntegerOperation<IntegerType>,
-    ...integers: IntegerType[]
-) => IntegerType =
-    <IntegerType extends Whole = Integer>(
-        commonFunction: TwoToOneIntegerOperation<IntegerType>,
-        ...integers: IntegerType[]
-    ): IntegerType => {
+const recurseCommon: <WholeType extends Whole = Integer>(
+    commonFunction: TwoToOneIntegerOperation<WholeType>,
+    ...integers: WholeType[]
+) => WholeType =
+    <WholeType extends Whole = Integer>(
+        commonFunction: TwoToOneIntegerOperation<WholeType>,
+        ...integers: WholeType[]
+    ): WholeType => {
         if (isSingleton(integers)) {
             return integers[ 0 ]
         }
         if (isEmpty(integers)) {
-            return 1 as unknown as IntegerType
+            return 1 as unknown as WholeType
         }
 
-        const result: IntegerType = commonFunction(integers[ 0 ], integers[ 1 ])
+        const result: WholeType = commonFunction(integers[ 0 ], integers[ 1 ])
         if (as.Integer(integers.length) === TWO) {
             return result
         }
@@ -52,16 +52,16 @@ const recurseCommon: <IntegerType extends Whole = Integer>(
         return recurseCommon(commonFunction, result, ...integers.slice(TWO))
     }
 
-const computeCommon: <IntegerType extends Whole = Integer>(
-    integers: IntegerType[],
-    commonFunction: TwoToOneIntegerOperation<IntegerType>,
-) => IntegerType =
-    <IntegerType extends Whole = Integer>(
-        integers: IntegerType[],
-        commonFunction: TwoToOneIntegerOperation<IntegerType>,
-    ): IntegerType => {
+const computeCommon: <WholeType extends Whole = Integer>(
+    integers: WholeType[],
+    commonFunction: TwoToOneIntegerOperation<WholeType>,
+) => WholeType =
+    <WholeType extends Whole = Integer>(
+        integers: WholeType[],
+        commonFunction: TwoToOneIntegerOperation<WholeType>,
+    ): WholeType => {
         if (isEmpty(integers)) {
-            return 1 as unknown as IntegerType
+            return 1 as unknown as WholeType
         }
 
         if (allElementsEqual(integers)) {
@@ -72,11 +72,11 @@ const computeCommon: <IntegerType extends Whole = Integer>(
     }
 
 const computeLeastCommonMultiple: ManyToOneIntegerOperation =
-    <IntegerType extends Whole = Integer>(...integers: IntegerType[]): IntegerType =>
+    <WholeType extends Whole = Integer>(...integers: WholeType[]): WholeType =>
         computeCommon(integers, computeLowestCommonMultipleOfTwoNumbers)
 
 const computeGreatestCommonDivisor: ManyToOneIntegerOperation =
-    <IntegerType extends Whole = Integer>(...integers: IntegerType[]): IntegerType =>
+    <WholeType extends Whole = Integer>(...integers: WholeType[]): WholeType =>
         computeCommon(integers, computeGreatestCommonDivisorOfTwoNumbers)
 
 export {

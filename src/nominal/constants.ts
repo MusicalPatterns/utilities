@@ -72,7 +72,7 @@ const FRICE: Cardinal<any> = as.Cardinal(4)
 const FICE: Cardinal<any> = as.Cardinal(5)
 
 const DEFAULT_PRECISION: Integer = as.Integer(2)
-const A_SUFFICIENT_COUNT_OF_NUMBERS: Cardinal<any> = as.Cardinal(Math.pow(2, 8))
+
 const ROTATION_VECTOR_OR_MATRIX_BASIS_TRANSLATION_FOR_CYCLING_FOR_AXIS: Cardinal<Cycle> =
     as.Cardinal(-2 as Of<Cycle>)
 
@@ -225,7 +225,6 @@ export {
     ONE_NINTH,
     ONE_TENTH,
     DEFAULT_PRECISION,
-    A_SUFFICIENT_COUNT_OF_NUMBERS,
     ROTATION_VECTOR_OR_MATRIX_BASIS_TRANSLATION_FOR_CYCLING_FOR_AXIS,
     X_AXIS,
     Y_AXIS,

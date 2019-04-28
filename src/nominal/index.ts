@@ -13,7 +13,6 @@ export {
     computeNominalInterface,
     NominalInterface,
 } from './custom'
-export { POSITIVE_INTEGERS, ZERO_AND_POSITIVE_INTEGERS } from './integers'
 export {
     isCycle,
 } from './typeGuards'
@@ -63,7 +62,6 @@ export {
     ONE_NINTH,
     ONE_TENTH,
     DEFAULT_PRECISION,
-    A_SUFFICIENT_COUNT_OF_NUMBERS,
     ROTATION_VECTOR_OR_MATRIX_BASIS_TRANSLATION_FOR_CYCLING_FOR_AXIS,
     X_AXIS,
     Y_AXIS,

@@ -28,6 +28,7 @@ export {
     forEach,
     isGreaterThan,
     isLessThan,
+    range,
 } from './code/indexForTest'
 export {
     distanceBetween,

@@ -80,6 +80,7 @@ export {
     arraySet,
     every,
     findIndex,
+    range,
 } from './code'
 export {
     absoluteRatio,
@@ -310,8 +311,6 @@ export {
     TEN,
     PI,
     E,
-    POSITIVE_INTEGERS,
-    ZERO_AND_POSITIVE_INTEGERS,
     Multiple,
     Ordinal,
     insteadOf,

@@ -1,17 +1,6 @@
-import { map, slice } from '../code'
+import { map, range } from '../code'
 import { reciprocal } from '../math'
-import {
-    as,
-    Denominator,
-    Frequency,
-    INITIAL,
-    Integer,
-    Logarithm,
-    OCTAVE,
-    Scalar,
-    use,
-    ZERO_AND_POSITIVE_INTEGERS,
-} from '../nominal'
+import { as, Denominator, Frequency, Integer, Logarithm, OCTAVE, Scalar, use } from '../nominal'
 import { Pitch } from './types'
 
 const computeEqualDivisionPitchScalars:
@@ -22,11 +11,7 @@ const computeEqualDivisionPitchScalars:
             as.Exponent<Logarithm<Frequency>>(reciprocal(equalDivision)),
         )))
 
-        const integerForEachStep: Integer[] = slice(
-            ZERO_AND_POSITIVE_INTEGERS,
-            INITIAL,
-            as.Ordinal<Integer[]>(as.number(equalDivision)),
-        )
+        const integerForEachStep: Integer[] = range(equalDivision)
 
         return map(
             integerForEachStep,

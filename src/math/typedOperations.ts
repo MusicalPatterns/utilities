@@ -68,13 +68,13 @@ const negative: <NumericType extends Number>(numeral: NumericType) => NumericTyp
     <NumericType extends Number>(numeral: NumericType): NumericType =>
         -(numeral as unknown as number) as unknown as NumericType
 
-const round: <NumericType extends Number, IntegerType extends Whole = Integer>(
+const round: <NumericType extends Number, WholeType extends Whole = Integer>(
     numeral: NumericType,
-    precision?: IntegerType,
+    precision?: WholeType,
 ) => NumericType =
-    <NumericType extends Number, IntegerType extends Whole = Integer>(
+    <NumericType extends Number, WholeType extends Whole = Integer>(
         numeral: NumericType,
-        precision?: IntegerType,
+        precision?: WholeType,
     ): NumericType => {
         if (isUndefined(precision)) {
             return Math.round(numeral as unknown as number) as unknown as NumericType

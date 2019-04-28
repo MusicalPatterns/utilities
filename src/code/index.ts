@@ -30,6 +30,7 @@ export { parseInteger } from './parseInteger'
 export { arraysHaveNoCommonValues } from './noCommonValues'
 export { evenElements, oddElements, everyNthElement } from './regularSamplings'
 export { sleep } from './sleep'
+export { range } from './range'
 export { slice, forEach, map, reduce, filter, cycleSlice, every, findIndex } from './typedIterators'
 export {
     isGreaterThan,
