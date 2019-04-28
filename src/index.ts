@@ -327,6 +327,8 @@ export {
     Factor,
     Transition,
     Turn,
+    ONE,
+    ZERO,
 } from './nominal'
 export {
     ActionForState,

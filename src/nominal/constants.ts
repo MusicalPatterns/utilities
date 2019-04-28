@@ -88,6 +88,8 @@ const CUBED: Power<any> = as.Power(3)
 const SQUARE_ROOT: Exponent<any> = as.Exponent(1 / 2)
 const CUBE_ROOT: Exponent<any> = as.Exponent(1 / 3)
 
+const ZERO: Integer = as.Integer(0)
+const ONE: Integer = as.Integer(1)
 const TWO: Integer = as.Integer(2)
 const THREE: Integer = as.Integer(3)
 const FOUR: Integer = as.Integer(4)
@@ -299,4 +301,6 @@ export {
     ONE_DAY,
     VERY_HIGH_PRECISION,
     VERY_LOW_PRECISION,
+    ONE,
+    ZERO,
 }
