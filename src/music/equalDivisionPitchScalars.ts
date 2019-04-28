@@ -15,10 +15,10 @@ import {
 import { Pitch } from './types'
 
 const computeEqualDivisionPitchScalars:
-    (equalDivision: Denominator, window?: Logarithm<Frequency>) => Array<Scalar<Pitch>> =
-    (equalDivision: Denominator, window: Logarithm<Frequency> = OCTAVE): Array<Scalar<Pitch>> => {
+    (equalDivision: Denominator, period?: Logarithm<Frequency>) => Array<Scalar<Pitch>> =
+    (equalDivision: Denominator, period: Logarithm<Frequency> = OCTAVE): Array<Scalar<Pitch>> => {
         const equallyDividedPitchStep: Scalar<Pitch> = as.Scalar<Pitch>(as.number(use.Exponent(
-            window,
+            period,
             as.Exponent<Logarithm<Frequency>>(reciprocal(equalDivision)),
         )))
 

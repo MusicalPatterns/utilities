@@ -1,7 +1,7 @@
 import { as, computeEqualDivisionPitchScalars, TRITAVE } from '../../../src/indexForTest'
 
 describe('equal division pitch scalars', () => {
-    it('divides the window (octave) into equal divisions', () => {
+    it('divides the period (octave) into equal divisions', () => {
         expect(computeEqualDivisionPitchScalars(as.Denominator(12)))
             .toBeCloseToArray(
                 [
@@ -32,7 +32,7 @@ describe('equal division pitch scalars', () => {
             )
     })
 
-    it('supports other windows besides the octave', () => {
+    it('supports other periods besides the octave', () => {
         expect(computeEqualDivisionPitchScalars(as.Denominator(13), TRITAVE))
             .toBeCloseToArray(
                 [

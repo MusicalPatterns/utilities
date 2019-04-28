@@ -81,9 +81,9 @@ export {
 } from './math/indexForTest'
 export {
     centsTranslationToPitchScalar,
-    windowIterationHarmonicStepCount,
+    periodIterationHarmonicStepCount,
     octaveReduce,
-    windowReduce,
+    periodReduce,
     SCIENTIFIC_PITCHES,
     ScientificPitchNoteName,
     ScientificPitchOctaveNumber,

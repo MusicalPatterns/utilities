@@ -156,9 +156,9 @@ export {
 } from './math'
 export {
     centsTranslationToPitchScalar,
-    windowIterationHarmonicStepCount,
+    periodIterationHarmonicStepCount,
     octaveReduce,
-    windowReduce,
+    periodReduce,
     SCIENTIFIC_PITCHES,
     ScientificPitchOctaveNumber,
     ScientificPitchNoteName,
