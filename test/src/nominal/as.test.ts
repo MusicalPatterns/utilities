@@ -49,6 +49,13 @@ describe('as', () => {
             const removedUnitWhole: number = as.number(as.Numerator(1))
         })
 
+        it('removes the type from Fraction', () => {
+            const removedFraction: number = as.number(as.Fraction([
+                as.Numerator(3),
+                as.Denominator(4),
+            ] as [ Numerator, Denominator ]))
+        })
+
         it('removes the type from unwhole uses', () => {
             const removedUseUnwholeTransformation: number = as.number(as.Scalar(1))
             const removedUseUnwholeNonTransformation: number = as.number(as.Exponent(1))

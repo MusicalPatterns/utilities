@@ -1,6 +1,7 @@
 // tslint:disable variable-name max-file-line-count max-line-length
 
 import { integerCheck, normalCheck } from './checks'
+import { as } from './index'
 import {
     Arc,
     ArrayedType,
@@ -57,9 +58,14 @@ import {
 
 // Removal
 
-const number: <NumericType extends Number>(nothing: NumericType) => number =
-    <NumericType extends Number>(nothing: NumericType): number =>
-        nothing as unknown as number
+const number: <FractionOrNumericType extends Number | Fraction>(nothing: FractionOrNumericType) => number =
+    <FractionOrNumericType extends Number | Fraction>(nothing: FractionOrNumericType): number => {
+        if (nothing instanceof Array) {
+            return as.number(nothing[ 0 ]) * (1 / as.number(nothing[ 1 ]))
+        }
+
+        return nothing as unknown as number
+    }
 
 // Concrete Units
 

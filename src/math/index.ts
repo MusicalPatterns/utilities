@@ -61,7 +61,6 @@ export {
     multiplyFractions,
     computeCommonTerms,
     computeLowestCommonDenominator,
-    resolve,
 } from './fractions'
 
 export {
