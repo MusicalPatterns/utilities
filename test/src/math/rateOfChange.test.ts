@@ -1,9 +1,9 @@
-import { as, computeDeltas, computeIntervals, Hz, Pitch } from '../../../src/indexForTest'
+import { as, computeDeltas, computeIntervals, musicalAs, Pitch } from '../../../src/indexForTest'
 
 describe('deltas', () => {
     describe('deltas', () => {
         it('gives you an array of all the deltas (additive)', () => {
-            expect(computeDeltas([ 4, 7, 9, 4, 357, 3, 8 ].map((numeral: number) => as.Point<Hz>(numeral))))
+            expect(computeDeltas([ 4, 7, 9, 4, 357, 3, 8 ].map((numeral: number) => musicalAs.Pitch(numeral))))
                 .toEqual(
                     [
                         3,
@@ -17,7 +17,7 @@ describe('deltas', () => {
         })
 
         it('works for cycles, giving the delta back around from the end to the beginning', () => {
-            expect(computeDeltas(as.Cycle([ 4, 7, 9, 4, 357, 3, 8 ].map((numeral: number) => as.Point<Hz>(numeral)))))
+            expect(computeDeltas(as.Cycle([ 4, 7, 9, 4, 357, 3, 8 ].map((numeral: number) => musicalAs.Pitch(numeral)))))
                 .toEqual(
                     [
                         3,
@@ -34,7 +34,7 @@ describe('deltas', () => {
 
     describe('intervals', () => {
         it('gives you an array of all the intervals (multiplicative)', () => {
-            expect(computeIntervals([ 4, 7, 9, 4, 357, 3, 8 ].map((numeral: number) => as.Point<Hz>(numeral))))
+            expect(computeIntervals([ 4, 7, 9, 4, 357, 3, 8 ].map((numeral: number) => musicalAs.Pitch(numeral))))
                 .toEqual(
                     [
                         7 / 4,
@@ -48,7 +48,7 @@ describe('deltas', () => {
         })
 
         it('works for cycles, giving the delta back around from the end to the beginning', () => {
-            expect(computeIntervals(as.Cycle([ 4, 7, 9, 4, 357, 3, 8 ].map((numeral: number) => as.Point<Hz>(numeral)))))
+            expect(computeIntervals(as.Cycle([ 4, 7, 9, 4, 357, 3, 8 ].map((numeral: number) => musicalAs.Pitch(numeral)))))
                 .toEqual(
                     [
                         7 / 4,

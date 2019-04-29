@@ -170,6 +170,7 @@ export {
     Duration,
     Pitch,
     Position,
+    musicalAs,
 } from './music'
 export {
     Base,

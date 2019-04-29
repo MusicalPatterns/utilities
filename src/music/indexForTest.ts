@@ -1,5 +1,8 @@
 // tslint:disable no-reaching-imports
 
+import * as musicalAs from './musicalAs'
+export { musicalAs }
+
 export { centsTranslationToPitchScalar } from './conversions'
 export { periodIterationHarmonicStepCount } from './periodIterationHarmonicStepCount'
 export { octaveReduce, periodReduce } from './periodReduce'

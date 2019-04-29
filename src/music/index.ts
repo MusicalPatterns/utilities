@@ -1,3 +1,6 @@
+import * as musicalAs from './musicalAs'
+export { musicalAs }
+
 export { centsTranslationToPitchScalar, semitonesToCents } from './conversions'
 export { periodIterationHarmonicStepCount } from './periodIterationHarmonicStepCount'
 export { octaveReduce, periodReduce } from './periodReduce'

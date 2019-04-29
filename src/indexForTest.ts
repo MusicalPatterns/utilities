@@ -93,6 +93,7 @@ export {
     computeEqualDivisionPitchScalars,
     computeOctaveRepeatingPitchScalars,
     Pitch,
+    musicalAs,
 } from './music/indexForTest'
 export {
     use,
