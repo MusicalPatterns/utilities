@@ -42,6 +42,8 @@ export {
     cubeRoot,
     max,
     min,
+    pow,
+    log,
 } from './typedOperations'
 export { isOdd, isEven } from './evenOrOdd'
 export {

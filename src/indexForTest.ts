@@ -79,6 +79,8 @@ export {
     floor,
     cubeRoot,
     squareRoot,
+    pow,
+    log,
 } from './math/indexForTest'
 export {
     centsTranslationToPitchScalar,

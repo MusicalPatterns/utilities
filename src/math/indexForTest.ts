@@ -29,6 +29,8 @@ export {
     floor,
     cubeRoot,
     squareRoot,
+    pow,
+    log,
 } from './typedOperations'
 export {
     factorial,

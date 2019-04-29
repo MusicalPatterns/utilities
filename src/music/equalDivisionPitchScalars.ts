@@ -1,21 +1,22 @@
 import { map, range } from '../code'
-import { reciprocal } from '../math'
-import { as, Denominator, Frequency, Integer, Logarithm, OCTAVE, Scalar, use } from '../nominal'
+import { pow, reciprocal } from '../math'
+import { as, Denominator, Frequency, Integer, Logarithm, OCTAVE, Power, Scalar } from '../nominal'
 import { Pitch } from './types'
 
 const computeEqualDivisionPitchScalars:
     (equalDivision: Denominator, period?: Logarithm<Frequency>) => Array<Scalar<Pitch>> =
     (equalDivision: Denominator, period: Logarithm<Frequency> = OCTAVE): Array<Scalar<Pitch>> => {
-        const equallyDividedPitchStep: Scalar<Pitch> = as.Scalar<Pitch>(as.number(use.Exponent(
+        const equallyDividedPitchStep: Logarithm<Pitch> = as.Logarithm<Pitch>(as.number(pow(
             period,
-            as.Exponent<Logarithm<Frequency>>(reciprocal(equalDivision)),
+            as.Exponent<Frequency>(reciprocal(equalDivision)),
         )))
 
-        const integerForEachStep: Integer[] = range(equalDivision)
+        const powerForEachStep: Array<Power<Pitch>> = range(equalDivision)
+            .map((integer: Integer) => as.Power<Pitch>(integer))
 
         return map(
-            integerForEachStep,
-            (integer: Integer) => use.Power(equallyDividedPitchStep, as.Power<Scalar<Pitch>>(integer)),
+            powerForEachStep,
+            (power: Power<Pitch>) => as.Scalar<Pitch>(as.number(pow(equallyDividedPitchStep, power))),
         )
     }
 

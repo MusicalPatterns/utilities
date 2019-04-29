@@ -6,12 +6,12 @@ import {
     cubeRoot,
     difference,
     Exponent,
-    floor,
+    floor, Integer, log,
     Logarithm,
     Modulus,
     modulus,
     Ms,
-    Multiple,
+    Multiple, pow,
     Power,
     product,
     quotient,
@@ -230,6 +230,38 @@ describe('typed operations', () => {
         it('works for negative numbers when the precision is set', () => {
             expect(round(as.Scalar(-1.111111111), as.Integer(4)))
                 .toBe(as.Scalar(-1.1111))
+        })
+    })
+
+    describe('pow', () => {
+        it('works for unwhole versions', () => {
+            expect(pow(as.Logarithm(2), as.Exponent(3)))
+                .toBe(8)
+            expect(pow(as.Logarithm<Scalar>(2), as.Exponent<Scalar>(3)))
+                .toBe(as.Scalar(8))
+        })
+
+        it('works for whole versions', () => {
+            expect(pow(as.Base(2), as.Power(3)))
+                .toBe(8)
+            expect(pow(as.Base<Multiple>(2), as.Power<Multiple>(3)))
+                .toBe(as.Multiple(8))
+        })
+    })
+
+    describe('log', () => {
+        it('works for unwhole versions', () => {
+            expect(log(8, as.Logarithm(2)))
+                .toBe(as.Exponent(3))
+            expect(log(as.Scalar(8), as.Logarithm<Scalar>(2)))
+                .toBe(as.Exponent<Scalar>(3))
+        })
+
+        it('works for whole versions', () => {
+            expect(log(8, as.Base(2)))
+                .toBe(as.Power(3))
+            expect(log(as.Multiple(8), as.Base<Multiple>(2)))
+                .toBe(as.Power<Multiple>(3))
         })
     })
 })

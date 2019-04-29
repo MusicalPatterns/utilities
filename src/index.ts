@@ -152,6 +152,8 @@ export {
     goesQuadratically,
     goesQuadraticallyBetweenValueAndValue,
     goesQuadraticallyFromValueToValue,
+    pow,
+    log,
 } from './math'
 export {
     centsTranslationToPitchScalar,

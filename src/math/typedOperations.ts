@@ -3,9 +3,13 @@
 import { isEmpty, isUndefined } from '../code'
 import {
     ADDITIVE_IDENTITY,
+    Base,
+    Exponent,
     Integer,
+    Logarithm,
     MULTIPLICATIVE_IDENTITY,
     NoUse,
+    Power,
     UnwholeVersion,
     Whole,
     WholeVersion,
@@ -116,6 +120,27 @@ const min: <NumericType extends Number>(...numerals: NumericType[]) => NumericTy
     <NumericType extends Number>(...numerals: NumericType[]): NumericType =>
         Math.min(...numerals as unknown as number[]) as unknown as NumericType
 
+const pow: {
+    <NumericType extends Number = number>(base: Base<NumericType>, power: Power<NumericType>): NumericType,
+    <NumericType extends Number = number>(base: Logarithm<NumericType>, power: Exponent<NumericType>): NumericType,
+} =
+    <NumericType extends Number = number>(
+        base: Base<NumericType> | Logarithm<NumericType>,
+        power: Power<NumericType> | Exponent<NumericType>,
+    ): NumericType =>
+        Math.pow(base as unknown as number, power as unknown as number) as unknown as NumericType
+
+const log: {
+    <NumericType extends Number = number>(numeral: NumericType, base: Base<NumericType>): Power<NumericType>,
+    <NumericType extends Number = number>(numeral: NumericType, base: Logarithm<NumericType>): Exponent<NumericType>,
+} =
+    <NumericType extends Number = number>(
+        numeral: NumericType,
+        base: Base<NumericType> | Logarithm<NumericType>,
+    ): Power<NumericType> & Exponent<NumericType> =>
+        Math.log(numeral as unknown as number) / Math.log(base as unknown as number) as
+            unknown as Power<NumericType> & Exponent<NumericType>
+
 export {
     sum,
     difference,
@@ -132,4 +157,6 @@ export {
     cubeRoot,
     max,
     min,
+    pow,
+    log,
 }

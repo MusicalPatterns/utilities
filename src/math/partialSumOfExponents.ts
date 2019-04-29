@@ -1,27 +1,27 @@
-import { as, Exponent, insteadOf, Logarithm, ofNotAs, use } from '../nominal'
-import { negative, reciprocal } from './typedOperations'
+import { as, Exponent, Logarithm, use } from '../nominal'
+import { negative, pow, reciprocal } from './typedOperations'
 
 const computePartialSumOfExponents: <NumericType extends Number>(
     logarithm: Logarithm<NumericType>,
     upperBound: Exponent<NumericType>,
-) => number =
-    <NumericType extends Number>(logarithm: Logarithm<NumericType>, upperBound: Exponent<NumericType>): number =>
-        as.number(use.Scalar(
+) => NumericType =
+    <NumericType extends Number>(logarithm: Logarithm<NumericType>, upperBound: Exponent<NumericType>): NumericType =>
+        use.Scalar(
             use.Cardinal(
-                use.Exponent(
+                pow(
                     logarithm,
-                    insteadOf<Exponent, Logarithm<NumericType>>(use.Cardinal(
+                    use.Cardinal(
                         upperBound,
                         as.Cardinal<Exponent<NumericType>>(1),
-                    )),
+                    ),
                 ),
-                as.Cardinal<Logarithm<NumericType>>(negative(1)),
+                as.Cardinal<NumericType>(negative(1)),
             ),
-            as.Scalar(ofNotAs(reciprocal(use.Cardinal(
+            as.Scalar<NumericType>(as.number(reciprocal(use.Cardinal(
                 logarithm,
                 as.Cardinal<Logarithm<NumericType>>(negative(1)),
             )))),
-        ))
+        )
 
 export {
     computePartialSumOfExponents,

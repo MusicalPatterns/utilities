@@ -1,3 +1,4 @@
+import { pow } from '../math'
 import {
     as,
     Base,
@@ -20,7 +21,7 @@ const computeOctaveRepeatingPitchScalars: (scalars: Array<Scalar<Pitch>>) => Arr
             as.number(index) < as.number(MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS);
             index = use.Cardinal(index, INCREMENT)
         ) {
-            const nextOctave: Base<Frequency> = use.Power(OCTAVE, as.Power<Base<Frequency>>(as.number(index)))
+            const nextOctave: Frequency = pow(OCTAVE, as.Power<Frequency>(as.number(index)))
             octaveRepeatingPitchScalars = octaveRepeatingPitchScalars.concat(
                 scalars.map((scalar: Scalar<Pitch>) =>
                     use.Scalar(

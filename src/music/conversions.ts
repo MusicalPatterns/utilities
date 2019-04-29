@@ -1,4 +1,4 @@
-import { reciprocal } from '../math'
+import { pow, reciprocal } from '../math'
 import {
     as,
     Cents,
@@ -15,9 +15,9 @@ import {
 
 const centsTranslationToPitchScalar: (centsTranslationToPitchScalar: Translation<Cents>) => Scalar<Frequency> =
     (cents: Translation<Cents>): Scalar<Frequency> =>
-        as.Scalar<Frequency>(as.number(use.Exponent(
+        as.Scalar<Frequency>(as.number(pow(
             OCTAVE,
-            as.Exponent<Logarithm<Frequency>>(as.number(use.Scalar(
+            as.Exponent<Frequency>(as.number(use.Scalar(
                 cents,
                 as.Scalar<Translation<Cents>>(as.number(reciprocal(CENTS_PER_OCTAVE))),
             ))),
