@@ -75,7 +75,6 @@ export {
     arraysHaveNoCommonValues,
     initialElement,
     finalIndexFromElementsTotal,
-    indexJustBeyondFinalElementFromElementsTotal,
     objectSet,
     arraySet,
     every,

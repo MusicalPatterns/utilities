@@ -45,11 +45,6 @@ const finalIndexFromElementsTotal:
     <ArrayType extends ArrayedType>(elementsTotal: Cardinal<ArrayType>): Ordinal<ArrayType> =>
         as.Ordinal<ArrayType>(as.number(use.Cardinal(elementsTotal, COUNT_FROM_LENGTH_TO_FINAL_INDEX)))
 
-const indexJustBeyondFinalElementFromElementsTotal:
-    <ArrayType extends ArrayedType>(elementsTotal: Cardinal<ArrayType>) => Ordinal<ArrayType> =
-    <ArrayType extends ArrayedType>(elementsTotal: Cardinal<ArrayType>): Ordinal<ArrayType> =>
-        as.Ordinal<ArrayType>(as.number(elementsTotal))
-
 export {
     indexOfFinalElement,
     finalElement,
@@ -57,5 +52,4 @@ export {
     length,
     initialElement,
     finalIndexFromElementsTotal,
-    indexJustBeyondFinalElementFromElementsTotal,
 }
