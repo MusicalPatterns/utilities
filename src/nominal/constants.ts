@@ -24,6 +24,7 @@ import {
     Scalar,
     Semitones,
     Space,
+    Time,
     Transition,
     Translation,
 } from './types'
@@ -167,8 +168,8 @@ const CENTS_PER_SEMITONE: Cents = as.Cents(100)
 const CENTS_PER_OCTAVE: Cents =
     as.Cents(as.number(CENTS_PER_SEMITONE) * as.number(SEMITONES_PER_OCTAVE))
 
-const BEGINNING: Point<Ms> = as.Point<Ms>(0)
-const NO_DURATION: Delta<Ms> = as.Delta<Ms>(0)
+const BEGINNING: Point<Time> = as.Point<Time>(0)
+const NO_DURATION: Delta<Time> = as.Delta<Time>(0)
 
 const MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS: Cardinal = as.Cardinal(10)
 
