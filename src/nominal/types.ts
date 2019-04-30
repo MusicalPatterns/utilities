@@ -7,7 +7,13 @@ import { Difference } from '../code'
 type NoUnits = Number & { _UnitsBrand?: 'NoUnits' }
 type UnitsBrand<UnitsName> = NoUse & { _UnitsBrand: UnitsName } & MaybeWhole<UnitsName>
 
-// Units - Unwhole - Concrete
+type AbstractToPhysical<AbstractType extends { _UnitsBrand: string }> =
+    AbstractType extends { _UseBrand: 'Frequency' } ? Hz :
+        AbstractType extends { _UseBrand: 'Time' } ? Ms :
+            AbstractType extends { _UseBrand: 'Space' } ? Meters :
+                AbstractType
+
+// Units - Unwhole - Physical
 
 type Hz = UnitsBrand<'Hz'>
 type Ms = UnitsBrand<'Ms'>
@@ -144,27 +150,27 @@ type WholeVersion<NumericType extends Number> =
     { _IntegerBrand: 'Integer' } &
     (NumericType extends { _UseBrand: string } ? UnwholeToWhole<NumericType> : NumericType)
 
-type UnwholeToWhole<NumericType extends { _UseBrand: string }> =
-    NumericType extends { _UseBrand: 'Scalar' } ? Difference<NumericType, { _UseBrand: 'Scalar' }> & { _UseBrand: 'Multiple' & 'Scalar' } :
-        NumericType extends { _UseBrand: 'Translation' } ? Difference<NumericType, { _UseBrand: 'Translation' }> & { _UseBrand: 'Cardinal' & 'Translation' } :
-            NumericType extends { _UseBrand: 'Rotation' } ? Difference<NumericType, { _UseBrand: 'Rotation' }> & { _UseBrand: 'Transposition' & 'Rotation' } :
-                NumericType extends { _UseBrand: 'Exponent' } ? Difference<NumericType, { _UseBrand: 'Exponent' }> & { _UseBrand: 'Power' & 'Exponent' } :
-                    NumericType extends { _UseBrand: 'Logarithm' } ? Difference<NumericType, { _UseBrand: 'Logarithm' }> & { _UseBrand: 'Base' & 'Logarithm' } :
-                        NumericType extends { _UseBrand: 'Modulus' } ? Difference<NumericType, { _UseBrand: 'Modulus' }> & { _UseBrand: 'Remaindee' & 'Modulus' } :
-                            NumericType extends { _UseBrand: 'Point' } ? Difference<NumericType, { _UseBrand: 'Point' }> & { _UseBrand: 'Ordinal' & 'Point' } :
-                                NumericType
+type UnwholeToWhole<UnwholeType extends { _UseBrand: string }> =
+    UnwholeType extends { _UseBrand: 'Scalar' } ? Difference<UnwholeType, { _UseBrand: 'Scalar' }> & { _UseBrand: 'Multiple' & 'Scalar' } :
+        UnwholeType extends { _UseBrand: 'Translation' } ? Difference<UnwholeType, { _UseBrand: 'Translation' }> & { _UseBrand: 'Cardinal' & 'Translation' } :
+            UnwholeType extends { _UseBrand: 'Rotation' } ? Difference<UnwholeType, { _UseBrand: 'Rotation' }> & { _UseBrand: 'Transposition' & 'Rotation' } :
+                UnwholeType extends { _UseBrand: 'Exponent' } ? Difference<UnwholeType, { _UseBrand: 'Exponent' }> & { _UseBrand: 'Power' & 'Exponent' } :
+                    UnwholeType extends { _UseBrand: 'Logarithm' } ? Difference<UnwholeType, { _UseBrand: 'Logarithm' }> & { _UseBrand: 'Base' & 'Logarithm' } :
+                        UnwholeType extends { _UseBrand: 'Modulus' } ? Difference<UnwholeType, { _UseBrand: 'Modulus' }> & { _UseBrand: 'Remaindee' & 'Modulus' } :
+                            UnwholeType extends { _UseBrand: 'Point' } ? Difference<UnwholeType, { _UseBrand: 'Point' }> & { _UseBrand: 'Ordinal' & 'Point' } :
+                                UnwholeType
 
-type WholeToUnwhole<NumericType extends { _UseBrand: string } | { _UnitsBrand: string }> =
-    NumericType extends { _UnitsBrand: 'Numerator' } ? number :
-        NumericType extends { _UnitsBrand: 'Denominator' } ? number :
-            NumericType extends { _UseBrand: 'Multiple' & 'Scalar' } ? Difference<NumericType, { _UseBrand: 'Multiple' & 'Scalar' }> & { _UseBrand: 'Scalar' } :
-                NumericType extends { _UseBrand: 'Cardinal' & 'Translation' } ? Difference<NumericType, { _UseBrand: 'Cardinal' & 'Translation' }> & { _UseBrand: 'Translation' } :
-                    NumericType extends { _UseBrand: 'Transposition' & 'Rotation' } ? Difference<NumericType, { _UseBrand: 'Transposition' & 'Rotation' }> & { _UseBrand: 'Rotation' } :
-                        NumericType extends { _UseBrand: 'Power' & 'Exponent' } ? Difference<NumericType, { _UseBrand: 'Power' & 'Exponent' }> & { _UseBrand: 'Exponent' } :
-                            NumericType extends { _UseBrand: 'Base' & 'Logarithm' } ? Difference<NumericType, { _UseBrand: 'Base' & 'Logarithm' }> & { _UseBrand: 'Logarithm' } :
-                                NumericType extends { _UseBrand: 'Remaindee' & 'Modulus' } ? Difference<NumericType, { _UseBrand: 'Remaindee' & 'Modulus' }> & { _UseBrand: 'Modulus' } :
-                                    NumericType extends { _UseBrand: 'Ordinal' & 'Point' } ? Difference<NumericType, { _UseBrand: 'Ordinal' & 'Point' }> & { _UseBrand: 'Point' } :
-                                        NumericType
+type WholeToUnwhole<WholeType extends { _UseBrand: string } | { _UnitsBrand: string }> =
+    WholeType extends { _UnitsBrand: 'Numerator' } ? number :
+        WholeType extends { _UnitsBrand: 'Denominator' } ? number :
+            WholeType extends { _UseBrand: 'Multiple' & 'Scalar' } ? Difference<WholeType, { _UseBrand: 'Multiple' & 'Scalar' }> & { _UseBrand: 'Scalar' } :
+                WholeType extends { _UseBrand: 'Cardinal' & 'Translation' } ? Difference<WholeType, { _UseBrand: 'Cardinal' & 'Translation' }> & { _UseBrand: 'Translation' } :
+                    WholeType extends { _UseBrand: 'Transposition' & 'Rotation' } ? Difference<WholeType, { _UseBrand: 'Transposition' & 'Rotation' }> & { _UseBrand: 'Rotation' } :
+                        WholeType extends { _UseBrand: 'Power' & 'Exponent' } ? Difference<WholeType, { _UseBrand: 'Power' & 'Exponent' }> & { _UseBrand: 'Exponent' } :
+                            WholeType extends { _UseBrand: 'Base' & 'Logarithm' } ? Difference<WholeType, { _UseBrand: 'Base' & 'Logarithm' }> & { _UseBrand: 'Logarithm' } :
+                                WholeType extends { _UseBrand: 'Remaindee' & 'Modulus' } ? Difference<WholeType, { _UseBrand: 'Remaindee' & 'Modulus' }> & { _UseBrand: 'Modulus' } :
+                                    WholeType extends { _UseBrand: 'Ordinal' & 'Point' } ? Difference<WholeType, { _UseBrand: 'Ordinal' & 'Point' }> & { _UseBrand: 'Point' } :
+                                        WholeType
 
 type MaybeWhole<Name> =
     Name extends 'Multiple' ? Whole :
@@ -185,7 +191,7 @@ type CanBeAsAnUnwholeUseOfNoType = CanBeAsAWholeUseOfNoType & Unwhole
 
 // Array
 
-type ArrayedType = Array<unknown> | Cycle<unknown> | string
+type ArrayedType = unknown[] | Cycle<unknown> | string
 type CanBeAsAWholeUseWithAnArrayOverloadOfSomeType = CanBeAsAWholeUseOfSomeType | ArrayedType
 type CanBeAsAWholeUseWithAnArrayOverloadOfNoType = CanBeAsAWholeUseOfNoType | ArrayedType
 // tslint:disable-next-line no-any
@@ -275,4 +281,5 @@ export {
     Factor,
     Transition,
     Turn,
+    AbstractToPhysical,
 }

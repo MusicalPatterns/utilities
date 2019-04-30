@@ -331,6 +331,7 @@ export {
     Turn,
     ONE,
     ZERO,
+    AbstractToPhysical,
 } from './nominal'
 export {
     ActionForState,

@@ -43,7 +43,7 @@ import {
 describe('as', () => {
     describe('removal', () => {
         it('removes the type from units', () => {
-            const removedUnitUnwholeConcrete: number = as.number(as.Hz(1))
+            const removedUnitUnwholePhysical: number = as.number(as.Hz(1))
             const removedUnitUnwholeAbstract: number = as.number(as.Frequency(1))
             const removedUnitUnwholeOther: number = as.number(as.Frequency(1))
             const removedUnitWhole: number = as.number(as.Numerator(1))
@@ -339,15 +339,15 @@ describe('as', () => {
                 })
 
                 it('allows being a use of unwhole units', () => {
-                    const unwholeConcreteScalar: Scalar<Hz> = as.Scalar<Hz>(3)
+                    const unwholePhysicalScalar: Scalar<Hz> = as.Scalar<Hz>(3)
                     const unwholeAbstractScalar: Scalar<Frequency> = as.Scalar<Frequency>(3)
                     const unwholeOtherScalar: Scalar<Radians> = as.Scalar<Radians>(3)
 
-                    const unwholeConcreteTranslation: Translation<Ms> = as.Translation<Ms>(3)
+                    const unwholePhysicalTranslation: Translation<Ms> = as.Translation<Ms>(3)
                     const unwholeAbstractTranslation: Translation<Time> = as.Translation<Time>(3)
                     const unwholeOtherTranslation: Translation<Cents> = as.Translation<Cents>(3)
 
-                    const unwholeConcreteRotation: Rotation<Meters> = as.Rotation<Meters>(3)
+                    const unwholePhysicalRotation: Rotation<Meters> = as.Rotation<Meters>(3)
                     const unwholeAbstractRotation: Rotation<Space> = as.Rotation<Space>(3)
                     const unwholeOtherRotation: Rotation<Gain> = as.Rotation<Gain>(3)
                 })
@@ -414,15 +414,15 @@ describe('as', () => {
                 })
 
                 it('allows being a use of unwhole units', () => {
-                    const unwholeConcreteExponent: Exponent<Hz> = as.Exponent<Hz>(3)
+                    const unwholePhysicalExponent: Exponent<Hz> = as.Exponent<Hz>(3)
                     const unwholeAbstractExponent: Exponent<Frequency> = as.Exponent<Frequency>(3)
                     const unwholeOtherExponent: Exponent<Radians> = as.Exponent<Radians>(3)
 
-                    const unwholeConcreteLogarithm: Logarithm<Ms> = as.Logarithm<Ms>(3)
+                    const unwholePhysicalLogarithm: Logarithm<Ms> = as.Logarithm<Ms>(3)
                     const unwholeAbstractLogarithm: Logarithm<Time> = as.Logarithm<Time>(3)
                     const unwholeOtherLogarithm: Logarithm<Cents> = as.Logarithm<Cents>(3)
 
-                    const unwholeConcreteModulus: Modulus<Meters> = as.Modulus<Meters>(3)
+                    const unwholePhysicalModulus: Modulus<Meters> = as.Modulus<Meters>(3)
                     const unwholeAbstractModulus: Modulus<Space> = as.Modulus<Space>(3)
                     const unwholeOtherModulus: Modulus<Gain> = as.Modulus<Gain>(3)
                 })
@@ -455,7 +455,7 @@ describe('as', () => {
                 })
 
                 it('allows being a use of unwhole units', () => {
-                    const unwholeConcretePoint: Point<Hz> = as.Point<Hz>(3)
+                    const unwholePhysicalPoint: Point<Hz> = as.Point<Hz>(3)
                     const unwholeAbstractPoint: Point<Frequency> = as.Point<Frequency>(3)
                     const unwholeOtherPoint: Point<Radians> = as.Point<Radians>(3)
                 })
@@ -522,15 +522,15 @@ describe('as', () => {
                 })
 
                 it('allows being a use of unwhole units', () => {
-                    const unwholeConcreteInterval: Interval<Hz> = as.Interval<Hz>(3)
+                    const unwholePhysicalInterval: Interval<Hz> = as.Interval<Hz>(3)
                     const unwholeAbstractInterval: Interval<Frequency> = as.Interval<Frequency>(3)
                     const unwholeOtherInterval: Interval<Radians> = as.Interval<Radians>(3)
 
-                    const unwholeConcreteDelta: Delta<Ms> = as.Delta<Ms>(3)
+                    const unwholePhysicalDelta: Delta<Ms> = as.Delta<Ms>(3)
                     const unwholeAbstractDelta: Delta<Time> = as.Delta<Time>(3)
                     const unwholeOtherDelta: Delta<Cents> = as.Delta<Cents>(3)
 
-                    const unwholeConcreteArc: Arc<Meters> = as.Arc<Meters>(3)
+                    const unwholePhysicalArc: Arc<Meters> = as.Arc<Meters>(3)
                     const unwholeAbstractArc: Arc<Space> = as.Arc<Space>(3)
                     const unwholeOtherArc: Arc<Gain> = as.Arc<Gain>(3)
                 })
@@ -916,7 +916,7 @@ describe('as', () => {
             })
 
             it('allows being a use of unwhole units', () => {
-                const unwholeConcreteNormalScalar: NormalScalar<Hz> = as.NormalScalar<Hz>(0.5)
+                const unwholePhysicalNormalScalar: NormalScalar<Hz> = as.NormalScalar<Hz>(0.5)
                 const unwholeAbstractNormalScalar: NormalScalar<Frequency> = as.NormalScalar<Frequency>(0.5)
                 const unwholeOtherNormalScalar: NormalScalar<Radians> = as.NormalScalar<Radians>(0.5)
             })

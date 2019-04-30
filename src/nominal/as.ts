@@ -67,7 +67,7 @@ const number: <FractionOrNumericType extends Number | Fraction>(asNumber: Fracti
         return asNumber as unknown as number
     }
 
-// Units - Unwhole - Concrete
+// Units - Unwhole - Physical
 
 const Hz: <NumericType extends NoUnits>(asHz: NumericType) => Hz =
     <NumericType extends NoUnits>(asHz: NumericType): Hz =>

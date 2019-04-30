@@ -188,4 +188,5 @@ export {
     Factor,
     Transition,
     Turn,
+    AbstractToPhysical,
 } from './types'
