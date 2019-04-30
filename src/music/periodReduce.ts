@@ -1,17 +1,18 @@
 import { reciprocal } from '../math'
-import { as, Frequency, OCTAVE, Scalar, use } from '../nominal'
+import { as, OCTAVE, Scalar, use } from '../nominal'
+import { Pitch } from './types'
 
-const octaveReduce: (scalar: Scalar<Frequency>) => Scalar<Frequency> =
-    (scalar: Scalar<Frequency>): Scalar<Frequency> =>
-        periodReduce(scalar, as.Scalar<Scalar<Frequency>>(as.number(OCTAVE)))
+const octaveReduce: (scalar: Scalar<Pitch>) => Scalar<Pitch> =
+    (scalar: Scalar<Pitch>): Scalar<Pitch> =>
+        periodReduce(scalar, as.Scalar<Scalar<Pitch>>(as.number(OCTAVE)))
 
-const periodReduce: (scalar: Scalar<Frequency>, period: Scalar<Scalar<Frequency>>) => Scalar<Frequency> =
-    (scalar: Scalar<Frequency>, period: Scalar<Scalar<Frequency>>): Scalar<Frequency> => {
-        let octaveReducedScalar: Scalar<Frequency> = scalar
+const periodReduce: (scalar: Scalar<Pitch>, period: Scalar<Scalar<Pitch>>) => Scalar<Pitch> =
+    (scalar: Scalar<Pitch>, period: Scalar<Scalar<Pitch>>): Scalar<Pitch> => {
+        let octaveReducedScalar: Scalar<Pitch> = scalar
         while (as.number(octaveReducedScalar) >= as.number(period)) {
             octaveReducedScalar = use.Scalar(octaveReducedScalar, reciprocal(period))
         }
-        while (octaveReducedScalar < as.Scalar<Frequency>(1)) {
+        while (octaveReducedScalar < as.Scalar<Pitch>(1)) {
             octaveReducedScalar = use.Scalar(octaveReducedScalar, period)
         }
 

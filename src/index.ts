@@ -170,6 +170,7 @@ export {
     Duration,
     Pitch,
     Position,
+    Intensity,
     musicalAs,
 } from './music'
 export {
@@ -202,7 +203,7 @@ export {
     NominalInterface,
     Time,
     Frequency,
-    Gain,
+    Amplitude,
     NominalNumber,
     NormalScalar,
     NOT_FOUND,

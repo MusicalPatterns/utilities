@@ -3,6 +3,7 @@
 import { integerCheck, normalCheck } from './checks'
 import { as } from './index'
 import {
+    Amplitude,
     Arc,
     ArrayedType,
     Base,
@@ -25,7 +26,6 @@ import {
     Factor,
     Fraction,
     Frequency,
-    Gain,
     Hz,
     Integer,
     Interval,
@@ -36,7 +36,8 @@ import {
     Multiple,
     NoOf,
     NormalScalar,
-    NoUnits, NoUse,
+    NoUnits,
+    NoUse,
     Numerator,
     Of,
     Ordinal,
@@ -104,9 +105,9 @@ const Semitones: <NumericType extends NoUnits>(asSemitones: NumericType) => Semi
     <NumericType extends NoUnits>(asSemitones: NumericType): Semitones =>
         asSemitones as unknown as Semitones
 
-const Gain: <NumericType extends NoUnits>(asGain: NumericType) => Gain =
-    <NumericType extends NoUnits>(asGain: NumericType): Gain =>
-        asGain as unknown as Gain
+const Amplitude: <NumericType extends NoUnits>(asAmplitude: NumericType) => Amplitude =
+    <NumericType extends NoUnits>(asAmplitude: NumericType): Amplitude =>
+        asAmplitude as unknown as Amplitude
 
 // Units - Whole
 
@@ -355,7 +356,7 @@ export {
     Space,
     Time,
     Frequency,
-    Gain,
+    Amplitude,
     NormalScalar,
     Multiple,
     Exponent,

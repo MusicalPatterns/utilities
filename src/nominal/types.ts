@@ -26,7 +26,7 @@ type Radians = UnitsBrand<'Radians'>
 type Cents = UnitsBrand<'Cents'>
 type Semitones = UnitsBrand<'Semitones'>
 
-type Gain = UnitsBrand<'Gain'>
+type Amplitude = UnitsBrand<'Amplitude'>
 
 // Units - Whole
 
@@ -242,7 +242,7 @@ export {
     Space,
     Time,
     Frequency,
-    Gain,
+    Amplitude,
     NormalScalar,
     UseBrand,
     UseOf,

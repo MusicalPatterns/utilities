@@ -62,7 +62,7 @@ export {
     Space,
     Time,
     Frequency,
-    Gain,
+    Amplitude,
     Ordinal,
     Of,
     NormalScalar,

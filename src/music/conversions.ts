@@ -5,17 +5,17 @@ import {
     CENTS_PER_OCTAVE,
     CENTS_PER_SEMITONE,
     Frequency,
-    Logarithm,
     OCTAVE,
     Scalar,
     Semitones,
     Translation,
     use,
 } from '../nominal'
+import { Pitch } from './types'
 
-const centsTranslationToPitchScalar: (centsTranslationToPitchScalar: Translation<Cents>) => Scalar<Frequency> =
-    (cents: Translation<Cents>): Scalar<Frequency> =>
-        as.Scalar<Frequency>(as.number(pow(
+const centsTranslationToPitchScalar: (centsTranslationToPitchScalar: Translation<Cents>) => Scalar<Pitch> =
+    (cents: Translation<Cents>): Scalar<Pitch> =>
+        as.Scalar<Pitch>(as.number(pow(
             OCTAVE,
             as.Exponent<Frequency>(as.number(use.Scalar(
                 cents,

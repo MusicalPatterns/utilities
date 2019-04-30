@@ -119,7 +119,7 @@ export {
     Space,
     Time,
     Frequency,
-    Gain,
+    Amplitude,
     OCTAVE,
     TRITAVE,
     INITIAL,

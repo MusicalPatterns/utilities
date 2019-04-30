@@ -1,6 +1,7 @@
 // tslint:disable no-unused-expression no-dead-store no-duplicate-string no-useless-cast
 
 import {
+    Amplitude,
     Arc,
     as,
     Base,
@@ -13,7 +14,6 @@ import {
     Factor,
     Fraction,
     Frequency,
-    Gain,
     Hz,
     Integer,
     Interval,
@@ -161,7 +161,7 @@ describe('as', () => {
                 const asCents: Cents = as.Cents(3)
                 const asSemitones: Semitones = as.Semitones(3)
 
-                const asGain: Gain = as.Gain(3)
+                const asAmplitude: Amplitude = as.Amplitude(3)
             })
 
             it('allows comparing values', () => {
@@ -176,9 +176,9 @@ describe('as', () => {
                     .not
                     .toBe(as.Semitones(4))
 
-                expect(as.Gain(3.5))
+                expect(as.Amplitude(3.5))
                     .not
-                    .toBe(as.Gain(4))
+                    .toBe(as.Amplitude(4))
             })
 
             it('allows passing as the callback to an iterator', () => {
@@ -187,7 +187,7 @@ describe('as', () => {
                 const arrayOfCents: Cents[] = [ 3, 4, 5 ].map(as.Cents)
                 const arrayOfSemitones: Semitones[] = [ 3, 4, 5 ].map(as.Semitones)
 
-                const arrayOfGain: Gain[] = [ 3, 4, 5 ].map(as.Gain)
+                const arrayOfAmplitude: Amplitude[] = [ 3, 4, 5 ].map(as.Amplitude)
             })
 
             it('allows casting from integers', () => {
@@ -196,7 +196,7 @@ describe('as', () => {
                 const fromIntegerCents: Cents = as.Cents(as.Integer(3))
                 const fromIntegerSemitones: Semitones = as.Semitones(as.Integer(3))
 
-                const fromIntegerGain: Gain = as.Gain(as.Integer(3))
+                const fromIntegerAmplitude: Amplitude = as.Amplitude(as.Integer(3))
             })
         })
 
@@ -349,7 +349,7 @@ describe('as', () => {
 
                     const unwholePhysicalRotation: Rotation<Meters> = as.Rotation<Meters>(3)
                     const unwholeAbstractRotation: Rotation<Space> = as.Rotation<Space>(3)
-                    const unwholeOtherRotation: Rotation<Gain> = as.Rotation<Gain>(3)
+                    const unwholeOtherRotation: Rotation<Amplitude> = as.Rotation<Amplitude>(3)
                 })
             })
 
@@ -424,7 +424,7 @@ describe('as', () => {
 
                     const unwholePhysicalModulus: Modulus<Meters> = as.Modulus<Meters>(3)
                     const unwholeAbstractModulus: Modulus<Space> = as.Modulus<Space>(3)
-                    const unwholeOtherModulus: Modulus<Gain> = as.Modulus<Gain>(3)
+                    const unwholeOtherModulus: Modulus<Amplitude> = as.Modulus<Amplitude>(3)
                 })
             })
 
@@ -532,7 +532,7 @@ describe('as', () => {
 
                     const unwholePhysicalArc: Arc<Meters> = as.Arc<Meters>(3)
                     const unwholeAbstractArc: Arc<Space> = as.Arc<Space>(3)
-                    const unwholeOtherArc: Arc<Gain> = as.Arc<Gain>(3)
+                    const unwholeOtherArc: Arc<Amplitude> = as.Arc<Amplitude>(3)
                 })
             })
         })

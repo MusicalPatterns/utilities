@@ -168,7 +168,7 @@ export {
     NoUnits,
     Time,
     Frequency,
-    Gain,
+    Amplitude,
     NormalScalar,
     Ordinal,
     Multiple,
