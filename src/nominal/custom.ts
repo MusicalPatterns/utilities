@@ -3,6 +3,12 @@
 import { reduce } from '../code'
 import { NoUnits } from './types'
 
+interface NominalNumber {
+    _NominalBrand?: string,
+    _UnitsBrand?: string,
+    _UseBrand?: string,
+}
+
 type DummyValueForComputingNominalInterface = unknown
 
 interface NominalInterfaceOptionObject {
@@ -60,6 +66,7 @@ const computeNominalInterface: <NominalInterfaceOptionObjectType extends Nominal
 const DUMMY_VALUE_FOR_COMPUTING_NOMINAL_INTERFACE: DummyValueForComputingNominalInterface = undefined
 
 export {
+    NominalNumber,
     DUMMY_VALUE_FOR_COMPUTING_NOMINAL_INTERFACE,
     computeNominalInterface,
     NominalInterface,

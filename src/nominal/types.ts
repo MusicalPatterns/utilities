@@ -2,30 +2,24 @@
 
 import { Difference } from '../code'
 
-interface NominalNumber {
-    _NominalBrand?: string,
-    _UnitsBrand?: string,
-    _UseBrand?: string,
-}
-
-// Units Utilities
+// Utilities - Units
 
 type NoUnits = Number & { _UnitsBrand?: 'NoUnits' }
 type UnitsBrand<UnitsName> = NoUse & { _UnitsBrand: UnitsName } & MaybeWhole<UnitsName>
 
-// Concrete Units
+// Units - Unwhole - Concrete
 
 type Hz = UnitsBrand<'Hz'>
 type Ms = UnitsBrand<'Ms'>
 type Meters = UnitsBrand<'Meters'>
 
-// Abstract Units
+// Units - Unwhole - Abstract
 
 type Frequency = UnitsBrand<'Frequency'>
 type Time = UnitsBrand<'Time'>
 type Space = UnitsBrand<'Space'>
 
-// Other Units
+// Units - Unwhole - Other
 
 type Radians = UnitsBrand<'Radians'>
 
@@ -34,18 +28,16 @@ type Semitones = UnitsBrand<'Semitones'>
 
 type Gain = UnitsBrand<'Gain'>
 
-// Whole Units
+// Units - Whole
 
 type Numerator = UnitsBrand<'Numerator'>
 type Denominator = UnitsBrand<'Denominator'>
 
 type Fraction = [ Numerator, Denominator ]
 
-// Uses Utilities
+// Utilities - Uses
 
 type NoUse = Number & { _UseBrand?: 'NoUse' }
-
-type UseOf<OfType> = Number & { _UseOfBrand: OfType }
 
 type UseBrand<UseName, OfType = number> =
     UseOf<OfType>
@@ -71,55 +63,64 @@ type UseNameFromUse<Use> =
                                                             Use extends Point ? 'Point' :
                                                                 ''
 
+type UseOf<OfType> = Number & { _UseOfBrand: OfType }
 type NoOf = number & { _OfBrand?: 'NoOf' }
-
 type Of<OfType> = number | { _OfBrand: OfType }
 
-// Unwhole Transformation Uses
+// Uses - Unwhole - Transformation
 
 type Scalar<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = UseBrand<'Scalar', OfType>
 type Translation<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = UseBrand<'Translation', OfType>
 type Rotation<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = UseBrand<'Rotation', OfType>
 
-// Unwhole Non-Transformation Uses
+// Uses - Unwhole - Other
 
 type Exponent<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = UseBrand<'Exponent', OfType>
 type Logarithm<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = UseBrand<'Logarithm', OfType>
 type Modulus<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = UseBrand<'Modulus', OfType>
 
-// Unwhole Fixed Uses
+// Uses - Unwhole - Fixed
 
 type Point<OfType extends CanBeAsAnUnwholeUseOfSomeType & NoUse = number> = UseBrand<'Point', OfType>
 
-// Unwhole Compound Uses
+// Uses - Unwhole - Compound
 
 type Interval<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = Scalar<Point<OfType>>
 type Delta<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = Translation<Point<OfType>>
 type Arc<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = Rotation<Point<OfType>>
 
-// Whole Transformation Uses (with overloads for arrays)
+// Uses - Whole - Transformation, with Array Overloads
 
 type Multiple<OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType = number> = UseBrand<'Multiple' & 'Scalar', OfType>
 type Cardinal<OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType = number> = UseBrand<'Cardinal' & 'Translation', OfType>
 type Transposition<OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType = number> = UseBrand<'Transposition' & 'Rotation', OfType>
 
-// Whole Non-Transformation Uses
+// Uses - Whole - Other
 
 type Power<OfType extends CanBeAsAWholeUseOfSomeType = number> = UseBrand<'Power' & 'Exponent', OfType>
 type Base<OfType extends CanBeAsAWholeUseOfSomeType = number> = UseBrand<'Base' & 'Logarithm', OfType>
 type Remaindee<OfType extends CanBeAsAWholeUseOfSomeType = number> = UseBrand<'Remaindee' & 'Modulus', OfType>
 
-// Whole Fixed Uses (only used for arrays)
+// Uses - Whole - Fixed, only for Arrays
 
 type Ordinal<OfType extends { _OfBrand?: 'NoOf' } & ArrayedType = number[]> = UseBrand<'Ordinal' & 'Point', OfType>
 
-// Whole Compound Uses
+// Uses - Whole - Compound, only for Arrays
 
 type Factor<OfType extends { _OfBrand?: 'NoOf' } & ArrayedType = number[]> = Multiple<Ordinal<OfType>>
 type Transition<OfType extends { _OfBrand?: 'NoOf' } & ArrayedType = number[]> = Cardinal<Ordinal<OfType>>
 type Turn<OfType extends { _OfBrand?: 'NoOf' } & ArrayedType = number[]> = Transposition<Ordinal<OfType>>
 
-// Normal Uses
+// Utilities - Normal
+
+type MaybeNormal<Name> =
+    Name extends 'NormalScalar' ? Normal :
+        {}
+
+type Normal = Number & { _NormalBrand: 'Normal' }
+type NonNormal = Number & { _NormalBrand?: 'NonNormal' }
+
+// Uses - Normal
 
 type NormalScalar<OfType extends Unwhole = number> = UseBrand<'NormalScalar' & 'Scalar', OfType>
 
@@ -181,26 +182,16 @@ type CanBeAsAWholeUseOfSomeType = NonNormal
 type CanBeAsAWholeUseOfNoType = CanBeAsAWholeUseOfSomeType & NoOf
 type CanBeAsAnUnwholeUseOfSomeType = CanBeAsAWholeUseOfSomeType & Unwhole
 type CanBeAsAnUnwholeUseOfNoType = CanBeAsAWholeUseOfNoType & Unwhole
+
+// Array
+
 type ArrayedType = unknown[] | Cycle<unknown> | string
 type CanBeAsAWholeUseWithAnArrayOverloadOfSomeType = CanBeAsAWholeUseOfSomeType | ArrayedType
 type CanBeAsAWholeUseWithAnArrayOverloadOfNoType = CanBeAsAWholeUseOfNoType | ArrayedType
 // tslint:disable-next-line no-any
 type AnyArrayedType = any[] & Cycle<any> & string
 
-// Normal
-
-type MaybeNormal<Name> =
-    Name extends 'NormalScalar' ? Normal :
-        {}
-
-type Normal = Number & { _NormalBrand: 'Normal' }
-type NonNormal = Number & { _NormalBrand?: 'NonNormal' }
-
-// Cycle
-
 type Cycle<ElementType = number> = ElementType[] & { _CycleBrand: boolean }
-
-// Blocks & Contours
 
 type Block = number[] & { _BlockBrand: void }
 
@@ -252,7 +243,6 @@ export {
     Time,
     Frequency,
     Gain,
-    NominalNumber,
     NormalScalar,
     UseBrand,
     UseOf,

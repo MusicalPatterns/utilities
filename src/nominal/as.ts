@@ -58,277 +58,275 @@ import {
 
 // Removal
 
-const number: <FractionOrNumericType extends Number | Fraction>(nothing: FractionOrNumericType) => number =
-    <FractionOrNumericType extends Number | Fraction>(nothing: FractionOrNumericType): number => {
-        if (nothing instanceof Array) {
-            return as.number(nothing[ 0 ]) * (1 / as.number(nothing[ 1 ]))
+const number: <FractionOrNumericType extends Number | Fraction>(asNumber: FractionOrNumericType) => number =
+    <FractionOrNumericType extends Number | Fraction>(asNumber: FractionOrNumericType): number => {
+        if (asNumber instanceof Array) {
+            return as.number(asNumber[ 0 ]) * (1 / as.number(asNumber[ 1 ]))
         }
 
-        return nothing as unknown as number
+        return asNumber as unknown as number
     }
 
-// Concrete Units
+// Units - Unwhole - Concrete
 
-const Hz: <NumericType extends NoUnits>(hz: NumericType) => Hz =
-    <NumericType extends NoUnits>(hz: NumericType): Hz =>
-        hz as unknown as Hz
-const Ms: <NumericType extends NoUnits>(ms: NumericType) => Ms =
-    <NumericType extends NoUnits>(ms: NumericType): Ms =>
-        ms as unknown as Ms
-const Meters: <NumericType extends NoUnits>(meters: NumericType) => Meters =
-    <NumericType extends NoUnits>(meters: NumericType): Meters =>
-        meters as unknown as Meters
+const Hz: <NumericType extends NoUnits>(asHz: NumericType) => Hz =
+    <NumericType extends NoUnits>(asHz: NumericType): Hz =>
+        asHz as unknown as Hz
+const Ms: <NumericType extends NoUnits>(asMs: NumericType) => Ms =
+    <NumericType extends NoUnits>(asMs: NumericType): Ms =>
+        asMs as unknown as Ms
+const Meters: <NumericType extends NoUnits>(asMeters: NumericType) => Meters =
+    <NumericType extends NoUnits>(asMeters: NumericType): Meters =>
+        asMeters as unknown as Meters
 
-// Abstract Units
+// Units - Unwhole - Abstract
 
-const Frequency: <NumericType extends NoUnits>(frequency: NumericType) => Frequency =
-    <NumericType extends NoUnits>(frequency: NumericType): Frequency =>
-        frequency as unknown as Frequency
-const Space: <NumericType extends NoUnits>(space: NumericType) => Space =
-    <NumericType extends NoUnits>(space: NumericType): Space =>
-        space as unknown as Space
-const Time: <NumericType extends NoUnits>(time: NumericType) => Time =
-    <NumericType extends NoUnits>(time: NumericType): Time =>
-        time as unknown as Time
+const Frequency: <NumericType extends NoUnits>(asFrequency: NumericType) => Frequency =
+    <NumericType extends NoUnits>(asFrequency: NumericType): Frequency =>
+        asFrequency as unknown as Frequency
+const Space: <NumericType extends NoUnits>(asSpace: NumericType) => Space =
+    <NumericType extends NoUnits>(asSpace: NumericType): Space =>
+        asSpace as unknown as Space
+const Time: <NumericType extends NoUnits>(asTime: NumericType) => Time =
+    <NumericType extends NoUnits>(asTime: NumericType): Time =>
+        asTime as unknown as Time
 
-// Other Units
+// Units - Unwhole - Other
 
-const Radians: <NumericType extends NoUnits>(radians: NumericType) => Radians =
-    <NumericType extends NoUnits>(radians: NumericType): Radians =>
-        radians as unknown as Radians
+const Radians: <NumericType extends NoUnits>(asRadians: NumericType) => Radians =
+    <NumericType extends NoUnits>(asRadians: NumericType): Radians =>
+        asRadians as unknown as Radians
 
-const Cents: <NumericType extends NoUnits>(cents: NumericType) => Cents =
-    <NumericType extends NoUnits>(cents: NumericType): Cents =>
-        cents as unknown as Cents
-const Semitones: <NumericType extends NoUnits>(semitones: NumericType) => Semitones =
-    <NumericType extends NoUnits>(semitones: NumericType): Semitones =>
-        semitones as unknown as Semitones
+const Cents: <NumericType extends NoUnits>(asCents: NumericType) => Cents =
+    <NumericType extends NoUnits>(asCents: NumericType): Cents =>
+        asCents as unknown as Cents
+const Semitones: <NumericType extends NoUnits>(asSemitones: NumericType) => Semitones =
+    <NumericType extends NoUnits>(asSemitones: NumericType): Semitones =>
+        asSemitones as unknown as Semitones
 
-const Gain: <NumericType extends NoUnits>(gain: NumericType) => Gain =
-    <NumericType extends NoUnits>(gain: NumericType): Gain =>
-        gain as unknown as Gain
+const Gain: <NumericType extends NoUnits>(asGain: NumericType) => Gain =
+    <NumericType extends NoUnits>(asGain: NumericType): Gain =>
+        asGain as unknown as Gain
 
-// Whole Units
+// Units - Whole
 
-const Numerator: <NumericType extends NoUnits>(numerator: NumericType) => Numerator =
-    <NumericType extends NoUnits>(numerator: NumericType): Numerator =>
-        integerCheck(numerator, 'Numerator') as unknown as Numerator
-const Denominator: <NumericType extends NoUnits>(denominator: NumericType) => Denominator =
-    <NumericType extends NoUnits>(denominator: NumericType): Denominator =>
-        integerCheck(denominator, 'Denominator') as unknown as Denominator
+const Numerator: <NumericType extends NoUnits>(asNumerator: NumericType) => Numerator =
+    <NumericType extends NoUnits>(asNumerator: NumericType): Numerator =>
+        integerCheck(asNumerator, 'Numerator') as unknown as Numerator
+const Denominator: <NumericType extends NoUnits>(asDenominator: NumericType) => Denominator =
+    <NumericType extends NoUnits>(asDenominator: NumericType): Denominator =>
+        integerCheck(asDenominator, 'Denominator') as unknown as Denominator
 
 const Fraction: (fraction: [ Integer | Numerator, Integer | Denominator ]) => Fraction =
-    ([ numerator, denominator ]: [ Integer | Numerator, Integer | Denominator ]): Fraction =>
+    ([ asNumerator, asDenominator ]: [ Integer | Numerator, Integer | Denominator ]): Fraction =>
         [
-            integerCheck(numerator, 'Numerator'),
-            integerCheck(denominator, 'Denominator'),
+            integerCheck(asNumerator, 'Numerator'),
+            integerCheck(asDenominator, 'Denominator'),
         ] as unknown as Fraction
 
-// Unwhole Transformation Uses
+// Uses - Unwhole - Transformation
 
 const Scalar: {
-    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(scalar: OfType): Scalar,
-    <OfType extends CanBeAsAnUnwholeUseOfSomeType = number>(scalar: number | Of<OfType>): Scalar<OfType>,
-    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(scalar: OfType): Scalar,
+    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(asScalar: OfType): Scalar,
+    <OfType extends CanBeAsAnUnwholeUseOfSomeType = number>(asScalar: number | Of<OfType>): Scalar<OfType>,
+    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(asScalar: OfType): Scalar,
 } =
-    <OfType extends Unwhole | NoOf = number>(scalar: OfType | number | Of<OfType>): Scalar<OfType> =>
-        scalar as unknown as Scalar<OfType>
+    <OfType extends Unwhole | NoOf = number>(asScalar: OfType | number | Of<OfType>): Scalar<OfType> =>
+        asScalar as unknown as Scalar<OfType>
 const Translation: {
-    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(translation: OfType): Translation,
-    <OfType extends CanBeAsAnUnwholeUseOfSomeType = number>(translation: number | Of<OfType>): Translation<OfType>,
-    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(translation: OfType): Translation,
+    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(asTranslation: OfType): Translation,
+    <OfType extends CanBeAsAnUnwholeUseOfSomeType = number>(asTranslation: number | Of<OfType>): Translation<OfType>,
+    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(asTranslation: OfType): Translation,
 } =
-    <OfType extends Unwhole | NoOf = number>(translation: OfType | number | Of<OfType>): Translation<OfType> =>
-        translation as unknown as Translation<OfType>
+    <OfType extends Unwhole | NoOf = number>(asTranslation: OfType | number | Of<OfType>): Translation<OfType> =>
+        asTranslation as unknown as Translation<OfType>
 const Rotation: {
-    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(rotation: OfType): Rotation,
-    <OfType extends CanBeAsAnUnwholeUseOfSomeType = number>(rotation: number | Of<OfType>): Rotation<OfType>,
-    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(rotation: OfType): Rotation,
+    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(asRotation: OfType): Rotation,
+    <OfType extends CanBeAsAnUnwholeUseOfSomeType = number>(asRotation: number | Of<OfType>): Rotation<OfType>,
+    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(asRotation: OfType): Rotation,
 } =
-    <OfType extends Number | NoOf = number>(rotation: OfType | number | Of<OfType>): Rotation<OfType> =>
-        rotation as unknown as Rotation<OfType>
+    <OfType extends Number | NoOf = number>(asRotation: OfType | number | Of<OfType>): Rotation<OfType> =>
+        asRotation as unknown as Rotation<OfType>
 
-// Unwhole Non-Transformation Uses
+// Uses - Unwhole - Other
 
 const Exponent: {
-    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(exponent: OfType): Exponent,
-    <OfType extends CanBeAsAnUnwholeUseOfSomeType = number>(exponent: number | Of<OfType>): Exponent<OfType>,
-    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(exponent: OfType): Exponent,
+    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(asExponent: OfType): Exponent,
+    <OfType extends CanBeAsAnUnwholeUseOfSomeType = number>(asExponent: number | Of<OfType>): Exponent<OfType>,
+    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(asExponent: OfType): Exponent,
 } =
-    <OfType extends Unwhole | NoOf = number>(exponent: OfType | number | Of<OfType>): Exponent<OfType> =>
-        exponent as unknown as Exponent<OfType>
+    <OfType extends Unwhole | NoOf = number>(asExponent: OfType | number | Of<OfType>): Exponent<OfType> =>
+        asExponent as unknown as Exponent<OfType>
 const Logarithm: {
-    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(logarithm: OfType): Logarithm,
-    <OfType extends CanBeAsAnUnwholeUseOfSomeType = number>(logarithm: number | Of<OfType>): Logarithm<OfType>,
-    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(logarithm: OfType): Logarithm,
+    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(asLogarithm: OfType): Logarithm,
+    <OfType extends CanBeAsAnUnwholeUseOfSomeType = number>(asLogarithm: number | Of<OfType>): Logarithm<OfType>,
+    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(asLogarithm: OfType): Logarithm,
 } =
-    <OfType extends Unwhole | NoOf = number>(logarithm: OfType | number | Of<OfType>): Logarithm<OfType> =>
-        logarithm as unknown as Logarithm<OfType>
+    <OfType extends Unwhole | NoOf = number>(asLogarithm: OfType | number | Of<OfType>): Logarithm<OfType> =>
+        asLogarithm as unknown as Logarithm<OfType>
 const Modulus: {
-    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(modulus: OfType): Modulus,
-    <OfType extends CanBeAsAnUnwholeUseOfSomeType = number>(modulus: number | Of<OfType>): Modulus<OfType>,
-    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(modulus: OfType): Modulus,
+    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(asModulus: OfType): Modulus,
+    <OfType extends CanBeAsAnUnwholeUseOfSomeType = number>(asModulus: number | Of<OfType>): Modulus<OfType>,
+    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(asModulus: OfType): Modulus,
 } =
-    <OfType extends Unwhole | NoOf = number>(modulus: OfType | number | Of<OfType>): Modulus<OfType> =>
-        modulus as unknown as Modulus<OfType>
+    <OfType extends Unwhole | NoOf = number>(asModulus: OfType | number | Of<OfType>): Modulus<OfType> =>
+        asModulus as unknown as Modulus<OfType>
 
-// Unwhole Fixed Uses
+// Uses - Unwhole - Fixed
 
 const Point: {
-    <OfType extends CanBeAsAnUnwholeUseOfNoType & NoUse = number>(point: OfType): Point,
-    <OfType extends CanBeAsAnUnwholeUseOfSomeType & NoUse = number>(point: number | Of<OfType>): Point<OfType>,
-    <OfType extends CanBeAsAnUnwholeUseOfNoType & NoUse = number>(point: OfType): Point,
+    <OfType extends CanBeAsAnUnwholeUseOfNoType & NoUse = number>(asPoint: OfType): Point,
+    <OfType extends CanBeAsAnUnwholeUseOfSomeType & NoUse = number>(asPoint: number | Of<OfType>): Point<OfType>,
+    <OfType extends CanBeAsAnUnwholeUseOfNoType & NoUse = number>(asPoint: OfType): Point,
 } =
-    <OfType extends Unwhole | NoOf = number>(point: OfType | number | Of<OfType>): Point<OfType> =>
-        point as unknown as Point<OfType>
+    <OfType extends Unwhole | NoOf = number>(asPoint: OfType | number | Of<OfType>): Point<OfType> =>
+        asPoint as unknown as Point<OfType>
 
-// Unwhole Compound Uses
+// Uses - Unwhole - Compound
 
 const Interval: {
-    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(interval: OfType): Interval,
-    <OfType extends CanBeAsAnUnwholeUseOfSomeType = number>(interval: number | Of<OfType>): Interval<OfType>,
-    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(interval: OfType): Interval,
+    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(asInterval: OfType): Interval,
+    <OfType extends CanBeAsAnUnwholeUseOfSomeType = number>(asInterval: number | Of<OfType>): Interval<OfType>,
+    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(asInterval: OfType): Interval,
 } =
-    <OfType extends Unwhole | NoOf = number>(interval: OfType | number | Of<OfType>): Interval<OfType> =>
-        interval as unknown as Interval<OfType>
+    <OfType extends Unwhole | NoOf = number>(asInterval: OfType | number | Of<OfType>): Interval<OfType> =>
+        asInterval as unknown as Interval<OfType>
 const Delta: {
-    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(delta: OfType): Delta,
-    <OfType extends CanBeAsAnUnwholeUseOfSomeType = number>(delta: number | Of<OfType>): Delta<OfType>,
-    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(delta: OfType): Delta,
+    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(asDelta: OfType): Delta,
+    <OfType extends CanBeAsAnUnwholeUseOfSomeType = number>(asDelta: number | Of<OfType>): Delta<OfType>,
+    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(asDelta: OfType): Delta,
 } =
-    <OfType extends Unwhole | NoOf = number>(delta: OfType | number | Of<OfType>): Delta<OfType> =>
-        delta as unknown as Delta<OfType>
+    <OfType extends Unwhole | NoOf = number>(asDelta: OfType | number | Of<OfType>): Delta<OfType> =>
+        asDelta as unknown as Delta<OfType>
 const Arc: {
-    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(arc: OfType): Arc,
-    <OfType extends CanBeAsAnUnwholeUseOfSomeType = number>(arc: number | Of<OfType>): Arc<OfType>,
-    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(arc: OfType): Arc,
+    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(asArc: OfType): Arc,
+    <OfType extends CanBeAsAnUnwholeUseOfSomeType = number>(asArc: number | Of<OfType>): Arc<OfType>,
+    <OfType extends CanBeAsAnUnwholeUseOfNoType = number>(asArc: OfType): Arc,
 } =
-    <OfType extends Unwhole | NoOf = number>(arc: OfType | number | Of<OfType>): Arc<OfType> =>
-        arc as unknown as Arc<OfType>
+    <OfType extends Unwhole | NoOf = number>(asArc: OfType | number | Of<OfType>): Arc<OfType> =>
+        asArc as unknown as Arc<OfType>
 
-// Whole Transformation Uses (with overloads for arrays)
+// Uses - Whole - Transformation, with Array Overloads
 
 const Multiple: {
-    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfNoType = number>(ordinal: OfType): Multiple,
-    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType = number>(ordinal: number | Of<OfType>): Multiple<OfType>,
-    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfNoType = number>(ordinal: OfType): Multiple,
+    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfNoType = number>(asMultiple: OfType): Multiple,
+    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType = number>(asMultiple: number | Of<OfType>): Multiple<OfType>,
+    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfNoType = number>(asMultiple: OfType): Multiple,
 } =
-    <OfType extends Unwhole | NoOf = number>(multiple: OfType | number | Of<OfType>): Multiple<OfType> =>
-        integerCheck(multiple as number, 'Multiple') as unknown as Multiple<OfType>
+    <OfType extends Unwhole | NoOf = number>(asMultiple: OfType | number | Of<OfType>): Multiple<OfType> =>
+        integerCheck(asMultiple as number, 'Multiple') as unknown as Multiple<OfType>
 const Cardinal: {
-    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfNoType = number>(cardinal: OfType): Cardinal,
-    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType = number>(cardinal: number | Of<OfType>): Cardinal<OfType>,
-    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfNoType = number>(cardinal: OfType): Cardinal,
+    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfNoType = number>(asCardinal: OfType): Cardinal,
+    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType = number>(asCardinal: number | Of<OfType>): Cardinal<OfType>,
+    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfNoType = number>(asCardinal: OfType): Cardinal,
 } =
-    <OfType extends Unwhole | NoOf = number>(cardinal: OfType | number | Of<OfType>): Cardinal<OfType> =>
-        integerCheck(cardinal as unknown as number, 'Cardinal') as unknown as Cardinal<OfType>
+    <OfType extends Unwhole | NoOf = number>(asCardinal: OfType | number | Of<OfType>): Cardinal<OfType> =>
+        integerCheck(asCardinal as unknown as number, 'Cardinal') as unknown as Cardinal<OfType>
 const Transposition: {
-    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfNoType = number>(ordinal: OfType): Transposition,
-    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType = number>(ordinal: number | Of<OfType>): Transposition<OfType>,
-    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfNoType = number>(ordinal: OfType): Transposition,
+    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfNoType = number>(asTransposition: OfType): Transposition,
+    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType = number>(asTransposition: number | Of<OfType>): Transposition<OfType>,
+    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfNoType = number>(asTransposition: OfType): Transposition,
 } =
-    <OfType extends Unwhole | NoOf = number>(transposition: OfType | number | Of<OfType>): Transposition<OfType> =>
-        integerCheck(transposition as number, 'Transposition') as unknown as Transposition<OfType>
+    <OfType extends Unwhole | NoOf = number>(asTransposition: OfType | number | Of<OfType>): Transposition<OfType> =>
+        integerCheck(asTransposition as number, 'Transposition') as unknown as Transposition<OfType>
 
-// Whole Non-Transformation Uses
+// Uses - Whole - Other
 
 const Power: {
-    <OfType extends CanBeAsAWholeUseOfNoType = number>(power: OfType): Power,
-    <OfType extends CanBeAsAWholeUseOfSomeType = number>(power: number | Of<OfType>): Power<OfType>,
-    <OfType extends CanBeAsAWholeUseOfNoType = number>(power: OfType): Power,
+    <OfType extends CanBeAsAWholeUseOfNoType = number>(asPower: OfType): Power,
+    <OfType extends CanBeAsAWholeUseOfSomeType = number>(asPower: number | Of<OfType>): Power<OfType>,
+    <OfType extends CanBeAsAWholeUseOfNoType = number>(asPower: OfType): Power,
 } =
-    <OfType extends Unwhole | NoOf = number>(power: OfType | number | Of<OfType>): Power<OfType> =>
-        integerCheck(power as number, 'Power') as unknown as Power<OfType>
+    <OfType extends Unwhole | NoOf = number>(asPower: OfType | number | Of<OfType>): Power<OfType> =>
+        integerCheck(asPower as number, 'Power') as unknown as Power<OfType>
 const Base: {
-    <OfType extends CanBeAsAWholeUseOfNoType = number>(base: OfType): Base,
-    <OfType extends CanBeAsAWholeUseOfSomeType = number>(base: number | Of<OfType>): Base<OfType>,
-    <OfType extends CanBeAsAWholeUseOfNoType = number>(base: OfType): Base,
+    <OfType extends CanBeAsAWholeUseOfNoType = number>(asBase: OfType): Base,
+    <OfType extends CanBeAsAWholeUseOfSomeType = number>(asBase: number | Of<OfType>): Base<OfType>,
+    <OfType extends CanBeAsAWholeUseOfNoType = number>(asBase: OfType): Base,
 } =
-    <OfType extends Unwhole | NoOf = number>(base: OfType | number | Of<OfType>): Base<OfType> =>
-        integerCheck(base as number, 'Base') as unknown as Base<OfType>
+    <OfType extends Unwhole | NoOf = number>(asBase: OfType | number | Of<OfType>): Base<OfType> =>
+        integerCheck(asBase as number, 'Base') as unknown as Base<OfType>
 const Remaindee: {
-    <OfType extends CanBeAsAWholeUseOfNoType = number>(integerModulus: OfType): Remaindee,
-    <OfType extends CanBeAsAWholeUseOfSomeType = number>(integerModulus: number | Of<OfType>): Remaindee<OfType>,
-    <OfType extends CanBeAsAWholeUseOfNoType = number>(integerModulus: OfType): Remaindee,
+    <OfType extends CanBeAsAWholeUseOfNoType = number>(asRemaindee: OfType): Remaindee,
+    <OfType extends CanBeAsAWholeUseOfSomeType = number>(asRemaindee: number | Of<OfType>): Remaindee<OfType>,
+    <OfType extends CanBeAsAWholeUseOfNoType = number>(asRemaindee: OfType): Remaindee,
 } =
-    <OfType extends Unwhole | NoOf = number>(integerModulus: OfType | number | Of<OfType>): Remaindee<OfType> =>
-        integerCheck(integerModulus as number, 'Remaindee') as unknown as Remaindee<OfType>
+    <OfType extends Unwhole | NoOf = number>(asRemaindee: OfType | number | Of<OfType>): Remaindee<OfType> =>
+        integerCheck(asRemaindee as number, 'Remaindee') as unknown as Remaindee<OfType>
 
-// Whole Fixed Uses (only used for arrays)
+// Uses - Whole - Fixed, only for Arrays
 
 const Ordinal: {
-    <OfType extends NoOf = number>(ordinal: OfType): Ordinal,
-    <OfType extends ArrayedType = number[]>(ordinal: number | Of<OfType>): Ordinal<OfType>,
-    <OfType extends NoOf = number>(ordinal: OfType): Ordinal,
+    <OfType extends NoOf = number>(asOrdinal: OfType): Ordinal,
+    <OfType extends ArrayedType = number[]>(asOrdinal: number | Of<OfType>): Ordinal<OfType>,
+    <OfType extends NoOf = number>(asOrdinal: OfType): Ordinal,
 } =
-    <OfType = number>(ordinal: OfType | number | Of<OfType>): Ordinal<OfType[]> =>
-        integerCheck(ordinal as unknown as number, 'Ordinal') as unknown as Ordinal<OfType[]>
+    <OfType = number>(asOrdinal: OfType | number | Of<OfType>): Ordinal<OfType[]> =>
+        integerCheck(asOrdinal as unknown as number, 'Ordinal') as unknown as Ordinal<OfType[]>
 
-// Whole Compound Uses
+// Uses - Whole - Compound, only for Arrays
 
 const Factor: {
-    <OfType extends NoOf = number>(factor: OfType): Factor,
-    <OfType extends ArrayedType = number[]>(factor: number | Of<OfType>): Factor<OfType>,
-    <OfType extends NoOf = number>(factor: OfType): Factor,
+    <OfType extends NoOf = number>(asFactor: OfType): Factor,
+    <OfType extends ArrayedType = number[]>(asFactor: number | Of<OfType>): Factor<OfType>,
+    <OfType extends NoOf = number>(asFactor: OfType): Factor,
 } =
-    <OfType = number>(factor: OfType | number | Of<OfType>): Factor<OfType[]> =>
-        integerCheck(factor as unknown as number, 'Factor') as unknown as Factor<OfType[]>
+    <OfType = number>(asFactor: OfType | number | Of<OfType>): Factor<OfType[]> =>
+        integerCheck(asFactor as unknown as number, 'Factor') as unknown as Factor<OfType[]>
 const Transition: {
-    <OfType extends NoOf = number>(transition: OfType): Transition,
-    <OfType extends ArrayedType = number[]>(transition: number | Of<OfType>): Transition<OfType>,
-    <OfType extends NoOf = number>(transition: OfType): Transition,
+    <OfType extends NoOf = number>(asTransition: OfType): Transition,
+    <OfType extends ArrayedType = number[]>(asTransition: number | Of<OfType>): Transition<OfType>,
+    <OfType extends NoOf = number>(asTransition: OfType): Transition,
 } =
-    <OfType = number>(transition: OfType | number | Of<OfType>): Transition<OfType[]> =>
-        integerCheck(transition as unknown as number, 'Transition') as unknown as Transition<OfType[]>
+    <OfType = number>(asTransition: OfType | number | Of<OfType>): Transition<OfType[]> =>
+        integerCheck(asTransition as unknown as number, 'Transition') as unknown as Transition<OfType[]>
 const Turn: {
-    <OfType extends NoOf = number>(turn: OfType): Turn,
-    <OfType extends ArrayedType = number[]>(turn: number | Of<OfType>): Turn<OfType>,
-    <OfType extends NoOf = number>(turn: OfType): Turn,
+    <OfType extends NoOf = number>(asTurn: OfType): Turn,
+    <OfType extends ArrayedType = number[]>(asTurn: number | Of<OfType>): Turn<OfType>,
+    <OfType extends NoOf = number>(asTurn: OfType): Turn,
 } =
-    <OfType = number>(turn: OfType | number | Of<OfType>): Turn<OfType[]> =>
-        integerCheck(turn as unknown as number, 'Turn') as unknown as Turn<OfType[]>
+    <OfType = number>(asTurn: OfType | number | Of<OfType>): Turn<OfType[]> =>
+        integerCheck(asTurn as unknown as number, 'Turn') as unknown as Turn<OfType[]>
 
-// Normal Uses
+// Uses - Normal
 
 const NormalScalar: {
-    <OfType extends Unwhole & NoOf = number>(normalScalar: OfType): NormalScalar,
-    <OfType extends Unwhole = number>(normalScalar: number | Of<OfType>): NormalScalar<OfType>,
-    <OfType extends Unwhole & NoOf = number>(normalScalar: OfType): NormalScalar,
+    <OfType extends Unwhole & NoOf = number>(asNormalScalar: OfType): NormalScalar,
+    <OfType extends Unwhole = number>(asNormalScalar: number | Of<OfType>): NormalScalar<OfType>,
+    <OfType extends Unwhole & NoOf = number>(asNormalScalar: OfType): NormalScalar,
 } =
-    <OfType extends Unwhole | NoOf = number>(normalScalar: OfType | number | Of<OfType>): NormalScalar<OfType> =>
-        normalCheck(normalScalar as unknown as number, 'NormalScalar') as unknown as NormalScalar<OfType>
+    <OfType extends Unwhole | NoOf = number>(asNormalScalar: OfType | number | Of<OfType>): NormalScalar<OfType> =>
+        normalCheck(asNormalScalar as unknown as number, 'NormalScalar') as unknown as NormalScalar<OfType>
 
 // Wholeness
 
-const Integer: <OfType extends NoUnits>(integer: OfType) => Integer =
-    <OfType extends NoUnits>(integer: OfType): Integer =>
-        integer as unknown as Integer
+const Integer: <OfType extends NoUnits>(asInteger: OfType) => Integer =
+    <OfType extends NoUnits>(asInteger: OfType): Integer =>
+        integerCheck(asInteger as unknown as number, 'Integer') as unknown as Integer
 
-// Cycle
+// Array
 
-const Cycle: <ElementType>(cycle: ElementType[]) => Cycle<ElementType> =
-    <ElementType>(cycle: ElementType[]): Cycle<ElementType> => {
-        (cycle as Cycle<ElementType>)._CycleBrand = true
+const Cycle: <ElementType>(asCycle: ElementType[]) => Cycle<ElementType> =
+    <ElementType>(asCycle: ElementType[]): Cycle<ElementType> => {
+        (asCycle as Cycle<ElementType>)._CycleBrand = true
 
-        return cycle as Cycle<ElementType>
+        return asCycle as Cycle<ElementType>
     }
 
-// Blocks & Contours
+const Block: (asBlock: number[]) => Block =
+    (asBlock: number[]): Block => asBlock as unknown as Block
 
-const Block: (block: number[]) => Block =
-    (block: number[]): Block => block as unknown as Block
-
-const ContourElement: <ContourType>(contourElement: number[]) => ContourElement<ContourType> =
-    <ContourType>(contourElement: number[]): ContourElement<ContourType> =>
-        contourElement as unknown as ContourElement<ContourType>
-const ContourPiece: <ContourType>(contourPiece: Array<number[] | ContourElement<ContourType>>) => ContourPiece<ContourType> =
-    <ContourType>(contourPiece: Array<number[] | ContourElement<ContourType>>): ContourPiece<ContourType> =>
-        contourPiece.map((contourElement: number[] | ContourElement<ContourType>): ContourElement<ContourType> =>
-            contourElement as unknown as ContourElement<ContourType>) as unknown as ContourPiece<ContourType>
-const ContourWhole: <ContourType>(contourWhole: Array<number[] | ContourElement<ContourType>>) => ContourWhole<ContourType> =
-    <ContourType>(contourWhole: Array<number[] | ContourElement<ContourType>>): ContourWhole<ContourType> =>
-        contourWhole.map((contourElement: number[] | ContourElement<ContourType>): ContourElement<ContourType> =>
-            contourElement as unknown as ContourElement<ContourType>) as unknown as ContourWhole<ContourType>
+const ContourElement: <ContourType>(asContourElement: number[]) => ContourElement<ContourType> =
+    <ContourType>(asContourElement: number[]): ContourElement<ContourType> =>
+        asContourElement as unknown as ContourElement<ContourType>
+const ContourPiece: <ContourType>(asContourPiece: Array<number[] | ContourElement<ContourType>>) => ContourPiece<ContourType> =
+    <ContourType>(asContourPiece: Array<number[] | ContourElement<ContourType>>): ContourPiece<ContourType> =>
+        asContourPiece.map((asContourElement: number[] | ContourElement<ContourType>): ContourElement<ContourType> =>
+            asContourElement as unknown as ContourElement<ContourType>) as unknown as ContourPiece<ContourType>
+const ContourWhole: <ContourType>(asContourWhole: Array<number[] | ContourElement<ContourType>>) => ContourWhole<ContourType> =
+    <ContourType>(asContourWhole: Array<number[] | ContourElement<ContourType>>): ContourWhole<ContourType> =>
+        asContourWhole.map((asContourElement: number[] | ContourElement<ContourType>): ContourElement<ContourType> =>
+            asContourElement as unknown as ContourElement<ContourType>) as unknown as ContourWhole<ContourType>
 
 export {
     Base,

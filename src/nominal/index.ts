@@ -12,6 +12,7 @@ export {
     DUMMY_VALUE_FOR_COMPUTING_NOMINAL_INTERFACE,
     computeNominalInterface,
     NominalInterface,
+    NominalNumber,
 } from './custom'
 export {
     isCycle,
@@ -168,7 +169,6 @@ export {
     Time,
     Frequency,
     Gain,
-    NominalNumber,
     NormalScalar,
     Ordinal,
     Multiple,

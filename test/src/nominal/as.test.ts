@@ -1,4 +1,4 @@
-// tslint:disable no-unused-expression no-dead-store no-duplicate-string no-empty no-useless-cast
+// tslint:disable no-unused-expression no-dead-store no-duplicate-string no-useless-cast
 
 import {
     Arc,
@@ -303,7 +303,7 @@ describe('as', () => {
                     const arrayOfRotation: Rotation[] = [ 3, 4, 5 ].map(as.Rotation)
                 })
 
-                it('allows casting from generic numeric types (ones that extend Number)', () => {
+                it('allows casting of generic numeric types (ones that extend Number)', () => {
                     const genericFunction: <NumericType extends Number>(argument: NumericType) => void =
                         <NumericType extends Number>(argument: NumericType): void => {
                             const ofGenericScalar: Scalar<NumericType> = as.Scalar<NumericType>(3)
@@ -378,7 +378,7 @@ describe('as', () => {
                     const arrayOfModulus: Modulus[] = [ 3, 4, 5 ].map(as.Modulus)
                 })
 
-                it('allows casting from generic numeric types (ones that extend Number)', () => {
+                it('allows casting of generic numeric types (ones that extend Number)', () => {
                     const genericFunction: <NumericType extends Number>(argument: NumericType) => void =
                         <NumericType extends Number>(argument: NumericType): void => {
                             const ofGenericExponent: Exponent<NumericType> = as.Exponent<NumericType>(3)
@@ -390,7 +390,7 @@ describe('as', () => {
                 it('allows casting from integers', () => {
                     const fromIntegerExponent: Exponent = as.Exponent(as.Integer(3))
                     const fromIntegerLogarithm: Logarithm = as.Logarithm(as.Integer(3))
-                    const fromIntegerModulus: Modulus = as.Modulus(as.Integer(3))
+                    const fromRemaindee: Modulus = as.Modulus(as.Integer(3))
                 })
 
                 it('allows being a use of another unwhole use', () => {
@@ -443,7 +443,7 @@ describe('as', () => {
                     const arrayOfPoint: Point[] = [ 3, 4, 5 ].map(as.Point)
                 })
 
-                it('allows casting from generic numeric types (ones that extend Number)', () => {
+                it('allows casting of generic numeric types (ones that extend Number)', () => {
                     const genericFunction: <NumericType extends Number>(argument: NumericType) => void =
                         <NumericType extends Number>(argument: NumericType): void => {
                             const ofGenericPoint: Point<NumericType> = as.Point<NumericType>(3)
@@ -486,7 +486,7 @@ describe('as', () => {
                     const arrayOfArc: Arc[] = [ 3, 4, 5 ].map(as.Arc)
                 })
 
-                it('allows casting from generic numeric types (ones that extend Number)', () => {
+                it('allows casting of generic numeric types (ones that extend Number)', () => {
                     const genericFunction: <NumericType extends Number>(argument: NumericType) => void =
                         <NumericType extends Number>(argument: NumericType): void => {
                             const ofGenericInterval: Interval<NumericType> = as.Interval<NumericType>(3)
@@ -501,13 +501,38 @@ describe('as', () => {
                     const fromIntegerArc: Arc = as.Arc(as.Integer(3))
                 })
 
-                it('allows being a use of another use', () => {
+                it('allows being a use of another unwhole use', () => {
+                    const otherUnwholeCompoundInterval: Interval<Delta> = as.Interval<Delta>(3)
+                    const anotherUnwholeCompoundInterval: Interval<Arc> = as.Interval<Arc>(3)
+                    const unwholeTransformationInterval: Interval<Translation> = as.Interval<Translation>(3)
+
+                    const otherUnwholeCompoundDelta: Delta<Arc> = as.Delta<Arc>(3)
+                    const anotherUnwholeCompoundDelta: Delta<Interval> = as.Delta<Interval>(3)
+                    const unwholeTransformationDelta: Delta<Rotation> = as.Delta<Rotation>(3)
+
+                    const otherUnwholeCompoundArc: Arc<Interval> = as.Arc<Interval>(3)
+                    const anotherUnwholeCompoundArc: Arc<Delta> = as.Arc<Delta>(3)
+                    const unwholeTransformationArc: Arc<Scalar> = as.Arc<Scalar>(3)
                 })
 
-                it('allows being a use of another use, even if it is the same type of use', () => {
+                it('allows being a use of another unwhole use, even if it is the same type of use', () => {
+                    const useOfItsOwnUseTypeIntervalInterval: Interval<Interval> = as.Interval<Interval>(3)
+                    const useOfItsOwnUseTypeDeltaDelta: Delta<Delta> = as.Delta<Delta>(3)
+                    const useOfItsOwnUseTypeArcArc: Arc<Arc> = as.Arc<Arc>(3)
                 })
 
-                it('allows being a use of units', () => {
+                it('allows being a use of unwhole units', () => {
+                    const unwholeConcreteInterval: Interval<Hz> = as.Interval<Hz>(3)
+                    const unwholeAbstractInterval: Interval<Frequency> = as.Interval<Frequency>(3)
+                    const unwholeOtherInterval: Interval<Radians> = as.Interval<Radians>(3)
+
+                    const unwholeConcreteDelta: Delta<Ms> = as.Delta<Ms>(3)
+                    const unwholeAbstractDelta: Delta<Time> = as.Delta<Time>(3)
+                    const unwholeOtherDelta: Delta<Cents> = as.Delta<Cents>(3)
+
+                    const unwholeConcreteArc: Arc<Meters> = as.Arc<Meters>(3)
+                    const unwholeAbstractArc: Arc<Space> = as.Arc<Space>(3)
+                    const unwholeOtherArc: Arc<Gain> = as.Arc<Gain>(3)
                 })
             })
         })
@@ -538,7 +563,7 @@ describe('as', () => {
                     const arrayOfTransposition: Transposition[] = [ 3, 4, 5 ].map(as.Transposition)
                 })
 
-                it('allows casting from generic numeric types (ones that extend Number)', () => {
+                it('allows casting of generic numeric types (ones that extend Number)', () => {
                     const genericFunction: <NumericType extends Number>(argument: NumericType) => void =
                         <NumericType extends Number>(argument: NumericType): void => {
                             const ofGenericMultiple: Multiple<NumericType> = as.Multiple<NumericType>(3)
@@ -548,6 +573,12 @@ describe('as', () => {
                 })
 
                 it(`allows calling with numbers which aren't integers, but throws an error`, () => {
+                    expect(() => as.Multiple(4.3))
+                        .toThrow(new Error('Numerals of type Multiple must be integers. This numeral was 4.3.'))
+                    expect(() => as.Cardinal(4.3))
+                        .toThrow(new Error('Numerals of type Cardinal must be integers. This numeral was 4.3.'))
+                    expect(() => as.Transposition(4.3))
+                        .toThrow(new Error('Numerals of type Transposition must be integers. This numeral was 4.3.'))
                 })
 
                 it(`allows calling with numbers which are very close to integers, off only probably due to javascript floating point arithmetic issues, and then rounds them`, () => {
@@ -580,12 +611,29 @@ describe('as', () => {
                 })
 
                 it('allows being a use of another whole use', () => {
+                    const otherWholeTransformationMultiple: Multiple<Cardinal> = as.Multiple<Cardinal>(3)
+                    const anotherWholeTransformationMultiple: Multiple<Transposition> = as.Multiple<Transposition>(3)
+                    const wholeOtherMultiple: Multiple<Power> = as.Multiple<Power>(3)
+
+                    const otherWholeTransformationCardinal: Cardinal<Transposition> = as.Cardinal<Transposition>(3)
+                    const anotherWholeTransformationCardinal: Cardinal<Multiple> = as.Cardinal<Multiple>(3)
+                    const wholeOtherCardinal: Cardinal<Base> = as.Cardinal<Base>(3)
+
+                    const otherWholeTransformationTransposition: Transposition<Multiple> = as.Transposition<Multiple>(3)
+                    const anotherWholeTransformationTransposition: Transposition<Cardinal> = as.Transposition<Cardinal>(3)
+                    const wholeOtherTransposition: Transposition<Remaindee> = as.Transposition<Remaindee>(3)
                 })
 
                 it('allows being a use of another whole use, even if it is the same type of use', () => {
+                    const useOfItsOwnUseTypeMultipleMultiple: Multiple<Multiple> = as.Multiple<Multiple>(3)
+                    const useOfItsOwnUseTypeCardinalCardinal: Cardinal<Cardinal> = as.Cardinal<Cardinal>(3)
+                    const useOfItsOwnUseTypeTranspositionTransposition: Transposition<Transposition> = as.Transposition<Transposition>(3)
                 })
 
                 it('allows being a use of whole units', () => {
+                    const wholeUnitMultiple: Multiple<Numerator> = as.Multiple<Numerator>(3)
+                    const wholeUnitCardinal: Cardinal<Numerator> = as.Cardinal<Numerator>(3)
+                    const wholeUnitTransposition: Transposition<Numerator> = as.Transposition<Numerator>(3)
                 })
             })
 
@@ -593,7 +641,7 @@ describe('as', () => {
                 it('allows casting numbers', () => {
                     const asPower: Power = as.Power(3)
                     const asBase: Base = as.Base(3)
-                    const asIntegerModulus: Remaindee = as.Remaindee(3)
+                    const asRemaindee: Remaindee = as.Remaindee(3)
                 })
 
                 it('allows comparing values', () => {
@@ -611,45 +659,85 @@ describe('as', () => {
                 it('allows passing as the callback to an iterator', () => {
                     const arrayOfPower: Power[] = [ 3, 4, 5 ].map(as.Power)
                     const arrayOfBase: Base[] = [ 3, 4, 5 ].map(as.Base)
-                    const arrayOfIntegerModulus: Remaindee[] = [ 3, 4, 5 ].map(as.Remaindee)
+                    const arrayOfRemaindee: Remaindee[] = [ 3, 4, 5 ].map(as.Remaindee)
                 })
 
-                it('allows casting from generic numeric types (ones that extend Number)', () => {
+                it('allows casting of generic numeric types (ones that extend Number)', () => {
                     const genericFunction: <NumericType extends Number>(argument: NumericType) => void =
                         <NumericType extends Number>(argument: NumericType): void => {
                             const ofGenericPower: Power<NumericType> = as.Power<NumericType>(3)
                             const ofGenericBase: Base<NumericType> = as.Base<NumericType>(3)
-                            const ofGenericIntegerModulus: Remaindee<NumericType> = as.Remaindee<NumericType>(3)
+                            const ofGenericRemaindee: Remaindee<NumericType> = as.Remaindee<NumericType>(3)
                         }
                 })
 
                 it(`allows calling with numbers which aren't integers, but throws an error`, () => {
+                    expect(() => as.Power(4.3))
+                        .toThrow(new Error('Numerals of type Power must be integers. This numeral was 4.3.'))
+                    expect(() => as.Base(4.3))
+                        .toThrow(new Error('Numerals of type Base must be integers. This numeral was 4.3.'))
+                    expect(() => as.Remaindee(4.3))
+                        .toThrow(new Error('Numerals of type Remaindee must be integers. This numeral was 4.3.'))
                 })
 
                 it(`allows calling with numbers which are very close to integers, off only probably due to javascript floating point arithmetic issues, and then rounds them`, () => {
+                    expect(as.Power(9.00000000004))
+                        .toBe(9 as unknown as Power)
+                    expect(() => as.Power(9.0000000004))
+                        .toThrow(new Error('Numerals of type Power must be integers. This numeral was 9.0000000004.'))
+
+                    expect(as.Base(9.00000000004))
+                        .toBe(9 as unknown as Base)
+                    expect(() => as.Base(9.0000000004))
+                        .toThrow(new Error('Numerals of type Base must be integers. This numeral was 9.0000000004.'))
+
+                    expect(as.Remaindee(9.00000000004))
+                        .toBe(9 as unknown as Remaindee)
+                    expect(() => as.Remaindee(9.0000000004))
+                        .toThrow(new Error('Numerals of type Remaindee must be integers. This numeral was 9.0000000004.'))
                 })
 
                 it('allows casting from integers', () => {
+                    const fromIntegerPower: Power = as.Power(as.Integer(3))
+                    const fromIntegerBase: Base = as.Base(as.Integer(3))
+                    const fromIntegerRemaindee: Remaindee = as.Remaindee(as.Integer(3))
                 })
 
                 it('allows assigning to the unwhole version, since it is less specific', () => {
                     const unwholeFromPower: Exponent = as.Power(5)
                     const unwholeFromBase: Logarithm = as.Base(5)
-                    const unwholeFromIntegerModulus: Modulus = as.Remaindee(5)
+                    const unwholeFromRemaindee: Modulus = as.Remaindee(5)
                 })
 
                 it('allows being a use of another whole use', () => {
+                    const otherWholeOtherPower: Power<Base> = as.Power<Base>(3)
+                    const anotherWholeOtherPower: Power<Remaindee> = as.Power<Remaindee>(3)
+                    const wholeTransformationPower: Power<Multiple> = as.Power<Multiple>(3)
+
+                    const otherWholeOtherBase: Base<Remaindee> = as.Base<Remaindee>(3)
+                    const anotherWholeOtherBase: Base<Scalar> = as.Base<Scalar>(3)
+                    const wholeTransformationBase: Base<Cardinal> = as.Base<Cardinal>(3)
+
+                    const otherWholeOtherRemaindee: Remaindee<Scalar> = as.Remaindee<Scalar>(3)
+                    const anotherWholeOtherRemaindee: Remaindee<Base> = as.Remaindee<Base>(3)
+                    const wholeTransformationRemaindee: Remaindee<Transposition> = as.Remaindee<Transposition>(3)
                 })
 
                 it('allows being a use of another whole use, even if it is the same type of use', () => {
+                    const useOfItsOwnUseTypePowerPower: Power<Power> = as.Power<Power>(3)
+                    const useOfItsOwnUseTypeBaseBase: Base<Base> = as.Base<Base>(3)
+                    const useOfItsOwnUseTypeRemaindeeRemaindee: Remaindee<Remaindee> = as.Remaindee<Remaindee>(3)
                 })
 
                 it('allows being a use of whole units', () => {
+                    const wholeUnitPower: Power<Numerator> = as.Power<Numerator>(3)
+                    const wholeUnitBase: Base<Numerator> = as.Base<Numerator>(3)
+                    const wholeUnitRemaindee: Remaindee<Numerator> = as.Remaindee<Numerator>(3)
                 })
             })
 
             describe('fixed', () => {
-                it('allows casting', () => {
+                it('allows casting from various things', () => {
                     const plainImplicitNumbersOrdinal: Ordinal = as.Ordinal(3)
                     const explicitAssignedNumbersOrdinal: Ordinal = as.Ordinal(3)
                     const explicitAsNumbersOrdinal: Ordinal = as.Ordinal(3)
@@ -675,7 +763,7 @@ describe('as', () => {
                     const arrayOfOrdinal: Ordinal[] = [ 3, 4, 5 ].map(as.Ordinal)
                 })
 
-                it('allows casting from generic numeric types (ones that extend Number)', () => {
+                it('allows casting of generic numeric types (ones that extend Number)', () => {
                     const genericFunction: <NumericArrayType extends Number[]>(argument: NumericArrayType) => void =
                         <NumericArrayType extends Number[]>(argument: NumericArrayType): void => {
                             const ofGenericOrdinal: Ordinal<NumericArrayType> = as.Ordinal<NumericArrayType>(3)
@@ -683,24 +771,19 @@ describe('as', () => {
                 })
 
                 it(`allows calling with numbers which aren't integers, but throws an error`, () => {
+                    expect(() => as.Ordinal(4.3))
+                        .toThrow(new Error('Numerals of type Ordinal must be integers. This numeral was 4.3.'))
                 })
 
                 it(`allows calling with numbers which are very close to integers, off only probably due to javascript floating point arithmetic issues, and then rounds them`, () => {
+                    expect(as.Ordinal(9.00000000004))
+                        .toBe(9 as unknown as Ordinal)
+                    expect(() => as.Ordinal(9.0000000004))
+                        .toThrow(new Error('Numerals of type Ordinal must be integers. This numeral was 9.0000000004.'))
                 })
 
                 it('allows casting from integers', () => {
-                })
-
-                it('allows assigning to the unwhole version, since it is less specific', () => {
-                })
-
-                it('allows being a use of another whole use', () => {
-                })
-
-                it('allows being a use of another whole use, even if it is the same type of use', () => {
-                })
-
-                it('allows being a use of whole units', () => {
+                    const fromIntegerOrdinal: Ordinal = as.Ordinal(as.Integer(3))
                 })
             })
 
@@ -729,7 +812,7 @@ describe('as', () => {
                     const arrayOfTurn: Turn[] = [ 3, 4, 5 ].map(as.Turn)
                 })
 
-                it('allows casting from generic numeric types (ones that extend Number[])', () => {
+                it('allows casting of generic numeric types (ones that extend Number[])', () => {
                     const genericFunction: <NumericArrayType extends Number[]>(argument: NumericArrayType) => void =
                         <NumericArrayType extends Number[]>(argument: NumericArrayType): void => {
                             const ofGenericFactor: Factor<NumericArrayType> = as.Factor<NumericArrayType>(3)
@@ -739,24 +822,58 @@ describe('as', () => {
                 })
 
                 it(`allows calling with numbers which aren't integers, but throws an error`, () => {
+                    expect(() => as.Factor(4.3))
+                        .toThrow(new Error('Numerals of type Factor must be integers. This numeral was 4.3.'))
+                    expect(() => as.Transition(4.3))
+                        .toThrow(new Error('Numerals of type Transition must be integers. This numeral was 4.3.'))
+                    expect(() => as.Turn(4.3))
+                        .toThrow(new Error('Numerals of type Turn must be integers. This numeral was 4.3.'))
                 })
 
                 it(`allows calling with numbers which are very close to integers, off only probably due to javascript floating point arithmetic issues, and then rounds them`, () => {
+                    expect(as.Factor(9.00000000004))
+                        .toBe(9 as unknown as Factor)
+                    expect(() => as.Factor(9.0000000004))
+                        .toThrow(new Error('Numerals of type Factor must be integers. This numeral was 9.0000000004.'))
+
+                    expect(as.Transition(9.00000000004))
+                        .toBe(9 as unknown as Transition)
+                    expect(() => as.Transition(9.0000000004))
+                        .toThrow(new Error('Numerals of type Transition must be integers. This numeral was 9.0000000004.'))
+
+                    expect(as.Turn(9.00000000004))
+                        .toBe(9 as unknown as Turn)
+                    expect(() => as.Turn(9.0000000004))
+                        .toThrow(new Error('Numerals of type Turn must be integers. This numeral was 9.0000000004.'))
                 })
 
                 it('allows casting from integers', () => {
+                    const fromIntegerFactor: Factor = as.Factor(as.Integer(3))
+                    const fromIntegerTransition: Transition = as.Transition(as.Integer(3))
+                    const fromIntegerTurn: Turn = as.Turn(as.Integer(3))
                 })
 
-                it('allows assigning to the unwhole version, since it is less specific', () => {
-                })
+                it('allows casting from various things - the same things as Ordinal', () => {
+                    const usesFactor: Factor<Scalar[]> = as.Factor<Scalar[]>(3)
+                    const unitsFactor: Factor<Hz[]> = as.Factor<Hz[]>(3)
+                    const indexOfCharacterInStringFactor: Factor<string> = as.Factor<string>(3)
+                    const indexOfStringInArrayOfStringsFactor: Factor<string[]> = as.Factor<string[]>(3)
+                    const implicitNubmersCycleFactor: Factor<Cycle> = as.Factor<Cycle>(3)
+                    const scalarCycleFactor: Factor<Cycle<Scalar>> = as.Factor<Cycle<Scalar>>(3)
 
-                it('allows being a use of another whole use', () => {
-                })
+                    const usesTransition: Transition<Scalar[]> = as.Transition<Scalar[]>(3)
+                    const unitsTransition: Transition<Hz[]> = as.Transition<Hz[]>(3)
+                    const indexOfCharacterInStringTransition: Transition<string> = as.Transition<string>(3)
+                    const indexOfStringInArrayOfStringsTransition: Transition<string[]> = as.Transition<string[]>(3)
+                    const implicitNubmersCycleTransition: Transition<Cycle> = as.Transition<Cycle>(3)
+                    const scalarCycleTransition: Transition<Cycle<Scalar>> = as.Transition<Cycle<Scalar>>(3)
 
-                it('allows being a use of another whole use, even if it is the same type of use', () => {
-                })
-
-                it('allows being a use of whole units', () => {
+                    const usesTurn: Turn<Scalar[]> = as.Turn<Scalar[]>(3)
+                    const unitsTurn: Turn<Hz[]> = as.Turn<Hz[]>(3)
+                    const indexOfCharacterInStringTurn: Turn<string> = as.Turn<string>(3)
+                    const indexOfStringInArrayOfStringsTurn: Turn<string[]> = as.Turn<string[]>(3)
+                    const implicitNubmersCycleTurn: Turn<Cycle> = as.Turn<Cycle>(3)
+                    const scalarCycleTurn: Turn<Cycle<Scalar>> = as.Turn<Cycle<Scalar>>(3)
                 })
             })
         })
@@ -778,10 +895,16 @@ describe('as', () => {
                 const arrayOfNormalScalars: NormalScalar[] = [ 0.3, 0.4, 0.5 ].map(as.NormalScalar)
             })
 
-            it('allows casting from generic numeric types (ones that extend Number)', () => {
+            it('allows casting of generic numeric types (ones that extend Number)', () => {
+                const genericFunction: <NumericType extends Number>(argument: NumericType) => void =
+                    <NumericType extends Number>(argument: NumericType): void => {
+                        const ofGenericNormalScalar: NormalScalar<NumericType> = as.NormalScalar<NumericType>(1)
+                    }
             })
 
-            it('allows casting from integers', () => {
+            it('allows casting from integers, as long as they are 0 or 1', () => {
+                const zeroIntegerNormalScalar: NormalScalar = as.NormalScalar(as.Integer(0))
+                const oneIntegerNormalScalar: NormalScalar = as.NormalScalar(as.Integer(1))
             })
 
             it('allows assigning to the non-normal version, since it is less specific', () => {
@@ -789,9 +912,13 @@ describe('as', () => {
             })
 
             it('allows being a use of another normal use', () => {
+                const normalScalarOfNormalScalar: NormalScalar<NormalScalar> = as.NormalScalar<NormalScalar>(0.5)
             })
 
             it('allows being a use of unwhole units', () => {
+                const unwholeConcreteNormalScalar: NormalScalar<Hz> = as.NormalScalar<Hz>(0.5)
+                const unwholeAbstractNormalScalar: NormalScalar<Frequency> = as.NormalScalar<Frequency>(0.5)
+                const unwholeOtherNormalScalar: NormalScalar<Radians> = as.NormalScalar<Radians>(0.5)
             })
 
             describe('bounds', () => {
@@ -837,13 +964,16 @@ describe('as', () => {
             const arrayOfInteger: Integer[] = [ 3, 4, 5 ].map(as.Integer)
         })
 
-        it('allows casting from generic integer-like types (ones that extend Integer)', () => {
-        })
-
         it(`allows calling with numbers which aren't integers, but throws an error`, () => {
+            expect(() => as.Integer(4.3))
+                .toThrow(new Error('Numerals of type Integer must be integers. This numeral was 4.3.'))
         })
 
         it(`allows calling with numbers which are very close to integers, off only probably due to javascript floating point arithmetic issues, and then rounds them`, () => {
+            expect(as.Integer(9.00000000004))
+                .toBe(9 as unknown as Integer)
+            expect(() => as.Integer(9.0000000004))
+                .toThrow(new Error('Numerals of type Integer must be integers. This numeral was 9.0000000004.'))
         })
     })
 })

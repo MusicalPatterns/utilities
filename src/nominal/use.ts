@@ -35,45 +35,45 @@ import {
     Unwhole,
 } from './types'
 
-// Whole Units
+// Units - Whole
 
-const Numerator: (denominator: Denominator, numerator: Numerator) => Fraction =
-    (denominator: Denominator, numerator: Numerator): Fraction =>
-        [ numerator, denominator ]
-const Denominator: (numerator: Numerator, denominator: Denominator) => Fraction =
-    (numerator: Numerator, denominator: Denominator): Fraction =>
-        [ numerator, denominator ]
+const Numerator: (numeral: Denominator, useNumerator: Numerator) => Fraction =
+    (numeral: Denominator, useNumerator: Numerator): Fraction =>
+        [ useNumerator, numeral ]
+const Denominator: (numeral: Numerator, useDenominator: Denominator) => Fraction =
+    (numeral: Numerator, useDenominator: Denominator): Fraction =>
+        [ numeral, useDenominator ]
 
-// Unwhole Transformation Uses
+// Uses - Unwhole - Transformation
 
-const Scalar: <OfType extends Unwhole>(value: OfType, scalar: Scalar<OfType>) => OfType =
-    <OfType extends Unwhole>(value: OfType, scalar: Scalar<OfType>): OfType =>
+const Scalar: <OfType extends Unwhole>(numeral: OfType, useScalar: Scalar<OfType>) => OfType =
+    <OfType extends Unwhole>(numeral: OfType, useScalar: Scalar<OfType>): OfType =>
         // If is array or cycle, apply to every member
-        value as unknown as number * (scalar as unknown as number) as unknown as OfType
-const Translation: <OfType extends Unwhole>(value: OfType, translation: Translation<OfType>) => OfType =
-    <OfType extends Unwhole>(value: OfType, translation: Translation<OfType>): OfType =>
+        numeral as unknown as number * (useScalar as unknown as number) as unknown as OfType
+const Translation: <OfType extends Unwhole>(numeral: OfType, useTranslation: Translation<OfType>) => OfType =
+    <OfType extends Unwhole>(numeral: OfType, useTranslation: Translation<OfType>): OfType =>
         // If is array or cycle, apply to every member
-        value as unknown as number + (translation as unknown as number) as unknown as OfType
-const Rotation: <OfType extends Unwhole>(value: OfType, rotation: Rotation<OfType>) => OfType =
-    <OfType extends Unwhole>(value: OfType, rotation: Rotation<OfType>): OfType =>
+        numeral as unknown as number + (useTranslation as unknown as number) as unknown as OfType
+const Rotation: <OfType extends Unwhole>(numeral: OfType, useRotation: Rotation<OfType>) => OfType =
+    <OfType extends Unwhole>(numeral: OfType, useRotation: Rotation<OfType>): OfType =>
         // If is array or cycle, apply to every member
-        value as unknown as OfType
+        numeral as unknown as OfType
 
-// Unwhole Non-Transformation Uses
+// Uses - Unwhole - Other
 
-const Exponent: <OfType extends Unwhole>(value: OfType, exponent: Exponent<OfType>) => OfType =
-    <OfType extends Unwhole>(value: OfType, exponent: Exponent<OfType>): OfType =>
+const Exponent: <OfType extends Unwhole>(numeral: OfType, useExponent: Exponent<OfType>) => OfType =
+    <OfType extends Unwhole>(numeral: OfType, useExponent: Exponent<OfType>): OfType =>
         // If is array or cycle, apply to every member
-        Math.pow(value as unknown as number, exponent as unknown as number) as unknown as OfType
-const Logarithm: <OfType extends Unwhole>(value: OfType, logarithm: Logarithm<OfType>) => OfType =
-    <OfType extends Unwhole>(value: OfType, logarithm: Logarithm<OfType>): OfType =>
+        Math.pow(numeral as unknown as number, useExponent as unknown as number) as unknown as OfType
+const Logarithm: <OfType extends Unwhole>(numeral: OfType, useLogarithm: Logarithm<OfType>) => OfType =
+    <OfType extends Unwhole>(numeral: OfType, useLogarithm: Logarithm<OfType>): OfType =>
         // If is array or cycle, apply to every member
-        Math.log(value as unknown as number) / Math.log(logarithm as unknown as number) as unknown as OfType
-const Modulus: <OfType extends Unwhole>(value: OfType, modulus: Modulus<OfType>) => OfType =
-    <OfType extends Unwhole>(value: OfType, modulus: Modulus<OfType>): OfType => {
+        Math.log(numeral as unknown as number) / Math.log(useLogarithm as unknown as number) as unknown as OfType
+const Modulus: <OfType extends Unwhole>(numeral: OfType, useModulus: Modulus<OfType>) => OfType =
+    <OfType extends Unwhole>(numeral: OfType, useModulus: Modulus<OfType>): OfType => {
         // If is array or cycle, apply to every member
-        let result: number = value as unknown as number
-        const rawModulus: number = modulus as unknown as number
+        let result: number = numeral as unknown as number
+        const rawModulus: number = useModulus as unknown as number
 
         while (result < 0) {
             result += rawModulus
@@ -85,39 +85,39 @@ const Modulus: <OfType extends Unwhole>(value: OfType, modulus: Modulus<OfType>)
         return result as unknown as OfType
     }
 
-// Unwhole Compound Uses
+// Uses - Unwhole - Compound
 
-const Interval: <OfType extends Unwhole>(value: OfType, interval: Interval<OfType>) => OfType =
-    <OfType extends Unwhole>(value: OfType, interval: Interval<OfType>): OfType =>
-        Scalar(value as unknown as number, interval as unknown as Scalar) as unknown as OfType
-const Delta: <OfType extends Unwhole>(value: OfType, delta: Delta<OfType>) => OfType =
-    <OfType extends Unwhole>(value: OfType, delta: Delta<OfType>): OfType =>
-        Translation(value as unknown as number, delta as unknown as Translation) as unknown as OfType
-const Arc: <OfType extends Unwhole>(value: OfType, arc: Arc<OfType>) => OfType =
-    <OfType extends Unwhole>(value: OfType, arc: Arc<OfType>): OfType =>
-        Rotation(value as unknown as number, arc as unknown as Rotation) as unknown as OfType
+const Interval: <OfType extends Unwhole>(numeral: OfType, useInterval: Interval<OfType>) => OfType =
+    <OfType extends Unwhole>(numeral: OfType, useInterval: Interval<OfType>): OfType =>
+        Scalar(numeral as unknown as number, useInterval as unknown as Scalar) as unknown as OfType
+const Delta: <OfType extends Unwhole>(numeral: OfType, useDelta: Delta<OfType>) => OfType =
+    <OfType extends Unwhole>(numeral: OfType, useDelta: Delta<OfType>): OfType =>
+        Translation(numeral as unknown as number, useDelta as unknown as Translation) as unknown as OfType
+const Arc: <OfType extends Unwhole>(numeral: OfType, useArc: Arc<OfType>) => OfType =
+    <OfType extends Unwhole>(numeral: OfType, useArc: Arc<OfType>): OfType =>
+        Rotation(numeral as unknown as number, useArc as unknown as Rotation) as unknown as OfType
 
-// Whole Transformation Uses (with overloads for arrays)
+// Uses - Whole - Transformation, with Array Overloads
 
 const Multiple: {
-    <OfType extends NonNormal>(value: OfType, multiple: Multiple<OfType>): OfType,
-    <OfType extends ArrayedType>(value: OfType, multiple: Multiple<OfType>): OfType,
+    <OfType extends NonNormal>(numeral: OfType, useMultiple: Multiple<OfType>): OfType,
+    <OfType extends ArrayedType>(numeral: OfType, useMultiple: Multiple<OfType>): OfType,
 } =
-    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType>(value: OfType, multiple: Multiple<OfType>): OfType => {
+    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType>(numeral: OfType, useMultiple: Multiple<OfType>): OfType => {
         // If is array or cycle, return special array overload here
 
         return Scalar(
-            value as unknown as number,
-            integerCheck(multiple, 'Multiple') as unknown as Scalar,
+            numeral as unknown as number,
+            integerCheck(useMultiple, 'Multiple') as unknown as Scalar,
         ) as unknown as OfType
     }
 const Cardinal: {
-    <OfType extends NonNormal>(value: OfType, cardinal: Cardinal<OfType>): OfType,
-    <OfType extends ArrayedType>(value: OfType, cardinal: Cardinal<OfType>): OfType,
+    <OfType extends NonNormal>(numeral: OfType, useCardinal: Cardinal<OfType>): OfType,
+    <OfType extends ArrayedType>(numeral: OfType, useCardinal: Cardinal<OfType>): OfType,
 } =
-    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType>(value: OfType, cardinal: Cardinal<OfType>): OfType => {
-        if (isCycle(value)) {
-            const cycle: Cycle<OfType> = value as unknown as Cycle<OfType>
+    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType>(numeral: OfType, useCardinal: Cardinal<OfType>): OfType => {
+        if (isCycle(numeral)) {
+            const cycle: Cycle<OfType> = numeral as unknown as Cycle<OfType>
             const cycledCycle: Cycle<OfType> = as.Cycle([])
             const cellCount: Cardinal<Cycle<OfType>> = as.Cardinal<Cycle<OfType>>(cycle.length)
 
@@ -128,7 +128,7 @@ const Cardinal: {
             ) {
                 let cycledIndex: Ordinal<Cycle<OfType>> = Cardinal(
                     index,
-                    as.Transition<Cycle<OfType>>(-as.number(cardinal as unknown as Cardinal)),
+                    as.Transition<Cycle<OfType>>(-as.number(useCardinal as unknown as Cardinal)),
                 )
                 cycledIndex = Remaindee(
                     cycledIndex,
@@ -141,44 +141,44 @@ const Cardinal: {
         }
 
         return Translation(
-            value as unknown as number,
-            integerCheck(cardinal, 'Cardinal') as unknown as Translation,
+            numeral as unknown as number,
+            integerCheck(useCardinal, 'Cardinal') as unknown as Translation,
         ) as unknown as OfType
     }
 const Transposition: {
-    <OfType extends NonNormal>(value: OfType, transposition: Transposition<OfType>): OfType,
-    <OfType extends ArrayedType>(value: OfType, transposition: Transposition<OfType>): OfType,
+    <OfType extends NonNormal>(numeral: OfType, useTransposition: Transposition<OfType>): OfType,
+    <OfType extends ArrayedType>(numeral: OfType, useTransposition: Transposition<OfType>): OfType,
 } =
-    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType>(value: OfType, transposition: Transposition<OfType>): OfType => {
+    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType>(numeral: OfType, useTransposition: Transposition<OfType>): OfType => {
         // If is array or cycle, return special array overload here
 
         return Rotation(
-            value as unknown as number,
-            integerCheck(transposition, 'Transposition') as unknown as Rotation,
+            numeral as unknown as number,
+            integerCheck(useTransposition, 'Transposition') as unknown as Rotation,
         ) as unknown as OfType
     }
 
-// Whole Non-Transformation Uses
+// Uses - Whole - Other
 
-const Power: <OfType extends NonNormal>(value: OfType, power: Power<OfType>) => OfType =
-    <OfType extends Number>(value: OfType, power: Power<OfType>): OfType =>
-        Exponent(value, integerCheck(power, 'Power'))
-const Base: <OfType extends NonNormal>(value: OfType, base: Base<OfType>) => OfType =
-    <OfType extends Number>(value: OfType, base: Base<OfType>): OfType =>
-        Logarithm(value, integerCheck(base, 'Base'))
-const Remaindee: <OfType extends NonNormal>(value: OfType, integerModulus: Remaindee<OfType>) => OfType =
-    <OfType extends Number>(value: OfType, integerModulus: Remaindee<OfType>): OfType =>
-        Modulus(value, integerCheck(integerModulus, 'Base'))
+const Power: <OfType extends NonNormal>(numeral: OfType, usePower: Power<OfType>) => OfType =
+    <OfType extends Number>(numeral: OfType, usePower: Power<OfType>): OfType =>
+        Exponent(numeral, integerCheck(usePower, 'Power'))
+const Base: <OfType extends NonNormal>(numeral: OfType, useBase: Base<OfType>) => OfType =
+    <OfType extends Number>(numeral: OfType, useBase: Base<OfType>): OfType =>
+        Logarithm(numeral, integerCheck(useBase, 'Base'))
+const Remaindee: <OfType extends NonNormal>(numeral: OfType, useRemaindee: Remaindee<OfType>) => OfType =
+    <OfType extends Number>(numeral: OfType, useRemaindee: Remaindee<OfType>): OfType =>
+        Modulus(numeral, integerCheck(useRemaindee, 'Base'))
 
-// Whole Fixed Uses (only used for arrays)
+// Uses - Whole - Fixed, only for Arrays
 
 const Ordinal: {
-    <ElementType>(array: Cycle<ElementType>, ordinal: Ordinal<Cycle<ElementType>>): ElementType,
-    <ElementType>(array: ElementType[], ordinal: Ordinal<ElementType[]>): ElementType,
+    <ElementType>(array: Cycle<ElementType>, useOrdinal: Ordinal<Cycle<ElementType>>): ElementType,
+    <ElementType>(array: ElementType[], useOrdinal: Ordinal<ElementType[]>): ElementType,
 } =
-    <ElementType>(array: ElementType[], ordinal: Ordinal<ElementType[]>): ElementType => {
+    <ElementType>(array: ElementType[], useOrdinal: Ordinal<ElementType[]>): ElementType => {
         if (isCycle(array)) {
-            const cycleOrdinal: Ordinal<Cycle<ElementType>> = ordinal as Ordinal<Cycle<ElementType>>
+            const cycleOrdinal: Ordinal<Cycle<ElementType>> = useOrdinal as Ordinal<Cycle<ElementType>>
             const cycledOrdinal: Ordinal<Cycle<ElementType>> = Remaindee(
                 cycleOrdinal,
                 as.Remaindee<Ordinal<Cycle<ElementType>>>(array.length),
@@ -187,55 +187,55 @@ const Ordinal: {
             return array[ as.number(cycledOrdinal as unknown as Ordinal) ]
         }
 
-        ordinalCheck(ordinal, array)
+        ordinalCheck(useOrdinal, array)
 
-        return array[ as.number(ordinal as unknown as Ordinal) ]
+        return array[ as.number(useOrdinal as unknown as Ordinal) ]
     }
 
-// Whole Compound Uses
+// Uses - Whole - Compound, only for Arrays
 
 const Factor: {
-    <ElementType>(ordinal: Ordinal<Cycle<ElementType>>, factor: Factor<Cycle<ElementType>>): Ordinal<Cycle<ElementType>>,
-    <ElementType>(ordinal: Ordinal<ElementType[]>, factor: Factor<ElementType[]>): Ordinal<ElementType[]>,
+    <ElementType>(numeral: Ordinal<Cycle<ElementType>>, useFactor: Factor<Cycle<ElementType>>): Ordinal<Cycle<ElementType>>,
+    <ElementType>(numeral: Ordinal<ElementType[]>, useFactor: Factor<ElementType[]>): Ordinal<ElementType[]>,
 } =
     <ElementType>(
-        ordinal: Ordinal<ElementType[]> | Ordinal<Cycle<ElementType>>,
-        factor: Factor<ElementType[]> | Factor<Cycle<ElementType>>,
+        numeral: Ordinal<ElementType[]> | Ordinal<Cycle<ElementType>>,
+        useFactor: Factor<ElementType[]> | Factor<Cycle<ElementType>>,
     ): Ordinal<ElementType[]> & Ordinal<Cycle<ElementType>> =>
         Multiple(
-            ordinal as unknown as number,
-            factor as unknown as Multiple,
+            numeral as unknown as number,
+            useFactor as unknown as Multiple,
         ) as unknown as Ordinal<ElementType[]> & Ordinal<Cycle<ElementType>>
 const Transition: {
-    <ElementType>(ordinal: Ordinal<Cycle<ElementType>>, transition: Transition<Cycle<ElementType>>): Ordinal<Cycle<ElementType>>,
-    <ElementType>(ordinal: Ordinal<ElementType[]>, transition: Transition<ElementType[]>): Ordinal<ElementType[]>,
+    <ElementType>(numeral: Ordinal<Cycle<ElementType>>, useTransition: Transition<Cycle<ElementType>>): Ordinal<Cycle<ElementType>>,
+    <ElementType>(numeral: Ordinal<ElementType[]>, useTransition: Transition<ElementType[]>): Ordinal<ElementType[]>,
 } =
     <ElementType>(
-        ordinal: Ordinal<ElementType[]> | Ordinal<Cycle<ElementType>>,
-        transition: Transition<ElementType[]> | Transition<Cycle<ElementType>>,
+        numeral: Ordinal<ElementType[]> | Ordinal<Cycle<ElementType>>,
+        useTransition: Transition<ElementType[]> | Transition<Cycle<ElementType>>,
     ): Ordinal<ElementType[]> & Ordinal<Cycle<ElementType>> =>
         Cardinal(
-            ordinal as unknown as number,
-            transition as unknown as Cardinal,
+            numeral as unknown as number,
+            useTransition as unknown as Cardinal,
         ) as unknown as Ordinal<ElementType[]> & Ordinal<Cycle<ElementType>>
 const Turn: {
-    <ElementType>(ordinal: Ordinal<Cycle<ElementType>>, factor: Turn<Cycle<ElementType>>): Ordinal<Cycle<ElementType>>,
-    <ElementType>(ordinal: Ordinal<ElementType[]>, factor: Turn<ElementType[]>): Ordinal<ElementType[]>,
+    <ElementType>(numeral: Ordinal<Cycle<ElementType>>, useFactor: Turn<Cycle<ElementType>>): Ordinal<Cycle<ElementType>>,
+    <ElementType>(numeral: Ordinal<ElementType[]>, useFactor: Turn<ElementType[]>): Ordinal<ElementType[]>,
 } =
     <ElementType>(
-        ordinal: Ordinal<ElementType[]> | Ordinal<Cycle<ElementType>>,
-        factor: Turn<ElementType[]> | Turn<Cycle<ElementType>>,
+        numeral: Ordinal<ElementType[]> | Ordinal<Cycle<ElementType>>,
+        useFactor: Turn<ElementType[]> | Turn<Cycle<ElementType>>,
     ): Ordinal<ElementType[]> & Ordinal<Cycle<ElementType>> =>
         Transposition(
-            ordinal as unknown as number,
-            factor as unknown as Transposition,
+            numeral as unknown as number,
+            useFactor as unknown as Transposition,
         ) as unknown as Ordinal<ElementType[]> & Ordinal<Cycle<ElementType>>
 
-// Normal Uses
+// Uses - Normal
 
-const NormalScalar: <OfType extends Number>(value: OfType, normalScalar: NormalScalar<OfType>) => OfType =
-    <OfType extends Number>(value: OfType, normalScalar: NormalScalar<OfType>): OfType =>
-        Scalar(value, normalCheck(normalScalar, 'NormalScalar'))
+const NormalScalar: <OfType extends Number>(numeral: OfType, useNormalScalar: NormalScalar<OfType>) => OfType =
+    <OfType extends Number>(numeral: OfType, useNormalScalar: NormalScalar<OfType>): OfType =>
+        Scalar(numeral, normalCheck(useNormalScalar, 'NormalScalar'))
 
 export {
     Cardinal,

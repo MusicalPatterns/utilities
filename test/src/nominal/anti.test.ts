@@ -1,6 +1,6 @@
 // tslint:disable
 
-// There should be 176 errors in this file when the below is uncommented.
+// There should be 174 errors in this file when the below is uncommented.
 
 // import {
 //     as,
@@ -54,11 +54,11 @@
 //             })
 //
 //             it('DOES NOT ALLOW assignment as raw numbers', () => {
-//                 const hzToRaw: number = as.Hz(3)
+//                 const hzAsRaw: number = as.Hz(3)
 //             })
 //
 //             it('DOES NOT ALLOW assignment as the wrong unit', () => {
-//                 const hzToMs: Ms = as.Hz(3)
+//                 const hzAsMs: Ms = as.Hz(3)
 //             })
 //
 //             it('DOES NOT ALLOW re-assignment as the same unit', () => {
@@ -69,7 +69,7 @@
 //                 const intermediaryVariableMs: Ms = as.Ms(3)
 //                 const centsFromExplicitMsVariable: Cents = as.Cents(intermediaryVariableMs)
 //
-//                 const centsFromToMsDirectly: Cents = as.Cents(as.Ms(3))
+//                 const centsFromAsMsDirectly: Cents = as.Cents(as.Ms(3))
 //             })
 //
 //             it('DOES NOT ALLOW unholy hybrids of units', () => {
@@ -99,11 +99,11 @@
 //             })
 //
 //             it('DOES NOT ALLOW assignment as raw numbers', () => {
-//                 const rotationToRaw: number = as.Rotation(3)
+//                 const rotationAsRaw: number = as.Rotation(3)
 //             })
 //
 //             it('DOES NOT ALLOW assignment as the wrong use', () => {
-//                 const rotationToScalar: Scalar = as.Rotation(3)
+//                 const rotationAsScalar: Scalar = as.Rotation(3)
 //             })
 //
 //             it('DOES NOT allow nesting of uses', () => {
@@ -134,19 +134,18 @@
 //             })
 //
 //             it('DOES NOT ALLOW assigning a mere use as a use Of something', () => {
-//                 const scalarToScalarOfUnits: Scalar<Ms> = as.Scalar(2)
-//                 const asdgsdaggdsdgsdgdgsd: Scalar<Ms> = as.Scalar<number>(2)
+//                 const scalarAsScalarOfUnits: Scalar<Ms> = as.Scalar(2)
+//                 const scalarExplicitlyOnlyOfNumberAsScalarOfUnits: Scalar<Ms> = as.Scalar<number>(2)
 //
-//                 const asg: Scalar<Ms> = 2 as unknown as Scalar
-//                 const asgg: Scalar<Ms> = 2 as unknown as Scalar<number>
+//                 const scalarAsScalarOfUnitsByAssertion: Scalar<Ms> = 2 as unknown as Scalar
+//                 const scalarExplicitlyOnlyOfNumberAsScalarOfUnitsByAssertion: Scalar<Ms> = 2 as unknown as Scalar<number>
 //
-//                 const scalarToScalarOfUse: Scalar<Rotation> = as.Scalar(2)
+//                 const scalarAsScalarOfUse: Scalar<Rotation> = as.Scalar(2)
 //
-//                 const thing: Scalar<Ms> = 2 as unknown as Scalar
-//                 const thing2: Scalar = 2 as unknown as Scalar<Ms>
+//                 const inverseProblemAssigningAScalarOfAUnitToAPlainScalar: Scalar = 2 as unknown as Scalar<Ms>
 //
-//                 const never: Scalar = as.Scalar<Ms>(3)
-//                 const never2: Scalar = as.Scalar<Rotation>(3)
+//                 const inverseProblemAssigningAScalarOfAUnitToAPlainScalarByAsing: Scalar = as.Scalar<Ms>(3)
+//                 const inverseProblemAssigningAScalarOfAUseToAPlainScalarByAsing: Scalar = as.Scalar<Rotation>(3)
 //             })
 //
 //             it('DOES NOT ALLOW making an non-integer use of an integer unit or use', () => {
@@ -179,16 +178,15 @@
 //             })
 //
 //             it('DOES NOT ALLOW same as above but for special uses', () => {
-//                 const indexToIndexOfUnits: Ordinal<Ms[]> = as.Ordinal(2)
-//                 const asdgsdaggdsdgsdgdgsd: Ordinal<Ms[]> = as.Ordinal<number[]>(2)
+//                 const indexAsIndexOfUnits: Ordinal<Ms[]> = as.Ordinal(2)
+//                 const indexExplictlyOfPlainNumberArrayAsIndexOfUnits: Ordinal<Ms[]> = as.Ordinal<number[]>(2)
 //
-//                 const asg: Ordinal<Ms[]> = 2 as unknown as Ordinal
-//                 const asgg: Ordinal<Ms[]> = 2 as unknown as Ordinal<number[]>
+//                 const indexAsIndexOfUnitsByAssertion: Ordinal<Ms[]> = 2 as unknown as Ordinal
+//                 const indexExplictlyOfPlainNumberArrayAsIndexOfUnitsByAssertion: Ordinal<Ms[]> = 2 as unknown as Ordinal<number[]>
 //
-//                 const indexToIndexOfUse: Ordinal<Rotation[]> = as.Ordinal(2)
+//                 const indexAsIndexOfUse: Ordinal<Rotation[]> = as.Ordinal(2)
 //
-//                 const thing: Ordinal<Ms[]> = 2 as unknown as Ordinal
-//                 const thing2: Ordinal = 2 as unknown as Ordinal<Ms[]>
+//                 const inverseProblemAssigningIndexOfUnitsToPlainIndex: Ordinal = 2 as unknown as Ordinal<Ms[]>
 //             })
 //
 //             it('DOES NOT ALLOW assigning integerlike ones as plain numbers', () => {
@@ -209,11 +207,11 @@
 //             })
 //
 //             it('DOES NOT ALLOW assigning less specific uses (unit, integer) as the more specific counterparts', () => {
-//                 const scalarToNormalScalar: NormalScalar = as.Scalar(0.5)
+//                 const scalarAsNormalScalar: NormalScalar = as.Scalar(0.5)
 //
-//                 const scalarToMultiple: Multiple = as.Scalar(5)
-//                 const logarithmToBase: Base = as.Logarithm(5)
-//                 const exponentToPower: Power = as.Exponent(5)
+//                 const scalarAsMultiple: Multiple = as.Scalar(5)
+//                 const logarithmAsBase: Base = as.Logarithm(5)
+//                 const exponentAsPower: Power = as.Exponent(5)
 //             })
 //
 //             it('DOES NOT ALLOW being a use of another use', () => {
@@ -247,8 +245,8 @@
 //         const wrongOf: Ordinal<Translation[]> = insteadOf<Ordinal, Scalar>(INITIAL)
 //         const noOf: Ordinal = insteadOf<Ordinal, Scalar>(INITIAL)
 //         const fromFullOf: Scalar<Exponent> = insteadOf<Scalar, Rotation>(as.Scalar<Translation>(1))
-//         const doesntHoldOnToInstead: Ordinal<string> = insteadOf<Ordinal>(as.Ordinal<string>(1))
-//         const doesntAssignToWrongInstead: Ordinal<Scalar[]> = insteadOf<Ordinal>(as.Ordinal<string>(1))
+//         const doesntHoldOnAsInstead: Ordinal<string> = insteadOf<Ordinal>(as.Ordinal<string>(1))
+//         const doesntAssignAsWrongInstead: Ordinal<Scalar[]> = insteadOf<Ordinal>(as.Ordinal<string>(1))
 //     })
 //
 //     describe('ofNotAs', () => {
@@ -256,18 +254,18 @@
 //             const ofFromWrongUse: Of<Rotation> = ofNotAs(as.Translation(3))
 //             const ofFromWrongUnits: Of<Hz> = ofNotAs(as.Ms(3))
 //
-//             const ofFromWrongUseStraightToUse: Scalar<Rotation> = as.Scalar(ofNotAs(as.Translation(3)))
-//             const ofFromWrongUnitsStraightToUse: Scalar<Hz> = as.Scalar(ofNotAs(as.Ms(3)))
+//             const ofFromWrongUseStraightAsUse: Scalar<Rotation> = as.Scalar(ofNotAs(as.Translation(3)))
+//             const ofFromWrongUnitsStraightAsUse: Scalar<Hz> = as.Scalar(ofNotAs(as.Ms(3)))
 //
 //             const ofFromUseOfWrongUse: Of<Scalar<Rotation>> = ofNotAs(as.Scalar<Translation>(3))
 //             const ofFromUseOfWrongUnits: Of<Scalar<Hz>> = ofNotAs(as.Scalar<Ms>(3))
 //             const ofFromWrongUseOfUse: Of<Rotation<Translation>> = ofNotAs(as.Scalar<Translation>(3))
 //             const ofFromWrongUseOfUnits: Of<Rotation<Ms>> = ofNotAs(as.Scalar<Ms>(3))
 //
-//             const ofFromUseOfWrongUseStraightToUse: Rotation<Scalar<Rotation>> = as.Rotation(ofNotAs(as.Scalar<Translation>(3)))
-//             const ofFromUseOfWrongUnitsStraightToUse: Rotation<Scalar<Hz>> = as.Rotation(ofNotAs(as.Scalar<Ms>(3)))
-//             const ofFromWrongUseOfUseStraightToUse: Rotation<Rotation<Translation>> = as.Rotation(ofNotAs(as.Scalar<Translation>(3)))
-//             const ofFromWrongUseOfUnitsStraightToUse: Rotation<Rotation<Ms>> = as.Rotation(ofNotAs(as.Scalar<Ms>(3)))
+//             const ofFromUseOfWrongUseStraightAsUse: Rotation<Scalar<Rotation>> = as.Rotation(ofNotAs(as.Scalar<Translation>(3)))
+//             const ofFromUseOfWrongUnitsStraightAsUse: Rotation<Scalar<Hz>> = as.Rotation(ofNotAs(as.Scalar<Ms>(3)))
+//             const ofFromWrongUseOfUseStraightAsUse: Rotation<Rotation<Translation>> = as.Rotation(ofNotAs(as.Scalar<Translation>(3)))
+//             const ofFromWrongUseOfUnitsStraightAsUse: Rotation<Rotation<Ms>> = as.Rotation(ofNotAs(as.Scalar<Ms>(3)))
 //         })
 //     })
 //
@@ -297,12 +295,12 @@
 //         })
 //
 //         it('DOES NOT ALLOW the same things a normal As, for Units does not allow', () => {
-//             const numeroToRaw: number = customAs.Numero(3)
-//             const numerosToRaw: number[] = customAs.Numeros([ 3 ])
-//             const rawToNumero: Numero = 3
-//             const rawToNumeros: Numeros = [ 3 ]
-//             const numerosToNumero: Numero = customAs.Numeros([ 3 ])
-//             const numeroToNumeros: Numeros = customAs.Numero(3)
+//             const numeroAsRaw: number = customAs.Numero(3)
+//             const numerosAsRaw: number[] = customAs.Numeros([ 3 ])
+//             const rawAsNumero: Numero = 3
+//             const rawAsNumeros: Numeros = [ 3 ]
+//             const numerosAsNumero: Numero = customAs.Numeros([ 3 ])
+//             const numeroAsNumeros: Numeros = customAs.Numero(3)
 //         })
 //     })
 //
