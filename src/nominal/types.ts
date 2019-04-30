@@ -7,11 +7,18 @@ import { Difference } from '../code'
 type NoUnits = Number & { _UnitsBrand?: 'NoUnits' }
 type UnitsBrand<UnitsName> = NoUse & { _UnitsBrand: UnitsName } & MaybeWhole<UnitsName>
 
-type AbstractToPhysical<AbstractType extends { _UnitsBrand: string }> =
+type AbstractUnits = Number & { _UnitsBrand: 'Frequency' | 'Time' | 'Space' }
+type PhysicalUnits = Number & { _UnitsBrand: 'Hz' | 'Ms' | 'Meters' }
+type AbstractToPhysical<AbstractType extends AbstractUnits> =
     AbstractType extends { _UseBrand: 'Frequency' } ? Hz :
         AbstractType extends { _UseBrand: 'Time' } ? Ms :
             AbstractType extends { _UseBrand: 'Space' } ? Meters :
-                AbstractType
+                {}
+type PhysicalToAbstract<PhysicalType extends PhysicalUnits> =
+    PhysicalType extends { _UseBrand: 'Hz' } ? Frequency :
+        PhysicalType extends { _UseBrand: 'Ms' } ? Time :
+            PhysicalType extends { _UseBrand: 'Meters' } ? Space :
+                {}
 
 // Units - Unwhole - Physical
 
@@ -281,5 +288,8 @@ export {
     Factor,
     Transition,
     Turn,
+    AbstractUnits,
+    PhysicalUnits,
     AbstractToPhysical,
+    PhysicalToAbstract,
 }
