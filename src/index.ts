@@ -172,6 +172,10 @@ export {
     Position,
     Intensity,
     musicalAs,
+    Duration,
+    Tone,
+    Location,
+    Gain,
 } from './music'
 export {
     Base,

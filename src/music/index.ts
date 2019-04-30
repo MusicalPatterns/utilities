@@ -16,4 +16,8 @@ export {
     Pitch,
     Position,
     Intensity,
+    Duration,
+    Tone,
+    Location,
+    Gain,
 } from './types'
