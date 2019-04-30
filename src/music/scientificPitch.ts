@@ -4,7 +4,7 @@ import { keys, ObjectOf, reduce } from '../code'
 import { negative, pow } from '../math'
 import { as, Frequency, OCTAVE, Power, Scalar, use } from '../nominal'
 import * as musicalAs from './musicalAs'
-import { Pitch, ScientificPitches, ScientificPitchNoteName, ScientificPitchOctaveNumber } from './types'
+import { ScientificPitches, ScientificPitchNoteName, ScientificPitchOctaveNumber, Tone } from './types'
 
 const SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP: {
     [Index in ScientificPitchOctaveNumber]: Power<Frequency>
@@ -23,25 +23,25 @@ const SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP: {
     [ ScientificPitchOctaveNumber._10 ]: as.Power<Frequency>(10),
 }
 
-const SCIENTIFIC_PITCH_NOTE_NAME_TO_ZEROTH_OCTAVE_FREQUENCY_MAP: { [Index in ScientificPitchNoteName]: Pitch } = {
-    [ ScientificPitchNoteName.C ]: musicalAs.Pitch(16.352),
-    [ ScientificPitchNoteName.C_SHARP_D_FLAT ]: musicalAs.Pitch(17.324),
-    [ ScientificPitchNoteName.D ]: musicalAs.Pitch(18.354),
-    [ ScientificPitchNoteName.D_SHARP_E_FLAT ]: musicalAs.Pitch(19.445),
-    [ ScientificPitchNoteName.E ]: musicalAs.Pitch(20.602),
-    [ ScientificPitchNoteName.F ]: musicalAs.Pitch(21.827),
-    [ ScientificPitchNoteName.F_SHARP_G_FLAT ]: musicalAs.Pitch(23.125),
-    [ ScientificPitchNoteName.G ]: musicalAs.Pitch(24.5),
-    [ ScientificPitchNoteName.G_SHARP_A_FLAT ]: musicalAs.Pitch(25.957),
-    [ ScientificPitchNoteName.A ]: musicalAs.Pitch(27.5),
-    [ ScientificPitchNoteName.A_SHARP_B_FLAT ]: musicalAs.Pitch(29.135),
-    [ ScientificPitchNoteName.B ]: musicalAs.Pitch(30.868),
+const SCIENTIFIC_PITCH_NOTE_NAME_TO_ZEROTH_OCTAVE_FREQUENCY_MAP: { [Index in ScientificPitchNoteName]: Tone } = {
+    [ ScientificPitchNoteName.C ]: musicalAs.Tone(16.352),
+    [ ScientificPitchNoteName.C_SHARP_D_FLAT ]: musicalAs.Tone(17.324),
+    [ ScientificPitchNoteName.D ]: musicalAs.Tone(18.354),
+    [ ScientificPitchNoteName.D_SHARP_E_FLAT ]: musicalAs.Tone(19.445),
+    [ ScientificPitchNoteName.E ]: musicalAs.Tone(20.602),
+    [ ScientificPitchNoteName.F ]: musicalAs.Tone(21.827),
+    [ ScientificPitchNoteName.F_SHARP_G_FLAT ]: musicalAs.Tone(23.125),
+    [ ScientificPitchNoteName.G ]: musicalAs.Tone(24.5),
+    [ ScientificPitchNoteName.G_SHARP_A_FLAT ]: musicalAs.Tone(25.957),
+    [ ScientificPitchNoteName.A ]: musicalAs.Tone(27.5),
+    [ ScientificPitchNoteName.A_SHARP_B_FLAT ]: musicalAs.Tone(29.135),
+    [ ScientificPitchNoteName.B ]: musicalAs.Tone(30.868),
 }
 
-const scientificPitch: (noteName: ScientificPitchNoteName, octaveNumber: ScientificPitchOctaveNumber) => Pitch =
-    (noteName: ScientificPitchNoteName, octaveNumber: ScientificPitchOctaveNumber): Pitch => {
-        const octaveScalar: Scalar<Pitch> =
-            as.Scalar<Pitch>(as.number(pow(
+const scientificPitch: (noteName: ScientificPitchNoteName, octaveNumber: ScientificPitchOctaveNumber) => Tone =
+    (noteName: ScientificPitchNoteName, octaveNumber: ScientificPitchOctaveNumber): Tone => {
+        const octaveScalar: Scalar<Tone> =
+            as.Scalar<Tone>(as.number(pow(
                 OCTAVE,
                 SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP[ octaveNumber ],
             )))
@@ -67,12 +67,12 @@ const scientificPitchesInitialAccumulator: ScientificPitches = {
 const SCIENTIFIC_PITCHES: ScientificPitches = keys(SCIENTIFIC_PITCH_NOTE_NAME_TO_ZEROTH_OCTAVE_FREQUENCY_MAP)
     .reduce(
         (pitchesAccumulator: ScientificPitches, noteName: ScientificPitchNoteName): ScientificPitches => {
-            const frequencies: ObjectOf<Pitch> = reduce(
+            const frequencies: ObjectOf<Tone> = reduce(
                 keys(SCIENTIFIC_PITCH_OCTAVE_NUMBER_TO_POWER_MAP),
                 (
-                    frequenciesAccumulator: ObjectOf<Pitch>,
+                    frequenciesAccumulator: ObjectOf<Tone>,
                     octaveNumber: ScientificPitchOctaveNumber,
-                ): ObjectOf<Pitch> => ({
+                ): ObjectOf<Tone> => ({
                     ...frequenciesAccumulator,
                     [ octaveNumber ]: scientificPitch(noteName, octaveNumber),
                 }),
