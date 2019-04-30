@@ -12,7 +12,7 @@ export {
     ScientificPitchNoteName,
     ScientificPitchOctaveNumber,
     ScientificPitches,
-    Duration,
+    Value,
     Pitch,
     Position,
     Intensity,

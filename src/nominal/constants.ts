@@ -168,8 +168,10 @@ const CENTS_PER_SEMITONE: Cents = as.Cents(100)
 const CENTS_PER_OCTAVE: Cents =
     as.Cents(as.number(CENTS_PER_SEMITONE) * as.number(SEMITONES_PER_OCTAVE))
 
-const BEGINNING: Point<Time> = as.Point<Time>(0)
-const NO_DURATION: Delta<Time> = as.Delta<Time>(0)
+const NO_VALUE: Delta<Time> = as.Delta<Time>(0)
+
+const BEGINNING: Point<Ms> = as.Point<Ms>(0)
+const NO_DURATION: Delta<Ms> = as.Delta<Ms>(0)
 
 const MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS: Cardinal = as.Cardinal(10)
 
@@ -292,6 +294,7 @@ export {
     CENTS_PER_SEMITONE,
     BEGINNING,
     MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS,
+    NO_VALUE,
     NO_DURATION,
     MILLISECONDS_PER_SECOND,
     SECONDS_PER_MINUTE,

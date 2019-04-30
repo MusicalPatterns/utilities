@@ -1,11 +1,11 @@
 // tslint:disable variable-name
 
 import { NoUnits } from '../nominal'
-import { Duration, Intensity, Pitch, Position } from './types'
+import { Intensity, Pitch, Position, Value } from './types'
 
-const Duration: <NumericType extends NoUnits>(asDuration: NumericType) => Duration =
-    <NumericType extends NoUnits>(asDuration: NumericType): Duration =>
-        asDuration as unknown as Duration
+const Value: <NumericType extends NoUnits>(asValue: NumericType) => Value =
+    <NumericType extends NoUnits>(asValue: NumericType): Value =>
+        asValue as unknown as Value
 const Pitch: <NumericType extends NoUnits>(asPitch: NumericType) => Pitch =
     <NumericType extends NoUnits>(asPitch: NumericType): Pitch =>
         asPitch as unknown as Pitch
@@ -17,7 +17,7 @@ const Intensity: <NumericType extends NoUnits>(asIntensity: NumericType) => Inte
         asIntensity as unknown as Intensity
 
 export {
-    Duration,
+    Value,
     Pitch,
     Position,
     Intensity,

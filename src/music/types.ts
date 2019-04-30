@@ -33,7 +33,7 @@ enum ScientificPitchOctaveNumber {
 
 type ScientificPitches = { [Index in ScientificPitchNoteName]: ObjectOf<Pitch> }
 
-type Duration = Delta<Time>
+type Value = Delta<Time>
 type Pitch = Point<Frequency>
 type Position = Point<Space>
 type Intensity = Scalar<Amplitude>
@@ -42,7 +42,7 @@ export {
     ScientificPitchNoteName,
     ScientificPitchOctaveNumber,
     ScientificPitches,
-    Duration,
+    Value,
     Pitch,
     Position,
     Intensity,
