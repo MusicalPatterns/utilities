@@ -1,13 +1,13 @@
-import { DECREMENT, INCREMENT, Ordinal, use } from '../nominal'
+import { ArrayedType, DECREMENT, INCREMENT, Ordinal, use } from '../nominal'
 
 const translateFromOneIndexedToZeroIndexed:
-    <ElementType, ArrayType extends ElementType[] = ElementType[]>(index: Ordinal<ArrayType>) => Ordinal<ArrayType> =
-    <ElementType, ArrayType extends ElementType[] = ElementType[]>(index: Ordinal<ArrayType>): Ordinal<ArrayType> =>
+    <ArrayType extends ArrayedType>(index: Ordinal<ArrayType>) => Ordinal<ArrayType> =
+    <ArrayType extends ArrayedType>(index: Ordinal<ArrayType>): Ordinal<ArrayType> =>
         use.Cardinal(index, DECREMENT)
 
 const translateFromZeroIndexedToOneIndexed:
-    <ElementType, ArrayType extends ElementType[] = ElementType[]>(index: Ordinal<ArrayType>) => Ordinal<ArrayType> =
-    <ElementType, ArrayType extends ElementType[] = ElementType[]>(index: Ordinal<ArrayType>): Ordinal<ArrayType> =>
+    <ArrayType extends ArrayedType>(index: Ordinal<ArrayType>) => Ordinal<ArrayType> =
+    <ArrayType extends ArrayedType>(index: Ordinal<ArrayType>): Ordinal<ArrayType> =>
         use.Cardinal(index, INCREMENT)
 
 export {
