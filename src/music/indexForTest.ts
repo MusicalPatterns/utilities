@@ -14,4 +14,5 @@ export {
     ScientificPitchNoteName,
     ScientificPitchOctaveNumber,
     Pitch,
+    Tone,
 } from './types'

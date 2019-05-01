@@ -1,5 +1,18 @@
 import { ObjectOf } from '../code'
-import { Amplitude, Delta, Frequency, Hz, Meters, Ms, NormalScalar, Point, Scalar, Space, Time } from '../nominal'
+import {
+    Amplitude,
+    Delta,
+    Frequency,
+    Hz,
+    Interval,
+    Meters,
+    Ms,
+    NormalScalar,
+    Point,
+    Scalar,
+    Space,
+    Time,
+} from '../nominal'
 
 enum ScientificPitchNoteName {
     C = 'C',
@@ -34,8 +47,8 @@ enum ScientificPitchOctaveNumber {
 type ScientificPitches = { [Index in ScientificPitchNoteName]: ObjectOf<Tone> }
 
 type Value = Delta<Time>
-type Pitch = Point<Frequency>
-type Position = Point<Space>
+type Pitch = Interval<Frequency>
+type Position = Delta<Space>
 type Intensity = Scalar<Amplitude>
 
 type Duration = Delta<Ms>
