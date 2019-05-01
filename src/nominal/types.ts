@@ -185,7 +185,7 @@ type CanBeAsAnUnwholeUseOfNoType = CanBeAsAWholeUseOfNoType & Unwhole
 
 // Array
 
-type ArrayedType = unknown[] | Cycle<unknown> | string
+type ArrayedType = Array<unknown> | Cycle<unknown> | string
 type CanBeAsAWholeUseWithAnArrayOverloadOfSomeType = CanBeAsAWholeUseOfSomeType | ArrayedType
 type CanBeAsAWholeUseWithAnArrayOverloadOfNoType = CanBeAsAWholeUseOfNoType | ArrayedType
 // tslint:disable-next-line no-any
