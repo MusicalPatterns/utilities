@@ -976,4 +976,19 @@ describe('as', () => {
                 .toThrow(new Error('Numerals of type Integer must be integers. This numeral was 9.0000000004.'))
         })
     })
+
+    describe('arrays', () => {
+        describe('Cycle', () => {
+            it('does not mutate the array argument', () => {
+                const original: number[] = [ 1, 3, 4 ]
+
+                const cycle: Cycle = as.Cycle(original)
+
+                expect(cycle._CycleBrand)
+                    .toBeTruthy()
+                expect((original as Cycle)._CycleBrand)
+                    .toBeUndefined()
+            })
+        })
+    })
 })

@@ -309,9 +309,12 @@ const Integer: <OfType extends NoUnits>(asInteger: OfType) => Integer =
 
 const Cycle: <ElementType>(asCycle: ElementType[]) => Cycle<ElementType> =
     <ElementType>(asCycle: ElementType[]): Cycle<ElementType> => {
-        (asCycle as Cycle<ElementType>)._CycleBrand = true
+        // tslint:disable-next-line semicolon
+        const brandedAsCycle: ElementType[] = asCycle.slice();
 
-        return asCycle as Cycle<ElementType>
+        (brandedAsCycle as Cycle<ElementType>)._CycleBrand = true
+
+        return brandedAsCycle as Cycle<ElementType>
     }
 
 const Block: (asBlock: number[]) => Block =
