@@ -80,6 +80,10 @@ export {
     every,
     findIndex,
     range,
+    isArray,
+    isString,
+    isNumber,
+    isObject,
 } from './code'
 export {
     absoluteRatio,

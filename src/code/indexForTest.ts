@@ -2,7 +2,7 @@
 
 export { deepEqual } from './deepEqual'
 export { deepCloneObject, deepClone } from './deepClone'
-export { isUndefined } from './isUndefined'
+export { isUndefined } from './typeGuards'
 export { allElementsEqual } from './allElementsEqual'
 export { repeatCall } from './repeatCall'
 export { repeat } from './repeat'
@@ -13,6 +13,7 @@ export { arraysHaveNoCommonValues } from './noCommonValues'
 export { everyNthElement } from './regularSamplings'
 export { finalElement, indexOfFinalElement } from './finalElement'
 export { range } from './range'
+export { reverse } from './reverse'
 export { camelCaseToConstantCase, constantCaseToUpperCase, camelCaseToLowerCase, camelCaseToUpperCase } from './case'
 
 export {

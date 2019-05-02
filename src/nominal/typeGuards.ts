@@ -1,8 +1,8 @@
 import { Cycle } from './types'
 
-const isCycle: (value: unknown) => value is Cycle<unknown> =
-    (value: unknown): value is Cycle<unknown> =>
-        value && (value as Cycle<unknown>)._CycleBrand
+const isCycle: (maybeCycle: unknown) => maybeCycle is Cycle<unknown> =
+    (maybeCycle: unknown): maybeCycle is Cycle<unknown> =>
+        maybeCycle && (maybeCycle as Cycle<unknown>)._CycleBrand
 
 export {
     isCycle,

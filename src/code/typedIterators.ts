@@ -2,7 +2,7 @@
 
 import { AnyArrayedType, ArrayedType, as, Cycle, INCREMENT, Ordinal, use } from '../nominal'
 import { indexJustBeyondFinalElement, length } from './finalElement'
-import { isUndefined } from './isUndefined'
+import { isUndefined } from './typeGuards'
 
 const slice: <ArrayType extends ArrayedType>(
     array: ArrayType,

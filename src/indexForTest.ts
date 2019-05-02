@@ -29,6 +29,7 @@ export {
     isGreaterThan,
     isLessThan,
     range,
+    reverse,
 } from './code/indexForTest'
 export {
     distanceBetween,

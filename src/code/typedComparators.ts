@@ -1,5 +1,5 @@
 import { isCloseTo } from '../math'
-import { isUndefined } from './isUndefined'
+import { isUndefined } from './typeGuards'
 
 const isLessThan:
     <NumericType extends Number>(numeral: NumericType, otherValue: NumericType) => boolean =

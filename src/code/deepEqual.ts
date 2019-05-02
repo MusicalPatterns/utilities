@@ -1,8 +1,10 @@
 // tslint:disable no-any
 
+import { isArray, isObject } from './typeGuards'
+
 const deepEqualArray: (firstValue: any, secondValue: any) => boolean =
     (firstValue: any, secondValue: any): boolean =>
-        firstValue instanceof Array && secondValue.every(
+        isArray(firstValue) && secondValue.every(
         (el: any, index: number): boolean => deepEqual(el, firstValue[ index ]),
         )
 
@@ -10,10 +12,10 @@ const deepEqualObject: (firstValue: any, secondValue: any) => boolean =
     (firstValue: any, secondValue: any): boolean => {
         let equal: boolean = false
 
-        if (firstValue instanceof Array) {
+        if (isArray(firstValue)) {
             equal = false
         }
-        else if (typeof firstValue === 'object') {
+        else if (isObject(firstValue)) {
             equal = Object.entries(secondValue)
                 .every(([ key, value ]: [ string, any ]): boolean =>
                     deepEqual(value, firstValue[ key ]))
@@ -32,10 +34,10 @@ const deepEqual: (firstValue: any, secondValue: any) => boolean =
         if (firstValue === secondValue) {
             equal = true
         }
-        else if (firstValue instanceof Array) {
+        else if (isArray(firstValue)) {
             equal = deepEqualArray(secondValue, firstValue)
         }
-        else if (typeof firstValue === 'object') {
+        else if (isObject(firstValue)) {
             // tslint:disable-next-line arguments-order
             equal = deepEqualObject(secondValue, firstValue)
         }

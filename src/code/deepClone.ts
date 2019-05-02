@@ -1,5 +1,6 @@
 import { objectSet } from './set'
 import { entries } from './typedObjects'
+import { isArray } from './typeGuards'
 import { ObjectOf } from './types'
 
 const deepCloneObject: <ObjectType extends ObjectOf<unknown>>(objectToDeepClone: ObjectType) => ObjectType =
@@ -28,8 +29,12 @@ const setAllPropertiesOfObjectOnAnother:
 const deepClone: <ObjectType>(maybeObjectToDeepClone: ObjectType) => ObjectType =
     <ObjectType>(maybeObjectToDeepClone: ObjectType): ObjectType => {
         let clonedMaybeObject: ObjectType
-        if (maybeObjectToDeepClone instanceof Array) {
+        if (isArray(maybeObjectToDeepClone)) {
             clonedMaybeObject = maybeObjectToDeepClone.slice() as unknown as ObjectType
+            setAllPropertiesOfObjectOnAnother({
+                objectToChange: clonedMaybeObject,
+                objectWithProperties: maybeObjectToDeepClone,
+            })
         }
         else if (maybeObjectToDeepClone && typeof maybeObjectToDeepClone === 'object') {
             clonedMaybeObject = deepCloneObject(maybeObjectToDeepClone)

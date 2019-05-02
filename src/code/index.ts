@@ -5,7 +5,6 @@ export { typedMap, TypedMap, entries, keys } from './typedObjects'
 export { logMessageToScreen, logMessageToConsole } from './log'
 export { doAsync } from './doAsync'
 export { objectSet, arraySet } from './set'
-export { isUndefined } from './isUndefined'
 export { translateFromOneIndexedToZeroIndexed, translateFromZeroIndexedToOneIndexed } from './translateIndexing'
 export { camelCaseToLowerCase, camelCaseToConstantCase, constantCaseToUpperCase, camelCaseToUpperCase } from './case'
 export { repeat } from './repeat'
@@ -31,6 +30,7 @@ export { evenElements, oddElements, everyNthElement } from './regularSamplings'
 export { sleep } from './sleep'
 export { range } from './range'
 export { slice, forEach, map, reduce, filter, cycleSlice, every, findIndex } from './typedIterators'
+export { isUndefined, isArray, isString, isNumber, isObject } from './typeGuards'
 export {
     isGreaterThan,
     isLessThan,

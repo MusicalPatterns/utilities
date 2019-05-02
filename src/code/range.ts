@@ -1,5 +1,5 @@
 import { as, Integer, Whole } from '../nominal'
-import { isUndefined } from './isUndefined'
+import { isUndefined } from './typeGuards'
 
 const range: <WholeType extends Whole = Integer, AnotherWholeType extends Whole = Integer>(
     firstParameter: WholeType,

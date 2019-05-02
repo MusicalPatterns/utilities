@@ -1,6 +1,6 @@
 // tslint:disable no-any
 
-import { deepClone, deepCloneObject } from '../../../src/indexForTest'
+import { as, Cycle, deepClone, deepCloneObject } from '../../../src/indexForTest'
 
 describe('deep clone', () => {
     it('deep clones objects', () => {
@@ -22,6 +22,13 @@ describe('deep clone', () => {
         const expectedClone: string = 'abcba'
         expect(actualClone)
             .toBe(expectedClone)
+    })
+
+    it('deep clones arrays which also have properties, such as brands', () => {
+        const actualClone: Cycle<string> = deepClone(as.Cycle([ 'a', 'b', 'c' ]))
+        const expectedClone: Cycle<string> = as.Cycle([ 'a', 'b', 'c' ])
+        expect(actualClone)
+            .toEqual(expectedClone)
     })
 })
 
