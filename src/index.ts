@@ -342,6 +342,8 @@ export {
     Turn,
     ONE,
     ZERO,
+    Rotation,
+    Remaindee,
 } from './nominal'
 export {
     ActionForState,

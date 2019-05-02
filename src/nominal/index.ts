@@ -189,4 +189,6 @@ export {
     Factor,
     Transition,
     Turn,
+    Rotation,
+    Remaindee,
 } from './types'
