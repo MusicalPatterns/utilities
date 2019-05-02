@@ -84,6 +84,7 @@ export {
     isString,
     isNumber,
     isObject,
+    reverse,
 } from './code'
 export {
     absoluteRatio,

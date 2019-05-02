@@ -29,6 +29,7 @@ export { arraysHaveNoCommonValues } from './noCommonValues'
 export { evenElements, oddElements, everyNthElement } from './regularSamplings'
 export { sleep } from './sleep'
 export { range } from './range'
+export { reverse } from './reverse'
 export { slice, forEach, map, reduce, filter, cycleSlice, every, findIndex } from './typedIterators'
 export { isUndefined, isArray, isString, isNumber, isObject } from './typeGuards'
 export {
