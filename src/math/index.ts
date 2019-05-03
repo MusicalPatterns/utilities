@@ -45,7 +45,7 @@ export {
     pow,
     log,
 } from './typedOperations'
-export { isOdd, isEven } from './evenOrOdd'
+export { isOdd, isEven } from './parity'
 export {
     factorial,
     termialRoot,
