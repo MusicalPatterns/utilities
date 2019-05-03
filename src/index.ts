@@ -85,6 +85,8 @@ export {
     isNumber,
     isObject,
     reverse,
+    NonPartial,
+    Just,
 } from './code'
 export {
     absoluteRatio,

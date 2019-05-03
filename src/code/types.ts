@@ -11,8 +11,11 @@ interface ObjectOf<ValueType> {
 }
 
 type Maybe<Type> = Type | undefined
+type Just<Type, MaybeType extends Maybe<Type>> = Type
 
 type ArrayOfLength<Length extends Number, NumericType = number> = [ NumericType, ...NumericType[] ] & { length: Length }
+
+type NonPartial<T extends object> = { [Index in keyof T]-?: T[Index] }
 
 export {
     Omit,
@@ -21,4 +24,6 @@ export {
     ObjectOf,
     Maybe,
     ArrayOfLength,
+    NonPartial,
+    Just,
 }

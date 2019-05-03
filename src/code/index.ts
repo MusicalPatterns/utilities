@@ -46,4 +46,6 @@ export {
     ObjectOf,
     Maybe,
     ArrayOfLength,
+    NonPartial,
+    Just,
 } from './types'
