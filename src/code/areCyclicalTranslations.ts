@@ -6,9 +6,12 @@ import { length } from './finalElement'
 import { range } from './range'
 import { every } from './typedIterators'
 
-const areCyclicalTranslations:
-    <ElementType, ArrayType extends ArrayedOrStringType<ElementType>>(...arrays: ArrayType[]) => boolean =
-    <ElementType, ArrayType extends ArrayedOrStringType<ElementType>>(...arrays: ArrayType[]): boolean => {
+const areCyclicalTranslations: <ElementType, ArrayType extends ArrayedOrStringType<ElementType> = ElementType[]>(
+    ...arrays: ArrayType[]
+) => boolean =
+    <ElementType, ArrayType extends ArrayedOrStringType<ElementType> = ElementType[]>(
+        ...arrays: ArrayType[]
+    ): boolean => {
         if (!allElementsEqual(arrays.map(length))) {
             return false
         }

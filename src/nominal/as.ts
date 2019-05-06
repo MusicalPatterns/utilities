@@ -306,8 +306,12 @@ const Integer: <OfType extends NoUnits>(asInteger: OfType) => Integer =
 
 // Array
 
-const Cycle: <ElementType, ArrayType extends ArrayedOrStringType<ElementType>>(asCycle: ArrayType) => Cycle<ElementType> =
-    <ElementType, ArrayType extends ArrayedOrStringType<ElementType>>(asCycle: ArrayType): Cycle<ElementType> => {
+const Cycle: <ElementType, ArrayType extends ArrayedOrStringType<ElementType> = ElementType[]>(
+    asCycle: ArrayType,
+) => Cycle<ElementType> =
+    <ElementType, ArrayType extends ArrayedOrStringType<ElementType> = ElementType[]>(
+        asCycle: ArrayType,
+    ): Cycle<ElementType> => {
         const brandedAsCycle: Cycle<ElementType> = asCycle.slice() as Cycle<ElementType>
 
         // tslint:disable-next-line strict-type-predicates

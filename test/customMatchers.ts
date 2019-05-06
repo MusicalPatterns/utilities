@@ -360,7 +360,7 @@ const customMatchers: CustomMatcherFactories = {
             }),
     }),
     toBeCyclicalTranslations: (util: MatchersUtil, customEqualityTesters: CustomEqualityTester[]): CustomMatcher => ({
-        compare: <ElementType, ArrayType extends ArrayedOrStringType<ElementType>>(
+        compare: <ElementType, ArrayType extends ArrayedOrStringType<ElementType> = ElementType[]>(
             arrays: ArrayType[],
             message?: string,
         ): CustomMatcherResult =>
