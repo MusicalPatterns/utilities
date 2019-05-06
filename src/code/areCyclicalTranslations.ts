@@ -1,4 +1,4 @@
-import { ArrayedType, as, Cardinal, Cycle, use } from '../nominal'
+import { ArrayedOrStringType, as, Cardinal, Cycle, use } from '../nominal'
 import { allElementsEqual } from './allElementsEqual'
 import { deepEqual } from './deepEqual'
 import { exampleElement } from './exampleElement'
@@ -7,8 +7,8 @@ import { range } from './range'
 import { every } from './typedIterators'
 
 const areCyclicalTranslations:
-    <ElementType, ArrayType extends ArrayedType<ElementType>>(...arrays: ArrayType[]) => boolean =
-    <ElementType, ArrayType extends ArrayedType<ElementType>>(...arrays: ArrayType[]): boolean => {
+    <ElementType, ArrayType extends ArrayedOrStringType<ElementType>>(...arrays: ArrayType[]) => boolean =
+    <ElementType, ArrayType extends ArrayedOrStringType<ElementType>>(...arrays: ArrayType[]): boolean => {
         if (!allElementsEqual(arrays.map(length))) {
             return false
         }

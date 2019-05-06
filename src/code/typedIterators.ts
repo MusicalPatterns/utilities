@@ -1,15 +1,15 @@
 // tslint:disable max-file-line-count
 
-import { AnyArrayedType, ArrayedType, as, Cycle, INCREMENT, Ordinal, use } from '../nominal'
+import { AnyArrayedType, ArrayedOrStringType, ArrayedType, as, Cycle, INCREMENT, Ordinal, use } from '../nominal'
 import { indexJustBeyondFinalElement, length } from './finalElement'
 import { isUndefined } from './typeGuards'
 
-const slice: <ElementType, ArrayType extends ArrayedType<ElementType>>(
+const slice: <ElementType, ArrayType extends ArrayedOrStringType<ElementType>>(
     array: ArrayType,
     initial: Ordinal<ArrayType>,
     terminal?: Ordinal<ArrayType>,
 ) => ArrayType =
-    <ElementType, ArrayType extends ArrayedType<ElementType>>(
+    <ElementType, ArrayType extends ArrayedOrStringType<ElementType>>(
         array: ArrayType,
         initial: Ordinal<ArrayType>,
         terminal?: Ordinal<ArrayType>,

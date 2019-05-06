@@ -2,7 +2,7 @@
 import {
     allValuesAreTheSame,
     areCyclicalTranslations,
-    ArrayedType,
+    ArrayedOrStringType,
     deepEqual,
     forEach,
     goesMonotonically,
@@ -360,7 +360,7 @@ const customMatchers: CustomMatcherFactories = {
             }),
     }),
     toBeCyclicalTranslations: (util: MatchersUtil, customEqualityTesters: CustomEqualityTester[]): CustomMatcher => ({
-        compare: <ElementType, ArrayType extends ArrayedType<ElementType>>(
+        compare: <ElementType, ArrayType extends ArrayedOrStringType<ElementType>>(
             arrays: ArrayType[],
             message?: string,
         ): CustomMatcherResult =>

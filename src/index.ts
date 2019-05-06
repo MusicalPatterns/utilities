@@ -1,5 +1,7 @@
 // tslint:disable max-file-line-count
 
+import { ArrayedOrStringType } from './nominal'
+
 export {
     elementCount,
     elementIds,
@@ -350,6 +352,7 @@ export {
     Rotation,
     Remaindee,
     ArrayedType,
+    ArrayedOrStringType,
 } from './nominal'
 export {
     ActionForState,

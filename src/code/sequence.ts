@@ -1,10 +1,10 @@
-import { ArrayedType } from '../nominal'
+import { ArrayedOrStringType, ArrayedType } from '../nominal'
 import { exampleElement } from './exampleElement'
 import { isArray, isString } from './typeGuards'
 import { Difference } from './types'
 
-const sequence: <ElementType, ArrayType extends ArrayedType<ElementType>>(...arrays: ArrayType[]) => ArrayType =
-    <ElementType, ArrayType extends ArrayedType<ElementType>>(...arrays: ArrayType[]): ArrayType => {
+const sequence: <ElementType, ArrayType extends ArrayedOrStringType<ElementType>>(...arrays: ArrayType[]) => ArrayType =
+    <ElementType, ArrayType extends ArrayedOrStringType<ElementType>>(...arrays: ArrayType[]): ArrayType => {
         if (isString(exampleElement(arrays))) {
             return arrays.join('') as ArrayType
         }

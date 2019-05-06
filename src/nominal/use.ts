@@ -195,7 +195,7 @@ const Ordinal:
 
         ordinalCheck(useOrdinal, array)
 
-        return array[ as.number(useOrdinal as unknown as Ordinal) ] as ElementType
+        return array[ as.number(useOrdinal as unknown as Ordinal) ]
     }
 
 // Uses - Whole - Compound, only for Arrays

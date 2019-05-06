@@ -1,9 +1,10 @@
-import { ArrayedType } from '../nominal'
+import { ArrayedOrStringType } from '../nominal'
 import { deepClone } from './deepClone'
 import { isArray, isString } from './typeGuards'
 
-const reverse: <ElementType, ArrayType extends ArrayedType<ElementType>>(arrayOrString: ArrayType) => ArrayType =
-    <ElementType, ArrayType extends ArrayedType<ElementType>>(arrayOrString: ArrayType): ArrayType => {
+const reverse:
+    <ElementType, ArrayType extends ArrayedOrStringType<ElementType>>(arrayOrString: ArrayType) => ArrayType =
+    <ElementType, ArrayType extends ArrayedOrStringType<ElementType>>(arrayOrString: ArrayType): ArrayType => {
         if (isString(arrayOrString)) {
             return arrayOrString
                 .split('')

@@ -1,6 +1,7 @@
 // tslint:disable no-reaching-imports
 
 import * as as from './as'
+import { ArrayedOrStringType } from './types'
 import * as use from './use'
 
 export {
@@ -79,4 +80,5 @@ export {
     Turn,
     Transposition,
     ArrayedType,
+    ArrayedOrStringType,
 } from './types'

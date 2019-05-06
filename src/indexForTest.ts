@@ -1,6 +1,7 @@
 // tslint:disable no-reaching-imports max-file-line-count
 
 import { computeIntervals } from './math'
+import { ArrayedOrStringType } from './nominal'
 
 export {
     repeat,
@@ -166,4 +167,5 @@ export {
     Turn,
     Transposition,
     ArrayedType,
+    ArrayedOrStringType,
 } from './nominal/indexForTest'

@@ -103,13 +103,13 @@ type Remaindee<OfType extends CanBeAsAWholeUseOfSomeType = number> = UseBrand<'R
 
 // Uses - Whole - Fixed, only for Arrays
 
-type Ordinal<OfType extends { _OfBrand?: 'NoOf' } & ArrayedType = number[]> = UseBrand<'Ordinal' & 'Point', OfType>
+type Ordinal<OfType extends { _OfBrand?: 'NoOf' } & ArrayedOrStringType = number[]> = UseBrand<'Ordinal' & 'Point', OfType>
 
 // Uses - Whole - Compound, only for Arrays
 
-type Factor<OfType extends { _OfBrand?: 'NoOf' } & ArrayedType = number[]> = Multiple<Ordinal<OfType>>
-type Transition<OfType extends { _OfBrand?: 'NoOf' } & ArrayedType = number[]> = Cardinal<Ordinal<OfType>>
-type Turn<OfType extends { _OfBrand?: 'NoOf' } & ArrayedType = number[]> = Transposition<Ordinal<OfType>>
+type Factor<OfType extends { _OfBrand?: 'NoOf' } & ArrayedOrStringType = number[]> = Multiple<Ordinal<OfType>>
+type Transition<OfType extends { _OfBrand?: 'NoOf' } & ArrayedOrStringType = number[]> = Cardinal<Ordinal<OfType>>
+type Turn<OfType extends { _OfBrand?: 'NoOf' } & ArrayedOrStringType = number[]> = Transposition<Ordinal<OfType>>
 
 // Utilities - Normal
 
@@ -185,11 +185,15 @@ type CanBeAsAnUnwholeUseOfNoType = CanBeAsAWholeUseOfNoType & Unwhole
 
 // Array
 
-type ArrayedType<ElementType = unknown> = ElementType[] | Cycle<ElementType> | string
-type CanBeAsAWholeUseWithAnArrayOverloadOfSomeType = CanBeAsAWholeUseOfSomeType | ArrayedType
-type CanBeAsAWholeUseWithAnArrayOverloadOfNoType = CanBeAsAWholeUseOfNoType | ArrayedType
+type ArrayedType<ElementType = unknown> = ElementType[] | Cycle<ElementType>
+type ArrayedOrStringType<ElementType = unknown> = ArrayedType<ElementType> | string
+
+type CanBeAsAWholeUseWithAnArrayOverloadOfSomeType = CanBeAsAWholeUseOfSomeType | ArrayedOrStringType
+type CanBeAsAWholeUseWithAnArrayOverloadOfNoType = CanBeAsAWholeUseOfNoType | ArrayedOrStringType
+
 // tslint:disable-next-line no-any
-type AnyArrayedType = any[] & Cycle<any> & string
+type AnyArrayedType = any[] & Cycle<any>
+type AnyArrayedOrStringType = AnyArrayedType & string
 
 type Cycle<ElementType = number> = ElementType[] & { _CycleBrand: boolean }
 
@@ -267,7 +271,7 @@ export {
     CanBeAsAnUnwholeUseOfSomeType,
     CanBeAsAWholeUseWithAnArrayOverloadOfNoType,
     CanBeAsAWholeUseWithAnArrayOverloadOfSomeType,
-    ArrayedType,
+    ArrayedOrStringType,
     AnyArrayedType,
     Interval,
     Delta,
@@ -275,4 +279,6 @@ export {
     Factor,
     Transition,
     Turn,
+    ArrayedType,
+    AnyArrayedOrStringType,
 }

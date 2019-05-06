@@ -1,11 +1,10 @@
 // tslint:disable variable-name max-file-line-count max-line-length
 
 import { integerCheck, normalCheck } from './checks'
-import { as } from './index'
+import { ArrayedOrStringType, as } from './index'
 import {
     Amplitude,
     Arc,
-    ArrayedType,
     Base,
     Block,
     CanBeAsAnUnwholeUseOfNoType,
@@ -259,7 +258,7 @@ const Remaindee: {
 
 const Ordinal: {
     <OfType extends NoOf = number>(asOrdinal: OfType): Ordinal,
-    <OfType extends ArrayedType = number[]>(asOrdinal: number | Of<OfType>): Ordinal<OfType>,
+    <OfType extends ArrayedOrStringType = number[]>(asOrdinal: number | Of<OfType>): Ordinal<OfType>,
     <OfType extends NoOf = number>(asOrdinal: OfType): Ordinal,
 } =
     <OfType = number>(asOrdinal: OfType | number | Of<OfType>): Ordinal<OfType[]> =>
@@ -269,21 +268,21 @@ const Ordinal: {
 
 const Factor: {
     <OfType extends NoOf = number>(asFactor: OfType): Factor,
-    <OfType extends ArrayedType = number[]>(asFactor: number | Of<OfType>): Factor<OfType>,
+    <OfType extends ArrayedOrStringType = number[]>(asFactor: number | Of<OfType>): Factor<OfType>,
     <OfType extends NoOf = number>(asFactor: OfType): Factor,
 } =
     <OfType = number>(asFactor: OfType | number | Of<OfType>): Factor<OfType[]> =>
         integerCheck(asFactor as unknown as number, 'Factor') as unknown as Factor<OfType[]>
 const Transition: {
     <OfType extends NoOf = number>(asTransition: OfType): Transition,
-    <OfType extends ArrayedType = number[]>(asTransition: number | Of<OfType>): Transition<OfType>,
+    <OfType extends ArrayedOrStringType = number[]>(asTransition: number | Of<OfType>): Transition<OfType>,
     <OfType extends NoOf = number>(asTransition: OfType): Transition,
 } =
     <OfType = number>(asTransition: OfType | number | Of<OfType>): Transition<OfType[]> =>
         integerCheck(asTransition as unknown as number, 'Transition') as unknown as Transition<OfType[]>
 const Turn: {
     <OfType extends NoOf = number>(asTurn: OfType): Turn,
-    <OfType extends ArrayedType = number[]>(asTurn: number | Of<OfType>): Turn<OfType>,
+    <OfType extends ArrayedOrStringType = number[]>(asTurn: number | Of<OfType>): Turn<OfType>,
     <OfType extends NoOf = number>(asTurn: OfType): Turn,
 } =
     <OfType = number>(asTurn: OfType | number | Of<OfType>): Turn<OfType[]> =>
@@ -307,8 +306,8 @@ const Integer: <OfType extends NoUnits>(asInteger: OfType) => Integer =
 
 // Array
 
-const Cycle: <ElementType, ArrayType extends ArrayedType<ElementType>>(asCycle: ArrayType) => Cycle<ElementType> =
-    <ElementType, ArrayType extends ArrayedType<ElementType>>(asCycle: ArrayType): Cycle<ElementType> => {
+const Cycle: <ElementType, ArrayType extends ArrayedOrStringType<ElementType>>(asCycle: ArrayType) => Cycle<ElementType> =
+    <ElementType, ArrayType extends ArrayedOrStringType<ElementType>>(asCycle: ArrayType): Cycle<ElementType> => {
         const brandedAsCycle: Cycle<ElementType> = asCycle.slice() as Cycle<ElementType>
 
         // tslint:disable-next-line strict-type-predicates

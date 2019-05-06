@@ -1,6 +1,7 @@
 // tslint:disable no-reaching-imports
 
 import * as musicalAs from './musicalAs'
+
 export { musicalAs }
 
 export { centsTranslationToPitchScalar } from './conversions'

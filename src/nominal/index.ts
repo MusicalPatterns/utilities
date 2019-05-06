@@ -1,6 +1,7 @@
 // tslint:disable max-file-line-count
 
 import * as as from './as'
+import { ArrayedOrStringType } from './types'
 import * as use from './use'
 
 export {
@@ -183,6 +184,7 @@ export {
     Point,
     ArrayedType,
     AnyArrayedType,
+    ArrayedOrStringType,
     Interval,
     Delta,
     Arc,

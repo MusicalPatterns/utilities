@@ -1,5 +1,14 @@
 import { negative } from '../math'
-import { ArrayedType, as, Cardinal, COUNT_FROM_LENGTH_TO_FINAL_INDEX, Cycle, Ordinal, use } from '../nominal'
+import {
+    ArrayedOrStringType,
+    ArrayedType,
+    as,
+    Cardinal,
+    COUNT_FROM_LENGTH_TO_FINAL_INDEX,
+    Cycle,
+    Ordinal,
+    use,
+} from '../nominal'
 import { isEmpty } from './isEmpty'
 
 const finalElement: <ElementType>(array: ElementType[]) => ElementType =
@@ -27,8 +36,9 @@ const indexJustBeyondFinalElement: {
     <ElementType>(array: ElementType[]): Ordinal<ElementType[]> & Ordinal<Cycle<ElementType>> =>
         as.Ordinal(array.length) as unknown as Ordinal<ElementType[]> & Ordinal<Cycle<ElementType>>
 
-const length: <ElementType, ArrayType extends ArrayedType<ElementType>>(array: ArrayType) => Cardinal<ArrayType> =
-    <ElementType, ArrayType extends ArrayedType<ElementType>>(array: ArrayType): Cardinal<ArrayType> =>
+const length:
+    <ElementType, ArrayType extends ArrayedOrStringType<ElementType>>(array: ArrayType) => Cardinal<ArrayType> =
+    <ElementType, ArrayType extends ArrayedOrStringType<ElementType>>(array: ArrayType): Cardinal<ArrayType> =>
         as.Cardinal<ArrayType>(array.length)
 
 const initialElement: <ElementType>(array: ElementType[]) => ElementType =
