@@ -349,6 +349,7 @@ export {
     ZERO,
     Rotation,
     Remaindee,
+    ArrayedType,
 } from './nominal'
 export {
     ActionForState,
