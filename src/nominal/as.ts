@@ -307,14 +307,16 @@ const Integer: <OfType extends NoUnits>(asInteger: OfType) => Integer =
 
 // Array
 
-const Cycle: <ElementType>(asCycle: ElementType[]) => Cycle<ElementType> =
-    <ElementType>(asCycle: ElementType[]): Cycle<ElementType> => {
-        // tslint:disable-next-line semicolon
-        const brandedAsCycle: ElementType[] = asCycle.slice();
+const Cycle: <ElementType, ArrayType extends ArrayedType<ElementType>>(asCycle: ArrayType) => Cycle<ElementType> =
+    <ElementType, ArrayType extends ArrayedType<ElementType>>(asCycle: ArrayType): Cycle<ElementType> => {
+        const brandedAsCycle: Cycle<ElementType> = asCycle.slice() as Cycle<ElementType>
 
-        (brandedAsCycle as Cycle<ElementType>)._CycleBrand = true
+        // tslint:disable-next-line strict-type-predicates
+        if (typeof brandedAsCycle !== 'string') {
+            brandedAsCycle._CycleBrand = true
+        }
 
-        return brandedAsCycle as Cycle<ElementType>
+        return brandedAsCycle
     }
 
 const Block: (asBlock: number[]) => Block =

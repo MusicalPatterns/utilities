@@ -37,6 +37,7 @@ describe('reverse', () => {
 
     describe('Cycles', () => {
         it('works', () => {
+            // @ts-ignore
             expect(reverse(as.Cycle([ 3, 4, 5 ])))
                 .toEqual(as.Cycle([ 5, 4, 3 ]))
         })

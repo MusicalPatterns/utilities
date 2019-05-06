@@ -1,8 +1,8 @@
 import { ArrayedType } from '../nominal'
 import { sequence } from './sequence'
 
-const flatten: <ArrayType extends ArrayedType>(arrayOfArrays: ArrayType[]) => ArrayType =
-    <ArrayType extends ArrayedType>(arrayOfArrays: ArrayType[]): ArrayType =>
+const flatten: <ElementType, ArrayType extends ArrayedType<ElementType>>(arrayOfArrays: ArrayType[]) => ArrayType =
+    <ElementType, ArrayType extends ArrayedType<ElementType>>(arrayOfArrays: ArrayType[]): ArrayType =>
         sequence(...arrayOfArrays)
 
 export {

@@ -32,6 +32,7 @@ export {
     reverse,
     flatten,
     sequence,
+    areCyclicalTranslations,
 } from './code/indexForTest'
 export {
     distanceBetween,
@@ -164,4 +165,5 @@ export {
     Transition,
     Turn,
     Transposition,
+    ArrayedType,
 } from './nominal/indexForTest'

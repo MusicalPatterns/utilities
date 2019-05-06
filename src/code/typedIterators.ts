@@ -4,12 +4,12 @@ import { AnyArrayedType, ArrayedType, as, Cycle, INCREMENT, Ordinal, use } from 
 import { indexJustBeyondFinalElement, length } from './finalElement'
 import { isUndefined } from './typeGuards'
 
-const slice: <ArrayType extends ArrayedType>(
+const slice: <ElementType, ArrayType extends ArrayedType<ElementType>>(
     array: ArrayType,
     initial: Ordinal<ArrayType>,
     terminal?: Ordinal<ArrayType>,
 ) => ArrayType =
-    <ArrayType extends ArrayedType>(
+    <ElementType, ArrayType extends ArrayedType<ElementType>>(
         array: ArrayType,
         initial: Ordinal<ArrayType>,
         terminal?: Ordinal<ArrayType>,
@@ -56,11 +56,11 @@ const cycleSlice: <ElementType>(
     }
 
 const forEach: <ElementType, ArrayType extends ArrayedType<ElementType>>(
-    array: ElementType[],
+    array: ArrayType,
     callback: (element: ElementType, index: Ordinal<ArrayType>, self: ArrayType) => void,
 ) => void =
     <ElementType, ArrayType extends ArrayedType<ElementType>>(
-        array: ElementType[],
+        array: ArrayType,
         callback: (element: ElementType, index: Ordinal<ArrayType>, self: ArrayType,
         ) => void): void => {
         // @ts-ignore
@@ -68,17 +68,17 @@ const forEach: <ElementType, ArrayType extends ArrayedType<ElementType>>(
     }
 
 const map: <MappedElementType,
-    MappedArrayType extends MappedElementType[],
+    MappedArrayType extends ArrayedType<MappedElementType>,
     ElementType,
     ArrayType extends ArrayedType<ElementType>>(
-    array: ElementType[],
+    array: ArrayType,
     callback: (element: ElementType, index: Ordinal<ArrayType>, self: ArrayType) => MappedElementType,
 ) => MappedArrayType =
     <MappedElementType,
-        MappedArrayType extends MappedElementType[],
+        MappedArrayType extends ArrayedType<MappedElementType>,
         ElementType,
         ArrayType extends ArrayedType<ElementType>>(
-        array: ElementType[],
+        array: ArrayType,
         callback: (element: ElementType, index: Ordinal<ArrayType>, self: ArrayType,
         ) => MappedElementType): MappedArrayType =>
         // @ts-ignore

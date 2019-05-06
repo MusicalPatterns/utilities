@@ -78,4 +78,5 @@ export {
     Transition,
     Turn,
     Transposition,
+    ArrayedType,
 } from './types'

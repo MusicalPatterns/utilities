@@ -1,6 +1,8 @@
 // tslint:disable object-literal-sort-keys max-file-line-count
 import {
     allValuesAreTheSame,
+    areCyclicalTranslations,
+    ArrayedType,
     deepEqual,
     forEach,
     goesMonotonically,
@@ -353,6 +355,20 @@ const customMatchers: CustomMatcherFactories = {
                     goesQuadraticallyFromValueToValue(array, expectedBeginValue, expectedEndValue, precision),
                     isUndefined(message) ?
                         `array ${array} did not go quadratically from ${expectedBeginValue} to ${expectedEndValue}${precisionMessage(precision)}` :
+                        message,
+                )
+            }),
+    }),
+    toBeCyclicalTranslations: (util: MatchersUtil, customEqualityTesters: CustomEqualityTester[]): CustomMatcher => ({
+        compare: <ElementType, ArrayType extends ArrayedType<ElementType>>(
+            arrays: ArrayType[],
+            message?: string,
+        ): CustomMatcherResult =>
+            doAssertions(() => {
+                assert(
+                    areCyclicalTranslations(...arrays),
+                    isUndefined(message) ?
+                        `arrays ${arrays} were not all cyclical translations of each other` :
                         message,
                 )
             }),

@@ -113,11 +113,16 @@ const Multiple: {
     }
 const Cardinal: {
     <OfType extends NonNormal>(numeral: OfType, useCardinal: Cardinal<OfType>): OfType,
-    <OfType extends ArrayedType>(numeral: OfType, useCardinal: Cardinal<OfType>): OfType,
+    <OfType extends ArrayedType>(array: OfType, useCardinal: Cardinal<OfType>): OfType,
 } =
-    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType>(numeral: OfType, useCardinal: Cardinal<OfType>): OfType => {
-        if (isCycle(numeral)) {
-            const cycle: Cycle<OfType> = numeral as unknown as Cycle<OfType>
+    // tslint:disable-next-line cyclomatic-complexity
+    <OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType>(numeralOrArray: OfType, useCardinal: Cardinal<OfType>): OfType => {
+        // tslint:disable-next-line strict-type-predicates
+        if (isCycle(numeralOrArray) || typeof numeralOrArray === 'string') {
+            // tslint:disable-next-line strict-type-predicates
+            const cycle: Cycle<OfType> = typeof numeralOrArray === 'string' ?
+                (numeralOrArray as string).split('') as unknown as Cycle<OfType> :
+                numeralOrArray as unknown as Cycle<OfType>
             const cycledCycle: Cycle<OfType> = as.Cycle([])
             const cellCount: Cardinal<Cycle<OfType>> = as.Cardinal<Cycle<OfType>>(cycle.length)
 
@@ -137,11 +142,14 @@ const Cardinal: {
                 cycledCycle.push(cycle[ as.number(cycledIndex) ])
             }
 
-            return cycledCycle as unknown as OfType
+            // tslint:disable-next-line strict-type-predicates
+            return typeof numeralOrArray === 'string' ?
+                cycledCycle.join('') as unknown as OfType :
+                cycledCycle as unknown as OfType
         }
 
         return Translation(
-            numeral as unknown as number,
+            numeralOrArray as unknown as number,
             integerCheck(useCardinal, 'Cardinal') as unknown as Translation,
         ) as unknown as OfType
     }

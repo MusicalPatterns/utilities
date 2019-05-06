@@ -17,7 +17,7 @@ describe('deltas', () => {
         })
 
         it('works for cycles, giving the delta back around from the end to the beginning', () => {
-            expect(computeDeltas(as.Cycle([ 4, 7, 9, 4, 357, 3, 8 ].map((numeral: number) => musicalAs.Tone(numeral)))))
+            expect(computeDeltas(as.Cycle<Tone, Tone[]>([ 4, 7, 9, 4, 357, 3, 8 ].map((numeral: number) => musicalAs.Tone(numeral)))))
                 .toEqual(
                     [
                         3,
@@ -48,7 +48,7 @@ describe('deltas', () => {
         })
 
         it('works for cycles, giving the delta back around from the end to the beginning', () => {
-            expect(computeIntervals(as.Cycle([ 4, 7, 9, 4, 357, 3, 8 ].map((numeral: number) => musicalAs.Tone(numeral)))))
+            expect(computeIntervals(as.Cycle<Tone, Tone[]>([ 4, 7, 9, 4, 357, 3, 8 ].map((numeral: number) => musicalAs.Tone(numeral)))))
                 .toEqual(
                     [
                         7 / 4,

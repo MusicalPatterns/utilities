@@ -90,6 +90,7 @@ export {
     Difference,
     flatten,
     exampleElement,
+    areCyclicalTranslations,
 } from './code'
 export {
     absoluteRatio,

@@ -27,8 +27,8 @@ const indexJustBeyondFinalElement: {
     <ElementType>(array: ElementType[]): Ordinal<ElementType[]> & Ordinal<Cycle<ElementType>> =>
         as.Ordinal(array.length) as unknown as Ordinal<ElementType[]> & Ordinal<Cycle<ElementType>>
 
-const length: <ArrayType extends ArrayedType>(array: ArrayType) => Cardinal<ArrayType> =
-    <ArrayType extends ArrayedType>(array: ArrayType): Cardinal<ArrayType> =>
+const length: <ElementType, ArrayType extends ArrayedType<ElementType>>(array: ArrayType) => Cardinal<ArrayType> =
+    <ElementType, ArrayType extends ArrayedType<ElementType>>(array: ArrayType): Cardinal<ArrayType> =>
         as.Cardinal<ArrayType>(array.length)
 
 const initialElement: <ElementType>(array: ElementType[]) => ElementType =
@@ -40,9 +40,10 @@ const initialElement: <ElementType>(array: ElementType[]) => ElementType =
         return use.Ordinal(array, 0 as unknown as Ordinal<ElementType[]>)
     }
 
-const finalIndexFromElementsTotal:
-    <ArrayType extends ArrayedType>(elementsTotal: Cardinal<ArrayType>) => Ordinal<ArrayType> =
-    <ArrayType extends ArrayedType>(elementsTotal: Cardinal<ArrayType>): Ordinal<ArrayType> =>
+const finalIndexFromElementsTotal: <ElementType, ArrayType extends ArrayedType<ElementType>>(
+    elementsTotal: Cardinal<ArrayType>,
+) => Ordinal<ArrayType> =
+    <ElementType, ArrayType extends ArrayedType<ElementType>>(elementsTotal: Cardinal<ArrayType>): Ordinal<ArrayType> =>
         as.Ordinal<ArrayType>(as.number(use.Cardinal(elementsTotal, COUNT_FROM_LENGTH_TO_FINAL_INDEX)))
 
 export {

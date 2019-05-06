@@ -98,6 +98,15 @@ describe('use', () => {
             expect(use.Cardinal(as.Cycle([ 0, 1, 1, 0, 1 ]), as.Cardinal<Cycle>(1)))
                 .toEqual(as.Cycle([ 1, 0, 1, 1, 0 ]))
         })
+
+        it('when applies to a cyclical string, cycles it to the right', () => {
+            expect(use.Cardinal(as.Cycle('hello'), as.Cardinal<Cycle>(negative(1))))
+                .toEqual(as.Cycle('elloh'))
+            expect(use.Cardinal(as.Cycle('hello'), as.Cardinal<Cycle>(0)))
+                .toEqual(as.Cycle('hello'))
+            expect(use.Cardinal(as.Cycle('hello'), as.Cardinal<Cycle>(1)))
+                .toEqual(as.Cycle('ohell'))
+        })
     })
 
     // Whole Non-Transformation Uses
