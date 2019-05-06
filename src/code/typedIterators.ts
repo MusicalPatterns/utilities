@@ -55,11 +55,11 @@ const cycleSlice: <ElementType>(
         return resultantSlice
     }
 
-const forEach: <ElementType, ArrayType extends ArrayedType & ElementType[] = ElementType[]>(
+const forEach: <ElementType, ArrayType extends ArrayedType<ElementType>>(
     array: ElementType[],
     callback: (element: ElementType, index: Ordinal<ArrayType>, self: ArrayType) => void,
 ) => void =
-    <ElementType, ArrayType extends ArrayedType & ElementType[] = ElementType[]>(
+    <ElementType, ArrayType extends ArrayedType<ElementType>>(
         array: ElementType[],
         callback: (element: ElementType, index: Ordinal<ArrayType>, self: ArrayType,
         ) => void): void => {
@@ -70,21 +70,21 @@ const forEach: <ElementType, ArrayType extends ArrayedType & ElementType[] = Ele
 const map: <MappedElementType,
     MappedArrayType extends MappedElementType[],
     ElementType,
-    ArrayType extends ArrayedType & ElementType[] = ElementType[]>(
+    ArrayType extends ArrayedType<ElementType>>(
     array: ElementType[],
     callback: (element: ElementType, index: Ordinal<ArrayType>, self: ArrayType) => MappedElementType,
 ) => MappedArrayType =
     <MappedElementType,
         MappedArrayType extends MappedElementType[],
         ElementType,
-        ArrayType extends ArrayedType & ElementType[] = ElementType[]>(
+        ArrayType extends ArrayedType<ElementType>>(
         array: ElementType[],
         callback: (element: ElementType, index: Ordinal<ArrayType>, self: ArrayType,
         ) => MappedElementType): MappedArrayType =>
         // @ts-ignore
         array.map(callback)
 
-const reduce: <ReducedType, ElementType, ArrayType extends ArrayedType & ElementType[] = ElementType[]>(
+const reduce: <ReducedType, ElementType, ArrayType extends ArrayedType<ElementType>>(
     array: ElementType[],
     callback: (
         accumulator: ReducedType,
@@ -94,7 +94,7 @@ const reduce: <ReducedType, ElementType, ArrayType extends ArrayedType & Element
     ) => ReducedType,
     accumulator: Partial<ReducedType>,
 ) => ReducedType =
-    <ReducedType, ElementType, ArrayType extends ArrayedType & ElementType[] = ElementType[]>(
+    <ReducedType, ElementType, ArrayType extends ArrayedType<ElementType>>(
         array: ElementType[],
         callback: (
             accumulator: ReducedType,
@@ -107,33 +107,33 @@ const reduce: <ReducedType, ElementType, ArrayType extends ArrayedType & Element
         // @ts-ignore
         array.reduce(callback, accumulator)
 
-const filter: <ElementType, ArrayType extends ArrayedType & ElementType[] = ElementType[]>(
+const filter: <ElementType, ArrayType extends ArrayedType<ElementType>>(
     array: ArrayType,
     callback: (element: ElementType, index: Ordinal<ArrayType>, self: ArrayType) => boolean,
 ) => ArrayType =
-    <ElementType, ArrayType extends ArrayedType & ElementType[] = ElementType[]>(
+    <ElementType, ArrayType extends ArrayedType<ElementType>>(
         array: ArrayType,
         callback: (element: ElementType, index: Ordinal<ArrayType>, self: ArrayType,
         ) => boolean): ArrayType =>
         // @ts-ignore
         array.filter(callback)
 
-const every: <ElementType, ArrayType extends ArrayedType & ElementType[] = ElementType[]>(
+const every: <ElementType, ArrayType extends ArrayedType<ElementType>>(
     array: ArrayType,
     callback: (element: ElementType, index: Ordinal<ArrayType>, self: ArrayType) => boolean,
 ) => boolean =
-    <ElementType, ArrayType extends ArrayedType & ElementType[] = ElementType[]>(
+    <ElementType, ArrayType extends ArrayedType<ElementType>>(
         array: ArrayType,
         callback: (element: ElementType, index: Ordinal<ArrayType>, self: ArrayType) => boolean,
     ): boolean =>
         // @ts-ignore
         array.every(callback)
 
-const findIndex: <ElementType, ArrayType extends ArrayedType & ElementType[] = ElementType[]>(
+const findIndex: <ElementType, ArrayType extends ArrayedType<ElementType>>(
     array: ArrayType,
     callback: (element: ElementType, index: Ordinal<ArrayType>, self: ArrayType) => boolean,
 ) => Ordinal<ArrayType> =
-    <ElementType, ArrayType extends ArrayedType & ElementType[] = ElementType[]>(
+    <ElementType, ArrayType extends ArrayedType<ElementType>>(
         array: ArrayType,
         callback: (element: ElementType, index: Ordinal<ArrayType>, self: ArrayType) => boolean,
     ): Ordinal<ArrayType> =>

@@ -1,4 +1,4 @@
-import { Ordinal } from './types'
+import { ArrayedType, Ordinal } from './types'
 
 const unfortunatelyNecessaryReimplementationOfRoundForCheckToAvoidCircularDependencyHell: (numeral: number) => number =
     (numeral: number): number => {
@@ -11,8 +11,8 @@ const unfortunatelyNecessaryReimplementationOfRoundForCheckToAvoidCircularDepend
         return +(Math.round(`${numeral}e+10` as unknown as number) + 'e-' + 10)
     }
 
-const ordinalCheck: <ElementType>(index: Ordinal<ElementType[]>, array: ElementType[]) => void =
-    <ElementType>(index: Ordinal<ElementType[]>, array: ElementType[]): void => {
+const ordinalCheck: (index: Ordinal<ArrayedType>, array: ArrayedType) => void =
+    (index: Ordinal<ArrayedType>, array: ArrayedType): void => {
         if (index as unknown as number > array.length - 1) {
             throw new Error(`Ordinal ${index} exceeds available indices of array of length ${array.length}`)
         }

@@ -8,7 +8,7 @@ const finalElement: <ElementType>(array: ElementType[]) => ElementType =
 
 const indexOfFinalElement: {
     <ElementType>(array: Cycle<ElementType>): Ordinal<Cycle<ElementType>>,
-    <ElementType, ArrayType extends ArrayedType & ElementType[] = ElementType[]>(
+    <ElementType, ArrayType extends ArrayedType<ElementType>>(
         array: ArrayType,
     ): Ordinal<ArrayType>,
 } =
@@ -20,7 +20,7 @@ const indexOfFinalElement: {
 
 const indexJustBeyondFinalElement: {
     <ElementType>(array: Cycle<ElementType>): Ordinal<Cycle<ElementType>>,
-    <ElementType, ArrayType extends ArrayedType & ElementType[] = ElementType[]>(
+    <ElementType, ArrayType extends ArrayedType<ElementType>>(
         array: ArrayType,
     ): Ordinal<ArrayType>,
 } =

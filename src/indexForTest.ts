@@ -30,6 +30,8 @@ export {
     isLessThan,
     range,
     reverse,
+    flatten,
+    sequence,
 } from './code/indexForTest'
 export {
     distanceBetween,

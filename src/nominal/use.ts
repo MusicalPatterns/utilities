@@ -172,11 +172,9 @@ const Remaindee: <OfType extends NonNormal>(numeral: OfType, useRemaindee: Remai
 
 // Uses - Whole - Fixed, only for Arrays
 
-const Ordinal: {
-    <ElementType>(array: Cycle<ElementType>, useOrdinal: Ordinal<Cycle<ElementType>>): ElementType,
-    <ElementType>(array: ElementType[], useOrdinal: Ordinal<ElementType[]>): ElementType,
-} =
-    <ElementType>(array: ElementType[], useOrdinal: Ordinal<ElementType[]>): ElementType => {
+const Ordinal:
+    <ElementType>(array: ArrayedType<ElementType>, useOrdinal: Ordinal<ArrayedType<ElementType>>) => ElementType =
+    <ElementType>(array: ArrayedType<ElementType>, useOrdinal: Ordinal<ArrayedType<ElementType>>): ElementType => {
         if (isCycle(array)) {
             const cycleOrdinal: Ordinal<Cycle<ElementType>> = useOrdinal as Ordinal<Cycle<ElementType>>
             const cycledOrdinal: Ordinal<Cycle<ElementType>> = Remaindee(
@@ -189,7 +187,7 @@ const Ordinal: {
 
         ordinalCheck(useOrdinal, array)
 
-        return array[ as.number(useOrdinal as unknown as Ordinal) ]
+        return array[ as.number(useOrdinal as unknown as Ordinal) ] as ElementType
     }
 
 // Uses - Whole - Compound, only for Arrays

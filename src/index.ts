@@ -48,7 +48,7 @@ export {
     forEach,
     reduce,
     Omit,
-    Difference,
+    ObjectDifference,
     numericSort,
     filter,
     uniqueFilter,
@@ -87,6 +87,9 @@ export {
     reverse,
     NonPartial,
     Just,
+    Difference,
+    flatten,
+    exampleElement,
 } from './code'
 export {
     absoluteRatio,
@@ -225,7 +228,6 @@ export {
     INCLUSIVE_TO_LEFT,
     EXCLUSIVE_TO_LEFT,
     COUNT_FROM_LENGTH_TO_FINAL_INDEX,
-    EXAMPLE_ELEMENT_INDEX,
     MILLISECONDS_PER_SECOND,
     SECONDS_PER_MINUTE,
     ONE_MILLISECOND,

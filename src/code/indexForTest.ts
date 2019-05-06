@@ -14,6 +14,8 @@ export { everyNthElement } from './regularSamplings'
 export { finalElement, indexOfFinalElement } from './finalElement'
 export { range } from './range'
 export { reverse } from './reverse'
+export { flatten } from './flatten'
+export { sequence } from './sequence'
 export { camelCaseToConstantCase, constantCaseToUpperCase, camelCaseToLowerCase, camelCaseToUpperCase } from './case'
 
 export {
