@@ -4,12 +4,12 @@ import { AnyArrayedType, ArrayedOrStringType, ArrayedType, as, Cycle, INCREMENT,
 import { computeLength, indexJustBeyondFinalElement } from './finalElement'
 import { isUndefined } from './typeGuards'
 
-const slice: <ElementType, ArrayType extends ArrayedOrStringType<ElementType> = ElementType[]>(
+const slice: <ArrayType extends ArrayedOrStringType>(
     array: ArrayType,
     initial: Ordinal<ArrayType>,
     terminal?: Ordinal<ArrayType>,
 ) => ArrayType =
-    <ElementType, ArrayType extends ArrayedOrStringType<ElementType> = ElementType[]>(
+    <ArrayType extends ArrayedOrStringType>(
         array: ArrayType,
         initial: Ordinal<ArrayType>,
         terminal?: Ordinal<ArrayType>,
