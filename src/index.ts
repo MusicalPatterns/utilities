@@ -167,6 +167,7 @@ export {
     goesQuadraticallyFromValueToValue,
     pow,
     log,
+    integerDivide,
 } from './math'
 export {
     centsTranslationToPitchScalar,
