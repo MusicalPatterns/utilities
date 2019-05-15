@@ -1,6 +1,6 @@
 // tslint:disable max-file-line-count
 
-import { indexJustBeyondFinalElement, map, Maybe, reduce, slice } from '../code'
+import { computeLength, indexJustBeyondFinalElement, map, Maybe, reduce, slice } from '../code'
 import {
     as,
     Cardinal,
@@ -28,7 +28,7 @@ const defaultFixedCoordinateToOriginOfDimensionalityOfCoordinate:
         fixedCoordinate: Maybe<Coordinate<NumericType, Dimensionality>>,
         coordinate: Coordinate<NumericType, Dimensionality>,
     ): Coordinate<NumericType, Dimensionality> => (
-        fixedCoordinate || coordinate.length === as.number(TWO_DIMENSIONAL) ?
+        fixedCoordinate || computeLength(coordinate) === TWO_DIMENSIONAL ?
             [ 0, 0 ] :
             [ 0, 0, 0 ]
     ) as unknown as Coordinate<NumericType, Dimensionality>

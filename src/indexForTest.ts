@@ -30,7 +30,7 @@ export {
     isGreaterThan,
     isLessThan,
     range,
-    reverse,
+    computeReverse,
     flatten,
     sequence,
     areCyclicalTranslations,

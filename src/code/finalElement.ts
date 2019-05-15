@@ -21,22 +21,24 @@ const indexOfFinalElement: {
         array: ArrayType,
     ): Ordinal<ArrayType>,
 } =
-    <ElementType>(array: ElementType[]): Ordinal<ElementType[]> & Ordinal<Cycle<ElementType>> =>
-        as.Ordinal(use.Cardinal(
-            array.length,
-            as.Cardinal(negative(1)),
-        )) as unknown as Ordinal<ElementType[]> & Ordinal<Cycle<ElementType>>
+    <ElementType = Number, ArrayType extends ArrayedType<ElementType> = ElementType[]>(
+        array: ElementType[],
+    ): Ordinal<ElementType[]> & Ordinal<Cycle<ElementType>> =>
+        as.Ordinal(as.number(use.Cardinal(
+            computeLength(array),
+            as.Cardinal<Cardinal<ArrayType>>(negative(1)),
+        ))) as unknown as Ordinal<ArrayType> & Ordinal<Cycle<ElementType>>
 
 const indexJustBeyondFinalElement: {
     <ElementType>(array: Cycle<ElementType>): Ordinal<Cycle<ElementType>>,
-    <ElementType, ArrayType extends ArrayedType<ElementType> = ElementType[]>(
+    <ElementType, ArrayType extends ArrayedOrStringType<ElementType> = ElementType[]>(
         array: ArrayType,
     ): Ordinal<ArrayType>,
 } =
     <ElementType>(array: ElementType[]): Ordinal<ElementType[]> & Ordinal<Cycle<ElementType>> =>
-        as.Ordinal(array.length) as unknown as Ordinal<ElementType[]> & Ordinal<Cycle<ElementType>>
+        computeLength(array) as unknown as Ordinal<ElementType[]> & Ordinal<Cycle<ElementType>>
 
-const length:
+const computeLength:
     <ElementType, ArrayType extends ArrayedOrStringType<ElementType> = ElementType[]>(
         array: ArrayType,
     ) => Cardinal<ArrayType> =
@@ -54,10 +56,10 @@ const initialElement: <ElementType>(array: ElementType[]) => ElementType =
         return use.Ordinal(array, 0 as unknown as Ordinal<ElementType[]>)
     }
 
-const finalIndexFromElementsTotal: <ElementType, ArrayType extends ArrayedType<ElementType> = ElementType[]>(
+const finalIndexFromElementsTotal: <ElementType, ArrayType extends ArrayedOrStringType<ElementType> = ElementType[]>(
     elementsTotal: Cardinal<ArrayType>,
 ) => Ordinal<ArrayType> =
-    <ElementType, ArrayType extends ArrayedType<ElementType> = ElementType[]>(
+    <ElementType, ArrayType extends ArrayedOrStringType<ElementType> = ElementType[]>(
         elementsTotal: Cardinal<ArrayType>,
     ): Ordinal<ArrayType> =>
         as.Ordinal<ArrayType>(as.number(use.Cardinal(elementsTotal, COUNT_FROM_LENGTH_TO_FINAL_INDEX)))
@@ -66,7 +68,7 @@ export {
     indexOfFinalElement,
     finalElement,
     indexJustBeyondFinalElement,
-    length,
+    computeLength,
     initialElement,
     finalIndexFromElementsTotal,
 }

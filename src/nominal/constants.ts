@@ -81,8 +81,8 @@ const X_AXIS: Ordinal<AnyArrayedOrStringType> = as.Ordinal<AnyArrayedOrStringTyp
 const Y_AXIS: Ordinal<AnyArrayedOrStringType> = as.Ordinal<AnyArrayedOrStringType>(1)
 const Z_AXIS: Ordinal<AnyArrayedOrStringType> = as.Ordinal<AnyArrayedOrStringType>(2)
 const ORIGIN: Space = as.Space(0)
-const TWO_DIMENSIONAL: Cardinal<AnyArrayedOrStringType> = as.Cardinal<AnyArrayedOrStringType>(2)
-const THREE_DIMENSIONAL: Cardinal<AnyArrayedOrStringType> = as.Cardinal<AnyArrayedOrStringType>(3)
+const TWO_DIMENSIONAL: Cardinal<any> = as.Cardinal<any>(2)
+const THREE_DIMENSIONAL: Cardinal<any> = as.Cardinal<any>(3)
 
 const SQUARED: Power<any> = as.Power(2)
 const CUBED: Power<any> = as.Power(3)

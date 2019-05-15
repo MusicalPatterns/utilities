@@ -1,18 +1,18 @@
 // tslint:disable no-duplicate-string
 
-import { as, Cycle, Hz, reverse } from '../../../src/indexForTest'
+import { as, computeReverse, Cycle, Hz } from '../../../src/indexForTest'
 
 describe('reverse', () => {
     describe('strings', () => {
         it('works', () => {
-            expect(reverse('hello'))
+            expect(computeReverse('hello'))
                 .toBe('olleh')
         })
 
         it('does not mutate the original value', () => {
             const original: string = 'hello'
 
-            reverse(original)
+            computeReverse(original)
 
             expect(original)
                 .toBe('hello')
@@ -21,14 +21,14 @@ describe('reverse', () => {
 
     describe('arrays', () => {
         it('works', () => {
-            expect(reverse([ 3, 4, 5 ].map(as.Hz)))
+            expect(computeReverse([ 3, 4, 5 ].map(as.Hz)))
                 .toEqual([ 5, 4, 3 ].map(as.Hz))
         })
 
         it('does not mutate the original value', () => {
             const original: Hz[] = [ 3, 4, 5 ].map(as.Hz)
 
-            reverse(original)
+            computeReverse(original)
 
             expect(original)
                 .toEqual([ 3, 4, 5 ].map(as.Hz))
@@ -38,14 +38,14 @@ describe('reverse', () => {
     describe('Cycles', () => {
         it('works', () => {
             // @ts-ignore
-            expect(reverse(as.Cycle([ 3, 4, 5 ])))
+            expect(computeReverse(as.Cycle([ 3, 4, 5 ])))
                 .toEqual(as.Cycle([ 5, 4, 3 ]))
         })
 
         it('does not mutate the original value', () => {
             const original: Cycle = as.Cycle([ 3, 4, 5 ])
 
-            reverse(original)
+            computeReverse(original)
 
             expect(original)
                 .toEqual(as.Cycle([ 3, 4, 5 ]))

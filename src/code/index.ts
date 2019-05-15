@@ -15,7 +15,7 @@ export { noop } from './noop'
 export {
     finalElement,
     indexOfFinalElement,
-    length,
+    computeLength,
     indexJustBeyondFinalElement,
     initialElement,
     finalIndexFromElementsTotal,
@@ -29,7 +29,7 @@ export { arraysHaveNoCommonValues } from './noCommonValues'
 export { evenElements, oddElements, everyNthElement } from './regularSamplings'
 export { sleep } from './sleep'
 export { range } from './range'
-export { reverse } from './reverse'
+export { computeReverse } from './reverse'
 export { flatten } from './flatten'
 export { areCyclicalTranslations } from './areCyclicalTranslations'
 export { exampleElement } from './exampleElement'

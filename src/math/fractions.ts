@@ -1,3 +1,4 @@
+import { computeLength } from '../code'
 import { computeGreatestCommonDivisor, computeLeastCommonMultiple, product, quotient } from '../math'
 import {
     as,
@@ -24,7 +25,7 @@ const multiplyFractions: (...fractions: Fraction[]) => Fraction =
     (...fractions: Fraction[]): Fraction => {
         const previousFraction: Fraction = fractions.pop() as Fraction
 
-        const nextMultipliedFraction: Fraction = fractions.length ?
+        const nextMultipliedFraction: Fraction = computeLength(fractions) > as.Cardinal<Fraction[]>(0) ?
             multiplyFractions(...fractions) :
             FRACTIONAL_IDENTITY
 

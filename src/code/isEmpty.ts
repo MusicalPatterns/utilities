@@ -1,10 +1,15 @@
-const isEmpty: <ElementType>(array: ElementType[]) => boolean =
-    <ElementType>(array: ElementType[]): boolean =>
-        array.length === 0
+import { ArrayedType, as } from '../nominal'
+import { computeLength } from './finalElement'
 
-const isSingleton: <ElementType>(array: ElementType[]) => boolean =
-    <ElementType>(array: ElementType[]): boolean =>
-        array.length === 1
+const isEmpty:
+    <ElementType, ArrayType extends ArrayedType<ElementType> = ElementType[]>(array: ArrayType) => boolean =
+    <ElementType, ArrayType extends ArrayedType<ElementType> = ElementType[]>(array: ArrayType): boolean =>
+        computeLength(array) === as.Cardinal<ArrayType>(0)
+
+const isSingleton:
+    <ElementType, ArrayType extends ArrayedType<ElementType> = ElementType[]>(array: ArrayType) => boolean =
+    <ElementType, ArrayType extends ArrayedType<ElementType> = ElementType[]>(array: ArrayType): boolean =>
+        computeLength(array) === as.Cardinal<ArrayType>(1)
 
 export {
     isEmpty,

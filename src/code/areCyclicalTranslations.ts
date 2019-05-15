@@ -2,7 +2,7 @@ import { ArrayedOrStringType, as, Cardinal, Cycle, use } from '../nominal'
 import { allElementsEqual } from './allElementsEqual'
 import { deepEqual } from './deepEqual'
 import { exampleElement } from './exampleElement'
-import { length } from './finalElement'
+import { computeLength } from './finalElement'
 import { range } from './range'
 import { every } from './typedIterators'
 
@@ -12,7 +12,7 @@ const areCyclicalTranslations: <ElementType, ArrayType extends ArrayedOrStringTy
     <ElementType, ArrayType extends ArrayedOrStringType<ElementType> = ElementType[]>(
         ...arrays: ArrayType[]
     ): boolean => {
-        if (!allElementsEqual(arrays.map(length))) {
+        if (!allElementsEqual(arrays.map(computeLength))) {
             return false
         }
 
@@ -23,7 +23,7 @@ const areCyclicalTranslations: <ElementType, ArrayType extends ArrayedOrStringTy
             (array: ArrayType) => {
                 let result: boolean = false
 
-                range(length(array))
+                range(computeLength(array))
                     .map((cardinal: number) => as.Cardinal<Cycle<ElementType>>(cardinal))
                     .forEach((cardinal: Cardinal<Cycle<ElementType>>) => {
                         const asCycle: Cycle<ElementType> = as.Cycle(array)

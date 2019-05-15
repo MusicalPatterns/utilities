@@ -1,7 +1,7 @@
 // tslint:disable max-file-line-count
 
 import { AnyArrayedType, ArrayedOrStringType, ArrayedType, as, Cycle, INCREMENT, Ordinal, use } from '../nominal'
-import { indexJustBeyondFinalElement, length } from './finalElement'
+import { computeLength, indexJustBeyondFinalElement } from './finalElement'
 import { isUndefined } from './typeGuards'
 
 const slice: <ElementType, ArrayType extends ArrayedOrStringType<ElementType> = ElementType[]>(
@@ -20,7 +20,7 @@ const slice: <ElementType, ArrayType extends ArrayedOrStringType<ElementType> = 
 
         if (terminal > indexJustBeyondFinalElement(array as unknown as AnyArrayedType)) {
             throw new Error(`You tried to slice up to index ${terminal} of an array with length \
-of only ${length(array)}: ${array}`)
+of only ${computeLength(array)}: ${array}`)
         }
 
         return array.slice(

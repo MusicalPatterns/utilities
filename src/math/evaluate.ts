@@ -1,7 +1,7 @@
 // tslint:disable max-file-line-count
 
 import { HtmlValue } from '../browser'
-import { slice } from '../code'
+import { indexJustBeyondFinalElement, slice } from '../code'
 import { as, Cardinal, EXCLUSIVE_TO_LEFT, INITIAL, insteadOf, Ordinal, use } from '../nominal'
 import { Operands } from './types'
 
@@ -72,7 +72,7 @@ const evaluateArithmeticOperation: (expression: string) => number =
 const evaluateParenthetical: (expression: string) => number =
     (expression: string): number => {
         const beginParantheticalIndex: Ordinal<string> = as.Ordinal<string>(expression.lastIndexOf('('))
-        const endIndex: Ordinal<string> = as.Ordinal<string>(expression.length)
+        const endIndex: Ordinal<string> = indexJustBeyondFinalElement(expression)
         const endParantheticalIndex: Ordinal<string> = use.Cardinal(
             beginParantheticalIndex,
             as.Transition<string>(
