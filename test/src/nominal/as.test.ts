@@ -97,14 +97,14 @@ describe('as', () => {
         describe('arrays', () => {
             describe('Cycle', () => {
                 it('removes the type', () => {
-                    expect(as.Array(as.Cycle<Scalar>([ 3, 4, 5 ].map(as.Scalar))))
+                    expect(as.unbrandedArray(as.Cycle<Scalar>([ 3, 4, 5 ].map(as.Scalar))))
                         .toEqual([ 3, 4, 5 ].map(as.Scalar))
                 })
 
                 it('does not mutate the original', () => {
                     const originalCycle: Cycle = as.Cycle([ 3, 4, 5 ])
 
-                    as.Array(originalCycle)
+                    as.unbrandedArray(originalCycle)
 
                     expect(originalCycle)
                         .toEqual(as.Cycle([ 3, 4, 5 ]))
@@ -113,14 +113,14 @@ describe('as', () => {
 
             describe('Block', () => {
                 it('removes the type', () => {
-                    expect(as.Array(as.Block([ 3, 4, 5 ])))
+                    expect(as.unbrandedArray(as.Block([ 3, 4, 5 ])))
                         .toEqual([ 3, 4, 5 ])
                 })
 
                 it('does not mutate the original', () => {
                     const originalBlock: Block = as.Block([ 3, 4, 5 ])
 
-                    as.Array(originalBlock)
+                    as.unbrandedArray(originalBlock)
 
                     expect(originalBlock)
                         .toEqual(as.Block([ 3, 4, 5 ]))
@@ -129,14 +129,14 @@ describe('as', () => {
 
             describe('ContourElement', () => {
                 it('removes the type', () => {
-                    expect(as.Array(as.ContourElement([ 3, 4, 5 ])))
+                    expect(as.unbrandedArray(as.ContourElement([ 3, 4, 5 ])))
                         .toEqual([ 3, 4, 5 ])
                 })
 
                 it('does not mutate the original', () => {
                     const originalContourElement: ContourElement<number> = as.ContourElement([ 3, 4, 5 ])
 
-                    as.Array(originalContourElement)
+                    as.unbrandedArray(originalContourElement)
 
                     expect(originalContourElement)
                         .toEqual(as.ContourElement([ 3, 4, 5 ]))
@@ -145,14 +145,14 @@ describe('as', () => {
 
             describe('ContourPiece', () => {
                 it('removes the type', () => {
-                    expect(as.Array(as.ContourPiece<number>([ [ 3 ], [ 4 ], [ 5 ] ])))
+                    expect(as.unbrandedArray(as.ContourPiece<number>([ [ 3 ], [ 4 ], [ 5 ] ])))
                         .toEqual([ [ 3 ], [ 4 ], [ 5 ] ])
                 })
 
                 it('does not mutate the original', () => {
                     const originalContourPiece: ContourPiece<number> = as.ContourPiece([ [ 3 ], [ 4 ], [ 5 ] ])
 
-                    as.Array(originalContourPiece)
+                    as.unbrandedArray(originalContourPiece)
 
                     expect(originalContourPiece)
                         .toEqual(as.ContourPiece([ [ 3 ], [ 4 ], [ 5 ] ]))
@@ -161,14 +161,14 @@ describe('as', () => {
 
             describe('ContourWhole', () => {
                 it('removes the type', () => {
-                    expect(as.Array(as.ContourWhole<number>([ [ 3 ], [ 4 ], [ 5 ] ])))
+                    expect(as.unbrandedArray(as.ContourWhole<number>([ [ 3 ], [ 4 ], [ 5 ] ])))
                         .toEqual([ [ 3 ], [ 4 ], [ 5 ] ])
                 })
 
                 it('does not mutate the original', () => {
                     const originalContourWhole: ContourWhole<number> = as.ContourWhole([ [ 3 ], [ 4 ], [ 5 ] ])
 
-                    as.Array(originalContourWhole)
+                    as.unbrandedArray(originalContourWhole)
 
                     expect(originalContourWhole)
                         .toEqual(as.ContourWhole([ [ 3 ], [ 4 ], [ 5 ] ]))

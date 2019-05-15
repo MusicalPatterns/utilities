@@ -67,7 +67,7 @@ const number: <FractionOrNumericType extends Number | Fraction>(asNumber: Fracti
         return asNumber as unknown as number
     }
 
-const Array: <ElementType, ArrayType extends ArrayedType = ElementType[]>(asArray: ArrayType) => ElementType[] =
+const unbrandedArray: <ElementType, ArrayType extends ArrayedType = ElementType[]>(asArray: ArrayType) => ElementType[] =
     <ElementType, ArrayType extends ArrayedType = ElementType[]>(asArray: ArrayType): ElementType[] =>
         asArray.slice() as unknown as ElementType[]
 
@@ -383,5 +383,5 @@ export {
     Transition,
     Turn,
     number,
-    Array,
+    unbrandedArray,
 }
