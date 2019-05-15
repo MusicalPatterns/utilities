@@ -168,4 +168,8 @@ export {
     Transposition,
     ArrayedType,
     ArrayedOrStringType,
+    Block,
+    ContourElement,
+    ContourPiece,
+    ContourWhole,
 } from './nominal/indexForTest'

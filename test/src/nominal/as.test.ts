@@ -5,8 +5,12 @@ import {
     Arc,
     as,
     Base,
+    Block,
     Cardinal,
     Cents,
+    ContourElement,
+    ContourPiece,
+    ContourWhole,
     Cycle,
     Delta,
     Denominator,
@@ -42,50 +46,134 @@ import {
 
 describe('as', () => {
     describe('removal', () => {
-        it('removes the type from units', () => {
-            const removedUnitUnwholePhysical: number = as.number(as.Hz(1))
-            const removedUnitUnwholeAbstract: number = as.number(as.Frequency(1))
-            const removedUnitUnwholeOther: number = as.number(as.Frequency(1))
-            const removedUnitWhole: number = as.number(as.Numerator(1))
+        describe('numbers', () => {
+            it('removes the type from units', () => {
+                const removedUnitUnwholePhysical: number = as.number(as.Hz(1))
+                const removedUnitUnwholeAbstract: number = as.number(as.Frequency(1))
+                const removedUnitUnwholeOther: number = as.number(as.Frequency(1))
+                const removedUnitWhole: number = as.number(as.Numerator(1))
+            })
+
+            it('removes the type from Fraction', () => {
+                const removedFraction: number = as.number(as.Fraction([
+                    as.Numerator(3),
+                    as.Denominator(4),
+                ] as [ Numerator, Denominator ]))
+            })
+
+            it('removes the type from unwhole uses', () => {
+                const removedUseUnwholeTransformation: number = as.number(as.Scalar(1))
+                const removedUseUnwholeNonTransformation: number = as.number(as.Exponent(1))
+                const removedUseUnwholeFixed: number = as.number(as.Point(1))
+                const removedUseUnwholeCompound: number = as.number(as.Interval(1))
+            })
+
+            it('removes the type from whole uses', () => {
+                const removedUseWholeTransformation: number = as.number(as.Multiple(1))
+                const removedUseWholeNonTransformation: number = as.number(as.Power(1))
+                const removedUseWholeFixed: number = as.number(as.Ordinal(1))
+                const removedUseWholeCompound: number = as.number(as.Factor(1))
+            })
+
+            it('removes the type from normal uses', () => {
+                const removedUseNormal: number = as.number(as.NormalScalar(1))
+            })
+
+            it('removes the type from integers', () => {
+                const removedUseInteger: number = as.number(as.Integer(1))
+            })
+
+            it('removes the type from uses of units', () => {
+                const removedUseUnwholeOfUnitUnwhole: number = as.number(as.Scalar<Hz>(1))
+                const removedUseWholeOfUnitWhole: number = as.number(as.Multiple<Numerator>(1))
+            })
+
+            it('removes the type from uses of uses', () => {
+                const removedUseUnwholeOfUseUnwhole: number = as.number(as.Scalar<Rotation>(1))
+                const removedUseWholeOfUseWhole: number = as.number(as.Multiple<Cardinal>(1))
+            })
         })
 
-        it('removes the type from Fraction', () => {
-            const removedFraction: number = as.number(as.Fraction([
-                as.Numerator(3),
-                as.Denominator(4),
-            ] as [ Numerator, Denominator ]))
-        })
+        describe('arrays', () => {
+            describe('Cycle', () => {
+                it('removes the type', () => {
+                    expect(as.Array(as.Cycle<Scalar>([ 3, 4, 5 ].map(as.Scalar))))
+                        .toEqual([ 3, 4, 5 ].map(as.Scalar))
+                })
 
-        it('removes the type from unwhole uses', () => {
-            const removedUseUnwholeTransformation: number = as.number(as.Scalar(1))
-            const removedUseUnwholeNonTransformation: number = as.number(as.Exponent(1))
-            const removedUseUnwholeFixed: number = as.number(as.Point(1))
-            const removedUseUnwholeCompound: number = as.number(as.Interval(1))
-        })
+                it('does not mutate the original', () => {
+                    const originalCycle: Cycle = as.Cycle([ 3, 4, 5 ])
 
-        it('removes the type from whole uses', () => {
-            const removedUseWholeTransformation: number = as.number(as.Multiple(1))
-            const removedUseWholeNonTransformation: number = as.number(as.Power(1))
-            const removedUseWholeFixed: number = as.number(as.Ordinal(1))
-            const removedUseWholeCompound: number = as.number(as.Factor(1))
-        })
+                    as.Array(originalCycle)
 
-        it('removes the type from normal uses', () => {
-            const removedUseNormal: number = as.number(as.NormalScalar(1))
-        })
+                    expect(originalCycle)
+                        .toEqual(as.Cycle([ 3, 4, 5 ]))
+                })
+            })
 
-        it('removes the type from integers', () => {
-            const removedUseInteger: number = as.number(as.Integer(1))
-        })
+            describe('Block', () => {
+                it('removes the type', () => {
+                    expect(as.Array(as.Block([ 3, 4, 5 ])))
+                        .toEqual([ 3, 4, 5 ])
+                })
 
-        it('removes the type from uses of units', () => {
-            const removedUseUnwholeOfUnitUnwhole: number = as.number(as.Scalar<Hz>(1))
-            const removedUseWholeOfUnitWhole: number = as.number(as.Multiple<Numerator>(1))
-        })
+                it('does not mutate the original', () => {
+                    const originalBlock: Block = as.Block([ 3, 4, 5 ])
 
-        it('removes the type from uses of uses', () => {
-            const removedUseUnwholeOfUseUnwhole: number = as.number(as.Scalar<Rotation>(1))
-            const removedUseWholeOfUseWhole: number = as.number(as.Multiple<Cardinal>(1))
+                    as.Array(originalBlock)
+
+                    expect(originalBlock)
+                        .toEqual(as.Block([ 3, 4, 5 ]))
+                })
+            })
+
+            describe('ContourElement', () => {
+                it('removes the type', () => {
+                    expect(as.Array(as.ContourElement([ 3, 4, 5 ])))
+                        .toEqual([ 3, 4, 5 ])
+                })
+
+                it('does not mutate the original', () => {
+                    const originalContourElement: ContourElement<number> = as.ContourElement([ 3, 4, 5 ])
+
+                    as.Array(originalContourElement)
+
+                    expect(originalContourElement)
+                        .toEqual(as.ContourElement([ 3, 4, 5 ]))
+                })
+            })
+
+            describe('ContourPiece', () => {
+                it('removes the type', () => {
+                    expect(as.Array(as.ContourPiece<number>([ [ 3 ], [ 4 ], [ 5 ] ])))
+                        .toEqual([ [ 3 ], [ 4 ], [ 5 ] ])
+                })
+
+                it('does not mutate the original', () => {
+                    const originalContourPiece: ContourPiece<number> = as.ContourPiece([ [ 3 ], [ 4 ], [ 5 ] ])
+
+                    as.Array(originalContourPiece)
+
+                    expect(originalContourPiece)
+                        .toEqual(as.ContourPiece([ [ 3 ], [ 4 ], [ 5 ] ]))
+                })
+            })
+
+            describe('ContourWhole', () => {
+                it('removes the type', () => {
+                    expect(as.Array(as.ContourWhole<number>([ [ 3 ], [ 4 ], [ 5 ] ])))
+                        .toEqual([ [ 3 ], [ 4 ], [ 5 ] ])
+                })
+
+                it('does not mutate the original', () => {
+                    const originalContourWhole: ContourWhole<number> = as.ContourWhole([ [ 3 ], [ 4 ], [ 5 ] ])
+
+                    as.Array(originalContourWhole)
+
+                    expect(originalContourWhole)
+                        .toEqual(as.ContourWhole([ [ 3 ], [ 4 ], [ 5 ] ]))
+                })
+            })
         })
     })
 

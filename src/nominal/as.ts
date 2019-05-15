@@ -1,7 +1,7 @@
 // tslint:disable variable-name max-file-line-count max-line-length
 
 import { integerCheck, normalCheck } from './checks'
-import { ArrayedOrStringType, as } from './index'
+import { ArrayedOrStringType, ArrayedType } from './index'
 import {
     Amplitude,
     Arc,
@@ -61,11 +61,15 @@ import {
 const number: <FractionOrNumericType extends Number | Fraction>(asNumber: FractionOrNumericType) => number =
     <FractionOrNumericType extends Number | Fraction>(asNumber: FractionOrNumericType): number => {
         if (asNumber instanceof Array) {
-            return as.number(asNumber[ 0 ]) * (1 / as.number(asNumber[ 1 ]))
+            return (asNumber as Fraction)[ 0 ] as unknown as number / ((asNumber as Fraction)[ 1 ] as unknown as number)
         }
 
         return asNumber as unknown as number
     }
+
+const Array: <ElementType, ArrayType extends ArrayedType = ElementType[]>(asArray: ArrayType) => ElementType[] =
+    <ElementType, ArrayType extends ArrayedType = ElementType[]>(asArray: ArrayType): ElementType[] =>
+        asArray.slice() as unknown as ElementType[]
 
 // Units - Unwhole - Physical
 
@@ -379,4 +383,5 @@ export {
     Transition,
     Turn,
     number,
+    Array,
 }
