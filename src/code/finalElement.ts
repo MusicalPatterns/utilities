@@ -17,9 +17,7 @@ const finalElement: <ElementType>(array: ElementType[]) => ElementType =
 
 const indexOfFinalElement: {
     <ElementType>(array: Cycle<ElementType>): Ordinal<Cycle<ElementType>>,
-    <ElementType, ArrayType extends ArrayedType<ElementType> = ElementType[]>(
-        array: ArrayType,
-    ): Ordinal<ArrayType>,
+    <ArrayType extends ArrayedType>(array: ArrayType): Ordinal<ArrayType>,
 } =
     <ElementType = Number, ArrayType extends ArrayedType<ElementType> = ElementType[]>(
         array: ElementType[],
@@ -31,20 +29,13 @@ const indexOfFinalElement: {
 
 const indexJustBeyondFinalElement: {
     <ElementType>(array: Cycle<ElementType>): Ordinal<Cycle<ElementType>>,
-    <ElementType, ArrayType extends ArrayedOrStringType<ElementType> = ElementType[]>(
-        array: ArrayType,
-    ): Ordinal<ArrayType>,
+    <ArrayType extends ArrayedOrStringType>(array: ArrayType): Ordinal<ArrayType>,
 } =
     <ElementType>(array: ElementType[]): Ordinal<ElementType[]> & Ordinal<Cycle<ElementType>> =>
         computeLength(array) as unknown as Ordinal<ElementType[]> & Ordinal<Cycle<ElementType>>
 
-const computeLength:
-    <ElementType, ArrayType extends ArrayedOrStringType<ElementType> = ElementType[]>(
-        array: ArrayType,
-    ) => Cardinal<ArrayType> =
-    <ElementType, ArrayType extends ArrayedOrStringType<ElementType> = ElementType[]>(
-        array: ArrayType,
-    ): Cardinal<ArrayType> =>
+const computeLength: <ArrayType extends ArrayedOrStringType>(array: ArrayType) => Cardinal<ArrayType> =
+    <ArrayType extends ArrayedOrStringType>(array: ArrayType): Cardinal<ArrayType> =>
         as.Cardinal<ArrayType>(array.length)
 
 const initialElement: <ElementType>(array: ElementType[]) => ElementType =
