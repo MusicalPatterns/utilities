@@ -310,10 +310,10 @@ const Integer: <OfType extends NoUnits>(asInteger: OfType) => Integer =
 
 // Array
 
-const Cycle: <ElementType, ArrayType extends ArrayedOrStringType<ElementType> = ElementType[]>(
+const Cycle: <ElementType = number, ArrayType extends ArrayedOrStringType<ElementType> = ElementType[]>(
     asCycle: ArrayType,
 ) => Cycle<ElementType> =
-    <ElementType, ArrayType extends ArrayedOrStringType<ElementType> = ElementType[]>(
+    <ElementType = number, ArrayType extends ArrayedOrStringType<ElementType> = ElementType[]>(
         asCycle: ArrayType,
     ): Cycle<ElementType> => {
         const brandedAsCycle: Cycle<ElementType> = asCycle.slice() as Cycle<ElementType>
