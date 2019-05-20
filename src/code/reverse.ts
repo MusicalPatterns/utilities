@@ -16,7 +16,7 @@ const computeReverse: <ElementType, ArrayType extends ArrayedOrStringType<Elemen
         }
 
         if (isArray(arrayOrString)) {
-            return deepClone(arrayOrString as unknown[])
+            return deepClone(arrayOrString as Array<unknown>)
                 .reverse() as ArrayType
         }
 

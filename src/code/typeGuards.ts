@@ -2,8 +2,8 @@ const isUndefined: (value: unknown) => value is undefined =
     (value: unknown): value is undefined =>
         typeof value === 'undefined'
 
-const isArray: (maybeArray: unknown) => maybeArray is unknown[] =
-    (maybeArray: unknown): maybeArray is unknown[] =>
+const isArray: (maybeArray: unknown) => maybeArray is Array<unknown> =
+    (maybeArray: unknown): maybeArray is Array<unknown> =>
         maybeArray instanceof Array
 
 const isString: (maybeString: unknown) => maybeString is string =
