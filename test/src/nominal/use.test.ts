@@ -75,6 +75,11 @@ describe('use', () => {
                 .toBe(6)
         })
 
+        it('when given a Multiple that is really huge, it still works', () => {
+            expect(use.Multiple(3, as.Multiple(137438953472)))
+                .toBe(412316860416)
+        })
+
         it('can be applied wherever a Scalar could be', () => {
             expect(use.Scalar(3, as.Multiple(5)))
                 .toBe(15)
