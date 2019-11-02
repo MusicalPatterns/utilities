@@ -1,16 +1,18 @@
 import { ArrayedType, Ordinal } from './types'
 
+// tslint:disable-next-line no-magic-numbers
+const LOWER_THRESHOLD_FOR_SCIENTIC_NOTATION: number = 1 / 1000000
+const UPPER_THRESHOLD_FOR_SCIENTIC_NOTATION: number = 100000000000
+
 const fixJavascriptFloatingPointArithmeticIssuesAndCastToNumber: (numeral: number) => number =
     (numeral: number): number => {
         // tslint:disable-next-line no-magic-numbers
-        if (Math.abs(numeral) < 1 / 1000000) {
+        if (Math.abs(numeral) < LOWER_THRESHOLD_FOR_SCIENTIC_NOTATION) {
             return 0
         }
 
-        // tslint:disable-next-line no-magic-numbers
-        if (numeral > 1000000) {
-            // tslint:disable-next-line no-any prefer-template no-magic-numbers
-            return +(Math.round(`${numeral}e+0` as unknown as number) + 'e-' + 0)
+        if (Math.abs(numeral) >= UPPER_THRESHOLD_FOR_SCIENTIC_NOTATION) {
+            return Math.round(numeral)
         }
 
         // tslint:disable-next-line no-any prefer-template no-magic-numbers
