@@ -14,8 +14,8 @@ const isNumber: (maybeNumber: unknown) => maybeNumber is number =
     (maybeNumber: unknown): maybeNumber is number =>
         typeof maybeNumber === 'number'
 
-const isObject: (maybeObject: object) => maybeObject is Object =
-    (maybeObject: unknown): maybeObject is Object =>
+const isObject: (maybeObject: unknown) => maybeObject is { [ index: string ]: unknown } =
+    (maybeObject: unknown): maybeObject is { [ index: string ]: unknown } =>
         typeof maybeObject === 'object'
 
 export {

@@ -1,4 +1,4 @@
-import { areCoprime, as, computeCommonFactors } from '../../../src/indexForTest'
+import { areCoprime, as, Cardinal, computeCommonFactors } from '../../../src/indexForTest'
 
 describe('common factors', () => {
     it('normal examples', () => {
@@ -18,8 +18,10 @@ describe('common factors', () => {
 
     it('should return the integer type of the input values if they are the same, and plain Integer otherwise', () => {
         expect(computeCommonFactors(as.Cardinal(7), as.Denominator(4), as.Multiple(3)))
+            // @ts-ignore
             .toEqual([ 1 ].map(as.Integer))
-        expect(computeCommonFactors(...[ 7, 4 ].map(as.Cardinal)))
+        const uniformInputs: Cardinal[] = [ 7, 4 ].map(as.Cardinal)
+        expect(computeCommonFactors(...uniformInputs))
             .toEqual([ 1 ].map(as.Cardinal))
     })
 

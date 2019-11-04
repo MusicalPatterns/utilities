@@ -1,5 +1,3 @@
-type Omit<ObjectType, KeyType extends keyof ObjectType> = Pick<ObjectType, Exclude<keyof ObjectType, KeyType>>
-
 type ObjectDifference<ObjectType extends ObjectTypeWithPropertiesToSubtract, ObjectTypeWithPropertiesToSubtract> =
     Omit<ObjectType, keyof ObjectTypeWithPropertiesToSubtract>
 
@@ -20,7 +18,6 @@ type NonPartial<PartialType> = { [Index in keyof PartialType]-?: PartialType[Ind
 type Difference<Type, TypeWithSubtypesToRemove> = Type extends TypeWithSubtypesToRemove ? never : Type
 
 export {
-    Omit,
     ObjectDifference,
     KeyMap,
     ObjectOf,

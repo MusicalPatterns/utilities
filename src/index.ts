@@ -49,7 +49,6 @@ export {
     map,
     forEach,
     reduce,
-    Omit,
     ObjectDifference,
     numericSort,
     filter,

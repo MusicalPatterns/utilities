@@ -34,6 +34,7 @@ const sum: SumOperation =
         return (nextSum as unknown as number) + (previousValue as unknown as number) as unknown as NumericType
     }
 
+// @ts-ignore
 const difference: DifferenceOperation =
     <NumericType extends Number>(minuend: NumericType, subtrahend: NumericType): NumericType =>
         (minuend as unknown as number) - (subtrahend as unknown as number) as unknown as NumericType
@@ -53,6 +54,7 @@ const product: ProductOperation =
         return (nextProduct as unknown as number) * (previousValue as unknown as number) as unknown as NumericType
     }
 
+// @ts-ignore
 const quotient: QuotientOperation =
     <NumericType extends Number>(dividend: NumericType, divisor: NumericType): NumericType =>
         (dividend as unknown as number) / (divisor as unknown as number) as unknown as NumericType
@@ -89,7 +91,7 @@ const round: <NumericType extends Number, WholeType extends Whole = Integer>(
         }
 
         // tslint:disable-next-line no-any prefer-template max-line-length
-        return +(Math.round(`${numeral}e+${precision}` as unknown as number) + 'e-' + precision) as unknown as NumericType
+        return +(Math.round(`${String(numeral)}e+${String(precision)}` as unknown as number) + 'e-' + String(precision)) as unknown as NumericType
     }
 
 const floor: <NumericType extends Number>(numeral: NumericType) => WholeVersion<NumericType> =

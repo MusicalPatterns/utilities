@@ -34,7 +34,7 @@ const normalCheck: <NumericType extends Number>(numeral: NumericType, type: stri
 
         if (fixedNumeral > 1 || fixedNumeral < 0) {
             throw new Error(
-                `Numerals of type ${type} must be between 0 and 1. This numeral was ${numeral}.`,
+                `Numerals of type ${type} must be between 0 and 1. This numeral was ${String(numeral)}.`,
             )
         }
 
@@ -51,7 +51,7 @@ const integerCheck: <NumericType extends Number>(numeral: NumericType, type: str
             fixJavascriptFloatingPointArithmeticIssuesAndCastToNumber(numeral as unknown as number)
 
         if (roundedValue !== fixedNumeral as unknown as number) {
-            throw new Error(`Numerals of type ${type} must be integers. This numeral was ${numeral}.`)
+            throw new Error(`Numerals of type ${type} must be integers. This numeral was ${String(numeral)}.`)
         }
 
         return roundedValue as unknown as NumericType

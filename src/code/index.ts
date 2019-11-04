@@ -43,7 +43,6 @@ export {
 } from './typedComparators'
 
 export {
-    Omit,
     ObjectDifference,
     KeyMap,
     ObjectOf,

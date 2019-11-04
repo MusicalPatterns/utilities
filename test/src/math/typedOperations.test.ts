@@ -206,9 +206,13 @@ describe('typed operations', () => {
             const logarithm: Logarithm = floor(as.Logarithm(1.3))
             const mod: Modulus = floor(as.Modulus(1.3))
 
+            // @ts-ignore
             const multiple: Multiple = floor(as.Scalar(1.3))
+            // @ts-ignore
             const power: Power = floor(as.Exponent(1.3))
+            // @ts-ignore
             const base: Base = floor(as.Logarithm(1.3))
+            // @ts-ignore
             const integerModulus: Remaindee = floor(as.Modulus(1.3))
         })
     })

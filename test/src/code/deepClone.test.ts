@@ -39,7 +39,7 @@ describe('deep clone object', () => {
         const anImmutableString: string = 'a string'
         const anImmutableNumber: number = 9
         const anImmutableFunction: (p: number) => number = (p: number): number => p * 3
-        const anUndefinedValue: void = undefined
+        const anUndefinedValue: unknown = undefined
         const originalArray: any[] = [ 'a', 2, { what: 'ever' } ]
         const originalDeepObject: { deeperSetting: string } = { deeperSetting: 'cool beans' }
         const originalShallowObject: { deepObject: { deeperSetting: string } } = { deepObject: originalDeepObject }

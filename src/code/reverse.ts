@@ -20,7 +20,7 @@ const computeReverse: <ElementType, ArrayType extends ArrayedOrStringType<Elemen
                 .reverse() as ArrayType
         }
 
-        throw new Error(`value was somehow neither a string nor an array: ${arrayOrString}`)
+        throw new Error(`value was somehow neither a string nor an array: ${String(arrayOrString)}`)
     }
 
 export {

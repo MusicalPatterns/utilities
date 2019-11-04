@@ -28,7 +28,7 @@ const powerSet: <MemberType>(set: MemberType[]) => MemberType[][] =
     <MemberType>(set: MemberType[]): MemberType[][] => {
         const combinations: Maybe<MemberType[][]> = recursiveCombinations(set)
         if (isUndefined(combinations)) {
-            throw new Error(`no combinations for power set ${set}`)
+            throw new Error(`no combinations for power set ${String(set)}`)
         }
         const emptySet: MemberType[] = []
 

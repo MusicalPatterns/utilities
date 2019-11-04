@@ -197,7 +197,7 @@ type AnyArrayedOrStringType = AnyArrayedType & string
 
 type Cycle<ElementType = number> = ElementType[] & { _CycleBrand: boolean }
 
-type Block = number[] & { _BlockBrand: void }
+type Block = number[] & { _BlockBrand: unknown }
 
 type ContourElement<ContourType> = [ number, ...number[] ] &
     { length: ContourType } & (
@@ -214,8 +214,8 @@ type ContourElement<ContourType> = [ number, ...number[] ] &
                                             { [ index: number ]: number }
     )
 
-type ContourPiece<ContourType> = Array<ContourElement<ContourType>> & { _ContourPieceBrand: void }
-type ContourWhole<ContourType> = Array<ContourElement<ContourType>> & { _ContourWholeBrand: void }
+type ContourPiece<ContourType> = Array<ContourElement<ContourType>> & { _ContourPieceBrand: unknown }
+type ContourWhole<ContourType> = Array<ContourElement<ContourType>> & { _ContourWholeBrand: unknown }
 
 export {
     Base,
