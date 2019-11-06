@@ -123,8 +123,8 @@ const Denominator: <NumericType extends NoUnits>(asDenominator: NumericType) => 
     <NumericType extends NoUnits>(asDenominator: NumericType): Denominator =>
         integerCheck(asDenominator, 'Denominator') as unknown as Denominator
 
-const Fraction: (fraction: [ Integer | Numerator, Integer | Denominator ]) => Fraction =
-    ([ asNumerator, asDenominator ]: [ Integer | Numerator, Integer | Denominator ]): Fraction =>
+const Fraction: (fraction: [Integer | Numerator, Integer | Denominator]) => Fraction =
+    ([asNumerator, asDenominator]: [Integer | Numerator, Integer | Denominator]): Fraction =>
         [
             integerCheck(asNumerator, 'Numerator'),
             integerCheck(asDenominator, 'Denominator'),
@@ -328,11 +328,20 @@ const Cycle: <ElementType = number, ArrayType extends ArrayedOrStringType<Elemen
         return brandedAsCycle
     }
 const Monzo: (asMonzo: Integer[]) => Monzo =
-    (asMonzo: Integer[]): Monzo =>
-        asMonzo.slice() as Monzo
+    (asMonzo: Integer[]): Monzo => {
+        const brandedAsMonzo: Monzo = asMonzo.slice() as Monzo
+        brandedAsMonzo._MonzoBrand = true
+
+        return brandedAsMonzo
+    }
+
 const Val: (asVal: Integer[]) => Val =
-    (asVal: Integer[]): Val =>
-        asVal.slice() as Val
+    (asVal: Integer[]): Val => {
+        const brandedAsVal: Val = asVal.slice() as Val
+        brandedAsVal._ValBrand = true
+
+        return brandedAsVal
+    }
 
 const Block: (asBlock: number[]) => Block =
     (asBlock: number[]): Block => asBlock as unknown as Block
