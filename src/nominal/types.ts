@@ -197,6 +197,9 @@ type AnyArrayedOrStringType = AnyArrayedType & string
 
 type Cycle<ElementType = number> = ElementType[] & { _CycleBrand: boolean }
 
+type Monzo = Integer[] & { _MonzoBrand: boolean }
+type Val = Integer[] & { _ValBrand: boolean }
+
 type Block = number[] & { _BlockBrand: unknown }
 
 type ContourElement<ContourType> = [ number, ...number[] ] &
@@ -281,4 +284,6 @@ export {
     Turn,
     ArrayedType,
     AnyArrayedOrStringType,
+    Monzo,
+    Val,
 }

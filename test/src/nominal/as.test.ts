@@ -24,6 +24,7 @@ import {
     Logarithm,
     Meters,
     Modulus,
+    Monzo,
     Ms,
     Multiple,
     NormalScalar,
@@ -42,6 +43,7 @@ import {
     Translation,
     Transposition,
     Turn,
+    Val,
 } from '../../../src/indexForTest'
 
 describe('as', () => {
@@ -108,6 +110,38 @@ describe('as', () => {
 
                     expect(originalCycle)
                         .toEqual(as.Cycle([ 3, 4, 5 ]))
+                })
+            })
+
+            describe('Monzo', () => {
+                it('removes the type', () => {
+                    expect(as.unbrandedArray(as.Monzo([ 3, 4, 5 ].map(as.Integer))))
+                        .toEqual([ 3, 4, 5 ].map(as.Integer))
+                })
+
+                it('does not mutate the original', () => {
+                    const originalMonzo: Monzo = as.Monzo([ 3, 4, 5 ].map(as.Integer))
+
+                    as.unbrandedArray(originalMonzo)
+
+                    expect(originalMonzo)
+                        .toEqual(as.Monzo([ 3, 4, 5 ].map(as.Integer)))
+                })
+            })
+
+            describe('Val', () => {
+                it('removes the type', () => {
+                    expect(as.unbrandedArray(as.Val([ 3, 4, 5 ].map(as.Integer))))
+                        .toEqual([ 3, 4, 5 ].map(as.Integer))
+                })
+
+                it('does not mutate the original', () => {
+                    const originalVal: Val = as.Val([ 3, 4, 5 ].map(as.Integer))
+
+                    as.unbrandedArray(originalVal)
+
+                    expect(originalVal)
+                        .toEqual(as.Val([ 3, 4, 5 ].map(as.Integer)))
                 })
             })
 
@@ -1075,6 +1109,32 @@ describe('as', () => {
                 expect(cycle._CycleBrand)
                     .toBeTruthy()
                 expect((original as Cycle)._CycleBrand)
+                    .toBeUndefined()
+            })
+        })
+
+        describe('Monzo', () => {
+            it('does not mutate the array argument', () => {
+                const original: Integer[] = [ 1, 3, 4 ].map(as.Integer)
+
+                const monzo: Monzo = as.Monzo(original)
+
+                expect(monzo._MonzoBrand)
+                    .toBeTruthy()
+                expect((original as Monzo)._MonzoBrand)
+                    .toBeUndefined()
+            })
+        })
+
+        describe('Val', () => {
+            it('does not mutate the array argument', () => {
+                const original: Integer[] = [ 1, 3, 4 ].map(as.Integer)
+
+                const val: Val = as.Val(original)
+
+                expect(val._ValBrand)
+                    .toBeTruthy()
+                expect((original as Val)._ValBrand)
                     .toBeUndefined()
             })
         })

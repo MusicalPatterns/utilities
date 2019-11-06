@@ -167,6 +167,7 @@ export {
     pow,
     log,
     integerDivide,
+    primeFactorize,
 } from './math'
 export {
     centsTranslationToPitchScalar,

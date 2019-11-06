@@ -3,6 +3,7 @@
 import { computeIntervals } from './rateOfChange'
 
 export { distanceBetween } from './distanceBetween'
+export { primeFactorize } from './primeFactorize'
 export { rotate } from './rotate'
 export {
     computeLowestTerms,

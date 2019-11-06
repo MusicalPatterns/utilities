@@ -193,4 +193,6 @@ export {
     Turn,
     Rotation,
     Remaindee,
+    Monzo,
+    Val,
 } from './types'

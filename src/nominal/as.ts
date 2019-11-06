@@ -31,6 +31,7 @@ import {
     Logarithm,
     Meters,
     Modulus,
+    Monzo,
     Ms,
     Multiple,
     NoOf,
@@ -54,6 +55,7 @@ import {
     Transposition,
     Turn,
     Unwhole,
+    Val,
 } from './types'
 
 // Removal
@@ -325,6 +327,12 @@ const Cycle: <ElementType = number, ArrayType extends ArrayedOrStringType<Elemen
 
         return brandedAsCycle
     }
+const Monzo: (asMonzo: Integer[]) => Monzo =
+    (asMonzo: Integer[]): Monzo =>
+        asMonzo.slice() as Monzo
+const Val: (asVal: Integer[]) => Val =
+    (asVal: Integer[]): Val =>
+        asVal.slice() as Val
 
 const Block: (asBlock: number[]) => Block =
     (asBlock: number[]): Block => asBlock as unknown as Block
@@ -384,4 +392,6 @@ export {
     Turn,
     number,
     unbrandedArray,
+    Monzo,
+    Val,
 }

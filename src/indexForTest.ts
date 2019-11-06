@@ -86,6 +86,7 @@ export {
     squareRoot,
     pow,
     log,
+    primeFactorize,
 } from './math/indexForTest'
 export {
     centsTranslationToPitchScalar,
@@ -172,4 +173,6 @@ export {
     ContourElement,
     ContourPiece,
     ContourWhole,
+    Monzo,
+    Val,
 } from './nominal/indexForTest'

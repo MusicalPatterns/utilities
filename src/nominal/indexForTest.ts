@@ -85,4 +85,6 @@ export {
     ContourElement,
     ContourPiece,
     ContourWhole,
+    Monzo,
+    Val,
 } from './types'
