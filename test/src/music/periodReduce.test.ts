@@ -36,6 +36,23 @@ describe('reducing', () => {
             expect(octaveReduce(TWO_THIRDS))
                 .toBe(FOUR_THIRDS)
         })
+
+        describe('with fractions', () => {
+            it('when necessary, increases the denominator', () => {
+                expect(octaveReduce(as.Fraction([ as.Numerator(23), as.Denominator(5) ])))
+                    .toEqual(as.Fraction([ as.Numerator(23), as.Denominator(20) ]))
+            })
+
+            it('when necessary, increases the numerator', () => {
+                expect(octaveReduce(as.Fraction([ as.Numerator(1), as.Denominator(9) ])))
+                    .toEqual(as.Fraction([ as.Numerator(16), as.Denominator(9) ]))
+            })
+
+            it('reduces to lowest terms', () => {
+                expect(octaveReduce(as.Fraction([ as.Numerator(12), as.Denominator(9) ])))
+                    .toEqual(as.Fraction([ as.Numerator(4), as.Denominator(3) ]))
+            })
+        })
     })
 
     describe('general period reduce', () => {
@@ -62,6 +79,23 @@ describe('reducing', () => {
         it('actually multiplies until it is greater than 1 but less than the period if it was less than 1', () => {
             expect(periodReduce(TWO_THIRDS, as.Scalar<Scalar<Pitch>>(3)))
                 .toBe(as.Scalar<Pitch>(2))
+        })
+
+        describe('with fractions', () => {
+            it('when necessary, increases the denominator', () => {
+                expect(periodReduce(as.Fraction([ as.Numerator(23), as.Denominator(5) ]), as.Multiple(3)))
+                    .toEqual(as.Fraction([ as.Numerator(23), as.Denominator(15) ]))
+            })
+
+            it('when necessary, increases the numerator', () => {
+                expect(periodReduce(as.Fraction([ as.Numerator(1), as.Denominator(10) ]), as.Multiple(3)))
+                    .toEqual(as.Fraction([ as.Numerator(27), as.Denominator(10) ]))
+            })
+
+            it('reduces to lowest terms', () => {
+                expect(periodReduce(as.Fraction([ as.Numerator(16), as.Denominator(8) ]), as.Multiple(3)))
+                    .toEqual(as.Fraction([ as.Numerator(2), as.Denominator(1) ]))
+            })
         })
     })
 })

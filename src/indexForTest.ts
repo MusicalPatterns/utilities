@@ -61,6 +61,8 @@ export {
     getNumerator,
     getDenominator,
     multiplyFractions,
+    setNumerator,
+    setDenominator,
     computeLowestCommonDenominator,
     computeCommonFactors,
     areCoprime,

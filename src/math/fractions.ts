@@ -1,4 +1,6 @@
-import { computeLength, isArray } from '../code'
+// tslint:disable max-file-line-count
+
+import { arraySet, computeLength } from '../code'
 import { computeGreatestCommonDivisor, computeLeastCommonMultiple, product, quotient } from '../math'
 import {
     as,
@@ -20,6 +22,14 @@ const getNumerator: (fraction: Fraction) => Numerator =
 const getDenominator: (fraction: Fraction) => Denominator =
     (fraction: Fraction): Denominator =>
         use.Ordinal(fraction, DENOMINATOR_INDEX) as Denominator
+
+const setNumerator: (fraction: Fraction, numerator: Numerator) => Fraction =
+    (fraction: Fraction, numerator: Numerator): Fraction =>
+        arraySet(fraction, NUMERATOR_INDEX, numerator) as Fraction
+
+const setDenominator: (fraction: Fraction, denominator: Denominator) => Fraction =
+    (fraction: Fraction, denominator: Denominator): Fraction =>
+        arraySet(fraction, DENOMINATOR_INDEX, denominator) as Fraction
 
 const multiplyFractions: (...fractions: Fraction[]) => Fraction =
     (...fractions: Fraction[]): Fraction => {
@@ -88,4 +98,6 @@ export {
     computeLowestTerms,
     computeCommonTerms,
     computeLowestCommonDenominator,
+    setDenominator,
+    setNumerator,
 }

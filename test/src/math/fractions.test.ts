@@ -7,6 +7,8 @@ import {
     getDenominator,
     getNumerator,
     multiplyFractions,
+    setDenominator,
+    setNumerator,
 } from '../../../src/indexForTest'
 
 describe('fractions', () => {
@@ -21,6 +23,28 @@ describe('fractions', () => {
         it('gives you a denominator type', () => {
             expect(getDenominator(as.Fraction([ as.Numerator(6), as.Denominator(7) ])))
                 .toBe(as.Denominator(7))
+        })
+    })
+
+    describe('set numerator', () => {
+        it('sets the numerator', () => {
+            const fraction: Fraction = as.Fraction([ as.Numerator(6), as.Denominator(7) ])
+
+            setNumerator(fraction, as.Numerator(8))
+
+            expect(fraction[ 0 ])
+                .toBe(as.Numerator(8))
+        })
+    })
+
+    describe('set denominator', () => {
+        it('sets the denominator', () => {
+            const fraction: Fraction = as.Fraction([ as.Numerator(6), as.Denominator(7) ])
+
+            setDenominator(fraction, as.Denominator(8))
+
+            expect(fraction[ 1 ])
+                .toBe(as.Denominator(8))
         })
     })
 

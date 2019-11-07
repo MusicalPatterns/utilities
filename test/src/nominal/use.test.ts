@@ -8,7 +8,7 @@ import {
     Logarithm,
     Multiple,
     negative,
-    NormalScalar,
+    NormalScalar, Numerator,
     ONE_HALF,
     Ordinal,
     Power,

@@ -171,6 +171,8 @@ export {
     primeFactorize,
     PRIMES,
     computeCombinations,
+    setNumerator,
+    setDenominator,
 } from './math'
 export {
     centsTranslationToPitchScalar,

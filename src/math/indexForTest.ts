@@ -12,6 +12,8 @@ export {
     getDenominator,
     multiplyFractions,
     computeLowestCommonDenominator,
+    setNumerator,
+    setDenominator,
 } from './fractions'
 export { powerSet, computeCombinations } from './powerSet'
 export { computeGreatestCommonDivisor, computeLeastCommonMultiple } from './common'

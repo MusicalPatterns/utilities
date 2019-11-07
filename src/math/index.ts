@@ -64,6 +64,8 @@ export {
     multiplyFractions,
     computeCommonTerms,
     computeLowestCommonDenominator,
+    setNumerator,
+    setDenominator,
 } from './fractions'
 
 export {

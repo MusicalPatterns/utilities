@@ -1,12 +1,29 @@
-import { reciprocal } from '../math'
-import { as, OCTAVE, Scalar, use } from '../nominal'
+import { computeLowestTerms, getDenominator, getNumerator, reciprocal, setDenominator, setNumerator } from '../math'
+import { as, Denominator, Fraction, isFraction, Multiple, Numerator, OCTAVE, Scalar, use } from '../nominal'
 import { Pitch } from './types'
 
-const octaveReduce: (scalar: Scalar<Pitch>) => Scalar<Pitch> =
-    (scalar: Scalar<Pitch>): Scalar<Pitch> =>
-        periodReduce(scalar, as.Scalar<Scalar<Pitch>>(as.number(OCTAVE)))
+const fractionPeriodReduce: (fraction: Fraction, period: Multiple<Numerator & Denominator>) => Fraction =
+    (fraction: Fraction, period: Multiple<Numerator & Denominator>): Fraction => {
+        const reducedFraction: Fraction = fraction.slice() as Fraction
 
-const periodReduce: (scalar: Scalar<Pitch>, period: Scalar<Scalar<Pitch>>) => Scalar<Pitch> =
+        while (
+            as.Integer(as.number(getNumerator(reducedFraction))) >
+            as.Integer(as.number(use.Multiple(getDenominator(reducedFraction), period)))
+            ) {
+            setDenominator(reducedFraction, use.Multiple(getDenominator(reducedFraction), period))
+        }
+
+        while (
+            as.Integer(as.number(getDenominator(reducedFraction))) >
+            as.Integer(as.number(getNumerator(reducedFraction)))
+            ) {
+            setNumerator(reducedFraction, use.Multiple(getNumerator(reducedFraction), period))
+        }
+
+        return computeLowestTerms(reducedFraction)
+    }
+
+const integerPeriodReduce: (scalar: Scalar<Pitch>, period: Scalar<Scalar<Pitch>>) => Scalar<Pitch> =
     (scalar: Scalar<Pitch>, period: Scalar<Scalar<Pitch>>): Scalar<Pitch> => {
         let octaveReducedScalar: Scalar<Pitch> = scalar
         while (as.number(octaveReducedScalar) >= as.number(period)) {
@@ -18,6 +35,23 @@ const periodReduce: (scalar: Scalar<Pitch>, period: Scalar<Scalar<Pitch>>) => Sc
 
         return octaveReducedScalar
     }
+
+const periodReduce:
+    (scalarOrFraction: Scalar<Pitch> | Fraction, period: Scalar<Scalar<Pitch>> | Multiple) => Scalar<Pitch> | Fraction =
+    (
+        scalarOrFraction: Scalar<Pitch> | Fraction,
+        period: Scalar<Scalar<Pitch>> | Multiple,
+    ): Scalar<Pitch> | Fraction => {
+        if (isFraction(scalarOrFraction)) {
+            return fractionPeriodReduce(scalarOrFraction, period as unknown as Multiple<Numerator & Denominator>)
+        }
+
+        return integerPeriodReduce(scalarOrFraction, period)
+    }
+
+const octaveReduce: (scalarOrFraction: Scalar<Pitch> | Fraction) => Scalar<Pitch> | Fraction =
+    (scalarOrFraction: Scalar<Pitch> | Fraction): Scalar<Pitch> | Fraction =>
+        periodReduce(scalarOrFraction, as.Scalar<Scalar<Pitch>>(as.number(OCTAVE)))
 
 export {
     octaveReduce,
