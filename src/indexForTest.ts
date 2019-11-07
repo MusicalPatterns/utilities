@@ -89,6 +89,7 @@ export {
     pow,
     log,
     primeFactorize,
+    computeCombinations,
 } from './math/indexForTest'
 export {
     centsTranslationToPitchScalar,

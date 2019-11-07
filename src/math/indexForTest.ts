@@ -13,7 +13,7 @@ export {
     multiplyFractions,
     computeLowestCommonDenominator,
 } from './fractions'
-export { powerSet } from './powerSet'
+export { powerSet, computeCombinations } from './powerSet'
 export { computeGreatestCommonDivisor, computeLeastCommonMultiple } from './common'
 export { evaluate } from './evaluate'
 export { isCloseTo } from './isCloseTo'

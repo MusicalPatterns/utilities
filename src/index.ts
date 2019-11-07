@@ -170,6 +170,7 @@ export {
     integerDivide,
     primeFactorize,
     PRIMES,
+    computeCombinations,
 } from './math'
 export {
     centsTranslationToPitchScalar,
