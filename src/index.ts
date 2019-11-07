@@ -92,6 +92,7 @@ export {
     flatten,
     exampleElement,
     areCyclicalTranslations,
+    throws,
 } from './code'
 export {
     absoluteRatio,
@@ -168,6 +169,7 @@ export {
     log,
     integerDivide,
     primeFactorize,
+    PRIMES,
 } from './math'
 export {
     centsTranslationToPitchScalar,
@@ -354,6 +356,9 @@ export {
     Remaindee,
     ArrayedType,
     ArrayedOrStringType,
+    isFraction,
+    isCycle,
+    isInteger,
 } from './nominal'
 export {
     ActionForState,

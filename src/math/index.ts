@@ -72,6 +72,7 @@ export {
     SQUARE_ROOT_OF_THREE,
     CUBE_ROOT_OF_TWO,
     CUBE_ROOT_OF_THREE,
+    PRIMES,
 } from './constants'
 export {
     Coordinate,

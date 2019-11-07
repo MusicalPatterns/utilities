@@ -17,6 +17,8 @@ export {
 } from './custom'
 export {
     isCycle,
+    isFraction,
+    isInteger,
 } from './typeGuards'
 export { insteadOf } from './insteadOf'
 export { ofNotAs } from './ofNotAs'

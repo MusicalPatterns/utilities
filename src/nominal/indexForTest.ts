@@ -10,6 +10,7 @@ export {
 }
 
 export { insteadOf } from './insteadOf'
+export { isCycle, isFraction, isInteger } from './typeGuards'
 export { ofNotAs } from './ofNotAs'
 
 export {

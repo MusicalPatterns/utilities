@@ -1,6 +1,6 @@
 import { as, primeFactorize } from '../../../src/indexForTest'
 
-fdescribe('prime factorize', () => {
+describe('prime factorize', () => {
     it('returns the prime factorization in monzo form', () => {
         expect(primeFactorize(as.Integer(1)))
             .toEqual(as.Monzo([].map(as.Integer)))
@@ -27,5 +27,10 @@ fdescribe('prime factorize', () => {
     it('fails on 0', () => {
         expect(() => primeFactorize(as.Integer(0)))
             .toThrow(new Error('The prime factorization of zero is not defined.'))
+    })
+
+    it('also works on fractions', () => {
+        expect(primeFactorize(as.Fraction([ as.Numerator(4), as.Denominator(5) ])))
+            .toEqual(as.Monzo([ 2, 0, -1 ].map(as.Integer)))
     })
 })

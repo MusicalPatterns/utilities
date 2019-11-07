@@ -41,6 +41,14 @@ describe('fractions', () => {
             ))
                 .toEqual(as.Fraction([ as.Numerator(112), as.Denominator(45) ]))
         })
+
+        it('puts them in lowest terms if they are not', () => {
+            expect(multiplyFractions(
+                as.Fraction([ as.Numerator(4), as.Denominator(6) ]),
+                as.Fraction([ as.Numerator(4), as.Denominator(2) ]),
+            ))
+                .toEqual(as.Fraction([ as.Numerator(4), as.Denominator(3) ]))
+        })
     })
 
     describe('lowest terms', () => {

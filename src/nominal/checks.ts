@@ -43,14 +43,17 @@ const normalCheck: <NumericType extends Number>(numeral: NumericType, type: stri
             numeral as unknown as NumericType
     }
 
-const integerCheck: <NumericType extends Number>(numeral: NumericType, type: string) => NumericType =
-    <NumericType extends Number>(numeral: NumericType, type: string): NumericType => {
+const integerCheck: <NumericType extends Number>(numeral: NumericType, type?: string) => NumericType =
+    <NumericType extends Number>(numeral: NumericType, type?: string): NumericType => {
         const roundedValue: number = Math.round(numeral as unknown as number)
 
         const fixedNumeral: number =
             fixJavascriptFloatingPointArithmeticIssuesAndCastToNumber(numeral as unknown as number)
 
         if (roundedValue !== fixedNumeral as unknown as number) {
+            if (!type) {
+                throw new Error()
+            }
             throw new Error(`Numerals of type ${type} must be integers. This numeral was ${String(numeral)}.`)
         }
 

@@ -1,4 +1,4 @@
-import { computeLength } from '../code'
+import { computeLength, isArray } from '../code'
 import { computeGreatestCommonDivisor, computeLeastCommonMultiple, product, quotient } from '../math'
 import {
     as,
@@ -29,10 +29,10 @@ const multiplyFractions: (...fractions: Fraction[]) => Fraction =
             multiplyFractions(...fractions) :
             FRACTIONAL_IDENTITY
 
-        return as.Fraction([
+        return computeLowestTerms(as.Fraction([
             product(getNumerator(nextMultipliedFraction), getNumerator(previousFraction)),
             product(getDenominator(nextMultipliedFraction), getDenominator(previousFraction)),
-        ])
+        ]))
     }
 
 const computeLowestTerms: (fraction: Fraction) => Fraction =

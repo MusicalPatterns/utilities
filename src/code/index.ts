@@ -21,6 +21,7 @@ export {
     finalIndexFromElementsTotal,
 } from './finalElement'
 export { random } from './random'
+export { throws } from './throws'
 export { keyExistsOnObject } from './keyExistsOnObject'
 export { numericSort } from './sort'
 export { uniqueFilter } from './filter'

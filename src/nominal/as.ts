@@ -124,7 +124,7 @@ const Denominator: <NumericType extends NoUnits>(asDenominator: NumericType) => 
         integerCheck(asDenominator, 'Denominator') as unknown as Denominator
 
 const Fraction: (fraction: [Integer | Numerator, Integer | Denominator]) => Fraction =
-    ([asNumerator, asDenominator]: [Integer | Numerator, Integer | Denominator]): Fraction =>
+    ([ asNumerator, asDenominator ]: [Integer | Numerator, Integer | Denominator]): Fraction =>
         [
             integerCheck(asNumerator, 'Numerator'),
             integerCheck(asDenominator, 'Denominator'),

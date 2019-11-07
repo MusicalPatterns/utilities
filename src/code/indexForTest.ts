@@ -16,6 +16,8 @@ export { range } from './range'
 export { computeReverse } from './reverse'
 export { flatten } from './flatten'
 export { sequence } from './sequence'
+export { throws } from './throws'
+export { noop } from './noop'
 export { areCyclicalTranslations } from './areCyclicalTranslations'
 export { camelCaseToConstantCase, constantCaseToUpperCase, camelCaseToLowerCase, camelCaseToUpperCase } from './case'
 

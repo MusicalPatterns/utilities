@@ -34,6 +34,8 @@ export {
     flatten,
     sequence,
     areCyclicalTranslations,
+    throws,
+    noop,
 } from './code/indexForTest'
 export {
     distanceBetween,
@@ -175,4 +177,7 @@ export {
     ContourWhole,
     Monzo,
     Val,
+    isFraction,
+    isCycle,
+    isInteger,
 } from './nominal/indexForTest'
