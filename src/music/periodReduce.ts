@@ -36,25 +36,42 @@ const integerPeriodReduce: (scalar: Scalar<Pitch>, period: Scalar<Scalar<Pitch>>
         return octaveReducedScalar
     }
 
-const periodReduce:
+const periodReduce: {
+    (
+        scalarOrFraction: Scalar<Pitch>,
+        period: Scalar<Scalar<Pitch>>,
+    ): Scalar<Pitch>,
+    (
+        scalarOrFraction: Fraction,
+        period: Multiple<FractionalPart>,
+    ): Fraction,
+} =
     (
         scalarOrFraction: Scalar<Pitch> | Fraction,
         period: Scalar<Scalar<Pitch>> | Multiple<FractionalPart>,
-    ) => Scalar<Pitch> | Fraction =
-    (
-        scalarOrFraction: Scalar<Pitch> | Fraction,
-        period: Scalar<Scalar<Pitch>> | Multiple<FractionalPart>,
-    ): Scalar<Pitch> | Fraction => {
+    ): Scalar<Pitch> & Fraction => {
         if (isFraction(scalarOrFraction)) {
-            return fractionPeriodReduce(scalarOrFraction, period as unknown as Multiple<FractionalPart>)
+            return fractionPeriodReduce(
+                scalarOrFraction,
+                period as unknown as Multiple<FractionalPart>,
+            ) as Scalar<Pitch> & Fraction
         }
 
-        return integerPeriodReduce(scalarOrFraction, period as unknown as Scalar<Scalar<Pitch>>)
+        return integerPeriodReduce(
+            scalarOrFraction,
+            period as unknown as Scalar<Scalar<Pitch>>,
+        ) as Scalar<Pitch> & Fraction
     }
 
-const octaveReduce: (scalarOrFraction: Scalar<Pitch> | Fraction) => Scalar<Pitch> | Fraction =
-    (scalarOrFraction: Scalar<Pitch> | Fraction): Scalar<Pitch> | Fraction =>
-        periodReduce(scalarOrFraction, as.Scalar<Scalar<Pitch>>(as.number(OCTAVE)))
+const octaveReduce: {
+    (scalarOrFraction: Scalar<Pitch>): Scalar<Pitch>,
+    (scalarOrFraction: Fraction): Fraction,
+} =
+    (scalarOrFraction: Scalar<Pitch> | Fraction): Scalar<Pitch> & Fraction =>
+        periodReduce(
+            scalarOrFraction as Scalar<Pitch>,
+            as.Scalar<Scalar<Pitch>>(as.number(OCTAVE)),
+        ) as Scalar<Pitch> & Fraction
 
 export {
     octaveReduce,
