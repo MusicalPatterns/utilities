@@ -2,6 +2,7 @@ import {
     as,
     FIVE_HALVES,
     FOUR_THIRDS,
+    FractionalPart,
     octaveReduce,
     periodReduce,
     Pitch,
@@ -83,17 +84,17 @@ describe('reducing', () => {
 
         describe('with fractions', () => {
             it('when necessary, increases the denominator', () => {
-                expect(periodReduce(as.Fraction([ as.Numerator(23), as.Denominator(5) ]), as.Multiple(3)))
+                expect(periodReduce(as.Fraction([ as.Numerator(23), as.Denominator(5) ]), as.Multiple<FractionalPart>(3)))
                     .toEqual(as.Fraction([ as.Numerator(23), as.Denominator(15) ]))
             })
 
             it('when necessary, increases the numerator', () => {
-                expect(periodReduce(as.Fraction([ as.Numerator(1), as.Denominator(10) ]), as.Multiple(3)))
+                expect(periodReduce(as.Fraction([ as.Numerator(1), as.Denominator(10) ]), as.Multiple<FractionalPart>(3)))
                     .toEqual(as.Fraction([ as.Numerator(27), as.Denominator(10) ]))
             })
 
             it('reduces to lowest terms', () => {
-                expect(periodReduce(as.Fraction([ as.Numerator(16), as.Denominator(8) ]), as.Multiple(3)))
+                expect(periodReduce(as.Fraction([ as.Numerator(16), as.Denominator(8) ]), as.Multiple<FractionalPart>(3)))
                     .toEqual(as.Fraction([ as.Numerator(2), as.Denominator(1) ]))
             })
         })

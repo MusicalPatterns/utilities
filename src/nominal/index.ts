@@ -197,4 +197,8 @@ export {
     Remaindee,
     Monzo,
     Val,
+    TranslationBrand,
+    PointBrand,
+    ScalarBrand,
+    FractionalPart,
 } from './types'

@@ -183,4 +183,5 @@ export {
     isFraction,
     isCycle,
     isInteger,
+    FractionalPart,
 } from './nominal/indexForTest'

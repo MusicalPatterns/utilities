@@ -19,8 +19,8 @@ const slice: <ArrayType extends ArrayedOrStringType>(
         }
 
         if (terminal as Ordinal > indexJustBeyondFinalElement(array as unknown as AnyArrayedType)) {
-            throw new Error(`You tried to slice up to index ${terminal} of an array with length \
-of only ${computeLength(array)}: ${String(array)}`)
+            throw new Error(`You tried to slice up to index ${String(terminal)} of an array with length \
+of only ${String(computeLength(array))}: ${String(array)}`)
         }
 
         return array.slice(
@@ -40,7 +40,7 @@ const cycleSlice: <ElementType>(
         terminal?: Ordinal<Cycle<ElementType>>,
     ): ElementType[] => {
         const terminalForSlice: Ordinal<Cycle<ElementType>> =
-            isUndefined(terminal) ? indexJustBeyondFinalElement(cycle) : terminal as Ordinal<Cycle<ElementType>>
+            isUndefined(terminal) ? indexJustBeyondFinalElement(cycle) : terminal
 
         const resultantSlice: ElementType[] = []
 

@@ -9,11 +9,13 @@ import {
     NoUse,
     Ordinal,
     Point,
+    PointBrand,
     Radians,
     Scalar,
+    ScalarBrand,
     Space,
     Transition,
-    Translation,
+    TranslationBrand,
     UnwholeVersion,
     Whole,
 } from '../nominal'
@@ -58,16 +60,16 @@ interface SumOperation {
     <WholeType extends NoUse & Whole = Integer>(...values: WholeType[]): WholeType,
     (...values: number[]): number,
     <NumericType extends NoUse | number>(...values: NumericType[]): NumericType,
-    <NumericType extends Number & { _UseBrand: 'Translation' }>(...values: NumericType[]): NumericType,
-    <NumericType extends Number & { _UseBrand: 'Point' }>(...values: NumericType[]): NumericType,
+    <NumericType extends Number & { _UseBrand: TranslationBrand }>(...values: NumericType[]): NumericType,
+    <NumericType extends Number & { _UseBrand: PointBrand }>(...values: NumericType[]): NumericType,
 }
 
 interface ProductOperation {
     <WholeType extends NoUse & Whole = Integer>(...values: WholeType[]): WholeType,
     (...values: number[]): number,
     <NumericType extends NoUse | number>(...values: NumericType[]): NumericType,
-    <NumericType extends Number & { _UseBrand: 'Scalar' }>(...values: NumericType[]): NumericType,
-    <NumericType extends Number & { _UseBrand: 'Point' }>(...values: NumericType[]): NumericType,
+    <NumericType extends Number & { _UseBrand: ScalarBrand }>(...values: NumericType[]): NumericType,
+    <NumericType extends Number & { _UseBrand: PointBrand }>(...values: NumericType[]): NumericType,
 }
 
 interface ManyToManyIntegerOperation {
@@ -101,7 +103,7 @@ interface QuotientOperation {
         dividend: NumericType,
         divisor: NumericType,
     ): UnwholeVersion<NumericType>,
-    <NumericType extends Number & { _UseBrand: 'Scalar' }>(
+    <NumericType extends Number & { _UseBrand: ScalarBrand }>(
         dividend: NumericType,
         divisor: NumericType,
     ): UnwholeVersion<NumericType>,
@@ -124,7 +126,7 @@ interface DifferenceOperation {
         minuend: NumericType,
         subtrahend: NumericType,
     ): NumericType,
-    <NumericType extends Number & { _UseBrand: 'Translation' }>(
+    <NumericType extends Number & { _UseBrand: TranslationBrand }>(
         dividend: NumericType,
         divisor: NumericType,
     ): UnwholeVersion<NumericType>,

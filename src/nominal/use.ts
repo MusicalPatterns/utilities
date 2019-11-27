@@ -184,7 +184,7 @@ const Ordinal:
     <ElementType>(array: ArrayedType<ElementType>, useOrdinal: Ordinal<ArrayedType<ElementType>>) => ElementType =
     <ElementType>(array: ArrayedType<ElementType>, useOrdinal: Ordinal<ArrayedType<ElementType>>): ElementType => {
         if (isCycle(array)) {
-            const cycleOrdinal: Ordinal<Cycle<ElementType>> = useOrdinal
+            const cycleOrdinal: Ordinal<Cycle<ElementType>> = useOrdinal as Ordinal<Cycle<ElementType>>
             const cycledOrdinal: Ordinal<Cycle<ElementType>> = Remaindee(
                 cycleOrdinal,
                 as.Remaindee<Ordinal<Cycle<ElementType>>>(array.length),

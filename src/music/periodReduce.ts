@@ -1,9 +1,9 @@
 import { computeLowestTerms, getDenominator, getNumerator, reciprocal, setDenominator, setNumerator } from '../math'
-import { as, Denominator, Fraction, isFraction, Multiple, Numerator, OCTAVE, Scalar, use } from '../nominal'
+import { as, Fraction, FractionalPart, isFraction, Multiple, OCTAVE, Scalar, use } from '../nominal'
 import { Pitch } from './types'
 
-const fractionPeriodReduce: (fraction: Fraction, period: Multiple<Numerator & Denominator>) => Fraction =
-    (fraction: Fraction, period: Multiple<Numerator & Denominator>): Fraction => {
+const fractionPeriodReduce: (fraction: Fraction, period: Multiple<FractionalPart>) => Fraction =
+    (fraction: Fraction, period: Multiple<FractionalPart>): Fraction => {
         const reducedFraction: Fraction = fraction.slice() as Fraction
 
         while (
@@ -37,16 +37,19 @@ const integerPeriodReduce: (scalar: Scalar<Pitch>, period: Scalar<Scalar<Pitch>>
     }
 
 const periodReduce:
-    (scalarOrFraction: Scalar<Pitch> | Fraction, period: Scalar<Scalar<Pitch>> | Multiple) => Scalar<Pitch> | Fraction =
     (
         scalarOrFraction: Scalar<Pitch> | Fraction,
-        period: Scalar<Scalar<Pitch>> | Multiple,
+        period: Scalar<Scalar<Pitch>> | Multiple<FractionalPart>,
+    ) => Scalar<Pitch> | Fraction =
+    (
+        scalarOrFraction: Scalar<Pitch> | Fraction,
+        period: Scalar<Scalar<Pitch>> | Multiple<FractionalPart>,
     ): Scalar<Pitch> | Fraction => {
         if (isFraction(scalarOrFraction)) {
-            return fractionPeriodReduce(scalarOrFraction, period as unknown as Multiple<Numerator & Denominator>)
+            return fractionPeriodReduce(scalarOrFraction, period as unknown as Multiple<FractionalPart>)
         }
 
-        return integerPeriodReduce(scalarOrFraction, period)
+        return integerPeriodReduce(scalarOrFraction, period as unknown as Scalar<Scalar<Pitch>>)
     }
 
 const octaveReduce: (scalarOrFraction: Scalar<Pitch> | Fraction) => Scalar<Pitch> | Fraction =

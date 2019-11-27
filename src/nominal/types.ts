@@ -2,6 +2,75 @@
 
 import { ObjectDifference } from '../code'
 
+// Brands
+
+type Brand =
+    HzBrand |
+    MsBrand |
+    MetersBrand |
+    FrequencyBrand |
+    TimeBrand |
+    SpaceBrand |
+    RadiansBrand |
+    CentsBrand |
+    SemitonesBrand |
+    AmplitudeBrand |
+    NumeratorBrand |
+    DenominatorBrand |
+    CardinalBrand |
+    TranslationBrand |
+    MultipleBrand |
+    ScalarBrand |
+    TranspositionBrand |
+    RotationBrand |
+    PowerBrand |
+    ExponentBrand |
+    BaseBrand |
+    LogarithmBrand |
+    RemaindeeBrand |
+    ModulusBrand |
+    OrdinalBrand |
+    PointBrand |
+    NormalScalarBrand |
+    NormalBrand |
+    NonNormalBrand |
+    IntegerBrand |
+    NonIntegerBrand
+
+interface BrandUse { _UseBrand: Brand }
+
+interface HzBrand {_HzBrand: 'Hz'}
+interface MsBrand {_MsBrand: 'Ms'}
+interface MetersBrand {_MetersBrand: 'Meters'}
+interface FrequencyBrand {_FrequencyBrand: 'Frequency'}
+interface TimeBrand {_TimeBrand: 'Time'}
+interface SpaceBrand {_SpaceBrand: 'Space'}
+interface RadiansBrand {_RadiansBrand: 'Radians' }
+interface CentsBrand {_CentsBrand: 'Cents'}
+interface SemitonesBrand {_SemitonesBrand: 'Semitones'}
+interface AmplitudeBrand {_AmplitudeBrand: 'Amplitude'}
+interface NumeratorBrand {_NumeratorBrand: 'Numerator'}
+interface DenominatorBrand {_DenominatorBrand: 'Denominator'}
+interface CardinalBrand {_CardinalBrand: 'Cardinal'}
+interface TranslationBrand {_TranslationBrand: 'Translation'}
+interface MultipleBrand {_MultipleBrand: 'Multiple'}
+interface ScalarBrand {_ScalarBrand: 'Scalar'}
+interface TranspositionBrand {_TranspositionBrand: 'Transposition'}
+interface RotationBrand {_RotationBrand: 'Rotation'}
+interface PowerBrand {_PowerBrand: 'Power'}
+interface ExponentBrand {_ExponentBrand: 'Exponent'}
+interface BaseBrand {_BaseBrand: 'Base'}
+interface LogarithmBrand {_LogarithmBrand: 'Logarithm'}
+interface RemaindeeBrand {_RemaindeeBrand: 'Remaindee'}
+interface ModulusBrand {_ModulusBrand: 'Modulus'}
+interface OrdinalBrand {_OrdinalBrand: 'Ordinal'}
+interface PointBrand {_PointBrand: 'Point'}
+interface NormalScalarBrand {_NormalScalarBrand: 'NormalScalar'}
+interface NormalBrand {_NormalBrand: 'Normal'}
+interface NonNormalBrand {_NonNormalBrand: 'NonNormal'}
+interface IntegerBrand {_IntegerBrand: 'Integer'}
+interface NonIntegerBrand {_NonIntegerBrand: 'NonInteger'}
+
 // Utilities - Units
 
 type NoUnits = Number & { _UnitsBrand?: 'NoUnits' }
@@ -9,29 +78,30 @@ type UnitsBrand<UnitsName> = NoUse & { _UnitsBrand: UnitsName } & MaybeWhole<Uni
 
 // Units - Unwhole - Physical
 
-type Hz = UnitsBrand<'Hz'>
-type Ms = UnitsBrand<'Ms'>
-type Meters = UnitsBrand<'Meters'>
+type Hz = UnitsBrand<HzBrand>
+type Ms = UnitsBrand<MsBrand>
+type Meters = UnitsBrand<MetersBrand>
 
 // Units - Unwhole - Abstract
 
-type Frequency = UnitsBrand<'Frequency'>
-type Time = UnitsBrand<'Time'>
-type Space = UnitsBrand<'Space'>
+type Frequency = UnitsBrand<FrequencyBrand>
+type Time = UnitsBrand<TimeBrand>
+type Space = UnitsBrand<SpaceBrand>
 
 // Units - Unwhole - Other
 
-type Radians = UnitsBrand<'Radians'>
+type Radians = UnitsBrand<RadiansBrand>
 
-type Cents = UnitsBrand<'Cents'>
-type Semitones = UnitsBrand<'Semitones'>
+type Cents = UnitsBrand<CentsBrand>
+type Semitones = UnitsBrand<SemitonesBrand>
 
-type Amplitude = UnitsBrand<'Amplitude'>
+type Amplitude = UnitsBrand<AmplitudeBrand>
 
 // Units - Whole
 
-type Numerator = UnitsBrand<'Numerator'>
-type Denominator = UnitsBrand<'Denominator'>
+type Numerator = UnitsBrand<NumeratorBrand>
+type Denominator = UnitsBrand<DenominatorBrand>
+type FractionalPart = Numerator & Denominator
 
 type Fraction = [ Numerator, Denominator ]
 
@@ -45,22 +115,22 @@ type UseBrand<UseName, OfType = number> =
     & MaybeWhole<UseName>
     & MaybeNormal<UseName>
 
-type UseNameFromUse<Use> =
-    Use extends Multiple ? 'Multiple' & 'Scalar' :
-        Use extends Cardinal ? 'Cardinal' & 'Translation' :
-            Use extends Transposition ? 'Transposition' & 'Rotation' :
-                Use extends Power ? 'Power' & 'Exponent' :
-                    Use extends Base ? 'Base' & 'Logarithm' :
-                        Use extends Remaindee ? 'Remaindee' & 'Modulus' :
-                            Use extends Ordinal ? 'Ordinal' & 'Point' :
-                                Use extends NormalScalar ? 'NormalScalar' & 'Scalar' :
-                                    Use extends Scalar ? 'Scalar' :
-                                        Use extends Translation ? 'Translation' :
-                                            Use extends Rotation ? 'Rotation' :
-                                                Use extends Exponent ? 'Exponent' :
-                                                    Use extends Logarithm ? 'Logarithm' :
-                                                        Use extends Modulus ? 'Modulus' :
-                                                            Use extends Point ? 'Point' :
+type UseBrandFromUse<Use> =
+    Use extends Multiple ? MultipleBrand & ScalarBrand :
+        Use extends Cardinal ? CardinalBrand & TranslationBrand :
+            Use extends Transposition ? TranspositionBrand & RotationBrand :
+                Use extends Power ? PowerBrand & ExponentBrand :
+                    Use extends Base ? BaseBrand & LogarithmBrand :
+                        Use extends Remaindee ? RemaindeeBrand & ModulusBrand :
+                            Use extends Ordinal ? OrdinalBrand & PointBrand :
+                                Use extends NormalScalar ? NormalScalarBrand & ScalarBrand :
+                                    Use extends Scalar ? ScalarBrand :
+                                        Use extends Translation ? TranslationBrand :
+                                            Use extends Rotation ? RotationBrand :
+                                                Use extends Exponent ? ExponentBrand :
+                                                    Use extends Logarithm ? LogarithmBrand :
+                                                        Use extends Modulus ? ModulusBrand :
+                                                            Use extends Point ? PointBrand :
                                                                 ''
 
 type UseOf<OfType> = Number & { _UseOfBrand: OfType }
@@ -69,19 +139,19 @@ type Of<OfType> = number | { _OfBrand: OfType }
 
 // Uses - Unwhole - Transformation
 
-type Scalar<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = UseBrand<'Scalar', OfType>
-type Translation<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = UseBrand<'Translation', OfType>
-type Rotation<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = UseBrand<'Rotation', OfType>
+type Scalar<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = UseBrand<ScalarBrand, OfType>
+type Translation<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = UseBrand<TranslationBrand, OfType>
+type Rotation<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = UseBrand<RotationBrand, OfType>
 
 // Uses - Unwhole - Other
 
-type Exponent<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = UseBrand<'Exponent', OfType>
-type Logarithm<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = UseBrand<'Logarithm', OfType>
-type Modulus<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = UseBrand<'Modulus', OfType>
+type Exponent<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = UseBrand<ExponentBrand, OfType>
+type Logarithm<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = UseBrand<LogarithmBrand, OfType>
+type Modulus<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = UseBrand<ModulusBrand, OfType>
 
 // Uses - Unwhole - Fixed
 
-type Point<OfType extends CanBeAsAnUnwholeUseOfSomeType & NoUse = number> = UseBrand<'Point', OfType>
+type Point<OfType extends CanBeAsAnUnwholeUseOfSomeType & NoUse = number> = UseBrand<PointBrand, OfType>
 
 // Uses - Unwhole - Compound
 
@@ -91,19 +161,31 @@ type Arc<OfType extends CanBeAsAnUnwholeUseOfSomeType = number> = Rotation<Point
 
 // Uses - Whole - Transformation, with Array Overloads
 
-type Multiple<OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType = number> = UseBrand<'Multiple' & 'Scalar', OfType>
-type Cardinal<OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType = number> = UseBrand<'Cardinal' & 'Translation', OfType>
-type Transposition<OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType = number> = UseBrand<'Transposition' & 'Rotation', OfType>
+type Multiple<OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType = number> =
+    UseBrand<MultipleBrand & ScalarBrand, OfType>
+    & NonNormal
+type Cardinal<OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType = number> =
+    UseBrand<CardinalBrand & TranslationBrand, OfType>
+    & NonNormal
+type Transposition<OfType extends CanBeAsAWholeUseWithAnArrayOverloadOfSomeType = number> =
+    UseBrand<TranspositionBrand & RotationBrand, OfType>
+    & NonNormal
 
 // Uses - Whole - Other
 
-type Power<OfType extends CanBeAsAWholeUseOfSomeType = number> = UseBrand<'Power' & 'Exponent', OfType>
-type Base<OfType extends CanBeAsAWholeUseOfSomeType = number> = UseBrand<'Base' & 'Logarithm', OfType>
-type Remaindee<OfType extends CanBeAsAWholeUseOfSomeType = number> = UseBrand<'Remaindee' & 'Modulus', OfType>
+type Power<OfType extends CanBeAsAWholeUseOfSomeType = number> =
+    UseBrand<PowerBrand & ExponentBrand, OfType>
+    & NonNormal
+type Base<OfType extends CanBeAsAWholeUseOfSomeType = number> = UseBrand<BaseBrand & LogarithmBrand, OfType> & NonNormal
+type Remaindee<OfType extends CanBeAsAWholeUseOfSomeType = number> =
+    UseBrand<RemaindeeBrand & ModulusBrand, OfType>
+    & NonNormal
 
 // Uses - Whole - Fixed, only for Arrays
 
-type Ordinal<OfType extends { _OfBrand?: 'NoOf' } & ArrayedOrStringType = number[]> = UseBrand<'Ordinal' & 'Point', OfType>
+type Ordinal<OfType extends { _OfBrand?: 'NoOf' } & ArrayedOrStringType = number[]> =
+    UseBrand<OrdinalBrand & PointBrand, OfType>
+    & NonNormal
 
 // Uses - Whole - Compound, only for Arrays
 
@@ -114,68 +196,68 @@ type Turn<OfType extends { _OfBrand?: 'NoOf' } & ArrayedOrStringType = number[]>
 // Utilities - Normal
 
 type MaybeNormal<Name> =
-    Name extends 'NormalScalar' ? Normal :
+    Name extends NormalScalarBrand ? Normal :
         {}
 
-type Normal = Number & { _NormalBrand: 'Normal' }
-type NonNormal = Number & { _NormalBrand?: 'NonNormal' }
+type Normal = Number & { _NormalBrand: NormalBrand }
+type NonNormal = Number & { _NormalBrand?: NonNormalBrand }
 
 // Uses - Normal
 
-type NormalScalar<OfType extends Unwhole = number> = UseBrand<'NormalScalar' & 'Scalar', OfType>
+type NormalScalar<OfType extends Unwhole = number> = UseBrand<NormalScalarBrand & ScalarBrand, OfType> & Unwhole
 
 // Wholeness
 
 type Integer = number & Whole
-type Whole = Number & { _IntegerBrand: 'Integer' }
-type Unwhole = Number & { _IntegerBrand?: 'NotInteger' }
+type Whole = Number & { _IntegerBrand: IntegerBrand }
+type Unwhole = Number & { _IntegerBrand?: NonIntegerBrand }
 
 type UnwholeVersion<NumericType extends Number> = (
     NumericType extends Whole ?
-        NumericType extends ({ _UseBrand: string } | { _UnitsBrand: string }) ?
-            WholeToUnwhole<NumericType> & { _IntegerBrand: 'NotInteger' } :
-            number & { _IntegerBrand: 'NotInteger' } :
-        NumericType extends ({ _UseBrand: string } | { _UnitsBrand: string }) ?
+        NumericType extends (BrandUse | Brand) ?
+            WholeToUnwhole<NumericType> & { _IntegerBrand: NonIntegerBrand } :
+            number & { _IntegerBrand: NonIntegerBrand } :
+        NumericType extends (BrandUse | Brand) ?
             WholeToUnwhole<NumericType> :
             NumericType
     )
 
 type WholeVersion<NumericType extends Number> =
-    { _IntegerBrand: 'Integer' } &
-    (NumericType extends { _UseBrand: string } ? UnwholeToWhole<NumericType> : NumericType)
+    { _IntegerBrand: IntegerBrand } &
+    (NumericType extends BrandUse ? UnwholeToWhole<NumericType> : NumericType)
 
-type UnwholeToWhole<UnwholeType extends { _UseBrand: string }> =
-    UnwholeType extends { _UseBrand: 'Scalar' } ? ObjectDifference<UnwholeType, { _UseBrand: 'Scalar' }> & { _UseBrand: 'Multiple' & 'Scalar' } :
-        UnwholeType extends { _UseBrand: 'Translation' } ? ObjectDifference<UnwholeType, { _UseBrand: 'Translation' }> & { _UseBrand: 'Cardinal' & 'Translation' } :
-            UnwholeType extends { _UseBrand: 'Rotation' } ? ObjectDifference<UnwholeType, { _UseBrand: 'Rotation' }> & { _UseBrand: 'Transposition' & 'Rotation' } :
-                UnwholeType extends { _UseBrand: 'Exponent' } ? ObjectDifference<UnwholeType, { _UseBrand: 'Exponent' }> & { _UseBrand: 'Power' & 'Exponent' } :
-                    UnwholeType extends { _UseBrand: 'Logarithm' } ? ObjectDifference<UnwholeType, { _UseBrand: 'Logarithm' }> & { _UseBrand: 'Base' & 'Logarithm' } :
-                        UnwholeType extends { _UseBrand: 'Modulus' } ? ObjectDifference<UnwholeType, { _UseBrand: 'Modulus' }> & { _UseBrand: 'Remaindee' & 'Modulus' } :
-                            UnwholeType extends { _UseBrand: 'Point' } ? ObjectDifference<UnwholeType, { _UseBrand: 'Point' }> & { _UseBrand: 'Ordinal' & 'Point' } :
+type UnwholeToWhole<UnwholeType extends BrandUse> =
+    UnwholeType extends ScalarBrand ? ObjectDifference<UnwholeType, ScalarBrand> & ScalarBrand :
+        UnwholeType extends TranslationBrand ? ObjectDifference<UnwholeType, TranslationBrand> & TranslationBrand :
+            UnwholeType extends RotationBrand ? ObjectDifference<UnwholeType, RotationBrand> & RotationBrand :
+                UnwholeType extends ExponentBrand ? ObjectDifference<UnwholeType, ExponentBrand> & ExponentBrand :
+                    UnwholeType extends LogarithmBrand ? ObjectDifference<UnwholeType, LogarithmBrand> & LogarithmBrand :
+                        UnwholeType extends ModulusBrand ? ObjectDifference<UnwholeType, ModulusBrand> & ModulusBrand :
+                            UnwholeType extends PointBrand ? ObjectDifference<UnwholeType, PointBrand> & PointBrand :
                                 UnwholeType
 
-type WholeToUnwhole<WholeType extends { _UseBrand: string } | { _UnitsBrand: string }> =
-    WholeType extends { _UnitsBrand: 'Numerator' } ? number :
-        WholeType extends { _UnitsBrand: 'Denominator' } ? number :
-            WholeType extends { _UseBrand: 'Multiple' & 'Scalar' } ? ObjectDifference<WholeType, { _UseBrand: 'Multiple' & 'Scalar' }> & { _UseBrand: 'Scalar' } :
-                WholeType extends { _UseBrand: 'Cardinal' & 'Translation' } ? ObjectDifference<WholeType, { _UseBrand: 'Cardinal' & 'Translation' }> & { _UseBrand: 'Translation' } :
-                    WholeType extends { _UseBrand: 'Transposition' & 'Rotation' } ? ObjectDifference<WholeType, { _UseBrand: 'Transposition' & 'Rotation' }> & { _UseBrand: 'Rotation' } :
-                        WholeType extends { _UseBrand: 'Power' & 'Exponent' } ? ObjectDifference<WholeType, { _UseBrand: 'Power' & 'Exponent' }> & { _UseBrand: 'Exponent' } :
-                            WholeType extends { _UseBrand: 'Base' & 'Logarithm' } ? ObjectDifference<WholeType, { _UseBrand: 'Base' & 'Logarithm' }> & { _UseBrand: 'Logarithm' } :
-                                WholeType extends { _UseBrand: 'Remaindee' & 'Modulus' } ? ObjectDifference<WholeType, { _UseBrand: 'Remaindee' & 'Modulus' }> & { _UseBrand: 'Modulus' } :
-                                    WholeType extends { _UseBrand: 'Ordinal' & 'Point' } ? ObjectDifference<WholeType, { _UseBrand: 'Ordinal' & 'Point' }> & { _UseBrand: 'Point' } :
+type WholeToUnwhole<WholeType extends BrandUse | Brand> =
+    WholeType extends NumeratorBrand ? number :
+        WholeType extends DenominatorBrand ? number :
+            WholeType extends MultipleBrand ? ObjectDifference<WholeType, MultipleBrand> & ScalarBrand :
+                WholeType extends CardinalBrand ? ObjectDifference<WholeType, CardinalBrand> & TranslationBrand :
+                    WholeType extends TranspositionBrand ? ObjectDifference<WholeType, TranspositionBrand> & RotationBrand :
+                        WholeType extends PowerBrand ? ObjectDifference<WholeType, PowerBrand> & ExponentBrand :
+                            WholeType extends BaseBrand ? ObjectDifference<WholeType, BaseBrand> & LogarithmBrand :
+                                WholeType extends RemaindeeBrand ? ObjectDifference<WholeType, RemaindeeBrand> & ModulusBrand :
+                                    WholeType extends OrdinalBrand ? ObjectDifference<WholeType, OrdinalBrand> & PointBrand :
                                         WholeType
 
 type MaybeWhole<Name> =
-    Name extends 'Multiple' ? Whole :
-        Name extends 'Cardinal' ? Whole :
-            Name extends 'Transposition' ? Whole :
-                Name extends 'Power' ? Whole :
-                    Name extends 'Base' ? Whole :
-                        Name extends 'Remaindee' ? Whole :
-                            Name extends 'Ordinal' ? Whole :
-                                Name extends 'Numerator' ? Whole :
-                                    Name extends 'Denominator' ? Whole :
+    Name extends MultipleBrand ? Whole :
+        Name extends CardinalBrand ? Whole :
+            Name extends TranspositionBrand ? Whole :
+                Name extends PowerBrand ? Whole :
+                    Name extends BaseBrand ? Whole :
+                        Name extends RemaindeeBrand ? Whole :
+                            Name extends OrdinalBrand ? Whole :
+                                Name extends NumeratorBrand ? Whole :
+                                    Name extends DenominatorBrand ? Whole :
                                         {}
 
 type CanBeAsAWholeUseOfSomeType = NonNormal
@@ -256,7 +338,7 @@ export {
     UnitsBrand,
     Multiple,
     Of,
-    UseNameFromUse,
+    UseBrandFromUse,
     NoOf,
     Whole,
     Unwhole,
@@ -286,4 +368,8 @@ export {
     AnyArrayedOrStringType,
     Monzo,
     Val,
+    TranslationBrand,
+    PointBrand,
+    ScalarBrand,
+    FractionalPart,
 }

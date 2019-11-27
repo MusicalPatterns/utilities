@@ -22,7 +22,7 @@ const fixJavascriptFloatingPointArithmeticIssuesAndCastToNumber: (numeral: numbe
 const ordinalCheck: (index: Ordinal<ArrayedType>, array: ArrayedType) => void =
     (index: Ordinal<ArrayedType>, array: ArrayedType): void => {
         if (index as unknown as number > array.length - 1) {
-            throw new Error(`Ordinal ${index} exceeds available indices of array of length ${array.length}`)
+            throw new Error(`Ordinal ${String(index)} exceeds available indices of array of length ${array.length}`)
         }
     }
 

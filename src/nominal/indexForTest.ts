@@ -88,4 +88,5 @@ export {
     ContourWhole,
     Monzo,
     Val,
+    FractionalPart,
 } from './types'
