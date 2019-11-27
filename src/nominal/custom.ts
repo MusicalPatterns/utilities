@@ -1,12 +1,12 @@
 // tslint:disable
 
 import { reduce } from '../code'
-import { NoUnits } from './types'
+import { NoUnits, Brand } from './types'
 
 interface NominalNumber {
     _NominalBrand?: string,
-    _UnitsBrand?: string,
-    _UseBrand?: string,
+    _UnitsBrand?: Brand,
+    _UseBrand?: Brand,
 }
 
 type DummyValueForComputingNominalInterface = unknown

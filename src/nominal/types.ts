@@ -74,7 +74,7 @@ interface NonIntegerBrand {_NonIntegerBrand: 'NonInteger'}
 // Utilities - Units
 
 type NoUnits = Number & { _UnitsBrand?: 'NoUnits' }
-type UnitsBrand<UnitsName> = NoUse & { _UnitsBrand: UnitsName } & MaybeWhole<UnitsName>
+type UnitsBrand<BrandType> = NoUse & { _UnitsBrand: BrandType } & MaybeWhole<BrandType>
 
 // Units - Unwhole - Physical
 
@@ -372,4 +372,5 @@ export {
     PointBrand,
     ScalarBrand,
     FractionalPart,
+    Brand,
 }
