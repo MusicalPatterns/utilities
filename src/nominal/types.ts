@@ -37,38 +37,68 @@ type Brand =
     IntegerBrand |
     NonIntegerBrand
 
-interface BrandUse { _UseBrand: Brand }
+interface BrandUse {_UseBrand: Brand}
 
 interface HzBrand {_HzBrand: 'Hz'}
+
 interface MsBrand {_MsBrand: 'Ms'}
+
 interface MetersBrand {_MetersBrand: 'Meters'}
+
 interface FrequencyBrand {_FrequencyBrand: 'Frequency'}
+
 interface TimeBrand {_TimeBrand: 'Time'}
+
 interface SpaceBrand {_SpaceBrand: 'Space'}
-interface RadiansBrand {_RadiansBrand: 'Radians' }
+
+interface RadiansBrand {_RadiansBrand: 'Radians'}
+
 interface CentsBrand {_CentsBrand: 'Cents'}
+
 interface SemitonesBrand {_SemitonesBrand: 'Semitones'}
+
 interface AmplitudeBrand {_AmplitudeBrand: 'Amplitude'}
+
 interface NumeratorBrand {_NumeratorBrand: 'Numerator'}
+
 interface DenominatorBrand {_DenominatorBrand: 'Denominator'}
+
 interface CardinalBrand {_CardinalBrand: 'Cardinal'}
+
 interface TranslationBrand {_TranslationBrand: 'Translation'}
+
 interface MultipleBrand {_MultipleBrand: 'Multiple'}
+
 interface ScalarBrand {_ScalarBrand: 'Scalar'}
+
 interface TranspositionBrand {_TranspositionBrand: 'Transposition'}
+
 interface RotationBrand {_RotationBrand: 'Rotation'}
+
 interface PowerBrand {_PowerBrand: 'Power'}
+
 interface ExponentBrand {_ExponentBrand: 'Exponent'}
+
 interface BaseBrand {_BaseBrand: 'Base'}
+
 interface LogarithmBrand {_LogarithmBrand: 'Logarithm'}
+
 interface RemaindeeBrand {_RemaindeeBrand: 'Remaindee'}
+
 interface ModulusBrand {_ModulusBrand: 'Modulus'}
+
 interface OrdinalBrand {_OrdinalBrand: 'Ordinal'}
+
 interface PointBrand {_PointBrand: 'Point'}
+
 interface NormalScalarBrand {_NormalScalarBrand: 'NormalScalar'}
+
 interface NormalBrand {_NormalBrand: 'Normal'}
+
 interface NonNormalBrand {_NonNormalBrand: 'NonNormal'}
+
 interface IntegerBrand {_IntegerBrand: 'Integer'}
+
 interface NonIntegerBrand {_NonIntegerBrand: 'NonInteger'}
 
 // Utilities - Units
@@ -183,15 +213,15 @@ type Remaindee<OfType extends CanBeAsAWholeUseOfSomeType = number> =
 
 // Uses - Whole - Fixed, only for Arrays
 
-type Ordinal<OfType extends { _OfBrand?: 'NoOf' } & ArrayedOrStringType = number[]> =
+type Ordinal<OfType extends { _OfBrand?: 'NoOf' } & ArrayedOrStringType = number[] & { _OfBrand?: 'NoOf' }> =
     UseBrand<OrdinalBrand & PointBrand, OfType>
     & NonNormal
 
 // Uses - Whole - Compound, only for Arrays
 
-type Factor<OfType extends { _OfBrand?: 'NoOf' } & ArrayedOrStringType = number[]> = Multiple<Ordinal<OfType>>
-type Transition<OfType extends { _OfBrand?: 'NoOf' } & ArrayedOrStringType = number[]> = Cardinal<Ordinal<OfType>>
-type Turn<OfType extends { _OfBrand?: 'NoOf' } & ArrayedOrStringType = number[]> = Transposition<Ordinal<OfType>>
+type Factor<OfType extends { _OfBrand?: 'NoOf' } & ArrayedOrStringType = number[] & { _OfBrand?: 'NoOf' }> = Multiple<Ordinal<OfType>>
+type Transition<OfType extends { _OfBrand?: 'NoOf' } & ArrayedOrStringType = number[] & { _OfBrand?: 'NoOf' }> = Cardinal<Ordinal<OfType>>
+type Turn<OfType extends { _OfBrand?: 'NoOf' } & ArrayedOrStringType = number[] & { _OfBrand?: 'NoOf' }> = Transposition<Ordinal<OfType>>
 
 // Utilities - Normal
 
