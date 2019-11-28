@@ -58,6 +58,7 @@ export {
     goesQuadraticallyFromValueToValue,
 } from './quadratic'
 export { inBounds } from './inBounds'
+export { integerDivide } from './dividesEvenly'
 export { valueLinearlyBetweenValues } from './valueLinearlyBetweenValues'
 export { computePartialSumOfExponents } from './partialSumOfExponents'
 export { computeDeltas, computeIntervals } from './rateOfChange'

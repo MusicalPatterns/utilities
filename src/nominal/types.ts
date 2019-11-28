@@ -139,11 +139,11 @@ type Fraction = [ Numerator, Denominator ]
 
 type NoUse = Number & { _UseBrand?: 'NoUse' }
 
-type UseBrand<UseName, OfType = number> =
+type UseBrand<BrandType, OfType = number> =
     UseOf<OfType>
-    & { _UseBrand: UseName }
-    & MaybeWhole<UseName>
-    & MaybeNormal<UseName>
+    & { _UseBrand: BrandType }
+    & MaybeWhole<BrandType>
+    & MaybeNormal<BrandType>
 
 type UseBrandFromUse<Use> =
     Use extends Multiple ? MultipleBrand & ScalarBrand :
@@ -244,38 +244,36 @@ type Unwhole = Number & { _IntegerBrand?: NonIntegerBrand }
 
 type UnwholeVersion<NumericType extends Number> = (
     NumericType extends Whole ?
-        NumericType extends (BrandUse | Brand) ?
+        NumericType extends Brand | BrandUse ?
             WholeToUnwhole<NumericType> & { _IntegerBrand: NonIntegerBrand } :
             number & { _IntegerBrand: NonIntegerBrand } :
-        NumericType extends (BrandUse | Brand) ?
-            WholeToUnwhole<NumericType> :
-            NumericType
+        NumericType
     )
 
 type WholeVersion<NumericType extends Number> =
     { _IntegerBrand: IntegerBrand } &
     (NumericType extends BrandUse ? UnwholeToWhole<NumericType> : NumericType)
 
-type UnwholeToWhole<UnwholeType extends BrandUse> =
-    UnwholeType extends ScalarBrand ? ObjectDifference<UnwholeType, ScalarBrand> & ScalarBrand :
-        UnwholeType extends TranslationBrand ? ObjectDifference<UnwholeType, TranslationBrand> & TranslationBrand :
-            UnwholeType extends RotationBrand ? ObjectDifference<UnwholeType, RotationBrand> & RotationBrand :
-                UnwholeType extends ExponentBrand ? ObjectDifference<UnwholeType, ExponentBrand> & ExponentBrand :
-                    UnwholeType extends LogarithmBrand ? ObjectDifference<UnwholeType, LogarithmBrand> & LogarithmBrand :
-                        UnwholeType extends ModulusBrand ? ObjectDifference<UnwholeType, ModulusBrand> & ModulusBrand :
-                            UnwholeType extends PointBrand ? ObjectDifference<UnwholeType, PointBrand> & PointBrand :
+type UnwholeToWhole<UnwholeType> =
+    UnwholeType extends ScalarBrand ? UnwholeType & MultipleBrand :
+        UnwholeType extends TranslationBrand ? UnwholeType & CardinalBrand :
+            UnwholeType extends RotationBrand ? UnwholeType & TranspositionBrand :
+                UnwholeType extends ExponentBrand ? UnwholeType & PowerBrand :
+                    UnwholeType extends LogarithmBrand ? UnwholeType & BaseBrand :
+                        UnwholeType extends ModulusBrand ? UnwholeType & RemaindeeBrand :
+                            UnwholeType extends PointBrand ? UnwholeType & OrdinalBrand :
                                 UnwholeType
 
-type WholeToUnwhole<WholeType extends BrandUse | Brand> =
+type WholeToUnwhole<WholeType> =
     WholeType extends NumeratorBrand ? number :
         WholeType extends DenominatorBrand ? number :
-            WholeType extends MultipleBrand ? ObjectDifference<WholeType, MultipleBrand> & ScalarBrand :
-                WholeType extends CardinalBrand ? ObjectDifference<WholeType, CardinalBrand> & TranslationBrand :
-                    WholeType extends TranspositionBrand ? ObjectDifference<WholeType, TranspositionBrand> & RotationBrand :
-                        WholeType extends PowerBrand ? ObjectDifference<WholeType, PowerBrand> & ExponentBrand :
-                            WholeType extends BaseBrand ? ObjectDifference<WholeType, BaseBrand> & LogarithmBrand :
-                                WholeType extends RemaindeeBrand ? ObjectDifference<WholeType, RemaindeeBrand> & ModulusBrand :
-                                    WholeType extends OrdinalBrand ? ObjectDifference<WholeType, OrdinalBrand> & PointBrand :
+            WholeType extends { _UseBrand: MultipleBrand } ? ObjectDifference<WholeType, { _UseBrand: MultipleBrand }> & { _UseBrand: ScalarBrand } :
+                WholeType extends { _UseBrand: CardinalBrand } ? ObjectDifference<WholeType, { _UseBrand: CardinalBrand }> & { _UseBrand: TranslationBrand } :
+                    WholeType extends { _UseBrand: TranspositionBrand } ? ObjectDifference<WholeType, { _UseBrand: TranspositionBrand }> & { _UseBrand: RotationBrand } :
+                        WholeType extends { _UseBrand: PowerBrand } ? ObjectDifference<WholeType, { _UseBrand: PowerBrand }> & { _UseBrand: ExponentBrand } :
+                            WholeType extends { _UseBrand: BaseBrand } ? ObjectDifference<WholeType, { _UseBrand: BaseBrand }> & { _UseBrand: LogarithmBrand } :
+                                WholeType extends { _UseBrand: RemaindeeBrand } ? ObjectDifference<WholeType, { _UseBrand: RemaindeeBrand }> & { _UseBrand: ModulusBrand } :
+                                    WholeType extends { _UseBrand: OrdinalBrand } ? ObjectDifference<WholeType, { _UseBrand: OrdinalBrand }> & { _UseBrand: PointBrand } :
                                         WholeType
 
 type MaybeWhole<Name> =

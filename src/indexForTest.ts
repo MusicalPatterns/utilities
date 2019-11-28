@@ -92,6 +92,7 @@ export {
     log,
     primeFactorize,
     computeCombinations,
+    integerDivide,
 } from './math/indexForTest'
 export {
     centsTranslationToPitchScalar,

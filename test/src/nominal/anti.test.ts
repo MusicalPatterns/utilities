@@ -1,6 +1,6 @@
 // tslint:disable
 
-// There should be 174 errors in this file when the below is uncommented.
+// There should be 175 errors in this file when the below is uncommented.
 
 // import {
 //     as,
@@ -38,7 +38,7 @@
 //     sum,
 //     Translation,
 //     NormalScalar,
-//     use, Point,
+//     use, Point, integerDivide,
 // } from '../../../src/indexForTest'
 // import { Arc, Delta, Interval } from '../../../src/nominal'
 //
@@ -423,6 +423,15 @@
 //                 const base: Base = squareRoot(as.Base(3))
 //                 const power: Power = squareRoot(as.Power(3))
 //                 const integerModulus: Remaindee = squareRoot(as.Remaindee(3))
+//             })
+//         })
+//     })
+//
+//     describe('divides evenly', () => {
+//         describe('integer divide', () => {
+//             it('does not allow assigning to an unwhole number', () => {
+//                 expect(integerDivide(as.Scalar(5), 2))
+//                     .toEqual(as.Scalar(2))
 //             })
 //         })
 //     })

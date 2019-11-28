@@ -1,4 +1,4 @@
-import { ArrayedType, EXAMPLE_ELEMENT_INDEX, use } from '../nominal'
+import { ArrayedType, EXAMPLE_ELEMENT_INDEX, Ordinal, use } from '../nominal'
 
 const exampleElement:
     <ElementType, ArrayType extends ArrayedType<ElementType> = ElementType[]>(array: ArrayType) => ElementType =

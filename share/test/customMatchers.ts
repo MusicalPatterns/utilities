@@ -78,7 +78,7 @@ const testIsCloseTo: <NumericType extends Number>(
         assert(
             !isClose,
             isUndefined(message) ?
-                `expected ${actual} not to be close to ${expected}${precisionMessage(precision)}` :
+                `expected ${String(actual)} not to be close to ${String(expected)}${precisionMessage(precision)}` :
                 message,
         )
     }
@@ -86,7 +86,7 @@ const testIsCloseTo: <NumericType extends Number>(
         assert(
             isClose,
             isUndefined(message) ?
-                `expected ${actual} to be close to ${expected}${precisionMessage(precision)}` :
+                `expected ${String(actual)} to be close to ${String(expected)}${precisionMessage(precision)}` :
                 message,
         )
     }
@@ -116,7 +116,7 @@ const customMatchers: CustomMatcherFactories = {
                 assert(
                     isGreaterThanOrEqualTo(actual, expected) || isCloseTo(actual, expected, precision),
                     isUndefined(message) ?
-                        `expected ${actual} to be greater than or close to ${expected}` :
+                        `expected ${String(actual)} to be greater than or close to ${String(expected)}` :
                         message,
                 )
             }),
@@ -132,7 +132,7 @@ const customMatchers: CustomMatcherFactories = {
                 assert(
                     isLessThanOrEqualTo(actual, expected) || isCloseTo(actual, expected, precision),
                     isUndefined(message) ?
-                        `expected ${actual} to be greater than or close to ${expected}` :
+                        `expected ${String(actual)} to be greater than or close to ${String(expected)}` :
                         message,
                 )
             }),
@@ -201,7 +201,7 @@ const customMatchers: CustomMatcherFactories = {
             doAssertions(() => {
                 assert(
                     deepEqual(expected.sort(), actual.sort()),
-                    isUndefined(message) ? `arrays did not have same elements: ${expected} vs ${actual}` : message,
+                    isUndefined(message) ? `arrays did not have same elements: ${String(expected)} vs ${String(actual)}` : message,
                 )
             }),
     }),
@@ -214,7 +214,7 @@ const customMatchers: CustomMatcherFactories = {
             doAssertions(() => {
                 assert(
                     isLessThan(actual, expected),
-                    isUndefined(message) ? `expected ${actual} to be less than ${expected}` : message,
+                    isUndefined(message) ? `expected ${String(actual)} to be less than ${String(expected)}` : message,
                 )
             }),
     }),
@@ -227,7 +227,7 @@ const customMatchers: CustomMatcherFactories = {
             doAssertions(() => {
                 assert(
                     isGreaterThan(actual, expected),
-                    isUndefined(message) ? `expected ${actual} to be less than ${expected}` : message,
+                    isUndefined(message) ? `expected ${String(actual)} to be less than ${String(expected)}` : message,
                 )
             }),
     }),
@@ -240,7 +240,7 @@ const customMatchers: CustomMatcherFactories = {
             doAssertions(() => {
                 assert(
                     isLessThanOrEqualTo(actual, expected),
-                    isUndefined(message) ? `expected ${actual} to be less than ${expected}` : message,
+                    isUndefined(message) ? `expected ${String(actual)} to be less than ${String(expected)}` : message,
                 )
             }),
     }),
@@ -253,7 +253,7 @@ const customMatchers: CustomMatcherFactories = {
             doAssertions(() => {
                 assert(
                     isGreaterThanOrEqualTo(actual, expected),
-                    isUndefined(message) ? `expected ${actual} to be less than ${expected}` : message,
+                    isUndefined(message) ? `expected ${String(actual)} to be less than ${String(expected)}` : message,
                 )
             }),
     }),
@@ -265,11 +265,11 @@ const customMatchers: CustomMatcherFactories = {
             message?: string,
         ): CustomMatcherResult =>
             doAssertions(() => {
-                const fromMessage: string = isUndefined(expectedBeginValue) ? '' : ` from ${expectedBeginValue}`
+                const fromMessage: string = isUndefined(expectedBeginValue) ? '' : ` from ${String(expectedBeginValue)}`
                 assert(
                     goesMonotonically(array, expectedBeginValue, undefined, precision),
                     isUndefined(message) ?
-                        `array ${array} did not go monotonically${fromMessage}${precisionMessage(precision)}` :
+                        `array ${String(array)} did not go monotonically${fromMessage}${precisionMessage(precision)}` :
                         message,
                 )
             }),
@@ -286,7 +286,7 @@ const customMatchers: CustomMatcherFactories = {
                 assert(
                     goesMonotonicallyBetweenValueAndValue(array, expectedBeginValue, expectedEndValue, precision),
                     isUndefined(message) ?
-                        `array ${array} did not go monotonically between ${expectedBeginValue} and ${expectedEndValue}${precisionMessage(precision)}` :
+                        `array ${String(array)} did not go monotonically between ${String(expectedBeginValue)} and ${String(expectedEndValue)}${precisionMessage(precision)}` :
                         message,
                 )
             }),
@@ -303,7 +303,7 @@ const customMatchers: CustomMatcherFactories = {
                 assert(
                     goesMonotonicallyFromValueToValue(array, expectedBeginValue, expectedEndValue, precision),
                     isUndefined(message) ?
-                        `array ${array} did not go monotonically from ${expectedBeginValue} to ${expectedEndValue}${precisionMessage(precision)}` :
+                        `array ${String(array)} did not go monotonically from ${String(expectedBeginValue)} to ${String(expectedEndValue)}${precisionMessage(precision)}` :
                         message,
                 )
             }),
@@ -316,11 +316,11 @@ const customMatchers: CustomMatcherFactories = {
             message?: string,
         ): CustomMatcherResult =>
             doAssertions(() => {
-                const fromMessage: string = isUndefined(expectedBeginValue) ? '' : ` from ${expectedBeginValue}`
+                const fromMessage: string = isUndefined(expectedBeginValue) ? '' : ` from ${String(expectedBeginValue)}`
                 assert(
                     goesQuadratically(array, expectedBeginValue, precision),
                     isUndefined(message) ?
-                        `array ${array} did not go quadratically${fromMessage}${precisionMessage(precision)}` :
+                        `array ${String(array)} did not go quadratically${fromMessage}${precisionMessage(precision)}` :
                         message,
                 )
             }),
@@ -337,7 +337,7 @@ const customMatchers: CustomMatcherFactories = {
                 assert(
                     goesQuadraticallyBetweenValueAndValue(array, expectedBeginValue, expectedEndValue, precision),
                     isUndefined(message) ?
-                        `array ${array} did not go quadratically between ${expectedBeginValue} and ${expectedEndValue}${precisionMessage(precision)}` :
+                        `array ${String(array)} did not go quadratically between ${String(expectedBeginValue)} and ${String(expectedEndValue)}${precisionMessage(precision)}` :
                         message,
                 )
             }),
@@ -354,7 +354,7 @@ const customMatchers: CustomMatcherFactories = {
                 assert(
                     goesQuadraticallyFromValueToValue(array, expectedBeginValue, expectedEndValue, precision),
                     isUndefined(message) ?
-                        `array ${array} did not go quadratically from ${expectedBeginValue} to ${expectedEndValue}${precisionMessage(precision)}` :
+                        `array ${String(array)} did not go quadratically from ${String(expectedBeginValue)} to ${String(expectedEndValue)}${precisionMessage(precision)}` :
                         message,
                 )
             }),
@@ -368,7 +368,7 @@ const customMatchers: CustomMatcherFactories = {
                 assert(
                     areCyclicalTranslations(...arrays),
                     isUndefined(message) ?
-                        `arrays ${arrays} were not all cyclical translations of each other` :
+                        `arrays ${String(arrays)} were not all cyclical translations of each other` :
                         message,
                 )
             }),
