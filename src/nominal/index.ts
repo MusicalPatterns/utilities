@@ -24,8 +24,6 @@ export { insteadOf } from './insteadOf'
 export { ofNotAs } from './ofNotAs'
 
 export {
-    ONE,
-    ZERO,
     TWO_THIRDS,
     TWO_FIFTHS,
     THREE_FOURTHS,
@@ -143,6 +141,9 @@ export {
     ONE_DAY,
     VERY_HIGH_PRECISION,
     VERY_LOW_PRECISION,
+    ONE,
+    ZERO,
+    NONE,
 } from './constants'
 
 export {

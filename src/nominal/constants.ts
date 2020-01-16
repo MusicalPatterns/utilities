@@ -66,6 +66,8 @@ const EVERY_THIRD: Factor<AnyArrayedOrStringType> = as.Factor<AnyArrayedOrString
 const EVERY_FOURTH: Factor<AnyArrayedOrStringType> = as.Factor<AnyArrayedOrStringType>(4)
 const EVERY_FIFTH: Factor<AnyArrayedOrStringType> = as.Factor<AnyArrayedOrStringType>(5)
 
+const NONE: Cardinal<any> = as.Cardinal(0)
+
 const ONCE: Cardinal<any> = as.Cardinal(1)
 const TWICE: Cardinal<any> = as.Cardinal(2)
 const THRICE: Cardinal<any> = as.Cardinal(3)
@@ -307,4 +309,5 @@ export {
     VERY_LOW_PRECISION,
     ONE,
     ZERO,
+    NONE,
 }
