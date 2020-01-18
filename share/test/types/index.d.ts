@@ -25,6 +25,7 @@ declare namespace jasmine {
         ): CustomMatcherResult
         toBeCloseToArray(
             expected: NumericElementType[],
+            precision?: number,
             message?: string,
         ): CustomMatcherResult
         toBeCloseSoFar(
