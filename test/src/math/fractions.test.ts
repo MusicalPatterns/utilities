@@ -3,6 +3,7 @@ import {
     computeCommonTerms,
     computeLowestCommonDenominator,
     computeLowestTerms,
+    frac,
     Fraction,
     getDenominator,
     getNumerator,
@@ -119,6 +120,13 @@ describe('fractions', () => {
                     as.Fraction([ as.Numerator(12), as.Denominator(15) ]),
                     as.Fraction([ as.Numerator(16), as.Denominator(15) ]),
                 ])
+        })
+    })
+
+    describe('frac', () => {
+        it('returns a fraction', () => {
+            expect(frac(1, 3))
+                .toEqual(as.Fraction([ as.Numerator(1), as.Denominator(3) ]))
         })
     })
 })

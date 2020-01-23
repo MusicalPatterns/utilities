@@ -173,6 +173,7 @@ export {
     computeCombinations,
     setNumerator,
     setDenominator,
+    frac,
 } from './math'
 export {
     centsTranslationToPitchScalar,
