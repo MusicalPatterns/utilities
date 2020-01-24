@@ -52,10 +52,10 @@ const computeLowestTerms: (fraction: Fraction) => Fraction =
             denominator as unknown as Integer,
         )
 
-        return as.Fraction([
-            as.Numerator(quotient(numerator as unknown as Integer, gcd)),
-            as.Denominator(quotient(denominator as unknown as Integer, gcd)),
-        ])
+        return asFraction(
+            quotient(numerator as unknown as Integer, gcd),
+            quotient(denominator as unknown as Integer, gcd),
+        )
     }
 
 const computeLowestCommonDenominator: (...fractions: Fraction[]) => Denominator =

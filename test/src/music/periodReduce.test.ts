@@ -1,5 +1,6 @@
 import {
     as,
+    asFraction,
     FIVE_HALVES,
     FOUR_THIRDS,
     FractionalPart,
@@ -40,18 +41,18 @@ describe('reducing', () => {
 
         describe('with fractions', () => {
             it('when necessary, increases the denominator', () => {
-                expect(octaveReduce(as.Fraction([ as.Numerator(23), as.Denominator(5) ])))
-                    .toEqual(as.Fraction([ as.Numerator(23), as.Denominator(20) ]))
+                expect(octaveReduce(asFraction(23, 5)))
+                    .toEqual(asFraction(23, 20))
             })
 
             it('when necessary, increases the numerator', () => {
-                expect(octaveReduce(as.Fraction([ as.Numerator(1), as.Denominator(9) ])))
-                    .toEqual(as.Fraction([ as.Numerator(16), as.Denominator(9) ]))
+                expect(octaveReduce(asFraction(1, 9)))
+                    .toEqual(asFraction(16, 9))
             })
 
             it('reduces to lowest terms', () => {
-                expect(octaveReduce(as.Fraction([ as.Numerator(12), as.Denominator(9) ])))
-                    .toEqual(as.Fraction([ as.Numerator(4), as.Denominator(3) ]))
+                expect(octaveReduce(asFraction(12, 9)))
+                    .toEqual(asFraction(4, 3))
             })
         })
     })
@@ -84,18 +85,18 @@ describe('reducing', () => {
 
         describe('with fractions', () => {
             it('when necessary, increases the denominator', () => {
-                expect(periodReduce(as.Fraction([ as.Numerator(23), as.Denominator(5) ]), as.Multiple<FractionalPart>(3)))
-                    .toEqual(as.Fraction([ as.Numerator(23), as.Denominator(15) ]))
+                expect(periodReduce(asFraction(23, 5), as.Multiple<FractionalPart>(3)))
+                    .toEqual(asFraction(23, 15))
             })
 
             it('when necessary, increases the numerator', () => {
-                expect(periodReduce(as.Fraction([ as.Numerator(1), as.Denominator(10) ]), as.Multiple<FractionalPart>(3)))
-                    .toEqual(as.Fraction([ as.Numerator(27), as.Denominator(10) ]))
+                expect(periodReduce(asFraction(1, 10), as.Multiple<FractionalPart>(3)))
+                    .toEqual(asFraction(27, 10))
             })
 
             it('reduces to lowest terms', () => {
-                expect(periodReduce(as.Fraction([ as.Numerator(16), as.Denominator(8) ]), as.Multiple<FractionalPart>(3)))
-                    .toEqual(as.Fraction([ as.Numerator(2), as.Denominator(1) ]))
+                expect(periodReduce(asFraction(16, 8), as.Multiple<FractionalPart>(3)))
+                    .toEqual(asFraction(2, 1))
             })
         })
     })

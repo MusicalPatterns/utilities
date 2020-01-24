@@ -1,4 +1,4 @@
-import { as, primeFactorize } from '../../../src/indexForTest'
+import { as, asFraction, primeFactorize } from '../../../src/indexForTest'
 
 describe('prime factorize', () => {
     it('returns the prime factorization in monzo form', () => {
@@ -30,7 +30,7 @@ describe('prime factorize', () => {
     })
 
     it('also works on fractions', () => {
-        expect(primeFactorize(as.Fraction([ as.Numerator(4), as.Denominator(5) ])))
+        expect(primeFactorize(asFraction(4, 5)))
             .toEqual(as.Monzo([ 2, 0, -1 ].map(as.Integer)))
     })
 })
