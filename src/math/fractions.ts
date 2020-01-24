@@ -91,7 +91,7 @@ const computeCommonTerms: (...fractions: Fraction[]) => Fraction[] =
             })
     }
 
-const frac: (rawNumerator: number, rawDenominator: number) => Fraction =
+const asFraction: (rawNumerator: number, rawDenominator: number) => Fraction =
     (rawNumerator: number, rawDenominator: number): Fraction =>
         as.Fraction([ as.Numerator(rawNumerator), as.Denominator(rawDenominator) ])
 
@@ -104,5 +104,5 @@ export {
     computeLowestCommonDenominator,
     setDenominator,
     setNumerator,
-    frac,
+    asFraction,
 }

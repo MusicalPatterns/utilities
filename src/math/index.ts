@@ -66,7 +66,7 @@ export {
     computeLowestCommonDenominator,
     setNumerator,
     setDenominator,
-    frac,
+    asFraction,
 } from './fractions'
 
 export {

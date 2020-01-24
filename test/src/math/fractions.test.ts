@@ -1,9 +1,9 @@
 import {
     as,
+    asFraction,
     computeCommonTerms,
     computeLowestCommonDenominator,
     computeLowestTerms,
-    frac,
     Fraction,
     getDenominator,
     getNumerator,
@@ -123,9 +123,9 @@ describe('fractions', () => {
         })
     })
 
-    describe('frac', () => {
+    describe('asFraction', () => {
         it('returns a fraction', () => {
-            expect(frac(1, 3))
+            expect(asFraction(1, 3))
                 .toEqual(as.Fraction([ as.Numerator(1), as.Denominator(3) ]))
         })
     })

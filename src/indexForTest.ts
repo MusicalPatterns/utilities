@@ -93,7 +93,7 @@ export {
     primeFactorize,
     computeCombinations,
     integerDivide,
-    frac,
+    asFraction,
 } from './math/indexForTest'
 export {
     centsTranslationToPitchScalar,
