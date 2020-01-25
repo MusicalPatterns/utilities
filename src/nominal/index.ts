@@ -17,7 +17,7 @@ export {
 } from './custom'
 export {
     isCycle,
-    isFraction,
+    isRational,
     isInteger,
 } from './typeGuards'
 export { insteadOf } from './insteadOf'
@@ -83,7 +83,7 @@ export {
     TWO,
     ADDITIVE_IDENTITY,
     MULTIPLICATIVE_IDENTITY,
-    FRACTIONAL_IDENTITY,
+    RATIONAL_IDENTITY,
     NEGATIVE,
     CUBE_ROOT,
     CUBED,
@@ -163,7 +163,7 @@ export {
     ContourElement,
     Numerator,
     Denominator,
-    Fraction,
+    Rational,
     Modulus,
     Cycle,
     Integer,
@@ -201,5 +201,5 @@ export {
     TranslationBrand,
     PointBrand,
     ScalarBrand,
-    FractionalPart,
+    Ator,
 } from './types'

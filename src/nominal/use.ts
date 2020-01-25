@@ -15,7 +15,6 @@ import {
     Denominator,
     Exponent,
     Factor,
-    Fraction,
     Interval,
     Logarithm,
     Modulus,
@@ -25,6 +24,7 @@ import {
     Numerator,
     Ordinal,
     Power,
+    Rational,
     Remaindee,
     Rotation,
     Scalar,
@@ -37,11 +37,11 @@ import {
 
 // Units - Whole
 
-const Numerator: (numeral: Denominator, useNumerator: Numerator) => Fraction =
-    (numeral: Denominator, useNumerator: Numerator): Fraction =>
+const Numerator: (numeral: Denominator, useNumerator: Numerator) => Rational =
+    (numeral: Denominator, useNumerator: Numerator): Rational =>
         [ useNumerator, numeral ]
-const Denominator: (numeral: Numerator, useDenominator: Denominator) => Fraction =
-    (numeral: Numerator, useDenominator: Denominator): Fraction =>
+const Denominator: (numeral: Numerator, useDenominator: Denominator) => Rational =
+    (numeral: Numerator, useDenominator: Denominator): Rational =>
         [ numeral, useDenominator ]
 
 // Uses - Unwhole - Transformation

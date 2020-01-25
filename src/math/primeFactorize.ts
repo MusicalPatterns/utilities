@@ -1,15 +1,15 @@
 import { arraySet, computeLength, indexOfFinalElement, map } from '../code'
 import {
     as,
-    Fraction,
     INCREMENT,
     INITIAL,
     Integer,
-    isFraction,
+    isRational,
     Monzo,
     NEXT,
     ONE,
     Ordinal,
+    Rational,
     Remaindee,
     use,
     Whole,
@@ -17,22 +17,22 @@ import {
 } from '../nominal'
 import { PRIMES } from './constants'
 import { integerDivide } from './dividesEvenly'
-import { getDenominator, getNumerator } from './fractions'
+import { getDenominator, getNumerator } from './rationals'
 import { difference } from './typedOperations'
 
-const primeFactorize: (integerOrFraction: Integer | Fraction) => Monzo =
-    (integerOrFraction: Integer | Fraction): Monzo => {
-        if (isFraction(integerOrFraction)) {
-            return primeFactorizeFraction(integerOrFraction)
+const primeFactorize: (integerOrRational: Integer | Rational) => Monzo =
+    (integerOrRational: Integer | Rational): Monzo => {
+        if (isRational(integerOrRational)) {
+            return primeFactorizeRational(integerOrRational)
         }
 
-        return primeFactorizeInteger(integerOrFraction)
+        return primeFactorizeInteger(integerOrRational)
     }
 
-const primeFactorizeFraction: (fraction: Fraction) => Monzo =
-    (fraction: Fraction): Monzo => {
-        const positiveFactors: Monzo = primeFactorizeInteger(getNumerator(fraction))
-        const negativeFactors: Monzo = primeFactorizeInteger(getDenominator(fraction))
+const primeFactorizeRational: (rational: Rational) => Monzo =
+    (rational: Rational): Monzo => {
+        const positiveFactors: Monzo = primeFactorizeInteger(getNumerator(rational))
+        const negativeFactors: Monzo = primeFactorizeInteger(getDenominator(rational))
 
         while (computeLength(positiveFactors) < computeLength(negativeFactors)) {
             positiveFactors.push(ZERO)

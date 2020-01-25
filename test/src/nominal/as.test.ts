@@ -16,7 +16,6 @@ import {
     Denominator,
     Exponent,
     Factor,
-    Fraction,
     Frequency,
     Hz,
     Integer,
@@ -33,6 +32,7 @@ import {
     Point,
     Power,
     Radians,
+    Rational,
     Remaindee,
     Rotation,
     Scalar,
@@ -56,8 +56,8 @@ describe('as', () => {
                 const removedUnitWhole: number = as.number(as.Numerator(1))
             })
 
-            it('removes the type from Fraction', () => {
-                const removedFraction: number = as.number(as.Fraction([
+            it('removes the type from Rational', () => {
+                const removedRational: number = as.number(as.Rational([
                     as.Numerator(3),
                     as.Denominator(4),
                 ] as [ Numerator, Denominator ]))
@@ -323,7 +323,7 @@ describe('as', () => {
         })
 
         describe('whole units', () => {
-            describe('fractional parts', () => {
+            describe('numerators and denominators', () => {
                 it('allows casting numbers', () => {
                     const asNumerator: Numerator = as.Numerator(3)
                     const asDenominator: Denominator = as.Denominator(3)
@@ -356,42 +356,42 @@ describe('as', () => {
                 })
             })
 
-            describe('Fraction', () => {
+            describe('Rational', () => {
                 describe('casting', () => {
-                    it('allows casting a tuple of Integer as Fraction', () => {
-                        as.Fraction([ as.Integer(4), as.Integer(4) ])
+                    it('allows casting a tuple of Integer as Rational', () => {
+                        as.Rational([ as.Integer(4), as.Integer(4) ])
                     })
 
-                    it('allows casting a tuple of Numerator, Denominator as Fraction', () => {
-                        as.Fraction([ as.Numerator(4), as.Denominator(4) ])
+                    it('allows casting a tuple of Numerator, Denominator as Rational', () => {
+                        as.Rational([ as.Numerator(4), as.Denominator(4) ])
                     })
 
-                    it('allows casting a tuple of Numerator, Denominator with either substituted with Integer as Fraction', () => {
-                        as.Fraction([ as.Numerator(4), as.Integer(4) ])
-                        as.Fraction([ as.Integer(4), as.Denominator(4) ])
+                    it('allows casting a tuple of Numerator, Denominator with either substituted with Integer as Rational', () => {
+                        as.Rational([ as.Numerator(4), as.Integer(4) ])
+                        as.Rational([ as.Integer(4), as.Denominator(4) ])
                     })
                 })
 
                 it('allows comparing values', () => {
-                    expect(as.Fraction([ as.Numerator(3), as.Integer(4) ]))
+                    expect(as.Rational([ as.Numerator(3), as.Integer(4) ]))
                         .not
-                        .toBe(as.Fraction([ as.Integer(4), as.Denominator(3) ]))
+                        .toBe(as.Rational([ as.Integer(4), as.Denominator(3) ]))
                 })
 
                 it('allows passing as the callback to an iterator', () => {
-                    const arrayOfFraction: Fraction[] = [
+                    const arrayOfRationals: Rational[] = [
                         [ as.Integer(3), as.Integer(6) ] as [ Integer, Integer ],
                         [ as.Integer(4), as.Integer(6) ] as [ Integer, Integer ],
                         [ as.Integer(5), as.Integer(6) ] as [ Integer, Integer ],
-                    ].map(as.Fraction)
+                    ].map(as.Rational)
                 })
 
                 it(`allows calling with numbers which aren't integers, but throws an error`, () => {
-                    expect(() => as.Fraction([ 4.3 as unknown as Numerator, 4 as unknown as Denominator ]))
+                    expect(() => as.Rational([ 4.3 as unknown as Numerator, 4 as unknown as Denominator ]))
                         .toThrow(new Error('Numerals of type Numerator must be integers. This numeral was 4.3.'))
-                    expect(() => as.Fraction([ 4 as unknown as Numerator, 4.3 as unknown as Denominator ]))
+                    expect(() => as.Rational([ 4 as unknown as Numerator, 4.3 as unknown as Denominator ]))
                         .toThrow(new Error('Numerals of type Denominator must be integers. This numeral was 4.3.'))
-                    expect(() => as.Fraction([ 4.3 as unknown as Numerator, 4.3 as unknown as Denominator ]))
+                    expect(() => as.Rational([ 4.3 as unknown as Numerator, 4.3 as unknown as Denominator ]))
                         .toThrow(new Error('Numerals of type Numerator must be integers. This numeral was 4.3.'))
                 })
             })

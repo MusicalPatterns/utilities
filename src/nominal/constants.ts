@@ -10,7 +10,6 @@ import {
     Delta,
     Exponent,
     Factor,
-    Fraction,
     Frequency,
     Integer,
     Logarithm,
@@ -21,6 +20,7 @@ import {
     Point,
     Power,
     Radians,
+    Rational,
     Scalar,
     Semitones,
     Space,
@@ -121,7 +121,7 @@ const TWELFTH: Ordinal<AnyArrayedOrStringType> = as.Ordinal<AnyArrayedOrStringTy
 
 const ADDITIVE_IDENTITY: Translation<any> = as.Translation(0)
 const MULTIPLICATIVE_IDENTITY: Scalar<any> = as.Scalar(1)
-const FRACTIONAL_IDENTITY: Fraction = as.Fraction([ as.Numerator(1), as.Denominator(1) ])
+const RATIONAL_IDENTITY: Rational = as.Rational([ as.Numerator(1), as.Denominator(1) ])
 
 const NEXT: Transition<AnyArrayedOrStringType> = as.Transition<AnyArrayedOrStringType>(1)
 const PREVIOUS: Transition<AnyArrayedOrStringType> = as.Transition<AnyArrayedOrStringType>(-1)
@@ -133,8 +133,8 @@ const ONE_MORE: Cardinal<Cardinal<AnyArrayedOrStringType>> = as.Cardinal<Cardina
 const ONE_FEWER: Cardinal<Cardinal<AnyArrayedOrStringType>> = as.Cardinal<Cardinal<AnyArrayedOrStringType>>(-1)
 const NO_SHIFT: Cardinal<any> = as.Cardinal<any>(0)
 
-const NUMERATOR_INDEX: Ordinal<Fraction> = as.Ordinal<Fraction>(0)
-const DENOMINATOR_INDEX: Ordinal<Fraction> = as.Ordinal<Fraction>(1)
+const NUMERATOR_INDEX: Ordinal<Rational> = as.Ordinal<Rational>(0)
+const DENOMINATOR_INDEX: Ordinal<Rational> = as.Ordinal<Rational>(1)
 
 const FIRST_FACTOR_NECESSARY_TO_CHECK_IF_COMMON: Integer = as.Integer(2)
 
@@ -249,7 +249,7 @@ export {
     TWO,
     ADDITIVE_IDENTITY,
     MULTIPLICATIVE_IDENTITY,
-    FRACTIONAL_IDENTITY,
+    RATIONAL_IDENTITY,
     NEGATIVE,
     CUBE_ROOT,
     CUBED,

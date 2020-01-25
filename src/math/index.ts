@@ -61,13 +61,13 @@ export {
     computeLowestTerms,
     getDenominator,
     getNumerator,
-    multiplyFractions,
+    multiplyRationals,
     computeCommonTerms,
     computeLowestCommonDenominator,
     setNumerator,
     setDenominator,
-    asFraction,
-} from './fractions'
+    asRational,
+} from './rationals'
 
 export {
     ARBITRARILY_LARGE_NUMBER,

@@ -1,7 +1,7 @@
 import { evaluate } from '../../../src/indexForTest'
 
 describe('evaluate', () => {
-    it('works for fractions', () => {
+    it('works for rational numbers', () => {
         expect(evaluate('5/4'))
             .toBeCloseTo(1.25)
     })

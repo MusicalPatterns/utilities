@@ -10,7 +10,7 @@ export {
 }
 
 export { insteadOf } from './insteadOf'
-export { isCycle, isFraction, isInteger } from './typeGuards'
+export { isCycle, isRational, isInteger } from './typeGuards'
 export { ofNotAs } from './ofNotAs'
 
 export {
@@ -60,7 +60,7 @@ export {
     Denominator,
     Integer,
     Meters,
-    Fraction,
+    Rational,
     Space,
     Time,
     Frequency,
@@ -88,5 +88,5 @@ export {
     ContourWhole,
     Monzo,
     Val,
-    FractionalPart,
+    Ator,
 } from './types'

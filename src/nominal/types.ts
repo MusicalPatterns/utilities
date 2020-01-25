@@ -131,9 +131,9 @@ type Amplitude = UnitsBrand<AmplitudeBrand>
 
 type Numerator = UnitsBrand<NumeratorBrand>
 type Denominator = UnitsBrand<DenominatorBrand>
-type FractionalPart = Numerator & Denominator
+type Ator = Numerator & Denominator
 
-type Fraction = [ Numerator, Denominator ]
+type Rational = [ Numerator, Denominator ]
 
 // Utilities - Uses
 
@@ -346,7 +346,7 @@ export {
     ContourElement,
     ContourPiece,
     ContourWhole,
-    Fraction,
+    Rational,
     Numerator,
     Denominator,
     Modulus,
@@ -399,6 +399,6 @@ export {
     TranslationBrand,
     PointBrand,
     ScalarBrand,
-    FractionalPart,
+    Ator,
     Brand,
 }

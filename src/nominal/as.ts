@@ -23,7 +23,6 @@ import {
     Denominator,
     Exponent,
     Factor,
-    Fraction,
     Frequency,
     Hz,
     Integer,
@@ -44,6 +43,7 @@ import {
     Point,
     Power,
     Radians,
+    Rational,
     Remaindee,
     Rotation,
     Scalar,
@@ -60,10 +60,10 @@ import {
 
 // Removal
 
-const number: <FractionOrNumericType extends Number | Fraction>(asNumber: FractionOrNumericType) => number =
-    <FractionOrNumericType extends Number | Fraction>(asNumber: FractionOrNumericType): number => {
+const number: <RationalOrNumericType extends Number | Rational>(asNumber: RationalOrNumericType) => number =
+    <RationalOrNumericType extends Number | Rational>(asNumber: RationalOrNumericType): number => {
         if (asNumber instanceof Array) {
-            return (asNumber as Fraction)[ 0 ] as unknown as number / ((asNumber as Fraction)[ 1 ] as unknown as number)
+            return (asNumber as Rational)[ 0 ] as unknown as number / ((asNumber as Rational)[ 1 ] as unknown as number)
         }
 
         return asNumber as unknown as number
@@ -123,12 +123,12 @@ const Denominator: <NumericType extends NoUnits>(asDenominator: NumericType) => 
     <NumericType extends NoUnits>(asDenominator: NumericType): Denominator =>
         integerCheck(asDenominator, 'Denominator') as unknown as Denominator
 
-const Fraction: (fraction: [Integer | Numerator, Integer | Denominator]) => Fraction =
-    ([ asNumerator, asDenominator ]: [Integer | Numerator, Integer | Denominator]): Fraction =>
+const Rational: (rational: [Integer | Numerator, Integer | Denominator]) => Rational =
+    ([ asNumerator, asDenominator ]: [Integer | Numerator, Integer | Denominator]): Rational =>
         [
             integerCheck(asNumerator, 'Numerator'),
             integerCheck(asDenominator, 'Denominator'),
-        ] as unknown as Fraction
+        ] as unknown as Rational
 
 // Uses - Unwhole - Transformation
 
@@ -374,7 +374,7 @@ export {
     ContourElement,
     ContourPiece,
     ContourWhole,
-    Fraction,
+    Rational,
     Numerator,
     Denominator,
     Modulus,

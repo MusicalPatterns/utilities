@@ -60,7 +60,7 @@ export {
     computeCommonTerms,
     getNumerator,
     getDenominator,
-    multiplyFractions,
+    multiplyRationals,
     setNumerator,
     setDenominator,
     computeLowestCommonDenominator,
@@ -93,7 +93,7 @@ export {
     primeFactorize,
     computeCombinations,
     integerDivide,
-    asFraction,
+    asRational,
 } from './math/indexForTest'
 export {
     centsTranslationToPitchScalar,
@@ -129,7 +129,7 @@ export {
     Denominator,
     Integer,
     Meters,
-    Fraction,
+    Rational,
     Space,
     Time,
     Frequency,
@@ -182,8 +182,8 @@ export {
     ContourWhole,
     Monzo,
     Val,
-    isFraction,
+    isRational,
     isCycle,
     isInteger,
-    FractionalPart,
+    Ator,
 } from './nominal/indexForTest'

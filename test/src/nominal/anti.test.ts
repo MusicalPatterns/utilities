@@ -158,8 +158,8 @@
 //         })
 //
 //         describe('special units/uses', () => {
-//             it('DOES NOT ALLOW creating fractions out of mere numbers', () => {
-//                 as.Fraction([ 4, 4 ])
+//             it('DOES NOT ALLOW creating rationals out of mere numbers', () => {
+//                 as.Rational([ 4, 4 ])
 //             })
 //
 //             it('DOES NOT ALLOW making special units if they are some other Units (not Integers)', () => {

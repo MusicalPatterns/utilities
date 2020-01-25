@@ -10,12 +10,12 @@ export {
     computeCommonTerms,
     getNumerator,
     getDenominator,
-    multiplyFractions,
+    multiplyRationals,
     computeLowestCommonDenominator,
     setNumerator,
     setDenominator,
-    asFraction,
-} from './fractions'
+    asRational,
+} from './rationals'
 export { powerSet, computeCombinations } from './powerSet'
 export { computeGreatestCommonDivisor, computeLeastCommonMultiple } from './common'
 export { evaluate } from './evaluate'

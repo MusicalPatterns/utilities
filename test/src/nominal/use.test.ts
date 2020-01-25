@@ -20,15 +20,15 @@ import {
 describe('use', () => {
     // Whole Units
 
-    describe('Fractions, Numerators, and Denominators', () => {
-        it('using a Numerator to a Denominator gives a Fraction', () => {
+    describe('Rationals, Numerators, and Denominators', () => {
+        it('using a Numerator to a Denominator gives a Rational', () => {
             expect(use.Numerator(as.Denominator(5), as.Numerator(4)))
-                .toEqual(as.Fraction([ as.Numerator(4), as.Denominator(5) ]))
+                .toEqual(as.Rational([ as.Numerator(4), as.Denominator(5) ]))
         })
 
-        it('using a Denominator to a Numerator gives a Fraction', () => {
+        it('using a Denominator to a Numerator gives a Rational', () => {
             expect(use.Denominator(as.Numerator(5), as.Denominator(4)))
-                .toEqual(as.Fraction([ as.Numerator(5), as.Denominator(4) ]))
+                .toEqual(as.Rational([ as.Numerator(5), as.Denominator(4) ]))
         })
     })
 

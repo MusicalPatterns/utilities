@@ -1,4 +1,4 @@
-import { as, asFraction, primeFactorize } from '../../../src/indexForTest'
+import { as, asRational, primeFactorize } from '../../../src/indexForTest'
 
 describe('prime factorize', () => {
     it('returns the prime factorization in monzo form', () => {
@@ -29,8 +29,8 @@ describe('prime factorize', () => {
             .toThrow(new Error('The prime factorization of zero is not defined.'))
     })
 
-    it('also works on fractions', () => {
-        expect(primeFactorize(asFraction(4, 5)))
+    it('also works on rational numbers', () => {
+        expect(primeFactorize(asRational(4, 5)))
             .toEqual(as.Monzo([ 2, 0, -1 ].map(as.Integer)))
     })
 })

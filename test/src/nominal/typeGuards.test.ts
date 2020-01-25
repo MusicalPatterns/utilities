@@ -1,4 +1,4 @@
-import { as, isCycle, isFraction, isInteger } from '../../../src/indexForTest'
+import { as, isCycle, isInteger, isRational } from '../../../src/indexForTest'
 
 describe('type guards', () => {
     it('isCycle', () => {
@@ -11,25 +11,25 @@ describe('type guards', () => {
             .toBeFalsy()
     })
 
-    it('isFraction', () => {
-        expect(isFraction(as.Fraction([ as.Numerator(4), as.Denominator(5) ])))
+    it('isRational', () => {
+        expect(isRational(as.Rational([ as.Numerator(4), as.Denominator(5) ])))
             .toBeTruthy()
-        expect(isFraction(as.Fraction([ as.Integer(4), as.Integer(5) ])))
+        expect(isRational(as.Rational([ as.Integer(4), as.Integer(5) ])))
             .toBeTruthy()
-        expect(isFraction([ as.Numerator(4), as.Denominator(5) ]))
+        expect(isRational([ as.Numerator(4), as.Denominator(5) ]))
             .toBeTruthy()
-        expect(isFraction(as.unbrandedArray(as.Fraction([ as.Numerator(4), as.Denominator(5) ]))))
+        expect(isRational(as.unbrandedArray(as.Rational([ as.Numerator(4), as.Denominator(5) ]))))
             .toBeTruthy()
-        expect(isFraction([ as.Integer(4), as.Integer(5) ]))
+        expect(isRational([ as.Integer(4), as.Integer(5) ]))
             .toBeTruthy()
-        expect(isFraction([ as.Numerator(4), as.Numerator(5) ]))
+        expect(isRational([ as.Numerator(4), as.Numerator(5) ]))
             .toBeTruthy()
-        expect(isFraction([ as.Denominator(4), as.Denominator(5) ]))
+        expect(isRational([ as.Denominator(4), as.Denominator(5) ]))
             .toBeTruthy()
-        expect(isFraction([ 4, 5 ]))
+        expect(isRational([ 4, 5 ]))
             .toBeTruthy()
 
-        expect(isFraction([ as.Numerator(4), as.Denominator(5), as.Integer(6) ]))
+        expect(isRational([ as.Numerator(4), as.Denominator(5), as.Integer(6) ]))
             .toBeFalsy()
     })
 
