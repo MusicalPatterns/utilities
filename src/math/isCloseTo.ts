@@ -11,6 +11,10 @@ const isCloseTo: <NumericType extends Number>(
         expected: NumericType,
         manualPrecision?: number,
     ): boolean => {
+        if (as.number(actual) === Infinity && as.number(expected) === Infinity) {
+            return true
+        }
+
         const precision: number = manualPrecision || DEFAULT_PRECISION
 
         const pow: number = use.Power(DECIMAL, as.Power(use.Cardinal(precision, INCREMENT)))
