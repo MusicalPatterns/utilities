@@ -32,5 +32,10 @@ describe('type guards', () => {
                     }
                 }
         })
+
+        it('does not report empty strings as undefined', () => {
+            expect(isUndefined(''))
+                .toBe(false)
+        })
     })
 })
