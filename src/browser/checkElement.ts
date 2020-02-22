@@ -38,6 +38,7 @@ const elementCount: (page: Page, selector: string) => Promise<number> =
         page.evaluate(
             (selectorInEvaluate: string): number =>
                 document.querySelectorAll(selectorInEvaluate).length,
+            selector,
         )
 
 const elementIds: (page: Page, selector: string) => Promise<string[]> =
