@@ -17,6 +17,8 @@ type NonPartial<PartialType> = { [Index in keyof PartialType]-?: PartialType[Ind
 
 type Difference<Type, TypeWithSubtypesToRemove> = Type extends TypeWithSubtypesToRemove ? never : Type
 
+type Thunk<Type> = () => Type
+
 export {
     ObjectDifference,
     KeyMap,
@@ -26,4 +28,5 @@ export {
     NonPartial,
     Just,
     Difference,
+    Thunk,
 }

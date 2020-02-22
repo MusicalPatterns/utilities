@@ -93,6 +93,7 @@ export {
     exampleElement,
     areCyclicalTranslations,
     throws,
+    Thunk,
 } from './code'
 export {
     absoluteRatio,

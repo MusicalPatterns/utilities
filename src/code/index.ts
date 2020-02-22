@@ -52,4 +52,5 @@ export {
     NonPartial,
     Just,
     Difference,
+    Thunk,
 } from './types'
