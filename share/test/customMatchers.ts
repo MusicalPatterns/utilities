@@ -77,23 +77,45 @@ const testIsCloseTo: <NumericType extends Number>(
     if (negate) {
         assert(
             !isClose,
-            isUndefined(message) ?
-                `expected ${String(actual)} not to be close to ${String(expected)}${precisionMessage(precision)}` :
-                message,
+            message ||
+            `expected ${String(actual)} not to be close to ${String(expected)}${precisionMessage(precision)}`,
         )
     }
     else {
         assert(
             isClose,
-            isUndefined(message) ?
-                `expected ${String(actual)} to be close to ${String(expected)}${precisionMessage(precision)}` :
-                message,
+            message || `expected ${String(actual)} to be close to ${String(expected)}${precisionMessage(precision)}`,
         )
     }
 }
 
+const arraysAreCloseUpThroughExpected: <NumericElementType extends Number>(
+    expected: NumericElementType[],
+    actual: NumericElementType[],
+    precision?: number,
+    // tslint:disable-next-line bool-param-default
+    negate?: boolean,
+    message?: string,
+) => void = <NumericElementType extends Number>(
+    expected: NumericElementType[],
+    actual: NumericElementType[],
+    precision?: number,
+    // tslint:disable-next-line bool-param-default
+    negate?: boolean,
+    message?: string,
+): void => {
+    forEach(expected, (expectedElement: NumericElementType, index: Ordinal<NumericElementType[]>): void => {
+        const actualElement: NumericElementType = use.Ordinal(actual, index)
+
+        testIsCloseTo(actualElement, expectedElement, precision, negate, message)
+    })
+}
+
 const customMatchers: CustomMatcherFactories = {
-    toBeCloseToTyped: (util: MatchersUtil, customEqualityTesters: readonly CustomEqualityTester[]): CustomMatcher => ({
+    toBeCloseToTyped: (
+        util: MatchersUtil,
+        customEqualityTesters: readonly CustomEqualityTester[],
+    ): CustomMatcher => ({
         compare: <NumericType extends Number>(
             actual: NumericType,
             expected: NumericType,
@@ -105,7 +127,10 @@ const customMatchers: CustomMatcherFactories = {
                 testIsCloseTo(actual, expected, precision, negate, message)
             }),
     }),
-    toBeGreaterThanOrCloseTo: (util: MatchersUtil, customEqualityTesters: readonly CustomEqualityTester[]): CustomMatcher => ({
+    toBeGreaterThanOrCloseTo: (
+        util: MatchersUtil,
+        customEqualityTesters: readonly CustomEqualityTester[],
+    ): CustomMatcher => ({
         compare: <NumericType extends Number>(
             actual: NumericType,
             expected: NumericType,
@@ -115,13 +140,14 @@ const customMatchers: CustomMatcherFactories = {
             doAssertions((): void => {
                 assert(
                     isGreaterThanOrEqualTo(actual, expected) || isCloseTo(actual, expected, precision),
-                    isUndefined(message) ?
-                        `expected ${String(actual)} to be greater than or close to ${String(expected)}` :
-                        message,
+                    message || `expected ${String(actual)} to be greater than or close to ${String(expected)}`,
                 )
             }),
     }),
-    toBeLessThanOrCloseTo: (util: MatchersUtil, customEqualityTesters: readonly CustomEqualityTester[]): CustomMatcher => ({
+    toBeLessThanOrCloseTo: (
+        util: MatchersUtil,
+        customEqualityTesters: readonly CustomEqualityTester[],
+    ): CustomMatcher => ({
         compare: <NumericType extends Number>(
             actual: NumericType,
             expected: NumericType,
@@ -131,13 +157,14 @@ const customMatchers: CustomMatcherFactories = {
             doAssertions((): void => {
                 assert(
                     isLessThanOrEqualTo(actual, expected) || isCloseTo(actual, expected, precision),
-                    isUndefined(message) ?
-                        `expected ${String(actual)} to be greater than or close to ${String(expected)}` :
-                        message,
+                    message || `expected ${String(actual)} to be greater than or close to ${String(expected)}`,
                 )
             }),
     }),
-    toBeHomogenous: (util: MatchersUtil, customEqualityTesters: readonly CustomEqualityTester[]): CustomMatcher => ({
+    toBeHomogenous: (
+        util: MatchersUtil,
+        customEqualityTesters: readonly CustomEqualityTester[],
+    ): CustomMatcher => ({
         compare: <NumericElementType extends Number>(
             actualArray: NumericElementType[],
             manualExpectedElementValue?: NumericElementType,
@@ -147,11 +174,14 @@ const customMatchers: CustomMatcherFactories = {
             doAssertions((): void => {
                 assert(
                     allValuesAreTheSame(actualArray, manualExpectedElementValue, precision),
-                    isUndefined(message) ? `expected all values to be the same` : message,
+                    message || `expected all values to be the same`,
                 )
             }),
     }),
-    toBeCloseToArray: (util: MatchersUtil, customEqualityTesters: readonly CustomEqualityTester[]): CustomMatcher => ({
+    toBeCloseToArray: (
+        util: MatchersUtil,
+        customEqualityTesters: readonly CustomEqualityTester[],
+    ): CustomMatcher => ({
         compare: <NumericElementType extends Number>(
             actual: NumericElementType[],
             expected: NumericElementType[],
@@ -163,19 +193,16 @@ const customMatchers: CustomMatcherFactories = {
             doAssertions((): void => {
                 assert(
                     actual.length === expected.length,
-                    isUndefined(message) ?
-                        `Expected actual's ${actual.length} length to be ${expected.length}` :
-                        message,
+                    message || `Expected actual's ${actual.length} length to be ${expected.length}`,
                 )
 
-                forEach(expected, (expectedElement: NumericElementType, index: Ordinal<NumericElementType[]>): void => {
-                    const actualElement: NumericElementType = use.Ordinal(actual, index)
-
-                    testIsCloseTo(actualElement, expectedElement, precision, negate, message)
-                })
+                arraysAreCloseUpThroughExpected(expected, actual, precision, negate, message)
             }),
     }),
-    toBeCloseSoFar: (util: MatchersUtil, customEqualityTesters: readonly CustomEqualityTester[]): CustomMatcher => ({
+    toBeCloseSoFar: (
+        util: MatchersUtil,
+        customEqualityTesters: readonly CustomEqualityTester[],
+    ): CustomMatcher => ({
         compare: <NumericElementType extends Number>(
             actual: NumericElementType[],
             expected: NumericElementType[],
@@ -185,14 +212,13 @@ const customMatchers: CustomMatcherFactories = {
             message?: string,
         ): CustomMatcherResult =>
             doAssertions((): void => {
-                forEach(expected, (expectedElement: NumericElementType, index: Ordinal<NumericElementType[]>): void => {
-                    const actualElement: NumericElementType = use.Ordinal(actual, index)
-
-                    testIsCloseTo(actualElement, expectedElement, precision, negate, message)
-                })
+                arraysAreCloseUpThroughExpected(expected, actual, precision, negate, message)
             }),
     }),
-    toHaveSameMembersAs: (util: MatchersUtil, customEqualityTesters: readonly CustomEqualityTester[]): CustomMatcher => ({
+    toHaveSameMembersAs: (
+        util: MatchersUtil,
+        customEqualityTesters: readonly CustomEqualityTester[],
+    ): CustomMatcher => ({
         compare: <ElementType extends Number>(
             actual: ElementType[],
             expected: ElementType[],
@@ -201,11 +227,14 @@ const customMatchers: CustomMatcherFactories = {
             doAssertions((): void => {
                 assert(
                     deepEqual(expected.sort(), actual.sort()),
-                    isUndefined(message) ? `arrays did not have same elements: ${String(expected)} vs ${String(actual)}` : message,
+                    message || `arrays did not have same elements: ${String(expected)} vs ${String(actual)}`,
                 )
             }),
     }),
-    toBeLessThanTyped: (util: MatchersUtil, customEqualityTesters: readonly CustomEqualityTester[]): CustomMatcher => ({
+    toBeLessThanTyped: (
+        util: MatchersUtil,
+        customEqualityTesters: readonly CustomEqualityTester[],
+    ): CustomMatcher => ({
         compare: <NumericType extends Number>(
             actual: NumericType,
             expected: NumericType,
@@ -214,11 +243,14 @@ const customMatchers: CustomMatcherFactories = {
             doAssertions((): void => {
                 assert(
                     isLessThan(actual, expected),
-                    isUndefined(message) ? `expected ${String(actual)} to be less than ${String(expected)}` : message,
+                    message || `expected ${String(actual)} to be less than ${String(expected)}`,
                 )
             }),
     }),
-    toBeGreaterThanTyped: (util: MatchersUtil, customEqualityTesters: readonly CustomEqualityTester[]): CustomMatcher => ({
+    toBeGreaterThanTyped: (
+        util: MatchersUtil,
+        customEqualityTesters: readonly CustomEqualityTester[],
+    ): CustomMatcher => ({
         compare: <NumericType extends Number>(
             actual: NumericType,
             expected: NumericType,
@@ -227,11 +259,14 @@ const customMatchers: CustomMatcherFactories = {
             doAssertions((): void => {
                 assert(
                     isGreaterThan(actual, expected),
-                    isUndefined(message) ? `expected ${String(actual)} to be less than ${String(expected)}` : message,
+                    message || `expected ${String(actual)} to be less than ${String(expected)}`,
                 )
             }),
     }),
-    toBeLessThanOrEqualTyped: (util: MatchersUtil, customEqualityTesters: readonly CustomEqualityTester[]): CustomMatcher => ({
+    toBeLessThanOrEqualTyped: (
+        util: MatchersUtil,
+        customEqualityTesters: readonly CustomEqualityTester[],
+    ): CustomMatcher => ({
         compare: <NumericType extends Number>(
             actual: NumericType,
             expected: NumericType,
@@ -240,11 +275,14 @@ const customMatchers: CustomMatcherFactories = {
             doAssertions((): void => {
                 assert(
                     isLessThanOrEqualTo(actual, expected),
-                    isUndefined(message) ? `expected ${String(actual)} to be less than ${String(expected)}` : message,
+                    message || `expected ${String(actual)} to be less than ${String(expected)}`,
                 )
             }),
     }),
-    toBeGreaterThanOrEqualTyped: (util: MatchersUtil, customEqualityTesters: readonly CustomEqualityTester[]): CustomMatcher => ({
+    toBeGreaterThanOrEqualTyped: (
+        util: MatchersUtil,
+        customEqualityTesters: readonly CustomEqualityTester[],
+    ): CustomMatcher => ({
         compare: <NumericType extends Number>(
             actual: NumericType,
             expected: NumericType,
@@ -253,11 +291,14 @@ const customMatchers: CustomMatcherFactories = {
             doAssertions((): void => {
                 assert(
                     isGreaterThanOrEqualTo(actual, expected),
-                    isUndefined(message) ? `expected ${String(actual)} to be less than ${String(expected)}` : message,
+                    message || `expected ${String(actual)} to be less than ${String(expected)}`,
                 )
             }),
     }),
-    toGoMonotonically: (util: MatchersUtil, customEqualityTesters: readonly CustomEqualityTester[]): CustomMatcher => ({
+    toGoMonotonically: (
+        util: MatchersUtil,
+        customEqualityTesters: readonly CustomEqualityTester[],
+    ): CustomMatcher => ({
         compare: <NumericElementType extends Number>(
             array: Array<Point<NumericElementType>>,
             expectedBeginValue?: Point<NumericElementType>,
@@ -268,13 +309,14 @@ const customMatchers: CustomMatcherFactories = {
                 const fromMessage: string = isUndefined(expectedBeginValue) ? '' : ` from ${String(expectedBeginValue)}`
                 assert(
                     goesMonotonically(array, expectedBeginValue, undefined, precision),
-                    isUndefined(message) ?
-                        `array ${String(array)} did not go monotonically${fromMessage}${precisionMessage(precision)}` :
-                        message,
+                    message || `array ${String(array)} did not go monotonically${fromMessage}${precisionMessage(precision)}`,
                 )
             }),
     }),
-    toGoMonotonicallyBetweenValueAndValue: (util: MatchersUtil, customEqualityTesters: readonly CustomEqualityTester[]): CustomMatcher => ({
+    toGoMonotonicallyBetweenValueAndValue: (
+        util: MatchersUtil,
+        customEqualityTesters: readonly CustomEqualityTester[],
+    ): CustomMatcher => ({
         compare: <NumericElementType extends Number>(
             array: Array<Point<NumericElementType>>,
             expectedBeginValue: Point<NumericElementType>,
@@ -285,13 +327,14 @@ const customMatchers: CustomMatcherFactories = {
             doAssertions((): void => {
                 assert(
                     goesMonotonicallyBetweenValueAndValue(array, expectedBeginValue, expectedEndValue, precision),
-                    isUndefined(message) ?
-                        `array ${String(array)} did not go monotonically between ${String(expectedBeginValue)} and ${String(expectedEndValue)}${precisionMessage(precision)}` :
-                        message,
+                    message || `array ${String(array)} did not go monotonically between ${String(expectedBeginValue)} and ${String(expectedEndValue)}${precisionMessage(precision)}`,
                 )
             }),
     }),
-    toGoMonotonicallyFromValueToValue: (util: MatchersUtil, customEqualityTesters: readonly CustomEqualityTester[]): CustomMatcher => ({
+    toGoMonotonicallyFromValueToValue: (
+        util: MatchersUtil,
+        customEqualityTesters: readonly CustomEqualityTester[],
+    ): CustomMatcher => ({
         compare: <NumericElementType extends Number>(
             array: Array<Point<NumericElementType>>,
             expectedBeginValue: Point<NumericElementType>,
@@ -302,13 +345,14 @@ const customMatchers: CustomMatcherFactories = {
             doAssertions((): void => {
                 assert(
                     goesMonotonicallyFromValueToValue(array, expectedBeginValue, expectedEndValue, precision),
-                    isUndefined(message) ?
-                        `array ${String(array)} did not go monotonically from ${String(expectedBeginValue)} to ${String(expectedEndValue)}${precisionMessage(precision)}` :
-                        message,
+                    message || `array ${String(array)} did not go monotonically from ${String(expectedBeginValue)} to ${String(expectedEndValue)}${precisionMessage(precision)}`,
                 )
             }),
     }),
-    toGoQuadratically: (util: MatchersUtil, customEqualityTesters: readonly CustomEqualityTester[]): CustomMatcher => ({
+    toGoQuadratically: (
+        util: MatchersUtil,
+        customEqualityTesters: readonly CustomEqualityTester[],
+    ): CustomMatcher => ({
         compare: <NumericElementType extends Number>(
             array: Array<Point<NumericElementType>>,
             expectedBeginValue?: Point<NumericElementType>,
@@ -319,13 +363,14 @@ const customMatchers: CustomMatcherFactories = {
                 const fromMessage: string = isUndefined(expectedBeginValue) ? '' : ` from ${String(expectedBeginValue)}`
                 assert(
                     goesQuadratically(array, expectedBeginValue, precision),
-                    isUndefined(message) ?
-                        `array ${String(array)} did not go quadratically${fromMessage}${precisionMessage(precision)}` :
-                        message,
+                    message || `array ${String(array)} did not go quadratically${fromMessage}${precisionMessage(precision)}`,
                 )
             }),
     }),
-    toGoQuadraticallyBetweenValueAndValue: (util: MatchersUtil, customEqualityTesters: readonly CustomEqualityTester[]): CustomMatcher => ({
+    toGoQuadraticallyBetweenValueAndValue: (
+        util: MatchersUtil,
+        customEqualityTesters: readonly CustomEqualityTester[],
+    ): CustomMatcher => ({
         compare: <NumericElementType extends Number>(
             array: Array<Point<NumericElementType>>,
             expectedBeginValue: Point<NumericElementType>,
@@ -336,13 +381,14 @@ const customMatchers: CustomMatcherFactories = {
             doAssertions((): void => {
                 assert(
                     goesQuadraticallyBetweenValueAndValue(array, expectedBeginValue, expectedEndValue, precision),
-                    isUndefined(message) ?
-                        `array ${String(array)} did not go quadratically between ${String(expectedBeginValue)} and ${String(expectedEndValue)}${precisionMessage(precision)}` :
-                        message,
+                    message || `array ${String(array)} did not go quadratically between ${String(expectedBeginValue)} and ${String(expectedEndValue)}${precisionMessage(precision)}`,
                 )
             }),
     }),
-    toGoQuadraticallyFromValueToValue: (util: MatchersUtil, customEqualityTesters: readonly CustomEqualityTester[]): CustomMatcher => ({
+    toGoQuadraticallyFromValueToValue: (
+        util: MatchersUtil,
+        customEqualityTesters: readonly CustomEqualityTester[],
+    ): CustomMatcher => ({
         compare: <NumericElementType extends Number>(
             array: Array<Point<NumericElementType>>,
             expectedBeginValue: Point<NumericElementType>,
@@ -353,13 +399,14 @@ const customMatchers: CustomMatcherFactories = {
             doAssertions((): void => {
                 assert(
                     goesQuadraticallyFromValueToValue(array, expectedBeginValue, expectedEndValue, precision),
-                    isUndefined(message) ?
-                        `array ${String(array)} did not go quadratically from ${String(expectedBeginValue)} to ${String(expectedEndValue)}${precisionMessage(precision)}` :
-                        message,
+                    message || `array ${String(array)} did not go quadratically from ${String(expectedBeginValue)} to ${String(expectedEndValue)}${precisionMessage(precision)}`,
                 )
             }),
     }),
-    toBeCyclicalTranslations: (util: MatchersUtil, customEqualityTesters: readonly CustomEqualityTester[]): CustomMatcher => ({
+    toBeCyclicalTranslations: (
+        util: MatchersUtil,
+        customEqualityTesters: readonly CustomEqualityTester[],
+    ): CustomMatcher => ({
         compare: <ElementType, ArrayType extends ArrayedOrStringType<ElementType> = ElementType[]>(
             arrays: ArrayType[],
             message?: string,
@@ -367,9 +414,7 @@ const customMatchers: CustomMatcherFactories = {
             doAssertions((): void => {
                 assert(
                     areCyclicalTranslations(...arrays),
-                    isUndefined(message) ?
-                        `arrays ${String(arrays)} were not all cyclical translations of each other` :
-                        message,
+                    message || `arrays ${String(arrays)} were not all cyclical translations of each other`,
                 )
             }),
     }),
