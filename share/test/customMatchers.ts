@@ -20,7 +20,7 @@ import {
     Ordinal,
     Point,
     use,
-} from '../src/indexForTest'
+} from '@musical-patterns/utilities'
 import CustomEqualityTester = jasmine.CustomEqualityTester
 import CustomMatcher = jasmine.CustomMatcher
 import CustomMatcherFactories = jasmine.CustomMatcherFactories
