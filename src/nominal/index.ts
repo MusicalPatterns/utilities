@@ -202,4 +202,5 @@ export {
     PointBrand,
     ScalarBrand,
     Ator,
+    AnyArrayedOrStringType,
 } from './types'

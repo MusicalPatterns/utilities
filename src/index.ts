@@ -370,6 +370,7 @@ export {
     Remaindee,
     ArrayedType,
     ArrayedOrStringType,
+    AnyArrayedOrStringType,
     isRational,
     isCycle,
     isInteger,
