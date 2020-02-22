@@ -76,6 +76,7 @@ export {
     CUBE_ROOT_OF_TWO,
     CUBE_ROOT_OF_THREE,
     PRIMES,
+    LARGE_NUMBER_WITHIN_ARRAY_LENGTH_VALIDITY,
 } from './constants'
 export {
     Coordinate,

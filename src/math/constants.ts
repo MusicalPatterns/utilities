@@ -3,6 +3,7 @@
 import { as, Integer } from '../nominal'
 
 const ARBITRARILY_LARGE_NUMBER: number = 999999999999
+const LARGE_NUMBER_WITHIN_ARRAY_LENGTH_VALIDITY: number = 999999999
 
 const SQUARE_ROOT_OF_TWO: number = Math.sqrt(2)
 const SQUARE_ROOT_OF_THREE: number = Math.sqrt(3)
@@ -9614,4 +9615,5 @@ export {
     CUBE_ROOT_OF_THREE,
     VALUE_BELOW_WHICH_ROUNDING_IMPLEMENTATION_BREAKS,
     PRIMES,
+    LARGE_NUMBER_WITHIN_ARRAY_LENGTH_VALIDITY,
 }
