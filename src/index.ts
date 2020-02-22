@@ -176,7 +176,7 @@ export {
     setNumerator,
     setDenominator,
     asRational,
-    LARGE_NUMBER_WITHIN_ARRAY_LENGTH_VALIDITY,
+    LARGISH_NUMBER,
 } from './math'
 export {
     centsTranslationToPitchScalar,
