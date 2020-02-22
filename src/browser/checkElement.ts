@@ -10,12 +10,8 @@ const elementAttribute: (page: Page, selector: string, attribute: string) => Pro
                     throw new Error(`element matching ${selectorInEvaluate} was not found`)
                 }
 
-                const attr: Attr | null = element.getAttributeNode(attributeInEvaluate)
-                if (!attr) {
-                    throw new Error(`element did not have attribute ${attributeInEvaluate}`)
-                }
-
-                return attr.value
+                // @ts-ignore
+                return element[ attributeInEvaluate ]
             },
             selector,
             attribute,
