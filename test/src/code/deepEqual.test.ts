@@ -1,7 +1,7 @@
 import { deepEqual } from '../../../src/indexForTest'
 
-describe('deep equal', () => {
-    it('works', () => {
+describe('deep equal', (): void => {
+    it('works', (): void => {
         expect(deepEqual('a', 'a'))
             .toBe(true)
         expect(deepEqual('a', 'b'))

@@ -3,8 +3,8 @@ const arraysHaveNoCommonValues: <ElementType>(...arrays: ElementType[][]) => boo
         const seenValues: ElementType[] = []
 
         let noCommonValues: boolean = true
-        arrays.forEach((array: ElementType[]) => {
-            array.forEach((value: ElementType) => {
+        arrays.forEach((array: ElementType[]): void => {
+            array.forEach((value: ElementType): void => {
                 if (seenValues.includes(value)) {
                     noCommonValues = false
                 }

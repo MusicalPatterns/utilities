@@ -17,7 +17,8 @@ type NonPartial<PartialType> = { [Index in keyof PartialType]-?: PartialType[Ind
 
 type Difference<Type, TypeWithSubtypesToRemove> = Type extends TypeWithSubtypesToRemove ? never : Type
 
-type Thunk<Type> = () => Type
+type Thunk<Type = void> = () => Type
+type AsyncThunk<Type = void> = () => Promise<Type>
 
 export {
     ObjectDifference,
@@ -29,4 +30,5 @@ export {
     Just,
     Difference,
     Thunk,
+    AsyncThunk,
 }

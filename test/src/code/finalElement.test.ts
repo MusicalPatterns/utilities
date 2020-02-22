@@ -1,7 +1,7 @@
 import { as, finalElement, indexOfFinalElement, Scalar } from '../../../src/indexForTest'
 
-describe('final element', () => {
-    it('works for arrays', () => {
+describe('final element', (): void => {
+    it('works for arrays', (): void => {
         const array: Scalar[] = [ 3, 4, 5 ]
             .map(as.Scalar)
 

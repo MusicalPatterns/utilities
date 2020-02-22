@@ -12,11 +12,11 @@ const computeEqualDivisionPitchScalars:
         )))
 
         const powerForEachStep: Array<Power<Pitch>> = range(equalDivision)
-            .map((integer: Integer) => as.Power<Pitch>(integer))
+            .map((integer: Integer): Power<Pitch> => as.Power<Pitch>(integer))
 
         return map(
             powerForEachStep,
-            (power: Power<Pitch>) => as.Scalar<Pitch>(as.number(pow(equallyDividedPitchStep, power))),
+            (power: Power<Pitch>): Scalar<Pitch> => as.Scalar<Pitch>(as.number(pow(equallyDividedPitchStep, power))),
         )
     }
 

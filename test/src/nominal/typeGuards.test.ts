@@ -1,7 +1,7 @@
 import { as, isCycle, isInteger, isRational } from '../../../src/indexForTest'
 
-describe('type guards', () => {
-    it('isCycle', () => {
+describe('type guards', (): void => {
+    it('isCycle', (): void => {
         expect(isCycle(as.Cycle([])))
             .toBeTruthy()
 
@@ -11,7 +11,7 @@ describe('type guards', () => {
             .toBeFalsy()
     })
 
-    it('isRational', () => {
+    it('isRational', (): void => {
         expect(isRational(as.Rational([ as.Numerator(4), as.Denominator(5) ])))
             .toBeTruthy()
         expect(isRational(as.Rational([ as.Integer(4), as.Integer(5) ])))
@@ -33,7 +33,7 @@ describe('type guards', () => {
             .toBeFalsy()
     })
 
-    it('isInteger', () => {
+    it('isInteger', (): void => {
         expect(isInteger(as.Integer(1)))
             .toBeTruthy()
         expect(isInteger(1))

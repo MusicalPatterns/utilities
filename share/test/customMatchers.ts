@@ -20,7 +20,7 @@ import {
     Ordinal,
     Point,
     use,
-} from '@musical-patterns/utilities'
+} from '../src/indexForTest'
 import CustomEqualityTester = jasmine.CustomEqualityTester
 import CustomMatcher = jasmine.CustomMatcher
 import CustomMatcherFactories = jasmine.CustomMatcherFactories
@@ -101,7 +101,7 @@ const customMatchers: CustomMatcherFactories = {
             negate: boolean = false,
             message?: string,
         ): CustomMatcherResult =>
-            doAssertions(() => {
+            doAssertions((): void => {
                 testIsCloseTo(actual, expected, precision, negate, message)
             }),
     }),
@@ -112,7 +112,7 @@ const customMatchers: CustomMatcherFactories = {
             precision?: number,
             message?: string,
         ): CustomMatcherResult =>
-            doAssertions(() => {
+            doAssertions((): void => {
                 assert(
                     isGreaterThanOrEqualTo(actual, expected) || isCloseTo(actual, expected, precision),
                     isUndefined(message) ?
@@ -128,7 +128,7 @@ const customMatchers: CustomMatcherFactories = {
             precision?: number,
             message?: string,
         ): CustomMatcherResult =>
-            doAssertions(() => {
+            doAssertions((): void => {
                 assert(
                     isLessThanOrEqualTo(actual, expected) || isCloseTo(actual, expected, precision),
                     isUndefined(message) ?
@@ -144,7 +144,7 @@ const customMatchers: CustomMatcherFactories = {
             precision?: number,
             message?: string,
         ): CustomMatcherResult =>
-            doAssertions(() => {
+            doAssertions((): void => {
                 assert(
                     allValuesAreTheSame(actualArray, manualExpectedElementValue, precision),
                     isUndefined(message) ? `expected all values to be the same` : message,
@@ -160,7 +160,7 @@ const customMatchers: CustomMatcherFactories = {
             negate?: boolean,
             message?: string,
         ): CustomMatcherResult =>
-            doAssertions(() => {
+            doAssertions((): void => {
                 assert(
                     actual.length === expected.length,
                     isUndefined(message) ?
@@ -184,7 +184,7 @@ const customMatchers: CustomMatcherFactories = {
             negate?: boolean,
             message?: string,
         ): CustomMatcherResult =>
-            doAssertions(() => {
+            doAssertions((): void => {
                 forEach(expected, (expectedElement: NumericElementType, index: Ordinal<NumericElementType[]>): void => {
                     const actualElement: NumericElementType = use.Ordinal(actual, index)
 
@@ -198,7 +198,7 @@ const customMatchers: CustomMatcherFactories = {
             expected: ElementType[],
             message?: string,
         ): CustomMatcherResult =>
-            doAssertions(() => {
+            doAssertions((): void => {
                 assert(
                     deepEqual(expected.sort(), actual.sort()),
                     isUndefined(message) ? `arrays did not have same elements: ${String(expected)} vs ${String(actual)}` : message,
@@ -211,7 +211,7 @@ const customMatchers: CustomMatcherFactories = {
             expected: NumericType,
             message?: string,
         ): CustomMatcherResult =>
-            doAssertions(() => {
+            doAssertions((): void => {
                 assert(
                     isLessThan(actual, expected),
                     isUndefined(message) ? `expected ${String(actual)} to be less than ${String(expected)}` : message,
@@ -224,7 +224,7 @@ const customMatchers: CustomMatcherFactories = {
             expected: NumericType,
             message?: string,
         ): CustomMatcherResult =>
-            doAssertions(() => {
+            doAssertions((): void => {
                 assert(
                     isGreaterThan(actual, expected),
                     isUndefined(message) ? `expected ${String(actual)} to be less than ${String(expected)}` : message,
@@ -237,7 +237,7 @@ const customMatchers: CustomMatcherFactories = {
             expected: NumericType,
             message?: string,
         ): CustomMatcherResult =>
-            doAssertions(() => {
+            doAssertions((): void => {
                 assert(
                     isLessThanOrEqualTo(actual, expected),
                     isUndefined(message) ? `expected ${String(actual)} to be less than ${String(expected)}` : message,
@@ -250,7 +250,7 @@ const customMatchers: CustomMatcherFactories = {
             expected: NumericType,
             message?: string,
         ): CustomMatcherResult =>
-            doAssertions(() => {
+            doAssertions((): void => {
                 assert(
                     isGreaterThanOrEqualTo(actual, expected),
                     isUndefined(message) ? `expected ${String(actual)} to be less than ${String(expected)}` : message,
@@ -264,7 +264,7 @@ const customMatchers: CustomMatcherFactories = {
             precision?: number,
             message?: string,
         ): CustomMatcherResult =>
-            doAssertions(() => {
+            doAssertions((): void => {
                 const fromMessage: string = isUndefined(expectedBeginValue) ? '' : ` from ${String(expectedBeginValue)}`
                 assert(
                     goesMonotonically(array, expectedBeginValue, undefined, precision),
@@ -282,7 +282,7 @@ const customMatchers: CustomMatcherFactories = {
             precision?: number,
             message?: string,
         ): CustomMatcherResult =>
-            doAssertions(() => {
+            doAssertions((): void => {
                 assert(
                     goesMonotonicallyBetweenValueAndValue(array, expectedBeginValue, expectedEndValue, precision),
                     isUndefined(message) ?
@@ -299,7 +299,7 @@ const customMatchers: CustomMatcherFactories = {
             precision?: number,
             message?: string,
         ): CustomMatcherResult =>
-            doAssertions(() => {
+            doAssertions((): void => {
                 assert(
                     goesMonotonicallyFromValueToValue(array, expectedBeginValue, expectedEndValue, precision),
                     isUndefined(message) ?
@@ -315,7 +315,7 @@ const customMatchers: CustomMatcherFactories = {
             precision?: number,
             message?: string,
         ): CustomMatcherResult =>
-            doAssertions(() => {
+            doAssertions((): void => {
                 const fromMessage: string = isUndefined(expectedBeginValue) ? '' : ` from ${String(expectedBeginValue)}`
                 assert(
                     goesQuadratically(array, expectedBeginValue, precision),
@@ -333,7 +333,7 @@ const customMatchers: CustomMatcherFactories = {
             precision?: number,
             message?: string,
         ): CustomMatcherResult =>
-            doAssertions(() => {
+            doAssertions((): void => {
                 assert(
                     goesQuadraticallyBetweenValueAndValue(array, expectedBeginValue, expectedEndValue, precision),
                     isUndefined(message) ?
@@ -350,7 +350,7 @@ const customMatchers: CustomMatcherFactories = {
             precision?: number,
             message?: string,
         ): CustomMatcherResult =>
-            doAssertions(() => {
+            doAssertions((): void => {
                 assert(
                     goesQuadraticallyFromValueToValue(array, expectedBeginValue, expectedEndValue, precision),
                     isUndefined(message) ?
@@ -364,7 +364,7 @@ const customMatchers: CustomMatcherFactories = {
             arrays: ArrayType[],
             message?: string,
         ): CustomMatcherResult =>
-            doAssertions(() => {
+            doAssertions((): void => {
                 assert(
                     areCyclicalTranslations(...arrays),
                     isUndefined(message) ?
@@ -375,6 +375,6 @@ const customMatchers: CustomMatcherFactories = {
     }),
 }
 
-beforeAll(() => {
+beforeAll((): void => {
     jasmine.addMatchers(customMatchers)
 })

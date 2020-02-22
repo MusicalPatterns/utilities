@@ -53,4 +53,5 @@ export {
     Just,
     Difference,
     Thunk,
+    AsyncThunk,
 } from './types'

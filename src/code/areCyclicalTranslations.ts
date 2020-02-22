@@ -20,12 +20,12 @@ const areCyclicalTranslations: <ElementType, ArrayType extends ArrayedOrStringTy
 
         return every(
             arrays,
-            (array: ArrayType) => {
+            (array: ArrayType): boolean => {
                 let result: boolean = false
 
                 range(computeLength(array))
-                    .map((cardinal: number) => as.Cardinal<Cycle<ElementType>>(cardinal))
-                    .forEach((cardinal: Cardinal<Cycle<ElementType>>) => {
+                    .map((cardinal: number): Cardinal<Cycle<ElementType>> => as.Cardinal<Cycle<ElementType>>(cardinal))
+                    .forEach((cardinal: Cardinal<Cycle<ElementType>>): void => {
                         const asCycle: Cycle<ElementType> = as.Cycle(array)
                         const cycled: Cycle<ElementType> = use.Cardinal(asCycle, cardinal)
 

@@ -1,7 +1,7 @@
 import { as, Base, Frequency, OCTAVE, periodIterationHarmonicStepCount, TRITAVE } from '../../../src/indexForTest'
 
-describe('period iteration harmonic step count', () => {
-    it('given an iteration of a period, will figure how many steps of the harmonic series are in it', () => {
+describe('period iteration harmonic step count', (): void => {
+    it('given an iteration of a period, will figure how many steps of the harmonic series are in it', (): void => {
         expect(periodIterationHarmonicStepCount(OCTAVE, as.Ordinal<Array<Base<Frequency>>>(1)))
             .toBe(as.Cardinal(1))
         expect(periodIterationHarmonicStepCount(OCTAVE, as.Ordinal<Array<Base<Frequency>>>(2)))

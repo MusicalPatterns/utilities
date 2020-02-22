@@ -1,7 +1,7 @@
 import { noop, throws } from '../../../src/indexForTest'
 
-describe('throws', () => {
-    it('returns true if the function throws an error', () => {
+describe('throws', (): void => {
+    it('returns true if the function throws an error', (): void => {
         const fn: Function = (): void => {
             throw new Error('yo')
         }
@@ -10,7 +10,7 @@ describe('throws', () => {
             .toBeTruthy()
     })
 
-    it('returns false if the function does not throw an error', () => {
+    it('returns false if the function does not throw an error', (): void => {
         expect(throws(noop))
             .toBeFalsy()
     })

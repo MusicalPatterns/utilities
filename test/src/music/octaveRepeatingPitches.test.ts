@@ -1,13 +1,13 @@
 import { as, computeOctaveRepeatingPitchScalars, Pitch, Scalar } from '../../../src/indexForTest'
 
-describe('octave repeating pitch scalars', () => {
-    it('given scalars, will provide 10 octaves worth of them repeating', () => {
+describe('octave repeating pitch scalars', (): void => {
+    it('given scalars, will provide 10 octaves worth of them repeating', (): void => {
         const pitchScalars: Array<Scalar<Pitch>> = [
             1,
             4 / 3,
             15 / 8,
         ]
-            .map((pitch: number) => as.Scalar<Pitch>(pitch))
+            .map((pitch: number): Scalar<Pitch> => as.Scalar<Pitch>(pitch))
 
         const actualPitchScalars: Array<Scalar<Pitch>> = computeOctaveRepeatingPitchScalars(pitchScalars)
         expect(actualPitchScalars)
@@ -44,7 +44,7 @@ describe('octave repeating pitch scalars', () => {
                     512 * 4 / 3,
                     512 * 15 / 8,
                 ]
-                    .map((expected: number) => as.Scalar<Pitch>(expected)),
+                    .map((expected: number): Scalar<Pitch> => as.Scalar<Pitch>(expected)),
             )
     })
 })

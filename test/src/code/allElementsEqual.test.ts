@@ -1,7 +1,7 @@
 import { allElementsEqual } from '../../../src/indexForTest'
 
-describe('all elements equal', () => {
-    it('should return whether or not every element in the array is the same', () => {
+describe('all elements equal', (): void => {
+    it('should return whether or not every element in the array is the same', (): void => {
         expect(allElementsEqual([ 4, 4, 4 ]))
             .toBe(true)
 

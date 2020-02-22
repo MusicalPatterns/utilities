@@ -2,14 +2,14 @@
 
 import { as, computeReverse, Cycle, Hz } from '../../../src/indexForTest'
 
-describe('reverse', () => {
-    describe('strings', () => {
-        it('works', () => {
+describe('reverse', (): void => {
+    describe('strings', (): void => {
+        it('works', (): void => {
             expect(computeReverse('hello'))
                 .toBe('olleh')
         })
 
-        it('does not mutate the original value', () => {
+        it('does not mutate the original value', (): void => {
             const original: string = 'hello'
 
             computeReverse(original)
@@ -19,13 +19,13 @@ describe('reverse', () => {
         })
     })
 
-    describe('arrays', () => {
-        it('works', () => {
+    describe('arrays', (): void => {
+        it('works', (): void => {
             expect(computeReverse([ 3, 4, 5 ].map(as.Hz)))
                 .toEqual([ 5, 4, 3 ].map(as.Hz))
         })
 
-        it('does not mutate the original value', () => {
+        it('does not mutate the original value', (): void => {
             const original: Hz[] = [ 3, 4, 5 ].map(as.Hz)
 
             computeReverse(original)
@@ -35,14 +35,14 @@ describe('reverse', () => {
         })
     })
 
-    describe('Cycles', () => {
-        it('works', () => {
+    describe('Cycles', (): void => {
+        it('works', (): void => {
             // @ts-ignore
             expect(computeReverse(as.Cycle([ 3, 4, 5 ])))
                 .toEqual(as.Cycle([ 5, 4, 3 ]))
         })
 
-        it('does not mutate the original value', () => {
+        it('does not mutate the original value', (): void => {
             const original: Cycle = as.Cycle([ 3, 4, 5 ])
 
             computeReverse(original)

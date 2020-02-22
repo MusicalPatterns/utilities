@@ -2,29 +2,29 @@
 
 import { as, Cycle, deepClone, deepCloneObject } from '../../../src/indexForTest'
 
-describe('deep clone', () => {
-    it('deep clones objects', () => {
+describe('deep clone', (): void => {
+    it('deep clones objects', (): void => {
         const actualClone: any = deepClone({ a: { b: { c: 'cba' } } })
         const expectedClone: any = { a: { b: { c: 'cba' } } }
         expect(actualClone)
             .toEqual(expectedClone)
     })
 
-    it('deep clones arrays', () => {
+    it('deep clones arrays', (): void => {
         const actualClone: string[] = deepClone([ 'a', 'b', 'c' ])
         const expectedClone: string[] = [ 'a', 'b', 'c' ]
         expect(actualClone)
             .toEqual(expectedClone)
     })
 
-    it('deep clones immutable objects', () => {
+    it('deep clones immutable objects', (): void => {
         const actualClone: string = deepClone('abcba')
         const expectedClone: string = 'abcba'
         expect(actualClone)
             .toBe(expectedClone)
     })
 
-    it('deep clones arrays which also have properties, such as brands', () => {
+    it('deep clones arrays which also have properties, such as brands', (): void => {
         const actualClone: Cycle<string> = deepClone(as.Cycle([ 'a', 'b', 'c' ]))
         const expectedClone: Cycle<string> = as.Cycle([ 'a', 'b', 'c' ])
         expect(actualClone)
@@ -32,10 +32,10 @@ describe('deep clone', () => {
     })
 })
 
-describe('deep clone object', () => {
+describe('deep clone object', (): void => {
     let actualObject: any
     let originalObject: any
-    beforeEach(() => {
+    beforeEach((): void => {
         const anImmutableString: string = 'a string'
         const anImmutableNumber: number = 9
         const anImmutableFunction: (p: number) => number = (p: number): number => p * 3
@@ -55,27 +55,27 @@ describe('deep clone object', () => {
         actualObject = deepCloneObject(originalObject)
     })
 
-    it('deep clones setting, including strings', () => {
+    it('deep clones setting, including strings', (): void => {
         expect(actualObject.anImmutableString)
             .toBe(originalObject.anImmutableString)
     })
 
-    it('deep clones setting, including numbers', () => {
+    it('deep clones setting, including numbers', (): void => {
         expect(actualObject.anImmutableNumber)
             .toBe(originalObject.anImmutableNumber)
     })
 
-    it('deep clones setting, including functions', () => {
+    it('deep clones setting, including functions', (): void => {
         expect(actualObject.anImmutableFunction)
             .toBe(originalObject.anImmutableFunction)
     })
 
-    it('deep clones setting, including undefined values', () => {
+    it('deep clones setting, including undefined values', (): void => {
         expect(actualObject.anUndefinedValue)
             .toBeUndefined()
     })
 
-    it('deep clones setting, including arrays', () => {
+    it('deep clones setting, including arrays', (): void => {
         expect(actualObject.anArray)
             .not
             .toBe(originalObject.anArray)
@@ -83,7 +83,7 @@ describe('deep clone object', () => {
             .toEqual(originalObject.anArray)
     })
 
-    it('deep clones setting, including shallow setting', () => {
+    it('deep clones setting, including shallow setting', (): void => {
         expect(actualObject.shallowObject)
             .not
             .toBe(originalObject.shallowObject)
@@ -91,7 +91,7 @@ describe('deep clone object', () => {
             .toEqual(originalObject.shallowObject)
     })
 
-    it('deep clones setting, including deeply nested setting', () => {
+    it('deep clones setting, including deeply nested setting', (): void => {
         expect(actualObject.shallowObject.deepObject)
             .not
             .toBe(originalObject.shallowObject.deepObject)
@@ -99,12 +99,12 @@ describe('deep clone object', () => {
             .toEqual(originalObject.shallowObject.deepObject)
     })
 
-    it('does not modify the cloned object', () => {
+    it('does not modify the cloned object', (): void => {
         expect(actualObject)
             .toEqual(originalObject)
     })
 
-    it('does not point to the cloned object', () => {
+    it('does not point to the cloned object', (): void => {
         expect(actualObject)
             .not
             .toBe(originalObject)

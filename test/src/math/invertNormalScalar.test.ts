@@ -1,7 +1,7 @@
 import { as, invertNormalScalar } from '../../../src/indexForTest'
 
-describe('invert normal scalar', () => {
-    it('takes the number which is between 0 and 1 and maps it to between 1 and 0', () => {
+describe('invert normal scalar', (): void => {
+    it('takes the number which is between 0 and 1 and maps it to between 1 and 0', (): void => {
         expect(invertNormalScalar(as.NormalScalar(0)))
             .toBeCloseToTyped(as.NormalScalar(1))
         expect(invertNormalScalar(as.NormalScalar(0.1)))
@@ -13,7 +13,9 @@ describe('invert normal scalar', () => {
         expect(invertNormalScalar(as.NormalScalar(1)))
             .toBeCloseToTyped(as.NormalScalar(0))
 
-        expect(() => invertNormalScalar(as.NormalScalar(2)))
+        expect((): void => {
+            invertNormalScalar(as.NormalScalar(2))
+        })
             .toThrowError('Numerals of type NormalScalar must be between 0 and 1. This numeral was 2.')
     })
 })

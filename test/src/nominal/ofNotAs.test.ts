@@ -2,8 +2,8 @@
 
 import { as, Ms, Of, ofNotAs, Rotation, Scalar, Translation } from '../../../src/indexForTest'
 
-describe('of, not as', () => {
-    it(`is shorthand for NotAs'ing out of a type then Of'ing right back into it`, () => {
+describe('of, not as', (): void => {
+    it(`is shorthand for NotAs'ing out of a type then Of'ing right back into it`, (): void => {
         const ofFromUse: Of<Translation> = ofNotAs(as.Translation(3))
         const ofFromUnits: Of<Ms> = ofNotAs(as.Ms(3))
 

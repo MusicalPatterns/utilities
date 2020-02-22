@@ -21,7 +21,7 @@ const setAllPropertiesOfObjectOnAnother:
         objectWithProperties: { [Index in KeyType]: ValueType },
     }): void => {
         (entries(objectWithProperties) as Array<[ KeyType, ValueType ]>)
-            .forEach(([ key, value ]: [ KeyType, ValueType ]) => {
+            .forEach(([ key, value ]: [ KeyType, ValueType ]): void => {
                 objectSet(objectToChange, key, deepClone(value))
             })
     }

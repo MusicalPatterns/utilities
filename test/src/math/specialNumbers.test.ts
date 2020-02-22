@@ -8,9 +8,9 @@ import {
     triangularRoot,
 } from '../../../src/indexForTest'
 
-describe('special numbers', () => {
-    describe('factorial', () => {
-        it('works', () => {
+describe('special numbers', (): void => {
+    describe('factorial', (): void => {
+        it('works', (): void => {
             expect(factorial(0))
                 .toBe(1)
             expect(factorial(1))
@@ -26,8 +26,8 @@ describe('special numbers', () => {
         })
     })
 
-    describe('combination count', () => {
-        it('works when you choose 1', () => {
+    describe('combination count', (): void => {
+        it('works when you choose 1', (): void => {
             expect(combinationCount(1, 1))
                 .toBe(1)
             expect(combinationCount(2, 1))
@@ -36,7 +36,7 @@ describe('special numbers', () => {
                 .toBe(3)
         })
 
-        it('works when you choose 2', () => {
+        it('works when you choose 2', (): void => {
             expect(combinationCount(2, 2))
                 .toBe(1)
             expect(combinationCount(3, 2))
@@ -45,7 +45,7 @@ describe('special numbers', () => {
                 .toBe(6)
         })
 
-        it('works when you choose 3', () => {
+        it('works when you choose 3', (): void => {
             expect(combinationCount(3, 3))
                 .toBe(1)
             expect(combinationCount(4, 3))
@@ -54,7 +54,7 @@ describe('special numbers', () => {
                 .toBe(10)
         })
 
-        it('works when you choose 0', () => {
+        it('works when you choose 0', (): void => {
             expect(combinationCount(3, 0))
                 .toBe(1)
             expect(combinationCount(4, 0))
@@ -63,19 +63,23 @@ describe('special numbers', () => {
                 .toBe(1)
         })
 
-        it('throws when you choose greater than value', () => {
-            expect(() => combinationCount(3, 4))
+        it('throws when you choose greater than value', (): void => {
+            expect((): void => {
+                combinationCount(3, 4)
+            })
                 .toThrow(new Error('You cannot choose more objects than you have.'))
         })
 
-        it('throws when you choose less than 0', () => {
-            expect(() => combinationCount(3, -1))
+        it('throws when you choose less than 0', (): void => {
+            expect((): void => {
+                combinationCount(3, -1)
+            })
                 .toThrow(new Error('You cannot choose fewer objects than none.'))
         })
     })
 
-    describe('triangular number', () => {
-        it('returns the triangular number for value', () => {
+    describe('triangular number', (): void => {
+        it('returns the triangular number for value', (): void => {
             expect(triangularNumber(0))
                 .toBe(0)
             expect(triangularNumber(1))
@@ -92,7 +96,7 @@ describe('special numbers', () => {
                 .toBe(21)
         })
 
-        it('returns numbers in-between triangular numbers', () => {
+        it('returns numbers in-between triangular numbers', (): void => {
             expect(triangularNumber(0.5))
                 .toBe((Math.pow(2, 2) - 1) / 8)
             expect(triangularNumber(1.5))
@@ -101,14 +105,14 @@ describe('special numbers', () => {
                 .toBe((Math.pow(6, 2) - 1) / 8)
         })
 
-        it('is the reciprocal of triangular root', () => {
+        it('is the reciprocal of triangular root', (): void => {
             expect(triangularNumber(triangularRoot(5)))
                 .toBe(5)
         })
     })
 
-    describe('triangular root', () => {
-        it('given a triangular number, returns its value', () => {
+    describe('triangular root', (): void => {
+        it('given a triangular number, returns its value', (): void => {
             expect(triangularRoot(0))
                 .toBe(0)
             expect(triangularRoot(1))
@@ -125,7 +129,7 @@ describe('special numbers', () => {
                 .toBe(6)
         })
 
-        it('returns numbers in-between triangular roots', () => {
+        it('returns numbers in-between triangular roots', (): void => {
             expect(triangularRoot(0.5))
                 .toBe(0.6180339887498949)
             expect(triangularRoot(2))
@@ -134,14 +138,14 @@ describe('special numbers', () => {
                 .toBe(2.5413812651491097)
         })
 
-        it('is the reciprocal of triangular number', () => {
+        it('is the reciprocal of triangular number', (): void => {
             expect(triangularRoot(triangularNumber(5)))
                 .toBe(5)
         })
     })
 
-    describe('quarter square number', () => {
-        it('gives the nth entry in the sequence of numbers where you sum 1 to the amount you increase by each step every other step', () => {
+    describe('quarter square number', (): void => {
+        it('gives the nth entry in the sequence of numbers where you sum 1 to the amount you increase by each step every other step', (): void => {
             let delta: number = 0
             let memo: number = 0
             expect(quarterSquareNumber(0))
@@ -181,8 +185,8 @@ describe('special numbers', () => {
         })
     })
 
-    describe('trapezoidal number', () => {
-        it('gives the difference between two triangular numbers', () => {
+    describe('trapezoidal number', (): void => {
+        it('gives the difference between two triangular numbers', (): void => {
             expect(trapezoidalNumber({ start: 0, height: 0 }))
                 .toBe(0)
             expect(trapezoidalNumber({ start: 0, height: 1 }))
@@ -240,8 +244,8 @@ describe('special numbers', () => {
         })
     })
 
-    describe('termial root', () => {
-        it('works', () => {
+    describe('termial root', (): void => {
+        it('works', (): void => {
             let rangeStart: number
             let rangeDelta: number
 

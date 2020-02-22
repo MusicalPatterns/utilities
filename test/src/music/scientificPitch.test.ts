@@ -1,7 +1,7 @@
-import { SCIENTIFIC_PITCHES, ScientificPitchNoteName, ScientificPitchOctaveNumber } from '../../../src/indexForTest'
+import { ScientificPitchNoteName, ScientificPitchOctaveNumber, SCIENTIFIC_PITCHES } from '../../../src/indexForTest'
 
-describe('scientific pitch', () => {
-    it('given a scientific pitch notation note name and an octave number, gives you the frequency in hz', () => {
+describe('scientific pitch', (): void => {
+    it('given a scientific pitch notation note name and an octave number, gives you the frequency in hz', (): void => {
         expect(SCIENTIFIC_PITCHES[ ScientificPitchNoteName.A ][ ScientificPitchOctaveNumber._4 ])
             .toBeCloseTo(440)
 

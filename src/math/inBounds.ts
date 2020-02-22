@@ -12,7 +12,7 @@ const inBounds: <NumericElementType extends Number>(
         upperBound?: NumericElementType,
         precision?: number,
     ): boolean =>
-        array.every((element: NumericElementType) => {
+        array.every((element: NumericElementType): boolean => {
             const okayByUpperBound: boolean = isUndefined(upperBound) ?
                 true :
                 isLessThanOrEqualTo(element, upperBound, precision)

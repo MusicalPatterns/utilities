@@ -23,7 +23,7 @@ const computeOctaveRepeatingPitchScalars: (scalars: Array<Scalar<Pitch>>) => Arr
         ) {
             const nextOctave: Frequency = pow(OCTAVE, as.Power<Frequency>(as.number(index)))
             octaveRepeatingPitchScalars = octaveRepeatingPitchScalars.concat(
-                scalars.map((scalar: Scalar<Pitch>) =>
+                scalars.map((scalar: Scalar<Pitch>): Scalar<Pitch> =>
                     use.Scalar(
                         scalar,
                         as.Scalar<Scalar<Pitch>>(as.number(nextOctave)),

@@ -27,29 +27,29 @@ import {
     Translation,
 } from '../../../src/indexForTest'
 
-describe('typed operations', () => {
-    describe('sum', () => {
-        it('works for 1 value', () => {
+describe('typed operations', (): void => {
+    describe('sum', (): void => {
+        it('works for 1 value', (): void => {
             expect(sum(3))
                 .toBe(3)
         })
 
-        it('works for 2 values', () => {
+        it('works for 2 values', (): void => {
             expect(sum(3, 4))
                 .toBe(7)
         })
 
-        it('works for 3 values', () => {
+        it('works for 3 values', (): void => {
             expect(sum(3, 4, 5))
                 .toBe(12)
         })
 
-        it('works for 0 values', () => {
+        it('works for 0 values', (): void => {
             expect(sum())
                 .toBe(as.Integer(0))
         })
 
-        it('works for Uses which relate to addition/subtraction', () => {
+        it('works for Uses which relate to addition/subtraction', (): void => {
             sum(as.Translation(3), as.Translation(4))
             sum(as.Point(3), as.Point(4))
             sum(as.Cardinal(3), as.Cardinal(4))
@@ -57,28 +57,28 @@ describe('typed operations', () => {
         })
     })
 
-    describe('product', () => {
-        it('works for 1 value', () => {
+    describe('product', (): void => {
+        it('works for 1 value', (): void => {
             expect(product(3))
                 .toBe(3)
         })
 
-        it('works for 2 values', () => {
+        it('works for 2 values', (): void => {
             expect(product(3, 4))
                 .toBe(12)
         })
 
-        it('works for 3 values', () => {
+        it('works for 3 values', (): void => {
             expect(product(3, 4, 5))
                 .toBe(60)
         })
 
-        it('works for 0 values', () => {
+        it('works for 0 values', (): void => {
             expect(product())
                 .toBe(as.Integer(1))
         })
 
-        it('works for Uses which relate to multiplication/division', () => {
+        it('works for Uses which relate to multiplication/division', (): void => {
             product(as.Scalar(3), as.Scalar(4))
             product(as.Point(3), as.Point(4))
             product(as.Multiple(3), as.Multiple(4))
@@ -87,8 +87,8 @@ describe('typed operations', () => {
         })
     })
 
-    describe('reciprocal', () => {
-        it('when given an integer, removes the integer type in the return value', () => {
+    describe('reciprocal', (): void => {
+        it('when given an integer, removes the integer type in the return value', (): void => {
             const numerator: number = reciprocal(as.Numerator(3))
             const denominator: number = reciprocal(as.Denominator(3))
 
@@ -110,23 +110,23 @@ describe('typed operations', () => {
         })
     })
 
-    describe('difference', () => {
-        it('dumbly subtracts if types match and are not as Points, and returns of the same Units', () => {
+    describe('difference', (): void => {
+        it('dumbly subtracts if types match and are not as Points, and returns of the same Units', (): void => {
             expect(difference(as.Ms(4), as.Ms(1)))
                 .toBe(as.Ms(3))
         })
 
-        it('returns a Delta type Of the Units if they are given as Points', () => {
+        it('returns a Delta type Of the Units if they are given as Points', (): void => {
             expect(difference(as.Point<Ms>(4), as.Point<Ms>(1)))
                 .toBe(as.Delta<Ms>(3))
         })
 
-        it('returns a Transition type Of the Units if they are given as Ordinals', () => {
+        it('returns a Transition type Of the Units if they are given as Ordinals', (): void => {
             expect(difference(as.Ordinal<Ms[]>(4), as.Ordinal<Ms[]>(1)))
                 .toBe(as.Transition<Ms[]>(3))
         })
 
-        it('works for Uses that are related to addition/subtraction', () => {
+        it('works for Uses that are related to addition/subtraction', (): void => {
             difference(as.Translation(3), as.Translation(4))
             difference(as.Point(3), as.Point(4))
             difference(as.Cardinal(3), as.Cardinal(4))
@@ -134,28 +134,28 @@ describe('typed operations', () => {
         })
     })
 
-    describe('quotient', () => {
-        it('dumbly divides if types match and are not as Points, and returns of the same Units', () => {
+    describe('quotient', (): void => {
+        it('dumbly divides if types match and are not as Points, and returns of the same Units', (): void => {
             expect(quotient(as.Ms(6), as.Ms(2)))
                 .toBe(as.Ms(3))
         })
 
-        it('returns a Scalar type Of the Units if they are given as Points', () => {
+        it('returns a Scalar type Of the Units if they are given as Points', (): void => {
             expect(quotient(as.Point<Ms>(6), as.Point<Ms>(2)))
                 .toBe(as.Interval<Ms>(3))
         })
 
-        it('returns a Multiple type Of the Units if they are given as Ordinals', () => {
+        it('returns a Multiple type Of the Units if they are given as Ordinals', (): void => {
             expect(quotient(as.Ordinal<Ms[]>(6), as.Ordinal<Ms[]>(2)))
                 .toBe(as.Factor<Ms[]>(3))
         })
 
-        it('when given an integer type, removes the integer type in the return value, because division is not closed on integers (by contrast, subtraction is, which is why we do not have an equivalent test above for `difference`)', () => {
+        it('when given an integer type, removes the integer type in the return value, because division is not closed on integers (by contrast, subtraction is, which is why we do not have an equivalent test above for `difference`)', (): void => {
             const numeratorDowngraded: number = quotient(as.Numerator(3), as.Numerator(3))
             const denominatorDowngraded: number = quotient(as.Denominator(3), as.Denominator(3))
         })
 
-        it('works for Uses which relate to multiplication/division', () => {
+        it('works for Uses which relate to multiplication/division', (): void => {
             quotient(as.Scalar(3), as.Scalar(4))
             quotient(as.Point(3), as.Point(4))
             quotient(as.Multiple(3), as.Multiple(4))
@@ -164,15 +164,15 @@ describe('typed operations', () => {
         })
     })
 
-    describe('modulus', () => {
-        it('when given an integer type, removes the integer type in the return value', () => {
+    describe('modulus', (): void => {
+        it('when given an integer type, removes the integer type in the return value', (): void => {
             const numeratorDowngraded: number = modulus(as.Numerator(3), as.Numerator(3))
             const denominatorDowngraded: number = modulus(as.Denominator(3), as.Denominator(3))
         })
     })
 
-    describe('square root', () => {
-        it('when given an integer, removes the integer type in the return value', () => {
+    describe('square root', (): void => {
+        it('when given an integer, removes the integer type in the return value', (): void => {
             const scalar: Scalar = squareRoot(as.Scalar(3))
             const exponent: Exponent = squareRoot(as.Exponent(3))
             const logarithm: Logarithm = squareRoot(as.Logarithm(3))
@@ -185,8 +185,8 @@ describe('typed operations', () => {
         })
     })
 
-    describe('cube root', () => {
-        it('when given an integer, removes the integer type in the return value', () => {
+    describe('cube root', (): void => {
+        it('when given an integer, removes the integer type in the return value', (): void => {
             const scalar: Scalar = cubeRoot(as.Scalar(3))
             const exponent: Exponent = cubeRoot(as.Exponent(3))
             const logarithm: Logarithm = cubeRoot(as.Logarithm(3))
@@ -199,8 +199,8 @@ describe('typed operations', () => {
         })
     })
 
-    describe('floor and ceiling', () => {
-        it('you can assign the return value as the integer version of the input type if you want', () => {
+    describe('floor and ceiling', (): void => {
+        it('you can assign the return value as the integer version of the input type if you want', (): void => {
             const scalar: Scalar = floor(as.Scalar(1.3))
             const exponent: Exponent = floor(as.Exponent(1.3))
             const logarithm: Logarithm = floor(as.Logarithm(1.3))
@@ -217,37 +217,37 @@ describe('typed operations', () => {
         })
     })
 
-    describe('round', () => {
-        it('when not given a precision, assumes 0', () => {
+    describe('round', (): void => {
+        it('when not given a precision, assumes 0', (): void => {
             expect(round(as.Scalar(3.5)))
                 .toBe(as.Scalar(4))
         })
 
-        it('when given a precision, uses it', () => {
+        it('when given a precision, uses it', (): void => {
             expect(round(as.Scalar(3.524387), as.Integer(4)))
                 .toBe(as.Scalar(3.5244))
         })
 
-        it('does not poop out on tiny numbers when the precision is set', () => {
+        it('does not poop out on tiny numbers when the precision is set', (): void => {
             expect(round(1 / 1000001, as.Integer(4)))
                 .toBe(0)
         })
 
-        it('works for negative numbers when the precision is set', () => {
+        it('works for negative numbers when the precision is set', (): void => {
             expect(round(as.Scalar(-1.111111111), as.Integer(4)))
                 .toBe(as.Scalar(-1.1111))
         })
     })
 
-    describe('pow', () => {
-        it('works for unwhole versions', () => {
+    describe('pow', (): void => {
+        it('works for unwhole versions', (): void => {
             expect(pow(as.Logarithm(2), as.Exponent(3)))
                 .toBe(8)
             expect(pow(as.Logarithm<Scalar>(2), as.Exponent<Scalar>(3)))
                 .toBe(as.Scalar(8))
         })
 
-        it('works for whole versions', () => {
+        it('works for whole versions', (): void => {
             expect(pow(as.Base(2), as.Power(3)))
                 .toBe(8)
             expect(pow(as.Base<Multiple>(2), as.Power<Multiple>(3)))
@@ -255,15 +255,15 @@ describe('typed operations', () => {
         })
     })
 
-    describe('log', () => {
-        it('works for unwhole versions', () => {
+    describe('log', (): void => {
+        it('works for unwhole versions', (): void => {
             expect(log(8, as.Logarithm(2)))
                 .toBe(as.Exponent(3))
             expect(log(as.Scalar(8), as.Logarithm<Scalar>(2)))
                 .toBe(as.Exponent<Scalar>(3))
         })
 
-        it('works for whole versions', () => {
+        it('works for whole versions', (): void => {
             expect(log(8, as.Base(2)))
                 .toBe(as.Power(3))
             expect(log(as.Multiple(8), as.Base<Multiple>(2)))

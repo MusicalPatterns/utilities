@@ -1,7 +1,7 @@
 import { areCoprime, as, Cardinal, computeCommonFactors } from '../../../src/indexForTest'
 
-describe('common factors', () => {
-    it('normal examples', () => {
+describe('common factors', (): void => {
+    it('normal examples', (): void => {
         expect(computeCommonFactors(...[ 6, 6 ].map(as.Integer)))
             .toEqual([ 1, 2, 3, 6 ].map(as.Integer))
         expect(computeCommonFactors(...[ 5, 6 ].map(as.Integer)))
@@ -16,7 +16,7 @@ describe('common factors', () => {
             .toEqual([ 1 ].map(as.Integer))
     })
 
-    it('should return the integer type of the input values if they are the same, and plain Integer otherwise', () => {
+    it('should return the integer type of the input values if they are the same, and plain Integer otherwise', (): void => {
         expect(computeCommonFactors(as.Cardinal(7), as.Denominator(4), as.Multiple(3)))
             // @ts-ignore
             .toEqual([ 1 ].map(as.Integer))
@@ -25,17 +25,17 @@ describe('common factors', () => {
             .toEqual([ 1 ].map(as.Cardinal))
     })
 
-    it('works for edge case - when zero is one of the values', () => {
+    it('works for edge case - when zero is one of the values', (): void => {
         expect(computeCommonFactors(...[ 0, 6 ].map(as.Integer)))
             .toEqual([ 1, 2, 3, 6 ].map(as.Integer))
     })
 
-    it('works for edge case - when only one value is provided', () => {
+    it('works for edge case - when only one value is provided', (): void => {
         expect(computeCommonFactors(...[ 6 ].map(as.Integer)))
             .toEqual([ 1, 2, 3, 6 ].map(as.Integer))
     })
 
-    it('works for edge case - when more than two values are provided', () => {
+    it('works for edge case - when more than two values are provided', (): void => {
         expect(computeCommonFactors(...[ 6, 4, 8 ].map(as.Integer)))
             .toEqual([ 1, 2 ].map(as.Integer))
         expect(computeCommonFactors(...[ 6, 4, 3 ].map(as.Integer)))
@@ -44,8 +44,8 @@ describe('common factors', () => {
             .toEqual([ 1, 2, 3, 6 ].map(as.Integer))
     })
 
-    describe('are co-prime', () => {
-        it('returns true if the numbers have no common factors other than 1', () => {
+    describe('are co-prime', (): void => {
+        it('returns true if the numbers have no common factors other than 1', (): void => {
             expect(areCoprime(...[ 6, 6 ].map(as.Integer)))
                 .toBeFalsy()
             expect(areCoprime(...[ 5, 6 ].map(as.Integer)))
@@ -60,17 +60,17 @@ describe('common factors', () => {
                 .toBeTruthy()
         })
 
-        it('works for edge case - when zero is one of the values', () => {
+        it('works for edge case - when zero is one of the values', (): void => {
             expect(areCoprime(...[ 0, 6 ].map(as.Integer)))
                 .toBeFalsy()
         })
 
-        it('works for edge case - when only one value is provided', () => {
+        it('works for edge case - when only one value is provided', (): void => {
             expect(areCoprime(...[ 6 ].map(as.Integer)))
                 .toBeFalsy()
         })
 
-        it('works for edge case - when more than two values are provided', () => {
+        it('works for edge case - when more than two values are provided', (): void => {
             expect(areCoprime(...[ 6, 4, 8 ].map(as.Integer)))
                 .toBeFalsy()
             expect(areCoprime(...[ 6, 4, 3 ].map(as.Integer)))
@@ -79,7 +79,7 @@ describe('common factors', () => {
                 .toBeFalsy()
         })
 
-        it('should be able to compare numbers that are not the same type but which are all integerlike', () => {
+        it('should be able to compare numbers that are not the same type but which are all integerlike', (): void => {
             expect(areCoprime(as.Cardinal(7), as.Denominator(4), as.Multiple(3)))
                 .toBeTruthy()
         })

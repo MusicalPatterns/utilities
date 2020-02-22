@@ -15,7 +15,7 @@ const isTwoElementArray: (maybeTwoElementArray: unknown) => maybeTwoElementArray
 
 const isInteger: (maybeInteger: unknown) => maybeInteger is Integer =
     (maybeInteger: unknown): maybeInteger is Integer =>
-        isNumber(maybeInteger) && !throws(() => integerCheck(maybeInteger))
+        isNumber(maybeInteger) && !throws((): number => integerCheck(maybeInteger))
 
 const isRational: (maybeRational: unknown) => maybeRational is Rational =
     (maybeRational: unknown): maybeRational is Rational =>

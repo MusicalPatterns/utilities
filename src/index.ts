@@ -94,6 +94,7 @@ export {
     areCyclicalTranslations,
     throws,
     Thunk,
+    AsyncThunk,
 } from './code'
 export {
     absoluteRatio,

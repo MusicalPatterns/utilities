@@ -42,98 +42,98 @@
 // } from '../../../src/indexForTest'
 // import { Arc, Delta, Interval } from '../../../src/nominal'
 //
-// describe('anti test', () => {
-//     describe('as', () => {
-//         describe('units', () => {
-//             it('DOES NOT ALLOW assignment as units from raw numbers (which is not using `as`, but why we need `as`)', () => {
+// describe('anti test', (): void => {
+//     describe('as', (): void => {
+//         describe('units', (): void => {
+//             it('DOES NOT ALLOW assignment as units from raw numbers (which is not using `as`, but why we need `as`)', (): void => {
 //                 const hzFromRaw: Hz = 3
 //             })
 //
-//             it('DOES NOT ALLOW assignment as units by as\'ing (which is not using `as`, but why we need `as`)', () => {
+//             it('DOES NOT ALLOW assignment as units by as\'ing (which is not using `as`, but why we need `as`)', (): void => {
 //                 3 as Hz
 //             })
 //
-//             it('DOES NOT ALLOW assignment as raw numbers', () => {
+//             it('DOES NOT ALLOW assignment as raw numbers', (): void => {
 //                 const hzAsRaw: number = as.Hz(3)
 //             })
 //
-//             it('DOES NOT ALLOW assignment as the wrong unit', () => {
+//             it('DOES NOT ALLOW assignment as the wrong unit', (): void => {
 //                 const hzAsMs: Ms = as.Hz(3)
 //             })
 //
-//             it('DOES NOT ALLOW re-assignment as the same unit', () => {
+//             it('DOES NOT ALLOW re-assignment as the same unit', (): void => {
 //                 as.Hz(as.Hz(3))
 //             })
 //
-//             it('DOES NOT ALLOW direct conversion from one unit into another, whether directly or intermediated by an explicit varible', () => {
+//             it('DOES NOT ALLOW direct conversion from one unit into another, whether directly or intermediated by an explicit varible', (): void => {
 //                 const intermediaryVariableMs: Ms = as.Ms(3)
 //                 const centsFromExplicitMsVariable: Cents = as.Cents(intermediaryVariableMs)
 //
 //                 const centsFromAsMsDirectly: Cents = as.Cents(as.Ms(3))
 //             })
 //
-//             it('DOES NOT ALLOW unholy hybrids of units', () => {
+//             it('DOES NOT ALLOW unholy hybrids of units', (): void => {
 //                 const centsMsFromMs: Cents<Ms> = 3 as any
 //                 const msCentsFromMs: Ms<Cents> = 3 as any
 //             })
 //
-//             it('DOES NOT ALLOW units of uses', () => {
+//             it('DOES NOT ALLOW units of uses', (): void => {
 //                 const centsOfScalar: Cents<Scalar> = 3 as any
 //             })
 //         })
 //
-//         describe('uses', () => {
-//             it('DOES NOT ALLOW direct conversion from one use into another, whether directly or mediated by an explicit variable', () => {
+//         describe('uses', (): void => {
+//             it('DOES NOT ALLOW direct conversion from one use into another, whether directly or mediated by an explicit variable', (): void => {
 //                 const intermediateVariableRotation: Rotation = as.Rotation(3)
 //                 const scalarFromExplicitRotationVariable: Scalar = as.Scalar(intermediateVariableRotation)
 //
 //                 const scalarFromRotationDirectly: Scalar = as.Scalar(as.Rotation(3))
 //             })
 //
-//             it('DOES NOT ALLOW assignment as uses from raw numbers (which is not using `as`, but why we need `as`)', () => {
+//             it('DOES NOT ALLOW assignment as uses from raw numbers (which is not using `as`, but why we need `as`)', (): void => {
 //                 const rotationFromRaw: Rotation = 3
 //             })
 //
-//             it('DOES NOT ALLOW assignment as uses by as\'ing (which is not using `as`, but why we need `as`)', () => {
+//             it('DOES NOT ALLOW assignment as uses by as\'ing (which is not using `as`, but why we need `as`)', (): void => {
 //                 3 as Rotation
 //             })
 //
-//             it('DOES NOT ALLOW assignment as raw numbers', () => {
+//             it('DOES NOT ALLOW assignment as raw numbers', (): void => {
 //                 const rotationAsRaw: number = as.Rotation(3)
 //             })
 //
-//             it('DOES NOT ALLOW assignment as the wrong use', () => {
+//             it('DOES NOT ALLOW assignment as the wrong use', (): void => {
 //                 const rotationAsScalar: Scalar = as.Rotation(3)
 //             })
 //
-//             it('DOES NOT allow nesting of uses', () => {
+//             it('DOES NOT allow nesting of uses', (): void => {
 //                 as.Rotation(as.Scalar(3))
 //             })
 //         })
 //
-//         describe('units and uses', () => {
-//             it('DOES NOT ALLOW creating a use out of a unit', () => {
+//         describe('units and uses', (): void => {
+//             it('DOES NOT ALLOW creating a use out of a unit', (): void => {
 //                 as.Scalar(as.Hz(3))
 //             })
 //
-//             it('DOES NOT ALLOW assigning a use as a unit', () => {
+//             it('DOES NOT ALLOW assigning a use as a unit', (): void => {
 //                 const hzScalar: Hz = as.Scalar(3)
 //             })
 //
-//             it('DOES NOT ALLOW assigning something with both units and type as either the wrong units or the wrong type', () => {
+//             it('DOES NOT ALLOW assigning something with both units and type as either the wrong units or the wrong type', (): void => {
 //                 const scalarHzAsWrongHz: Rotation<Hz> = as.Hz(as.Scalar(3))
 //                 const scalarHzAsScalarWrong: Scalar<Cents> = as.Hz(as.Scalar(3))
 //                 const scalarHzAsWrongWrong: Rotation<Cents> = as.Hz(as.Scalar(3))
 //             })
 //
-//             it('DOES NOT ALLOW choosing the wrong type parameter', () => {
+//             it('DOES NOT ALLOW choosing the wrong type parameter', (): void => {
 //                 const rotationScalar: Scalar<Translation> = as.Scalar<Rotation>(3)
 //                 const scalarScalar: Translation<Rotation> = as.Scalar<Rotation>(3)
 //                 const hzScalar: Scalar<Ms> = as.Scalar<Hz>(3)
 //                 const msScalar: Rotation<Hz> = as.Scalar<Hz>(3)
 //             })
 //
-//             it('DOES NOT ALLOW assigning a mere use as a use Of something', () => {
+//             it('DOES NOT ALLOW assigning a mere use as a use Of something', (): void => {
 //                 const scalarAsScalarOfUnits: Scalar<Ms> = as.Scalar(2)
 //                 const scalarExplicitlyOnlyOfNumberAsScalarOfUnits: Scalar<Ms> = as.Scalar<number>(2)
 //
@@ -148,7 +148,7 @@
 //                 const inverseProblemAssigningAScalarOfAUseToAPlainScalarByAsing: Scalar = as.Scalar<Rotation>(3)
 //             })
 //
-//             it('DOES NOT ALLOW making an non-integer use of an integer unit or use', () => {
+//             it('DOES NOT ALLOW making an non-integer use of an integer unit or use', (): void => {
 //                 3 as unknown as Scalar<Multiple>
 //                 3 as unknown as Scalar<Numerator>
 //
@@ -157,27 +157,27 @@
 //             })
 //         })
 //
-//         describe('special units/uses', () => {
-//             it('DOES NOT ALLOW creating rationals out of mere numbers', () => {
+//         describe('special units/uses', (): void => {
+//             it('DOES NOT ALLOW creating rationals out of mere numbers', (): void => {
 //                 as.Rational([ 4, 4 ])
 //             })
 //
-//             it('DOES NOT ALLOW making special units if they are some other Units (not Integers)', () => {
+//             it('DOES NOT ALLOW making special units if they are some other Units (not Integers)', (): void => {
 //                 as.Numerator(as.Hz(3))
 //                 as.Denominator(as.Hz(3))
 //             })
 //
-//             it('DOES NOT ALLOW making special units of some other Units', () => {
+//             it('DOES NOT ALLOW making special units of some other Units', (): void => {
 //                 const numeratorHz: Numerator<Hz> = 3 as any as Numerator<Hz>
 //                 const denominatorHz: Denominator<Hz> = 3 as any as Denominator<Hz>
 //             })
 //
-//             it('DOES NOT ALLOW these oddities for Ordinal', () => {
+//             it('DOES NOT ALLOW these oddities for Ordinal', (): void => {
 //                 const nestedIndexIndex: Ordinal = as.Ordinal(as.Ordinal(3))
 //                 const indexWrongScalar: Scalar = as.Ordinal(3)
 //             })
 //
-//             it('DOES NOT ALLOW same as above but for special uses', () => {
+//             it('DOES NOT ALLOW same as above but for special uses', (): void => {
 //                 const indexAsIndexOfUnits: Ordinal<Ms[]> = as.Ordinal(2)
 //                 const indexExplictlyOfPlainNumberArrayAsIndexOfUnits: Ordinal<Ms[]> = as.Ordinal<number[]>(2)
 //
@@ -189,7 +189,7 @@
 //                 const inverseProblemAssigningIndexOfUnitsToPlainIndex: Ordinal = 2 as unknown as Ordinal<Ms[]>
 //             })
 //
-//             it('DOES NOT ALLOW assigning integerlike ones as plain numbers', () => {
+//             it('DOES NOT ALLOW assigning integerlike ones as plain numbers', (): void => {
 //                 const cardinalNumber: number = as.Cardinal(3)
 //                 const numeratorNumber: number = as.Numerator(3)
 //                 const denominatorNumber: number = as.Denominator(3)
@@ -197,7 +197,7 @@
 //                 const multipleNumber: number = as.Multiple(3)
 //             })
 //
-//             it('DOES NOT ALLOW making uses of NormalScalars, besides NormalScalar of NormalScalar', () => {
+//             it('DOES NOT ALLOW making uses of NormalScalars, besides NormalScalar of NormalScalar', (): void => {
 //                 as.Scalar<NormalScalar>(4)
 //                 as.Power<NormalScalar>(4)
 //                 as.Base<NormalScalar>(4)
@@ -206,7 +206,7 @@
 //                 as.Multiple<NormalScalar>(4)
 //             })
 //
-//             it('DOES NOT ALLOW assigning less specific uses (unit, integer) as the more specific counterparts', () => {
+//             it('DOES NOT ALLOW assigning less specific uses (unit, integer) as the more specific counterparts', (): void => {
 //                 const scalarAsNormalScalar: NormalScalar = as.Scalar(0.5)
 //
 //                 const scalarAsMultiple: Multiple = as.Scalar(5)
@@ -214,19 +214,19 @@
 //                 const exponentAsPower: Power = as.Exponent(5)
 //             })
 //
-//             it('DOES NOT ALLOW being a use of another use', () => {
+//             it('DOES NOT ALLOW being a use of another use', (): void => {
 //                 3 as unknown as Point<Scalar>
 //                 as.Point<Point>(3)
 //             })
 //         })
 //     })
 //
-//     describe('use', () => {
-//         it('DOES NOT ALLOW using a Scalar as a Normal Scalar', () => {
+//     describe('use', (): void => {
+//         it('DOES NOT ALLOW using a Scalar as a Normal Scalar', (): void => {
 //             use.Scalar(as.NormalScalar(0.5), 4 as unknown as Scalar<NormalScalar>)
 //         })
 //
-//         it('DOES NOT ALLOW using Unwhole Uses on Whole numbers', () => {
+//         it('DOES NOT ALLOW using Unwhole Uses on Whole numbers', (): void => {
 //             use.Scalar(as.Ordinal(3), 4 as unknown as Scalar<Number & { _TestBrand: 'Test' }>)
 //             use.Translation(as.Ordinal(3), 4 as unknown as Translation<Number & { _TestBrand: 'Test' }>)
 //             use.Rotation(as.Ordinal(3), 4 as unknown as Rotation<Number & { _TestBrand: 'Test' }>)
@@ -241,7 +241,7 @@
 //         })
 //     })
 //
-//     describe('instead of', () => {
+//     describe('instead of', (): void => {
 //         const wrongOf: Ordinal<Translation[]> = insteadOf<Ordinal, Scalar>(INITIAL)
 //         const noOf: Ordinal = insteadOf<Ordinal, Scalar>(INITIAL)
 //         const fromFullOf: Scalar<Exponent> = insteadOf<Scalar, Rotation>(as.Scalar<Translation>(1))
@@ -249,8 +249,8 @@
 //         const doesntAssignAsWrongInstead: Ordinal<Scalar[]> = insteadOf<Ordinal>(as.Ordinal<string>(1))
 //     })
 //
-//     describe('ofNotAs', () => {
-//         it(`DOES NOT ALLOW from the wrong units or use`, () => {
+//     describe('ofNotAs', (): void => {
+//         it(`DOES NOT ALLOW from the wrong units or use`, (): void => {
 //             const ofFromWrongUse: Of<Rotation> = ofNotAs(as.Translation(3))
 //             const ofFromWrongUnits: Of<Hz> = ofNotAs(as.Ms(3))
 //
@@ -269,7 +269,7 @@
 //         })
 //     })
 //
-//     describe('custom nominals', () => {
+//     describe('custom nominals', (): void => {
 //         type Numero = Number & { _NominalBrand: 'Numero' }
 //         type Numeros = Number[] & { _NominalBrand: 'Numeros' }
 //
@@ -280,7 +280,7 @@
 //             numericArray: { Numeros: Numeros }
 //         }
 //
-//         beforeEach(() => {
+//         beforeEach((): void => {
 //             const nominalInterfaceOptionsObject: TestNominalInterfaceOptionObject = {
 //                 number: {
 //                     Numero: DUMMY_VALUE_FOR_COMPUTING_NOMINAL_INTERFACE as Numero,
@@ -294,7 +294,7 @@
 //             customAs = nominalInterface.as
 //         })
 //
-//         it('DOES NOT ALLOW the same things a normal As, for Units does not allow', () => {
+//         it('DOES NOT ALLOW the same things a normal As, for Units does not allow', (): void => {
 //             const numeroAsRaw: number = customAs.Numero(3)
 //             const numerosAsRaw: number[] = customAs.Numeros([ 3 ])
 //             const rawAsNumero: Numero = 3
@@ -304,9 +304,9 @@
 //         })
 //     })
 //
-//     describe('typed uses', () => {
-//         describe('sum', () => {
-//             it('does not work for most Uses', () => {
+//     describe('typed uses', (): void => {
+//         describe('sum', (): void => {
+//             it('does not work for most Uses', (): void => {
 //                 sum(as.Scalar(3), as.Scalar(4))
 //                 sum(as.Rotation(3), as.Rotation(4))
 //                 sum(as.Exponent(3), as.Exponent(4))
@@ -323,8 +323,8 @@
 //             })
 //         })
 //
-//         describe('product', () => {
-//             it('does not work for most Uses', () => {
+//         describe('product', (): void => {
+//             it('does not work for most Uses', (): void => {
 //                 product(as.Translation(3), as.Translation(4))
 //                 product(as.Rotation(3), as.Rotation(4))
 //                 product(as.Exponent(3), as.Exponent(4))
@@ -339,8 +339,8 @@
 //             })
 //         })
 //
-//         describe('difference', () => {
-//             it('does not work for most Uses', () => {
+//         describe('difference', (): void => {
+//             it('does not work for most Uses', (): void => {
 //                 difference(as.Scalar(3), as.Scalar(4))
 //                 difference(as.Rotation(3), as.Rotation(4))
 //                 difference(as.Exponent(3), as.Exponent(4))
@@ -357,8 +357,8 @@
 //             })
 //         })
 //
-//         describe('quotient', () => {
-//             it('does not work for most Uses', () => {
+//         describe('quotient', (): void => {
+//             it('does not work for most Uses', (): void => {
 //                 quotient(as.Translation(3), as.Translation(4))
 //                 quotient(as.Rotation(3), as.Rotation(4))
 //                 quotient(as.Exponent(3), as.Exponent(4))
@@ -372,23 +372,23 @@
 //                 quotient(as.Remaindee(3), as.Remaindee(4))
 //             })
 //
-//             it('when given an integer, removes the integer type in the return value', () => {
+//             it('when given an integer, removes the integer type in the return value', (): void => {
 //                 const integer: Integer = quotient(as.Integer(3), as.Integer(3))
 //                 const numerator: Numerator = quotient(as.Numerator(3), as.Numerator(3))
 //                 const denominator: Denominator = quotient(as.Denominator(3), as.Denominator(3))
 //             })
 //         })
 //
-//         describe('modulus', () => {
-//             it('when given an integer, removes the integer type in the return value', () => {
+//         describe('modulus', (): void => {
+//             it('when given an integer, removes the integer type in the return value', (): void => {
 //                 const integer: Integer = modulus(as.Integer(3), as.Integer(3))
 //                 const numerator: Numerator = modulus(as.Numerator(3), as.Numerator(3))
 //                 const denominator: Denominator = modulus(as.Denominator(3), as.Denominator(3))
 //             })
 //         })
 //
-//         describe('reciprocal', () => {
-//             it('when given an integer, removes the integer type in the return value', () => {
+//         describe('reciprocal', (): void => {
+//             it('when given an integer, removes the integer type in the return value', (): void => {
 //                 const integer: Integer = reciprocal(as.Integer(3))
 //                 const numerator: Numerator = reciprocal(as.Numerator(3))
 //                 const denominator: Denominator = reciprocal(as.Denominator(3))
@@ -400,8 +400,8 @@
 //             })
 //         })
 //
-//         describe('cubeRoot', () => {
-//             it('when given an integer, removes the integer type in the return value', () => {
+//         describe('cubeRoot', (): void => {
+//             it('when given an integer, removes the integer type in the return value', (): void => {
 //                 const integer: Integer = cubeRoot(as.Integer(3))
 //                 const numerator: Numerator = cubeRoot(as.Numerator(3))
 //                 const denominator: Denominator = cubeRoot(as.Denominator(3))
@@ -413,8 +413,8 @@
 //             })
 //         })
 //
-//         describe('squareRoot', () => {
-//             it('when given an integer, removes the integer type in the return value', () => {
+//         describe('squareRoot', (): void => {
+//             it('when given an integer, removes the integer type in the return value', (): void => {
 //                 const integer: Integer = squareRoot(as.Integer(3))
 //                 const numerator: Numerator = squareRoot(as.Numerator(3))
 //                 const denominator: Denominator = squareRoot(as.Denominator(3))
@@ -427,9 +427,9 @@
 //         })
 //     })
 //
-//     describe('divides evenly', () => {
-//         describe('integer divide', () => {
-//             it('does not allow assigning to an unwhole number', () => {
+//     describe('divides evenly', (): void => {
+//         describe('integer divide', (): void => {
+//             it('does not allow assigning to an unwhole number', (): void => {
 //                 expect(integerDivide(as.Scalar(5), 2))
 //                     .toEqual(as.Scalar(2))
 //             })

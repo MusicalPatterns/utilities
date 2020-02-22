@@ -20,7 +20,7 @@ const range: <WholeType extends Whole = Integer, AnotherWholeType extends Whole 
             ...Array(as.number(secondParameter) - as.number(firstParameter))
                 .keys(),
         ]
-            .map((numeral: number) => numeral + as.number(firstParameter))
+            .map((numeral: number): number => numeral + as.number(firstParameter))
             .map(as.Integer)
     }
 

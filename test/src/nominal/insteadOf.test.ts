@@ -12,8 +12,8 @@ import {
     Translation,
 } from '../../../src/indexForTest'
 
-describe('instead of', () => {
-    it('discards whatever a use used to be Of and replaces it with what you specify instead', () => {
+describe('instead of', (): void => {
+    it('discards whatever a use used to be Of and replaces it with what you specify instead', (): void => {
         expect(insteadOf<Translation, Scalar>(NO_SHIFT))
             .toBe(as.Translation<Scalar>(0))
 
@@ -27,7 +27,7 @@ describe('instead of', () => {
             .toBe(as.Translation(1))
     })
 
-    it('should work for special uses that enforce being integers', () => {
+    it('should work for special uses that enforce being integers', (): void => {
         const multiple: Multiple = insteadOf<Multiple>(as.Multiple<Cardinal>(3))
         const ordinalMultiple: Multiple<Ordinal> = insteadOf<Multiple, Ordinal>(as.Multiple<Cardinal>(3))
     })

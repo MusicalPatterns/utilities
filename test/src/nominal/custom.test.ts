@@ -9,7 +9,7 @@ import {
     NominalInterface,
 } from '../../../src/indexForTest'
 
-describe('custom nominals', () => {
+describe('custom nominals', (): void => {
     type Numero = Number & { _NominalBrand: 'Numero' }
     type Numeros = Number[] & { _NominalBrand: 'Numeros' }
 
@@ -20,7 +20,7 @@ describe('custom nominals', () => {
         numericArray: { Numeros: Numeros }
     }
 
-    beforeEach(() => {
+    beforeEach((): void => {
         const nominalInterfaceOptionsObject: TestNominalInterfaceOptionObject = {
             number: {
                 Numero: DUMMY_VALUE_FOR_COMPUTING_NOMINAL_INTERFACE as Numero,
@@ -34,7 +34,7 @@ describe('custom nominals', () => {
         customAs = nominalInterface.as
     })
 
-    it('works like a normal As, for Units', () => {
+    it('works like a normal As, for Units', (): void => {
         const numero: Numero = customAs.Numero(3)
         const numeros: Numeros = customAs.Numeros([ 3 ])
 

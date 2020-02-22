@@ -1,5 +1,5 @@
 import { reduce } from '../code'
-import { Ordinal, SQUARE_ROOT, SQUARED, use } from '../nominal'
+import { Ordinal, SQUARED, SQUARE_ROOT, use } from '../nominal'
 import { absoluteValue, difference, sum } from './typedOperations'
 import { Coordinate } from './types'
 
@@ -13,7 +13,7 @@ const distanceBetween: <NumericType extends Number>(
     ): NumericType => {
         const sumOfSquaresOfDimensionalDistances: NumericType = reduce(
             pointA,
-            (accumulator: NumericType, pointAElement: NumericType, index: Ordinal<NumericType[]>) => {
+            (accumulator: NumericType, pointAElement: NumericType, index: Ordinal<NumericType[]>): NumericType => {
                 const pointBElement: NumericType =
                     use.Ordinal(pointB, index)
                 const dimensionalDistance: NumericType =

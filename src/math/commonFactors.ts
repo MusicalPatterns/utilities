@@ -15,7 +15,7 @@ const computeCommonFactors: ManyToManyIntegerOperation =
             candidateFactor <= maxValue;
             candidateFactor = use.Cardinal(candidateFactor, 1 as unknown as Cardinal<WholeType>)
         ) {
-            const isCommon: boolean = values.every((value: WholeType) =>
+            const isCommon: boolean = values.every((value: WholeType): boolean =>
                 dividesEvenly(value, candidateFactor))
             if (isCommon) {
                 commonFactors.push(candidateFactor)

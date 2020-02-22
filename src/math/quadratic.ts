@@ -22,7 +22,7 @@ const goesQuadratically: <NumericElementType extends Number>(
 
         const deltas: Array<Delta<NumericElementType>> = computeDeltas(array)
         const deltaIntervals: Array<Maybe<Interval>> = computeIntervals(
-            deltas.map((delta: Delta<NumericElementType>) => as.Point(as.number(delta))),
+            deltas.map((delta: Delta<NumericElementType>): Point => as.Point(as.number(delta))),
         )
 
         const exampleInterval: Maybe<Interval> = exampleElement(deltaIntervals)

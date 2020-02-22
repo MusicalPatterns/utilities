@@ -15,7 +15,10 @@ const sequence: <ElementType, ArrayType extends ArrayedOrStringType<ElementType>
 
         if (isArray(exampleElement(arrays))) {
             return (arrays as Array<Difference<ArrayedType, string>>).reduce(
-                (accumulator: Difference<ArrayedType, string>, array: Difference<ArrayedType, string>) =>
+                (
+                    accumulator: Difference<ArrayedType, string>,
+                    array: Difference<ArrayedType, string>,
+                ): Difference<ArrayedType, string> =>
                     accumulator.concat(array) as unknown as Difference<ArrayedType, string>,
                 [] as unknown as Difference<ArrayedType, string>,
             ) as ArrayType

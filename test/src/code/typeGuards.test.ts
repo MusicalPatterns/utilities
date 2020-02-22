@@ -2,9 +2,9 @@
 
 import { Cardinal, isUndefined } from '../../../src/indexForTest'
 
-describe('type guards', () => {
-    describe('isUndefined', () => {
-        it('works with Cardinals', () => {
+describe('type guards', (): void => {
+    describe('isUndefined', (): void => {
+        it('works with Cardinals', (): void => {
             const maybeCardinal: Cardinal | undefined = undefined
 
             if (!isUndefined(maybeCardinal)) {
@@ -33,7 +33,7 @@ describe('type guards', () => {
                 }
         })
 
-        it('does not report empty strings as undefined', () => {
+        it('does not report empty strings as undefined', (): void => {
             expect(isUndefined(''))
                 .toBe(false)
         })
