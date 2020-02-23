@@ -40,6 +40,8 @@ export {
     SIXTH,
     SEVENTH,
     NO_SHIFT,
+    PHI,
+    VERY_HIGH_PRECISION,
 } from './constants'
 
 export {

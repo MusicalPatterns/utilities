@@ -177,6 +177,7 @@ export {
     setDenominator,
     asRational,
     LARGISH_NUMBER,
+    computeMetallicMean,
 } from './math'
 export {
     centsTranslationToPitchScalar,

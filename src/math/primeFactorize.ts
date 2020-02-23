@@ -59,21 +59,21 @@ const primeFactorizeInteger: (integer: Whole) => Monzo =
 
         const computePrimeFactorizationForPrimeAtIndexAndUpdateRemnant: (index: Ordinal<Integer[]>) => void =
             (index: Ordinal<Integer[]>): void => {
-            const divisor: Remaindee<Integer> = as.Remaindee<Integer>(as.number(use.Ordinal(PRIMES, index)))
-            let remainder: Whole = use.Remaindee(remnant, divisor)
+                const divisor: Remaindee<Integer> = as.Remaindee<Integer>(as.number(use.Ordinal(PRIMES, index)))
+                let remainder: Whole = use.Remaindee(remnant, divisor)
 
-            if (remainder === ZERO) {
-                while (as.number(computeLength(monzo)) <= as.number(index)) {
-                    monzo.push(ZERO)
-                }
+                if (remainder === ZERO) {
+                    while (as.number(computeLength(monzo)) <= as.number(index)) {
+                        monzo.push(ZERO)
+                    }
 
-                while (remainder === ZERO) {
-                    remnant = integerDivide(remnant, divisor)
-                    arraySet(monzo, index, use.Cardinal(use.Ordinal(monzo, index), INCREMENT))
-                    remainder = use.Remaindee(remnant, divisor)
+                    while (remainder === ZERO) {
+                        remnant = integerDivide(remnant, divisor)
+                        arraySet(monzo, index, use.Cardinal(use.Ordinal(monzo, index), INCREMENT))
+                        remainder = use.Remaindee(remnant, divisor)
+                    }
                 }
             }
-        }
 
         for (
             let index: Ordinal<Integer[]> = INITIAL;

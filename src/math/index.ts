@@ -68,6 +68,9 @@ export {
     setDenominator,
     asRational,
 } from './rationals'
+export {
+    computeMetallicMean,
+} from './metallic'
 
 export {
     ARBITRARILY_LARGE_NUMBER,

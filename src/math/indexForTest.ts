@@ -63,6 +63,7 @@ export { integerDivide } from './dividesEvenly'
 export { valueLinearlyBetweenValues } from './valueLinearlyBetweenValues'
 export { computePartialSumOfExponents } from './partialSumOfExponents'
 export { computeDeltas, computeIntervals } from './rateOfChange'
+export { computeMetallicMean } from './metallic'
 
 export {
     Coordinate,

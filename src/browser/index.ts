@@ -6,7 +6,7 @@ export {
     elementExists,
     elementValue,
     elementAttribute,
-}from './checkElement'
+} from './checkElement'
 export { findElement } from './findElement'
 export { press } from './keyboard'
 export { clickElement } from './clickElement'

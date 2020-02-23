@@ -94,6 +94,7 @@ export {
     computeCombinations,
     integerDivide,
     asRational,
+    computeMetallicMean,
 } from './math/indexForTest'
 export {
     centsTranslationToPitchScalar,
@@ -186,4 +187,6 @@ export {
     isCycle,
     isInteger,
     Ator,
+    PHI,
+    VERY_HIGH_PRECISION,
 } from './nominal/indexForTest'

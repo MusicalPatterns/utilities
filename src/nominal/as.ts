@@ -123,8 +123,8 @@ const Denominator: <NumericType extends NoUnits>(asDenominator: NumericType) => 
     <NumericType extends NoUnits>(asDenominator: NumericType): Denominator =>
         integerCheck(asDenominator, 'Denominator') as unknown as Denominator
 
-const Rational: (rational: [Integer | Numerator, Integer | Denominator]) => Rational =
-    ([ asNumerator, asDenominator ]: [Integer | Numerator, Integer | Denominator]): Rational =>
+const Rational: (rational: [ Integer | Numerator, Integer | Denominator ]) => Rational =
+    ([ asNumerator, asDenominator ]: [ Integer | Numerator, Integer | Denominator ]): Rational =>
         [
             integerCheck(asNumerator, 'Numerator'),
             integerCheck(asDenominator, 'Denominator'),
