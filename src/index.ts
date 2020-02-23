@@ -375,6 +375,7 @@ export {
     isRational,
     isCycle,
     isInteger,
+    PHI,
 } from './nominal'
 export {
     ActionForState,

@@ -144,6 +144,7 @@ export {
     ONE,
     ZERO,
     NONE,
+    PHI,
 } from './constants'
 
 export {

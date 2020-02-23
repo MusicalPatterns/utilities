@@ -140,6 +140,7 @@ const FIRST_FACTOR_NECESSARY_TO_CHECK_IF_COMMON: Integer = as.Integer(2)
 
 const PI: Radians = as.Radians(Math.PI)
 const E: Logarithm<any> = as.Logarithm(Math.E)
+const PHI: number = 1.618033988749895
 
 const GOOD_AMOUNT_OF_TIME_TO_SEE_WHAT_THE_SITUATION_IS_WHEN_HEADFULLY_DEBUGGING_TESTS: Delta<Ms> =
     as.Delta<Ms>(3000)
@@ -310,4 +311,5 @@ export {
     ONE,
     ZERO,
     NONE,
+    PHI,
 }
