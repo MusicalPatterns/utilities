@@ -39,6 +39,7 @@ describe('reverse', (): void => {
         it('works', (): void => {
             // @ts-ignore
             expect(computeReverse(as.Cycle([ 3, 4, 5 ])))
+                // @ts-ignore
                 .toEqual(as.Cycle([ 5, 4, 3 ]))
         })
 

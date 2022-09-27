@@ -21,7 +21,6 @@ import {
     Point,
     use,
 } from '../src/indexForTest'
-import CustomEqualityTester = jasmine.CustomEqualityTester
 import CustomMatcher = jasmine.CustomMatcher
 import CustomMatcherFactories = jasmine.CustomMatcherFactories
 import CustomMatcherResult = jasmine.CustomMatcherResult
@@ -45,6 +44,7 @@ const doAssertions: (logicFunc: VoidFunction) => CustomMatcherResult =
             return { pass: true }
         }
         catch (e) {
+            // @ts-ignore
             return failWith(e.toString())
         }
     }
@@ -112,10 +112,7 @@ const arraysAreCloseUpThroughExpected: <NumericElementType extends Number>(
 }
 
 const customMatchers: CustomMatcherFactories = {
-    toBeCloseToTyped: (
-        util: MatchersUtil,
-        customEqualityTesters: readonly CustomEqualityTester[],
-    ): CustomMatcher => ({
+    toBeCloseToTyped: (util: MatchersUtil): CustomMatcher => ({
         compare: <NumericType extends Number>(
             actual: NumericType,
             expected: NumericType,
@@ -127,10 +124,7 @@ const customMatchers: CustomMatcherFactories = {
                 testIsCloseTo(actual, expected, precision, negate, message)
             }),
     }),
-    toBeGreaterThanOrCloseTo: (
-        util: MatchersUtil,
-        customEqualityTesters: readonly CustomEqualityTester[],
-    ): CustomMatcher => ({
+    toBeGreaterThanOrCloseTo: (util: MatchersUtil): CustomMatcher => ({
         compare: <NumericType extends Number>(
             actual: NumericType,
             expected: NumericType,
@@ -144,10 +138,7 @@ const customMatchers: CustomMatcherFactories = {
                 )
             }),
     }),
-    toBeLessThanOrCloseTo: (
-        util: MatchersUtil,
-        customEqualityTesters: readonly CustomEqualityTester[],
-    ): CustomMatcher => ({
+    toBeLessThanOrCloseTo: (util: MatchersUtil): CustomMatcher => ({
         compare: <NumericType extends Number>(
             actual: NumericType,
             expected: NumericType,
@@ -161,10 +152,7 @@ const customMatchers: CustomMatcherFactories = {
                 )
             }),
     }),
-    toBeHomogenous: (
-        util: MatchersUtil,
-        customEqualityTesters: readonly CustomEqualityTester[],
-    ): CustomMatcher => ({
+    toBeHomogenous: (util: MatchersUtil): CustomMatcher => ({
         compare: <NumericElementType extends Number>(
             actualArray: NumericElementType[],
             manualExpectedElementValue?: NumericElementType,
@@ -178,10 +166,7 @@ const customMatchers: CustomMatcherFactories = {
                 )
             }),
     }),
-    toBeCloseToArray: (
-        util: MatchersUtil,
-        customEqualityTesters: readonly CustomEqualityTester[],
-    ): CustomMatcher => ({
+    toBeCloseToArray: (util: MatchersUtil): CustomMatcher => ({
         compare: <NumericElementType extends Number>(
             actual: NumericElementType[],
             expected: NumericElementType[],
@@ -199,10 +184,7 @@ const customMatchers: CustomMatcherFactories = {
                 arraysAreCloseUpThroughExpected(expected, actual, precision, negate, message)
             }),
     }),
-    toBeCloseSoFar: (
-        util: MatchersUtil,
-        customEqualityTesters: readonly CustomEqualityTester[],
-    ): CustomMatcher => ({
+    toBeCloseSoFar: (util: MatchersUtil): CustomMatcher => ({
         compare: <NumericElementType extends Number>(
             actual: NumericElementType[],
             expected: NumericElementType[],
@@ -215,10 +197,7 @@ const customMatchers: CustomMatcherFactories = {
                 arraysAreCloseUpThroughExpected(expected, actual, precision, negate, message)
             }),
     }),
-    toHaveSameMembersAs: (
-        util: MatchersUtil,
-        customEqualityTesters: readonly CustomEqualityTester[],
-    ): CustomMatcher => ({
+    toHaveSameMembersAs: (util: MatchersUtil): CustomMatcher => ({
         compare: <ElementType extends Number>(
             actual: ElementType[],
             expected: ElementType[],
@@ -231,10 +210,7 @@ const customMatchers: CustomMatcherFactories = {
                 )
             }),
     }),
-    toBeLessThanTyped: (
-        util: MatchersUtil,
-        customEqualityTesters: readonly CustomEqualityTester[],
-    ): CustomMatcher => ({
+    toBeLessThanTyped: (util: MatchersUtil): CustomMatcher => ({
         compare: <NumericType extends Number>(
             actual: NumericType,
             expected: NumericType,
@@ -247,10 +223,7 @@ const customMatchers: CustomMatcherFactories = {
                 )
             }),
     }),
-    toBeGreaterThanTyped: (
-        util: MatchersUtil,
-        customEqualityTesters: readonly CustomEqualityTester[],
-    ): CustomMatcher => ({
+    toBeGreaterThanTyped: (util: MatchersUtil): CustomMatcher => ({
         compare: <NumericType extends Number>(
             actual: NumericType,
             expected: NumericType,
@@ -263,10 +236,7 @@ const customMatchers: CustomMatcherFactories = {
                 )
             }),
     }),
-    toBeLessThanOrEqualTyped: (
-        util: MatchersUtil,
-        customEqualityTesters: readonly CustomEqualityTester[],
-    ): CustomMatcher => ({
+    toBeLessThanOrEqualTyped: (util: MatchersUtil): CustomMatcher => ({
         compare: <NumericType extends Number>(
             actual: NumericType,
             expected: NumericType,
@@ -279,10 +249,7 @@ const customMatchers: CustomMatcherFactories = {
                 )
             }),
     }),
-    toBeGreaterThanOrEqualTyped: (
-        util: MatchersUtil,
-        customEqualityTesters: readonly CustomEqualityTester[],
-    ): CustomMatcher => ({
+    toBeGreaterThanOrEqualTyped: (util: MatchersUtil): CustomMatcher => ({
         compare: <NumericType extends Number>(
             actual: NumericType,
             expected: NumericType,
@@ -295,10 +262,7 @@ const customMatchers: CustomMatcherFactories = {
                 )
             }),
     }),
-    toGoMonotonically: (
-        util: MatchersUtil,
-        customEqualityTesters: readonly CustomEqualityTester[],
-    ): CustomMatcher => ({
+    toGoMonotonically: (util: MatchersUtil): CustomMatcher => ({
         compare: <NumericElementType extends Number>(
             array: Array<Point<NumericElementType>>,
             expectedBeginValue?: Point<NumericElementType>,
@@ -313,10 +277,7 @@ const customMatchers: CustomMatcherFactories = {
                 )
             }),
     }),
-    toGoMonotonicallyBetweenValueAndValue: (
-        util: MatchersUtil,
-        customEqualityTesters: readonly CustomEqualityTester[],
-    ): CustomMatcher => ({
+    toGoMonotonicallyBetweenValueAndValue: (util: MatchersUtil): CustomMatcher => ({
         compare: <NumericElementType extends Number>(
             array: Array<Point<NumericElementType>>,
             expectedBeginValue: Point<NumericElementType>,
@@ -331,10 +292,7 @@ const customMatchers: CustomMatcherFactories = {
                 )
             }),
     }),
-    toGoMonotonicallyFromValueToValue: (
-        util: MatchersUtil,
-        customEqualityTesters: readonly CustomEqualityTester[],
-    ): CustomMatcher => ({
+    toGoMonotonicallyFromValueToValue: (util: MatchersUtil): CustomMatcher => ({
         compare: <NumericElementType extends Number>(
             array: Array<Point<NumericElementType>>,
             expectedBeginValue: Point<NumericElementType>,
@@ -349,10 +307,7 @@ const customMatchers: CustomMatcherFactories = {
                 )
             }),
     }),
-    toGoQuadratically: (
-        util: MatchersUtil,
-        customEqualityTesters: readonly CustomEqualityTester[],
-    ): CustomMatcher => ({
+    toGoQuadratically: (util: MatchersUtil): CustomMatcher => ({
         compare: <NumericElementType extends Number>(
             array: Array<Point<NumericElementType>>,
             expectedBeginValue?: Point<NumericElementType>,
@@ -367,10 +322,7 @@ const customMatchers: CustomMatcherFactories = {
                 )
             }),
     }),
-    toGoQuadraticallyBetweenValueAndValue: (
-        util: MatchersUtil,
-        customEqualityTesters: readonly CustomEqualityTester[],
-    ): CustomMatcher => ({
+    toGoQuadraticallyBetweenValueAndValue: (util: MatchersUtil): CustomMatcher => ({
         compare: <NumericElementType extends Number>(
             array: Array<Point<NumericElementType>>,
             expectedBeginValue: Point<NumericElementType>,
@@ -385,10 +337,7 @@ const customMatchers: CustomMatcherFactories = {
                 )
             }),
     }),
-    toGoQuadraticallyFromValueToValue: (
-        util: MatchersUtil,
-        customEqualityTesters: readonly CustomEqualityTester[],
-    ): CustomMatcher => ({
+    toGoQuadraticallyFromValueToValue: (util: MatchersUtil): CustomMatcher => ({
         compare: <NumericElementType extends Number>(
             array: Array<Point<NumericElementType>>,
             expectedBeginValue: Point<NumericElementType>,
@@ -403,10 +352,7 @@ const customMatchers: CustomMatcherFactories = {
                 )
             }),
     }),
-    toBeCyclicalTranslations: (
-        util: MatchersUtil,
-        customEqualityTesters: readonly CustomEqualityTester[],
-    ): CustomMatcher => ({
+    toBeCyclicalTranslations: (util: MatchersUtil): CustomMatcher => ({
         compare: <ElementType, ArrayType extends ArrayedOrStringType<ElementType> = ElementType[]>(
             arrays: ArrayType[],
             message?: string,

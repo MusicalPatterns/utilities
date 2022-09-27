@@ -5,7 +5,7 @@ import { Cardinal, Cycle, Integer, Rational } from './types'
 
 const isCycle: (maybeCycle: unknown) => maybeCycle is Cycle<unknown> =
     (maybeCycle: unknown): maybeCycle is Cycle<unknown> =>
-        maybeCycle && (maybeCycle as Cycle<unknown>)._CycleBrand
+        !!maybeCycle && (maybeCycle as Cycle<unknown>)._CycleBrand
 
 const isTwoElementArray: (maybeTwoElementArray: unknown) => maybeTwoElementArray is unknown[] =
     (maybeTwoElementArray: unknown): maybeTwoElementArray is unknown[] =>

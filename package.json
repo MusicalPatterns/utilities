@@ -1,6 +1,6 @@
 {
   "name": "@musical-patterns/utilities",
-  "version": "1.0.610",
+  "version": "1.0.611",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
@@ -9,12 +9,12 @@
     "url": "https://github.com/MusicalPatterns/utilities.git"
   },
   "devDependencies": {
-    "@musical-patterns/cli": "^1.0.574",
-    "puppeteer": "^2.1.1"
+    "@musical-patterns/cli": "^1.0.583",
+    "puppeteer": "^18.0.5"
   },
   "dependencies": {
-    "immutable": "^4.0.0-rc.12",
-    "redux": "^4.0.5",
+    "immutable": "^4.1.0",
+    "redux": "^4.2.0",
     "redux-ignore": "^1.2.5"
   }
 }

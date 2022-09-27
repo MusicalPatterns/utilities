@@ -3,7 +3,8 @@ import { findElement } from './findElement'
 
 const fallbackPuppeteerClick: (page: Page, selector: string) => Promise<void> =
     async (page: Page, selector: string): Promise<void> => {
-        const element: ElementHandle = await findElement(page, selector)
+        const element: ElementHandle | null = await findElement(page, selector)
+        if (!element) { throw new Error(`No element found with selector ${selector} to click on.`) }
         await element.click()
     }
 

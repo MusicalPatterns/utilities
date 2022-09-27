@@ -2,6 +2,7 @@
 
 import { Map } from 'immutable'
 
+// @ts-ignore
 interface TypedMap<ObjectType> extends Map<keyof ObjectType, ObjectType[keyof ObjectType]> {
     get<KeyType extends keyof ObjectType>(key: KeyType, notSetValue?: ObjectType[KeyType]): ObjectType[KeyType]
 

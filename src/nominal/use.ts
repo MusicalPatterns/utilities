@@ -121,6 +121,7 @@ const Cardinal: {
         if (isCycle(numeralOrArray) || typeof numeralOrArray === 'string') {
             // tslint:disable-next-line strict-type-predicates
             const cycle: Cycle<OfType> = typeof numeralOrArray === 'string' ?
+                // tslint:disable-next-line
                 (numeralOrArray as string).split('') as unknown as Cycle<OfType> :
                 numeralOrArray as unknown as Cycle<OfType>
             const cycledCycle: Cycle<OfType> = as.Cycle([])

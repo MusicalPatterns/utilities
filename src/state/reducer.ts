@@ -4,8 +4,8 @@ import { TypedMap } from '../code'
 import { ActionForState } from './types'
 
 const computeReducer:
-    <State>(parameters: { initialState: TypedMap<State> }) => Reducer<TypedMap<State>, ActionForState<State>> =
-    <State>({ initialState }: { initialState: TypedMap<State> }): Reducer<TypedMap<State>, ActionForState<State>> => {
+    <State extends Object>(parameters: { initialState: TypedMap<State> }) => Reducer<TypedMap<State>, ActionForState<State>> =
+    <State extends Object>({ initialState }: { initialState: TypedMap<State> }): Reducer<TypedMap<State>, ActionForState<State>> => {
         const stateKeys: string[] = Object.keys(initialState.toJS())
 
         const reducer: Reducer<TypedMap<State>, ActionForState<State>> =

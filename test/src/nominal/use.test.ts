@@ -229,7 +229,7 @@ describe('use', (): void => {
     // Normal Uses
 
     describe('NormalScalar', (): void => {
-        it('checks the normalcy of the NormalScalar, and not the value', (): void => {
+        it('checks the normality of the NormalScalar, and not the value', (): void => {
             expect(use.NormalScalar(3, as.NormalScalar(0.5)))
                 .toBe(1.5)
 
