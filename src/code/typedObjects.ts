@@ -2,19 +2,17 @@
 
 import { Map } from 'immutable'
 
-// @ts-ignore
-interface TypedMap<ObjectType> extends Map<keyof ObjectType, ObjectType[keyof ObjectType]> {
+interface TypedMap<ObjectType extends { [key: string]: unknown }> extends Map<keyof ObjectType, ObjectType[keyof ObjectType]> {
     get<KeyType extends keyof ObjectType>(key: KeyType, notSetValue?: ObjectType[KeyType]): ObjectType[KeyType]
 
     set<KeyType extends keyof ObjectType>(key: KeyType, value: ObjectType[KeyType]): this
 
-    toJS(): ObjectType
+    toJS(): ObjectType | { [key: string]: unknown }
 }
 
-const typedMap: <ObjectType>(object: ObjectType) => TypedMap<ObjectType> =
-    // @ts-ignore
+const typedMap: <ObjectType extends { [key: string]: unknown }>(object: ObjectType) => TypedMap<ObjectType> =
     // tslint:disable-next-line no-unnecessary-callback-wrapper
-    <ObjectType>(object: ObjectType): TypedMap<ObjectType> => Map(object)
+    <ObjectType extends { [key: string]: unknown }>(object: ObjectType): TypedMap<ObjectType> => Map(object) as Map<keyof ObjectType, ObjectType[keyof ObjectType]>
 
 const entries: <KeyType extends string, ValueType>(
     object: Partial<{ [Index in KeyType]: ValueType }>,
