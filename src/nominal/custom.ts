@@ -5,8 +5,8 @@ import { Brand, NoUnits } from './types'
 
 interface NominalNumber {
     _NominalBrand?: string,
-    _UnitsBrand?: Brand,
-    _UseBrand?: Brand,
+    _UnitsBrand?: Brand | 'NoUnits',
+    _UseBrand?: Brand | 'NoUse',
 }
 
 type DummyValueForComputingNominalInterface = unknown
